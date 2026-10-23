@@ -1,12 +1,32 @@
 {
   "show": "let the comments decide",
   "day": 1,
-  "last_episode": {"day": 1, "type": "ask", "folder": "episodes/ep001", "video": "videos/day001.mp4",
-                   "posted_at": "2026-10-23T20:30:00-04:00", "buffer": {}},
+  "last_episode": {
+    "day": 1,
+    "type": "ask",
+    "folder": "episodes/ep001",
+    "video": "videos/day001.mp4",
+    "posted_at": "2026-10-23T20:00:00-04:00",
+    "buffer": {
+      "tiktok": "6adbf0950b5343d070561adb",
+      "instagram": "6adbf0968b3d437ddc8f0209"
+    }
+  },
   "ask_since_day": 1,
   "waiting_streak": 0,
-  "world": {"location": "white void", "companions": [], "props": [], "traits": [],
-            "notes": "Episode 1: he walked in from the left and is standing centre stage holding the clipboard sign."},
+  "world": {
+    "location": "white void",
+    "companions": [],
+    "props": [],
+    "traits": [],
+    "notes": "Episode 1: he walked in from the left and is standing centre stage holding the clipboard sign."
+  },
   "used_comments": [],
-  "history": [{"day": 1, "type": "ask", "summary": "walks in, pulls giant clipboard from where a pocket would be, writes TELL ME WHAT TO DO NEXT IN THE COMMENTS, holds it up, blinks"}]
+  "history": [
+    {
+      "day": 1,
+      "type": "ask",
+      "summary": "walks in, pulls giant clipboard from where a pocket would be, writes TELL ME WHAT TO DO NEXT IN THE COMMENTS, holds it up, blinks"
+    }
+  ]
 }
