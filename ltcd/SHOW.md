@@ -13,7 +13,7 @@ Daily loop: **post 7:00 PM ET → comments come in → 3:00 PM ET next day: comm
   Deadpan, dry, absurd, a little dark. He is a dead-eyed hostage of the comments: he does EXACTLY what they say with
   total, joyless commitment, and the humour comes from his flat reactions to insane situations, uncomfortable holds,
   hard cuts, and a slightly dark absurd escalation (something bigger than him shows up; the joke turns on him).
-  Still PG-13 (rules below). Reference: `tests/comment_tests/t1_ramen_v2` (first attempt at this direction — check the latest user feedback).
+  Still PG-13 (rules below). Reference: `tests/comment_tests/t1_ramen_v2` — APPROVED direction (user, 2026-10-24: "this is the right direction for now").
 - **Acting (user note: emotions felt canned, fired at the wrong time, disconnected):** reactions come AFTER the thing
   that causes them (~0.3 s), eyes move first, then the head, then the body. Emotions BUILD out of the situation
   (ramp parameters over seconds: heat_fill, sweat, twitch, pupil, quiver, tear1, breath_rate) instead of switching
