@@ -4,18 +4,22 @@ TikTok + Instagram: **@let.the.comments.decide**. Owner: Justin. Claude makes ev
 Daily loop: **post 7:00 PM ET → comments come in → 3:00 PM ET next day: comment sweep + make the next episode → 7:00 PM post.**
 
 ## The character & world
-- A plain, nameless stick figure: round head, two dot eyes, simple line mouth, optional brows. Stick limbs, no clothes.
-  NOT Nigel (no galaxy eyes, no window, no tally). He never speaks. No dialogue, no voice-over.
+- A basic, nameless stick figure with a LOT of face (see `design/sheet_*.png`, built from `engine/character.py`):
+  big cartoon eyes (white, black pupils, shine, eyelids), thick expressive brows, a mouth with many shapes, ONE bouncy
+  hair curl on top (his signature silhouette), rubber-hose limbs, mitten hands with gestures, bean-shaped feet.
+  No clothes, no pockets (he pulls things out of where a pocket would be). He never speaks. NOT Nigel.
+- **Personality:** eager, earnest, hopeful, a little shy. He genuinely wants to do what you tell him and wants you
+  to like it. He commits 100% to every instruction, however silly — that sincerity is the joke and the heart.
+  Small acting beats sell him: shy wave, blush, hopeful pupils, tongue out when concentrating, proud little nod.
+- **Acting toolkit:** `pose(body, face, **overrides)` with POSES (31 body poses), EXPR (47 expressions), eyes
+  styles (happy, closed, x, spiral, heart, star, dot, wide), 13 mouth styles, extras (tears, sweat drop, anger vein,
+  gloom, blush, teary), symbols (? ! Zzz hearts dizzy-stars idea-bulb steam nervous-lines notes sparkles swirl),
+  hand gestures (mitt fist open point poke thumbs peace grab flat grip), head turn (front, 3/4, profile, back),
+  procedural cycles (walk, run, sneak/tiptoe, shiver, laugh, sob, dance, sleep, fidget), lean, squash/stretch, hop,
+  and Track easings (snap, back = overshoot, elastic, bounce) for cartoon timing. Use anticipation → action →
+  overshoot/settle on every big move. Keep him moving — never a dead stretch.
 - Same hand-drawn line style as Nigel: black ink on white paper, line boil, paper grain, a floor line. The default
-  world is an empty white void.
-- **Colour:** Episode 1 has none. Colour may be introduced later when a scene needs it (a red apple, a blue sky…) —
-  sparingly, as an event, not as a new default.
-- **Tone:** cartoon. Looney Tunes physics and timing: squash & stretch, anticipation, speed lines, poofs, objects
-  pulled out of nowhere ("hammerspace"), takes to camera. Deadpan little guy, expressive eyes/brows.
-- **Sound:** cartoon sound effects throughout (steps, zips, pops, boings, scribbles, whooshes, poofs…). **No music.**
-- **The clipboard:** he pulls a giant clipboard out of where a pocket would be (he has no pocket — cartoon logic),
-  scribbles on it, flips it round: **TELL ME WHAT TO DO NEXT IN THE COMMENTS**. Every episode ends with this beat.
-
+  world is an empty white void. Frame him big (camera zoom ~1.2+) so faces read on a phone.
 ## Episode types
 1. **Episode 1 — "the ask"** (`episodes/ep001`). Walk in from left, turn, pull clipboard, scribble, flip, hold sign,
    blink and stare until the hard cut.
