@@ -39,7 +39,7 @@ BASE = dict(
     pupil=1.0, eyescale=1.0, shine=0.0, teary=0.0, skeptic=0.0,
     brow=0.0, worry=0.0,                      # brow + raised; worry + inner ends up (hopeful/sad) - down (cross)
     mouth="auto", smile=0.3, open=0.0, mouth_w=1.0, tongue=0.0,
-    blush=0.0, tears=0.0, sweat=0.0, vein=0.0, gloom=0.0, squash=0.0, face_tint=0.0, soot=0.0, frizz=0.0, nowalk=0.0,
+    blush=0.0, tears=0.0, sweat=0.0, vein=0.0, gloom=0.0, squash=0.0, face_tint=0.0, soot=0.0, frizz=0.0, nowalk=0.0, larm_over=0.0, rarm_over=0.0,
     heat_fill=0.0, tear1=0.0, twitch=0.0, curl_up=0.0, quiver=0.0,   # slow-burn acting: liquid heat rising in the head, etc.
     saccade=0.5, breath=1.0, breath_rate=1.0,                         # life: eye micro-moves + breathing (rate-aware)
     lag=1.0, lhand_lag=1.0, rhand_lag=1.0, feet_lag=0.0,              # follow-through amounts (0 = rigid)
@@ -580,14 +580,23 @@ def draw_guy(cr, t, p, blink):
         pts = _limb(sh, g(el), g(hd))
         path(cr, sketch_pts(pts, amp=1.0, sid=31 + i * 5, step=14)); stroke_ink(cr, 9)
         draw_hand(cr, g(hd), pts[-3], p.get(ht, "mitt"), side, sid=80 + i * 10)
+    over = lambda i: p.get(("l" if i == 0 else "r") + "arm_over", 0.0) >= 0.5   # drawn later by draw_arm_over
     for i, el, hd, ht, side, fr in arms:
-        if p.get(fr, 0.0) < 0.5: arm(i, el, hd, ht, side)
+        if p.get(fr, 0.0) < 0.5 and not over(i): arm(i, el, hd, ht, side)
     cr.save(); cr.translate(hx, hy); cr.rotate(g("tilt"))
     draw_head(cr, p, blink, t)
     cr.restore()
     for i, el, hd, ht, side, fr in arms:
-        if p.get(fr, 0.0) >= 0.5: arm(i, el, hd, ht, side)
+        if p.get(fr, 0.0) >= 0.5 and not over(i): arm(i, el, hd, ht, side)
     draw_fx(cr, p, hx, hy, t)
+
+def draw_arm_over(cr, p, side="r"):
+    """draw one arm on top of whatever props are already drawn (set p[side+'arm_over']=1 so draw_guy skips it)."""
+    sh = lerp(p["neck"], p["hip"], 0.1)
+    el, hd = p[side + "elb"], p[side + "hand"]
+    pts = _limb(sh, el, hd)
+    path(cr, sketch_pts(pts, amp=1.0, sid=31 if side == "l" else 36, step=14)); stroke_ink(cr, 9)
+    draw_hand(cr, hd, pts[-3], "mitt", -1 if side == "l" else 1, sid=80 if side == "l" else 90)
 
 def draw_grips(cr, p):
     """hands set to "grip" are drawn after the prop they hold (so the mitten sits over its edge)."""

@@ -38,12 +38,20 @@ Daily loop: **post 7:00 PM ET → comments come in → 3:00 PM ET next day: comm
      get a simplified, funny take. Both are part of the humour.
    - The winning comment is pinned **top-right** as a recreated comment card (`draw_comment_card`): @username, the
      comment text, the like count. Visible for the whole episode (it may shrink a little after the first seconds).
-3. **Waiting episode** — when there is no qualifying comment. It picks up where the last episode left off: he is still
-   standing there with his sign, waiting. Every waiting episode must be **unique**, and they get **more ridiculous the
-   longer the drought lasts** (Mario 64 idle energy): foot tapping → pacing with the sign → yawning → falling asleep
-   standing up → it starts raining on just him → cobwebs → a tumbleweed rolls through → he writes "DAY 4" on the
-   sign → he grows a long beard → vines grow up the sign → seasons change around him → a tiny moon orbits his head…
-   Always ends with him re-presenting the sign (TELL ME WHAT TO DO NEXT IN THE COMMENTS). 20–45 s is fine.
+3. **Waiting episode** — when there is no qualifying comment. (User note 2026-10-24, overrides the older "Mario 64
+   idle / rain / cobwebs / tumbleweed" ideas: "the focus needs to be on the message when no one has commented yet, not
+   gimmicky animations that don't make sense".)
+   - **The message is the star.** He stands centre holding the sign up to us — TELL ME WHAT TO DO NEXT IN THE COMMENTS
+     — readable the whole time. Dead stare, breathing, the odd blink, a slow camera creep. That's the episode.
+   - **At most ONE small beat, and it must add to the message:** he turns the sign to himself, writes one short line
+     under the message, turns it back (`S.hold_sign(..., extra="I'LL WAIT.", write_at=...)`). Some days: no beat at all.
+   - **Escalation over a drought = only what's on the sign and his posture.** Each waiting day the sign keeps
+     yesterday's line (`extra_shown=`) and he writes a new one: e.g. `I'LL WAIT.` → `STILL HERE.` → `DAY 4.` →
+     `ANY TIME NOW.` → `I DON'T BLINK MUCH.` Short (≤ 20 characters), deadpan, plain words. Posture can slump a little
+     (small `lean`, lower `lid`) as the streak grows. That's all.
+   - **Never:** props, symbols or effects that need explaining (no chalk outlines, lying under the sign, rain, cobwebs,
+     tumbleweeds, beards, seasons, moons…), sitting/lying/hiding the sign, or anything that covers the message.
+   - 18–25 s. Hard cut at the end. Reference: `tests/waiting_ref/episode.py` (copy it, change the line).
 
 ## Choosing the comment (the 3 PM sweep)
 - Pool: comments on every post published since the last comment episode (TikTok + Instagram), posted before the sweep,

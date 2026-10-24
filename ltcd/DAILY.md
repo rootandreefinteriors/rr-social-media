@@ -54,8 +54,9 @@ git config user.name "Claude (LTCD routine)"; git config user.email "noreply@ant
   appear, widen the camera like t3_dino: `S.camkeys[0] = (0, (540, 840, 0.9), 0)` and `the_ask(..., push=False)`).
   Average ~60 s, max 75 s. Continuity per SHOW.md (≤3 major persistent things; use cartoon consequences to remove
   things). End with `the_ask` (dig at hip -> clipboard -> scribble -> flip: TELL ME WHAT TO DO NEXT IN THE COMMENTS).
-- **Waiting episode:** picks up from the last scene; he's still waiting with the sign. Unique each time and more
-  ridiculous as `STATE.waiting_streak` grows. 20–45 s. Ends re-presenting the sign.
+- **Waiting episode:** copy `ltcd/tests/waiting_ref/episode.py` (it uses `S.hold_sign`) and change only the line he
+  writes (`extra=`) and yesterday's line (`extra_shown=`, from STATE `world.sign_line`). The message is the star; follow
+  SHOW.md "Waiting episode" exactly — no gags, props or effects. 18–25 s. Save today's line to STATE `world.sign_line`.
 - Keep everything inside the safe zone (x 60–920, y 200–1480 on screen). Big readable shapes. Lots of motion —
   no dead stretches. Jumps: use the `cannonball` pose + low hops (~175) so he never flies up behind the card; set
   `nowalk=1` for anything airborne/sliding.

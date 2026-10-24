@@ -35,6 +35,23 @@ class _Cam:
                 cx += k * math.sin(t * 71.0); cy += k * math.cos(t * 57.0)
         return (cx, cy, z)
 
+class _SignFront:
+    """the sign's face: the main message, plus an optional handwritten addition under it that writes on (reveal 0..1)."""
+    def __init__(self, lines, extra=None):
+        self.lines, self.extra, self.reveal = lines, extra, 0.0
+        self.main = L.sign_front(" ".join(lines), lines=lines)
+    def __call__(self, cr, w, h):
+        if not self.extra:
+            self.main(cr, w, h); return
+        mh = h * 0.74
+        s, tw, th = L.fit_text(" ".join(self.lines), w - 30, mh - 30, lines=self.lines)
+        cr.save(); cr.translate(-tw / 2, -h / 2 + (mh - th) / 2 + 6); cr.set_source_surface(s, 0, 0); cr.paint(); cr.restore()
+        if self.reveal > 0.01:
+            s2, tw2, th2 = L.fit_text(self.extra, w - 90, h * 0.17, lines=[self.extra])
+            x0, y0 = -tw2 / 2, h / 2 - h * 0.235
+            cr.save(); cr.rectangle(x0 - 4, y0 - 6, (tw2 + 8) * self.reveal, th2 + 12); cr.clip()
+            cr.translate(x0, y0); cr.rotate(-0.025); cr.set_source_surface(s2, 0, 0); cr.paint(); cr.restore()
+
 class Scene:
     def __init__(self, start_body="stand", start_face="neutral", x0=0.0, zoom=1.22):
         self.body, self.face_name, self.extra = start_body, start_face, {}
@@ -327,6 +344,64 @@ class Scene:
             self._hook(hk2)
         self.place(name, drawer, land, t_on=T_POP, layer=layer, pop=True, follow="rhand" if held else None, offset=offset)
         self.t = T_POP + 0.6
+        return self
+
+    # ------------------------------------------------------------- WAITING: just him and the sign
+    def hold_sign(self, t, dur, lines=("TELL ME", "WHAT TO DO", "NEXT IN THE", "COMMENTS"), extra=None, write_at=None,
+                  write_dur=1.6, push=True, extra_shown=None):
+        """He stands holding the sign up, facing us, the whole time (the message is the star). Optional single beat at
+        write_at: he turns the sign to himself, writes `extra` (pen bobbing over the top edge), turns it back and the
+        new line is there under the message. `extra_shown` = a line that is already on the sign from an earlier day.
+        Deadpan throughout. Use for waiting episodes; no other gags needed."""
+        ox = self.x
+        BW, BH = 470, 560
+        HOLD = (540 + ox, 1120)
+        S = self
+        front = _SignFront(list(lines), extra or extra_shown)
+        T_F0 = write_at if write_at is not None else 1e9          # flip to him
+        T_W0, T_W1 = T_F0 + 0.55, T_F0 + 0.55 + write_dur         # writing
+        T_F1 = T_W1 + 0.2                                         # flip back to us
+        S.set(t, "hold_front", "dead_stare", dur=0.0)
+        if write_at is not None:
+            S.set(T_F0, "hold_front", "dead_stare", dur=0.3, look=(0.3, 0.9), tilt=0.06, lid=0.42)
+            S.set(T_F1 + 0.3, "hold_front", "dead_stare", dur=0.3, look=(0.0, 0.0), tilt=0.0)
+            S.sfx(T_F0, "flip", 0.06); S.sfx(T_W0, "scribble", 0.07, dur=write_dur); S.sfx(T_F1, "flip", 0.06)
+        def flip(tt):        # 1 = message to us, 0 = turned to him
+            return 1.0 - ramp(tt, T_F0, T_F0 + 0.45) + ramp(tt, T_F1, T_F1 + 0.45)
+        def board_c(tt):
+            f = flip(tt); lift = -22 * math.sin(math.pi * f) if 0.02 < f < 0.98 else 0.0
+            return (HOLD[0], HOLD[1] + 4 * math.sin(tt * 0.9) + lift)
+        def writing(tt): return ramp(tt, T_W0, T_W0 + 0.1) * (1 - ramp(tt, T_W1 - 0.1, T_W1))
+        def pen_w(tt): return ramp(tt, T_W0 - 0.15, T_W0) * (1 - ramp(tt, T_W1, T_W1 + 0.15))
+        def hk(tt, p):
+            if not (t <= tt < t + dur): return p
+            cx, cy = board_c(tt); hw = max(60, BW * abs(math.cos(math.pi * flip(tt))) / 2)
+            p["lhand"] = (cx - hw - 2, cy - 80); p["lelb"] = (cx - hw + 30, cy - 200)
+            p["rhand"] = (cx + hw + 2, cy - 80); p["relb"] = (cx + hw - 30, cy - 200)
+            p["lhand_t"] = p["rhand_t"] = "grip"
+            w = pen_w(tt)
+            if w > 0:                       # writes on the face turned to him, behind the top edge (only the pen shows)
+                top = cy - BH / 2; k = writing(tt)
+                jx = (30 * math.sin(tt * 19) + 14 * math.sin(tt * 7.3)) * k
+                jy = (8 * math.sin(tt * 29) + 5 * math.sin(tt * 11)) * k
+                p["rhand"] = lerp(p["rhand"], (cx + 90 + jx, top + 28 + jy), w); p["relb"] = (cx + 170, top + 120)
+                if w > 0.3: p["rhand_t"] = "none"
+            return p
+        S._hook(hk)
+        def pr(cr, tt, p, layer):
+            if layer != "front" or not (t <= tt < t + dur): return
+            cx, cy = board_c(tt)
+            front.extra = extra if (extra and tt >= T_F1) else extra_shown     # yesterday's line until the flip back
+            front.reveal = 1.0 if front.extra else 0.0
+            if pen_w(tt) > 0.3:
+                hx, hy = p["rhand"]; L.draw_pen(cr, hx, hy - 18, ang=0.3)
+            L.draw_clipboard(cr, cx, cy, BW, BH, flip=flip(tt), front=front)
+            L.draw_grips(cr, p)
+        S._prop(pr)
+        if push:
+            S.camera(t, 540 + ox, 1000, 1.22, 0.0)
+            S.camera(t + 0.5, 540 + ox, 1015, 1.34, max(1.0, dur - 1.0))
+        S.t = t + dur
         return self
 
     # ------------------------------------------------------------- THE ASK (standard ending)
