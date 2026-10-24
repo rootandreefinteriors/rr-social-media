@@ -6,10 +6,14 @@
     "type": "ask",
     "folder": "episodes/ep001",
     "video": "videos/day001.mp4",
-    "posted_at": "2026-10-23T20:00:00-04:00",
+    "posted_at": "2026-10-23T20:35:00-04:00",
     "buffer": {
       "tiktok": "6adbf0950b5343d070561adb",
       "instagram": "6adbf0968b3d437ddc8f0209"
+    },
+    "links": {
+      "tiktok": "https://tiktok.com/@let.the.comments/video/7700026377151450382",
+      "instagram": "https://www.instagram.com/reel/De224gFAbKJ/"
     }
   },
   "ask_since_day": 1,
@@ -19,7 +23,7 @@
     "companions": [],
     "props": [],
     "traits": [],
-    "notes": "Episode 1: he walked in from the left and is standing centre stage holding the clipboard sign."
+    "notes": "Episode 1 (older cute style): he walked in from the left and is standing centre stage holding the clipboard sign. From Day 2 on the tone is Adult Swim deadpan (see SHOW.md)."
   },
   "used_comments": [],
   "history": [
