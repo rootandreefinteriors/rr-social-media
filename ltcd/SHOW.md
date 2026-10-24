@@ -42,7 +42,9 @@ Daily loop: **post 7:00 PM ET → comments come in → 3:00 PM ET next day: comm
   waiting episode.
 - **Qualifies only if all true:**
   - PG-13 / ESRB T. No nudity or sexual content (cartoon kiss / hearts OK). No graphic violence or gore
-    (Looney Tunes slapstick OK: anvils, pies, bonks, cartoon explosions with soot faces).
+    (Looney Tunes slapstick OK: anvils, pies, bonks, ACME-style cartoon bombs and comically huge cartoon explosions
+    with soot faces — even a cartoon "nuke" as a big round ACME bomb. NOT OK: realistic weapons, any how-to detail,
+    real places/people/groups as targets, or anything referencing a real attack, war or disaster).
   - No real people (celebrities, politicians, creators, the commenter's friends) — no likenesses, no names on screen.
   - No swearing or slurs, even written, even misspelled/disguised.
   - Nothing racist, sexist, homophobic, transphobic, ableist, or otherwise demeaning to any group.

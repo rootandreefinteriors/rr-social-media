@@ -83,9 +83,8 @@ def hook(t, p):
         p["rhand"] = (p["rhand"][0] + 24 * math.sin((t - 3.9) * 14), p["rhand"][1])
     if T_REACH <= t < T_PULL:                                      # hand into the pocket, rummage a little
         u = ramp(t, T_REACH, T_REACH + 0.25)
-        jig = 8 * math.sin(t * 28) * ramp(t, T_REACH + 0.3, T_REACH + 0.4) * (1 - ramp(t, T_PULL - 0.2, T_PULL - 0.1))
-        p["rhand"] = lerp(p["rhand"], (POCKET[0] + jig, POCKET[1] + 4), u)
-        if u > 0.7: p["rhand_t"] = "none"
+        dig = ramp(t, T_REACH + 0.25, T_REACH + 0.35) * (1 - ramp(t, T_PULL - 0.15, T_PULL - 0.05))
+        p["rhand"] = lerp(p["rhand"], (POCKET[0] + 14 * math.sin(t * 24) * dig, POCKET[1] + 6 * math.sin(t * 31) * dig), u)
     if T_PULL <= t < T_POP:
         p["rhand"] = pull_hand(t); p["rhand_t"] = "none"
     if T_POP <= t < T_POP + 0.3:
@@ -116,7 +115,6 @@ def props(cr, t, p, layer):
             (ax, ay), (bx, by) = b["a"], b["b"]
             ang = math.atan2(by - ay, bx - ax); L_ = math.hypot(bx - ax, by - ay)
             cr.save(); cr.translate(ax, ay); cr.rotate(ang); L.sketch_rect(cr, -10, -32, L_ + 6, 32, 7, sid=300); cr.restore()
-        L.draw_pocket(cr, POCKET[0], POCKET[1], u)
         if b and b["mode"] == "narrow":
             h = pull_hand(t); L.draw_hand(cr, h, (h[0] - 30, h[1] + 60), "mitt", 1, sid=450)
     if b and b["mode"] == "full" and b["layer"] == layer:
