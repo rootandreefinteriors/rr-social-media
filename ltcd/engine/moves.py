@@ -348,14 +348,14 @@ class Scene:
 
     # ------------------------------------------------------------- WAITING: just him and the sign
     def hold_sign(self, t, dur, lines=("TELL ME", "WHAT TO DO", "NEXT IN THE", "COMMENTS"), extra=None, write_at=None,
-                  write_dur=1.6, push=True, extra_shown=None):
+                  write_dur=1.6, push=True, extra_shown=None, hold_y=1120):
         """He stands holding the sign up, facing us, the whole time (the message is the star). Optional single beat at
         write_at: he turns the sign to himself, writes `extra` (pen bobbing over the top edge), turns it back and the
         new line is there under the message. `extra_shown` = a line that is already on the sign from an earlier day.
         Deadpan throughout. Use for waiting episodes; no other gags needed."""
         ox = self.x
         BW, BH = 470, 560
-        HOLD = (540 + ox, 1120)
+        HOLD = (540 + ox, hold_y)
         S = self
         front = _SignFront(list(lines), extra or extra_shown)
         T_F0 = write_at if write_at is not None else 1e9          # flip to him
