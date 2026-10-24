@@ -50,36 +50,72 @@ You only read Buffer. **Never create, edit or delete a Buffer post.** The only f
 ## 2. Save a snapshot
 Write `nigel-bane/reviews/snapshots/<today>.csv`:
 ```
-day,caption,platform,post_id,sent_at,age_days,views,reach,likes,comments,shares,saves,avg_watch_s,length_s,watch_pct,total_watch_min,follows,metrics_updated_at
+day,caption,platform,post_id,sent_at,age_days,views,reach,likes,comments,shares,saves,avg_watch_s,length_s,watch_pct,total_watch_min,follows,metrics_updated_at,z_views,z_watch,z_likes,z_passon,z_comments,score,class
 ```
 - Use one row per post, with blank cells for metrics a platform doesn't report.
+- Fill the z/score/class columns after step 3. Use `too_early` or `no_data` for posts that weren't scored.
 - `length_s` comes from the catalog.
 - `watch_pct = avg_watch_s / length_s × 100`.
 
-## 3. Compare fairly (raw view counts mislead)
-- Rank TikTok and Instagram **separately**; the two audiences behave differently.
-- Leave posts younger than 72 h out of the ranking; list them as "too early to call".
-- Score each ranked post by the **average of its rank** on these, within its platform:
-  - views
-  - `watch_pct` (attention)
-  - likes/view
-  - (shares + saves)/view (people passing it on or keeping it)
-  - comments/view
-- When a post has under ~100 views, its ratios are noise. Say so; don't build a conclusion on it.
-- Age and growth:
-  - Older posts had longer to collect views. The account is also growing, so later posts get a higher baseline.
-  - If an earlier snapshot exists, use **views gained since then** as a second view measure and point out risers,
-    e.g. an old episode suddenly picking up.
-  - Don't compare a 3-day-old post's raw views with a 20-day-old post's raw views without saying so.
-- **Top** = roughly the best quarter on each platform. **Bottom** = roughly the worst quarter. Note episodes that are
-  top on one platform and bottom on the other.
+## 3. Find what performs outside the normal range (raw view counts mislead)
+Work on TikTok and Instagram **separately**; the two audiences behave differently.
 
-## 4. Explain it
-Compare top and bottom on the catalog's fields:
+**Which posts count**
+- Include every post at least **1 day (24 h) old**. Posts younger than that are "too early to call"; list them, don't
+  score them.
+- If a post's `metricsUpdatedAt` is less than ~12 h after its `sentAt`, Buffer hasn't refreshed it yet. Treat it as "no
+  data yet".
+
+**Age and growth**
+- A 1–3-day-old post is still collecting views, and the account is growing, so later posts get a higher baseline.
+- For posts under ~3 days old:
+  - Where earlier snapshots show other episodes at a similar age, compare the post's views with theirs.
+  - Otherwise mark its views score "provisional" and lean on its rate metrics (watch %, likes/view, and so on). Those
+    settle within about a day.
+- If an earlier snapshot exists, also note **views gained since then** and point out risers, e.g. an old episode
+  suddenly picking up.
+
+**Score every post against the platform's normal**
+1. Use these metrics:
+   - `log(views + 1)`
+   - `watch_pct` (attention)
+   - likes/view
+   - (shares + saves)/view (people passing it on or keeping it)
+   - comments/view
+2. Compute a robust z-score for each metric: `z = (x − median) / (1.4826 × MAD)`, using the median and MAD across that
+   platform's scored posts.
+   - If the MAD is 0, use the standard deviation.
+   - If that is 0 too, z = 0.
+   - Clip each z to ±3.
+3. Few views make ratios noisy. Multiply a post's rate z-scores (everything except views) by `min(1, views / 150)`.
+4. Outlier score = weighted mean of the z-scores: views 1, watch_pct 1, likes/view 1, (shares+saves)/view 1,
+   comments/view 0.5.
+5. Classify each post:
+
+   | Score | Class | Strength |
+   |---|---|---|
+   | ≥ +0.5 | over-performer | mild 0.5–1 · clear 1–2 · strong > 2 |
+   | between −0.5 and +0.5 | normal range | — |
+   | ≤ −0.5 | under-performer | mild 0.5–1 · clear 1–2 · strong > 2 |
+
+6. Single-metric outliers: a post can be normal overall and still be an outlier on one metric (|z| ≥ 1.5). Call those
+   out too, because each metric says something different:
+   - **views:** the cover or first seconds hooked people, or the algorithm pushed it
+   - **watch %:** it held them
+   - **shares/saves:** it meant something to them
+   - **comments:** it provoked them
+7. Note episodes that are outliers in opposite directions on the two platforms.
+
+## 4. Explain it: what do the outliers have in common?
+Use every post outside the normal range on both sides, not only the extremes. **Weight each one by how far out it is:**
+a +2.4 episode counts about three times as much as a +0.8 one. Normal-range episodes are the baseline; don't explain
+them one by one.
+
+**Fields to compare** (from the catalog):
 - the idea itself, and how hard it addresses "you"
 - what he is doing in the first seconds after the open
 - the prop
-- the tension mechanism
+- the tension mechanism and how strong it is
 - the visual device
 - dread day or not
 - hook type
@@ -87,16 +123,28 @@ Compare top and bottom on the catalog's fields:
 - whether a cover frame was chosen
 - weekday
 
-For each pattern:
+**How:**
+- For each value of a field (e.g. hook = viewer-centric, first seconds = physical action, tension = strong), compare the
+  average outlier score of episodes that have it with those that don't.
+- Each episode counts with its score, so heavy outliers pull hardest. Report:
+  - the trait
+  - the two averages
+  - how many episodes are on each side
+  - which outliers drive the difference
+- Then look for traits that the over-performers share and the under-performers lack, and the reverse. A trait that shows
+  up on both platforms is stronger evidence.
+
+**For each pattern:**
 - Name the episodes and numbers behind it.
 - Give a confidence: low, medium or high. Samples are tiny, so most will be low or medium. Say so plainly rather than
   inventing certainty.
 - Weigh the likely confounders: follower growth over time, weekday, Buffer's ~24 h metric lag, TikTok randomly pushing
   one video, and the launch-week boost on Days 1–2.
 
-Then check eras. Days 17+ were made under new rules, adopted 2026-10-23 after the first review: immediate action, a prop
+**Era check:** Days 17+ were made under new rules, adopted 2026-10-23 after the first review: immediate action, a prop
 every episode, everything aimed at "you", viewer-centric hooks, building tension. Once at least 4 of those episodes are
-over 72 h old, say whether they are doing better than Days 1–16. Use attention and ratios, not just raw views.
+scored, say whether their scores are higher than Days 1–16. Account for their younger age, and use attention and ratios,
+not just views.
 
 ## 5. Recommend
 Recommendations must respect the show's locked rules. If the data seems to argue against a locked rule, put it under
@@ -147,9 +195,11 @@ Recommendations must respect the show's locked rules. If the data seems to argue
 Keep it short and plain: under ~450 words plus two small tables.
 1. **Headline:** 1–2 lines. How is the show doing since last review: total views and average watch on each platform,
    up or down.
-2. **Top episodes:** table with day, title, TikTok views, IG views, average watch (s and %), and why it likely worked.
-3. **Bottom episodes:** the same table, with why it likely didn't work.
-4. **What the winners share:** 3–5 bullets with confidence.
+2. **Over-performers:** every post above the normal range, strongest first. Table with day, title, platform, score
+   (and strength), the metric(s) that drove it, views, average watch (s and %), and why it likely worked.
+3. **Under-performers:** the same table for posts below the normal range, with why each likely didn't work.
+4. **What the outliers share:** 3–5 bullets with confidence, weighted toward the heavier outliers.
+   Include single-metric standouts if they say something new.
 5. **Recommendations:**
    - do more of / do less of
    - next episodes
