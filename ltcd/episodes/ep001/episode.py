@@ -1,193 +1,139 @@
-"""Let the comments decide — Episode 1: "the ask" (v2).
+"""Let the comments decide — Episode 1: "the ask" (v3, simplified).
 
-He peeks in from the left edge, notices us, startles, smiles shyly and walks in. A shy wave. "One sec" finger.
-Pats his hips — a pocket pops into existence on his hip — he reaches in up to the elbow, rummages (tongue out),
-and pulls out a clipboard that keeps coming... and coming... POP, full size. Plucks the pen, writes (tongue out),
-full stop, admires it, flips it: TELL ME WHAT TO DO NEXT IN THE COMMENTS. Hopeful little hops, taps COMMENTS,
-looks back at us pleading, blushes, leans in. Hard cut.
+Peeks in from the left, notices us, smiles shyly, walks in, shy wave. Looks down at his hip — a pocket appears where
+a pocket would be — reaches in, pulls out a clipboard that keeps coming, POP, full size. Writes (tongue out), flips
+it: TELL ME WHAT TO DO NEXT IN THE COMMENTS. Hopeful hops, blush, leans in. Hard cut.
+Sound: soft footsteps, one pop, a scribble, a flip. That's all.
 """
 import sys, os, math
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "engine"))
 import ltcd as L
-from ltcd import pose, Track, ramp, pulse, lerp, back_out, smooth
+from ltcd import pose, Track, ramp, pulse, lerp, back_out
 
-DUR = 26.0
+DUR = 23.0
 SIGN = ["TELL ME", "WHAT TO DO", "NEXT IN THE", "COMMENTS"]
-BW, BH = 520, 580
-HOLD = (540, 1140)
+BW, BH = 470, 560
+HOLD = (540, 1120)
 POCKET = (588, 1092)
-PULL_A, PULL_C, PULL_B = (588, 1092), (700, 830), (735, 470)
+PULL_A, PULL_C, PULL_B = (588, 1092), (690, 860), (720, 520)
+T_POCKET, T_REACH, T_PULL, T_POP = 5.2, 5.35, 6.35, 7.45
+T_DOWN, T_PEN, T_WRITE0, T_WRITE1, T_FLIP = 7.75, 8.2, 8.45, 10.7, 11.35
 
-def hopv(t):                     # little hopeful hops while holding the sign
-    return 16 * (pulse(t, 13.95, 0.09) + pulse(t, 14.35, 0.09)) + 9 * (pulse(t, 23.9, 0.1) + pulse(t, 24.3, 0.1))
+def hopv(t):
+    return 14 * (pulse(t, 12.4, 0.09) + pulse(t, 12.8, 0.09)) + 8 * (pulse(t, 20.9, 0.1) + pulse(t, 21.3, 0.1)) + 12 * pulse(t, 1.12, 0.08)
 
-# ------------------------------------------------------------------ body ---
 F = lambda body, face, **kw: pose(body, face, **kw)
-keys = [
+body = Track([
     (0.0,  F("stand", "neutral", lean=0.25, look=(0.7, -0.1), smile=0.1), 0),
-    (0.9,  F("stand", "neutral", lean=0.25, look=(0.25, 0.0), smile=0.1), 0.25, "out"),          # ...sees us
-    (1.1,  F("stand", "surprised", lean=0.21, look=(0.25, 0.0)), 0.12, "snap"),                    # !
+    (0.9,  F("stand", "neutral", lean=0.25, look=(0.25, 0.0), smile=0.1), 0.25, "out"),       # ...sees us
+    (1.1,  F("stand", "surprised", lean=0.21, look=(0.25, 0.0)), 0.12, "snap"),
     (1.45, F("stand", "shy", lean=0.24, look=(0.3, 0.05)), 0.35),
-    (1.75, F("stand", "shy", lean=0.0, look=(0.2, 0.0), blush=0.6), 0.6),                          # walks in
-    (3.55, F("stand", "happy", stretch=-0.35, look=(0.0, 0.0)), 0.1, "snap"),                      # skid stop
+    (1.75, F("stand", "shy", lean=0.0, look=(0.2, 0.0), blush=0.5), 0.6),                      # walks in
+    (3.55, F("stand", "happy", stretch=-0.3, look=(0.0, 0.0)), 0.1, "snap"),
     (3.7,  F("stand", "happy", stretch=0.0), 0.3, "back"),
-    (3.9,  F("wave", "shy", blush=0.9, smile=0.75, tilt=-0.06), 0.25, "back"),                     # hi.
-    (4.95, F("point_up", "eager", tilt=0.05, open=0.0, smile=0.6), 0.2, "snap"),                   # one sec
-    (5.55, F("hands_hips", "thinking", look=(0.0, 0.7), tilt=0.06), 0.2),                         # pat pat
-    (6.3,  F("hands_hips", "surprised", look=(0.35, 0.75), eyescale=1.08, open=0.3), 0.12, "snap"),  # a pocket!
-    (6.5,  F("hands_hips", "concentrating", look=(0.35, 0.8), tilt=0.1, lhand_t="fist"), 0.25),     # rummage
-    (7.6,  F("hands_hips", "eager", look=(0.4, 0.4), lhand_t="fist"), 0.12, "snap"),               # got it
-    (7.75, F("hands_hips", "surprised", look=(0.55, -0.85), eyescale=1.1, open=0.5, lhand_t="fist"), 0.9),  # it keeps coming
-    (8.92, F("stand", "delighted", look=(0.3, -0.4), eyescale=1.1), 0.1, "snap"),                  # POP
-    (9.3,  F("hold_front", "happy", look=(0.0, 0.4)), 0.3),
-    (10.0, F("hold_front", "concentrating", look=(0.45, 0.9), tilt=0.1), 0.25),                     # writing
-    (12.55, F("hold_front", "proud", look=(0.0, 0.6), tilt=0.0), 0.2),                              # admire
-    (12.95, F("hold_front", "eager", look=(0.0, 0.0)), 0.25),
-    (13.5, F("hold_front", "hopeful", look=(0.0, 0.0)), 0.3),
-    (15.05, F("hold_front", "hopeful", look=(-0.35, 0.85)), 0.25),                                  # taps COMMENTS
-    (16.35, F("hold_front", "pleading", look=(0.0, 0.0)), 0.3),
-    (17.5, F("hold_front", "shy", look=(0.0, 0.0), blush=1.0, smile=0.6), 0.35),
-    (19.4, F("hold_front", "pleading", look=(0.0, -0.05), curl=0.2), 0.8),                           # leans in
-    (22.3, F("hold_front", "hopeful", tilt=0.12), 0.5),
-    (23.6, F("hold_front", "eager", tilt=0.04, smile=0.8, open=0.0), 0.3),
-    (25.0, F("hold_front", "hopeful", tilt=0.0), 0.4),
-]
-body = Track(keys)
+    (3.9,  F("wave", "shy", blush=0.9, smile=0.75, tilt=-0.06), 0.25, "back"),                 # hi.
+    (5.0,  F("stand", "thinking", look=(0.4, 0.8), tilt=0.08), 0.25),                           # looks at his hip
+    (5.25, F("stand", "surprised", look=(0.4, 0.8), eyescale=1.06, open=0.3), 0.1, "snap"),     # a pocket!
+    (5.45, F("stand", "concentrating", look=(0.4, 0.8), tilt=0.1), 0.2),                        # reaches in
+    (6.25, F("stand", "eager", look=(0.45, 0.3)), 0.1, "snap"),                                 # got it
+    (6.4,  F("stand", "surprised", look=(0.5, -0.8), eyescale=1.08, open=0.4), 0.8),           # it keeps coming
+    (7.47, F("stand", "delighted", look=(0.3, -0.4)), 0.1, "snap"),                             # POP
+    (7.85, F("hold_front", "happy", look=(0.0, 0.4)), 0.3),
+    (8.45, F("hold_front", "concentrating", look=(0.4, 0.9), tilt=0.08), 0.25),                # writing
+    (10.8, F("hold_front", "proud", look=(0.0, 0.6), tilt=0.0), 0.2),                           # admires it
+    (11.35, F("hold_front", "eager", look=(0.0, 0.0)), 0.25),
+    (11.9, F("hold_front", "hopeful", look=(0.0, 0.0)), 0.3),
+    (14.5, F("hold_front", "pleading", look=(0.0, -0.05)), 0.5),
+    (16.0, F("hold_front", "shy", blush=1.0, smile=0.6), 0.35),                                 # blush
+    (17.6, F("hold_front", "pleading", look=(0.0, -0.05)), 0.8),                                 # leans in
+    (19.6, F("hold_front", "hopeful", tilt=0.1), 0.5),
+    (20.7, F("hold_front", "eager", tilt=0.03, smile=0.8), 0.3),
+    (22.0, F("hold_front", "hopeful", tilt=0.0), 0.4),
+])
 xt = Track([(0.0, -800, 0), (0.15, -605, 0.6, "out"), (1.75, 0, 1.85)])
-cam = Track([(0.0, (540, 1000, 1.22), 0), (13.4, (540, 1010, 1.26), 4.0), (19.4, (540, 1020, 1.36), 2.0)])
+cam = Track([(0.0, (540, 1000, 1.22), 0), (11.9, (540, 1010, 1.26), 3.0), (17.6, (540, 1020, 1.36), 2.0)])
 
-# ---------------------------------------------------------------- board ---
 def _bezpt(a, c, b, u):
     return ((1 - u) ** 2 * a[0] + 2 * (1 - u) * u * c[0] + u * u * b[0], (1 - u) ** 2 * a[1] + 2 * (1 - u) * u * c[1] + u * u * b[1])
-
 def pull_hand(t):
-    return _bezpt(PULL_A, PULL_C, PULL_B, ramp(t, 7.72, 8.9, "smooth"))
+    return _bezpt(PULL_A, PULL_C, PULL_B, ramp(t, T_PULL, T_POP))
 
 def board(t):
-    if t < 7.72: return None
-    if t < 8.9:
-        return dict(mode="narrow", a=POCKET, b=pull_hand(t))
-    top_c = (PULL_B[0] - 20, PULL_B[1] + BH / 2 - 10)
-    if t < 9.2:
-        s = back_out((t - 8.9) / 0.2, 2.0)
+    if t < T_PULL: return None
+    if t < T_POP: return dict(mode="narrow", a=POCKET, b=pull_hand(t))
+    top_c = (PULL_B[0] - 30, PULL_B[1] + BH / 2 - 10)
+    if t < T_POP + 0.25:
+        s = back_out((t - T_POP) / 0.22, 1.8)
         return dict(mode="full", c=top_c, w=70 + (BW - 70) * s, flip=0.0, layer="back")
-    u = ramp(t, 9.2, 9.62, "smooth")
+    u = ramp(t, T_POP + 0.25, T_DOWN + 0.1)
     c = lerp(top_c, HOLD, u)
-    f = ramp(t, 12.95, 13.45, "smooth")
-    lift = -30 * math.sin(math.pi * f) - 20 * f
-    bump = -10 * pulse(t, 13.5, 0.07)
-    return dict(mode="full", c=(c[0], c[1] + lift + bump - hopv(t)), w=BW, flip=f, layer="back" if t < 9.62 else "front")
+    f = ramp(t, T_FLIP, T_FLIP + 0.5)
+    lift = -26 * math.sin(math.pi * f) - 16 * f
+    return dict(mode="full", c=(c[0], c[1] + lift - hopv(t)), w=BW, flip=f, layer="back" if t < T_DOWN + 0.08 else "front")
 
 FRONT = L.sign_front(" ".join(SIGN), lines=SIGN)
-BUSY = ((10.1, 11.0), (11.2, 11.8), (11.95, 12.35))
-def busy(t): return sum(ramp(t, a, a + 0.05) * (1 - ramp(t, b - 0.05, b)) for a, b in BUSY)
-def pen_on(t): return 9.85 <= t < 12.8
+def writing(t): return ramp(t, T_WRITE0, T_WRITE0 + 0.1) * (1 - ramp(t, T_WRITE1 - 0.1, T_WRITE1))
+def pen_w(t): return ramp(t, T_PEN, T_PEN + 0.2) * (1 - ramp(t, T_WRITE1 + 0.05, T_WRITE1 + 0.25))
 
 def hook(t, p):
-    hv = hopv(t) + 14 * pulse(t, 1.12, 0.08)                       # hops (startle + hopeful hops with the sign)
+    hv = hopv(t)
     if hv > 0.05:
         for k in L.JOINTS: p[k] = (p[k][0], p[k][1] - hv)
-    p["hop"] = hv
-    if 3.9 <= t < 4.95:                                            # wave
-        p["rhand"] = (p["rhand"][0] + 26 * math.sin((t - 3.9) * 15), p["rhand"][1])
-    if 5.55 <= t < 6.3:                                            # pat pat
-        p["lhand"] = (p["lhand"][0], p["lhand"][1] - 18 * (pulse(t, 5.75, 0.05) + pulse(t, 5.98, 0.05)))
-        p["rhand"] = (p["rhand"][0], p["rhand"][1] - 18 * (pulse(t, 5.86, 0.05) + pulse(t, 6.1, 0.05)))
-    if 6.45 <= t < 7.72:                                           # arm into the pocket, rummaging
-        u = ramp(t, 6.45, 6.7, "out")
-        jig = 10 * math.sin(t * 31) * ramp(t, 6.75, 6.85) * (1 - ramp(t, 7.5, 7.6))
-        p["rhand"] = lerp(p["rhand"], (POCKET[0] + jig * 0.4, POCKET[1] + 4), u)
-        p["relb"] = lerp(p["relb"], (POCKET[0] + 60 + jig, POCKET[1] - 120 + jig * 0.5), u)
-        if u > 0.6: p["rhand_t"] = "none"
-        p["neck"] = (p["neck"][0] + jig * 0.3, p["neck"][1])
-    if 7.72 <= t < 8.9:                                            # pulling it out (the fist is drawn over the board)
-        h = pull_hand(t); p["rhand"] = h; p["relb"] = ((h[0] + 640) / 2 + 40, (h[1] + 900) / 2); p["rhand_t"] = "none"
-    if 8.9 <= t < 9.25:
-        p["rhand"] = (PULL_B[0] - 5, PULL_B[1] + 10); p["relb"] = (690, 650); p["rhand_t"] = "fist"
+    if 3.9 <= t < 5.0:                                             # shy wave
+        p["rhand"] = (p["rhand"][0] + 24 * math.sin((t - 3.9) * 14), p["rhand"][1])
+    if T_REACH <= t < T_PULL:                                      # hand into the pocket, rummage a little
+        u = ramp(t, T_REACH, T_REACH + 0.25)
+        jig = 8 * math.sin(t * 28) * ramp(t, T_REACH + 0.3, T_REACH + 0.4) * (1 - ramp(t, T_PULL - 0.2, T_PULL - 0.1))
+        p["rhand"] = lerp(p["rhand"], (POCKET[0] + jig, POCKET[1] + 4), u)
+        if u > 0.7: p["rhand_t"] = "none"
+    if T_PULL <= t < T_POP:
+        p["rhand"] = pull_hand(t); p["rhand_t"] = "none"
+    if T_POP <= t < T_POP + 0.3:
+        p["rhand"] = (PULL_B[0] - 5, PULL_B[1] + 8)
     b = board(t)
-    if b and b["mode"] == "full" and t >= 9.2:                     # hands on the board edges
-        u = ramp(t, 9.2, 9.55)
+    if b and b["mode"] == "full" and t >= T_POP + 0.25:            # both hands on the board edges
+        u = ramp(t, T_POP + 0.25, T_DOWN)
         cx, cy = b["c"]; hw = max(60, b["w"] * abs(math.cos(math.pi * b["flip"])) / 2)
-        p["lhand"] = lerp(p["lhand"], (cx - hw - 2, cy + 10), u); p["lelb"] = lerp(p["lelb"], (cx - hw * 0.6, cy - 70), u)
-        p["rhand"] = lerp(p["rhand"], (cx + hw + 2, cy + 10), u); p["relb"] = lerp(p["relb"], (cx + hw * 0.6, cy - 70), u)
+        p["lhand"] = lerp(p["lhand"], (cx - hw - 2, cy - 80), u); p["lelb"] = (cx - hw + 30, cy - 200)
+        p["rhand"] = lerp(p["rhand"], (cx + hw + 2, cy - 80), u); p["relb"] = (cx + hw - 30, cy - 200)
         if u > 0.5: p["lhand_t"] = p["rhand_t"] = "grip"
-        if pen_on(t):                                              # pluck pen, scribble behind the top edge
-            w = ramp(t, 9.75, 9.95) * (1 - ramp(t, 12.6, 12.8))
+        w = pen_w(t)
+        if w > 0:                                                  # right hand takes the pen and writes behind the top edge
             top = cy - BH / 2
-            jx = (34 * math.sin(t * 21) + 16 * math.sin(t * 8.3)) * busy(t)
-            jy = (10 * math.sin(t * 33) + 6 * math.sin(t * 13)) * busy(t) - 16 * pulse(t, 12.45, 0.04)
-            p["rhand"] = lerp(p["rhand"], (cx + 95 + jx, top + 30 + jy), w)
-            p["relb"] = lerp(p["relb"], (cx + 200, top + 160), w)
+            k = writing(t)
+            jx = (30 * math.sin(t * 19) + 14 * math.sin(t * 7.3)) * k
+            jy = (8 * math.sin(t * 29) + 5 * math.sin(t * 11)) * k
+            p["rhand"] = lerp(p["rhand"], (cx + 90 + jx, top + 28 + jy), w)
+            p["relb"] = (cx + 170, top + 120)
             if w > 0.3: p["rhand_t"] = "none"
-        if 15.05 <= t < 16.75:                                     # left hand lets go, taps COMMENTS
-            w = ramp(t, 15.05, 15.3) * (1 - ramp(t, 16.45, 16.75))
-            tap = -16 * (pulse(t, 15.6, 0.05) + pulse(t, 16.0, 0.05))
-            p["lhand"] = lerp(p["lhand"], (cx - 120, cy + 205 + tap), w)
-            p["lelb"] = lerp(p["lelb"], (cx - 230, cy + 120), w)
-            if w > 0.4: p["lhand_t"] = "none"; p["_point"] = w
     return p
 
 def props(cr, t, p, layer):
     b = board(t)
-    if b and b["mode"] == "narrow" and layer == "front":         # it keeps coming out of the pocket
-        (ax, ay), (bx, by) = b["a"], b["b"]
-        ang = math.atan2(by - ay, bx - ax); L_ = math.hypot(bx - ax, by - ay)
-        cr.save(); cr.translate(ax, ay); cr.rotate(ang)
-        L.sketch_rect(cr, -10, -35, L_ + 6, 35, 7, sid=300)
-        cr.restore()
-        L.motion_lines(cr, ax + 10, ay - 40, -math.pi / 2 + 0.3, n=3, length=50, spread=24, sid=440, alpha=0.8)
-    if 6.25 <= t < 9.45 and layer == "front":                     # the pocket (covers the arm going in / board coming out)
-        u = ramp(t, 6.25, 6.42, "linear") * (1 - ramp(t, 9.25, 9.42, "linear"))
+    if layer == "front" and T_POCKET <= t < T_DOWN + 0.2:         # the pocket appears where a pocket would be
+        u = ramp(t, T_POCKET, T_POCKET + 0.15, "linear") * (1 - ramp(t, T_DOWN, T_DOWN + 0.15, "linear"))
+        if b and b["mode"] == "narrow":                          # the board coming out of it (drawn first)
+            (ax, ay), (bx, by) = b["a"], b["b"]
+            ang = math.atan2(by - ay, bx - ax); L_ = math.hypot(bx - ax, by - ay)
+            cr.save(); cr.translate(ax, ay); cr.rotate(ang); L.sketch_rect(cr, -10, -32, L_ + 6, 32, 7, sid=300); cr.restore()
         L.draw_pocket(cr, POCKET[0], POCKET[1], u)
-        if t < 6.6: L.burst_lines(cr, POCKET[0], POCKET[1] - 10, (t - 6.25) / 0.35, r0=60, r1=110, n=8, sid=5, width=4)
-    if b and b["mode"] == "narrow" and layer == "front":         # his fist over the top of it
-        h = pull_hand(t); L.sketch_circle(cr, h[0], h[1], 22, 6, sid=450)
+        if b and b["mode"] == "narrow":
+            h = pull_hand(t); L.draw_hand(cr, h, (h[0] - 30, h[1] + 60), "mitt", 1, sid=450)
     if b and b["mode"] == "full" and b["layer"] == layer:
-        if layer == "front" and pen_on(t):
-            w = ramp(t, 9.75, 9.95) * (1 - ramp(t, 12.6, 12.8))
-            if w > 0.3:
-                hx, hy = p["rhand"]; L.draw_pen(cr, hx, hy - 20, ang=0.3)
-                if busy(t) > 0.3:
-                    for k in range(3):
-                        L.motion_lines(cr, hx + 26, hy - 120, -math.pi / 2 + (k - 1) * 0.55, n=1, length=30, alpha=busy(t), sid=460 + k + L.ink.BOIL % 5)
+        if layer == "front" and pen_w(t) > 0.3:
+            hx, hy = p["rhand"]; L.draw_pen(cr, hx, hy - 18, ang=0.3)
         L.draw_clipboard(cr, b["c"][0], b["c"][1], b["w"], BH, flip=b["flip"], front=FRONT)
-        if layer == "back" and t < 9.1:
-            L.burst_lines(cr, b["c"][0], b["c"][1], (t - 8.9) / 0.4, r0=BW * 0.45, r1=BW * 0.7, n=12, sid=7)
-        if 12.95 < t < 13.5:                                      # whip lines on the flip
-            a = math.sin(math.pi * ramp(t, 12.95, 13.5))
-            for side in (-1, 1):
-                L.motion_lines(cr, b["c"][0] + side * (BW / 2 + 30), b["c"][1], math.pi / 2 if side > 0 else -math.pi / 2,
-                               n=3, length=70, spread=60, alpha=a, sid=470 + side)
+        if layer == "back" and t < T_POP + 0.3:
+            L.burst_lines(cr, b["c"][0], b["c"][1], (t - T_POP) / 0.4, r0=BW * 0.45, r1=BW * 0.68, n=10, sid=7)
     if layer == "front":
         L.draw_grips(cr, p)
-        if p.get("_point", 0) > 0.4:                              # pointing hand in front of the sign
-            x, y = p["lhand"]
-            L.sketch_line(cr, [(x - 70, y + 40), (x, y)], 9, sid=480)
-            L.draw_hand(cr, (x, y), (x - 70, y + 40), "point", -1, sid=481)
 
-blinks = [2.6, 4.6, 9.4, 13.1, 17.0, 18.6, 18.82, 21.0, 22.5, 25.3]
+blinks = [2.6, 4.7, 8.0, 11.6, 14.0, 16.9, 17.1, 19.3, 21.9]
 sfx = [
-    (1.1, "boop", 0.22),                                  # (startle)
-    (3.55, "skid", 0.25), (3.62, "thud", 0.12),
-    (5.75, "pat", 0.25), (5.86, "pat", 0.25), (5.98, "pat", 0.25), (6.1, "pat", 0.25),
-    (6.27, "pop", 0.28),                                  # a pocket appears
-    (6.6, "rummage", 0.35, dict(dur=0.95)),
-    (7.6, "tick", 0.2),
-    (7.74, "slide_up", 0.28, dict(dur=1.15)),             # it keeps coming
-    (8.9, "pop", 0.35), (8.92, "boing", 0.22),            # POP
-    (9.28, "zip_down", 0.14),                             # pocket closes
-    (9.6, "tap", 0.2),
-    (9.82, "tick", 0.2),                                  # pen
-    (10.1, "scribble", 0.32, dict(dur=0.9)), (11.2, "scribble", 0.32, dict(dur=0.6)), (11.95, "scribble", 0.32, dict(dur=0.4)),
-    (12.43, "tap", 0.18),                                 # full stop
-    (12.7, "tick", 0.15),
-    (12.97, "flip", 0.3),
-    (13.95, "tap", 0.12), (14.35, "tap", 0.12),
-    (15.58, "tap", 0.16), (15.98, "tap", 0.16),
-    (17.5, "twinkle", 0.08),
-    (23.9, "tap", 0.1), (24.3, "tap", 0.1),
-] + [(b, "blink", 0.06) for b in blinks if b > 13]
-
+    (T_POP, "pop", 0.22),
+    (T_WRITE0, "scribble", 0.16, dict(dur=T_WRITE1 - T_WRITE0)),
+    (T_FLIP, "flip", 0.18),
+]
 L.configure(duration=DUR, pose_track=body, x_track=xt, cam_track=cam, props=props, pose_hook=hook, sfx=sfx, blinks=blinks)
 
 if __name__ == "__main__":

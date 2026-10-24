@@ -28,10 +28,10 @@ import character as C
 pose_track = x_track = cam_track = None
 PROPS = POSE_HOOK = OVERLAY = None
 SFX = []; BLINKS = []; DURATION = 0.0; NFRAMES = 0
-FLOOR = True; STEP_GAIN = 0.07; BG = None
+FLOOR = True; STEP_GAIN = 0.04; BG = None
 
 def configure(duration, pose_track, x_track, cam_track, props=None, pose_hook=None, overlay=None,
-              sfx=(), blinks=None, floor=True, step_gain=0.07, background=None):
+              sfx=(), blinks=None, floor=True, step_gain=0.04, background=None):
     """props(cr, t, pose, layer) is called with layer 'back' (behind him) and 'front' (over him).
     overlay(cr, t) draws in screen space (e.g. the pinned comment card). background(cr, t) draws the world first."""
     g = globals()
@@ -149,7 +149,7 @@ def live_pose(t):
     for k in C.JOINTS:
         p[k] = (p[k][0] + x, p[k][1] - hop)
     if POSE_HOOK: p = POSE_HOOK(t, p)
-    return p
+    return C.constrain(p)
 
 def pose_with_follow(t):
     """live pose + secondary motion: the curl lags behind head movement and springs back."""

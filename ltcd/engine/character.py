@@ -156,39 +156,12 @@ def pose(body="stand", face="neutral", **kw):
 
 # ------------------------------------------------------------- hands/feet ---
 def draw_hand(cr, pos, frm, kind, side, sid=0, sc=1.0):
-    """cartoon mitten hand at pos; frm = the point the forearm comes from (sets the angle).
-    side: -1 screen-left hand, +1 screen-right hand (thumb goes towards the body)."""
+    """simple oval hand (like his feet). kind "none"/"grip" = not drawn here. frm sets the angle."""
     if kind in ("none", "grip"): return
     x, y = pos
     ang = math.atan2(y - frm[1], x - frm[0])
-    cr.save(); cr.translate(x, y); cr.rotate(ang); cr.scale(sc, sc)
-    th = -side if math.cos(ang) >= 0 else side
-    def blob(cx, cy, rx, ry, rot=0.0, s_=0, w=6):
-        ellipse(cr, cx, cy, rx, ry, rot, sid=sid + s_); fill_paper(cr); stroke_ink(cr, w)
-    if kind == "mitt":
-        blob(14, 0, 25, 20); blob(6, th * 19, 11, 8, th * 0.6, 1, 5.5)
-    elif kind == "fist":
-        blob(12, 0, 21, 19)
-        for k in (-1, 0, 1):
-            cr.move_to(24, k * 8); cr.line_to(31, k * 8); stroke_ink(cr, 3.5)
-    elif kind == "point":
-        blob(38, -6, 18, 7, 0, 2, 5.5); blob(10, 0, 19, 17)
-    elif kind == "poke":       # pointing straight at the camera: fingertip towards us
-        blob(10, 0, 20, 18); sketch_circle(cr, 18, -4, 13, 5.5, sid=sid + 7); cr.arc(18, -4, 4, 0, 6.3); fill_ink(cr)
-    elif kind == "thumbs":
-        blob(10, 0, 20, 18)
-        cr.save(); cr.rotate(-ang); blob(4, -26, 8, 15, 0, 3, 5.5); cr.restore()
-    elif kind == "peace":
-        blob(34, -12, 17, 6.5, -0.35, 2, 5); blob(34, 10, 17, 6.5, 0.35, 3, 5); blob(8, 0, 19, 17)
-    elif kind == "grab":       # open C-shaped grabbing hand
-        cr.arc(14, 0, 22, -2.2, 2.2); stroke_ink(cr, 7); blob(-2, th * 18, 9, 7, 0, 1, 5)
-    elif kind == "flat":       # flat palm (clapping, chopping, stop!)
-        blob(18, 0, 28, 13, 0, 0, 6); blob(4, th * 15, 10, 6, th * 0.8, 1, 5)
-    elif kind == "open":
-        for k, a in enumerate((-0.8, -0.27, 0.27, 0.8)):
-            blob(22 + 20 * math.cos(a), 22 * math.sin(a), 14, 7, a, 3 + k, 5)
-        blob(8, 0, 20, 18); blob(2, th * 22, 12, 7, th * 1.1, 1, 5)
-    cr.restore()
+    ellipse(cr, x + 8 * math.cos(ang) * sc, y + 8 * math.sin(ang) * sc, 19 * sc, 14 * sc, rot=ang, sid=sid, amp=0.02)
+    fill_paper(cr); stroke_ink(cr, 6.5)
 
 def draw_foot(cr, pos, d, tiptoe=0.0, sid=0):
     """bean-shaped cartoon foot; d = direction it points (-1 left .. 1 right, 0 at camera)."""
@@ -526,7 +499,7 @@ def draw_guy(cr, t, p, blink):
     hip = g("hip")
     sh = lerp(nk, hip, 0.1)
     for i, kn, ft in ((0, "lknee", "lfoot"), (1, "rknee", "rfoot")):
-        path(cr, sketch_pts(bez(hip, thru(hip, g(kn), g(ft)), g(ft)), amp=1.2, sid=11 + i * 5, step=14)); stroke_ink(cr, 9)
+        path(cr, sketch_pts([hip, g(kn), g(ft)], amp=1.2, sid=11 + i * 5, step=14)); stroke_ink(cr, 9)
     tip = p.get("tiptoe", 0.0)
     draw_foot(cr, g("lfoot"), p.get("lfoot_dir", 0.0), tip, sid=70)
     draw_foot(cr, g("rfoot"), p.get("rfoot_dir", 0.0), tip, sid=71)
@@ -535,9 +508,8 @@ def draw_guy(cr, t, p, blink):
     sketch_line(cr, [nk, (hx, hy + HEAD_R - 4)], 9, sid=9, amp=0.8)
     arms = [(0, "lelb", "lhand", "lhand_t", -1, "lhand_front"), (1, "relb", "rhand", "rhand_t", 1, "rhand_front")]
     def arm(i, el, hd, ht, side):
-        c_ = thru(sh, g(el), g(hd))
-        path(cr, sketch_pts(bez(sh, c_, g(hd)), amp=1.2, sid=31 + i * 5, step=14)); stroke_ink(cr, 9)
-        draw_hand(cr, g(hd), lerp(c_, g(hd), 0.6), p.get(ht, "mitt"), side, sid=80 + i * 10)
+        path(cr, sketch_pts([sh, g(el), g(hd)], amp=1.2, sid=31 + i * 5, step=14)); stroke_ink(cr, 9)
+        draw_hand(cr, g(hd), g(el), p.get(ht, "mitt"), side, sid=80 + i * 10)
     for i, el, hd, ht, side, fr in arms:
         if p.get(fr, 0.0) < 0.5: arm(i, el, hd, ht, side)
     cr.save(); cr.translate(hx, hy); cr.rotate(g("tilt"))
@@ -554,3 +526,32 @@ def draw_grips(cr, p):
             draw_hand(cr, p[hd], p[el], "mitt", side, sid=95 if side < 0 else 105)
 
 JOINTS = ("head", "neck", "hip", "lelb", "lhand", "relb", "rhand", "lknee", "lfoot", "rknee", "rfoot")
+
+ARM_A, ARM_B = 182, 178      # upper arm, forearm
+LEG_A, LEG_B = 192, 190      # thigh, shin
+
+def _ik(root, target, a, b, hint):
+    """2-bone IK. returns (joint, end): end is the target pulled in to reach if needed; joint picks the bend
+    closest to `hint` (the elbow/knee the pose asked for)."""
+    dx, dy = target[0] - root[0], target[1] - root[1]
+    d = math.hypot(dx, dy)
+    dmax, dmin = a + b - 0.5, abs(a - b) + 1.0
+    if d < 1e-6: dx, dy, d = 0.0, 1.0, dmin
+    dc = min(max(d, dmin), dmax)
+    ux, uy = dx / d, dy / d
+    end = (root[0] + ux * dc, root[1] + uy * dc)
+    cosA = max(-1.0, min(1.0, (a * a + dc * dc - b * b) / (2 * a * dc)))
+    A = math.acos(cosA); th = math.atan2(uy, ux)
+    cands = [(root[0] + a * math.cos(th + sgn * A), root[1] + a * math.sin(th + sgn * A)) for sgn in (1, -1)]
+    joint = min(cands, key=lambda c: (c[0] - hint[0]) ** 2 + (c[1] - hint[1]) ** 2)
+    return joint, end
+
+def constrain(p):
+    """enforce fixed limb lengths: elbows/knees are solved, hands/feet pulled in if out of reach."""
+    nk, hip = p["neck"], p["hip"]
+    sh = lerp(nk, hip, 0.1)
+    for el, hd in (("lelb", "lhand"), ("relb", "rhand")):
+        p[el], p[hd] = _ik(sh, p[hd], ARM_A, ARM_B, p[el])
+    for kn, ft in (("lknee", "lfoot"), ("rknee", "rfoot")):
+        p[kn], p[ft] = _ik(hip, p[ft], LEG_A, LEG_B, p[kn])
+    return p
