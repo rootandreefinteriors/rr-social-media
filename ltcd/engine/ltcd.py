@@ -68,7 +68,7 @@ def live_pose(t):
     """pose at time t: track + procedural walk/run/sneak + cycles + lean/stretch + body offset + hook."""
     p = dict(pose_track.at(t))
     x, v, ph = loco(t)
-    wk = min(1.0, abs(v) / 50.0)
+    wk = min(1.0, abs(v) / 50.0) * (1.0 - min(1.0, p.get("nowalk", 0.0)))   # nowalk: airborne / sliding, no steps
     d = 1 if v >= 0 else -1
     run, sneak = p.get("run", 0.0), p.get("sneak", 0.0)
     if wk > 0.001:   # walk cycle driven by horizontal speed (bouncy, cartoony); run/sneak change the style
@@ -264,13 +264,26 @@ def sfx_rain(dur=3.0): return (_noise(dur, 0.4) * _env(dur, 0.5, 0.5) * 0.25).as
 def sfx_wind(dur=3.0): tt = _tt(dur); return (_noise(dur, 0.02) * (0.6 + 0.4 * np.sin(2 * np.pi * 0.4 * tt)) * _env(dur, 0.6, 0.6) * 3.0).astype(np.float32)
 def sfx_bubble(): tt = _tt(0.12); return (_sweep(300, 900, 0.12, 0.4) * np.exp(-tt / 0.04) * 0.5).astype(np.float32)
 def sfx_spring(): return sfx_boing(0.7)
+def sfx_slurp(dur=0.9):    # noodle slurp: bubbly rising suck
+    tt = _tt(dur); f = 300 + 500 * (tt / dur) + 90 * np.sin(2 * np.pi * 23 * tt)
+    return (np.sin(2 * np.pi * np.cumsum(f) / SR) * _env(dur, 0.05, 0.15) * (0.5 + 0.5 * np.sin(2 * np.pi * 17 * tt) ** 2) * 0.35
+            + _noise(dur, 0.3) * _env(dur, 0.05, 0.2) * 0.25).astype(np.float32)
+def sfx_kaboom(dur=2.6):   # big cartoon boom: low thump + rolling rumble (still rounded off, never harsh)
+    tt = _tt(dur)
+    thump = np.sin(2 * np.pi * np.cumsum(90 * np.exp(-tt / 0.25) + 38) / SR) * np.exp(-tt / 0.45)
+    rumble = _noise(dur, 0.02) * np.exp(-tt / 0.9) * 9.0
+    return ((thump + rumble) * _env(dur, 0.004, 0.6) * 0.8).astype(np.float32)
+def sfx_chomp():
+    tt = _tt(0.22); return (_onepole((_rng.standard_normal(len(tt)) * np.exp(-tt / 0.02)).astype(np.float32), 0.35) * 1.4
+                            + np.sin(2 * np.pi * 140 * tt) * np.exp(-tt / 0.04) * 0.6).astype(np.float32)
 
 SYNTH = dict(step=sfx_step, tiptoe=sfx_tiptoe, zip=sfx_zip, zip_down=lambda: sfx_zip(0.26, up=False),
              slide_up=sfx_slide_up, slide_down=sfx_slide_down, pop=sfx_pop, boop=sfx_boop, tick=sfx_tick,
              scribble=sfx_scribble, flip=sfx_flip, blink=sfx_blink, tap=sfx_tap, pat=sfx_pat, boing=sfx_boing,
              whoosh=sfx_whoosh, poof=sfx_poof, thud=sfx_thud, skid=sfx_skid, rummage=sfx_rummage, ding=sfx_ding,
              bonk=sfx_bonk, splat=sfx_splat, clap=sfx_clap, squeak=sfx_squeak, gulp=sfx_gulp, snore=sfx_snore,
-             twinkle=sfx_twinkle, rain=sfx_rain, wind=sfx_wind, bubble=sfx_bubble, spring=sfx_spring)
+             twinkle=sfx_twinkle, rain=sfx_rain, wind=sfx_wind, bubble=sfx_bubble, spring=sfx_spring,
+             slurp=sfx_slurp, kaboom=sfx_kaboom, chomp=sfx_chomp)
 SFX_DIR = os.path.join(HERE, "..", "sfx")
 
 def load_wav(name):
@@ -308,7 +321,7 @@ def synth_audio(out="mix.wav"):
     for f in range(NFRAMES):
         x, v, ph = loco(f / FPS)
         cur = int(ph / math.pi)
-        if abs(v) >= 25 and last is not None and cur != last:
+        if abs(v) >= 25 and last is not None and cur != last and pose_track.at(f / FPS).get("nowalk", 0.0) < 0.5:
             place(stp, f / FPS, STEP_GAIN * min(1, abs(v) / 80) * random.Random(f).uniform(0.75, 1.1))
         last = cur
     br = np.cumsum(_rng.standard_normal(n)).astype(np.float32)   # barely-there room tone

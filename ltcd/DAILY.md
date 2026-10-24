@@ -26,19 +26,31 @@ git config user.name "Claude (LTCD routine)"; git config user.email "noreply@ant
 - No winner → this is a **waiting episode**.
 
 ## 3. Write the episode
-- New folder `ltcd/episodes/epNNN/` (NNN = STATE.day + 1, zero-padded). Copy the closest previous `episode.py` as a
-  template; the engine is `ltcd/engine/ltcd.py` (Track, P poses, walk cycle from x_track, draw_clipboard +
-  sign_front, draw_pen, motion_lines, draw_poof, draw_comment_card, sketch_* helpers, synthesised SFX:
-  step zip zip_down pop scribble flip blink tap boing whoosh poof thud). Extend the engine if you need new
-  drawing helpers or sounds (keep it backwards compatible — old episodes must still render).
-- **Comment episode:** he does what the comment says, cartoon style. Pin the comment card top-right for the whole
-  episode (`overlay=` → `L.draw_comment_card(cr, username, text, likes)`). Average ~60 s, max 75 s. Continuity per
-  SHOW.md (≤3 major persistent things; use cartoon consequences to remove things). End with the clipboard beat:
-  pull it from where a pocket would be, scribble, flip: TELL ME WHAT TO DO NEXT IN THE COMMENTS, hold, blink, cut.
+- New folder `ltcd/episodes/epNNN/` (NNN = STATE.day + 1, zero-padded). **Build it with `engine/moves.py`** (the
+  `Scene` builder) — never hand-place joints. Working examples to copy: `ltcd/tests/comment_tests/t1_ramen`,
+  `t2_nuke`, `t3_dino` (and `ltcd/tests/moves_smoke`). Key calls:
+  `S = M.Scene(x0=...)`, `S.card(user, text, likes)`, `S.read_card(t, react, lines)`, `S.walk_to/run_to`,
+  gestures (`wave nod shake_head shrug thumbs_up facepalm think cheer jump dance sit stand sleep hop`),
+  `S.set(t, body, face, **overrides)` for one-off acting, `S.pocket_pull(t, name, drawer, land, narrow_w=0, held=...)`
+  to produce any object, `S.place / hide / poof_away`, `S.prop / hook / background / overlay`, `S.shake`, `S.flash`,
+  `S.sfx`, and always `S.the_ask(S.t, hold=8-10)` last. Props library: `engine/objects.py` (tub, ACME bomb, fish,
+  ice-cream cone, feather, snorkel, friendly T. rex `draw_dino`, water, splash, rain, build cloud, crater).
+  Add new props to objects.py (keep old ones working). Custom one-episode poses go in `L.POSES[...]` in episode.py.
+- **The pull gag (signature):** he digs his hand around at his hip and pulls the thing out of nowhere — **NO pocket
+  is ever drawn** (user note 2026-10-24: "don't make an actual pocket, just have him dig his hand around and pull it
+  out"). `pocket_pull` and `the_ask` already do this; don't reintroduce a pocket.
+- **Comment episode:** he does what the comment says, cartoon style. Pin the comment card (`S.card`) for the whole
+  episode — it auto-shrinks long comments; keep his head, his fx and every prop BELOW it (if something tall must
+  appear, widen the camera like t3_dino: `S.camkeys[0] = (0, (540, 840, 0.9), 0)` and `the_ask(..., push=False)`).
+  Average ~60 s, max 75 s. Continuity per SHOW.md (≤3 major persistent things; use cartoon consequences to remove
+  things). End with `the_ask` (dig at hip -> clipboard -> scribble -> flip: TELL ME WHAT TO DO NEXT IN THE COMMENTS).
 - **Waiting episode:** picks up from the last scene; he's still waiting with the sign. Unique each time and more
   ridiculous as `STATE.waiting_streak` grows. 20–45 s. Ends re-presenting the sign.
 - Keep everything inside the safe zone (x 60–920, y 200–1480 on screen). Big readable shapes. Lots of motion —
-  no dead stretches. Sound effects on every action. No music. No dialogue (written words OK, no swearing).
+  no dead stretches. Jumps: use the `cannonball` pose + low hops (~175) so he never flies up behind the card; set
+  `nowalk=1` for anything airborne/sliding.
+- **Sound is subtle and sparse** (user note): one soft effect on KEY actions only (gains 0.03–0.12; a big boom up to
+  0.5 is the loudest thing in an episode). No music. No dialogue (written words OK, no swearing).
 
 ## 4. Check, then render
 - `python episode.py --still <6-10 times>` → look at every still (Read the PNGs). Fix anything unreadable, clipped,

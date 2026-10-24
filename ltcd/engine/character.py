@@ -39,7 +39,7 @@ BASE = dict(
     pupil=1.0, eyescale=1.0, shine=0.0, teary=0.0, skeptic=0.0,
     brow=0.0, worry=0.0,                      # brow + raised; worry + inner ends up (hopeful/sad) - down (cross)
     mouth="auto", smile=0.3, open=0.0, mouth_w=1.0, tongue=0.0,
-    blush=0.0, tears=0.0, sweat=0.0, vein=0.0, gloom=0.0, squash=0.0,
+    blush=0.0, tears=0.0, sweat=0.0, vein=0.0, gloom=0.0, squash=0.0, face_tint=0.0, soot=0.0, frizz=0.0, nowalk=0.0,
     # cartoon symbols around the head, 0..1
     fx_q=0.0, fx_ex=0.0, fx_zzz=0.0, fx_hearts=0.0, fx_stars=0.0, fx_bulb=0.0, fx_steam=0.0, fx_nervous=0.0,
     fx_notes=0.0, fx_sparkle=0.0, fx_swirl=0.0,
@@ -147,6 +147,10 @@ POSES = {
     "sneak":        dict(head=(560, 690), neck=(552, 815), hip=(530, 1160), lelb=(560, 900), lhand=(610, 860), relb=(640, 920),
                          rhand=(680, 880), lhand_t="mitt", rhand_t="mitt", lknee=(470, 1290), rknee=(610, 1250),
                          lfoot=(450, FLOOR_Y), rfoot=(640, 1430), tiptoe=1.0, lfoot_dir=0.8, rfoot_dir=0.8, sneak=1.0),
+    "cannonball":   dict(head=(540, 800), neck=(540, 920), hip=(540, 1180), lknee=(492, 1075), rknee=(588, 1075),
+                         lfoot=(505, 1250), rfoot=(578, 1250), lelb=(452, 1040), lhand=(488, 1068), relb=(628, 1040),
+                         rhand=(592, 1068), lhand_t="mitt", rhand_t="mitt", lhand_front=1.0, rhand_front=1.0, nowalk=1.0,
+                         lfoot_dir=-0.4, rfoot_dir=0.4),
     "fly":          dict(lelb=(450, 650), lhand=(470, 500), relb=(640, 650), rhand=(620, 500), lhand_t="fist", rhand_t="fist",
                          lknee=(520, 1310), rknee=(560, 1310), lfoot=(530, 1460), rfoot=(552, 1455), tiptoe=1.0),
 }
@@ -341,11 +345,26 @@ def draw_head(cr, p, blink, t=0.0):
     turn = p.get("turn", 0.0)
     back = p.get("back", 0.0) > 0.5
     cx_curl = _proj(-4, turn)[0] if not back else 4
-    cr.save(); cr.translate(cx_curl, -HEAD_R + 6); cr.rotate(p.get("curl", 0.0) + turn * 0.15)
-    cr.move_to(0, 0); cr.curve_to(-14, -50, 44, -70, 40, -38)
-    cr.curve_to(37, -18, 12, -22, 16, -40); cr.curve_to(19, -52, 30, -48, 28, -40)
-    stroke_ink(cr, 6.5); cr.restore()
-    sketch_circle(cr, 0, 0, HEAD_R, 8, sid=3)
+    fz = p.get("frizz", 0.0)
+    if fz > 0.5:                          # cartoon-explosion hair: zigzag strands standing straight up
+        for k, a in enumerate((-0.75, -0.38, 0.0, 0.38, 0.75)):
+            pts = []
+            ln = (1.0 if k % 2 == 0 else 0.8) * fz
+            for j in range(6):
+                r = HEAD_R - 8 + j * 20 * ln; side = 0 if j == 0 else (1 if j % 2 else -1)
+                ox, oy = math.cos(a) * 11 * side, math.sin(a) * 11 * side
+                pts.append((math.sin(a) * r + ox, -math.cos(a) * r + oy))
+            path(cr, pts); stroke_ink(cr, 5.5)
+    else:
+        cr.save(); cr.translate(cx_curl, -HEAD_R + 6); cr.rotate(p.get("curl", 0.0) + turn * 0.15)
+        cr.move_to(0, 0); cr.curve_to(-14, -50, 44, -70, 40, -38)
+        cr.curve_to(37, -18, 12, -22, 16, -40); cr.curve_to(19, -52, 30, -48, 28, -40)
+        stroke_ink(cr, 6.5); cr.restore()
+    ft = p.get("face_tint", 0.0)          # 0..1: face flushes red (spicy, embarrassed, furious)
+    so = p.get("soot", 0.0)               # 0..1: cartoon-explosion soot (eyes stay white)
+    fill = lerp(PAPER, (1.0, 0.6, 0.52), ft) if ft > 0.01 else PAPER
+    if so > 0.01: fill = lerp(fill, (0.42, 0.41, 0.40), so)
+    sketch_circle(cr, 0, 0, HEAD_R, 8, sid=3, fill=fill)
     if back: return
     lx, ly = p["look"]
     fy = ly * 12

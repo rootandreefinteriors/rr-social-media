@@ -114,7 +114,9 @@ def draw_comment_card(cr, username, text, likes=None, x=None, y=None, w=560, alp
     x = SAFE[2] - w * scale if x is None else x
     y = SAFE[1] + 10 if y is None else y
     s_user, uw, uh = text_surface("@" + username, 36, max_w=w - 120, align="left")
-    s_txt, tw, th = text_surface(text, 46, max_w=w - 50, align="left")
+    for size in (46, 42, 38, 34, 30, 27):        # long comments shrink so the card never grows down onto his head
+        s_txt, tw, th = text_surface(text, size, max_w=w - 50, align="left")
+        if th <= 140: break
     hgt = 30 + uh + th + (40 if likes is not None else 10)
     cr.save(); cr.translate(x, y); cr.scale(scale, scale)
     cr.push_group()

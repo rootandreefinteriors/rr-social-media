@@ -7,7 +7,7 @@ Daily loop: **post 7:00 PM ET → comments come in → 3:00 PM ET next day: comm
 - A basic, nameless stick figure with a LOT of face (see `design/sheet_*.png`, built from `engine/character.py`):
   big cartoon eyes (white, black pupils, shine, eyelids), thick expressive brows, a mouth with many shapes, ONE bouncy
   hair curl on top (his signature silhouette), rubber-hose limbs, mitten hands with gestures, bean-shaped feet.
-  No clothes, no pockets (he pulls things out of where a pocket would be). He never speaks. NOT Nigel.
+  No clothes, no pockets — he digs his hand around at his hip and pulls things out of nowhere (never draw a pocket). He never speaks. NOT Nigel.
 - **Personality:** eager, earnest, hopeful, a little shy. He genuinely wants to do what you tell him and wants you
   to like it. He commits 100% to every instruction, however silly — that sincerity is the joke and the heart.
   Small acting beats sell him: shy wave, blush, hopeful pupils, tongue out when concentrating, proud little nod.

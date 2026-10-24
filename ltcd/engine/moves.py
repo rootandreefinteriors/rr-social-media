@@ -9,7 +9,7 @@
     S.jump(S.t); S.dance(S.t, 3.0); S.cheer(S.t); S.nod(S.t); S.shake_head(S.t); S.shrug(S.t)
     S.thumbs_up(S.t); S.facepalm(S.t); S.sit(S.t); S.stand(S.t); S.sleep(S.t, 3); S.look(S.t, (1, 0))
     S.poof(S.t, (x, y)); S.sfx(S.t, "pop", 0.2); S.card("username", "comment text", likes)
-    S.the_ask(S.t)                          # the standard ending: pocket -> clipboard -> write -> flip -> hopeful hold
+    S.the_ask(S.t)                          # the standard ending: dig at hip -> clipboard -> write -> flip -> hopeful hold
     S.render("out.mp4")                     # or --still times
 
 Every move starts at time t, advances S.t to its end, and leaves him in a known resting pose. Arms/legs are
@@ -19,8 +19,21 @@ effect on their key action.
 import math, sys
 import ltcd as L
 from ltcd import pose, Track, ramp, pulse, lerp, back_out
+from ink import smooth as smooth_
 
 CARD_CAM = (540, 930, 1.15)      # framing when a comment card is pinned
+CARD_FX_OFF = ("fx_q", "fx_ex", "fx_bulb")   # symbols that would sit under the pinned card: off while it is shown
+
+class _Cam:
+    """camera track + shakes (shakes: (t0, dur, amp))."""
+    def __init__(self, track, shakes): self.track, self.shakes = track, list(shakes)
+    def at(self, t):
+        cx, cy, z = self.track.at(t)
+        for t0, d, a in self.shakes:
+            if t0 <= t < t0 + d:
+                k = a * (1 - (t - t0) / d) ** 1.5
+                cx += k * math.sin(t * 71.0); cy += k * math.cos(t * 57.0)
+        return (cx, cy, z)
 
 class Scene:
     def __init__(self, start_body="stand", start_face="neutral", x0=0.0, zoom=1.22):
@@ -32,7 +45,10 @@ class Scene:
         self.t = 0.0
         self.x = x0
         self.card_on = False
+        self.objects = {}
+        self.props.append(self._draw_objects)
         self.cam = (540, 1000, zoom)
+        self.bgs, self.shakes, self.floor = [], [], True
 
     # ------------------------------------------------------------- basics
     def _key(self, t, dur=0.3, ease="smooth", **kw):
@@ -74,6 +90,33 @@ class Scene:
 
     def _hook(self, fn): self.hooks.append(fn)
     def _prop(self, fn): self.props.append(fn)
+
+    # ------------------------------------------------------------- world / camera extras
+    def hook(self, fn): self.hooks.append(fn); return self            # fn(t, pose) -> pose
+    def prop(self, fn): self.props.append(fn); return self            # fn(cr, t, pose, layer)  layer "back"/"front"
+    def overlay(self, fn): self.overlays.append(fn); return self      # fn(cr, t)  screen space
+    def background(self, fn): self.bgs.append(fn); return self        # fn(cr, t)  world space, before everything
+    def shake(self, t, dur=0.5, amp=14): self.shakes.append((t, dur, amp)); return self
+    def flash(self, t, dur=0.6, color=(1.0, 1.0, 1.0)):
+        """full-screen flash that fades out (drawn under the comment card)."""
+        def ov(cr, tt):
+            if t <= tt < t + dur:
+                cr.set_source_rgba(color[0], color[1], color[2], (1 - (tt - t) / dur) ** 0.7); cr.paint()
+        self.overlays.insert(0, ov); return self
+
+    def read_card(self, t, react="eager", lines=2, dur=None):
+        """looks up at the pinned comment and reads it (eyes scan each line), then back to us with a reaction."""
+        per = 0.85; dur = dur or 0.5 + per * lines
+        self.set(t, "stand", "thinking", dur=0.3, look=(0.7, -0.85), tilt=-0.06)
+        def hk(tt, p):
+            if t + 0.35 <= tt < t + 0.35 + per * lines:
+                k = (tt - t - 0.35) / per; u = k % 1.0
+                p["look"] = (0.4 + 0.5 * smooth_(u), -0.9 + 0.12 * int(k))
+            return p
+        self.hook(hk)
+        self.set(t + dur, "stand", react, dur=0.25, ease="back")
+        self.t = t + dur + 0.35
+        return self
 
     # ------------------------------------------------------------- locomotion
     def walk_to(self, t, x, dur=None, face=None):
@@ -208,9 +251,81 @@ class Scene:
         if sound: self.sfx(t, "poof", 0.18)
         return self
 
+    # ------------------------------------------------------------- objects (props that persist)
+    def _draw_objects(self, cr, t, p, layer):
+        for name, o in self.objects.items():
+            if o["layer"] != layer or t < o["t_on"] or (o["t_off"] is not None and t >= o["t_off"]): continue
+            s = back_out(min(1.0, (t - o["t_on"]) / 0.25), 1.8) if o["pop"] else 1.0
+            s = max(0.05, s)
+            if o.get("follow"):
+                jx, jy = p[o["follow"]]; ox_, oy_ = o.get("offset", (0, 0))
+                o["drawer"](cr, jx + ox_, jy + oy_, s, t, p)
+            else:
+                o["drawer"](cr, o["land"][0], o["land"][1], s, t, p)
+
+    def place(self, name, drawer, land, t_on=0.0, layer="front", pop=False, follow=None, offset=(0, 0)):
+        """put a prop in the world. drawer(cr, x, y, scale, t, pose) draws it with bottom-centre at (x, y).
+        follow="rhand" keeps it in his hand (x, y = that joint + offset)."""
+        self.objects[name] = dict(drawer=drawer, land=land, t_on=t_on, t_off=None, layer=layer, pop=pop, follow=follow,
+                                  offset=offset); return self
+
+    def hide(self, name, t): self.objects[name]["t_off"] = t; return self
+
+    def poof_away(self, name, t, at=None, r=170):
+        o = self.objects[name]; o["t_off"] = t + 0.12
+        self.poof(t, at or (o["land"][0], o["land"][1] - 150), r=r)
+        self.t = t + 0.7; return self
+
+    def pocket_pull(self, t, name, drawer, land, layer="front", narrow_w=64, held=False, offset=(0, 0)):
+        """his signature gag: digs his hand around at his hip (NO pocket is drawn), pulls - it keeps coming out - POP,
+        the prop lands at `land`."""
+        ox = self.x
+        POCKET = (588 + ox, 1092)
+        A, C_, B = POCKET, (690 + ox, 860), (720 + ox, 560)
+        T_P, T_REACH, T_PULL, T_POP = t + 0.2, t + 0.35, t + 1.2, t + 2.1
+        S = self
+        S.set(t, "stand", "thinking", dur=0.25, look=(0.4, 0.8), tilt=0.08)
+        S.set(T_P + 0.05, "stand", "surprised", dur=0.1, ease="snap", look=(0.4, 0.8), eyescale=1.06, open=0.3)
+        S.set(T_P + 0.25, "stand", "concentrating", dur=0.2, look=(0.4, 0.8), tilt=0.1)
+        S.set(T_PULL - 0.1, "stand", "eager", dur=0.1, ease="snap", look=(0.45, 0.3))
+        S.set(T_PULL + 0.05, "stand", "surprised", dur=0.7, look=(0.5, -0.8), eyescale=1.08, open=0.4)
+        S.set(T_POP + 0.02, "stand", "delighted", dur=0.1, ease="snap", look=(0.3, 0.0))
+        S.set(T_POP + 0.5, "stand", "happy", dur=0.3)
+        S.sfx(T_POP, "pop", 0.2)
+        def bez(u): return ((1 - u) ** 2 * A[0] + 2 * (1 - u) * u * C_[0] + u * u * B[0], (1 - u) ** 2 * A[1] + 2 * (1 - u) * u * C_[1] + u * u * B[1])
+        def ph(tt): return bez(ramp(tt, T_PULL, T_POP))
+        def hk(tt, p):
+            if T_REACH <= tt < T_PULL:
+                u = ramp(tt, T_REACH, T_REACH + 0.25)          # hand to the hip, digs around (visible, no pocket)
+                dig = ramp(tt, T_REACH + 0.25, T_REACH + 0.35) * (1 - ramp(tt, T_PULL - 0.15, T_PULL - 0.05))
+                p["rhand"] = lerp(p["rhand"], (POCKET[0] + 14 * math.sin(tt * 24) * dig, POCKET[1] + 6 * math.sin(tt * 31) * dig), u)
+            if T_PULL <= tt < T_POP: p["rhand"] = ph(tt); p["rhand_t"] = "none"
+            return p
+        def pr(cr, tt, p, ly):
+            if ly != "front" or not (T_P <= tt < T_POP + 0.3): return
+            u = ramp(tt, T_P, T_P + 0.15, "linear") * (1 - ramp(tt, T_POP + 0.1, T_POP + 0.25, "linear"))
+            if T_PULL <= tt < T_POP and narrow_w > 0:
+                (ax, ay), (bx, by) = POCKET, ph(tt)
+                ang = math.atan2(by - ay, bx - ax); L_ = math.hypot(bx - ax, by - ay)
+                cr.save(); cr.translate(ax, ay); cr.rotate(ang); L.sketch_rect(cr, -10, -narrow_w / 2, L_ + 6, narrow_w / 2, 7, sid=301); cr.restore()
+            if T_PULL <= tt < T_POP:
+                h = ph(tt); L.draw_hand(cr, h, (h[0] - 30, h[1] + 60), "mitt", 1, sid=451)
+            if T_POP <= tt < T_POP + 0.3:
+                bx_, by_ = (p["rhand"][0], p["rhand"][1] - 60) if held else (land[0], land[1] - 160)
+                L.burst_lines(cr, bx_, by_, (tt - T_POP) / 0.4, r0=140 if not held else 90, r1=230 if not held else 160, n=10, sid=9)
+        self._hook(hk); self._prop(pr)
+        if held:
+            def hk2(tt, p):
+                if T_POP <= tt < T_POP + 0.35: p["rhand"] = (B[0] - 5, B[1] + 8)
+                return p
+            self._hook(hk2)
+        self.place(name, drawer, land, t_on=T_POP, layer=layer, pop=True, follow="rhand" if held else None, offset=offset)
+        self.t = T_POP + 0.6
+        return self
+
     # ------------------------------------------------------------- THE ASK (standard ending)
     def the_ask(self, t, text_lines=("TELL ME", "WHAT TO DO", "NEXT IN THE", "COMMENTS"), hold=10.0, push=True):
-        """pocket -> clipboard keeps coming -> POP -> write -> flip -> hopeful hold (with blush + lean-in).
+        """digs at his hip (no pocket drawn) -> clipboard keeps coming -> POP -> write -> flip -> hopeful hold.
         Starts from a standing rest at body offset self.x. ~9.5 s + hold."""
         ox = self.x
         BW, BH = 470, 560
@@ -271,10 +386,9 @@ class Scene:
             if hv > 0.05:
                 for k in L.JOINTS: p[k] = (p[k][0], p[k][1] - hv)
             if T_REACH <= tt < T_PULL:
-                u = ramp(tt, T_REACH, T_REACH + 0.25)
-                jig = 8 * math.sin(tt * 28) * ramp(tt, T_REACH + 0.3, T_REACH + 0.4) * (1 - ramp(tt, T_PULL - 0.2, T_PULL - 0.1))
-                p["rhand"] = lerp(p["rhand"], (POCKET[0] + jig, POCKET[1] + 4), u)
-                if u > 0.7: p["rhand_t"] = "none"
+                u = ramp(tt, T_REACH, T_REACH + 0.25)          # hand to the hip, digs around (visible, no pocket)
+                dig = ramp(tt, T_REACH + 0.25, T_REACH + 0.35) * (1 - ramp(tt, T_PULL - 0.15, T_PULL - 0.05))
+                p["rhand"] = lerp(p["rhand"], (POCKET[0] + 14 * math.sin(tt * 24) * dig, POCKET[1] + 6 * math.sin(tt * 31) * dig), u)
             if T_PULL <= tt < T_POP: p["rhand"] = pull_hand(tt); p["rhand_t"] = "none"
             if T_POP <= tt < T_POP + 0.3: p["rhand"] = (B[0] - 5, B[1] + 8)
             b = board(tt)
@@ -301,7 +415,6 @@ class Scene:
                     (ax, ay), (bx, by) = b["a"], b["b"]
                     ang = math.atan2(by - ay, bx - ax); L_ = math.hypot(bx - ax, by - ay)
                     cr.save(); cr.translate(ax, ay); cr.rotate(ang); L.sketch_rect(cr, -10, -32, L_ + 6, 32, 7, sid=300); cr.restore()
-                L.draw_pocket(cr, POCKET[0], POCKET[1], u)
                 if b and b["mode"] == "narrow":
                     h = pull_hand(tt); L.draw_hand(cr, h, (h[0] - 30, h[1] + 60), "mitt", 1, sid=450)
             if b and b["mode"] == "full" and b["layer"] == layer:
@@ -318,10 +431,15 @@ class Scene:
     # ------------------------------------------------------------- render
     def build(self, duration=None):
         dur = duration or self.t
-        hooks, props, ovs = list(self.hooks), list(self.props), list(self.overlays)
+        hooks, props, ovs, bgs = list(self.hooks), list(self.props), list(self.overlays), list(self.bgs)
+        card = self.card_on
         def hook(t, p):
             for h in hooks: p = h(t, p)
+            if card:
+                for k in CARD_FX_OFF: p[k] = 0.0
             return p
+        def bg(cr, t):
+            for f in bgs: f(cr, t)
         def prop(cr, t, p, layer):
             for f in props: f(cr, t, p, layer)
         def overlay(cr, t):
@@ -333,8 +451,10 @@ class Scene:
                 while b - last > 4.0: last += 3.2; extra.append(last)
                 last = b
             bl = sorted(bl + extra)
-        L.configure(duration=dur, pose_track=Track(self.keys), x_track=Track(self.xkeys), cam_track=Track(self.camkeys),
-                    props=prop, pose_hook=hook, overlay=overlay if ovs else None, sfx=self.sfxs, blinks=bl)
+        L.configure(duration=dur, pose_track=Track(self.keys), x_track=Track(self.xkeys),
+                    cam_track=_Cam(Track(self.camkeys), self.shakes), props=prop, pose_hook=hook,
+                    overlay=overlay if ovs else None, sfx=self.sfxs, blinks=bl, floor=self.floor,
+                    background=bg if bgs else None)
         return dur
 
     def render(self, out, duration=None):
