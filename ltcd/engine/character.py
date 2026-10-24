@@ -19,7 +19,7 @@ HEAD_R = 118
 BASE = dict(
     # skeleton, world coords, standing front-on at x=540. "l" = screen-left side.
     head=(540, 640), neck=(540, 768), hip=(540, 1118),
-    lelb=(468, 960), lhand=(452, 1105), relb=(612, 960), rhand=(628, 1105),
+    lelb=(478, 975), lhand=(468, 1142), relb=(602, 975), rhand=(612, 1142),
     lknee=(512, 1300), lfoot=(498, FLOOR_Y), rknee=(568, 1300), rfoot=(582, FLOOR_Y),
     # body
     tilt=0.0,          # head roll (rad)
@@ -40,6 +40,9 @@ BASE = dict(
     brow=0.0, worry=0.0,                      # brow + raised; worry + inner ends up (hopeful/sad) - down (cross)
     mouth="auto", smile=0.3, open=0.0, mouth_w=1.0, tongue=0.0,
     blush=0.0, tears=0.0, sweat=0.0, vein=0.0, gloom=0.0, squash=0.0, face_tint=0.0, soot=0.0, frizz=0.0, nowalk=0.0,
+    heat_fill=0.0, tear1=0.0, twitch=0.0, curl_up=0.0, quiver=0.0,   # slow-burn acting: liquid heat rising in the head, etc.
+    saccade=0.5, breath=1.0, breath_rate=1.0,                         # life: eye micro-moves + breathing (rate-aware)
+    lag=1.0, lhand_lag=1.0, rhand_lag=1.0, feet_lag=0.0,              # follow-through amounts (0 = rigid)
     # cartoon symbols around the head, 0..1
     fx_q=0.0, fx_ex=0.0, fx_zzz=0.0, fx_hearts=0.0, fx_stars=0.0, fx_bulb=0.0, fx_steam=0.0, fx_nervous=0.0,
     fx_notes=0.0, fx_sparkle=0.0, fx_swirl=0.0,
@@ -100,6 +103,11 @@ EXPR = {
     "cheeky":       dict(mouth="cat", smile=0.6, lid=0.2, blush=0.4),
     "kiss":         dict(mouth="kiss", eyes="closed", blush=0.8, fx_hearts=0.6),
     "singing":      dict(eyes="closed", mouth="o", open=0.7, brow=0.6, fx_notes=1.0, tilt=-0.1),
+    # deadpan vocabulary (adult tone): small, specific, never "cute"
+    "deadpan":      dict(mouth="flat", smile=0.0, lid=0.36, brow=-0.05, worry=0.0, pupil=0.95, saccade=0.5),
+    "dead_stare":   dict(mouth="flat", smile=0.0, lid=0.3, brow=0.0, pupil=0.82, saccade=0.2),
+    "resigned":     dict(mouth="flat", smile=-0.1, lid=0.5, lid_slant=-0.25, brow=0.1, worry=0.35, pupil=0.95, saccade=0.4),
+    "holding_it":   dict(mouth="flat", smile=-0.05, lid=0.22, brow=0.25, worry=0.45, pupil=0.7, saccade=0.15, quiver=0.6),
 }
 
 # -------------------------------------------------------------- body poses ---
@@ -190,6 +198,10 @@ def _proj(x0, turn, rate=0.38):
 def _eye(cr, p, ex, ey, rx, ry, side, blink, t):
     style = p.get("eyes", "normal")
     lid = max(p.get("lid", 0.0), blink)
+    tw = p.get("twitch", 0.0)
+    if side > 0 and tw > 0.01:                 # lower-lid/upper-lid spasm: three quick flutters every ~0.9 s
+        ph = (t * 1.13 + 0.3) % 1.0
+        if ph < 0.2: lid = max(lid, min(0.9, lid + tw * 0.45 * abs(math.sin(ph / 0.2 * 3 * math.pi))))
     if style == "happy":       # ^ ^
         cr.move_to(ex - rx, ey + ry * 0.25); cr.curve_to(ex - rx * 0.5, ey - ry * 0.75, ex + rx * 0.5, ey - ry * 0.75, ex + rx, ey + ry * 0.25)
         stroke_ink(cr, 7); return
@@ -330,7 +342,15 @@ def _mouth(cr, p, mx, my, sx, t):
             cr.move_to(mx, my); cr.curve_to(mx + a * 6, my + 12, mx + a * 16, my + 12, mx + a * 20, my - 2)
         stroke_ink(cr, 5)
     elif style == "flat":
-        cr.move_to(mx - wdt / 2, my); cr.line_to(mx + wdt / 2, my); stroke_ink(cr, 5.5)
+        q = p.get("quiver", 0.0)
+        if q > 0.02:
+            cr.move_to(mx - wdt / 2, my)
+            for k in range(1, 13):
+                xx = mx - wdt / 2 + k * wdt / 12
+                cr.line_to(xx, my + q * 2.6 * math.sin(k * 1.9 + t * 34) * math.sin(math.pi * k / 12))
+            stroke_ink(cr, 5.5)
+        else:
+            cr.move_to(mx - wdt / 2, my); cr.line_to(mx + wdt / 2, my); stroke_ink(cr, 5.5)
     tg = p.get("tongue", 0.0)
     if tg > 0.05:
         tx, ty = mx + wdt * 0.22, my + sm * 6 + 1
@@ -355,6 +375,10 @@ def draw_head(cr, p, blink, t=0.0):
                 ox, oy = math.cos(a) * 11 * side, math.sin(a) * 11 * side
                 pts.append((math.sin(a) * r + ox, -math.cos(a) * r + oy))
             path(cr, pts); stroke_ink(cr, 5.5)
+    elif p.get("curl_up", 0.0) > 0.5:      # the curl has gone straight (shock / heat): one quivering strand
+        q = 2.5 * math.sin(t * 38)
+        cr.save(); cr.translate(cx_curl, -HEAD_R + 6); cr.rotate(p.get("curl", 0.0) * 0.3)
+        cr.move_to(0, 0); cr.curve_to(-3 + q, -30, 3 - q, -60, q, -86); stroke_ink(cr, 6.5); cr.restore()
     else:
         cr.save(); cr.translate(cx_curl, -HEAD_R + 6); cr.rotate(p.get("curl", 0.0) + turn * 0.15)
         cr.move_to(0, 0); cr.curve_to(-14, -50, 44, -70, 40, -38)
@@ -365,6 +389,17 @@ def draw_head(cr, p, blink, t=0.0):
     fill = lerp(PAPER, (1.0, 0.6, 0.52), ft) if ft > 0.01 else PAPER
     if so > 0.01: fill = lerp(fill, (0.42, 0.41, 0.40), so)
     sketch_circle(cr, 0, 0, HEAD_R, 8, sid=3, fill=fill)
+    hf = p.get("heat_fill", 0.0)
+    if hf > 0.004:
+        cr.save(); ellipse(cr, 0, 0, HEAD_R - 3, HEAD_R - 3); cr.clip(); cr.new_path()
+        cr.rotate(-p.get("tilt", 0.0))
+        top = HEAD_R + 4 - (2 * HEAD_R + 8) * min(1.0, hf)
+        wave = [(-HEAD_R - 10 + k * (2 * HEAD_R + 20) / 16, top + 3.5 * math.sin(k * 0.9 + t * 4.2)) for k in range(17)]
+        path(cr, wave); cr.line_to(HEAD_R + 10, HEAD_R + 12); cr.line_to(-HEAD_R - 10, HEAD_R + 12); cr.close_path()
+        fill_paper(cr, (0.96, 0.47, 0.39)); cr.new_path()
+        if hf < 0.98: path(cr, wave); stroke_ink(cr, 3, alpha=0.55)
+        cr.restore()
+        path(cr, circle_pts(0, 0, HEAD_R, sid=3)); cr.close_path(); stroke_ink(cr, 8)
     if back: return
     lx, ly = p["look"]
     fy = ly * 12
@@ -404,6 +439,14 @@ def draw_head(cr, p, blink, t=0.0):
             for k in range(3):
                 x0 = bxs + (k - 1) * 10 * bfs
                 cr.move_to(x0 - 5, 36 + fy); cr.line_to(x0 + 5, 24 + fy); stroke_ink(cr, 3.5, alpha=bl)
+    t1 = p.get("tear1", 0.0)
+    if t1 > 0.03:
+        txs, tfs, tvis = _proj(40, turn)
+        if tvis:
+            x0, y0 = txs + lx * 14 + 6, 18 + fy; ln = 112 * min(1.0, t1)
+            cr.move_to(x0, y0); cr.curve_to(x0 + 5, y0 + ln * 0.4, x0 - 2, y0 + ln * 0.7, x0 + 3, y0 + ln)
+            stroke_ink(cr, 6, (0.6, 0.7, 0.85), 0.9)
+            ellipse(cr, x0 + 3, y0 + ln + 7, 6, 8, sid=67); fill_paper(cr, (0.85, 0.9, 1.0)); stroke_ink(cr, 2.5)
     tr = p.get("tears", 0.0)
     if tr > 0.05:              # streams + falling drops
         for side in (-1, 1):
@@ -507,28 +550,36 @@ def draw_fx(cr, p, hx, hy, t):
         stroke_ink(cr, 4, alpha=v("fx_swirl"))
 
 # ------------------------------------------------------------------- body ---
+def _limb(a, j, b, k=1.25):
+    """soft curve bending toward joint j (k=2 would pass exactly through it). Ends are exact: never detaches."""
+    mx, my = (a[0] + b[0]) / 2, (a[1] + b[1]) / 2
+    c = (mx + k * (j[0] - mx), my + k * (j[1] - my))
+    return bez(a, c, b, n=16)
+
 def draw_guy(cr, t, p, blink):
     """the hero. p = live pose (world coords)."""
     if p.get("show", 1.0) < 0.01: return
     g = lambda k: p[k]
     hx, hy = g("head")
-    breath = math.sin(t * 1.7) * 2.5 * (1 + 2.5 * p.get("sleep", 0.0))
+    breath = math.sin(p.get("breath_ph", t * 1.7)) * 2.5 * p.get("breath", 1.0) * (1 + 2.5 * p.get("sleep", 0.0))
     hy += breath
     nk = (g("neck")[0], g("neck")[1] + breath * 0.5)
     hip = g("hip")
     sh = lerp(nk, hip, 0.1)
     for i, kn, ft in ((0, "lknee", "lfoot"), (1, "rknee", "rfoot")):
-        path(cr, sketch_pts([hip, g(kn), g(ft)], amp=1.2, sid=11 + i * 5, step=14)); stroke_ink(cr, 9)
+        path(cr, sketch_pts(_limb(hip, g(kn), g(ft), 1.05), amp=1.0, sid=11 + i * 5, step=14)); stroke_ink(cr, 9)
     tip = p.get("tiptoe", 0.0)
     draw_foot(cr, g("lfoot"), p.get("lfoot_dir", 0.0), tip, sid=70)
     draw_foot(cr, g("rfoot"), p.get("rfoot_dir", 0.0), tip, sid=71)
     mid = ((nk[0] + hip[0]) / 2 + (nk[0] - hip[0]) * 0.1, (nk[1] + hip[1]) / 2)
     path(cr, sketch_pts(bez(nk, mid, hip), amp=1.2, sid=21, step=14)); stroke_ink(cr, 9)
-    sketch_line(cr, [nk, (hx, hy + HEAD_R - 4)], 9, sid=9, amp=0.8)
+    tl = g("tilt")                       # neck meets the head's chin side, whichever way the head is turned
+    sketch_line(cr, [nk, (hx - (HEAD_R - 4) * math.sin(tl), hy + (HEAD_R - 4) * math.cos(tl))], 9, sid=9, amp=0.8)
     arms = [(0, "lelb", "lhand", "lhand_t", -1, "lhand_front"), (1, "relb", "rhand", "rhand_t", 1, "rhand_front")]
     def arm(i, el, hd, ht, side):
-        path(cr, sketch_pts([sh, g(el), g(hd)], amp=1.2, sid=31 + i * 5, step=14)); stroke_ink(cr, 9)
-        draw_hand(cr, g(hd), g(el), p.get(ht, "mitt"), side, sid=80 + i * 10)
+        pts = _limb(sh, g(el), g(hd))
+        path(cr, sketch_pts(pts, amp=1.0, sid=31 + i * 5, step=14)); stroke_ink(cr, 9)
+        draw_hand(cr, g(hd), pts[-3], p.get(ht, "mitt"), side, sid=80 + i * 10)
     for i, el, hd, ht, side, fr in arms:
         if p.get(fr, 0.0) < 0.5: arm(i, el, hd, ht, side)
     cr.save(); cr.translate(hx, hy); cr.rotate(g("tilt"))

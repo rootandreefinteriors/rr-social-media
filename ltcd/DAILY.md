@@ -27,13 +27,15 @@ git config user.name "Claude (LTCD routine)"; git config user.email "noreply@ant
 
 ## 3. Write the episode
 - New folder `ltcd/episodes/epNNN/` (NNN = STATE.day + 1, zero-padded). **Build it with `engine/moves.py`** (the
-  `Scene` builder) — never hand-place joints. Working examples to copy: `ltcd/tests/comment_tests/t1_ramen`,
-  `t2_nuke`, `t3_dino` (and `ltcd/tests/moves_smoke`). Key calls:
+  `Scene` builder) — never hand-place joints. **Tone + acting reference: `ltcd/tests/comment_tests/t1_ramen_v2`**
+  (Adult Swim deadpan, hard cuts, slow-building reactions — read SHOW.md "Tone"/"Acting"/"Animation" first).
+  `t1_ramen`, `t2_nuke`, `t3_dino` are the OLD cute style the user rejected — use them only as examples of props
+  and staging tricks, never for tone. Key calls:
   `S = M.Scene(x0=...)`, `S.card(user, text, likes)`, `S.read_card(t, react, lines)`, `S.walk_to/run_to`,
   gestures (`wave nod shake_head shrug thumbs_up facepalm think cheer jump dance sit stand sleep hop`),
   `S.set(t, body, face, **overrides)` for one-off acting, `S.pocket_pull(t, name, drawer, land, narrow_w=0, held=...)`
   to produce any object, `S.place / hide / poof_away`, `S.prop / hook / background / overlay`, `S.shake`, `S.flash`,
-  `S.sfx`, and always `S.the_ask(S.t, hold=8-10)` last. Props library: `engine/objects.py` (tub, ACME bomb, fish,
+  `S.sfx`, `S.cut(t, cam=..., x=...)` for hard cuts, and always `S.the_ask(S.t, hold=8-10)` (deadpan by default) last. Props library: `engine/objects.py` (tub, ACME bomb, fish,
   ice-cream cone, feather, snorkel, friendly T. rex `draw_dino`, water, splash, rain, build cloud, crater).
   Add new props to objects.py (keep old ones working). Custom one-episode poses go in `L.POSES[...]` in episode.py.
 - **The pull gag (signature):** he digs his hand around at his hip and pulls the thing out of nowhere — **NO pocket

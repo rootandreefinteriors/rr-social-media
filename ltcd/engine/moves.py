@@ -48,7 +48,7 @@ class Scene:
         self.objects = {}
         self.props.append(self._draw_objects)
         self.cam = (540, 1000, zoom)
-        self.bgs, self.shakes, self.floor = [], [], True
+        self.bgs, self.shakes, self.floor, self.cuts = [], [], True, []
 
     # ------------------------------------------------------------- basics
     def _key(self, t, dur=0.3, ease="smooth", **kw):
@@ -97,6 +97,12 @@ class Scene:
     def overlay(self, fn): self.overlays.append(fn); return self      # fn(cr, t)  screen space
     def background(self, fn): self.bgs.append(fn); return self        # fn(cr, t)  world space, before everything
     def shake(self, t, dur=0.5, amp=14): self.shakes.append((t, dur, amp)); return self
+    def cut(self, t, cam=None, x=None):
+        """HARD CUT at t: optional new camera (cx, cy, zoom) and body offset, both instant; follow-through restarts."""
+        self.cuts.append(t)
+        if cam: self.camkeys.append((t, cam, 0.001, "linear")); self.cam = cam
+        if x is not None: self.xkeys.append((t, x, 0.001, "linear")); self.x = x
+        return self
     def flash(self, t, dur=0.6, color=(1.0, 1.0, 1.0)):
         """full-screen flash that fades out (drawn under the comment card)."""
         def ov(cr, tt):
@@ -104,10 +110,10 @@ class Scene:
                 cr.set_source_rgba(color[0], color[1], color[2], (1 - (tt - t) / dur) ** 0.7); cr.paint()
         self.overlays.insert(0, ov); return self
 
-    def read_card(self, t, react="eager", lines=2, dur=None):
+    def read_card(self, t, react="eager", lines=2, dur=None, face="thinking"):
         """looks up at the pinned comment and reads it (eyes scan each line), then back to us with a reaction."""
         per = 0.85; dur = dur or 0.5 + per * lines
-        self.set(t, "stand", "thinking", dur=0.3, look=(0.7, -0.85), tilt=-0.06)
+        self.set(t, "stand", face, dur=0.3, look=(0.7, -0.85), tilt=-0.06)
         def hk(tt, p):
             if t + 0.35 <= tt < t + 0.35 + per * lines:
                 k = (tt - t - 0.35) / per; u = k % 1.0
@@ -324,7 +330,8 @@ class Scene:
         return self
 
     # ------------------------------------------------------------- THE ASK (standard ending)
-    def the_ask(self, t, text_lines=("TELL ME", "WHAT TO DO", "NEXT IN THE", "COMMENTS"), hold=10.0, push=True):
+    def the_ask(self, t, text_lines=("TELL ME", "WHAT TO DO", "NEXT IN THE", "COMMENTS"), hold=10.0, push=True,
+                mood="deadpan", keep=None):
         """digs at his hip (no pocket drawn) -> clipboard keeps coming -> POP -> write -> flip -> hopeful hold.
         Starts from a standing rest at body offset self.x. ~9.5 s + hold."""
         ox = self.x
@@ -336,31 +343,49 @@ class Scene:
         T_DOWN, T_PEN, T_W0, T_W1, T_FLIP = t + 2.75, t + 3.2, t + 3.45, t + 5.7, t + 6.35
         T_HOLD = t + 6.9
         S = self
-        S.set(t, "stand", "thinking", dur=0.25, look=(0.4, 0.8), tilt=0.08)
-        S.set(T_POCKET + 0.05, "stand", "surprised", dur=0.1, ease="snap", look=(0.4, 0.8), eyescale=1.06, open=0.3)
-        S.set(T_POCKET + 0.25, "stand", "concentrating", dur=0.2, look=(0.4, 0.8), tilt=0.1)
-        S.set(T_PULL - 0.1, "stand", "eager", dur=0.1, ease="snap", look=(0.45, 0.3))
-        S.set(T_PULL + 0.05, "stand", "surprised", dur=0.8, look=(0.5, -0.8), eyescale=1.08, open=0.4)
-        S.set(T_POP + 0.02, "stand", "delighted", dur=0.1, ease="snap", look=(0.3, -0.4))
-        S.set(T_DOWN + 0.1, "hold_front", "happy", dur=0.3, look=(0.0, 0.4))
-        S.set(T_W0, "hold_front", "concentrating", dur=0.25, look=(0.4, 0.9), tilt=0.08)
-        S.set(T_W1 + 0.1, "hold_front", "proud", dur=0.2, look=(0.0, 0.6))
-        S.set(T_FLIP, "hold_front", "eager", dur=0.25)
-        S.set(T_HOLD, "hold_front", "hopeful", dur=0.3)
-        S.set(T_HOLD + hold * 0.25, "hold_front", "pleading", dur=0.5)
-        S.set(T_HOLD + hold * 0.4, "hold_front", "shy", dur=0.35, blush=1.0, smile=0.6)
-        S.set(T_HOLD + hold * 0.55, "hold_front", "pleading", dur=0.8)
-        S.set(T_HOLD + hold * 0.75, "hold_front", "hopeful", dur=0.5, tilt=0.1)
-        S.set(T_HOLD + hold * 0.88, "hold_front", "eager", dur=0.3, tilt=0.03, smile=0.8)
-        hops = [(T_HOLD + 0.5, 14), (T_HOLD + 0.9, 14), (T_HOLD + hold * 0.88 + 0.2, 8), (T_HOLD + hold * 0.88 + 0.6, 8)]
+        kp = dict(keep or {})            # persistent look (soaked, sooty...) carried through the ask
+        if mood == "cute":
+            S.set(t, "stand", "thinking", dur=0.25, look=(0.4, 0.8), tilt=0.08)
+            S.set(T_POCKET + 0.05, "stand", "surprised", dur=0.1, ease="snap", look=(0.4, 0.8), eyescale=1.06, open=0.3)
+            S.set(T_POCKET + 0.25, "stand", "concentrating", dur=0.2, look=(0.4, 0.8), tilt=0.1)
+            S.set(T_PULL - 0.1, "stand", "eager", dur=0.1, ease="snap", look=(0.45, 0.3))
+            S.set(T_PULL + 0.05, "stand", "surprised", dur=0.8, look=(0.5, -0.8), eyescale=1.08, open=0.4)
+            S.set(T_POP + 0.02, "stand", "delighted", dur=0.1, ease="snap", look=(0.3, -0.4))
+            S.set(T_DOWN + 0.1, "hold_front", "happy", dur=0.3, look=(0.0, 0.4))
+            S.set(T_W0, "hold_front", "concentrating", dur=0.25, look=(0.4, 0.9), tilt=0.08)
+            S.set(T_W1 + 0.1, "hold_front", "proud", dur=0.2, look=(0.0, 0.6))
+            S.set(T_FLIP, "hold_front", "eager", dur=0.25)
+            S.set(T_HOLD, "hold_front", "hopeful", dur=0.3)
+            S.set(T_HOLD + hold * 0.25, "hold_front", "pleading", dur=0.5)
+            S.set(T_HOLD + hold * 0.4, "hold_front", "shy", dur=0.35, blush=1.0, smile=0.6)
+            S.set(T_HOLD + hold * 0.55, "hold_front", "pleading", dur=0.8)
+            S.set(T_HOLD + hold * 0.75, "hold_front", "hopeful", dur=0.5, tilt=0.1)
+            S.set(T_HOLD + hold * 0.88, "hold_front", "eager", dur=0.3, tilt=0.03, smile=0.8)
+            hops = [(T_HOLD + 0.5, 14), (T_HOLD + 0.9, 14), (T_HOLD + hold * 0.88 + 0.2, 8), (T_HOLD + hold * 0.88 + 0.6, 8)]
+            S.blink(T_DOWN + 0.25, T_HOLD - 0.3, T_HOLD + hold * 0.2, T_HOLD + hold * 0.5, T_HOLD + hold * 0.52, T_HOLD + hold * 0.7, T_HOLD + hold * 0.98)
+            g_pop, g_scr, g_flip = 0.22, 0.16, 0.18
+        else:                            # deadpan: no hops, no blush, no pleading. eyes lead, the head follows.
+            S.set(t, "stand", "deadpan", dur=0.45, look=(0.35, 0.9), tilt=0.05, **kp)
+            S.set(T_PULL - 0.05, "stand", "deadpan", dur=0.5, look=(0.45, -0.5), tilt=-0.02, **kp)
+            S.set(T_POP + 0.1, "stand", "deadpan", dur=0.4, look=(0.25, -0.2), brow=0.15, **kp)
+            S.set(T_DOWN + 0.1, "hold_front", "deadpan", dur=0.45, look=(0.0, 0.3), **kp)
+            S.set(T_W0, "hold_front", "deadpan", dur=0.35, look=(0.35, 0.95), lid=0.45, tilt=0.06, **kp)
+            S.set(T_W1 + 0.15, "hold_front", "deadpan", dur=0.4, look=(0.0, 0.0), **kp)
+            S.set(T_HOLD, "hold_front", "dead_stare", dur=0.6, **kp)
+            S.set(T_HOLD + hold * 0.45, "hold_front", "dead_stare", dur=0.5, look=(0.0, 0.85), **kp)   # glances at his sign
+            S.set(T_HOLD + hold * 0.45 + 1.1, "hold_front", "dead_stare", dur=0.4, look=(0.0, 0.0), **kp)
+            S.set(T_HOLD + hold * 0.86, "hold_front", "dead_stare", dur=0.35, lid=1.0, **kp)        # one slow blink
+            S.set(T_HOLD + hold * 0.86 + 0.45, "hold_front", "dead_stare", dur=0.4, **kp)
+            hops = []
+            S.blink(T_DOWN + 0.5, T_HOLD + hold * 0.2)
+            g_pop, g_scr, g_flip = 0.1, 0.07, 0.07
         if push and not self.card_on:
             S.camera(T_HOLD, 540 + ox, 1010, 1.26, 3.0)
             S.camera(T_HOLD + hold * 0.55, 540 + ox, 1020, 1.36, 2.0)
         elif push:
             S.camera(T_HOLD, 540 + ox, 940, 1.18, 3.0)
             S.camera(T_HOLD + hold * 0.55, 540 + ox, 950, 1.23, 2.0)
-        S.blink(T_DOWN + 0.25, T_HOLD - 0.3, T_HOLD + hold * 0.2, T_HOLD + hold * 0.5, T_HOLD + hold * 0.52, T_HOLD + hold * 0.7, T_HOLD + hold * 0.98)
-        S.sfx(T_POP, "pop", 0.22); S.sfx(T_W0, "scribble", 0.16, dur=T_W1 - T_W0); S.sfx(T_FLIP, "flip", 0.18)
+        S.sfx(T_POP, "pop", g_pop); S.sfx(T_W0, "scribble", g_scr, dur=T_W1 - T_W0); S.sfx(T_FLIP, "flip", g_flip)
 
         def hopv(tt): return sum(h * pulse(tt, t0, 0.09) for t0, h in hops)
         def bez(u): return ((1 - u) ** 2 * A[0] + 2 * (1 - u) * u * C_[0] + u * u * B[0], (1 - u) ** 2 * A[1] + 2 * (1 - u) * u * C_[1] + u * u * B[1])
@@ -445,7 +470,7 @@ class Scene:
         def overlay(cr, t):
             for f in ovs: f(cr, t)
         bl = sorted(self.blinks) if self.blinks else None
-        if bl is not None:   # add natural blinks in long gaps
+        if bl is not None and getattr(self, "auto_blinks", True):   # add natural blinks in long gaps
             extra, last = [], 0.0
             for b in bl + [dur]:
                 while b - last > 4.0: last += 3.2; extra.append(last)
@@ -454,7 +479,7 @@ class Scene:
         L.configure(duration=dur, pose_track=Track(self.keys), x_track=Track(self.xkeys),
                     cam_track=_Cam(Track(self.camkeys), self.shakes), props=prop, pose_hook=hook,
                     overlay=overlay if ovs else None, sfx=self.sfxs, blinks=bl, floor=self.floor,
-                    background=bg if bgs else None)
+                    background=bg if bgs else None, cuts=self.cuts)
         return dur
 
     def render(self, out, duration=None):

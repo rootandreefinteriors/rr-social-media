@@ -31,7 +31,7 @@ SFX = []; BLINKS = []; DURATION = 0.0; NFRAMES = 0
 FLOOR = True; STEP_GAIN = 0.04; BG = None
 
 def configure(duration, pose_track, x_track, cam_track, props=None, pose_hook=None, overlay=None,
-              sfx=(), blinks=None, floor=True, step_gain=0.04, background=None):
+              sfx=(), blinks=None, floor=True, step_gain=0.04, background=None, cuts=(), follow=True):
     """props(cr, t, pose, layer) is called with layer 'back' (behind him) and 'front' (over him).
     overlay(cr, t) draws in screen space (e.g. the pinned comment card). background(cr, t) draws the world first."""
     g = globals()
@@ -43,10 +43,20 @@ def configure(duration, pose_track, x_track, cam_track, props=None, pose_hook=No
         while bt < duration: b.append(bt); bt += rng.uniform(2.2, 4.5)
         blinks = b
     g["BLINKS"] = list(blinks)
-    global _lx, _lv, _lph
+    global _lx, _lv, _lph, _bph, CUT_F, FOLLOW, _SAC
     _lx = np.array([x_track.at((f - PRE) / FPS) for f in range(NFRAMES + PRE + 4)])
     _lv = np.gradient(_lx) * FPS
+    for c in cuts:                       # no walk "velocity" across a hard cut
+        i = int(round(c * FPS)) + PRE
+        _lv[max(0, i - 2):i + 3] = 0.0
     _lph = np.cumsum(np.abs(_lv) / FPS / 80.0 * math.pi)
+    rate = np.array([pose_track.at((f - PRE) / FPS).get("breath_rate", 1.0) for f in range(NFRAMES + PRE + 4)])
+    _bph = np.cumsum(rate * 1.7 / FPS)
+    CUT_F = sorted(int(math.floor(c * FPS + 1e-6)) + 1 for c in cuts); FOLLOW = follow   # first frame of the new shot
+    _PC.clear()
+    rs = random.Random(11); _SAC = []; tt = 0.0           # eye micro-movements: hold 0.5-1.4 s, then a quick dart
+    while tt < duration + 2:
+        _SAC.append((tt, rs.uniform(-0.13, 0.13), rs.uniform(-0.08, 0.08))); tt += rs.uniform(0.5, 1.4)
 
 def blink_amt(t):
     b = 0.0
@@ -56,7 +66,16 @@ def blink_amt(t):
     return b
 
 PRE = 60
-_lx = _lv = _lph = None
+_lx = _lv = _lph = _bph = None
+CUT_F, FOLLOW, _SAC, _PC = [], True, [], {}
+
+def _saccade(t):
+    i = 0
+    while i + 1 < len(_SAC) and _SAC[i + 1][0] <= t: i += 1
+    t0, x1, y1 = _SAC[i]
+    _, x0, y0 = _SAC[i - 1] if i > 0 else (0, 0.0, 0.0)
+    u = min(1.0, (t - t0) / 0.06)
+    return (x0 + (x1 - x0) * u, y0 + (y1 - y0) * u)
 def loco(t):
     i = min(max(int(round(t * FPS)) + PRE, 0), len(_lx) - 1)
     return _lx[i], _lv[i], _lph[i]
@@ -134,6 +153,15 @@ def live_pose(t):
         w_ = math.sin(t * 0.8) * fd
         _add(p, "hip", w_ * 10, 0); _add(p, "neck", w_ * 6, 0); _add(p, "head", w_ * 8, 0)
         p["look"] = (p["look"][0] + 0.25 * math.sin(t * 0.37) * fd, p["look"][1])
+    # --- breathing (chest/arms rise; rate-aware phase) + eye micro-movements
+    bi = min(max(int(round(t * FPS)) + PRE, 0), len(_bph) - 1)
+    p["breath_ph"] = _bph[bi]
+    br = p.get("breath", 1.0) * math.sin(_bph[bi])
+    if abs(br) > 1e-3:
+        for k, a in (("lelb", 1.8), ("relb", 1.8), ("lhand", 1.1), ("rhand", 1.1)): _add(p, k, 0, -a * br)
+    sc = p.get("saccade", 0.0)
+    if sc > 0.01:
+        sx_, sy_ = _saccade(t); p["look"] = (p["look"][0] + sx_ * sc, p["look"][1] + sy_ * sc)
     # --- lean (rotate around the feet) and squash/stretch
     fx_ = (p["lfoot"][0] + p["rfoot"][0]) / 2
     ln, st = p.get("lean", 0.0), p.get("stretch", 0.0)
@@ -151,14 +179,68 @@ def live_pose(t):
     if POSE_HOOK: p = POSE_HOOK(t, p)
     return C.constrain(p)
 
+# follow-through / overlapping action: every joint is a damped spring chasing its pose target, so parts drag,
+# overshoot and settle a beat after the body instead of all stopping at once. (joint: Hz, damping, amount)
+LAGS = {"hip": (4.0, 0.7, 0.2), "neck": (3.2, 0.55, 0.4), "head": (2.5, 0.42, 0.7), "tilt": (2.5, 0.42, 0.7),
+        "lelb": (2.7, 0.5, 0.5), "relb": (2.7, 0.5, 0.5), "lhand": (2.2, 0.4, 0.75), "rhand": (2.2, 0.4, 0.75),
+        "lknee": (3.0, 0.6, 0.25), "rknee": (3.0, 0.6, 0.25), "lfoot": (2.4, 0.45, 0.8), "rfoot": (2.4, 0.45, 0.8)}
+LAG_WIN = 16
+
+def _lp(f):
+    r = _PC.get(f)
+    if r is None: r = _PC[f] = live_pose(f / FPS)
+    return r
+
+def _last_cut(f):
+    c0 = -10 ** 9
+    for c in CUT_F:
+        if c <= f: c0 = c
+    return c0
+
+def filtered_pose(f):
+    p0 = _lp(f)
+    out = dict(p0)
+    start = max(f - LAG_WIN, _last_cut(f))
+    lm = p0.get("lag", 1.0)
+    if not FOLLOW or lm < 0.01 or start >= f: return out
+    dt = 1.0 / FPS / 2
+    for j, (hz, z, amt) in LAGS.items():
+        a = amt * lm
+        side = j[0] if j[0] in "lr" and j[1:] in ("hand", "elb", "foot", "knee") else ""
+        if j[1:] in ("hand", "elb"):
+            a *= p0.get(side + "hand_lag", 1.0)
+            if p0.get(side + "hand_t") in ("grip", "none"): a = 0.0     # holding something: no drag
+        if j[1:] in ("foot", "knee") and j[1:] == "foot": a *= p0.get("feet_lag", 0.0)  # planted unless dangling
+        if a < 0.01: continue
+        w = 2 * math.pi * hz
+        x = _lp(start)[j]
+        if isinstance(x, tuple):
+            x0, x1, v0, v1 = x[0], x[1], 0.0, 0.0
+            for g in range(start + 1, f + 1):
+                tx, ty = _lp(g)[j]
+                for _ in range(2):
+                    v0 += (w * w * (tx - x0) - 2 * z * w * v0) * dt; x0 += v0 * dt
+                    v1 += (w * w * (ty - x1) - 2 * z * w * v1) * dt; x1 += v1 * dt
+            tx, ty = p0[j]; out[j] = (tx + a * (x0 - tx), ty + a * (x1 - ty))
+        else:
+            xs, vs = x, 0.0
+            for g in range(start + 1, f + 1):
+                tg = _lp(g)[j]
+                for _ in range(2):
+                    vs += (w * w * (tg - xs) - 2 * z * w * vs) * dt; xs += vs * dt
+            out[j] = p0[j] + a * (xs - p0[j])
+    return C.constrain(out)
+
 def pose_with_follow(t):
-    """live pose + secondary motion: the curl lags behind head movement and springs back."""
-    p = live_pose(t)
-    acc = 0.0
-    for k, w_ in ((0.05, 1.0), (0.1, 0.6), (0.16, 0.35)):
-        q = live_pose(max(0.0, t - k)); r = live_pose(max(0.0, t - k - 0.04))
-        vx = (q["head"][0] - r["head"][0]) / 0.04; vy = (q["head"][1] - r["head"][1]) / 0.04
-        acc += w_ * (-vx * 0.0011 + vy * 0.0009) * math.cos(k * 40)
+    """filtered pose + the curl lagging behind head movement and springing back."""
+    f = int(round(t * FPS))
+    p = filtered_pose(f)
+    acc, c0 = 0.0, _last_cut(f)
+    for k, w_ in ((2, 1.0), (3, 0.6), (5, 0.35)):
+        if f - k - 1 < c0: continue
+        q = _lp(f - k); r = _lp(f - k - 1)
+        vx = (q["head"][0] - r["head"][0]) * FPS; vy = (q["head"][1] - r["head"][1]) * FPS
+        acc += w_ * (-vx * 0.0011 + vy * 0.0009) * math.cos(k / FPS * 40)
     p["curl"] = p.get("curl", 0.0) + max(-0.55, min(0.55, acc))
     return p
 
@@ -273,6 +355,27 @@ def sfx_kaboom(dur=2.6):   # big cartoon boom: low thump + rolling rumble (still
     thump = np.sin(2 * np.pi * np.cumsum(90 * np.exp(-tt / 0.25) + 38) / SR) * np.exp(-tt / 0.45)
     rumble = _noise(dur, 0.02) * np.exp(-tt / 0.9) * 9.0
     return ((thump + rumble) * _env(dur, 0.004, 0.6) * 0.8).astype(np.float32)
+def sfx_simmer(dur=10.0):  # pot on low heat: soft bubbling bed + scattered little pops
+    tt = _tt(dur); out = (_noise(dur, 0.03) * 1.3 * (0.75 + 0.25 * np.sin(2 * np.pi * 0.27 * tt))).astype(np.float32)
+    r = np.random.default_rng(5); t0 = 0.0
+    while True:
+        t0 += r.uniform(0.04, 0.3)
+        if t0 >= dur - 0.08: break
+        i, m = int(t0 * SR), int(0.05 * SR); f0 = r.uniform(140, 420)
+        seg = np.sin(2 * np.pi * np.cumsum(np.linspace(f0, f0 * 1.8, m)) / SR) * np.exp(-np.arange(m) / SR / 0.012) * r.uniform(0.15, 0.5)
+        out[i:i + m] += seg.astype(np.float32)
+    return (out * _env(dur, 0.25, 0.4)).astype(np.float32)
+def sfx_tok(): tt = _tt(0.07); return (np.sin(2 * np.pi * 820 * tt) * np.exp(-tt / 0.012) * 0.5).astype(np.float32)
+def sfx_whine(dur=3.0):    # faint ear-ring that swells, then stops dead
+    tt = _tt(dur); return (np.sin(2 * np.pi * (3050 + 40 * tt / dur) * tt) * (tt / dur) ** 1.6 * _env(dur, 0.3, 0.004) * 0.3).astype(np.float32)
+def sfx_blub(): tt = _tt(0.18); return (_sweep(150, 480, 0.18, 0.5) * np.exp(-tt / 0.05) * 0.7).astype(np.float32)
+def sfx_clack():
+    tt = _tt(0.12); nz = _rng.standard_normal(len(tt)).astype(np.float32); hp = nz - _onepole(nz, 0.35)
+    env = np.exp(-tt / 0.005) + 0.8 * np.exp(-np.clip(tt - 0.055, 0, None) / 0.005) * (tt > 0.055)
+    return (hp * env * 0.9 + np.sin(2 * np.pi * 1250 * tt) * env * 0.3).astype(np.float32)
+def sfx_drip(): tt = _tt(0.06); return (_sweep(1900, 850, 0.06) * np.exp(-tt / 0.012) * 0.4).astype(np.float32)
+def sfx_sploosh():
+    tt = _tt(0.7); return (_noise(0.7, 0.14) * np.exp(-tt / 0.16) * 1.8 + np.sin(2 * np.pi * 85 * tt) * np.exp(-tt / 0.07) * 0.6).astype(np.float32)
 def sfx_chomp():
     tt = _tt(0.22); return (_onepole((_rng.standard_normal(len(tt)) * np.exp(-tt / 0.02)).astype(np.float32), 0.35) * 1.4
                             + np.sin(2 * np.pi * 140 * tt) * np.exp(-tt / 0.04) * 0.6).astype(np.float32)
@@ -283,7 +386,8 @@ SYNTH = dict(step=sfx_step, tiptoe=sfx_tiptoe, zip=sfx_zip, zip_down=lambda: sfx
              whoosh=sfx_whoosh, poof=sfx_poof, thud=sfx_thud, skid=sfx_skid, rummage=sfx_rummage, ding=sfx_ding,
              bonk=sfx_bonk, splat=sfx_splat, clap=sfx_clap, squeak=sfx_squeak, gulp=sfx_gulp, snore=sfx_snore,
              twinkle=sfx_twinkle, rain=sfx_rain, wind=sfx_wind, bubble=sfx_bubble, spring=sfx_spring,
-             slurp=sfx_slurp, kaboom=sfx_kaboom, chomp=sfx_chomp)
+             slurp=sfx_slurp, kaboom=sfx_kaboom, chomp=sfx_chomp, simmer=sfx_simmer, tok=sfx_tok, whine=sfx_whine,
+             blub=sfx_blub, clack=sfx_clack, drip=sfx_drip, sploosh=sfx_sploosh)
 SFX_DIR = os.path.join(HERE, "..", "sfx")
 
 def load_wav(name):

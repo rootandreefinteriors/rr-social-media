@@ -39,7 +39,7 @@ def _wavy(x0, y0, x1, y1, amp, n=4, ph=0.0, k=24):
 def tub_geom(x, yb, s=1.0):
     return dict(rim_y=yb - 290 * s, rw=245 * s, ry=36 * s, foot=yb - 22 * s, bottom=yb - 44 * s)
 
-def draw_tub(cr, x, yb, s, t, part="back", steam=1.0, ripple=0.0, ripple_x=0.0):
+def draw_tub(cr, x, yb, s, t, part="back", steam=1.0, ripple=0.0, ripple_x=0.0, simmer=0.0):
     g = tub_geom(x, yb, s); ry_, rw, ry = g["rim_y"], g["rw"], g["ry"]
     if part == "back":
         if steam > 0.02:                                   # steam curls rising behind him
@@ -76,6 +76,18 @@ def draw_tub(cr, x, yb, s, t, part="back", steam=1.0, ripple=0.0, ripple_x=0.0):
     for k in range(9):
         cx_ = x + (-200 + 47 * k) * s + 9 * math.sin(k * 3.1); cy_ = ry_ + (6 + 14 * ((k * 7) % 3)) * s
         cr.arc(cx_, cy_, 3.5 * s, 0, 6.3); fill_ink(cr, (0.62, 0.12, 0.08)); cr.new_path()
+    if simmer > 0.02:                                       # little bubbles rising and popping on the surface
+        for k in range(7):
+            u = (t * (0.7 + 0.13 * k) + k * 0.37) % 1.0
+            bx = x + (-170 + 57 * k + 13 * math.sin(k * 5.1 + int(t * (0.7 + 0.13 * k) + k * 0.37))) * s
+            by = ry_ + (8 + 10 * ((k * 3) % 3)) * s
+            if u < 0.8:
+                cr.arc(bx, by, (3 + 7 * u) * s, math.pi, 2 * math.pi); stroke_ink(cr, 2.5, alpha=simmer * 0.8)
+            else:
+                for j in range(4):
+                    a = j * math.pi / 2 + 0.6
+                    cr.move_to(bx + math.cos(a) * 8 * s, by + math.sin(a) * 6 * s); cr.line_to(bx + math.cos(a) * 14 * s, by + math.sin(a) * 10 * s)
+                stroke_ink(cr, 2, alpha=simmer * 0.6)
     if ripple > 0.02:                                       # rings on the surface (splash / dip)
         for k in range(2):
             u = (ripple + k * 0.35) % 1.0
@@ -99,17 +111,17 @@ def draw_tub(cr, x, yb, s, t, part="back", steam=1.0, ripple=0.0, ripple_x=0.0):
         for j in range(3):
             cr.arc(fx + (j - 1) * 17 * s, yb - 4 * s, 7 * s, 0, 6.3); fill_paper(cr, PAPER); stroke_ink(cr, 4)
 
-def draw_noodle_hat(cr, p, alpha=1.0):
-    """a noodle draped over his head (continuity gag). Drawn in the front layer."""
+def draw_noodle_hat(cr, p, alpha=1.0, clip_y=None):
+    """one noodle draped over his crown: an end flopped over the forehead, the other hanging down the right side."""
     hx, hy = p["head"]; R = C.HEAD_R
-    cr.save(); cr.translate(hx, hy); cr.rotate(p.get("tilt", 0.0))
-    pts = []
-    for i in range(23):
-        a = -1.25 + i * 0.1
-        r = R + 7 + 7 * math.sin(i * 1.3)
-        pts.append((math.sin(a) * r, -math.cos(a) * r))
-    pts = [(-R * 0.62, -R * 0.05), (-R * 0.8, -R * 0.2)] + pts[1:] + [(R * 1.02, R * 0.05), (R * 1.08, R * 0.32), (R * 0.98, R * 0.55)]
-    _noodle(cr, pts, sid=780, w=1.15)
+    cr.save()
+    if clip_y is not None: cr.rectangle(-5000, -5000, 10000, clip_y + 5000); cr.clip()
+    cr.translate(hx, hy); cr.rotate(p.get("tilt", 0.0))
+    pts = [(-34, -52), (-50, -78), (-58, -100)]
+    pts += [(math.sin(a) * (R + 5 + 3 * math.sin(i * 1.7)), -math.cos(a) * (R + 5 + 3 * math.sin(i * 1.7)))
+            for i, a in enumerate([-0.5 + k * 0.1 for k in range(12)])]
+    pts += [(R * 0.98, -R * 0.12), (R * 1.04, R * 0.22), (R * 0.97, R * 0.5)]
+    _noodle(cr, pts, sid=780, w=1.1)
     cr.restore()
 
 def draw_drips(cr, p, t, t0, dur, color=BROTH):
@@ -397,3 +409,39 @@ def draw_feather(cr, x, y, s=1.0, ang=-0.25, t=0.0, wiggle=0.0, droop=0.0):
     stroke_ink(cr, 2.5, alpha=0.6)
     cr.move_to(0, 22); cr.line_to(0, -146); stroke_ink(cr, 4)
     cr.restore()
+
+
+# ------------------------------------------------------------------ giant chopsticks etc. ---
+WOOD = (0.87, 0.73, 0.53)
+def draw_chopsticks(cr, tip, ang, gap=30.0, length=1500, clip_y=None, t=0.0):
+    """a giant pair of chopsticks coming in from off-screen. tip = midpoint between the two tips, ang = direction the
+    sticks point (radians, base -> tip), gap = distance between tips. clip_y: hide anything below (dipped in broth)."""
+    dx, dy = math.cos(ang), math.sin(ang); px, py = -dy, dx
+    cr.save()
+    if clip_y is not None:
+        cr.rectangle(-5000, -5000, 10000, clip_y + 5000); cr.clip()
+    for k, sg in enumerate((-1, 1)):
+        tx, ty = tip[0] + px * sg * gap / 2, tip[1] + py * sg * gap / 2
+        bx, by = tx - dx * length + px * sg * (gap / 2 + 40), ty - dy * length + py * sg * (gap / 2 + 40)
+        a_, b_ = math.atan2(ty - by, tx - bx), None
+        qx, qy = -math.sin(a_), math.cos(a_)
+        pts = [(bx + qx * 17, by + qy * 17), (tx + qx * 6, ty + qy * 6), (tx - qx * 6, ty - qy * 6), (bx - qx * 17, by - qy * 17)]
+        path(cr, pts); cr.close_path(); fill_paper(cr, WOOD); stroke_ink(cr, 6)
+        for j in range(2):                                   # grain + the darker band near the top
+            u0 = 0.08 + 0.05 * j
+            cr.move_to(bx + (tx - bx) * u0 + qx * 15, by + (ty - by) * u0 + qy * 15); cr.line_to(bx + (tx - bx) * u0 - qx * 15, by + (ty - by) * u0 - qy * 15)
+        stroke_ink(cr, 4, alpha=0.7)
+    cr.restore()
+
+def draw_egg(cr, x, y, s=1.0):
+    """half a boiled egg floating yolk-up."""
+    ellipse(cr, x, y, 34 * s, 20 * s, rot=0.08, sid=730); fill_paper(cr, WHITE); stroke_ink(cr, 5)
+    ellipse(cr, x + 2 * s, y - 1 * s, 15 * s, 9 * s, sid=731); fill_paper(cr, (0.99, 0.78, 0.3)); stroke_ink(cr, 3)
+
+def draw_puddle(cr, x, r, color=BROTH):
+    if r < 2: return
+    ellipse(cr, x, FLOOR_Y + 4, r, r * 0.16, sid=960, amp=0.03); fill_paper(cr, color, 0.95); stroke_ink(cr, 3.5, alpha=0.8)
+
+def draw_floor_noodle(cr, x, y=FLOOR_Y - 5):
+    pts = [(x - 60 + i * 10, y + 4 * math.sin(i * 1.3)) for i in range(13)]
+    _noodle(cr, pts, sid=970)

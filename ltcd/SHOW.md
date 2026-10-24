@@ -8,21 +8,31 @@ Daily loop: **post 7:00 PM ET → comments come in → 3:00 PM ET next day: comm
   big cartoon eyes (white, black pupils, shine, eyelids), thick expressive brows, a mouth with many shapes, ONE bouncy
   hair curl on top (his signature silhouette), rubber-hose limbs, mitten hands with gestures, bean-shaped feet.
   No clothes, no pockets — he digs his hand around at his hip and pulls things out of nowhere (never draw a pocket). He never speaks. NOT Nigel.
-- **Personality:** eager, earnest, hopeful, a little shy. He genuinely wants to do what you tell him and wants you
-  to like it. He commits 100% to every instruction, however silly — that sincerity is the joke and the heart.
-  Small acting beats sell him: shy wave, blush, hopeful pupils, tongue out when concentrating, proud little nod.
-- **Acting toolkit:** `pose(body, face, **overrides)` with POSES (31 body poses), EXPR (47 expressions), eyes
-  styles (happy, closed, x, spiral, heart, star, dot, wide), 13 mouth styles, extras (tears, sweat drop, anger vein,
-  gloom, blush, teary), symbols (? ! Zzz hearts dizzy-stars idea-bulb steam nervous-lines notes sparkles swirl),
-  hand gestures (mitt fist open point poke thumbs peace grab flat grip), head turn (front, 3/4, profile, back),
-  procedural cycles (walk, run, sneak/tiptoe, shiver, laugh, sob, dance, sleep, fidget), lean, squash/stretch, hop,
-  and Track easings (snap, back = overshoot, elastic, bounce) for cartoon timing. Use anticipation → action →
-  overshoot/settle on every big move. Keep him moving — never a dead stretch.
+- **Tone (user note 2026-10-24 — overrides older "cute" wording): Adult Swim, for teens and adults** (expect an
+  edgelord audience). NOT childish: no hearts, sparkles, blushing, star eyes, happy hops, thumbs-up "yay" beats.
+  Deadpan, dry, absurd, a little dark. He is a dead-eyed hostage of the comments: he does EXACTLY what they say with
+  total, joyless commitment, and the humour comes from his flat reactions to insane situations, uncomfortable holds,
+  hard cuts, and a slightly dark absurd escalation (something bigger than him shows up; the joke turns on him).
+  Still PG-13 (rules below). Reference: `tests/comment_tests/t1_ramen_v2` (first attempt at this direction — check the latest user feedback).
+- **Acting (user note: emotions felt canned, fired at the wrong time, disconnected):** reactions come AFTER the thing
+  that causes them (~0.3 s), eyes move first, then the head, then the body. Emotions BUILD out of the situation
+  (ramp parameters over seconds: heat_fill, sweat, twitch, pupil, quiver, tear1, breath_rate) instead of switching
+  presets. Default faces: `deadpan`, `dead_stare`, `resigned`, `holding_it`. Few blinks during a stare. Long holds
+  are fine if something small keeps changing (a drip, a twitch, steam, a slow camera creep).
+- **Animation (user note: too rigid/stiff/disconnected/amateur):** the engine now gives every joint follow-through
+  (drag + overshoot), soft curved limbs, breathing and eye micro-movements — let them work: prefer fewer, longer,
+  well-timed moves over many snappy ones. Physical contact must be real (if he touches, tickles, grabs or is grabbed,
+  the parts actually meet). Use HARD CUTS (`S.cut`) instead of animating awkward in-betweens (climbing in/out, lifts).
+- **Acting toolkit:** `pose(body, face, **overrides)` with POSES, EXPR (incl. the deadpan set), eye styles, mouth
+  styles, extras (heat_fill, tear1, twitch, quiver, curl_up, sweat, tears, soot, frizz), procedural cycles, lean,
+  squash/stretch, and Track easings. The old cute vocabulary (blush, hearts, starstruck, pleading) is retired unless a
+  comment explicitly calls for it, and even then play it straight.
 - Same hand-drawn line style as Nigel: black ink on white paper, line boil, paper grain, a floor line. The default
   world is an empty white void. Frame him big (camera zoom ~1.2+) so faces read on a phone.
 ## Episode types
-1. **Episode 1 — "the ask"** (`episodes/ep001`). Walk in from left, turn, pull clipboard, scribble, flip, hold sign,
-   blink and stare until the hard cut.
+1. **Episode 1 — "the ask"** (`episodes/ep001`, already posted in the older cuter style). The ending of every
+   episode is now the deadpan ask (`S.the_ask(..., mood="deadpan")`, the default): dig at hip, clipboard, scribble,
+   flip, dead stare, one slow blink, cut.
 2. **Comment episode** — he does what the winning comment says, in this style, then ends with the clipboard beat.
    - **Length: average ~60 s, never more than 75 s.** Simple requests can be drawn out for comedy; complicated ones
      get a simplified, funny take. Both are part of the humour.
