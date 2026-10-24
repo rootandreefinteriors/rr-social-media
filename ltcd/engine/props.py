@@ -109,12 +109,12 @@ def draw_shadow(cr, x, scale=1.0, alpha=0.35):
         stroke_ink(cr, 2, alpha=alpha)
 
 # --------------------------------------------------------- comment card ---
-def draw_comment_card(cr, username, text, likes=None, x=None, y=None, w=430, alpha=1.0, scale=1.0):
+def draw_comment_card(cr, username, text, likes=None, x=None, y=None, w=560, alpha=1.0, scale=1.0):
     """the winning comment, pinned top-right (screen space, inside the safe zone)."""
     x = SAFE[2] - w * scale if x is None else x
     y = SAFE[1] + 10 if y is None else y
-    s_user, uw, uh = text_surface("@" + username, 34, max_w=w - 120, align="left")
-    s_txt, tw, th = text_surface(text, 34, max_w=w - 50, align="left")
+    s_user, uw, uh = text_surface("@" + username, 36, max_w=w - 120, align="left")
+    s_txt, tw, th = text_surface(text, 46, max_w=w - 50, align="left")
     hgt = 30 + uh + th + (40 if likes is not None else 10)
     cr.save(); cr.translate(x, y); cr.scale(scale, scale)
     cr.push_group()
@@ -123,7 +123,10 @@ def draw_comment_card(cr, username, text, likes=None, x=None, y=None, w=430, alp
     cr.set_source_surface(s_user, 70, 14); cr.paint()
     cr.set_source_surface(s_txt, 10, 18 + uh); cr.paint()
     if likes is not None:
-        s_l, lw, lh = text_surface("♥ " + str(likes), 30, align="left")
-        cr.set_source_surface(s_l, w - lw - 10, hgt - 46); cr.paint()
+        s_l, lw, lh = text_surface(str(likes), 32, align="left")
+        lx0 = w - lw - 6; cr.set_source_surface(s_l, lx0, hgt - 50); cr.paint()
+        hx, hy, hs = lx0 + 4, hgt - 26, 11          # little drawn heart
+        cr.move_to(hx, hy + hs * 0.9); cr.curve_to(hx - hs * 1.6, hy - hs * 0.2, hx - hs * 0.5, hy - hs * 1.3, hx, hy - hs * 0.35)
+        cr.curve_to(hx + hs * 0.5, hy - hs * 1.3, hx + hs * 1.6, hy - hs * 0.2, hx, hy + hs * 0.9); fill_ink(cr); cr.new_path()
     cr.pop_group_to_source(); cr.paint_with_alpha(alpha)
     cr.restore()
