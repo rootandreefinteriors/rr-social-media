@@ -1,29 +1,26 @@
 {
   "show": "let the comments decide",
-  "day": 1,
+  "day": 2,
   "last_episode": {
-    "day": 1,
-    "type": "ask",
-    "folder": "episodes/ep001",
-    "video": "videos/day001.mp4",
-    "posted_at": "2026-10-23T20:35:00-04:00",
+    "day": 2,
+    "type": "waiting",
+    "folder": "episodes/ep002",
+    "video": "videos/day002.mp4",
+    "posted_at": "2026-10-24T19:00:00-04:00",
     "buffer": {
-      "tiktok": "6adbf0950b5343d070561adb",
-      "instagram": "6adbf0968b3d437ddc8f0209"
-    },
-    "links": {
-      "tiktok": "https://tiktok.com/@let.the.comments/video/7700026377151450382",
-      "instagram": "https://www.instagram.com/reel/De224gFAbKJ/"
+      "tiktok": "6add02c1bd33ce99c33b60af",
+      "instagram": "6add02c3bd33ce99c33b60ef"
     }
   },
   "ask_since_day": 1,
-  "waiting_streak": 0,
+  "waiting_streak": 1,
   "world": {
     "location": "white void",
     "companions": [],
     "props": [],
     "traits": [],
-    "notes": "Episode 1 (older cute style): he walked in from the left and is standing centre stage holding the clipboard sign. From Day 2 on the tone is Adult Swim deadpan (see SHOW.md)."
+    "notes": "Episode 1 (older cute style): he walked in from the left and is standing centre stage holding the clipboard sign. From Day 2 on the tone is Adult Swim deadpan (see SHOW.md).",
+    "sign_line": "I'LL WAIT."
   },
   "used_comments": [],
   "history": [
@@ -31,6 +28,11 @@
       "day": 1,
       "type": "ask",
       "summary": "walks in, pulls giant clipboard from where a pocket would be, writes TELL ME WHAT TO DO NEXT IN THE COMMENTS, holds it up, blinks"
+    },
+    {
+      "day": 2,
+      "type": "waiting",
+      "summary": "no comments on day 1; holds the sign, turns it, writes I'LL WAIT. under the message, dead stare (21 s)"
     }
   ]
 }
