@@ -1,26 +1,26 @@
 {
   "show": "let the comments decide",
-  "day": 2,
+  "day": 3,
   "last_episode": {
-    "day": 2,
+    "day": 3,
     "type": "waiting",
-    "folder": "episodes/ep002",
-    "video": "videos/day002.mp4",
-    "posted_at": "2026-10-24T19:00:00-04:00",
+    "folder": "episodes/ep003",
+    "video": "videos/day003.mp4",
+    "posted_at": "2026-10-25T19:00:00-04:00",
     "buffer": {
-      "tiktok": "6add02c1bd33ce99c33b60af",
-      "instagram": "6add02c3bd33ce99c33b60ef"
+      "tiktok": "6ade54708b3d437ddc22cc93",
+      "instagram": "6ade54723d5b27036bea835a"
     }
   },
   "ask_since_day": 1,
-  "waiting_streak": 1,
+  "waiting_streak": 2,
   "world": {
     "location": "white void",
     "companions": [],
     "props": [],
     "traits": [],
     "notes": "Episode 1 (older cute style): he walked in from the left and is standing centre stage holding the clipboard sign. From Day 2 on the tone is Adult Swim deadpan (see SHOW.md).",
-    "sign_line": "I'LL WAIT."
+    "sign_line": "STILL HERE."
   },
   "used_comments": [],
   "history": [
@@ -33,6 +33,11 @@
       "day": 2,
       "type": "waiting",
       "summary": "no comments on day 1; holds the sign, turns it, writes I'LL WAIT. under the message, dead stare (21 s)"
+    },
+    {
+      "day": 3,
+      "type": "waiting",
+      "summary": "still no comments on days 1-2; holds the sign (with I'LL WAIT. on it), turns it, writes STILL HERE. under the message, dead stare (21 s)"
     }
   ]
 }
