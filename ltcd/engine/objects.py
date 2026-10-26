@@ -453,7 +453,8 @@ BLK = dict(
     grass=((0.55, 0.38, 0.24), (0.45, 0.30, 0.19)), dirt=((0.55, 0.38, 0.24), (0.45, 0.30, 0.19)),
     log=((0.47, 0.35, 0.21), (0.36, 0.26, 0.15)), leaves=((0.33, 0.58, 0.22), (0.23, 0.44, 0.15)),
     obsidian=((0.10, 0.07, 0.15), (0.30, 0.18, 0.42)), endstone=((0.91, 0.90, 0.66), (0.80, 0.78, 0.52)),
-    stone=((0.55, 0.55, 0.56), (0.45, 0.45, 0.47)), plank=((0.74, 0.58, 0.36), (0.62, 0.47, 0.28)))
+    stone=((0.55, 0.55, 0.56), (0.45, 0.45, 0.47)), plank=((0.74, 0.58, 0.36), (0.62, 0.47, 0.28)),
+    stonebrick=((0.52, 0.52, 0.53), (0.46, 0.46, 0.48)), endframe=((0.80, 0.84, 0.68), (0.68, 0.73, 0.56)))
 GRASS_TOP = ((0.43, 0.70, 0.27), (0.35, 0.60, 0.21))
 
 def _h(*a):
@@ -473,6 +474,13 @@ def draw_block(cr, x0, y0, sz, kind="dirt", sid=0, alpha=1.0, outline=3.5, crack
             elif kind == "log": col = spot if (i % 3 == 1 or r < 0.12) else None
             elif r < 0.32: col = spot
             if col: cr.rectangle(x0 + i * px, y0 + j * px, px + 0.5, px + 0.5); cr.set_source_rgb(*col); cr.fill()
+    if kind == "stonebrick":                                # mortar lines
+        cr.set_source_rgb(0.30, 0.30, 0.32)
+        for yy in (0.0, 0.5): cr.rectangle(x0, y0 + yy * sz, sz, px * 0.6); cr.fill()
+        for (xx, yy) in ((0.5, 0.0), (0.0, 0.5), (1.0, 0.5)): cr.rectangle(x0 + xx * sz - px * 0.3, y0 + yy * sz, px * 0.6, sz * 0.5); cr.fill()
+    if kind == "endframe":                                  # green eye set in the top
+        cr.rectangle(x0 + 2.5 * px, y0, 3 * px, 1.6 * px); cr.set_source_rgb(0.12, 0.35, 0.30); cr.fill()
+        cr.rectangle(x0 + 3.5 * px, y0 + 0.2 * px, px, 1.0 * px); cr.set_source_rgb(0.45, 0.85, 0.65); cr.fill()
     if crack > 0.01:
         cx, cy = x0 + sz / 2, y0 + sz / 2
         for k in range(int(2 + 6 * crack)):
@@ -658,3 +666,13 @@ def draw_death_beams(cr, x, y, u, t, n=9, r=900):
         cr.close_path()
         col = (0.95, 0.85, 1.0) if k % 2 else (0.78, 0.45, 1.0)
         cr.set_source_rgba(*col, 0.55 * a); cr.fill()
+
+def draw_end_portal(cr, x0, x1, top, depth, t):
+    """the floor portal seen from the side: a starry black pit between x0..x1 from `top` down (draw in front)."""
+    cr.rectangle(x0, top, x1 - x0, depth); cr.set_source_rgb(0.03, 0.05, 0.07); cr.fill()
+    for k in range(26):
+        sx = x0 + (k * 97.3) % (x1 - x0); sy = top + 8 + (k * 53.7 + t * 18) % (depth - 16)
+        a = 0.5 + 0.5 * math.sin(t * 3 + k * 1.9)
+        col = (0.55, 0.95, 0.85) if k % 3 else (0.95, 0.95, 1.0)
+        cr.rectangle(sx, sy, 7, 7); cr.set_source_rgba(*col, a); cr.fill()
+    cr.rectangle(x0, top, x1 - x0, 6); cr.set_source_rgba(0.45, 0.85, 0.75, 0.6); cr.fill()
