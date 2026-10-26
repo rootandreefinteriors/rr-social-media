@@ -69,7 +69,11 @@ Daily loop: **post 7:00 PM ET → comments come in → 3:00 PM ET next day: comm
   - No politics, religion, current tragedies, drugs/alcohol/vaping, weapons glorification, self-harm, suicide, or
     dangerous challenges (even as a joke).
   - No copyrighted characters, brands or logos — make a generic version instead only if the request still works
-    without the IP (e.g. "be Spider-Man" → a generic superhero), otherwise skip it.
+    without the IP (e.g. "be Spider-Man" → a generic superhero), otherwise skip it. **User note 2026-10-26: make the
+    generic version as close as you can without violating copyright** — the recognisable look and feel (block
+    textures, pixel hearts, a purple portal, a black dragon for a block game) but no logos, game/brand names on
+    screen, or the actual named characters (reference: `episodes/ep004` "Beat Mc in hardcore mode").
+  - Do what the comment actually asks: "beat X" means he wins (deadpan), not a fail gag.
   - No links, ads, "follow me", spam, or personal info. No requests aimed at harassing someone.
   - Must be doable as a 75-second silent cartoon.
 - **Don't get trolled.** Skip bait designed to make the account look bad, inside jokes/code words, coordinated spam,

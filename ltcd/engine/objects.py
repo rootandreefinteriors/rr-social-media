@@ -445,3 +445,216 @@ def draw_puddle(cr, x, r, color=BROTH):
 def draw_floor_noodle(cr, x, y=FLOOR_Y - 5):
     pts = [(x - 60 + i * 10, y + 4 * math.sin(i * 1.3)) for i in range(13)]
     _noodle(cr, pts, sid=970)
+
+# ------------------------------------------------------------------ blocky survival game (day 4) ---
+# A generic "block world" look -- grass/dirt/log/leaves/obsidian/end-stone cubes with 8x8 pixel texture, pixel hearts,
+# a pixel sword, a purple portal and a big black blocky dragon. No logos, names or real game characters.
+BLK = dict(
+    grass=((0.55, 0.38, 0.24), (0.45, 0.30, 0.19)), dirt=((0.55, 0.38, 0.24), (0.45, 0.30, 0.19)),
+    log=((0.47, 0.35, 0.21), (0.36, 0.26, 0.15)), leaves=((0.33, 0.58, 0.22), (0.23, 0.44, 0.15)),
+    obsidian=((0.10, 0.07, 0.15), (0.30, 0.18, 0.42)), endstone=((0.91, 0.90, 0.66), (0.80, 0.78, 0.52)),
+    stone=((0.55, 0.55, 0.56), (0.45, 0.45, 0.47)), plank=((0.74, 0.58, 0.36), (0.62, 0.47, 0.28)))
+GRASS_TOP = ((0.43, 0.70, 0.27), (0.35, 0.60, 0.21))
+
+def _h(*a):
+    v = 0
+    for x in a: v = (v * 1103515245 + int(x) * 2654435761 + 12345) & 0x7fffffff
+    return (v >> 8) % 1000 / 1000.0
+
+def draw_block(cr, x0, y0, sz, kind="dirt", sid=0, alpha=1.0, outline=3.5, crack=0.0):
+    """one textured cube face, top-left at (x0, y0). crack 0..1 draws breaking cracks."""
+    base, spot = BLK[kind]; n = 8; px = sz / n
+    cr.push_group()
+    cr.rectangle(x0, y0, sz, sz); cr.set_source_rgb(*base); cr.fill()
+    for i in range(n):
+        for j in range(n):
+            r = _h(sid, i, j); col = None
+            if kind == "grass" and (j < 2 or (j == 2 and r < 0.5)): col = GRASS_TOP[1] if r < 0.3 else GRASS_TOP[0]
+            elif kind == "log": col = spot if (i % 3 == 1 or r < 0.12) else None
+            elif r < 0.32: col = spot
+            if col: cr.rectangle(x0 + i * px, y0 + j * px, px + 0.5, px + 0.5); cr.set_source_rgb(*col); cr.fill()
+    if crack > 0.01:
+        cx, cy = x0 + sz / 2, y0 + sz / 2
+        for k in range(int(2 + 6 * crack)):
+            a = k * 2.4 + sid
+            pts = [(cx, cy)]
+            for m in range(1, 4):
+                pts.append((cx + math.cos(a + 0.4 * math.sin(m * 3 + k)) * sz * 0.16 * m * crack,
+                            cy + math.sin(a + 0.4 * math.sin(m * 3 + k)) * sz * 0.16 * m * crack))
+            path(cr, pts); stroke_ink(cr, 4, (0.08, 0.08, 0.08), 0.85)
+    sketch_rect(cr, x0, y0, x0 + sz, y0 + sz, outline, sid=sid, fill=None, amp=0.8)
+    cr.pop_group_to_source(); cr.paint_with_alpha(alpha)
+
+def draw_ground(cr, kind="grass", sub="dirt", bs=110, x0=-700, x1=1800, rows=3, yb=None):
+    """a floor of blocks whose top is the floor line."""
+    yb = FLOOR_Y if yb is None else yb
+    k = 0
+    x = x0
+    while x < x1:
+        for r in range(rows): draw_block(cr, x, yb + r * bs, bs, kind if r == 0 else sub, sid=900 + k * 7 + r)
+        x += bs; k += 1
+
+PIX_HEART = [".XX.XX.", "XXXXXXX", "XXXXXXX", ".XXXXX.", "..XXX..", "...X..."]
+def draw_pixel_heart(cr, x, y, s=6.0, fill=1.0, alpha=1.0):
+    """pixel heart, top-left (x, y), cell size s. fill 1 full / 0.5 half / 0 empty."""
+    cells = [(i, j) for j, row in enumerate(PIX_HEART) for i, c in enumerate(row) if c == "X"]
+    for i, j in cells:                                      # black outline: each cell grown by one cell
+        cr.rectangle(x + (i - 1) * s, y + (j - 1) * s, 3 * s, 3 * s)
+    cr.set_source_rgba(0.06, 0.06, 0.07, alpha); cr.fill()
+    for i, j in cells:
+        red = fill >= 1.0 or (fill > 0 and i <= 3)
+        col = (0.86, 0.12, 0.12) if red else (0.32, 0.30, 0.31)
+        if red and j >= 3: col = (0.68, 0.06, 0.07)
+        cr.rectangle(x + i * s, y + j * s, s + 0.4, s + 0.4); cr.set_source_rgba(*col, alpha); cr.fill()
+    if fill > 0:
+        cr.rectangle(x + 1 * s, y + 1 * s, s, s); cr.set_source_rgba(1, 1, 1, alpha * 0.9); cr.fill()
+
+def draw_hearts_bar(cr, x, y, health, s=5.0, n=10, gap=6, alpha=1.0, blink=0.0):
+    """row of n pixel hearts; health in hearts (0..n, halves allowed). blink makes the last one flash."""
+    for k in range(n):
+        f = 1.0 if health >= k + 1 else (0.5 if health >= k + 0.5 else 0.0)
+        a = alpha
+        if blink > 0 and f > 0 and health < k + 1.01: a *= 1 - 0.6 * blink
+        draw_pixel_heart(cr, x + k * (7 * s + gap), y, s, f, a)
+
+def draw_pixel_sword(cr, x, y, s=1.0, ang=-0.8, alpha=1.0):
+    """chunky pixel sword; (x, y) = the grip. ang 0 = blade straight up."""
+    cr.save(); cr.translate(x, y); cr.rotate(ang); cr.scale(s, s)
+    cr.push_group()
+    BL, ED, GD, HD = (0.56, 0.93, 0.92), (0.22, 0.62, 0.66), (0.20, 0.20, 0.24), (0.45, 0.30, 0.16)
+    cr.rectangle(-9, 16, 18, 34); cr.set_source_rgb(*HD); cr.fill()                 # handle
+    cr.rectangle(-13, 48, 26, 14); cr.set_source_rgb(*GD); cr.fill()                # pommel
+    cr.rectangle(-38, 2, 76, 16); cr.set_source_rgb(*GD); cr.fill()                 # guard
+    cr.move_to(-14, 2); cr.line_to(-14, -150); cr.line_to(0, -172); cr.line_to(14, -150); cr.line_to(14, 2); cr.close_path()
+    cr.set_source_rgb(*BL); cr.fill()
+    cr.rectangle(2, -150, 6, 150); cr.set_source_rgb(*ED); cr.fill()               # edge shading
+    cr.rectangle(-8, -140, 5, 40); cr.set_source_rgb(1, 1, 1); cr.fill()            # glint
+    for (a0, b0, a1, b1) in ((-9, 16, 9, 50), (-13, 48, 13, 62), (-38, 2, 38, 18)):
+        cr.rectangle(a0, b0, a1 - a0, b1 - b0); stroke_ink(cr, 4)
+    cr.move_to(-14, 2); cr.line_to(-14, -150); cr.line_to(0, -172); cr.line_to(14, -150); cr.line_to(14, 2); stroke_ink(cr, 4.5)
+    cr.pop_group_to_source(); cr.paint_with_alpha(alpha); cr.restore()
+
+def draw_portal(cr, cx, yb, t, part="frame", bs=110, w=4, h=5, alpha=1.0):
+    """obsidian frame (part "frame") w x h blocks, bottom-centre (cx, yb); part "swirl" = the purple inside (draw it in
+    front of whoever walks in, with alpha < 1)."""
+    x0 = cx - w * bs / 2; y0 = yb - h * bs
+    if part == "frame":
+        for i in range(w):
+            for j in range(h):
+                if 0 < i < w - 1 and 0 < j < h - 1: continue
+                draw_block(cr, x0 + i * bs, y0 + j * bs, bs, "obsidian", sid=950 + i * 11 + j)
+        return
+    ix0, iy0, iw, ih = x0 + bs, y0 + bs, (w - 2) * bs, (h - 2) * bs
+    cr.save(); cr.rectangle(ix0, iy0, iw, ih); cr.clip()
+    cr.set_source_rgba(0.50, 0.20, 0.82, 0.78 * alpha); cr.paint()
+    for k in range(9):                                       # drifting swirl streaks
+        yy = iy0 + ((k * 61 + t * 70) % ih)
+        pts = [(ix0 + u * iw, yy + 14 * math.sin(u * 7 + t * 3 + k)) for u in [i / 12 for i in range(13)]]
+        path(cr, pts); stroke_ink(cr, 7, (0.80, 0.55, 1.0), 0.55 * alpha)
+    cr.restore()
+
+def draw_square_sun(cr, x, y, sz=130, moon=False):
+    if moon:
+        cr.rectangle(x - sz / 2, y - sz / 2, sz, sz); cr.set_source_rgb(0.86, 0.88, 0.95); cr.fill()
+        for (a, b, c) in ((-0.25, -0.15, 0.22), (0.15, 0.2, 0.16), (0.2, -0.25, 0.12)):
+            cr.rectangle(x + a * sz, y + b * sz, c * sz, c * sz); cr.set_source_rgb(0.68, 0.70, 0.8); cr.fill()
+    else:
+        cr.rectangle(x - sz / 2, y - sz / 2, sz, sz); cr.set_source_rgb(1.0, 0.93, 0.45); cr.fill()
+        cr.rectangle(x - sz * 0.3, y - sz * 0.3, sz * 0.6, sz * 0.6); cr.set_source_rgb(1.0, 0.99, 0.75); cr.fill()
+    sketch_rect(cr, x - sz / 2, y - sz / 2, x + sz / 2, y + sz / 2, 4, sid=970, fill=None)
+
+def draw_block_cloud(cr, x, y, w=260, h=50):
+    cr.rectangle(x, y, w, h); cr.rectangle(x + w * 0.2, y - h * 0.6, w * 0.45, h * 0.6)
+    cr.set_source_rgba(1, 1, 1, 0.92); cr.fill()
+
+def draw_item_block(cr, x, y, kind, t, s=1.0):
+    """a small dropped block spinning in place; (x, y) = its centre."""
+    sz = 42 * s; sx = max(0.15, abs(math.cos(t * 2.2)))
+    cr.save(); cr.translate(x, y + 6 * math.sin(t * 3)); cr.scale(sx, 1)
+    draw_block(cr, -sz / 2, -sz / 2, sz, kind, sid=990, outline=2.5)
+    cr.restore()
+
+DRAGON = dict(x=820.0, y=FLOOR_Y, s=1.0, flap=0.0, hx=0.0, hy=0.0, jaw=0.0, look=(-1.0, 0.2), lid=0.0, fade=0.0, legs=1.0)
+D_BLACK, D_WING, D_EYE = (0.08, 0.07, 0.09), (0.22, 0.20, 0.25), (0.78, 0.35, 1.0)
+
+def _dbox(cr, x0, y0, x1, y1, sid, col=D_BLACK, w=5):
+    cr.rectangle(min(x0, x1), min(y0, y1), abs(x1 - x0), abs(y1 - y0)); cr.set_source_rgb(*col); cr.fill()
+    sketch_rect(cr, min(x0, x1), min(y0, y1), max(x0, x1), max(y0, y1), w, sid=sid, fill=None, color=(0.0, 0.0, 0.0), amp=0.8)
+
+def dragon_head(st):
+    s = st["s"]; return (st["x"] - 330 * s + st["hx"], st["y"] - 420 * s + st["hy"])
+
+def draw_dragon(cr, st, t):
+    """big black blocky dragon facing left. st: x (body centre), y (where its feet stand), s, flap (wing phase, radians),
+    hx/hy (head offset), jaw 0..1, look, lid, fade 0..1 (dissolving), legs 0..1 (tucked in flight)."""
+    x, y, s = st["x"], st["y"], st["s"]
+    cr.push_group()
+    by0, by1 = y - 345 * s, y - 175 * s
+    wv = math.sin(st["flap"])
+    def wing(off, sid, shade):
+        rx, ry = x + off * s, by0 + 10 * s
+        tip = (rx + 330 * s, ry - 290 * s * wv - 40 * s)
+        elbow = (rx + 90 * s, ry - 230 * s * wv - 60 * s)
+        trail = (rx + 220 * s, ry - 70 * s * wv + 20 * s)
+        pts = [(rx - 60 * s, ry), elbow, tip, trail, (rx + 120 * s, ry)]
+        cr.move_to(*pts[0])
+        for p_ in pts[1:]: cr.line_to(*p_)
+        cr.close_path(); cr.set_source_rgb(*shade); cr.fill()
+        sketch_poly(cr, pts, 5, sid=sid, fill=None, color=(0, 0, 0))
+        for f in (0.45, 0.75):                                          # wing bones
+            cr.move_to(*elbow); cr.line_to(lerp(trail, tip, f)[0], lerp(trail, tip, f)[1]); stroke_ink(cr, 4, (0, 0, 0))
+    wing(40, 1001, (0.16, 0.14, 0.18))                                    # far wing
+    for k in range(6):                                                    # tail
+        tx = x + (180 + 62 * k) * s; ty = by0 + (40 - 22 * k + 10 * math.sin(t * 2 + k * 0.7)) * s
+        sz = (70 - 8 * k) * s
+        _dbox(cr, tx, ty, tx + 64 * s, ty + sz, 1010 + k)
+        _dbox(cr, tx + 20 * s, ty - 18 * s, tx + 38 * s, ty, 1020 + k, w=3)
+    lg = st["legs"]
+    for k, lx in enumerate((-130, -60, 90, 150)):                          # legs
+        ly1 = by1 + (175 * lg + 40 * (1 - lg)) * s
+        _dbox(cr, x + lx * s, by1 - 10 * s, x + (lx + 42) * s, ly1, 1030 + k)
+        _dbox(cr, x + (lx - 14) * s, ly1 - 22 * s, x + (lx + 46) * s, ly1, 1035 + k, w=3)
+    _dbox(cr, x - 180 * s, by0, x + 180 * s, by1, 1040)                   # body
+    for k in range(5): _dbox(cr, x + (-140 + 70 * k) * s, by0 - 22 * s, x + (-118 + 70 * k) * s, by0, 1045 + k, w=3)
+    hx, hy = dragon_head(st)
+    nx0, ny0 = x - 170 * s, by0 + 40 * s                                  # neck: blocks from body to head
+    for k in range(4):
+        u = (k + 0.5) / 4
+        cx_, cy_ = lerp((nx0, ny0), (hx + 70 * s, hy + 40 * s), u)
+        cy_ -= 40 * s * math.sin(math.pi * u)
+        _dbox(cr, cx_ - 38 * s, cy_ - 34 * s, cx_ + 38 * s, cy_ + 34 * s, 1050 + k)
+        _dbox(cr, cx_ - 9 * s, cy_ - 52 * s, cx_ + 9 * s, cy_ - 34 * s, 1055 + k, w=3)
+    j = st["jaw"]                                                         # head: skull + snout + jaw
+    jaw_drop = 70 * s * j
+    _dbox(cr, hx - 80 * s, hy + 30 * s, hx + 20 * s, hy + 62 * s + jaw_drop, 1062)      # lower jaw
+    if j > 0.05:
+        cr.rectangle(hx - 80 * s, hy + 30 * s, 100 * s, jaw_drop); cr.set_source_rgb(0.45, 0.10, 0.25); cr.fill()
+        for k in range(4): cr.rectangle(hx + (-74 + 24 * k) * s, hy + 30 * s, 10 * s, 12 * s); cr.set_source_rgb(0.95, 0.95, 0.9); cr.fill()
+    _dbox(cr, hx - 20 * s, hy - 70 * s, hx + 120 * s, hy + 40 * s, 1060)    # skull
+    _dbox(cr, hx - 100 * s, hy - 20 * s, hx - 20 * s, hy + 32 * s, 1061)    # snout
+    cr.rectangle(hx - 92 * s, hy - 12 * s, 14 * s, 8 * s); cr.set_source_rgb(0.3, 0.28, 0.32); cr.fill()   # nostril
+    for k in (0, 1): _dbox(cr, hx + (40 + 44 * k) * s, hy - 98 * s, hx + (58 + 44 * k) * s, hy - 70 * s, 1065 + k, w=3)
+    ex, ey = hx + 28 * s, hy - 40 * s                                     # eye: purple slit with glow
+    lid = st["lid"]
+    cr.rectangle(ex - 6 * s, ey - 10 * s, 54 * s, 24 * s); cr.set_source_rgba(*D_EYE, 0.25); cr.fill()
+    eh = 14 * s * (1 - lid)
+    if eh > 0.5:
+        cr.rectangle(ex, ey - eh / 2 + 2 * s, 42 * s, eh); cr.set_source_rgb(*D_EYE); cr.fill()
+        lx = ex + 21 * s + 12 * s * st["look"][0]
+        cr.rectangle(lx - 4 * s, ey - eh / 2 + 2 * s, 8 * s, eh); cr.set_source_rgb(0.98, 0.9, 1.0); cr.fill()
+    wing(-30, 1002, D_WING)                                               # near wing
+    cr.pop_group_to_source(); cr.paint_with_alpha(1.0 - st["fade"])
+
+def draw_death_beams(cr, x, y, u, t, n=9, r=900):
+    """purple/white beams of light bursting out of (x, y); u 0..1 life."""
+    if not (0 < u < 1): return
+    a = math.sin(math.pi * u)
+    for k in range(n):
+        ang = k * 2 * math.pi / n + t * 0.6 + 0.3 * math.sin(k * 3.1)
+        w = 0.07 + 0.05 * math.sin(k * 1.7 + t * 4)
+        cr.move_to(x, y)
+        cr.line_to(x + math.cos(ang - w) * r * (0.4 + 0.6 * u), y + math.sin(ang - w) * r * (0.4 + 0.6 * u))
+        cr.line_to(x + math.cos(ang + w) * r * (0.4 + 0.6 * u), y + math.sin(ang + w) * r * (0.4 + 0.6 * u))
+        cr.close_path()
+        col = (0.95, 0.85, 1.0) if k % 2 else (0.78, 0.45, 1.0)
+        cr.set_source_rgba(*col, 0.55 * a); cr.fill()

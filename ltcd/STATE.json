@@ -3,26 +3,37 @@
   "day": 4,
   "last_episode": {
     "day": 4,
-    "type": "waiting",
+    "type": "comment",
     "folder": "episodes/ep004",
     "video": "videos/day004.mp4",
     "posted_at": "2026-10-26T19:00:00-04:00",
     "buffer": {
       "tiktok": "6adfa670188ed7b8726bec0a",
       "instagram": "6adfa672e0ae5134fabbc193"
+    },
+    "comment": {
+      "platform": "instagram",
+      "username": "neoblade75",
+      "text": "Beat Mc in hardcore mode:)",
+      "likes": 0
     }
   },
-  "ask_since_day": 1,
-  "waiting_streak": 3,
+  "ask_since_day": 4,
+  "waiting_streak": 0,
   "world": {
     "location": "white void",
     "companions": [],
-    "props": [],
-    "traits": [],
-    "notes": "Episode 1 (older cute style): he walked in from the left and is standing centre stage holding the clipboard sign. From Day 2 on the tone is Adult Swim deadpan (see SHOW.md).",
-    "sign_line": "DAY 4."
+    "props": [
+      "pixel sword (small, optional callback)"
+    ],
+    "traits": [
+      "beat the block game on hardcore with half a heart"
+    ],
+    "notes": "Day 4: he beat a generic blocky survival game on hardcore (block world, dragon, portal). He is back in the white void. The hardcore heart bar (half a heart left, blinking) floated bottom-left through the ask -- optional callback, not required."
   },
-  "used_comments": [],
+  "used_comments": [
+    "Beat Mc in hardcore mode:)"
+  ],
   "history": [
     {
       "day": 1,
@@ -41,8 +52,8 @@
     },
     {
       "day": 4,
-      "type": "waiting",
-      "summary": "still no comments on days 1-3; holds the sign (with STILL HERE. on it), slightly slumped, turns it, writes DAY 4. under the message, dead stare (21 s)"
+      "type": "comment",
+      "summary": "@neoblade75 (IG): 'Beat Mc in hardcore mode:)' -> block world, punches a log out of a tree (top floats), night in a dirt pillar, day 41 portal, black blocky dragon swipes him to half a heart, he pulls a pixel sword and taps its nose once, it dissolves; victory text scrolls; deadpan ask with the half heart (67 s)"
     }
   ]
 }
