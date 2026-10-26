@@ -104,7 +104,11 @@ Daily loop: **post 7:00 PM ET → comments come in → 3:00 PM ET next day: comm
 ## Posting
 - Both platforms, same video, **7:00 PM America/New_York** (offset -04:00 until 2026-11-01, then -05:00).
 - Caption: `day N · tell me what to do next 👇` (+ `#letthecommentsdecide #stickfigure #animation`). For comment
-  episodes: `day N · @username said: "<comment, trimmed>" · what next? 👇`.
+  episodes (user note 2026-10-26): tag the commenter in a short, funny deadpan line about what it cost him, then
+  `tell us what to do next in the comments 👇` + the hashtags. e.g. `day 4 · @neoblade75 said beat it on hardcore. 41 days.
+  half a heart. one dragon. i hope you're happy. tell us what to do next in the comments 👇`. Only use the real @ on
+  the platform the comment came from; on the other platform write the name without @ plus "(on insta)" / "(on tiktok)"
+  so we never tag a stranger with the same handle.
 - Buffer account = `Buffer_Comments` connector (org 6ad3b32d59096eb0b75abe28; TikTok 6ad3bc77778b240e2f3cdf83,
   Instagram 6ad3bc60778b240e2f3cde9b — Instagram metadata `{type:"reel", shouldShareToFeed:true}`). AI label OFF
   (`isAiGenerated:false` on both).
