@@ -36,6 +36,10 @@ Daily loop: **post 7:00 PM ET → comments come in → 3:00 PM ET next day: comm
 2. **Comment episode** — he does what the winning comment says, in this style, then ends with the clipboard beat.
    - **Length: average ~60 s, never more than 75 s.** Simple requests can be drawn out for comedy; complicated ones
      get a simplified, funny take. Both are part of the humour.
+   - **Pacing (user note 2026-10-26):** don't rush. Give each beat time to land before the cut. For time jumps or a
+     multi-scene story, use FULL-SCREEN title cards (black, big centred text, ~1.5 s — e.g. DAY 1 / NIGHT 1 / DAY 41)
+     between scenes, never small corner labels. Make the stakes and the outcome readable to someone who doesn't
+     know the reference (big HUD, a held reaction beat), and get the reference's details right for fans.
    - The winning comment is pinned **top-right** as a recreated comment card (`draw_comment_card`): @username, the
      comment text, the like count. Visible for the whole episode (it may shrink a little after the first seconds).
 3. **Waiting episode** — when there is no qualifying comment. (User note 2026-10-24, overrides the older "Mario 64
