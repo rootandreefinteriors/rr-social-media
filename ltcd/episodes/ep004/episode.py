@@ -9,12 +9,12 @@ CARD    NIGHT 1.  A one-block-wide dirt pillar; only his eyes, through a one-blo
         His eyes slide over. Slide back. Slow blink.
 CARD    DAY 41.  Three hearts left. A stone-brick room with the floor portal (a starry black pit in a ring of frame
         blocks). He looks down into it. Looks at us. Steps off the edge and drops through. Empty pit.
-CARD    THE END.  A huge black blocky dragon flies in, lands, roars -- and swipes: HALF A HEART (the hearts swell up,
+CARD    STILL DAY 41.  A huge black blocky dragon flies in, lands, roars -- and swipes: HALF A HEART (the hearts swell up,
         the last half blinks; he slowly looks down at them). He pulls a pixel sword from his hip, walks up and hits it
         over and over in a blur; the boss bar drops in chunks. A pause. One last tap. The bar empties. The dragon
         dissolves into beams of light. He doesn't move.
-SHOT    The victory text scrolls (YOU WON. ON HARDCORE. WITH HALF A HEART. ...). Dead stare.
-END     The white void; the half heart is still in the corner, blinking. The ask, deadpan.
+        The victory text scrolls up beside him (YOU WON. ON HARDCORE. WITH HALF A HEART. ...). Dead stare.
+END     He drops the sword and does the ask right there. He lives in this world now (half a heart blinking).
 """
 import sys, os, math
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "engine"))
@@ -30,17 +30,17 @@ CARD_LEN = 1.5
 C1 = 5.2;  T1 = C1 + CARD_LEN          # DAY 1
 C2 = 16.7; T2 = C2 + CARD_LEN          # NIGHT 1
 C3 = 25.2; T3 = C3 + CARD_LEN          # DAY 41
-C4 = 33.2; T4 = C4 + CARD_LEN          # THE END
+C4 = 33.2; T4 = C4 + CARD_LEN          # STILL DAY 41 (the dragon)
 T_HIT = T4 + 5.9
 T_PULL = T_HIT + 3.2
 T_F0, T_F1 = T_PULL + 2.7, T_PULL + 5.7          # the flurry
 T_LAST = T_F1 + 0.9                               # one last tap
 T_DIE = T_LAST + 0.6
-T5 = T_DIE + 3.2                                  # victory text
-T6 = T5 + 6.5                                     # back to the void: the ask
+T5 = T_DIE + 3.2                                  # victory text (same place)
+T6 = T5 + 5.2                                     # the ask, right there in the dragon's world
 TREE_X = 840
 PIT0, PIT1 = 600, 930                             # floor portal (world x)
-CARDS = ((C1, "DAY 1"), (C2, "NIGHT 1"), (C3, "DAY 41"), (C4, "THE END"))
+CARDS = ((C1, "DAY 1"), (C2, "NIGHT 1"), (C3, "DAY 41"), (C4, "STILL DAY 41"))
 
 L.POSES["punch"] = dict(relb=(660, 930), rhand=(690, 1010), rhand_t="fist", lhand_t="fist")
 L.POSES["sword_up"] = dict(relb=(650, 960), rhand=(700, 900), rhand_t="grip")
@@ -59,9 +59,7 @@ def shot(t):
     if t < T3: return -1
     if t < C4: return 3
     if t < T4: return -1
-    if t < T5: return 4
-    if t < T6: return 5
-    return 6
+    return 4                                                        # he stays in this world from now on
 
 # ================================================================ world backgrounds
 def sky(cr, col):
@@ -133,12 +131,12 @@ SCROLL = ["YOU WON.", "ON HARDCORE.", "WITH HALF A HEART.", "IT TOOK 41 DAYS.", 
           "SCROLL FOR", "TWENTY MINUTES."]
 def scroll(cr, t):
     if not (T5 <= t < T6): return
-    cr.save(); cr.rectangle(0, 470, 1080, 830); cr.clip()
+    cr.save(); cr.rectangle(520, 560, 560, 700); cr.clip()
     for i, line in enumerate(SCROLL):
-        y = 1200 + i * 92 - (t - T5) * 128
-        if 440 < y < 1360:
-            a = min(1.0, (y - 470) / 80, (1300 - y) / 80)
-            if a > 0: draw_text(cr, line, 620, y, 56, color=(240, 240, 240), alpha=a)
+        y = 1180 + i * 80 - (t - T5) * 135
+        if 530 < y < 1300:
+            a = min(1.0, (y - 570) / 70, (1250 - y) / 70)
+            if a > 0: draw_text(cr, line, 730, y, 40, color=(240, 240, 240), alpha=a)
     cr.restore()
 for f in (scroll, bossbar, title_cards, hud): S.overlays.insert(0, f)     # all under the comment card
 
@@ -219,7 +217,7 @@ S.walk_to(T3 + 0.9, -10, 1.0)                                         # to the e
 S.set(T3 + 2.3, "stand", "dead_stare", dur=0.3, look=(0.6, 0.95), tilt=0.06)          # looks down into it
 S.set(T3 + 3.6, "stand", "dead_stare", dur=0.3, look=(0.0, 0.0), tilt=0.0)            # looks at us
 T_STEP = T3 + 4.7
-S.xkeys.append((T_STEP, 130, 0.35, "out")); S.x = 130
+S.xkeys.append((T_STEP, 225, 0.45, "out")); S.x = 225                  # right into the middle of it
 S.set(T_STEP, "stand", "dead_stare", dur=0.2, nowalk=1.0)
 def fall(tt, p):
     if T_STEP + 0.25 <= tt < C4:
@@ -270,8 +268,8 @@ S.set(T_PULL, "stand", "dead_stare", dur=0.3, look=(0.35, 0.9), tilt=0.05)
 S.set(T_PULL + 1.15, "sword_up", "dead_stare", dur=0.3, ease="back", look=(0.4, -0.3))
 S.sfx(T_PULL + 1.2, "pop", 0.05)
 def sword_draw(cr, x, y, s, t, p):
-    if t >= T6: return
-    O.draw_pixel_sword(cr, x, y, s * 0.95, ang=2.75 if t >= T5 else 0.55)   # lowered on the victory screen
+    if t >= T_DROP: return
+    O.draw_pixel_sword(cr, x, y, s * 0.95, ang=lerp(0.55, 2.75, ramp(t, T5 - 0.05, T5 + 0.45)))   # lowered for the text
 S.place("sword", sword_draw, (0, 0), t_on=T_PULL + 1.2, layer="front", pop=True, follow="rhand")
 S.set(T_PULL + 1.6, "sword_up", "dead_stare", dur=0.3, look=(0.9, 0.1))
 S.xkeys.append((T_PULL + 1.7, -130, 0.9)); S.x = -130                    # walks up to it
@@ -316,19 +314,24 @@ def dragon(cr, tt, p, ly):
 S.prop(dragon)
 S.set(T_F1 + 0.1, "sword_up", "dead_stare", dur=0.3, look=(0.9, 0.1))
 S.set(T_DIE + 2.6, "sword_up", "dead_stare", dur=0.3, lid=1.0)
-S.set(T5 - 0.05, "sword_up", "dead_stare", dur=0.3)
+S.set(T5 - 0.05, "stand", "dead_stare", dur=0.5, rhand_t="grip")                # lowers the sword
+S.set(T5 + 2.6, "stand", "dead_stare", dur=0.25, look=(0.8, -0.3), rhand_t="grip")          # eyes drift to the text...
+S.set(T5 + 3.8, "stand", "dead_stare", dur=0.25, look=(0.0, 0.0), rhand_t="grip")           # ...and back to us
 
-# ================================================================ the victory text. it keeps going.
-S.cut(T5, cam=(540, 930, 1.15), x=-330)
-S.set(T5, "stand", "dead_stare", dur=0.0, rhand_t="grip")
-S.set(T5 + 4.2, "stand", "dead_stare", dur=0.25, look=(0.7, -0.5), rhand_t="grip")
-S.set(T5 + 5.6, "stand", "dead_stare", dur=0.25, look=(0.0, 0.0), rhand_t="grip")
-
-# ================================================================ the ask (deadpan). the half heart stays.
-S.cut(T6, cam=M.CARD_CAM, x=0)
-S.set(T6, "stand", "dead_stare", dur=0.0)
-S.blink(T6 + 0.3)
-S.the_ask(T6 + 0.4, hold=5.5)
+# ================================================================ drops the sword. the ask, right here. he lives here now.
+T_DROP = T6 - 0.7
+S.set(T_DROP, "stand", "dead_stare", dur=0.3)
+SWORD_REST = (-130 + 700, FLOOR_Y - 12)
+def dropped_sword(cr, tt, p, ly):
+    if ly != "back" or tt < T_DROP: return
+    u = ramp(tt, T_DROP, T_DROP + 0.3, "inn")
+    x = lerp(p["rhand"][0] if u < 1 else SWORD_REST[0], SWORD_REST[0], u)
+    y = lerp(900, SWORD_REST[1], u)
+    O.draw_pixel_sword(cr, x, y, 0.95, ang=lerp(2.75, 1.5708, u))
+S.prop(dropped_sword)
+S.sfx(T_DROP + 0.3, "clack", 0.04)
+S.blink(T6 - 0.2)
+S.the_ask(T6, hold=5.5)
 
 if __name__ == "__main__":
     S.render("day004.mp4")

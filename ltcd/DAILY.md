@@ -54,7 +54,10 @@ git config user.name "Claude (LTCD routine)"; git config user.email "noreply@ant
   appear, widen the camera like t3_dino: `S.camkeys[0] = (0, (540, 840, 0.9), 0)` and `the_ask(..., push=False)`).
   Average ~60 s, max 75 s. Continuity per SHOW.md (≤3 major persistent things; use cartoon consequences to remove
   things). End with `the_ask` (dig at hip -> clipboard -> scribble -> flip: TELL ME WHAT TO DO NEXT IN THE COMMENTS).
-- **Waiting episode:** copy `ltcd/tests/waiting_ref/episode.py` (it uses `S.hold_sign`) and change only the line he
+- **He stays where the last episode left him** (STATE `world.location`, SHOW.md "Where he is"): draw that place as the
+  background of every episode, comment or waiting, and do the ask there. Never cut back to the white void.
+- **Waiting episode:** copy `ltcd/tests/waiting_ref/episode.py` (it uses `S.hold_sign`), add the current place's
+  background/HUD from STATE `world.location`, and change only the line he
   writes (`extra=`) and yesterday's line (`extra_shown=`, from STATE `world.sign_line`). The message is the star; follow
   SHOW.md "Waiting episode" exactly — no gags, props or effects. 18–25 s. Save today's line to STATE `world.sign_line`.
 - Keep everything inside the safe zone (x 60–920, y 200–1480 on screen). Big readable shapes. Lots of motion —

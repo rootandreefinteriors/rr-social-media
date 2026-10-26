@@ -27,8 +27,13 @@ Daily loop: **post 7:00 PM ET → comments come in → 3:00 PM ET next day: comm
   styles, extras (heat_fill, tear1, twitch, quiver, curl_up, sweat, tears, soot, frizz), procedural cycles, lean,
   squash/stretch, and Track easings. The old cute vocabulary (blush, hearts, starstruck, pleading) is retired unless a
   comment explicitly calls for it, and even then play it straight.
-- Same hand-drawn line style as Nigel: black ink on white paper, line boil, paper grain, a floor line. The default
-  world is an empty white void. Frame him big (camera zoom ~1.2+) so faces read on a phone.
+- Same hand-drawn line style as Nigel: black ink on white paper, line boil, paper grain, a floor line. Frame him big
+  (camera zoom ~1.2+) so faces read on a phone.
+- **Where he is (user note 2026-10-26): the white void was only the starter scene — he NEVER goes back to it.** Every
+  episode ends (the ask) in the environment where its last scene happens, and the next episode — comment or waiting —
+  starts there. Running gag: he just stays wherever the last comment left him until someone tells him what to do next.
+  The current place is STATE `world.location` (+ how to draw it). Day 4 left him in the block-game "End" (dark purple
+  sky, end-stone floor, half a hardcore heart in the corner): `O.draw_end_world` + `O.hardcore_hud(0.5)`.
 ## Episode types
 1. **Episode 1 — "the ask"** (`episodes/ep001`, already posted in the older cuter style). The ending of every
    episode is now the deadpan ask (`S.the_ask(..., mood="deadpan")`, the default): dig at hip, clipboard, scribble,

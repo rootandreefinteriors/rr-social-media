@@ -21,15 +21,15 @@
   "ask_since_day": 4,
   "waiting_streak": 0,
   "world": {
-    "location": "white void",
+    "location": "block-game 'End' (from day 4): dark purple sky, pale end-stone floor; draw with S.background(O.draw_end_world) and S.overlays.insert(0, O.hardcore_hud(0.5)). He stays here until a comment moves him.",
     "companions": [],
     "props": [
-      "pixel sword (small, optional callback)"
+      "pixel sword lying on the floor next to him (optional callback)"
     ],
     "traits": [
-      "beat the block game on hardcore with half a heart"
+      "beat the block game on hardcore with half a heart (hardcore heart bar bottom-left, last half blinking)"
     ],
-    "notes": "Day 4: he beat a generic blocky survival game on hardcore (block world, dragon, portal). He is back in the white void. The hardcore heart bar (half a heart left, blinking) floated bottom-left through the ask -- optional callback, not required."
+    "notes": "Day 4: beat the blocky survival game on hardcore and did the ask right there in the End. He lives in the block world now; never return to the white void (user note)."
   },
   "used_comments": [
     "Beat Mc in hardcore mode:)"
@@ -53,7 +53,7 @@
     {
       "day": 4,
       "type": "comment",
-      "summary": "@neoblade75 (IG): 'Beat Mc in hardcore mode:)' -> '100 days' style full-screen cards: DAY 1 punches a log out of a tree (top floats); NIGHT 1 in a dirt pillar; DAY 41 drops into the floor portal; THE END: black blocky dragon swipes him to half a heart, he pulls a pixel sword, flurry of hits, one last tap, it dissolves; victory text scrolls; deadpan ask with the half heart (73.5 s)"
+      "summary": "@neoblade75 (IG): 'Beat Mc in hardcore mode:)' -> full-screen cards: DAY 1 punches a log out of a tree (top floats); NIGHT 1 in a dirt pillar; DAY 41 drops into the floor portal; STILL DAY 41: black blocky dragon swipes him to half a heart, he pulls a pixel sword, flurry of hits, one last tap, it dissolves; victory text scrolls beside him; drops the sword and does the ask right there in the End (71.8 s)"
     }
   ]
 }

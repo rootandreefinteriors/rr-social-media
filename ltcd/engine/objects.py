@@ -676,3 +676,21 @@ def draw_end_portal(cr, x0, x1, top, depth, t):
         col = (0.55, 0.95, 0.85) if k % 3 else (0.95, 0.95, 1.0)
         cr.rectangle(sx, sy, 7, 7); cr.set_source_rgba(*col, a); cr.fill()
     cr.rectangle(x0, top, x1 - x0, 6); cr.set_source_rgba(0.45, 0.85, 0.75, 0.6); cr.fill()
+
+# ------------------------------------------------------------------ where he lives now (from day 4) ---
+def draw_end_world(cr, t):
+    """S.background(O.draw_end_world): the dark purple sky, pixel stars and pale end-stone floor where he beat the
+    dragon (day 4). He stays here until the comments send him somewhere else."""
+    cr.rectangle(-3000, -3000, 8000, 8000); cr.set_source_rgb(0.24, 0.19, 0.30); cr.fill()
+    for i in range(22): cr.rectangle(-500 + (i * 211) % 2200, -200 + (i * 131) % 1300, 8, 8)
+    cr.set_source_rgba(0.95, 0.9, 1.0, 0.8); cr.fill()
+    draw_ground(cr, "endstone", "endstone")
+
+def hardcore_hud(health=0.5):
+    """S.overlays.insert(0, O.hardcore_hud(0.5)): the HARDCORE label + heart row bottom-left (screen space), last
+    heart blinking when low. Keep it on screen while he is in the block world."""
+    def ov(cr, t):
+        s, y = 5.6, 1440 - 6 * 5.6
+        draw_text(cr, "HARDCORE", 72, y - 30, 34, color=(240, 240, 240), anchor="left")
+        draw_hearts_bar(cr, 78, y, health, s=s, gap=6, blink=(0.5 + 0.5 * math.sin(t * 7)) if health <= 1 else 0.0)
+    return ov
