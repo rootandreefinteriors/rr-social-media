@@ -327,25 +327,35 @@ def flight(tt, p):
     return p
 def jet_on(te):
     u = te - TL
-    if u < 0 or u > 8.1: return False
-    if u > 7.5: return int(te * 20) % 3 != 0                          # sputters
-    return True
+    return 0.0 <= u <= 8.0
+def jet_k(te):                                                     # pressure: full, then tapers off (no dangling end)
+    return 1.0 - smooth(ramp(te - TL, 7.3, 8.0))
 def nozzle(te):
     u = te - TL; q, th = Q(u), theta(u)
     return q, (-math.sin(th), math.cos(th))                        # out of his butt, along his body
+JET_V, JET_LIFE = 1700.0, 1.6                                   # long enough that it always runs off screen
+_rj = random.Random(77)
+DROPS = [(TL + k / 90.0, _rj.uniform(-1, 1), _rj.uniform(0.5, 1.0), _rj.uniform(7, 17)) for k in range(int(8.0 * 90))]
 def jet(cr, t, p, ly):
-    if ly != "back" or not (TL <= t < TL + 8.8): return
+    if ly != "back" or not (TL <= t < TL + 9.8): return
+    cr.save(); cr.rectangle(-9000, -9000, 20000, 9000 + FLOOR_Y + 6); cr.clip()      # it doesn't go through the ground
     segs, cur = [], []
-    te = max(TL, t - 0.55)
-    while te <= t:
+    te = t
+    while te >= max(TL, t - JET_LIFE):                             # nozzle first, outwards
         if jet_on(te):
             (nx, ny), (dx, dy) = nozzle(te); a = t - te
-            cur.append((nx + dx * 1100 * a, ny + dy * 1100 * a + 0.5 * 1400 * a * a))
+            cur.append((nx + dx * JET_V * a, ny + dy * JET_V * a + 0.5 * 900 * a * a, (50 + 85 * a) * jet_k(te) + 2))
         elif cur: segs.append(cur); cur = []
-        te += 1 / 90
+        te -= 1 / 60
     if cur: segs.append(cur)
-    for sg in segs:
-        O.draw_stream(cr, sg[::-1], w=48)
+    for sg in segs: O.draw_spray(cr, sg, t=t)
+    for te0, side, sp, r in DROPS:                                 # spatter flying off the sides
+        a = t - te0
+        if not (0 <= a < 0.9) or not jet_on(te0): continue
+        (nx, ny), (dx, dy) = nozzle(te0)
+        vx, vy = dx * JET_V * sp - dy * side * 520, dy * JET_V * sp + dx * side * 520
+        O.draw_droplet(cr, nx + vx * a, ny + vy * a + 0.5 * 1500 * a * a, r * (1 - 0.5 * a) * jet_k(te0) + 1)
+    cr.restore()
 S.sfx(TL, "sploosh", 0.12); S.sfx(TL + 0.05, "kaboom", 0.25, dur=1.6); S.sfx(TL + 0.3, "wind", 0.07, dur=7.6)
 S.shake(TL, 0.6, 16)
 for k in range(5): S.sfx(TL + 7.5 + k * 0.15, "blub", 0.04)

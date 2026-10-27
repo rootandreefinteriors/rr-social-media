@@ -897,3 +897,26 @@ def draw_burger_world(cr, t, store_x=2760, x0=-4000):
         draw_cloud(cr, x + 10 * math.sin(t * 0.3 + x), y, s)
     cr.rectangle(x0, FLOOR_Y, 12000, 3000); cr.set_source_rgb(0.95, 0.94, 0.90); cr.fill()
     draw_burger_store(cr, store_x)
+
+def draw_spray(cr, pts, color=(0.52, 0.33, 0.14), dark=(0.36, 0.22, 0.09), t=0.0):
+    """a runny cartoon jet: pts = [(x, y, w), ...] from the nozzle outwards (w = width there, growing as it spreads).
+    Wobbly outlined ribbon with a darker core streak; make it long enough to leave the frame so it never 'ends'."""
+    if len(pts) < 3: return
+    L_, R_ = [], []
+    for i, (x, y, w) in enumerate(pts):
+        a, b = pts[max(0, i - 1)], pts[min(len(pts) - 1, i + 1)]
+        dx, dy = b[0] - a[0], b[1] - a[1]; n = math.hypot(dx, dy) + 1e-6
+        nx, ny = -dy / n, dx / n
+        wl = w * (0.5 + 0.12 * math.sin(i * 0.9 + t * 23)); wr = w * (0.5 + 0.12 * math.sin(i * 1.3 - t * 19 + 2))
+        L_.append((x + nx * wl, y + ny * wl)); R_.append((x - nx * wr, y - ny * wr))
+    poly = L_ + R_[::-1]
+    path(cr, poly); cr.close_path()
+    cr.set_source_rgb(*color); cr.fill_preserve(); stroke_ink(cr, 7)
+    core = [(x + 0.12 * w * math.sin(i * 0.7 + t * 17), y) for i, (x, y, w) in enumerate(pts)]
+    path(cr, core); stroke_ink(cr, 10, dark, 0.8)
+    for i in range(2, len(pts), 4):                                       # wet highlights
+        x, y, w = pts[i]
+        cr.arc(x - 0.18 * w, y - 0.1 * w, max(3.0, 0.07 * w), 0, 2 * math.pi); cr.set_source_rgba(1, 1, 1, 0.35); cr.fill()
+
+def draw_droplet(cr, x, y, r, color=(0.52, 0.33, 0.14)):
+    cr.arc(x, y, r, 0, 2 * math.pi); cr.set_source_rgb(*color); cr.fill_preserve(); stroke_ink(cr, 4)
