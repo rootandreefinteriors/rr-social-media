@@ -15,6 +15,11 @@ with moves.Scene.place(..., pop=True).
     draw_burger(cr, x, y, s, bites)        generic triple-decker burger (no brand); bites 0..1 eaten from the left
     draw_belly(cr, p, b)                   round cartoon belly over his torso (b 0..1), front layer
     draw_wrapper(cr, x, y, s, sid)         one crumpled burger wrapper; draw_wrapper_pile(cr, cx, w, h) a mound of them
+    draw_wrapped_burger(cr, x, y, s)       a burger still in its paper; draw_burger_pile(cr, cx, w, h) a mound of burgers
+    draw_burger_store(cr, cx, yb)          generic red/yellow fast-food burger place (no logo, no arches, no name)
+    draw_dump_truck(cr, rx, yb, tilt, t)   yellow dump truck facing right; rx = rear end; tilt = bed angle (rad)
+    draw_cloud(cr, x, y, s)                puffy outlined cartoon cloud
+    draw_stream(cr, pts, w, color)         thick outlined cartoon stream through pts (e.g. a jet of brown "fuel")
 """
 import math
 import cairo
@@ -780,3 +785,115 @@ def draw_wrapper_pile(cr, cx, w, h, yb=FLOOR_Y, n=None):
         balls.append((yy, cx + u * w / 2, k, rnd.uniform(0.9, 1.5)))
     for yy, xx, k, sc in sorted(balls):
         draw_wrapper(cr, xx, yy, sc, sid=5000 + k)
+
+
+# ------------------------------------------------------------------ burger place / dump truck / sky (day 5 re-cut) ---
+STORE_RED, STORE_YEL = (0.80, 0.17, 0.14), (1.0, 0.78, 0.16)
+
+def draw_wrapped_burger(cr, x, y, s=1.0):
+    """a burger still in its paper wrapper, centre (x, y)."""
+    cr.save(); cr.translate(x, y); cr.scale(s, s)
+    pts = [(-78, 40), (-84, -10), (-60, -52), (0, -66), (60, -52), (84, -10), (78, 40), (0, 50)]
+    sketch_poly(cr, pts, 4.5, sid=6100, fill=(0.98, 0.95, 0.86), amp=0.8)
+    sketch_line(cr, [(-70, -12), (-10, -30), (40, -8)], 3, sid=6101, amp=0.5)
+    sketch_line(cr, [(-30, 30), (20, 10), (70, 22)], 3, sid=6102, amp=0.5)
+    sketch_rect(cr, -26, -16, 26, 6, 3, sid=6103, fill=STORE_RED, amp=0.4)
+    cr.restore()
+
+def draw_burger_pile(cr, cx, w, h, yb=FLOOR_Y, n=70, s=0.62):
+    """a mound of burgers, bottom-centre (cx, yb). Positions are stable; the mound scales with w and h."""
+    if h < 12: return
+    import random
+    rnd = random.Random(55)
+    pts = [(cx + (k / 24 - 0.5) * w, yb - max(0.0, h - 35) * (1 - (2 * k / 24 - 1) ** 2) ** 0.8) for k in range(25)]
+    sketch_poly(cr, pts, 4, sid=6200, fill=(0.62, 0.40, 0.22), amp=1.0)
+    bs = s * min(1.0, 0.45 + h / 500)
+    items = []
+    for k in range(n):
+        u = rnd.uniform(-0.93, 0.93); v = rnd.random() ** 0.55
+        surf = h * (1 - u * u) ** 0.8
+        y = yb - max(0.0, surf - 48 * bs / 0.62) * v - 20
+        items.append((y, cx + u * w / 2, k))
+    for y, x, k in sorted(items):
+        draw_burger(cr, x, y, bs, sid=k * 3)
+
+def draw_burger_store(cr, cx, yb=FLOOR_Y):
+    """generic red/yellow burger place: brick-red box, yellow mansard band, striped awning, big windows, a door and a
+    tall yellow sign on the LEFT with a drawn burger and the word BURGERS. No logo, no arches, no brand."""
+    w, h = 820, 430
+    x0, x1, y0 = cx - w / 2, cx + w / 2, yb - h
+    sketch_rect(cr, x0, y0, x1, yb, 6, sid=6300, fill=STORE_RED)
+    sketch_poly(cr, [(x0 - 40, y0 + 10), (x0 + 10, y0 - 90), (x1 - 10, y0 - 90), (x1 + 40, y0 + 10)], 6, sid=6301, fill=STORE_YEL)
+    for k in range(7):                                                      # windows + door
+        wx = x0 + 40 + k * 108
+        if k == 3: sketch_rect(cr, wx, yb - 250, wx + 90, yb, 5, sid=6310, fill=(0.75, 0.88, 0.95)); continue
+        sketch_rect(cr, wx, yb - 260, wx + 90, yb - 90, 5, sid=6320 + k, fill=(0.75, 0.88, 0.95))
+    for k in range(14):                                                     # striped awning
+        ax = x0 + 20 + k * 56
+        sketch_poly(cr, [(ax, yb - 300), (ax + 56, yb - 300), (ax + 62, yb - 250), (ax + 6, yb - 250)], 3.5, sid=6340 + k,
+                    fill=STORE_RED if k % 2 else (1, 1, 1), amp=0.4)
+    draw_text(cr, "BURGERS", cx, y0 - 42, 62, color=(200, 30, 26))
+    px = x0 - 230                                                           # the tall sign
+    sketch_rect(cr, px - 16, yb - 700, px + 16, yb, 5, sid=6360, fill=(0.6, 0.6, 0.62))
+    sketch_rect(cr, px - 150, yb - 900, px + 150, yb - 680, 6, sid=6361, fill=STORE_YEL)
+    draw_burger(cr, px, yb - 830, 0.7, sid=40)
+    draw_text(cr, "BURGERS", px, yb - 718, 44, color=(200, 30, 26))
+
+def draw_dump_truck(cr, rx, yb, tilt=0.0, t=0.0, load=1.0, label="1 BILLION BURGERS"):
+    """yellow dump truck facing RIGHT; rx = the rear end (where the load comes out), yb = ground. tilt = bed angle
+    (rad, front end up). load 0..1 = burgers heaped in the bed."""
+    YEL, DARK = (1.0, 0.80, 0.18), (0.25, 0.25, 0.28)
+    sketch_rect(cr, rx + 10, yb - 175, rx + 880, yb - 120, 5, sid=6400, fill=DARK)          # chassis
+    sketch_poly(cr, [(rx + 620, yb - 130), (rx + 620, yb - 420), (rx + 790, yb - 420), (rx + 880, yb - 290), (rx + 890, yb - 130)],
+                6, sid=6401, fill=YEL)                                                         # cab
+    sketch_poly(cr, [(rx + 650, yb - 390), (rx + 775, yb - 390), (rx + 840, yb - 295), (rx + 650, yb - 295)], 4, sid=6402,
+                fill=(0.75, 0.88, 0.95))
+    for k, wx in enumerate((rx + 130, rx + 270, rx + 760)):                                   # wheels
+        sketch_circle(cr, wx, yb - 68, 68, 6, sid=6410 + k, fill=(0.15, 0.15, 0.17))
+        sketch_circle(cr, wx, yb - 68, 28, 4, sid=6415 + k, fill=(0.7, 0.7, 0.72))
+        a = -rx / 68.0
+        cr.move_to(wx + 26 * math.cos(a), yb - 68 + 26 * math.sin(a)); cr.line_to(wx - 26 * math.cos(a), yb - 68 - 26 * math.sin(a))
+        stroke_ink(cr, 4)
+    cr.save(); cr.translate(rx, yb - 175); cr.rotate(-tilt)                                     # the bed, hinged at the rear
+    if load > 0.02:
+        for k in range(9):
+            bx = 50 + k * 60; by = -235 - 40 * load * math.sin(math.pi * (k + 0.5) / 9)
+            draw_burger(cr, bx, by, 0.45, sid=k * 5)
+    sketch_poly(cr, [(0, 0), (0, -250), (600, -250), (600, 0)], 6, sid=6420, fill=YEL)
+    for k in range(4): sketch_line(cr, [(30 + k * 150, -230), (30 + k * 150, -20)], 3, sid=6421 + k, amp=0.5)
+    draw_text(cr, label, 300, -125, 46, color=(30, 30, 34))
+    cr.restore()
+
+def draw_cloud(cr, x, y, s=1.0, alpha=1.0):
+    """puffy cartoon cloud, centre (x, y): one ink outline around white puffs."""
+    puffs = [(-110, 20, 70), (-45, -25, 85), (40, -35, 90), (110, 10, 72), (0, 30, 80)]
+    cr.push_group()
+    for dx, dy, r in puffs:
+        cr.arc(x + dx * s, y + dy * s, r * s, 0, 2 * math.pi); cr.new_sub_path()
+    cr.set_source_rgb(*INK); cr.set_line_width(14 * s); cr.stroke_preserve(); cr.set_source_rgb(1, 1, 1); cr.fill()
+    cr.pop_group_to_source(); cr.paint_with_alpha(alpha)
+
+def draw_stream(cr, pts, w=30, color=(0.46, 0.29, 0.14), lumps=True):
+    """thick outlined cartoon stream through pts (list of (x, y)); round lumps along it."""
+    if len(pts) < 2: return
+    path(cr, pts); stroke_ink(cr, w + 10)
+    if lumps:
+        for k in range(0, len(pts), 3):
+            cr.arc(pts[k][0], pts[k][1], w * 0.62 + 5, 0, 2 * math.pi); cr.set_source_rgb(*INK); cr.fill()
+    path(cr, pts); stroke_ink(cr, w, color)
+    if lumps:
+        for k in range(0, len(pts), 3):
+            cr.arc(pts[k][0], pts[k][1], w * 0.62, 0, 2 * math.pi); cr.set_source_rgb(*color); cr.fill()
+            cr.arc(pts[k][0] - w * 0.2, pts[k][1] - w * 0.25, w * 0.14, 0, 2 * math.pi); cr.set_source_rgba(1, 1, 1, 0.35); cr.fill()
+
+# ------------------------------------------------------------------ where he lives now (from day 5) ---
+def draw_burger_world(cr, t, store_x=2760, x0=-4000):
+    """S.background(lambda cr, t: O.draw_burger_world(cr, t, store_x=...)): pale sky with a few clouds, paper ground and
+    the red/yellow burger place (sign on its left) where he landed on day 5. Body offset 2000 puts him at x 2540, just
+    left of the store's centre (camera e.g. (2620, 930, 1.0)). Add O.draw_wrapper_pile(cr, 2540, 1350, 260) behind him
+    for the leftover wrappers."""
+    cr.rectangle(x0, -6000, 12000, 12000); cr.set_source_rgb(0.80, 0.89, 0.98); cr.fill()
+    for (x, y, s) in ((store_x - 640, 120, 0.9), (store_x + 660, 400, 0.8), (store_x + 300, -380, 1.1)):
+        draw_cloud(cr, x + 10 * math.sin(t * 0.3 + x), y, s)
+    cr.rectangle(x0, FLOOR_Y, 12000, 3000); cr.set_source_rgb(0.95, 0.94, 0.90); cr.fill()
+    draw_burger_store(cr, store_x)
