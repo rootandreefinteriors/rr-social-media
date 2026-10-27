@@ -1,38 +1,41 @@
 {
   "show": "let the comments decide",
-  "day": 4,
+  "day": 5,
   "last_episode": {
-    "day": 4,
+    "day": 5,
     "type": "comment",
-    "folder": "episodes/ep004",
-    "video": "videos/day004.mp4",
-    "posted_at": "2026-10-26T19:00:00-04:00",
+    "folder": "episodes/ep005",
+    "video": "videos/day005.mp4",
+    "posted_at": "2026-10-27T19:00:00-04:00",
     "buffer": {
-      "tiktok": "6adfa670188ed7b8726bec0a",
-      "instagram": "6adfa672e0ae5134fabbc193"
+      "tiktok": "6ae0faf1dec875ec9585c987",
+      "instagram": "6ae0faf32d6ce6e7b6ddfa57"
     },
     "comment": {
       "platform": "instagram",
-      "username": "neoblade75",
-      "text": "Beat Mc in hardcore mode:)",
-      "likes": 0
+      "username": "nerdbpy",
+      "text": "Eat a billion big Mac’s",
+      "likes": 8
     }
   },
-  "ask_since_day": 4,
+  "ask_since_day": 5,
   "waiting_streak": 0,
   "world": {
     "location": "block-game 'End' (from day 4): dark purple sky, pale end-stone floor; draw with S.background(O.draw_end_world) and S.overlays.insert(0, O.hardcore_hud(0.5)). He stays here until a comment moves him.",
     "companions": [],
     "props": [
-      "pixel sword lying on the floor next to him (optional callback)"
+      "pixel sword lying on the floor (optional callback; hidden behind the wrapper pile on day 5)",
+      "a huge mound of crumpled burger wrappers behind him (O.draw_wrapper_pile(cr, OX + 520, 1150, 520)); can be cleared with a cartoon consequence"
     ],
     "traits": [
-      "beat the block game on hardcore with half a heart (hardcore heart bar bottom-left, last half blinking)"
+      "beat the block game on hardcore with half a heart (hardcore heart bar bottom-left, last half blinking)",
+      "ate a billion (generic triple-decker) burgers; got a huge round belly that deflated back to a stick with a long hiss"
     ],
-    "notes": "Day 4: beat the blocky survival game on hardcore and did the ask right there in the End. He lives in the block world now; never return to the white void (user note)."
+    "notes": "Day 5: still in the End. Ate one billion generic burgers (counter HUD bottom-left), toast 'ADVANCEMENT MADE / WHY.', belly deflated, did the ask in front of the wrapper mountain. Still half a hardcore heart."
   },
   "used_comments": [
-    "Beat Mc in hardcore mode:)"
+    "Beat Mc in hardcore mode:)",
+    "Eat a billion big Mac’s"
   ],
   "history": [
     {
@@ -54,6 +57,11 @@
       "day": 4,
       "type": "comment",
       "summary": "@neoblade75 (IG): 'Beat Mc in hardcore mode:)' -> full-screen cards: DAY 1 punches a log out of a tree (top floats); NIGHT 1 in a dirt pillar; DAY 41 drops into the floor portal; STILL DAY 41: black blocky dragon swipes him to half a heart, he pulls a pixel sword, flurry of hits, one last tap, it dissolves; victory text scrolls beside him; drops the sword and does the ask right there in the End (71.8 s)"
+    },
+    {
+      "day": 5,
+      "type": "comment",
+      "summary": "@nerdbpy (IG): 'Eat a billion big Mac’s' -> in the End: BURGER 1 (pulls a burger from his hip, 4 slow bites, counter 1, eyes slide to counter); BURGER 2 (one bite, that's it); BURGER 40,000 (burger towers, round belly, autopilot hip-to-mouth, counter rolling); BURGER 999,999,999 (sitting on a wrapper mountain, giant belly, last 3 bites, 1,000,000,000, ding, toast ADVANCEMENT MADE - WHY.), belly deflates with a hiss, stands, deadpan ask (71.2 s)"
     }
   ]
 }
