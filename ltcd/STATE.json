@@ -21,17 +21,17 @@
   "ask_since_day": 5,
   "waiting_streak": 0,
   "world": {
-    "location": "block-game 'End' (from day 4): dark purple sky, pale end-stone floor; draw with S.background(O.draw_end_world) and S.overlays.insert(0, O.hardcore_hud(0.5)). He stays here until a comment moves him.",
+    "location": "outside a generic red/yellow burger place in a new world (from day 5): pale sky, a few clouds, paper ground, the store with a tall BURGERS sign on its left; draw with S.background(lambda cr, t: O.draw_burger_world(cr, t)) and body offset 2000 (he stands at x 2540). He walked here out of the block-game End (no more hardcore hearts HUD). He stays here until a comment moves him.",
     "companions": [],
     "props": [
-      "pixel sword lying on the floor (optional callback; hidden behind the wrapper pile on day 5)",
-      "a huge mound of crumpled burger wrappers behind him (O.draw_wrapper_pile(cr, OX + 520, 1150, 520)); can be cleared with a cartoon consequence"
+      "a big pile of crumpled burger wrappers around him (O.draw_wrapper_pile(cr, 2540, 1350, 260) behind, a low one in front)",
+      "pixel sword left behind in the End (callback only if he goes back)"
     ],
     "traits": [
-      "beat the block game on hardcore with half a heart (hardcore heart bar bottom-left, last half blinking)",
-      "ate a billion (generic triple-decker) burgers; got a huge round belly that deflated back to a stick with a long hiss"
+      "beat the block game on hardcore with half a heart (day 4)",
+      "ate a billion burgers, which launched him into space on a cartoon poop jet; belly deflated back to a stick (day 5)"
     ],
-    "notes": "Day 5: still in the End. Ate one billion generic burgers (counter HUD bottom-left), toast 'ADVANCEMENT MADE / WHY.', belly deflated, did the ask in front of the wrapper mountain. Still half a hardcore heart."
+    "notes": "Day 5 (re-cut on Justin's outline): walked right out of the End into a new world with a burger place; a dump truck (1 BILLION BURGERS) buried him; head popped out; ate them one bite each, faster and faster, belly swelling, BURGERS LEFT counter to 0; huge belly, exhausted; eyes wide; poop jet launched him through clouds and stars (loops, twirl), belly deflated; landed on his butt in the wrappers; stood; the ask in front of the store."
   },
   "used_comments": [
     "Beat Mc in hardcore mode:)",
@@ -61,7 +61,7 @@
     {
       "day": 5,
       "type": "comment",
-      "summary": "@nerdbpy (IG): 'Eat a billion big Mac’s' -> in the End: BURGER 1 (pulls a burger from his hip, 4 slow bites, counter 1, eyes slide to counter); BURGER 2 (one bite, that's it); BURGER 40,000 (burger towers, round belly, autopilot hip-to-mouth, counter rolling); BURGER 999,999,999 (sitting on a wrapper mountain, giant belly, last 3 bites, 1,000,000,000, ding, toast ADVANCEMENT MADE - WHY.), belly deflates with a hiss, stands, deadpan ask (71.2 s)"
+      "summary": "@nerdbpy (IG): 'Eat a billion big Mac’s' -> RE-CUT on Justin's outline: reads the card in the End, walks right into a new world with a red/yellow burger place; a dump truck backs in and dumps 1 BILLION BURGERS on him; head pops out of the pile; unwraps and eats them one bite each, faster and faster (BURGERS LEFT counter), belly swelling, wrappers piling up; struggles through the last two; huge belly, exhausted; eyes go wide; a cartoon poop jet launches him into the sky (loops, flips, a twirl past clouds and stars) while the belly deflates; falls and lands on his butt; stands; deadpan ask in front of the store (69.2 s)"
     }
   ]
 }
