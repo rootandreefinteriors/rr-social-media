@@ -35,8 +35,11 @@ git config user.name "Claude (LTCD routine)"; git config user.email "noreply@ant
 
 ## 3. Write the episode
 - New folder `ltcd/episodes/epNNN/` (NNN = STATE.day + 1, zero-padded). **Build it with `engine/moves.py`** (the
-  `Scene` builder) — never hand-place joints. **Tone + acting reference: `ltcd/tests/comment_tests/t1_ramen_v2`**
-  (Adult Swim deadpan, hard cuts, slow-building reactions — read SHOW.md "Tone"/"Acting"/"Animation" first).
+  `Scene` builder) — never hand-place joints. **Format + humour reference: `ltcd/episodes/ep005`** (user-approved
+  2026-10-27; follow SHOW.md "THE FORMAT TO FOLLOW": start where he is -> travel on camera -> the request arrives
+  BIGGER than him -> deadpan escalation in one continuous scene -> a huge physical cartoon payoff -> lands -> ask).
+  Acting reference: `ltcd/tests/comment_tests/t1_ramen_v2` (deadpan, slow-building reactions — read SHOW.md
+  "Tone"/"Acting"/"Animation" first).
   `t1_ramen`, `t2_nuke`, `t3_dino` are the OLD cute style the user rejected — use them only as examples of props
   and staging tricks, never for tone. Key calls:
   `S = M.Scene(x0=...)`, `S.card(user, text, likes)`, `S.read_card(t, react, lines)`, `S.walk_to/run_to`,

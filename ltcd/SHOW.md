@@ -14,6 +14,24 @@ Daily loop: **post 7:00 PM ET → comments come in → 3:00 PM ET next day: comm
   total, joyless commitment, and the humour comes from his flat reactions to insane situations, uncomfortable holds,
   hard cuts, and a slightly dark absurd escalation (something bigger than him shows up; the joke turns on him).
   Still PG-13 (rules below). Reference: `tests/comment_tests/t1_ramen_v2` — APPROVED direction (user, 2026-10-24: "this is the right direction for now").
+- **THE FORMAT TO FOLLOW (user, 2026-10-27, after the day 5 re-cut: "use this style of humor and format moving forward
+  — not necessarily poop humor but you get it"). Reference: `episodes/ep005`.** What made it work:
+  1. **Start where he is**, then go where the comment needs him: he walks/travels into a new world on camera
+     (camera follows; the old world's HUD fades) — don't teleport, don't use title cards to change place.
+  2. **Take the request literally and make it BIGGER than him.** The world delivers it absurdly (a dump truck tips
+     "1 BILLION BURGERS" on him; he's buried; his head pops out of the top). Show the scale on screen (a big readable
+     counter / label) so the stakes read instantly.
+  3. **He commits, deadpan, and it escalates in one continuous scene:** slow and deliberate at first, then faster and
+     faster (time-compression by acceleration, not by DAY/NIGHT cards), the cost visibly building on his body
+     (belly swelling, pile shrinking, wrappers piling up), a struggle at the very end, then an exhausted hold.
+  4. **The consequence is the punchline:** a slow tell (eyes go wide, a gurgle) and then a huge physical cartoon
+     payoff that takes over the screen (he's launched into the sky: loops, flips, a twirl past clouds and stars)
+     that also undoes the escalation (the belly deflates). Gross-out/slapstick is fine at PG-13 cartoon level; the
+     next payoff doesn't have to be the same kind — it has to be big, physical and earned by what came before.
+  5. **Land it and end flat:** he comes down hard (on his butt), a beat, stands up deadpan, does the ask right there.
+  6. **Effects must read on a phone:** big, chunky, continuous. Jets/streams/trails always run off screen (never a
+     visible end that looks like a dangling object), and they taper off rather than breaking into chunks.
+  Generic stand-ins for brands stay as close as the rules allow (red/yellow burger place, no logo/name).
 - **Acting (user note: emotions felt canned, fired at the wrong time, disconnected):** reactions come AFTER the thing
   that causes them (~0.3 s), eyes move first, then the head, then the body. Emotions BUILD out of the situation
   (ramp parameters over seconds: heat_fill, sweat, twitch, pupil, quiver, tear1, breath_rate) instead of switching
