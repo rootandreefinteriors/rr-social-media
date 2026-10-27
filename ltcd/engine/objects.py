@@ -12,8 +12,12 @@ with moves.Scene.place(..., pop=True).
     draw_water(cr, level_y, t)             underwater tint + surface line (front layer); draw_bubbles(...)
     draw_build_cloud(cr, x, y, t, t0, dur) Looney Tunes "fight cloud" that builds something
     draw_crater(cr, x, s, t)               scorch mark + smoke on the floor
+    draw_burger(cr, x, y, s, bites)        generic triple-decker burger (no brand); bites 0..1 eaten from the left
+    draw_belly(cr, p, b)                   round cartoon belly over his torso (b 0..1), front layer
+    draw_wrapper(cr, x, y, s, sid)         one crumpled burger wrapper; draw_wrapper_pile(cr, cx, w, h) a mound of them
 """
 import math
+import cairo
 from ink import (INK, PAPER, WHITE, FLOOR_Y, wob, sketch_pts, path, stroke_ink, fill_paper, fill_ink, sketch_line,
                  sketch_circle, sketch_rect, ellipse, sketch_ellipse, sketch_poly, draw_text, smooth, back_out, clamp01, lerp)
 from props import draw_impact
@@ -694,3 +698,85 @@ def hardcore_hud(health=0.5):
         draw_text(cr, "HARDCORE", 72, y - 30, 34, color=(240, 240, 240), anchor="left")
         draw_hearts_bar(cr, 78, y, health, s=s, gap=6, blink=(0.5 + 0.5 * math.sin(t * 7)) if health <= 1 else 0.0)
     return ov
+
+
+# ------------------------------------------------------------------ burgers (day 5) ---
+# A generic triple-decker burger: three sesame bun pieces, two patties, cheese, lettuce. No box, no logo, no name.
+BUN, BUN_D, PATTY, CHEESE, LETTUCE = (0.93, 0.68, 0.36), (0.83, 0.55, 0.26), (0.42, 0.26, 0.17), (1.0, 0.80, 0.25), (0.45, 0.74, 0.30)
+
+def draw_burger(cr, x, y, s=1.0, bites=0.0, sid=0):
+    """(x, y) = centre; ~170 x 150 at s=1. bites 0..1: eaten from the LEFT side (the side at his mouth), scalloped."""
+    if bites >= 0.999: return
+    cr.save(); cr.translate(x, y); cr.scale(s, s)
+    cr.push_group()
+    def layer(y0, y1, col, sid_, inset=0, r=10):
+        sketch_rect(cr, -85 + inset, y0, 85 - inset, y1, 4.5, sid=sid + sid_, fill=col, amp=1.0)
+    def lettuce(y0):
+        pts = [(-92 + i * 9.2, y0 + 5 * math.sin(i * 1.7)) for i in range(21)] + [(92, y0 + 10), (-92, y0 + 10)]
+        sketch_poly(cr, pts, 4, sid=sid + 7, fill=LETTUCE, amp=0.8)
+    def cheese(y0):
+        sketch_poly(cr, [(-88, y0), (88, y0), (70, y0 + 9), (20, y0 + 9), (6, y0 + 22), (-8, y0 + 9), (-88, y0 + 9)], 4,
+                    sid=sid + 8, fill=CHEESE, amp=0.6)
+    layer(52, 75, BUN, 1, inset=4)                                     # bottom bun
+    layer(28, 52, PATTY, 2)                                            # patty
+    cheese(22); lettuce(16)
+    layer(-4, 18, BUN_D, 3, inset=2)                                   # middle bun
+    layer(-28, -4, PATTY, 4)
+    cheese(-34); lettuce(-40)
+    cr.save(); cr.rectangle(-120, -100, 240, 60); cr.clip()            # top bun dome
+    ellipse(cr, 0, -40, 86, 38, sid=sid + 5, amp=0.01); fill_paper(cr, BUN); stroke_ink(cr, 4.5); cr.restore()
+    sketch_line(cr, [(-86, -40), (86, -40)], 4.5, sid=sid + 6, amp=0.6)
+    for k, (sx, sy) in enumerate(((-45, -60), (-12, -68), (22, -63), (52, -54), (-62, -48), (5, -52), (-28, -52), (35, -48))):
+        ellipse(cr, sx, sy, 6, 3.2, rot=0.4 * math.sin(k * 2.1), sid=sid + 20 + k); fill_paper(cr, (1.0, 0.98, 0.9)); stroke_ink(cr, 1.8)
+    if bites > 0.001:                                                  # bitten away from the left: scalloped edge
+        cx_ = -95 + 190 * bites
+        cr.set_operator(cairo.OPERATOR_CLEAR)
+        cr.move_to(-130, -110); cr.line_to(cx_, -110)
+        for k in range(4):
+            yy = -80 + k * 46
+            cr.arc(cx_, yy + 23, 24, -math.pi / 2, math.pi / 2)
+        cr.line_to(cx_, 110); cr.line_to(-130, 110); cr.close_path(); cr.fill()
+        cr.set_operator(cairo.OPERATOR_OVER)
+    cr.pop_group_to_source(); cr.paint()
+    cr.restore()
+
+def belly_geom(p, b):
+    nx, ny = p["neck"]; hx, hy = p["hip"]
+    r = 34 + 150 * b
+    return lerp((nx, ny), (hx, hy), 0.6 + 0.08 * b), r
+
+def draw_belly(cr, p, b, wob_=0.0):
+    """a round belly over his torso (front layer); b 0..1. wob_ adds a deflating wobble."""
+    if b < 0.02: return
+    (cx, cy), r = belly_geom(p, b)
+    ellipse(cr, cx, cy, r * (1 + 0.06 * wob_), r * (0.96 - 0.06 * wob_), sid=4001, amp=0.012)
+    fill_paper(cr); stroke_ink(cr, 7)
+    cr.new_path()
+    sketch_line(cr, [(cx - 8, cy + r * 0.25), (cx, cy + r * 0.3), (cx + 6, cy + r * 0.24)], 4, sid=4002, amp=0.4)  # button
+
+def draw_wrapper(cr, x, y, s=1.0, sid=0):
+    """one crumpled paper wrapper ball, centre (x, y)."""
+    n = 9; pts = []
+    for k in range(n):
+        a = k * 2 * math.pi / n; rr = 26 * s * (0.75 + 0.45 * _h(sid, k))
+        pts.append((x + rr * math.cos(a), y + rr * 0.8 * math.sin(a)))
+    col = (0.98, 0.96, 0.9) if _h(sid, 99) < 0.6 else (0.96, 0.86, 0.62)
+    sketch_poly(cr, pts, 3.5, sid=sid, fill=col, amp=0.8)
+    a0 = _h(sid, 5) * 6
+    sketch_line(cr, [(x - 10 * s * math.cos(a0), y - 8 * s * math.sin(a0)), (x + 8 * s, y + 4 * s)], 2.5, sid=sid + 1, amp=0.5)
+
+def draw_wrapper_pile(cr, cx, w, h, yb=FLOOR_Y, n=None):
+    """a mound of crumpled wrappers, bottom-centre (cx, yb), w wide, h tall. Stable (same balls every frame)."""
+    if h < 4: return
+    import random
+    rnd = random.Random(77)
+    pts = [(cx + (k / 24 - 0.5) * w, yb - h * (1 - (2 * k / 24 - 1) ** 2) ** 0.8) for k in range(25)]
+    sketch_poly(cr, pts, 4, sid=5999, fill=(0.93, 0.89, 0.78), amp=1.0)
+    n = n or int(10 + w * h / 1800)
+    balls = []
+    for k in range(n):
+        u = rnd.uniform(-0.97, 0.97); top = h * (1 - u * u) ** 0.8
+        yy = yb - top * (1 - rnd.random() ** 2.5) + 10
+        balls.append((yy, cx + u * w / 2, k, rnd.uniform(0.9, 1.5)))
+    for yy, xx, k, sc in sorted(balls):
+        draw_wrapper(cr, xx, yy, sc, sid=5000 + k)
