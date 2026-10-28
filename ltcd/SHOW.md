@@ -126,6 +126,9 @@ Daily loop: **post 7:00 PM ET → comments come in → 3:00 PM ET next day: comm
 
 ## Posting
 - Both platforms, same video, **7:00 PM America/New_York** (offset -04:00 until 2026-11-01, then -05:00).
+- **Caption rule (user, 2026-10-28, overrides the examples below): short and funny — ONE light line, never a play-by-play
+  of the video. Always kind/respectful to the commenter (many are kids, sometimes with their parents).** e.g.
+  `day 6 · @nerdbpy's mom said rock a baby to sleep. it worked a little too well. tell us what to do next in the comments 👇`
 - Caption: `day N · tell me what to do next 👇` (+ `#letthecommentsdecide #stickfigure #animation`). For comment
   episodes (user note 2026-10-26): tag the commenter in a short, funny deadpan line about what it cost him, then
   `tell us what to do next in the comments 👇` + the hashtags. e.g. `day 4 · @neoblade75 said beat it on hardcore. 41 days.
