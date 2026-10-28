@@ -1051,12 +1051,15 @@ def draw_baby(cr, x, y, ang=0.0, st=None, t=0.0, s=1.0):
         sketch_line(cr, [(mx - 7, my - 1), (mx, my + 3), (mx + 7, my - 1)], 3.5, sid=7531, amp=0.3)
     cr.restore()
 
-def draw_mom(cr, t, p, blink=0.0, s=0.92):
+def draw_mom(cr, t, p, blink=0.0, s=0.92, alpha=1.0):
     """draw a mom on his rig. p = a constrained pose (world coords, feet at FLOOR_Y). Long dark hair with a bun on top
-    (covers his signature curl), a pink dress, otherwise the same line style. Drawn scaled s around her feet."""
+    (covers his signature curl), a pink dress, otherwise the same line style. Drawn scaled s around her feet.
+    p["back"] = 1 shows her from behind (all hair)."""
+    if alpha < 0.01: return
     fx = (p["lfoot"][0] + p["rfoot"][0]) / 2
+    cr.push_group()
     cr.save(); cr.translate(fx, FLOOR_Y); cr.scale(s, s); cr.translate(-fx, -FLOOR_Y)
-    hx, hy = p["head"]; tl = p.get("tilt", 0.0); tn = p.get("turn", 0.0)
+    hx, hy = p["head"]; tl = p.get("tilt", 0.0); tn = p.get("turn", 0.0); bk = p.get("back", 0.0) > 0.5
     cr.save(); cr.translate(hx, hy); cr.rotate(tl)                          # hair behind the head
     sketch_poly(cr, [(-135 - 10 * tn, -20), (-120, -110), (-60, -150), (60, -150), (120, -110), (135 - 10 * tn, -20),
                      (140, 120), (95, 170), (-95, 170), (-140, 120)], 6, sid=7601, fill=HAIR, amp=1.0)
@@ -1067,11 +1070,30 @@ def draw_mom(cr, t, p, blink=0.0, s=0.92):
     sketch_poly(cr, [(nx - 26, ny + 22), (nx + 26, ny + 22), (hpx + 50, hpy - 40), (hpx + 105, hpy + 150), (hpx - 105, hpy + 150),
                      (hpx - 50, hpy - 40)], 6, sid=7602, fill=DRESS, amp=1.0)
     C.draw_arm_over(cr, q, "l"); C.draw_arm_over(cr, q, "r")
-    cr.save(); cr.translate(hx, hy); cr.rotate(tl)                          # bangs + bun over the top of the head
+    cr.save(); cr.translate(hx, hy); cr.rotate(tl)                          # bangs (or the whole back of the head) + bun
     cr.save(); cr.arc(0, 0, C.HEAD_R + 2, 0, 2 * math.pi); cr.clip()
-    sketch_poly(cr, [(-140, -160), (140, -160), (140, -40), (60 + 30 * tn, -62), (10 * tn, -80), (-60 + 30 * tn, -60), (-140, -40)],
-                6, sid=7603, fill=HAIR, amp=0.8)
+    if bk:
+        cr.rectangle(-200, -200, 400, 400); cr.set_source_rgb(*HAIR); cr.fill()
+    else:
+        sketch_poly(cr, [(-140, -160), (140, -160), (140, -40), (60 + 30 * tn, -62), (10 * tn, -80), (-60 + 30 * tn, -60), (-140, -40)],
+                    6, sid=7603, fill=HAIR, amp=0.8)
     cr.restore()
+    if bk: cr.arc(0, 0, C.HEAD_R, 0, 2 * math.pi); stroke_ink(cr, 7)
     sketch_circle(cr, 8 * tn, -C.HEAD_R - 30, 52, 6, sid=7604, fill=HAIR)
     cr.restore()
     cr.restore()
+    cr.pop_group_to_source(); cr.paint_with_alpha(alpha)
+
+# the burger place's door (draw_burger_store: centre 2760, 90 x 250): lit inside when open, a glass panel that swings
+STORE_DOOR = (2714, FLOOR_Y - 250, 2804, FLOOR_Y)
+def draw_store_door(cr, open_=0.0, part="inside"):
+    """part "inside": the lit doorway (draw before whoever walks through it); part "panel": the door itself, swung
+    open by open_ 0..1 on its left hinge (draw after them)."""
+    x0, y0, x1, y1 = STORE_DOOR
+    if part == "inside":
+        if open_ > 0.01: sketch_rect(cr, x0, y0, x1, y1, 5, sid=6311, fill=(1.0, 0.88, 0.6))
+        return
+    w = (x1 - x0) * math.cos(open_ * 1.35)
+    if w < 4: return
+    sketch_poly(cr, [(x0, y0), (x0 + w, y0 + 10 * open_), (x0 + w, y1 - 6 * open_), (x0, y1)], 5, sid=6312, fill=(0.75, 0.88, 0.95), amp=0.5)
+    sketch_line(cr, [(x0 + w * 0.78, y0 + 120), (x0 + w * 0.78, y0 + 150)], 5, sid=6313, amp=0.3)

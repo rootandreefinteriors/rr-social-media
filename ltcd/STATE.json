@@ -6,7 +6,7 @@
     "type": "comment",
     "folder": "episodes/ep006",
     "video": "videos/day006.mp4",
-    "posted_at": "2026-10-28T19:00:00-04:00",
+    "posted_at": "draft (waiting on Justin's review)",
     "buffer": {
       "tiktok": "6ae24b9b787994b52278450a",
       "instagram": "6ae24b9d787994b52278454d"
@@ -21,10 +21,10 @@
   "ask_since_day": 6,
   "waiting_streak": 0,
   "world": {
-    "location": "outside a generic red/yellow burger place in a new world (from day 5): pale sky, a few clouds, paper ground, the store with a tall BURGERS sign on its left; draw with S.background(lambda cr, t: O.draw_burger_world(cr, t)) and body offset 2000 (he stands at x 2540). He walked here out of the block-game End (no more hardcore hearts HUD). On day 6 he ended at body offset 2000 (x 2540), still blushing. He stays here until a comment moves him.",
+    "location": "outside a generic red/yellow burger place in a new world (from day 5): pale sky, a few clouds, paper ground, the store with a tall BURGERS sign on its left; draw with S.background(lambda cr, t: O.draw_burger_world(cr, t)) and body offset 2000 (he stands at x 2540). He walked here out of the block-game End (no more hardcore hearts HUD). On day 6 he ended at body offset 2020 (x 2560) beside the wrapper pile, still blushing; camera ~ (2770, 950, 1.0). He stays here until a comment moves him.",
     "companions": [],
     "props": [
-      "a big pile of crumpled burger wrappers around him (O.draw_wrapper_pile(cr, 2540, 1350, 260) behind, O.draw_wrapper_pile(cr, 2580, 900, 95) in front)",
+      "a pile of crumpled burger wrappers on his LEFT (O.draw_wrapper_pile(cr, 2210, 640, 230)) + a few loose wrappers on the ground; he stands next to it (x 2560), the store's door (O.STORE_DOOR, x 2714-2804) clear on his right",
       "pixel sword left behind in the End (callback only if he goes back)"
     ],
     "traits": [

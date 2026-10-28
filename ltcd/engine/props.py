@@ -112,7 +112,7 @@ def draw_shadow(cr, x, scale=1.0, alpha=0.35):
 def draw_comment_card(cr, username, text, likes=None, x=None, y=None, w=560, alpha=1.0, scale=1.0):
     """the winning comment, pinned top-right (screen space, inside the safe zone)."""
     x = SAFE[2] - w * scale if x is None else x
-    y = SAFE[1] + 10 if y is None else y
+    y = 100 if y is None else y                  # high up, clear of his head (user note 2026-10-28: "always be higher")
     s_user, uw, uh = text_surface("@" + username, 36, max_w=w - 120, align="left")
     for size in (46, 42, 38, 34, 30, 27):        # long comments shrink so the card never grows down onto his head
         s_txt, tw, th = text_surface(text, size, max_w=w - 50, align="left")

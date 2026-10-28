@@ -67,7 +67,8 @@ Daily loop: **post 7:00 PM ET → comments come in → 3:00 PM ET next day: comm
      multi-scene story, use FULL-SCREEN title cards (black, big centred text, ~1.5 s — e.g. DAY 1 / NIGHT 1 / DAY 41)
      between scenes, never small corner labels. Make the stakes and the outcome readable to someone who doesn't
      know the reference (big HUD, a held reaction beat), and get the reference's details right for fans.
-   - The winning comment is pinned **top-right** as a recreated comment card (`draw_comment_card`): @username, the
+   - The winning comment is pinned **top-right, high up** (y≈100, user note 2026-10-28: it must never touch his head, hair or fx)
+     The winning comment is pinned **top-right** as a recreated comment card (`draw_comment_card`): @username, the
      comment text, the like count. Visible for the whole episode (it may shrink a little after the first seconds).
 3. **Waiting episode** — when there is no qualifying comment. (User note 2026-10-24, overrides the older "Mario 64
    idle / rain / cobwebs / tumbleweed" ideas: "the focus needs to be on the message when no one has commented yet, not
