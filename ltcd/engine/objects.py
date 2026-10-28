@@ -20,6 +20,8 @@ with moves.Scene.place(..., pop=True).
     draw_dump_truck(cr, rx, yb, tilt, t)   yellow dump truck facing right; rx = rear end; tilt = bed angle (rad)
     draw_cloud(cr, x, y, s)                puffy outlined cartoon cloud
     draw_stream(cr, pts, w, color)         thick outlined cartoon stream through pts (e.g. a jet of brown "fuel")
+    draw_cradle(cr, cx, yb, ang, st, t)    giant wooden rocking cradle with a giant baby in it (head at the LEFT end);
+                                           cradle_pt(...) maps a cradle-local point to the world (eyes, rim, nose)
 """
 import math
 import cairo
@@ -920,3 +922,84 @@ def draw_spray(cr, pts, color=(0.52, 0.33, 0.14), dark=(0.36, 0.22, 0.09), t=0.0
 
 def draw_droplet(cr, x, y, r, color=(0.52, 0.33, 0.14)):
     cr.arc(x, y, r, 0, 2 * math.pi); cr.set_source_rgb(*color); cr.fill_preserve(); stroke_ink(cr, 4)
+
+
+# ------------------------------------------------------------------ giant baby in a rocking cradle (day 6) ---
+WOOD, WOOD_D, BLANKET, HOOD, SNOT, TEAR = (0.80, 0.60, 0.38), (0.62, 0.42, 0.24), (0.66, 0.80, 0.94), (0.96, 0.86, 0.70), (0.80, 0.95, 0.80), (0.55, 0.78, 0.97)
+CRADLE_R = 1100.0                       # rocker radius: it swings around a point this far above the floor contact
+BABY_HEAD = (-230.0, -545.0)            # cradle-local (origin = floor contact, y up is negative)
+BABY_EYES = ((-290.0, -565.0), (-170.0, -565.0))
+BABY_NOSE = (-215.0, -515.0)
+BABY_MOUTH = (-230.0, -470.0)
+CRADLE_RIM = (-400.0, -420.0)           # top of the head-end wall: where he pushes
+
+def cradle_pt(cx, yb, ang, lx, ly, s=1.0):
+    """cradle-local point -> world (same transform as draw_cradle)."""
+    lx, ly = lx * s, ly * s
+    X, Y = lx, ly + CRADLE_R
+    c, sn = math.cos(ang), math.sin(ang)
+    return (cx + X * c - Y * sn, yb - CRADLE_R + X * sn + Y * c)
+
+def draw_cradle(cr, cx, yb, ang=0.0, st=None, t=0.0, s=1.0):
+    """giant wooden rocking cradle, ~880 wide, rockers touching the floor at (cx, yb); ang = rock angle (rad, + tips
+    the head end down-left). st: eyes ("sleep" | "open" | "cry"), cry 0..1 (mouth), open 0..1 (lids), look (x, y),
+    bubble = snot bubble radius (px). The baby is big, round-headed, one hair curl, under a blue blanket."""
+    st = st or {}
+    cr.save(); cr.translate(cx, yb - CRADLE_R); cr.rotate(ang); cr.translate(0, CRADLE_R); cr.scale(s, s)
+    # the head
+    hx, hy = BABY_HEAD
+    sketch_circle(cr, hx, hy, 165, 7, sid=7010, fill=WHITE)
+    sketch_line(cr, [(hx - 10, hy - 163), (hx - 18, hy - 205), (hx + 10, hy - 225), (hx + 30, hy - 205), (hx + 12, hy - 190)], 6, sid=7011)
+    eyes, cry, opn = st.get("eyes", "sleep"), st.get("cry", 0.0), st.get("open", 1.0)
+    lx_, ly_ = st.get("look", (0.0, 0.0))
+    for i, (ex, ey) in enumerate(BABY_EYES):
+        sd = -1 if i == 0 else 1
+        if eyes == "open" and opn > 0.15:
+            ry = 34 * opn
+            ellipse(cr, ex, ey, 30, ry, sid=7020 + i); fill_paper(cr, WHITE); stroke_ink(cr, 5)
+            cr.arc(ex + 12 * lx_, ey + 10 * ly_ + 4, 15 * min(1.0, opn + 0.2), 0, 2 * math.pi); fill_ink(cr)
+            cr.arc(ex + 12 * lx_ - 5, ey + 10 * ly_ - 2, 4.5, 0, 2 * math.pi); cr.set_source_rgb(1, 1, 1); cr.fill()
+        elif eyes == "cry":                                                 # squeezed shut: > <
+            sketch_line(cr, [(ex - 30 * sd, ey - 22), (ex + 22 * sd, ey), (ex - 30 * sd, ey + 20)], 7, sid=7024 + i)
+        else:                                                               # asleep: a curve
+            sketch_line(cr, [(ex - 28, ey - 2), (ex - 10, ey + 12), (ex + 10, ey + 12), (ex + 28, ey - 2)], 6, sid=7026 + i)
+    nx, ny = BABY_NOSE
+    sketch_line(cr, [(nx - 14, ny - 10), (nx - 4, ny + 4), (nx + 10, ny + 2)], 4, sid=7030)
+    mx, my = BABY_MOUTH
+    if cry > 0.02:                                                          # wailing: a huge open mouth
+        w_, h_ = 26 + 52 * cry, 12 + 44 * cry
+        wb = 1 + 0.06 * math.sin(t * 40) * cry
+        ellipse(cr, mx, my + 8, w_ * wb, h_ / wb, sid=7031, amp=0.02); fill_ink(cr, (0.25, 0.08, 0.1)); cr.new_path()
+        cr.save(); ellipse(cr, mx, my + 8, w_ * wb, h_ / wb, sid=7031, amp=0.02); cr.clip()
+        ellipse(cr, mx, my + 8 + h_ * 0.75, w_ * 0.6, h_ * 0.45, sid=7032); fill_paper(cr, (0.95, 0.5, 0.55)); cr.restore()
+        ellipse(cr, mx, my + 8, w_ * wb, h_ / wb, sid=7031, amp=0.02); stroke_ink(cr, 6)
+    else:
+        cr.arc(mx, my + 6, 9, 0, 2 * math.pi); stroke_ink(cr, 5)
+    rb = st.get("bubble", 0.0)
+    if rb > 2:                                                              # snot bubble from the nostril
+        bx, by = nx + 6 + rb * 0.75, ny + 4 + rb * 0.25
+        cr.arc(bx, by, rb, 0, 2 * math.pi); cr.set_source_rgba(*SNOT, 0.55); cr.fill_preserve(); stroke_ink(cr, 4)
+        cr.arc(bx - rb * 0.35, by - rb * 0.35, max(2.0, rb * 0.15), 0, 2 * math.pi); cr.set_source_rgba(1, 1, 1, 0.8); cr.fill()
+    # rockers + legs
+    def ry(x): return -CRADLE_R + math.sqrt(CRADLE_R ** 2 - x * x)
+    rk = [(x, ry(x) - 14) for x in range(-470, 471, 20)]
+    path(cr, rk); stroke_ink(cr, 40); path(cr, rk); stroke_ink(cr, 26, WOOD_D)
+    for x in (-330, 330):
+        sketch_rect(cr, x - 18, -130, x + 18, ry(x) - 20, 5, sid=7040 + (x > 0), fill=WOOD_D)
+    # the box (front wall covers his neck), then the blanket over his body
+    sketch_rect(cr, -400, -420, 400, -110, 7, sid=7050, fill=WOOD)
+    for k in range(1, 8): sketch_line(cr, [(-400 + k * 100, -405), (-400 + k * 100, -125)], 3.5, sid=7051 + k, color=(0.55, 0.38, 0.22))
+    sketch_rect(cr, -420, -440, -380, -100, 6, sid=7060, fill=WOOD_D)
+    sketch_rect(cr, 380, -440, 420, -100, 6, sid=7061, fill=WOOD_D)
+    bl = [(-90, -405), (-40, -470), (60, -505), (180, -510), (290, -485), (370, -440), (372, -330), (-88, -330)]
+    sketch_poly(cr, bl, 6, sid=7070, fill=BLANKET, amp=1.0)
+    for k in range(3): sketch_line(cr, [(-40 + k * 130, -470 + abs(k - 1) * 10), (0 + k * 130, -345)], 3, sid=7071 + k, color=(0.45, 0.6, 0.8))
+    cr.restore()
+
+def draw_tear_jet(cr, src, vel, t, life=1.2, g=2600.0, w0=26.0, w1=80.0, color=TEAR, n=34):
+    """a cartoon tear stream from src with launch velocity vel; long enough to run off screen; wobbles."""
+    pts = []
+    for k in range(n):
+        u = life * k / (n - 1)
+        pts.append((src[0] + vel[0] * u, src[1] + vel[1] * u + 0.5 * g * u * u, w0 + (w1 - w0) * (k / (n - 1))))
+    draw_spray(cr, pts, color=color, dark=(0.38, 0.6, 0.85), t=t)
