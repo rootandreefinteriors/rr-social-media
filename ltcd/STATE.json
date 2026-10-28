@@ -2,20 +2,20 @@
   "show": "let the comments decide",
   "day": 6,
   "last_episode": {
-    "day": 5,
+    "day": 6,
     "type": "comment",
-    "folder": "episodes/ep005",
-    "video": "videos/day005.mp4",
-    "posted_at": "2026-10-27T19:00:00-04:00",
+    "folder": "episodes/ep006",
+    "video": "videos/day006.mp4",
+    "posted_at": "2026-10-28T19:00:00-04:00",
     "buffer": {
-      "tiktok": "6ae0faf1dec875ec9585c987",
-      "instagram": "6ae0faf32d6ce6e7b6ddfa57"
+      "tiktok": "6ae24b9b787994b52278450a",
+      "instagram": "6ae24b9d787994b52278454d"
     },
     "comment": {
       "platform": "instagram",
       "username": "nerdbpy",
-      "text": "Eat a billion big Mac’s",
-      "likes": 8
+      "text": "Rock a baby to sleep. (My mom said this)",
+      "likes": 4
     }
   },
   "ask_since_day": 6,
