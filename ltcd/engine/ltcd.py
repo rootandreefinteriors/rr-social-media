@@ -380,6 +380,11 @@ def sfx_chomp():
     tt = _tt(0.22); return (_onepole((_rng.standard_normal(len(tt)) * np.exp(-tt / 0.02)).astype(np.float32), 0.35) * 1.4
                             + np.sin(2 * np.pi * 140 * tt) * np.exp(-tt / 0.04) * 0.6).astype(np.float32)
 
+def sfx_wah(dur=0.75):    # small baby "waah": a soft wobbling glide up then down
+    tt = _tt(dur); f = 430 + 220 * np.sin(np.pi * tt / dur) ** 0.7 + 18 * np.sin(2 * np.pi * 7 * tt)
+    ph = np.cumsum(f) / SR * 2 * np.pi
+    return ((np.sin(ph) + 0.35 * np.sin(2 * ph) + 0.15 * np.sin(3 * ph)) * _env(dur, 0.06, 0.2) * 0.35).astype(np.float32)
+
 SYNTH = dict(step=sfx_step, tiptoe=sfx_tiptoe, zip=sfx_zip, zip_down=lambda: sfx_zip(0.26, up=False),
              slide_up=sfx_slide_up, slide_down=sfx_slide_down, pop=sfx_pop, boop=sfx_boop, tick=sfx_tick,
              scribble=sfx_scribble, flip=sfx_flip, blink=sfx_blink, tap=sfx_tap, pat=sfx_pat, boing=sfx_boing,
@@ -387,7 +392,7 @@ SYNTH = dict(step=sfx_step, tiptoe=sfx_tiptoe, zip=sfx_zip, zip_down=lambda: sfx
              bonk=sfx_bonk, splat=sfx_splat, clap=sfx_clap, squeak=sfx_squeak, gulp=sfx_gulp, snore=sfx_snore,
              twinkle=sfx_twinkle, rain=sfx_rain, wind=sfx_wind, bubble=sfx_bubble, spring=sfx_spring,
              slurp=sfx_slurp, kaboom=sfx_kaboom, chomp=sfx_chomp, simmer=sfx_simmer, tok=sfx_tok, whine=sfx_whine,
-             blub=sfx_blub, clack=sfx_clack, drip=sfx_drip, sploosh=sfx_sploosh)
+             blub=sfx_blub, clack=sfx_clack, drip=sfx_drip, sploosh=sfx_sploosh, wah=sfx_wah)
 SFX_DIR = os.path.join(HERE, "..", "sfx")
 
 def load_wav(name):

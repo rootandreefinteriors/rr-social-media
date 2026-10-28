@@ -22,6 +22,8 @@ with moves.Scene.place(..., pop=True).
     draw_stream(cr, pts, w, color)         thick outlined cartoon stream through pts (e.g. a jet of brown "fuel")
     draw_cradle(cr, cx, yb, ang, st, t)    giant wooden rocking cradle with a giant baby in it (head at the LEFT end);
                                            cradle_pt(...) maps a cradle-local point to the world (eyes, rim, nose)
+    draw_baby(cr, x, y, ang, st, t)        a normal-size swaddled baby (head to the left), centre (x, y)
+    draw_mom(cr, t, p, blink)              a mom built on his rig: long hair + bun (hides the curl), a dress
 """
 import math
 import cairo
@@ -1003,3 +1005,73 @@ def draw_tear_jet(cr, src, vel, t, life=1.2, g=2600.0, w0=26.0, w1=80.0, color=T
         u = life * k / (n - 1)
         pts.append((src[0] + vel[0] * u, src[1] + vel[1] * u + 0.5 * g * u * u, w0 + (w1 - w0) * (k / (n - 1))))
     draw_spray(cr, pts, color=color, dark=(0.38, 0.6, 0.85), t=t)
+
+
+# ------------------------------------------------------------------ a normal baby + a mom (day 6 re-cut) ---
+SWADDLE, DRESS, HAIR = (0.70, 0.84, 0.96), (0.86, 0.38, 0.46), (0.36, 0.22, 0.14)
+BABY_FACE = (-78.0, -16.0)
+
+def baby_pt(x, y, ang, lx, ly, s=1.0):
+    c, sn = math.cos(ang), math.sin(ang)
+    return (x + (lx * c - ly * sn) * s, y + (lx * sn + ly * c) * s)
+
+def draw_baby(cr, x, y, ang=0.0, st=None, t=0.0, s=1.0):
+    """swaddled baby, ~230 x 130, centre (x, y), head at the LEFT end. st: eyes "open" | "sleep" | "cry",
+    cry 0..1 (mouth), look (x, y), alpha."""
+    st = st or {}
+    cr.save(); cr.translate(x, y); cr.rotate(ang); cr.scale(s, s)
+    sketch_ellipse(cr, 30, 8, 108, 60, 6, sid=7501, fill=SWADDLE)
+    for k in range(3): sketch_line(cr, [(-10 + k * 40, -45 + k * 4), (20 + k * 40, 55)], 3, sid=7502 + k, color=(0.45, 0.6, 0.8))
+    hx, hy = BABY_FACE
+    sketch_circle(cr, hx, hy, 58, 6, sid=7510, fill=WHITE)
+    sketch_line(cr, [(hx - 2, hy - 57), (hx - 6, hy - 78), (hx + 8, hy - 88), (hx + 18, hy - 77), (hx + 8, hy - 70)], 4.5, sid=7511)
+    eyes, cry = st.get("eyes", "open"), st.get("cry", 0.0)
+    lx_, ly_ = st.get("look", (0.0, 0.0))
+    for i, ex in enumerate((hx - 21, hx + 21)):
+        ey = hy - 8; sd = -1 if i == 0 else 1
+        if eyes == "open":
+            ellipse(cr, ex, ey, 10, 12, sid=7520 + i); fill_paper(cr, WHITE); stroke_ink(cr, 3.5)
+            cr.arc(ex + 4 * lx_, ey + 3 * ly_ + 1, 5.5, 0, 2 * math.pi); fill_ink(cr)
+        elif eyes == "cry":
+            sketch_line(cr, [(ex - 10 * sd, ey - 8), (ex + 8 * sd, ey), (ex - 10 * sd, ey + 7)], 4.5, sid=7524 + i, amp=0.4)
+        else:
+            sketch_line(cr, [(ex - 10, ey), (ex - 3, ey + 5), (ex + 3, ey + 5), (ex + 10, ey)], 4, sid=7526 + i, amp=0.4)
+    mx, my = hx, hy + 24
+    if cry > 0.05:
+        w_, h_ = 8 + 14 * cry, 5 + 13 * cry * (0.85 + 0.15 * math.sin(t * 30))
+        ellipse(cr, mx, my, w_, h_, sid=7530, amp=0.02); fill_ink(cr, (0.3, 0.1, 0.12)); cr.new_path()
+        ellipse(cr, mx, my, w_, h_, sid=7530, amp=0.02); stroke_ink(cr, 3.5)
+        for i, sd in enumerate((-1, 1)):                                   # little tears flicking off
+            u = (t * 1.6 + i * 0.5) % 1.0
+            cr.arc(hx + sd * (34 + 50 * u), hy - 10 - 30 * u + 60 * u * u, 6 * (1 - 0.4 * u), 0, 2 * math.pi)
+            cr.set_source_rgb(0.55, 0.78, 0.97); cr.fill_preserve(); stroke_ink(cr, 2.5)
+    elif eyes == "sleep":
+        cr.arc(mx, my, 4, 0, 2 * math.pi); stroke_ink(cr, 3)
+    else:
+        sketch_line(cr, [(mx - 7, my - 1), (mx, my + 3), (mx + 7, my - 1)], 3.5, sid=7531, amp=0.3)
+    cr.restore()
+
+def draw_mom(cr, t, p, blink=0.0, s=0.92):
+    """draw a mom on his rig. p = a constrained pose (world coords, feet at FLOOR_Y). Long dark hair with a bun on top
+    (covers his signature curl), a pink dress, otherwise the same line style. Drawn scaled s around her feet."""
+    fx = (p["lfoot"][0] + p["rfoot"][0]) / 2
+    cr.save(); cr.translate(fx, FLOOR_Y); cr.scale(s, s); cr.translate(-fx, -FLOOR_Y)
+    hx, hy = p["head"]; tl = p.get("tilt", 0.0); tn = p.get("turn", 0.0)
+    cr.save(); cr.translate(hx, hy); cr.rotate(tl)                          # hair behind the head
+    sketch_poly(cr, [(-135 - 10 * tn, -20), (-120, -110), (-60, -150), (60, -150), (120, -110), (135 - 10 * tn, -20),
+                     (140, 120), (95, 170), (-95, 170), (-140, 120)], 6, sid=7601, fill=HAIR, amp=1.0)
+    cr.restore()
+    q = dict(p); q["larm_over"] = q["rarm_over"] = 1.0
+    C.draw_guy(cr, t, q, blink)
+    nx, ny = p["neck"]; hpx, hpy = p["hip"]
+    sketch_poly(cr, [(nx - 26, ny + 22), (nx + 26, ny + 22), (hpx + 50, hpy - 40), (hpx + 105, hpy + 150), (hpx - 105, hpy + 150),
+                     (hpx - 50, hpy - 40)], 6, sid=7602, fill=DRESS, amp=1.0)
+    C.draw_arm_over(cr, q, "l"); C.draw_arm_over(cr, q, "r")
+    cr.save(); cr.translate(hx, hy); cr.rotate(tl)                          # bangs + bun over the top of the head
+    cr.save(); cr.arc(0, 0, C.HEAD_R + 2, 0, 2 * math.pi); cr.clip()
+    sketch_poly(cr, [(-140, -160), (140, -160), (140, -40), (60 + 30 * tn, -62), (10 * tn, -80), (-60 + 30 * tn, -60), (-140, -40)],
+                6, sid=7603, fill=HAIR, amp=0.8)
+    cr.restore()
+    sketch_circle(cr, 8 * tn, -C.HEAD_R - 30, 52, 6, sid=7604, fill=HAIR)
+    cr.restore()
+    cr.restore()

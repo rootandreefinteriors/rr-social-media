@@ -29,7 +29,9 @@ Daily loop: **post 7:00 PM ET → comments come in → 3:00 PM ET next day: comm
      that also undoes the escalation (the belly deflates). Gross-out/slapstick is fine at PG-13 cartoon level; the
      next payoff doesn't have to be the same kind — it has to be big, physical and earned by what came before.
   5. **Land it and end flat:** he comes down hard (on his butt), a beat, stands up deadpan, does the ask right there.
-  6. **Effects must read on a phone:** big, chunky, continuous. Jets/streams/trails always run off screen (never a
+  6. **Make it make sense (user, 2026-10-28):** the setup must be believable inside the cartoon (a mom hands him her
+     baby, not a dump truck delivering one). And **no video-game style HUD counters** unless the comment is about a game.
+  7. **Effects must read on a phone:** big, chunky, continuous. Jets/streams/trails always run off screen (never a
      visible end that looks like a dangling object), and they taper off rather than breaking into chunks.
   Generic stand-ins for brands stay as close as the rules allow (red/yellow burger place, no logo/name).
 - **Acting (user note: emotions felt canned, fired at the wrong time, disconnected):** reactions come AFTER the thing

@@ -21,20 +21,18 @@
   "ask_since_day": 6,
   "waiting_streak": 0,
   "world": {
-    "location": "outside a generic red/yellow burger place in a new world (from day 5): pale sky, a few clouds, paper ground, the store with a tall BURGERS sign on its left; draw with S.background(lambda cr, t: O.draw_burger_world(cr, t)) and body offset 2000 (he stands at x 2540). He walked here out of the block-game End (no more hardcore hearts HUD). On day 6 he ended at body offset 2050 (x 2590), the giant baby's cradle to his right (centre 3170). He stays here until a comment moves him.",
-    "companions": [
-      "a GIANT baby asleep in a giant wooden rocking cradle beside him, right of him in front of the store (day 6): O.draw_cradle(cr, 3170, FLOOR_Y, ang, dict(eyes='sleep', bubble=r), t) in the back layer; small snot bubble pulsing; its snores are dangerous (one blasted him off screen)"
-    ],
+    "location": "outside a generic red/yellow burger place in a new world (from day 5): pale sky, a few clouds, paper ground, the store with a tall BURGERS sign on its left; draw with S.background(lambda cr, t: O.draw_burger_world(cr, t)) and body offset 2000 (he stands at x 2540). He walked here out of the block-game End (no more hardcore hearts HUD). On day 6 he ended at body offset 2000 (x 2540), still blushing. He stays here until a comment moves him.",
+    "companions": [],
     "props": [
-      "a pile of crumpled burger wrappers behind him (O.draw_wrapper_pile(cr, 2540, 1350, 260)); the low front pile was blown away by the crying",
+      "a big pile of crumpled burger wrappers around him (O.draw_wrapper_pile(cr, 2540, 1350, 260) behind, O.draw_wrapper_pile(cr, 2580, 900, 95) in front)",
       "pixel sword left behind in the End (callback only if he goes back)"
     ],
     "traits": [
       "beat the block game on hardcore with half a heart (day 4)",
       "ate a billion burgers, which launched him into space on a cartoon poop jet; belly deflated back to a stick (day 5)",
-      "rocked a giant baby to sleep (day 6): it took 9,998 dB of crying; the snore blew him off screen; his hair is still frizzed from the gale (frizz=1.0)"
+      "rocked a mom's baby to sleep and fell asleep holding it; she kissed him on the cheek and he blushed (day 6). The mom (O.draw_mom: long brown hair + bun, pink dress) shops at the burger place - callback possible"
     ],
-    "notes": "Day 6: reads card at the burger place; the dump truck (1 BABY) backs in and a giant cradle slides out with a giant sleeping baby; it wakes, WAAAH (tear jets, gale, wrappers blown away, his hair frizzes, BABY dB HUD); he rocks it, faster and bigger, dragged back and forth, dB climbing to 9,998; it's suddenly out; silence; snot bubble grows; SNORE blasts him off screen; he falls back in onto his butt; the ask beside the sleeping baby."
+    "notes": "Day 6 (re-cut on Justin's outline): a mom walks in from the left with her baby, hands it to him, scurries into the burger place; it cries (waah), he's frazzled (frizz, sweat); cradles and rocks it; it falls asleep, hair settles; he dozes off standing, both Zzz; she comes out with a burger, eats it in one bite, sees them, delighted, takes the baby back, kisses his cheek; he wakes and blushes; she scurries off right; the ask, still blushing. No HUD (user note: no video-game HUD counters needed)."
   },
   "used_comments": [
     "Beat Mc in hardcore mode:)",
@@ -70,7 +68,7 @@
     {
       "day": 6,
       "type": "comment",
-      "summary": "@nerdbpy (IG): 'Rock a baby to sleep. (My mom said this)' -> the dump truck callback delivers 1 BABY: a giant baby in a giant rocking cradle; it wakes and wails (tear jets, gale, 118 dB); he rocks it harder and faster while it drags him back and forth (dB to 9,998); it's suddenly asleep; snot bubble swells; the snore blasts him off screen; he falls back in on his butt; deadpan ask beside the sleeping baby (61.2 s)"
+      "summary": "@nerdbpy (IG): 'Rock a baby to sleep. (My mom said this)' -> RE-CUT on Justin's outline: a mom hands him her baby and runs into the burger place; it cries, he's frazzled; he cradles and rocks it to sleep, then falls asleep too (Zzz); she comes back, eats a burger in one bite, takes the baby, kisses his cheek; he blushes; she runs off; deadpan ask, blushing (56.5 s)"
     }
   ]
 }
