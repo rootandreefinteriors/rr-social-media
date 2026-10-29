@@ -6,7 +6,7 @@
     "type": "comment",
     "folder": "episodes/ep007",
     "video": "videos/day007.mp4",
-    "posted_at": "2026-10-29T19:00:00-04:00 (scheduled)",
+    "posted_at": "2026-10-29T19:00:00-04:00 (scheduled; re-cut swapped in at 3:45 PM on Justin's outline)",
     "buffer": {
       "tiktok": "6ae39d779b16b0bc451f6c18",
       "instagram": "6ae39d799b16b0bc451f6cae"
@@ -21,22 +21,22 @@
   "ask_since_day": 7,
   "waiting_streak": 0,
   "world": {
-    "location": "at the gate of a generic wizard-school castle at night (from day 7): purple night sky, stars, crescent moon, cone-roofed towers, lit windows, a big open arched gate glowing warm behind him, stone courtyard. Draw with S.background(lambda cr, t: O.draw_castle_world(cr, t, cx=4140)) and body offset 3600 (he stands at x 4140, right in front of the gate); camera ~ (4140, 880, 1.0). The burger place is off to the left (O.draw_burger_world, store at 2760; ep007 shows the day->night fade at x ~3550). He stays here until a comment moves him.",
+    "location": "back outside the generic red/yellow burger place (expelled from wizard school on day 7, he fell out of the sky next to the wrapper pile). Draw with S.background(lambda cr, t: O.draw_burger_world(cr, t)) and body offset 2020 (x 2560) beside the wrapper pile; camera ~ (2620, 880, 1.0). To his right (off screen): a brick station wall with platform signs 9 and 10 (O.draw_brick_wall(cr, 4100, 700, 1150)) and a freestanding DOOR TO WIZARD SCHOOL (O.draw_free_door(cr, 4660, ...)) that leads to the castle (O.draw_castle_world, cx 9140). He stays here until a comment moves him.",
     "companions": [],
     "props": [
-      "a tiny scorched talking wizard hat on his head (O.draw_wizard_hat(..., 190, 240, scorch=1.0, bend=0.3, droop=0.7) on top of the head, follows head + tilt; it has crease eyes and can 'talk' in thought bubbles) - it let him in",
-      "the scorched brim ring of the giant hat on the ground around his feet (O.draw_brim_ring(cr, 4140, t, w=400)), smoking a little",
+      "a tiny scorched, grumpy talking wizard hat on his head (O.draw_wizard_hat(..., 190, 240, scorch=1.0, bend=0.3, droop=0.7, angry=1) on top of the head, follows head + tilt; crease eyes, talks in thought bubbles: it told him AND STAY OUT)",
       "he is sooty (soot=0.65, frizz=0.5) - can wash off any time",
-      "the burger wrapper pile + his acceptance letter left by the burger place (x ~2210 / ~2730)",
+      "the brown delivery owl (O.draw_owl, can point with a wing) - stayed at the castle; callback possible",
+      "the wrapper pile (O.draw_wrapper_pile(cr, 2210, 640, 230)) on his left + his crumpled acceptance letter on the ground (~x 2730)",
       "pixel sword left behind in the End (callback only if he goes back)"
     ],
     "traits": [
       "beat the block game on hardcore with half a heart (day 4)",
       "ate a billion burgers, which launched him into space on a cartoon poop jet; belly deflated back to a stick (day 5)",
       "rocked a mom's baby to sleep and fell asleep holding it; she kissed him on the cheek and he blushed (day 6). The mom (O.draw_mom: long brown hair + bun, pink dress) shops at the burger place - callback possible",
-      "got into wizard school (day 7): an owl delivered the letter; a giant talking hat searched his head, found nothing, overloaded and exploded; its burnt leftover let him in anyway"
+      "EXPELLED FOREVER from wizard school (day 7): read his acceptance letter, ran full sprint into the platform wall and bounced off, used the door next to it instead, the giant talking hat found nothing in his head and blasted him back to the burger place; its burnt leftover sits on his head"
     ],
-    "notes": "Day 7: owl drops the letter (YOU'RE IN. / WIZARD SCHOOL) on his head; walks right into night to a castle gate; a giant patched hat drops over him: HMM. / ... / a patch flips open to show his eye / HELLO? / THERE'S NOTHING IN HERE. -> overload -> magic star explosion, he's blasted up and drops back on his butt, sooty; the burnt little hat lands on his head: FINE. YOU'RE IN.; the ask at the gate."
+    "notes": "Day 7 (re-cut on Justin's outline): owl drops the letter; he reads it, then shows us (YOU'RE IN. / WIZARD SCHOOL); owl points right; he walks, owl hovering; brick wall with platform signs 9 and 10; owl points; he backs up, legs spin, sprints, SMACK, falls, stars; owl points again, camera pulls out: DOOR TO WIZARD SCHOOL; he walks through; castle; giant hat: HMM. / ... / eye peeks out a patch / HELLO? / THERE'S NOTHING IN HERE. / EXPELLED. / FOREVER. -> blasts him into the sky; he lands back by the wrapper pile, sooty; the burnt little hat lands on his head: AND STAY OUT.; the ask by the pile."
   },
   "used_comments": [
     "Beat Mc in hardcore mode:)",
@@ -78,7 +78,7 @@
     {
       "day": 7,
       "type": "comment",
-      "summary": "@nerdbpy (IG): 'Join Hogwarts.' -> generic wizard school: an owl drops an acceptance letter on his head; he walks into the night to a castle; a giant patched talking hat drops over him, searches his head (HMM. ... HELLO? THERE'S NOTHING IN HERE.), overloads and explodes in magic stars, blasting him up; he falls back on his butt, sooty; the burnt little hat lands on his head: FINE. YOU'RE IN.; deadpan ask at the gate (~56 s)"
+      "summary": "@nerdbpy (IG): 'Join Hogwarts.' -> RE-CUT on Justin's outline: an owl drops the letter; he reads it, shows us YOU'RE IN.; the owl points; at a brick wall between platform signs 9 and 10 he sprints and bounces off (stars); the owl points again: a DOOR TO WIZARD SCHOOL right next to it; through it to the castle; the giant talking hat finds nothing in his head: EXPELLED. FOREVER. -> blasts him back to the burger place; the burnt little hat lands on his head: AND STAY OUT.; deadpan ask by the wrapper pile (72.2 s)"
     }
   ]
 }
