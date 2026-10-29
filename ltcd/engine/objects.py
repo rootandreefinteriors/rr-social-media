@@ -24,6 +24,16 @@ with moves.Scene.place(..., pop=True).
                                            cradle_pt(...) maps a cradle-local point to the world (eyes, rim, nose)
     draw_baby(cr, x, y, ang, st, t)        a normal-size swaddled baby (head to the left), centre (x, y)
     draw_mom(cr, t, p, blink)              a mom built on his rig: long hair + bun (hides the curl), a dress
+    draw_owl(cr, x, y, s, flap, t)         brown delivery owl, wings flapping (flap 0..1 amount), centre (x, y)
+    draw_envelope(cr, x, y, s, ang)        a parchment envelope with a red wax seal, centre (x, y)
+    draw_letter(cr, cx, cy, w, h, lines)   an open parchment letter (big marker lines + a red seal), centre (cx, cy)
+    draw_castle_world(cr, t, cx)           generic wizard-school castle at night: purple sky, stars, moon, towers with
+                                           cone roofs, lit windows, a big arched gate; stone courtyard + floor line
+    draw_wizard_hat(cr, bx, by, w, h, ...) giant old patched pointy hat with a crease face (eyes/mouth), floppy tip;
+                                           (bx, by) = brim centre. glow/swell/shake for the overload, scorch for after
+    draw_thought(cr, x, y, text, tail)     thought bubble with marker text, centre (x, y), dots trailing to `tail`
+    draw_star(cr, x, y, r, color)          a chunky 5-point star (magic sparks); draw_magic_burst(...) a big spark boom
+    draw_brim_ring(cr, x, t)               the scorched, smoking brim of a blown-up hat lying on the floor
 """
 import math
 import cairo
@@ -1097,3 +1107,266 @@ def draw_store_door(cr, open_=0.0, part="inside"):
     if w < 4: return
     sketch_poly(cr, [(x0, y0), (x0 + w, y0 + 10 * open_), (x0 + w, y1 - 6 * open_), (x0, y1)], 5, sid=6312, fill=(0.75, 0.88, 0.95), amp=0.5)
     sketch_line(cr, [(x0 + w * 0.78, y0 + 120), (x0 + w * 0.78, y0 + 150)], 5, sid=6313, amp=0.3)
+
+
+# ------------------------------------------------------------------ wizard school (day 7) ---
+OWL, OWL_L, BEAK = (0.58, 0.42, 0.28), (0.86, 0.76, 0.60), (0.96, 0.66, 0.20)
+PARCH, SEAL = (0.97, 0.92, 0.78), (0.78, 0.12, 0.12)
+HAT, HAT_D, HAT_P = (0.52, 0.38, 0.25), (0.38, 0.27, 0.17), (0.64, 0.50, 0.33)
+GOLD, VIOLET, CYAN = (1.0, 0.82, 0.25), (0.70, 0.45, 0.98), (0.45, 0.88, 0.98)
+
+def draw_owl(cr, x, y, s=1.0, flap=1.0, t=0.0, blink=0.0):
+    """brown delivery owl seen from the front, wings beating (flap = how much), centre (x, y)."""
+    cr.save(); cr.translate(x, y); cr.scale(s, s)
+    a = flap * math.sin(t * 22)
+    for sd in (-1, 1):                                                      # wings behind the body
+        cr.save(); cr.translate(sd * 45, -10); cr.rotate(sd * (-0.9 + 0.8 * a))
+        sketch_ellipse(cr, sd * 70, 0, 80, 30, 6, sid=7700 + sd, fill=OWL)
+        for k in range(3): sketch_line(cr, [(sd * (40 + k * 30), -10), (sd * (52 + k * 30), 14)], 3, sid=7703 + k, amp=0.3)
+        cr.restore()
+    sketch_ellipse(cr, 0, 0, 68, 82, 7, sid=7710, fill=OWL)
+    sketch_ellipse(cr, 0, 22, 42, 50, 4, sid=7711, fill=OWL_L)
+    for sd in (-1, 1):
+        sketch_poly(cr, [(sd * 30, -62), (sd * 56, -100), (sd * 60, -55)], 5, sid=7712 + sd, fill=OWL, amp=0.4)   # ear tufts
+        sketch_circle(cr, sd * 26, -30, 25, 5, sid=7715 + sd, fill=WHITE)
+        if blink < 0.5:
+            cr.arc(sd * 26, -28, 11, 0, 2 * math.pi); fill_ink(cr)
+            cr.arc(sd * 22, -33, 4, 0, 2 * math.pi); cr.set_source_rgb(1, 1, 1); cr.fill()
+        else:
+            sketch_line(cr, [(sd * 26 - 16, -30), (sd * 26 + 16, -30)], 5, sid=7718 + sd, amp=0.3)
+    sketch_poly(cr, [(-10, -16), (10, -16), (0, 6)], 4, sid=7720, fill=BEAK, amp=0.3)
+    for sd in (-1, 1): sketch_line(cr, [(sd * 18, 78), (sd * 18, 96)], 5, sid=7721 + sd, amp=0.3, color=BEAK)
+    cr.restore()
+
+def draw_envelope(cr, x, y, s=1.0, ang=0.0):
+    cr.save(); cr.translate(x, y); cr.rotate(ang); cr.scale(s, s)
+    sketch_rect(cr, -80, -52, 80, 52, 5, sid=7730, fill=PARCH)
+    sketch_line(cr, [(-80, -52), (0, 8), (80, -52)], 4, sid=7731, amp=0.5)
+    sketch_circle(cr, 0, 8, 17, 4, sid=7732, fill=SEAL)
+    cr.restore()
+
+def draw_letter(cr, cx, cy, w, h, lines=("YOU'RE IN.",), sub=None, alpha=1.0):
+    """an open parchment letter facing us: big marker lines, an optional small line under them, a red wax seal."""
+    cr.push_group()
+    sketch_rect(cr, cx - w / 2, cy - h / 2, cx + w / 2, cy + h / 2, 6, sid=7740, fill=PARCH)
+    for k in range(2):                                                      # fold creases
+        yk = cy - h / 2 + h * (k + 1) / 3
+        sketch_line(cr, [(cx - w / 2 + 10, yk), (cx + w / 2 - 10, yk)], 2.5, sid=7741 + k, amp=0.6, alpha=0.35)
+    n = len(lines); size = min(90, w / 6)
+    for i, l in enumerate(lines):
+        draw_text(cr, l, cx, cy - h * 0.18 + (i - (n - 1) / 2) * size * 1.15, size, color=(30, 22, 18))
+    if sub: draw_text(cr, sub, cx, cy + h * 0.14, size * 0.55, color=(70, 50, 40))
+    sketch_circle(cr, cx, cy + h / 2 - 48, 26, 4, sid=7745, fill=SEAL)
+    cr.pop_group_to_source(); cr.paint_with_alpha(alpha)
+
+def _cone_roof(cr, x, y, w, h, sid):
+    sketch_poly(cr, [(x - w / 2 - 14, y), (x, y - h), (x + w / 2 + 14, y)], 6, sid=sid, fill=(0.24, 0.22, 0.42), amp=0.8)
+
+def _window(cr, x, y, w, h, sid, lit=True):
+    cr.move_to(x - w / 2, y + h / 2); cr.line_to(x - w / 2, y - h / 2 + w / 2)
+    cr.arc(x, y - h / 2 + w / 2, w / 2, math.pi, 0); cr.line_to(x + w / 2, y + h / 2); cr.close_path()
+    cr.set_source_rgb(*((1.0, 0.86, 0.45) if lit else (0.18, 0.16, 0.28))); cr.fill_preserve(); stroke_ink(cr, 4)
+
+STONE, STONE_D, NIGHT_TOP, NIGHT_LOW = (0.80, 0.78, 0.84), (0.64, 0.62, 0.70), (0.10, 0.08, 0.24), (0.42, 0.30, 0.56)
+def draw_castle_world(cr, t, cx=4140.0, x0=-4000, x1=12000):
+    """night sky + a generic wizard-school castle centred on cx (gate behind whoever stands at cx), stone courtyard.
+    No crest, no name, no house colours."""
+    g = cairo.LinearGradient(0, -400, 0, FLOOR_Y)
+    g.add_color_stop_rgb(0.0, *NIGHT_TOP); g.add_color_stop_rgb(1.0, *NIGHT_LOW)
+    cr.rectangle(x0, -6000, x1 - x0, 6000 + FLOOR_Y); cr.set_source(g); cr.fill()
+    for k in range(70):                                                     # stars (twinkle)
+        sx = cx - 1500 + (k * 397) % 3000; sy = -350 + (k * 233) % 900
+        a = 0.55 + 0.45 * math.sin(t * 2.3 + k)
+        cr.rectangle(sx, sy, 6, 6); cr.set_source_rgba(1, 1, 0.9, a); cr.fill()
+    cr.arc(cx + 620, -120, 95, 0, 2 * math.pi); cr.set_source_rgb(0.99, 0.97, 0.86); cr.fill_preserve(); stroke_ink(cr, 6)
+    cr.arc(cx + 655, -140, 80, 0, 2 * math.pi); cr.set_source_rgb(*NIGHT_TOP); cr.fill()            # crescent
+    yb = FLOOR_Y - 60
+    # far towers
+    for dx, w, h, rh in ((-760, 150, 900, 300), (720, 170, 1000, 330), (-420, 120, 1250, 280), (380, 130, 1180, 290)):
+        sketch_rect(cr, cx + dx - w / 2, yb - h, cx + dx + w / 2, yb, 6, sid=7800 + dx % 97, fill=STONE_D)
+        _cone_roof(cr, cx + dx, yb - h, w, rh, sid=7810 + dx % 89)
+        _window(cr, cx + dx, yb - h + 130, 40, 80, sid=0, lit=(dx % 3 != 0))
+    # main hall
+    sketch_rect(cr, cx - 560, yb - 640, cx + 560, yb, 7, sid=7820, fill=STONE)
+    for k in range(12):                                                     # battlements
+        bx = cx - 560 + k * 102
+        sketch_rect(cr, bx, yb - 700, bx + 56, yb - 638, 5, sid=7821 + k, fill=STONE)
+    for k in range(6):                                                      # stone courses
+        sketch_line(cr, [(cx - 556, yb - 100 * (k + 1)), (cx + 556, yb - 100 * (k + 1))], 2.5, sid=7835 + k, amp=0.8, alpha=0.35)
+    for dx in (-430, -300, 300, 430):
+        _window(cr, cx + dx, yb - 440, 64, 130, sid=0)
+    # the gate (arched, open, warm light inside)
+    gw, gh = 330, 520
+    cr.move_to(cx - gw / 2, yb); cr.line_to(cx - gw / 2, yb - gh + gw / 2)
+    cr.arc(cx, yb - gh + gw / 2, gw / 2, math.pi, 0); cr.line_to(cx + gw / 2, yb); cr.close_path()
+    cr.set_source_rgb(1.0, 0.84, 0.50); cr.fill_preserve(); stroke_ink(cr, 7)
+    # front towers flanking the gate
+    for sd in (-1, 1):
+        tx = cx + sd * 330
+        sketch_rect(cr, tx - 80, yb - 860, tx + 80, yb, 6, sid=7850 + sd, fill=STONE)
+        _cone_roof(cr, tx, yb - 860, 160, 300, sid=7853 + sd)
+        _window(cr, tx, yb - 700, 46, 96, sid=0)
+        cr.move_to(tx, yb - 1160); cr.line_to(tx + sd * 0 + 70, yb - 1135); cr.line_to(tx, yb - 1110)   # pennant
+        cr.set_source_rgb(0.62, 0.30, 0.78); cr.fill_preserve(); stroke_ink(cr, 3)
+    # courtyard: stone flags
+    cr.rectangle(x0, yb, x1 - x0, 3000); cr.set_source_rgb(0.62, 0.60, 0.66); cr.fill()
+    cr.rectangle(x0, FLOOR_Y, x1 - x0, 3000); cr.set_source_rgb(0.70, 0.68, 0.74); cr.fill()
+    sketch_line(cr, [(x0, yb), (x1, yb)], 4, sid=7860, amp=1.0, alpha=0.7)
+    sketch_line(cr, [(x0, FLOOR_Y), (x1, FLOOR_Y)], 3.5, sid=7861, amp=1.3, alpha=0.8)
+    for k in range(-14, 15):
+        sketch_line(cr, [(cx + k * 190, FLOOR_Y + 8), (cx + k * 230, FLOOR_Y + 400)], 2.5, sid=7870 + k, amp=0.8, alpha=0.3)
+
+def hat_spine(bx, by, w, h, bend=0.0, droop=0.0, swell=1.0):
+    """points along the hat's centre line, brim -> tip: list of (x, y, half_width)."""
+    out = []
+    for i in range(41):
+        u = i / 40
+        x = bx + bend * (u ** 2.2) * w * 0.55 + droop * (max(0.0, u - 0.62) / 0.38) ** 2 * w * 0.45
+        y = by - h * u + droop * (max(0.0, u - 0.62) / 0.38) ** 2 * h * 0.22
+        hw = (w / 2) * swell * (1 - u) ** 0.9 * (1 + 0.06 * math.sin(u * 9)) + 4
+        out.append((x, y, hw))
+    return out
+
+def hat_pt(bx, by, w, h, u, side=0.0, bend=0.0, droop=0.0, swell=1.0):
+    """a point on the hat: u up the spine (0 brim .. 1 tip), side -1..1 across it."""
+    sp = hat_spine(bx, by, w, h, bend, droop, swell)
+    i = min(39, int(u * 40)); k = u * 40 - i
+    (xa, ya, wa), (xb, yb, wb) = sp[i], sp[i + 1]
+    return (lerp(xa, xb, k) + side * lerp(wa, wb, k), lerp(ya, yb, k))
+
+def draw_wizard_hat(cr, bx, by, w, h, t=0.0, bend=0.0, droop=0.0, swell=1.0, eyes=0.0, look=(0.0, 0.0), mouth=0.0,
+                    glow=0.0, scorch=0.0, brim=True, sid=7900):
+    """giant, old, patched pointy hat. (bx, by) = brim centre. eyes 0..1 (closed crease .. open), look -1..1,
+    mouth 0..1 (the brim crease opens), glow 0..1 (seams + stitches glow gold: overload), scorch 0..1 (burnt)."""
+    col = lerp(HAT, (0.24, 0.21, 0.20), scorch)
+    sp = hat_spine(bx, by, w, h, bend, droop, swell)
+    left = [(x - hw, y) for x, y, hw in sp]; right = [(x + hw, y) for x, y, hw in sp]
+    if brim:                                                                # back half of the brim
+        cr.new_path(); cr.save(); cr.translate(bx, by); cr.scale(w * 0.78 * swell, w * 0.13); cr.arc(0, 0, 1, math.pi, 2 * math.pi); cr.restore()
+        cr.set_source_rgb(*lerp(HAT_D, (0.18, 0.16, 0.15), scorch)); cr.fill_preserve(); stroke_ink(cr, 7)
+    path(cr, sketch_pts(left + right[::-1], amp=1.4, sid=sid, step=24)); cr.close_path()
+    cr.set_source_rgb(*col); cr.fill_preserve(); stroke_ink(cr, 8)
+    # patches (stitched) + a band
+    for k, (u, sd, pw, ph) in enumerate(((0.30, -0.45, 0.20, 0.10), (0.55, 0.30, 0.16, 0.09), (0.78, -0.1, 0.10, 0.06))):
+        cxp, cyp = hat_pt(bx, by, w, h, u, sd, bend, droop, swell)
+        pw_, ph_ = w * pw * swell, h * ph
+        sketch_rect(cr, cxp - pw_ / 2, cyp - ph_ / 2, cxp + pw_ / 2, cyp + ph_ / 2, 4, sid=sid + 10 + k,
+                    fill=lerp(HAT_P, (0.30, 0.26, 0.24), scorch), amp=1.0)
+        for j in range(5):
+            xj = cxp - pw_ / 2 + pw_ * (j + 0.5) / 5
+            sketch_line(cr, [(xj, cyp - ph_ / 2 - 7), (xj, cyp - ph_ / 2 + 7)], 3, sid=sid + 20 + j, amp=0.2,
+                        color=lerp(INK, GOLD, glow))
+        if glow > 0.02:
+            cr.rectangle(cxp - pw_ / 2, cyp - ph_ / 2, pw_, ph_); cr.set_source_rgba(*GOLD, min(1.0, 1.2 * glow)); cr.set_line_width(10 + 14 * glow); cr.stroke()
+    bl, br = hat_pt(bx, by, w, h, 0.07, -1, bend, droop, swell), hat_pt(bx, by, w, h, 0.07, 1, bend, droop, swell)
+    sketch_line(cr, [(bl[0] + 4, bl[1]), (br[0] - 4, br[1])], 6, sid=sid + 30, amp=0.8)
+    if glow > 0.02:                                                         # the seams glow
+        for edge in (left[:-3], right[:-3]):
+            path(cr, edge); cr.set_source_rgba(*GOLD, 0.35 * glow); cr.set_line_width(60 * glow + 2); cr.stroke()
+            path(cr, edge); cr.set_source_rgba(1.0, 0.95, 0.6, min(1.0, 1.3 * glow)); cr.set_line_width(20 * glow + 2); cr.stroke()
+    # the face: two crease eyes + a crease mouth
+    for sd in (-1, 1):
+        ex, ey = hat_pt(bx, by, w, h, 0.42, sd * 0.36, bend, droop, swell)
+        ew, eh = w * 0.075 * swell, w * 0.05 * max(0.05, eyes)
+        sketch_line(cr, [(ex - ew * 1.5, ey - eh - 16 - 6 * sd * 0), (ex + ew * 1.5, ey - eh - 24 + sd * 6)], 6, sid=sid + 40 + sd, amp=0.6)
+        if eyes > 0.08:
+            ellipse(cr, ex, ey, ew, eh, sid=sid + 43 + sd); fill_ink(cr, HAT_D); cr.new_path()
+            ellipse(cr, ex, ey, ew, eh, sid=sid + 43 + sd); stroke_ink(cr, 5)
+            cr.arc(ex + look[0] * ew * 0.45, ey + look[1] * eh * 0.4, min(ew, eh) * 0.55, 0, 2 * math.pi)
+            cr.set_source_rgb(1.0, 0.92, 0.55); cr.fill()
+        else:
+            sketch_line(cr, [(ex - ew, ey), (ex, ey + 6), (ex + ew, ey)], 6, sid=sid + 46, amp=0.4)
+    mx, my = hat_pt(bx, by, w, h, 0.2, 0.0, bend, droop, swell)
+    mw = w * 0.2 * swell
+    if mouth > 0.05:
+        ellipse(cr, mx, my, mw, 10 + 34 * mouth, sid=sid + 50); fill_ink(cr, (0.16, 0.10, 0.08)); cr.new_path()
+        ellipse(cr, mx, my, mw, 10 + 34 * mouth, sid=sid + 50); stroke_ink(cr, 6)
+    else:
+        sketch_curve(cr, (mx - mw, my - 8), (mx, my + 12), (mx + mw, my - 8), 7, sid=sid + 51)
+    if brim:                                                                # front half of the brim
+        cr.new_path(); cr.save(); cr.translate(bx, by); cr.scale(w * 0.78 * swell, w * 0.13); cr.arc(0, 0, 1, 0, math.pi); cr.restore()
+        cr.set_source_rgb(*lerp(HAT_D, (0.18, 0.16, 0.15), scorch)); cr.fill_preserve(); stroke_ink(cr, 7)
+        sketch_line(cr, [(bx - w * 0.78 * swell, by), (bx + w * 0.78 * swell, by)], 4, sid=sid + 60, amp=0.6, alpha=0.5)
+
+def sketch_curve(cr, p0, c, p1, width=8, sid=0, amp=1.2, color=INK):
+    from ink import bez
+    path(cr, sketch_pts(bez(p0, c, p1), amp=amp, sid=sid, step=14)); stroke_ink(cr, width, color)
+
+def draw_thought(cr, x, y, text, tail=None, size=58, alpha=1.0, max_w=430):
+    """a cloud-edged thought bubble with marker text centred at (x, y); little circles trail off toward `tail`."""
+    from ink import text_surface
+    s, tw, th = text_surface(text, size, max_w=max_w)
+    w, h = tw + 40, th + 30
+    cr.push_group()
+    puffs = []
+    n = max(4, int(w / 70))
+    for i in range(n + 1):
+        u = i / n
+        puffs += [(x - w / 2 + w * u, y - h / 2, 46), (x - w / 2 + w * u, y + h / 2, 46)]
+    for i in range(1, 3):
+        v = i / 3
+        puffs += [(x - w / 2, y - h / 2 + h * v, 46), (x + w / 2, y - h / 2 + h * v, 46)]
+    if tail:
+        for k, r in enumerate((28, 19, 12)):
+            u = 0.45 + 0.2 * k
+            puffs.append((lerp(x, tail[0], u), lerp(y + h / 2, tail[1], u), -r))
+    for px, py, r in puffs:
+        cr.arc(px, py, abs(r), 0, 2 * math.pi); cr.new_sub_path()
+    cr.rectangle(x - w / 2, y - h / 2, w, h)
+    cr.set_source_rgb(*INK); cr.set_line_width(12); cr.stroke_preserve(); cr.set_source_rgb(1, 1, 1); cr.fill()
+    cr.set_source_surface(s, x - tw / 2, y - th / 2); cr.paint()
+    cr.pop_group_to_source(); cr.paint_with_alpha(alpha)
+
+def draw_star(cr, x, y, r, color=GOLD, ang=0.0, alpha=1.0):
+    pts = []
+    for k in range(10):
+        a = ang - math.pi / 2 + k * math.pi / 5; rr = r if k % 2 == 0 else r * 0.45
+        pts.append((x + rr * math.cos(a), y + rr * math.sin(a)))
+    path(cr, pts); cr.close_path(); cr.set_source_rgba(*color, alpha); cr.fill_preserve()
+    cr.set_source_rgba(*INK, alpha); cr.set_line_width(max(2.0, r * 0.14)); cr.stroke()
+
+import random as _random
+_BURST = None
+def draw_magic_burst(cr, x, y, u, t=0.0, r=1400, n=90, part="both"):
+    """a huge cartoon magic explosion u seconds after it goes off: a fat cloud that blooms and fades + a storm of gold,
+    violet and cyan stars flying out (gravity pulls them down, then they fade). part "cloud" / "stars" / "both"
+    (draw the cloud in the back layer and the stars in front to see someone blasted out through it)."""
+    global _BURST
+    if _BURST is None:
+        rnd = _random.Random(7)
+        _BURST = [(rnd.uniform(0, 2 * math.pi), rnd.uniform(0.35, 1.0), rnd.uniform(18, 48), rnd.choice((GOLD, VIOLET, CYAN, GOLD)),
+                   rnd.uniform(-3, 3)) for _ in range(n)]
+    if u < 0: return
+    k = min(1.0, u / 0.35)                                                  # the cloud
+    ca = 1.0 - smooth((u - 0.5) / 1.4)
+    if ca > 0.01 and part != "stars":
+        cr.push_group()
+        for i in range(9):
+            a = i * 2 * math.pi / 9 + 0.3
+            rr = (220 + 260 * back_out(k, 1.4)) * (0.8 + 0.2 * math.sin(i * 2.1))
+            cr.arc(x + math.cos(a) * rr * 0.75, y + math.sin(a) * rr * 0.55 - 60, rr * 0.62, 0, 2 * math.pi); cr.new_sub_path()
+        cr.set_source_rgb(*INK); cr.set_line_width(14); cr.stroke_preserve(); cr.set_source_rgb(0.86, 0.78, 0.98); cr.fill()
+        for i in range(6):
+            a = i * 2 * math.pi / 6
+            rr = (120 + 170 * back_out(k, 1.4))
+            cr.arc(x + math.cos(a) * rr * 0.6, y + math.sin(a) * rr * 0.45 - 60, rr * 0.55, 0, 2 * math.pi); cr.new_sub_path()
+        cr.set_source_rgb(1.0, 0.95, 0.70); cr.fill()
+        cr.pop_group_to_source(); cr.paint_with_alpha(ca)
+    if part == "cloud": return
+    for a, sp, sz, col, spin in _BURST:                                    # the stars
+        d = r * sp * (1 - math.exp(-u * 2.4))
+        sx = x + math.cos(a) * d; sy = y + math.sin(a) * d * 0.8 + 260 * u * u
+        al = 1.0 - smooth((u - 1.6) / 1.4)
+        if al > 0.01: draw_star(cr, sx, sy, sz * (1 - 0.3 * min(1, u / 3)), col, ang=spin * u, alpha=al)
+
+def draw_brim_ring(cr, x, t=0.0, smoke=1.0, w=620):
+    """the scorched brim of a blown-up hat, lying flat on the floor around x, smoking."""
+    cr.save(); cr.translate(x, FLOOR_Y - 6); cr.scale(w, w * 0.11)
+    cr.arc(0, 0, 1, 0, 2 * math.pi); cr.new_sub_path(); cr.arc_negative(0, 0, 0.62, 2 * math.pi, 0)
+    cr.restore()
+    cr.set_source_rgb(0.22, 0.19, 0.18); cr.fill_preserve(); stroke_ink(cr, 6)
+    for k in range(4):                                                      # wisps
+        u = ((t * 0.5) + k / 4) % 1.0
+        sx = x + (-0.7 + 0.47 * k) * w * 0.8 + 30 * math.sin(t * 2 + k)
+        cr.arc(sx + 20 * math.sin(u * 6 + k), FLOOR_Y - 30 - 260 * u, 18 + 40 * u, 0, 2 * math.pi)
+        cr.set_source_rgba(0.55, 0.55, 0.58, 0.45 * smoke * math.sin(math.pi * u)); cr.fill()

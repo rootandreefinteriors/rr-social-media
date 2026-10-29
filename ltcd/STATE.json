@@ -1,43 +1,48 @@
 {
   "show": "let the comments decide",
-  "day": 6,
+  "day": 7,
   "last_episode": {
-    "day": 6,
+    "day": 7,
     "type": "comment",
-    "folder": "episodes/ep006",
-    "video": "videos/day006.mp4",
-    "posted_at": "2026-10-28T19:17:00-04:00 (posted now on Justin's OK after review)",
+    "folder": "episodes/ep007",
+    "video": "videos/day007.mp4",
+    "posted_at": "2026-10-29T19:00:00-04:00 (scheduled)",
     "buffer": {
-      "tiktok": "6ae24b9b787994b52278450a",
-      "instagram": "6ae24b9d787994b52278454d"
+      "tiktok": "TBD",
+      "instagram": "TBD"
     },
     "comment": {
       "platform": "instagram",
       "username": "nerdbpy",
-      "text": "Rock a baby to sleep. (My mom said this)",
-      "likes": 4
+      "text": "Join Hogwarts.",
+      "likes": 0
     }
   },
-  "ask_since_day": 6,
+  "ask_since_day": 7,
   "waiting_streak": 0,
   "world": {
-    "location": "outside a generic red/yellow burger place in a new world (from day 5): pale sky, a few clouds, paper ground, the store with a tall BURGERS sign on its left; draw with S.background(lambda cr, t: O.draw_burger_world(cr, t)) and body offset 2000 (he stands at x 2540). He walked here out of the block-game End (no more hardcore hearts HUD). On day 6 he ended at body offset 2020 (x 2560) beside the wrapper pile, still blushing; camera ~ (2770, 950, 1.0). He stays here until a comment moves him.",
+    "location": "at the gate of a generic wizard-school castle at night (from day 7): purple night sky, stars, crescent moon, cone-roofed towers, lit windows, a big open arched gate glowing warm behind him, stone courtyard. Draw with S.background(lambda cr, t: O.draw_castle_world(cr, t, cx=4140)) and body offset 3600 (he stands at x 4140, right in front of the gate); camera ~ (4140, 880, 1.0). The burger place is off to the left (O.draw_burger_world, store at 2760; ep007 shows the day->night fade at x ~3550). He stays here until a comment moves him.",
     "companions": [],
     "props": [
-      "a pile of crumpled burger wrappers on his LEFT (O.draw_wrapper_pile(cr, 2210, 640, 230)) + a few loose wrappers on the ground; he stands next to it (x 2560), the store's door (O.STORE_DOOR, x 2714-2804) clear on his right",
+      "a tiny scorched talking wizard hat on his head (O.draw_wizard_hat(..., 190, 240, scorch=1.0, bend=0.3, droop=0.7) on top of the head, follows head + tilt; it has crease eyes and can 'talk' in thought bubbles) - it let him in",
+      "the scorched brim ring of the giant hat on the ground around his feet (O.draw_brim_ring(cr, 4140, t, w=400)), smoking a little",
+      "he is sooty (soot=0.65, frizz=0.5) - can wash off any time",
+      "the burger wrapper pile + his acceptance letter left by the burger place (x ~2210 / ~2730)",
       "pixel sword left behind in the End (callback only if he goes back)"
     ],
     "traits": [
       "beat the block game on hardcore with half a heart (day 4)",
       "ate a billion burgers, which launched him into space on a cartoon poop jet; belly deflated back to a stick (day 5)",
-      "rocked a mom's baby to sleep and fell asleep holding it; she kissed him on the cheek and he blushed (day 6). The mom (O.draw_mom: long brown hair + bun, pink dress) shops at the burger place - callback possible"
+      "rocked a mom's baby to sleep and fell asleep holding it; she kissed him on the cheek and he blushed (day 6). The mom (O.draw_mom: long brown hair + bun, pink dress) shops at the burger place - callback possible",
+      "got into wizard school (day 7): an owl delivered the letter; a giant talking hat searched his head, found nothing, overloaded and exploded; its burnt leftover let him in anyway"
     ],
-    "notes": "Day 6 (re-cut on Justin's outline): a mom walks in from the left with her baby, hands it to him, scurries into the burger place; it cries (waah), he's frazzled (frizz, sweat); cradles and rocks it; it falls asleep, hair settles; he dozes off standing, both Zzz; she comes out with a burger, eats it in one bite, sees them, delighted, takes the baby back, kisses his cheek; he wakes and blushes; she scurries off right; the ask, still blushing. No HUD (user note: no video-game HUD counters needed)."
+    "notes": "Day 7: owl drops the letter (YOU'RE IN. / WIZARD SCHOOL) on his head; walks right into night to a castle gate; a giant patched hat drops over him: HMM. / ... / a patch flips open to show his eye / HELLO? / THERE'S NOTHING IN HERE. -> overload -> magic star explosion, he's blasted up and drops back on his butt, sooty; the burnt little hat lands on his head: FINE. YOU'RE IN.; the ask at the gate."
   },
   "used_comments": [
     "Beat Mc in hardcore mode:)",
     "Eat a billion big Mac’s",
-    "Rock a baby to sleep. (My mom said this)"
+    "Rock a baby to sleep. (My mom said this)",
+    "Join Hogwarts."
   ],
   "history": [
     {
@@ -69,6 +74,11 @@
       "day": 6,
       "type": "comment",
       "summary": "@nerdbpy (IG): 'Rock a baby to sleep. (My mom said this)' -> RE-CUT on Justin's outline: a mom hands him her baby and runs into the burger place; it cries, he's frazzled; he cradles and rocks it to sleep, then falls asleep too (Zzz); she comes back, eats a burger in one bite, takes the baby, kisses his cheek; he blushes; she runs off; deadpan ask, blushing (56.5 s)"
+    },
+    {
+      "day": 7,
+      "type": "comment",
+      "summary": "@nerdbpy (IG): 'Join Hogwarts.' -> generic wizard school: an owl drops an acceptance letter on his head; he walks into the night to a castle; a giant patched talking hat drops over him, searches his head (HMM. ... HELLO? THERE'S NOTHING IN HERE.), overloads and explodes in magic stars, blasting him up; he falls back on his butt, sooty; the burnt little hat lands on his head: FINE. YOU'RE IN.; deadpan ask at the gate (~56 s)"
     }
   ]
 }
