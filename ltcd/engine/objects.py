@@ -34,6 +34,8 @@ with moves.Scene.place(..., pop=True).
     draw_thought(cr, x, y, text, tail)     thought bubble with marker text, centre (x, y), dots trailing to `tail`
     draw_star(cr, x, y, r, color)          a chunky 5-point star (magic sparks); draw_magic_burst(...) a big spark boom
     draw_brim_ring(cr, x, t)               the scorched, smoking brim of a blown-up hat lying on the floor
+    draw_brick_wall(cr, cx, w, h, signs)   a tall train-station brick wall/pillar with hanging platform-number signs
+    draw_free_door(cr, x, open_, part, sign) a tall wooden door standing on its own in its frame, with a plank sign on top
 """
 import math
 import cairo
@@ -1115,12 +1117,17 @@ PARCH, SEAL = (0.97, 0.92, 0.78), (0.78, 0.12, 0.12)
 HAT, HAT_D, HAT_P = (0.52, 0.38, 0.25), (0.38, 0.27, 0.17), (0.64, 0.50, 0.33)
 GOLD, VIOLET, CYAN = (1.0, 0.82, 0.25), (0.70, 0.45, 0.98), (0.45, 0.88, 0.98)
 
-def draw_owl(cr, x, y, s=1.0, flap=1.0, t=0.0, blink=0.0):
-    """brown delivery owl seen from the front, wings beating (flap = how much), centre (x, y)."""
+def draw_owl(cr, x, y, s=1.0, flap=1.0, t=0.0, blink=0.0, point=0.0, point_ang=0.0, look=(0.0, 0.0)):
+    """brown delivery owl seen from the front, wings beating (flap = how much), centre (x, y).
+    point 0..1: its screen-right wing stops flapping and sticks out stiff along point_ang (rad, 0 = right, + = down)."""
     cr.save(); cr.translate(x, y); cr.scale(s, s)
     a = flap * math.sin(t * 22)
     for sd in (-1, 1):                                                      # wings behind the body
-        cr.save(); cr.translate(sd * 45, -10); cr.rotate(sd * (-0.9 + 0.8 * a))
+        cr.save(); cr.translate(sd * 45, -10)
+        r = sd * (-0.9 + 0.8 * a)
+        if sd == 1 and point > 0: r = lerp(r, point_ang, point)
+        cr.rotate(r)
+        if sd == 1 and point > 0: cr.scale(1 + 0.35 * point, 1)
         sketch_ellipse(cr, sd * 70, 0, 80, 30, 6, sid=7700 + sd, fill=OWL)
         for k in range(3): sketch_line(cr, [(sd * (40 + k * 30), -10), (sd * (52 + k * 30), 14)], 3, sid=7703 + k, amp=0.3)
         cr.restore()
@@ -1130,8 +1137,8 @@ def draw_owl(cr, x, y, s=1.0, flap=1.0, t=0.0, blink=0.0):
         sketch_poly(cr, [(sd * 30, -62), (sd * 56, -100), (sd * 60, -55)], 5, sid=7712 + sd, fill=OWL, amp=0.4)   # ear tufts
         sketch_circle(cr, sd * 26, -30, 25, 5, sid=7715 + sd, fill=WHITE)
         if blink < 0.5:
-            cr.arc(sd * 26, -28, 11, 0, 2 * math.pi); fill_ink(cr)
-            cr.arc(sd * 22, -33, 4, 0, 2 * math.pi); cr.set_source_rgb(1, 1, 1); cr.fill()
+            cr.arc(sd * 26 + 9 * look[0], -28 + 9 * look[1], 11, 0, 2 * math.pi); fill_ink(cr)
+            cr.arc(sd * 22 + 9 * look[0], -33 + 9 * look[1], 4, 0, 2 * math.pi); cr.set_source_rgb(1, 1, 1); cr.fill()
         else:
             sketch_line(cr, [(sd * 26 - 16, -30), (sd * 26 + 16, -30)], 5, sid=7718 + sd, amp=0.3)
     sketch_poly(cr, [(-10, -16), (10, -16), (0, 6)], 4, sid=7720, fill=BEAK, amp=0.3)
@@ -1145,10 +1152,16 @@ def draw_envelope(cr, x, y, s=1.0, ang=0.0):
     sketch_circle(cr, 0, 8, 17, 4, sid=7732, fill=SEAL)
     cr.restore()
 
-def draw_letter(cr, cx, cy, w, h, lines=("YOU'RE IN.",), sub=None, alpha=1.0):
-    """an open parchment letter facing us: big marker lines, an optional small line under them, a red wax seal."""
+def draw_letter(cr, cx, cy, w, h, lines=("YOU'RE IN.",), sub=None, alpha=1.0, back=False):
+    """an open parchment letter facing us: big marker lines, an optional small line under them, a red wax seal.
+    back=True: the blank back of it (he's reading the other side)."""
     cr.push_group()
     sketch_rect(cr, cx - w / 2, cy - h / 2, cx + w / 2, cy + h / 2, 6, sid=7740, fill=PARCH)
+    if back:
+        for k in range(2):
+            yk = cy - h / 2 + h * (k + 1) / 3
+            sketch_line(cr, [(cx - w / 2 + 10, yk), (cx + w / 2 - 10, yk)], 2.5, sid=7741 + k, amp=0.6, alpha=0.35)
+        cr.pop_group_to_source(); cr.paint_with_alpha(alpha); return
     for k in range(2):                                                      # fold creases
         yk = cy - h / 2 + h * (k + 1) / 3
         sketch_line(cr, [(cx - w / 2 + 10, yk), (cx + w / 2 - 10, yk)], 2.5, sid=7741 + k, amp=0.6, alpha=0.35)
@@ -1235,7 +1248,7 @@ def hat_pt(bx, by, w, h, u, side=0.0, bend=0.0, droop=0.0, swell=1.0):
     return (lerp(xa, xb, k) + side * lerp(wa, wb, k), lerp(ya, yb, k))
 
 def draw_wizard_hat(cr, bx, by, w, h, t=0.0, bend=0.0, droop=0.0, swell=1.0, eyes=0.0, look=(0.0, 0.0), mouth=0.0,
-                    glow=0.0, scorch=0.0, brim=True, sid=7900):
+                    glow=0.0, scorch=0.0, brim=True, sid=7900, angry=0.0):
     """giant, old, patched pointy hat. (bx, by) = brim centre. eyes 0..1 (closed crease .. open), look -1..1,
     mouth 0..1 (the brim crease opens), glow 0..1 (seams + stitches glow gold: overload), scorch 0..1 (burnt)."""
     col = lerp(HAT, (0.24, 0.21, 0.20), scorch)
@@ -1268,7 +1281,9 @@ def draw_wizard_hat(cr, bx, by, w, h, t=0.0, bend=0.0, droop=0.0, swell=1.0, eye
     for sd in (-1, 1):
         ex, ey = hat_pt(bx, by, w, h, 0.42, sd * 0.36, bend, droop, swell)
         ew, eh = w * 0.075 * swell, w * 0.05 * max(0.05, eyes)
-        sketch_line(cr, [(ex - ew * 1.5, ey - eh - 16 - 6 * sd * 0), (ex + ew * 1.5, ey - eh - 24 + sd * 6)], 6, sid=sid + 40 + sd, amp=0.6)
+        ang = angry * w * 0.06                                            # angry: brows slam down toward the middle
+        sketch_line(cr, [(ex - ew * 1.5, ey - eh - 16 - sd * ang), (ex + ew * 1.5, ey - eh - 24 + sd * 6 + sd * ang)],
+                    6 + 4 * angry, sid=sid + 40 + sd, amp=0.6)
         if eyes > 0.08:
             ellipse(cr, ex, ey, ew, eh, sid=sid + 43 + sd); fill_ink(cr, HAT_D); cr.new_path()
             ellipse(cr, ex, ey, ew, eh, sid=sid + 43 + sd); stroke_ink(cr, 5)
@@ -1370,3 +1385,58 @@ def draw_brim_ring(cr, x, t=0.0, smoke=1.0, w=620):
         sx = x + (-0.7 + 0.47 * k) * w * 0.8 + 30 * math.sin(t * 2 + k)
         cr.arc(sx + 20 * math.sin(u * 6 + k), FLOOR_Y - 30 - 260 * u, 18 + 40 * u, 0, 2 * math.pi)
         cr.set_source_rgba(0.55, 0.55, 0.58, 0.45 * smoke * math.sin(math.pi * u)); cr.fill()
+
+
+BRICK, BRICK_D, MORTAR = (0.74, 0.36, 0.26), (0.62, 0.28, 0.20), (0.90, 0.86, 0.80)
+def draw_brick_wall(cr, cx, w=700, h=1150, signs=("9", "10"), yb=FLOOR_Y):
+    """a tall station brick wall, bottom-centre (cx, yb), with round-cornered number signs hanging on its two faces."""
+    x0, x1, y0 = cx - w / 2, cx + w / 2, yb - h
+    sketch_rect(cr, x0, y0, x1, yb, 7, sid=8000, fill=MORTAR)
+    bh, bw = 56, 120
+    row = 0; y = yb
+    while y > y0 + 1:
+        yt = max(y0, y - bh)
+        off = (bw / 2) if row % 2 else 0
+        x = x0 - off
+        k = 0
+        while x < x1:
+            a, b = max(x0, x + 5), min(x1, x + bw - 5)
+            if b - a > 8:
+                cr.rectangle(a, yt + 5, b - a, (y - yt) - 10)
+                cr.set_source_rgb(*(BRICK if (row * 7 + k * 3) % 5 else BRICK_D)); cr.fill()
+            x += bw; k += 1
+        y -= bh; row += 1
+    cr.rectangle(x0, y0, w, h); stroke_ink(cr, 7)
+    sketch_rect(cr, x0 - 20, y0 - 40, x1 + 20, y0, 6, sid=8001, fill=(0.55, 0.52, 0.50))     # coping
+    for i, txt in enumerate(signs):                                          # hanging signs
+        sx = x0 + w * (0.22 if i == 0 else 0.78); sy = y0 + 260
+        sketch_line(cr, [(sx - 50, y0 + 10), (sx - 50, sy - 60)], 4, sid=8010 + i, amp=0.3)
+        sketch_line(cr, [(sx + 50, y0 + 10), (sx + 50, sy - 60)], 4, sid=8012 + i, amp=0.3)
+        sketch_rect(cr, sx - 95, sy - 60, sx + 95, sy + 60, 6, sid=8014 + i, fill=(0.98, 0.98, 0.96))
+        draw_text(cr, txt, sx, sy, 92, color=(30, 30, 34))
+
+WOODR = (0.66, 0.42, 0.24)
+def draw_free_door(cr, x, open_=0.0, part="inside", sign="DOOR TO WIZARD SCHOOL", w=380, h=1150, yb=FLOOR_Y,
+                   inside=(1.0, 0.86, 0.50)):
+    """a big wooden door standing on its own in a frame (nothing behind it). part "inside" = frame + the glowing
+    doorway (draw before whoever walks through); part "panel" = the door swinging open on its left hinge (draw after
+    them) + the sign on top."""
+    x0, x1, y0 = x - w / 2, x + w / 2, yb - h
+    if part == "inside":
+        sketch_rect(cr, x0 - 34, y0 - 34, x1 + 34, yb, 7, sid=8100, fill=(0.50, 0.32, 0.18))   # frame
+        sketch_rect(cr, x0, y0, x1, yb, 5, sid=8101, fill=inside if open_ > 0.01 else (0.18, 0.14, 0.12))
+        return
+    dw = w * math.cos(open_ * 1.35)
+    if dw > 4:
+        sketch_poly(cr, [(x0, y0), (x0 + dw, y0 + 20 * open_), (x0 + dw, yb - 12 * open_), (x0, yb)], 6, sid=8102, fill=WOODR, amp=0.5)
+        for k in range(1, 4):                                               # planks
+            sketch_line(cr, [(x0 + dw * k / 4, y0 + 10 + 20 * open_ * k / 4), (x0 + dw * k / 4, yb - 10)], 3, sid=8103 + k, amp=0.4, alpha=0.6)
+        cr.arc(x0 + dw * 0.85, y0 + h * 0.55, 16 * max(0.3, dw / w), 0, 2 * math.pi); cr.set_source_rgb(*GOLD); cr.fill_preserve(); stroke_ink(cr, 4)
+    if sign:
+        sw_ = w + 260
+        sketch_rect(cr, x - sw_ / 2, y0 - 230, x + sw_ / 2, y0 - 60, 6, sid=8110, fill=(0.92, 0.82, 0.60))
+        sketch_line(cr, [(x - 120, y0 - 60), (x - 120, y0 - 34)], 5, sid=8111, amp=0.2)
+        sketch_line(cr, [(x + 120, y0 - 60), (x + 120, y0 - 34)], 5, sid=8112, amp=0.2)
+        from ink import text_surface
+        surf, tw, th = text_surface(sign, 60, max_w=sw_ - 40)
+        cr.set_source_surface(surf, x - tw / 2, y0 - 145 - th / 2); cr.paint()
