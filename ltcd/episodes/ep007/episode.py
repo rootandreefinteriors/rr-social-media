@@ -1,6 +1,6 @@
 """Day 7 — COMMENT episode: @nerdbpy "Join Hogwarts." (Instagram, day 6 reel, 0 likes; the only comment).
 RE-CUT on Justin's outline (2026-10-29). Generic wizard school: no names, crests or characters on screen (only the
-pinned card shows the comment). The magic platform is a brick station wall between platform signs 9 and 10.
+pinned card shows the comment). Platform 9 3/4 is a long brick station wall; the door is set into it further along.
 
 SHOT 1  Beside the wrapper pile outside the burger place. Reads the comment. Stares. Slow blink.
 OWL     An owl flaps in and drops an envelope on his head (bonk). He catches it, opens it and READS it (we see the
@@ -12,10 +12,10 @@ DOOR    The owl points again. The camera pulls out: right next to the wall stand
         He looks at it. At us. Gets up, walks over, through the door. CUT: the castle at night, the same door standing
         in the courtyard; he steps out of it.
 HAT     A giant old patched hat drops over him to his knees. HMM. It rummages. ... A patch flips open: his eye. HELLO?
-        THERE'S NOTHING IN HERE. Its brows slam down: EXPELLED. FOREVER. It overloads and blasts him into the sky.
-OUT     CUT: back at the burger place. He falls out of the sky onto his butt by the wrapper pile, sooty. The burnt
-        little hat flutters down onto his head, glares: AND STAY OUT.
-END     He stands. The ask, right back where he started.
+        (hello... echoes around inside his head) THERE'S NO BRAIN IN THIS HEAD. Its brows slam down: EXPELLED. FOREVER. It overloads and blasts him into the sky.
+OUT     CUT: the empty white room. He falls out of the sky onto his butt, sooty. Looks around. His letter flutters
+        down after him; he reads it, turns it to us: EXPELLED stamped across YOU'RE IN. Lets it drop.
+END     He stands. The ask, in the white room.
 """
 import sys, os, math, random
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "engine"))
@@ -28,19 +28,21 @@ from ink import smooth, draw_text, sketch_line
 SX = 2020                       # start + end: body centre 2560, just right of the wrapper pile (where day 6 left him)
 X0 = 540 + SX
 PILE = (2210, 640, 230)
-XW, WALL_W, WALL_H = 4100, 700, 1150   # the brick wall (left face at 3750)
-XD = 4660                       # the door, right of the wall
+WALL_L, WALL_R, WALL_H = 3750, 5800, 1150   # the brick platform wall; 9 3/4 near its left end
+XW, WALL_W = (WALL_L + WALL_R) / 2, WALL_R - WALL_L
+XD = 4660                       # the door, set into the same wall further along (more wall after it)
+DOOR_H = 1000
 SXA = 2910                      # where he stops in front of the wall (x 3450)
 SXB = 2650                      # backs up to here
 SXH = 3140                      # flat against the wall
-SXL = 3000                      # lying on his back
+SXL = 3050                      # lying on his back
 SXD = XD - 540                  # in the doorway
 X3 = 9140                       # the castle (another place entirely: reached through the door)
 SX3 = X3 - 540
-XDC = X3 - 560                  # the same door, standing in the courtyard
+XDC = X3 - 1080                 # the same door, standing in the courtyard, clear of the castle
 CAM0 = (2640, 945, 1.1)
 CAM_WALL = (3780, 930, 0.8)
-CAM_OUT = (4100, 840, 0.56)
+CAM_OUT = (3880, 830, 0.5)
 CAM_HAT = (X3, 900, 0.88)
 
 # ---------------------------------------------------------------- timeline
@@ -54,31 +56,33 @@ PT2 = 17.7                      # owl points at the wall
 BACK0, BACK1 = 19.4, 20.3       # backs up
 WH0, WH1 = 20.6, 21.7           # legs spin in place
 HIT = 22.15                     # SMACK
-PEEL, FLOOR = 22.55, 23.0
+PEEL, SLID, FLOOR = 22.55, 23.0, 23.75
 PT3 = 25.2                      # owl points again; camera pulls out
 UP0 = 27.6                      # gets up
 DW0, DW1 = 28.6, 31.4           # walks to the door
 DOOR_OPEN = 30.8
 CUT2 = 32.2                     # through the door -> the castle
-OUT1 = 33.6
-HF0, HLAND = 35.6, 36.35
-EYES = 37.1
-B1 = (37.6, 39.1, "HMM.")
-RUM0, RUM1 = 39.3, 41.1
-B2 = (39.5, 41.0, "...")
-FLAP0, FLAP1 = 41.3, 42.9
-B3 = (43.1, 44.4, "HELLO?")
-B4 = (44.7, 46.9, "THERE'S NOTHING IN HERE.")
-B5 = (47.3, 48.8, "EXPELLED.")
-B6 = (48.9, 50.4, "FOREVER.")
-OV0, BOOM = 48.9, 50.9
+OUT1 = 34.6
+HF0, HLAND = 36.4, 37.15
+EYES = 37.8
+B1 = (38.2, 39.6, "HMM.")
+RUM0, RUM1 = 39.8, 41.4
+B2 = (40.0, 41.3, "...")
+FLAP0, FLAP1 = 41.5, 42.9
+B3 = (43.1, 44.6, "HELLO?")
+ECHO = 43.6                     # "hello..." echoes around inside his empty head
+B4 = (44.9, 47.2, "THERE'S NO BRAIN IN THIS HEAD.")
+B5 = (47.5, 48.9, "EXPELLED.")
+B6 = (49.0, 50.4, "FOREVER.")
+OV0, BOOM = 49.0, 50.9
 UP1 = BOOM + 0.9
-CUT3 = 52.2                     # back at the burger place
+CUT3 = 52.2                     # the empty white room
 LAND = 52.9
-HAT2_0, HAT2_1 = 54.1, 55.3
-B7 = (55.9, 57.6, "AND STAY OUT.")
-STAND = 57.9
-T_ASK = 58.8
+L2_0, L2_1 = 54.0, 55.1         # the letter flutters down after him; he catches it
+TURN2 = 56.1                    # reads it, then turns it to us: EXPELLED stamped across it
+LETGO2 = 58.3
+STAND = 58.8
+T_ASK = 59.7
 
 S = M.Scene(x0=SX)
 S.auto_blinks = False
@@ -95,15 +99,16 @@ def door_open(t):
 def world(cr, t):
     if CUT2 <= t < CUT3:
         O.draw_castle_world(cr, t, cx=X3)
-        O.draw_free_door(cr, XDC, door_open(t), "inside", sign=None)
+        O.draw_free_door(cr, XDC, door_open(t), "inside", sign=None, h=DOOR_H)
         return
+    if t >= CUT3: return                                                   # the empty white room
     O.draw_burger_world(cr, t)
     sketch_line(cr, [(2500, FLOOR_Y), (6000, FLOOR_Y)], 3.5, sid=91, amp=1.3, alpha=0.8)
     O.draw_wrapper_pile(cr, *PILE)
     for x, sc, k in LOOSE: O.draw_wrapper(cr, x, FLOOR_Y - 14 * sc, sc, sid=7700 + k)
-    O.draw_brick_wall(cr, XW, WALL_W, WALL_H)
-    O.draw_free_door(cr, XD, door_open(t), "inside")
-    O.draw_free_door(cr, XD, door_open(t), "panel")
+    O.draw_brick_wall(cr, XW, WALL_W, WALL_H, signs=(("9 3/4", (4100 - WALL_L) / WALL_W),))
+    O.draw_free_door(cr, XD, door_open(t), "inside", h=DOOR_H)
+    O.draw_free_door(cr, XD, door_open(t), "panel", h=DOOR_H, sign_w=560)
 S.background(world)
 
 # ================================================================ SHOT 1: reads it. stares.
@@ -118,11 +123,12 @@ OWLK = [(0.0, (X0 - 1000.0, 330.0), 0), (OWL0, (X0 - 1000.0, 330.0), 0),
         (OWL0, (X0 + 30.0, 420.0), DROP - OWL0, "out"),
         (DROP + 0.15, (X0 - 240.0, 440.0), HOV - DROP - 0.15),                    # hovers to his left
         (T_WALK + 0.2, (XA - 170.0, 420.0), T_ARR - T_WALK + 0.2),                  # follows him over
-        (FLOOR + 0.3, (3470.0, 1000.0), 0.9),                                      # over him, looking down
-        (DW0 + 0.3, (XD - 280.0, 560.0), 1.5),                                      # to the door
+        (FLOOR + 0.3, (3250.0, 1060.0), 0.9),                                      # over him, looking down
+        (UP0 - 0.4, (3320.0, 420.0), 0.7),                                          # up out of his way
+        (DW0 + 0.3, (XD - 280.0, 400.0), 1.5),                                      # to the door
         (CUT2 - 0.9, (XD, 900.0), 0.5, "inn"),                                      # in through it
         (CUT2, (XDC, 700.0), 0.0),                                                  # out the other side, after him
-        (CUT2 + 0.9, (X3 - 470.0, 880.0), 1.4)]
+        (CUT2 + 0.9, (X3 - 470.0, 880.0), 1.8)]
 OWLP = Track(OWLK)
 def owl_pos(t):
     x, y = OWLP.at(t)
@@ -240,7 +246,7 @@ S.set(WH0, "stand", "dead_stare", dur=0.15, look=(1.0, 0.0), lid=0.5, lean=0.28,
       lelb=(450, 900), lhand=(410, 840), relb=(640, 900), rhand=(690, 830), lhand_t="fist", rhand_t="fist")
 S.sfx(WH0, "skid", 0.05, dur=WH1 - WH0)
 def wheel(tt, p):                                                          # legs spin in place, a blur
-    if not (WH0 <= tt < WH1 + 0.45): return p
+    if not (WH0 <= tt < WH1): return p
     hx, hy = p["hip"]
     for side, off in (("l", 0.0), ("r", math.pi)):
         a = tt * 42 + off
@@ -270,22 +276,28 @@ S.set(HIT, "stand", "dead_stare", dur=0.05, ease="snap", run=0.0, lean=-0.06, st
 S.sfx(HIT, "bonk", 0.14); S.sfx(HIT, "thud", 0.2); S.shake(HIT, 0.4, 16)
 def smack(cr, t, p, ly):
     if ly == "front" and HIT <= t < HIT + 0.45:
-        L.draw_impact(cr, XW - WALL_W / 2, 760, (t - HIT) / 0.45, r=120, sid=81)
-S.xkeys.append((PEEL, SXL, FLOOR - PEEL, "out")); S.x = SXL
-S.set(PEEL, "lie_back", "dizzy", dur=FLOOR - PEEL, ease="inn", nowalk=1.0, look=(0.0, 0.0))
-S._hop(PEEL + 0.18, 60, 0.12)
+        L.draw_impact(cr, WALL_L, 760, (t - HIT) / 0.45, r=120, sid=81)
+# slides down the wall onto his butt... then tips over onto his back. KO.
+L.POSES["ko"] = dict(head=(-95, 1392), neck=(30, 1428), hip=(380, 1440), lknee=(470, 1292), rknee=(500, 1300),
+                     lfoot=(520, FLOOR_Y), rfoot=(570, FLOOR_Y), lelb=(-10, 1300), lhand=(-70, 1165), relb=(220, 1452),
+                     rhand=(385, 1462), tilt=-1.35, lfoot_dir=0.6, rfoot_dir=0.8, lhand_t="open", rhand_t="open",
+                     lhand_front=0.0, rhand_front=0.0)
+S.set(PEEL, "sit_floor", "dizzy", dur=SLID - PEEL, ease="inn", nowalk=1.0, look=(0.0, 0.0), tilt=0.12)
+S.set(SLID, "sit_floor", "dizzy", dur=0.06, ease="snap", nowalk=1.0, stretch=-0.25, tilt=0.12)
+S.sfx(SLID, "thud", 0.1)
+S.set(SLID + 0.35, "ko", "dizzy", dur=FLOOR - SLID - 0.35, ease="inn", nowalk=1.0)
 S.sfx(FLOOR, "thud", 0.15); S.shake(FLOOR, 0.3, 8)
-S.camera(HIT + 0.2, 3700, 960, 0.84, 1.2)
-S.set(FLOOR + 0.1, "lie_back", "dizzy", dur=0.2, nowalk=1.0)
+S.camera(HIT + 0.2, 3560, 960, 0.8, 1.2)
+S.set(FLOOR + 0.05, "ko", "dizzy", dur=0.2, nowalk=1.0)
 S.sfx(FLOOR + 0.3, "twinkle", 0.04)
-# the owl points again, the camera pulls out: a door
-S.set(PT3 - 0.2, "lie_back", "dead_stare", dur=0.4, nowalk=1.0, look=(0.6, -0.6))             # stars gone. the owl.
+# the owl points again, the camera pulls out: a door, in the same wall
+S.set(PT3 - 0.2, "ko", "dead_stare", dur=0.4, nowalk=1.0, look=(0.6, -0.6))             # stars gone. the owl.
 S.camera(PT3 + 0.3, *CAM_OUT, dur=1.4)
-S.set(PT3 + 1.0, "lie_back", "dead_stare", dur=0.4, nowalk=1.0, look=(1.0, -0.2))             # the door
-S.set(PT3 + 1.9, "lie_back", "dead_stare", dur=0.4, nowalk=1.0, look=(0.6, 0.6))               # at us
+S.set(PT3 + 1.0, "ko", "dead_stare", dur=0.4, nowalk=1.0, look=(1.0, -0.2))             # the door
+S.set(PT3 + 1.9, "ko", "dead_stare", dur=0.4, nowalk=1.0, look=(0.6, 0.6))               # at us
 S.blink(PT3 + 2.4)
-S.set(UP0, "crouch", "dead_stare", dur=0.45, nowalk=1.0)
-S.set(UP0 + 0.5, "stand", "dead_stare", dur=0.35, ease="back", nowalk=0.0, look=(0.8, 0.0))
+S.cut(UP0)                                                                  # jump cut: up. no in-between.
+S.set(UP0, "stand", "dead_stare", dur=0.0, nowalk=0.0, look=(0.8, 0.0), lhand_front=0.0, rhand_front=0.0)
 S.xkeys.append((DW0, SXD, DW1 - DW0, "smooth")); S.x = SXD
 S.camera(DW0, XD - 300, 900, 0.8, DW1 - DW0)
 S.set(DW1, "stand", "dead_stare", dur=0.3, look=(0.0, 0.0))
@@ -293,12 +305,13 @@ S.sfx(DOOR_OPEN, "squeak", 0.03)
 S.set(CUT2 - 0.5, "stand", "dead_stare", dur=0.3, look=(0.0, -0.3))
 
 # ================================================================ CUT: through the door, the castle
-S.cut(CUT2, cam=(X3 - 260, 930, 0.92), x=XDC - 540)
+S.cut(CUT2, cam=(X3 - 620, 930, 0.72), x=XDC - 540)
+S.camera(CUT2 + 0.6, X3 - 120, 930, 0.88, OUT1 - CUT2 - 0.4)
 S.set(CUT2, "stand", "dead_stare", dur=0.0, look=(0.6, 0.0))
 S.xkeys.append((CUT2 + 0.3, SX3, OUT1 - CUT2 - 0.3, "smooth")); S.x = SX3
 S.sfx(OUT1 + 0.7, "tok", 0.05)
 def court_door(cr, t, p, ly):                                              # its panel, in front of the courtyard
-    if ly == "back" and CUT2 <= t < CUT3: O.draw_free_door(cr, XDC, door_open(t), "panel", sign=None)
+    if ly == "back" and CUT2 <= t < CUT3: O.draw_free_door(cr, XDC, door_open(t), "panel", sign=None, h=DOOR_H)
 S.set(OUT1, "stand", "dead_stare", dur=0.3, look=(0.0, 0.0))
 S.set(OUT1 + 0.5, "stand", "dead_stare", dur=0.5, look=(0.0, -0.9))                           # the castle
 S.set(OUT1 + 0.9, "stand", "dead_stare", dur=0.6, look=(0.0, -0.9), tilt=-0.05)
@@ -382,15 +395,16 @@ def hat(cr, t, p, ly):
                         (O.GOLD, O.VIOLET, O.CYAN)[i % 3], ang=t * 3 + i, alpha=(1 - u) * min(1.0, o * 2))
 def bubbles(cr, t, p, ly):
     if ly != "front": return
+    for k in range(3):                                                     # hello... hello... bouncing around in there
+        u = (t - ECHO - 0.45 * k) / 1.3
+        if 0 <= u < 1:
+            draw_text(cr, "hello...", X3 + 20 + 90 * math.sin(u * 5 + k * 2), 600 - 40 * k + 50 * u, 62 - 10 * k,
+                      color=(255, 240, 200), alpha=math.sin(math.pi * u) * (1 - 0.2 * k))
     for b in (B1, B2, B3, B4, B5, B6):
         if b[0] <= t < b[1]:
             a = min(1.0, (t - b[0]) / 0.15, (b[1] - t) / 0.15)
             sz = 72 if b in (B5, B6) else 56
             O.draw_thought(cr, X3 - 205, 410, b[2], tail=(X3 - 140, 560), size=sz, max_w=360, alpha=a)
-    if B7[0] <= t < B7[1]:
-        a = min(1.0, (t - B7[0]) / 0.15, (B7[1] - t) / 0.15)
-        hx, hy = p["head"]
-        O.draw_thought(cr, X0 - 170, 470, B7[2], tail=(hx - 90, hy - 210), size=56, max_w=300, alpha=a)
 S.set(HLAND, "stand", "dead_stare", dur=0.08, ease="snap", squash=0.15)
 S.set(HLAND + 0.2, "stand", "dead_stare", dur=0.3, look=(0.0, 0.0), squash=0.0)
 def shuffle(tt, p):
@@ -435,64 +449,76 @@ def boom_back(cr, t, p, ly):
     O.draw_brim_ring(cr, X3, t, w=400)
     O.draw_magic_burst(cr, X3, 900, t - BOOM, part="cloud")
 
-# ================================================================ CUT: back at the burger place. lands. AND STAY OUT.
-S.cut(CUT3, cam=(2620, 900, 0.95), x=SX)
+# ================================================================ CUT: the empty white room. lands. the letter, again.
+S.cut(CUT3, cam=(540, 900, 0.95), x=0)
 S.set(LAND, "sit_floor", "dead_stare", dur=0.06, ease="snap", stretch=-0.3, lag=1.0)
 S.set(LAND + 0.15, "sit_floor", "dead_stare", dur=0.4, ease="back", stretch=0.0, fx_steam=0.4)
 S.sfx(LAND, "thud", 0.2); S.sfx(LAND + 0.02, "bonk", 0.04); S.shake(LAND, 0.5, 16)
-_rw = random.Random(5)
-SPLASH = [(_rw.uniform(-1, 1), _rw.uniform(0.6, 1.0)) for _ in range(12)]
 def land_fx(cr, t, p, ly):
-    if ly != "front" or not (LAND <= t < LAND + 1.4): return
-    u = t - LAND
-    if u < 0.8: L.draw_poof(cr, X0, FLOOR_Y - 40, u / 0.8, r=200, sid=32)
-    for i, (d, sp) in enumerate(SPLASH):                                   # wrappers kicked up
-        x = X0 - 120 + d * 520 * u; y = FLOOR_Y - 60 - 900 * sp * u + 1300 * u * u
-        if y < FLOOR_Y: O.draw_wrapper(cr, x, y, 0.9, sid=7800 + i)
+    if ly == "front" and LAND <= t < LAND + 0.8: L.draw_poof(cr, 540, FLOOR_Y - 40, (t - LAND) / 0.8, r=200, sid=32)
 S.blink(LAND + 1.0)
-S.set(LAND + 0.8, "sit_floor", "dead_stare", dur=0.3, look=(0.0, 0.0), fx_steam=0.3)
-S.set(HAT2_0 + 0.3, "sit_floor", "dead_stare", dur=0.5, look=(0.0, -0.9), fx_steam=0.2)
-S.set(HAT2_1 + 0.05, "sit_floor", "dead_stare", dur=0.08, ease="snap", squash=0.15, look=(0.0, -0.9))
-S.set(HAT2_1 + 0.25, "sit_floor", "dead_stare", dur=0.4, squash=0.0, look=(0.0, 0.0))
-S.set(B7[0] + 0.3, "sit_floor", "dead_stare", dur=0.4, look=(0.0, -0.95))
-S.set(B7[1] - 0.1, "sit_floor", "dead_stare", dur=0.4, look=(0.0, 0.0))
-S.sfx(HAT2_1, "pop", 0.04)
-SW, SH = 190.0, 240.0
-def small_hat_on(t, p):
-    hx, hy = p["head"]; tl = p.get("tilt", 0.0)
-    return (hx + (L.HEAD_R - 22) * math.sin(tl), hy - (L.HEAD_R - 22) * math.cos(tl), tl)
-def small_hat(cr, t, p, ly):
-    if ly != "front" or t < HAT2_0: return
-    if t < HAT2_1:
-        u = ramp(t, HAT2_0, HAT2_1, "linear")
-        tx, ty, _ = small_hat_on(t, p)
-        x = tx + 90 * math.sin(u * 7) * (1 - u); y = lerp(-250, ty, u ** 1.3); rot = 0.35 * math.sin(u * 7) * (1 - u)
-    else:
-        x, y, rot = small_hat_on(t, p)
-    eyes = smooth(ramp(t, B7[0] - 0.5, B7[0] - 0.2)) * 0.7
-    angry = smooth(ramp(t, B7[0] - 0.4, B7[0] - 0.2))
-    mouth = 0.2 + 0.25 * abs(math.sin((t - B7[0]) * 9)) if B7[0] <= t < B7[1] - 0.5 else 0.0
-    cr.save(); cr.translate(x, y); cr.rotate(rot)
-    O.draw_wizard_hat(cr, 0, 0, SW, SH, t, bend=0.3, droop=0.7, eyes=eyes, look=(-0.3, 0.4), mouth=mouth, scorch=1.0,
-                      sid=7990, angry=angry)
+S.set(LAND + 0.8, "sit_floor", "dead_stare", dur=0.3, look=(0.0, 0.0), fx_steam=0.3)          # where is this
+S.set(LAND + 1.3, "sit_floor", "dead_stare", dur=0.4, look=(-0.8, 0.0), fx_steam=0.2)
+S.set(LAND + 1.9, "sit_floor", "dead_stare", dur=0.4, look=(0.8, 0.0), fx_steam=0.1)
+S.set(L2_0 + 0.2, "sit_floor", "dead_stare", dur=0.4, look=(0.0, -0.9))                        # something's coming down
+# the letter flutters down after him, into his hands; he reads it; turns it round: EXPELLED stamped across it
+L2_HOLD = (540, 1262)
+def l2_flip(t): return smooth(ramp(t, TURN2, TURN2 + 0.45))
+def l2_c(t):
+    if t < L2_1:
+        u = ramp(t, L2_0, L2_1, "linear")
+        return (540 + 160 * math.sin(u * 7) * (1 - u), lerp(-250, L2_HOLD[1], u ** 1.4), 0.4 * math.sin(u * 7) * (1 - u))
+    if t < LETGO2: return (L2_HOLD[0], L2_HOLD[1] - 20 * smooth(ramp(t, TURN2, TURN2 + 0.4)), 0.0)
+    u = ramp(t, LETGO2, LETGO2 + 0.8, "linear")
+    return (540 + 150 * u + 50 * math.sin(u * 9), lerp(L2_HOLD[1], FLOOR_Y - 14, u * u), 0.3 * math.sin(u * 8) * u)
+def l2_w(t):
+    if L2_1 <= t < LETGO2: return 400 * max(0.06, abs(math.cos(math.pi * l2_flip(t))))
+    return 400
+def letter2(cr, t, p, ly):
+    if t < L2_0: return
+    cx, cy, rot = l2_c(t)
+    if t >= LETGO2 + 0.8:
+        if ly == "back": O.draw_letter(cr, cx, cy, 380, 30, ())
+        return
+    if ly != "front": return
+    u = ramp(t, LETGO2, LETGO2 + 0.8)
+    h = 300 * (1 - 0.9 * u)
+    cr.save(); cr.translate(cx, cy); cr.rotate(rot); cr.translate(-cx, -cy)
+    O.draw_letter(cr, cx, cy, l2_w(t), max(20, h), ("YOU'RE IN.",), sub="WIZARD SCHOOL",
+                  back=(t < LETGO2 and l2_flip(t) < 0.5), stamp="EXPELLED")
     cr.restore()
-    for k in range(2):
-        u = ((t * 0.6) + k / 2) % 1.0
-        tx, ty = O.hat_pt(x, y, SW, SH, 0.95, 0, 0.3, 0.7)
-        cr.arc(tx + 15 * math.sin(u * 6), ty - 140 * u, 10 + 22 * u, 0, 2 * math.pi)
-        cr.set_source_rgba(0.55, 0.55, 0.58, 0.4 * math.sin(math.pi * u)); cr.fill()
+S.sfx(L2_1, "pat", 0.04); S.sfx(TURN2, "flip", 0.06); S.sfx(LETGO2 + 0.75, "flip", 0.025)
+def l2_hands(tt, p):
+    e = smooth(ramp(tt, L2_1 - 0.2, L2_1)) * (1 - smooth(ramp(tt, LETGO2 - 0.05, LETGO2 + 0.3)))
+    if e < 0.001: return p
+    cx, cy, _ = l2_c(tt); w = max(110, l2_w(tt))
+    l, r = (cx - w / 2 - 6, cy + 40), (cx + w / 2 + 6, cy + 40)
+    p["lhand"] = lerp(p["lhand"], l, e); p["rhand"] = lerp(p["rhand"], r, e)
+    p["lelb"] = lerp(p["lelb"], (l[0] + 20, l[1] + 70), e); p["relb"] = lerp(p["relb"], (r[0] - 20, r[1] + 70), e)
+    if e > 0.5: p["lhand_t"] = p["rhand_t"] = "grip"
+    return p
+S.hook(l2_hands)
+def reading2(tt, p):
+    if L2_1 + 0.25 <= tt < TURN2 - 0.2:
+        k = (tt - L2_1 - 0.25) / 0.45; u = k % 1.0
+        p["look"] = (-0.45 + 0.9 * smooth(u), 0.65)
+    return p
+S.hook(reading2)
+S.set(L2_1, "sit_floor", "deadpan", dur=0.3, look=(0.0, 0.7), lid=0.45, tilt=0.05)
+S.set(TURN2 + 0.5, "sit_floor", "dead_stare", dur=0.4, look=(0.0, 0.0), tilt=0.0)               # at us
+S.blink(TURN2 + 1.3)
+S.set(LETGO2 + 0.2, "sit_floor", "dead_stare", dur=0.4, look=(0.3, 0.7))
 
-# ================================================================ stands. the ask, right back where he started.
+# ================================================================ stands. the ask, in the empty white room.
 S.stand(STAND, face="dead_stare")
 S.t = T_ASK
-S.camera(T_ASK - 1.0, 2620, 880, 1.0, 1.0)
-S.camera(T_ASK + 6.9, 2610, 885, 1.04, 3.0)
-S.the_ask(T_ASK, hold=6.5, push=False, keep=dict(soot=0.65, frizz=0.5))
+S.camera(T_ASK - 1.0, 540, 930, 1.12, 1.0)
+S.the_ask(T_ASK, hold=6.0, keep=dict(soot=0.65, frizz=0.5))
 S.hook(lambda tt, p: (p.update(soot=0.65, frizz=max(p.get("frizz", 0.0), 0.5)) if tt >= BOOM else None) or p)
 
 # ---------------------------------------------------------------- draw order + hooks
 S.props.insert(0, boom_back); S.props.insert(1, court_door)
-for f in (letter, owl, wheel_fx, smack, hat, boom, land_fx, small_hat, bubbles): S.prop(f)
+for f in (letter, owl, wheel_fx, smack, hat, boom, land_fx, letter2, bubbles): S.prop(f)
 
 if __name__ == "__main__":
     S.render("day007.mp4")

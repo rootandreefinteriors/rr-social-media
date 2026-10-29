@@ -34,7 +34,7 @@ with moves.Scene.place(..., pop=True).
     draw_thought(cr, x, y, text, tail)     thought bubble with marker text, centre (x, y), dots trailing to `tail`
     draw_star(cr, x, y, r, color)          a chunky 5-point star (magic sparks); draw_magic_burst(...) a big spark boom
     draw_brim_ring(cr, x, t)               the scorched, smoking brim of a blown-up hat lying on the floor
-    draw_brick_wall(cr, cx, w, h, signs)   a tall train-station brick wall/pillar with hanging platform-number signs
+    draw_brick_wall(cr, cx, w, h, signs)   a tall train-station brick wall with hanging platform signs (default 9 3/4)
     draw_free_door(cr, x, open_, part, sign) a tall wooden door standing on its own in its frame, with a plank sign on top
 """
 import math
@@ -1152,7 +1152,7 @@ def draw_envelope(cr, x, y, s=1.0, ang=0.0):
     sketch_circle(cr, 0, 8, 17, 4, sid=7732, fill=SEAL)
     cr.restore()
 
-def draw_letter(cr, cx, cy, w, h, lines=("YOU'RE IN.",), sub=None, alpha=1.0, back=False):
+def draw_letter(cr, cx, cy, w, h, lines=("YOU'RE IN.",), sub=None, alpha=1.0, back=False, stamp=None, stamp_k=1.0):
     """an open parchment letter facing us: big marker lines, an optional small line under them, a red wax seal.
     back=True: the blank back of it (he's reading the other side)."""
     cr.push_group()
@@ -1170,6 +1170,14 @@ def draw_letter(cr, cx, cy, w, h, lines=("YOU'RE IN.",), sub=None, alpha=1.0, ba
         draw_text(cr, l, cx, cy - h * 0.18 + (i - (n - 1) / 2) * size * 1.15, size, color=(30, 22, 18))
     if sub: draw_text(cr, sub, cx, cy + h * 0.14, size * 0.55, color=(70, 50, 40))
     sketch_circle(cr, cx, cy + h / 2 - 48, 26, 4, sid=7745, fill=SEAL)
+    if stamp and stamp_k > 0.01:                                           # a big red rubber stamp across it
+        from ink import text_surface
+        surf, tw, th = text_surface(stamp, int(w / 5.2), color=(200, 24, 24))
+        sc = 1.0 + 0.6 * (1 - stamp_k)
+        cr.save(); cr.translate(cx, cy); cr.rotate(-0.22); cr.scale(sc, sc)
+        cr.rectangle(-tw / 2 - 4, -th / 2 + 2, tw + 8, th - 4); cr.set_source_rgba(0.78, 0.09, 0.09, stamp_k); cr.set_line_width(9); cr.stroke()
+        cr.set_source_surface(surf, -tw / 2, -th / 2); cr.paint_with_alpha(stamp_k)
+        cr.restore()
     cr.pop_group_to_source(); cr.paint_with_alpha(alpha)
 
 def _cone_roof(cr, x, y, w, h, sid):
@@ -1388,8 +1396,9 @@ def draw_brim_ring(cr, x, t=0.0, smoke=1.0, w=620):
 
 
 BRICK, BRICK_D, MORTAR = (0.74, 0.36, 0.26), (0.62, 0.28, 0.20), (0.90, 0.86, 0.80)
-def draw_brick_wall(cr, cx, w=700, h=1150, signs=("9", "10"), yb=FLOOR_Y):
-    """a tall station brick wall, bottom-centre (cx, yb), with round-cornered number signs hanging on its two faces."""
+def draw_brick_wall(cr, cx, w=700, h=1150, signs=(("9 3/4", 0.2),), yb=FLOOR_Y):
+    """a tall station brick wall, bottom-centre (cx, yb), with platform signs hanging on it: signs = ((text, where
+    across 0..1), ...)."""
     x0, x1, y0 = cx - w / 2, cx + w / 2, yb - h
     sketch_rect(cr, x0, y0, x1, yb, 7, sid=8000, fill=MORTAR)
     bh, bw = 56, 120
@@ -1408,16 +1417,19 @@ def draw_brick_wall(cr, cx, w=700, h=1150, signs=("9", "10"), yb=FLOOR_Y):
         y -= bh; row += 1
     cr.rectangle(x0, y0, w, h); stroke_ink(cr, 7)
     sketch_rect(cr, x0 - 20, y0 - 40, x1 + 20, y0, 6, sid=8001, fill=(0.55, 0.52, 0.50))     # coping
-    for i, txt in enumerate(signs):                                          # hanging signs
-        sx = x0 + w * (0.22 if i == 0 else 0.78); sy = y0 + 260
-        sketch_line(cr, [(sx - 50, y0 + 10), (sx - 50, sy - 60)], 4, sid=8010 + i, amp=0.3)
-        sketch_line(cr, [(sx + 50, y0 + 10), (sx + 50, sy - 60)], 4, sid=8012 + i, amp=0.3)
-        sketch_rect(cr, sx - 95, sy - 60, sx + 95, sy + 60, 6, sid=8014 + i, fill=(0.98, 0.98, 0.96))
-        draw_text(cr, txt, sx, sy, 92, color=(30, 30, 34))
+    from ink import text_surface
+    for i, (txt, fr) in enumerate(signs):                                    # hanging signs
+        sx = x0 + w * fr; sy = y0 + 250
+        surf, tw, th = text_surface(txt, 88)
+        hw = max(95, tw / 2 + 6)
+        sketch_line(cr, [(sx - hw + 40, y0 + 10), (sx - hw + 40, sy - 60)], 4, sid=8010 + i, amp=0.3)
+        sketch_line(cr, [(sx + hw - 40, y0 + 10), (sx + hw - 40, sy - 60)], 4, sid=8012 + i, amp=0.3)
+        sketch_rect(cr, sx - hw, sy - 60, sx + hw, sy + 60, 6, sid=8014 + i, fill=(0.98, 0.98, 0.96))
+        cr.set_source_surface(surf, sx - tw / 2, sy - th / 2 + 4); cr.paint()
 
 WOODR = (0.66, 0.42, 0.24)
 def draw_free_door(cr, x, open_=0.0, part="inside", sign="DOOR TO WIZARD SCHOOL", w=380, h=1150, yb=FLOOR_Y,
-                   inside=(1.0, 0.86, 0.50)):
+                   inside=(1.0, 0.86, 0.50), sign_w=None):
     """a big wooden door standing on its own in a frame (nothing behind it). part "inside" = frame + the glowing
     doorway (draw before whoever walks through); part "panel" = the door swinging open on its left hinge (draw after
     them) + the sign on top."""
@@ -1433,7 +1445,7 @@ def draw_free_door(cr, x, open_=0.0, part="inside", sign="DOOR TO WIZARD SCHOOL"
             sketch_line(cr, [(x0 + dw * k / 4, y0 + 10 + 20 * open_ * k / 4), (x0 + dw * k / 4, yb - 10)], 3, sid=8103 + k, amp=0.4, alpha=0.6)
         cr.arc(x0 + dw * 0.85, y0 + h * 0.55, 16 * max(0.3, dw / w), 0, 2 * math.pi); cr.set_source_rgb(*GOLD); cr.fill_preserve(); stroke_ink(cr, 4)
     if sign:
-        sw_ = w + 260
+        sw_ = sign_w or (w + 260)
         sketch_rect(cr, x - sw_ / 2, y0 - 230, x + sw_ / 2, y0 - 60, 6, sid=8110, fill=(0.92, 0.82, 0.60))
         sketch_line(cr, [(x - 120, y0 - 60), (x - 120, y0 - 34)], 5, sid=8111, amp=0.2)
         sketch_line(cr, [(x + 120, y0 - 60), (x + 120, y0 - 34)], 5, sid=8112, amp=0.2)
