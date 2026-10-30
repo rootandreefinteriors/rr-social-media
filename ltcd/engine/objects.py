@@ -36,6 +36,11 @@ with moves.Scene.place(..., pop=True).
     draw_brim_ring(cr, x, t)               the scorched, smoking brim of a blown-up hat lying on the floor
     draw_brick_wall(cr, cx, w, h, signs)   a tall train-station brick wall with hanging platform signs (default 9 3/4)
     draw_free_door(cr, x, open_, part, sign) a tall wooden door standing on its own in its frame, with a plank sign on top
+    draw_plane(cr, x, y, ang, t, part, prop) little red propeller plane, side view, nose to the right; (x, y) = the pilot
+                                           seat (his hip goes here), ang = pitch (rad, + = nose down). part "back" =
+                                           tail fin; "front" = fuselage/wing/wheels/prop (covers him below the chest)
+    draw_airfield_world(cr, t, x0, x1)     pale sky + clouds + grass airfield (right of x0): windsock, hangar, a
+                                           FLIGHT SCHOOL sign; plane_wheel(...) one loose landing-gear wheel
 """
 import math
 import cairo
@@ -1452,3 +1457,127 @@ def draw_free_door(cr, x, open_=0.0, part="inside", sign="DOOR TO WIZARD SCHOOL"
         from ink import text_surface
         surf, tw, th = text_surface(sign, 60, max_w=sw_ - 40)
         cr.set_source_surface(surf, x - tw / 2, y0 - 145 - th / 2); cr.paint()
+
+
+# ------------------------------------------------------------------ day 8: the plane + the airfield
+PLANE_RED = (0.86, 0.25, 0.21)
+PLANE_RED_D = (0.66, 0.16, 0.14)
+STEEL = (0.62, 0.64, 0.68)
+GRASS = (0.62, 0.80, 0.45)
+PLANE_SEAT_H = 400.0                    # seat (his hip) is this far above the ground when the plane sits on its wheels
+WHEEL = (120.0, 330.0, 70.0)           # landing-gear wheel, plane-local (x, y, r)
+def plane_pt(x, y, ang, lx, ly, s=1.0):
+    """plane-local point (x right = nose, y down) -> world, for a plane whose seat is at (x, y) pitched by ang."""
+    c, s_ = math.cos(ang), math.sin(ang)
+    return (x + (lx * c - ly * s_) * s, y + (lx * s_ + ly * c) * s)
+
+def plane_wheel(cr, x, y, r=70.0, spin=0.0):
+    sketch_circle(cr, x, y, r, 7, sid=9301, fill=(0.2, 0.2, 0.22))
+    sketch_circle(cr, x, y, r * 0.42, 5, sid=9302, fill=STEEL)
+    for k in range(3):
+        a = spin + k * 2.094
+        sketch_line(cr, [(x + math.cos(a) * r * 0.42, y + math.sin(a) * r * 0.42), (x + math.cos(a) * r * 0.8, y + math.sin(a) * r * 0.8)],
+                    3, sid=9303 + k, amp=0.2, color=(0.5, 0.5, 0.52))
+
+def draw_plane(cr, x, y, ang=0.0, t=0.0, part="front", prop=1.0, prop_ang=0.0, s=1.0, wheel=True, smoke=0.0, shake=0.0):
+    """prop: 0 = stopped (one blade, at prop_ang), 1 = full-speed blur. shake: engine judder."""
+    cr.save()
+    if shake > 0: x += shake * 5 * math.sin(t * 61); y += shake * 5 * math.cos(t * 47)
+    cr.translate(x, y); cr.rotate(ang); cr.scale(s, s)
+    if part == "back":                                                      # tail fin (behind the fuselage)
+        sketch_poly(cr, [(-930, -150), (-990, -470), (-880, -470), (-700, -150)], 7, sid=9310, fill=PLANE_RED)
+        sketch_line(cr, [(-960, -400), (-860, -400)], 5, sid=9311, amp=0.3, color=(1, 1, 1))
+        cr.restore(); return
+    if wheel:                                                               # landing gear
+        wx, wy, wr = WHEEL
+        sketch_line(cr, [(40, 140), (wx, wy)], 12, sid=9320, amp=0.3)
+        sketch_line(cr, [(220, 130), (wx, wy)], 12, sid=9321, amp=0.3)
+        plane_wheel(cr, wx, wy, wr, spin=t * 3)
+    sketch_line(cr, [(-880, -20), (-900, 30)], 8, sid=9322, amp=0.2)       # tail skid
+    sketch_circle(cr, -902, 42, 20, 5, sid=9323, fill=(0.2, 0.2, 0.22))
+    body = [(-1000, -175), (-160, -150), (-150, -150), (150, -150), (360, -158), (520, -130), (560, -60), (560, 70),
+            (520, 140), (300, 175), (0, 185), (-400, 120), (-800, 30), (-1000, -40)]
+    sketch_poly(cr, body, 8, sid=9330, fill=PLANE_RED, amp=0.8)
+    sketch_line(cr, [(-980, -60), (-300, 40), (300, 70), (540, 40)], 10, sid=9331, amp=0.4, color=(1, 1, 1))   # stripe
+    sketch_poly(cr, [(430, -140), (560, -60), (560, 70), (520, 140), (430, 165)], 7, sid=9332, fill=STEEL, amp=0.5)  # cowling
+    for k in range(3): sketch_line(cr, [(460 + 25 * k, -90), (460 + 25 * k, 120)], 3, sid=9333 + k, amp=0.3, alpha=0.6)
+    sketch_poly(cr, [(-150, -150), (150, -150), (130, -175), (-130, -175)], 5, sid=9336, fill=PLANE_RED_D, amp=0.4)  # cockpit rim
+    sketch_poly(cr, [(165, -150), (300, -150), (220, -300)], 5, sid=9337, fill=(0.80, 0.92, 1.0), alpha=0.75, amp=0.4)  # windshield
+    sketch_poly(cr, [(-330, 30), (300, 30), (330, 70), (300, 115), (-330, 115), (-360, 70)], 7, sid=9338, fill=(1, 1, 1), amp=0.6)  # wing
+    sketch_line(cr, [(-300, 72), (290, 72)], 9, sid=9339, amp=0.3, color=PLANE_RED)
+    sketch_ellipse(cr, -900, -130, 150, 28, 6, sid=9340, fill=PLANE_RED)  # tailplane
+    for k in range(6): sketch_line(cr, [(-250 + 110 * k, -40), (-250 + 110 * k, -38)], 6, sid=9341 + k, amp=0.1, alpha=0.5)  # rivets
+    # propeller
+    px = 590
+    sketch_poly(cr, [(560, -45), (625, 0), (560, 45)], 6, sid=9350, fill=(0.95, 0.95, 0.95), amp=0.3)          # spinner
+    if prop > 0.55:
+        a = min(1.0, (prop - 0.55) / 0.3)
+        cr.save(); cr.translate(px, 0); cr.scale(28, 300); cr.arc(0, 0, 1, 0, 2 * math.pi); cr.restore()
+        cr.set_source_rgba(0.3, 0.3, 0.32, 0.18 * a); cr.fill()
+        for k in range(3):
+            yy = 300 * math.sin(t * 40 + k * 2.1)
+            sketch_line(cr, [(px - 8, yy - 70), (px + 8, yy + 70)], 9, sid=9351 + k, amp=0.2, alpha=0.35 * a)
+        for sgn in (-1, 1):
+            cr.save(); cr.translate(px + 10, 0); cr.scale(45, 300)
+            cr.arc(0, 0, 1, (0.25 if sgn > 0 else 0.9) * math.pi + 0.15, (0.75 if sgn > 0 else 1.1) * math.pi - 0.15)
+            cr.restore(); stroke_ink(cr, 4, alpha=0.5 * a)
+    if prop < 0.85:                                                         # the blade itself (seen edge-on, spinning)
+        a = 1.0 - max(0.0, (prop - 0.55) / 0.3)
+        L_ = 290 * math.cos(prop_ang)
+        cr.push_group()
+        sketch_poly(cr, [(px - 12, 0), (px - 16, -L_), (px + 16, -L_), (px + 12, 0), (px + 16, L_), (px - 16, L_)], 6, sid=9355,
+                    fill=(0.45, 0.30, 0.18), amp=0.3)
+        cr.pop_group_to_source(); cr.paint_with_alpha(a)
+    cr.restore()
+
+def draw_smoke_puff(cr, x, y, r, alpha=1.0, dark=0.0):
+    col = lerp((0.85, 0.85, 0.85), (0.18, 0.18, 0.2), dark)
+    cr.push_group()
+    for dx, dy, k in ((-0.45, 0.1, 0.65), (0.35, 0.05, 0.7), (0.0, -0.35, 0.75), (0.0, 0.25, 0.7)):
+        cr.arc(x + dx * r, y + dy * r, k * r, 0, 2 * math.pi); cr.new_sub_path()
+    cr.set_source_rgb(*INK); cr.set_line_width(max(3, r * 0.09)); cr.stroke_preserve(); cr.set_source_rgb(*col); cr.fill()
+    cr.pop_group_to_source(); cr.paint_with_alpha(alpha)
+
+def draw_windsock(cr, x, yb=FLOOR_Y, t=0.0, h=620):
+    sketch_line(cr, [(x, yb), (x, yb - h)], 10, sid=9400, amp=0.3)
+    pts_t, pts_b = [], []
+    for k in range(6):
+        u = k / 5; xx = x + 20 + 260 * u
+        sag = 40 * u * u + 10 * math.sin(t * 5 - k * 0.9) * u
+        rr = 50 * (1 - 0.45 * u)
+        pts_t.append((xx, yb - h + 10 - rr + sag)); pts_b.append((xx, yb - h + 10 + rr + sag))
+    for k in range(5):
+        q = [pts_t[k], pts_t[k + 1], pts_b[k + 1], pts_b[k]]
+        sketch_poly(cr, q, 5, sid=9401 + k, fill=((1.0, 0.55, 0.18) if k % 2 == 0 else (1, 1, 1)), amp=0.3)
+
+def draw_hangar(cr, cx, yb=FLOOR_Y, w=1200, h=720):
+    x0, x1 = cx - w / 2, cx + w / 2
+    pts = [(x0, yb)] + [(cx + w / 2 * math.cos(math.pi - math.pi * k / 16), yb - 260 - (h - 260) * math.sin(math.pi * k / 16)) for k in range(17)] + [(x1, yb)]
+    sketch_poly(cr, pts, 7, sid=9410, fill=(0.80, 0.82, 0.84), amp=0.6)
+    for k in range(1, 8):
+        xx = x0 + w * k / 8
+        sketch_line(cr, [(xx, yb), (xx, yb - 260 - (h - 260) * math.sqrt(max(0.0, 1 - ((xx - cx) / (w / 2)) ** 2)))], 3, sid=9411 + k, amp=0.3, alpha=0.4)
+    sketch_rect(cr, cx - 330, yb - 430, cx + 330, yb, 6, sid=9420, fill=(0.32, 0.33, 0.36))
+
+def draw_airfield_world(cr, t, x0=1300, x1=40000, sign_x=2350, sock_x=3700, hangar_x=1950):
+    """pale sky up to deep blue high above, clouds, a grass airfield right of x0 with a long runway strip, a hangar,
+    a windsock and a FLIGHT SCHOOL sign. Left of x0 nothing is drawn (the empty white room)."""
+    g = cairo.LinearGradient(0, 900, 0, -3200)
+    g.add_color_stop_rgb(0.0, 0.80, 0.89, 0.98); g.add_color_stop_rgb(1.0, 0.45, 0.62, 0.92)
+    cr.rectangle(x0, -9000, x1 - x0, 9000 + FLOOR_Y); cr.set_source(g); cr.fill()
+    for k in range(60):                                                     # clouds, all the way along
+        cx = x0 + 600 + k * 640 + 230 * math.sin(k * 2.3)
+        cy = -2800 + ((k * 977) % 3300)
+        if cy > 700: cy -= 1400
+        draw_cloud(cr, cx + 10 * math.sin(t * 0.3 + k), cy, 0.8 + 0.35 * ((k * 37) % 10) / 10)
+    cr.rectangle(x0, FLOOR_Y, x1 - x0, 3000); cr.set_source_rgb(*GRASS); cr.fill()
+    cr.rectangle(x0, FLOOR_Y, x1 - x0, 60); cr.set_source_rgb(0.72, 0.72, 0.70); cr.fill()      # runway
+    for k in range(int((x1 - x0) / 300)):
+        cr.rectangle(x0 + 80 + k * 300, FLOOR_Y + 24, 150, 12); cr.set_source_rgb(1, 1, 1); cr.fill()
+    sketch_line(cr, [(x0, FLOOR_Y), (min(x1, x0 + 20000), FLOOR_Y)], 3.5, sid=9430, amp=1.3, alpha=0.8)
+    sketch_line(cr, [(x0, FLOOR_Y), (x0, FLOOR_Y + 3000)], 3.5, sid=9431, amp=1.0, alpha=0.5)
+    draw_hangar(cr, hangar_x)
+    draw_windsock(cr, sock_x, t=t)
+    sketch_rect(cr, sign_x - 14, FLOOR_Y - 420, sign_x + 14, FLOOR_Y, 5, sid=9440, fill=(0.6, 0.6, 0.62))
+    sketch_rect(cr, sign_x - 230, FLOOR_Y - 560, sign_x + 230, FLOOR_Y - 380, 6, sid=9441, fill=(1, 1, 1))
+    draw_text(cr, "FLIGHT SCHOOL", sign_x, FLOOR_Y - 470, 62, color=(200, 40, 34), max_w=420)

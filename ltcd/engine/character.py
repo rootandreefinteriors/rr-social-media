@@ -40,7 +40,7 @@ BASE = dict(
     brow=0.0, worry=0.0,                      # brow + raised; worry + inner ends up (hopeful/sad) - down (cross)
     mouth="auto", smile=0.3, open=0.0, mouth_w=1.0, tongue=0.0,
     blush=0.0, tears=0.0, sweat=0.0, vein=0.0, gloom=0.0, squash=0.0, face_tint=0.0, soot=0.0, frizz=0.0, nowalk=0.0, larm_over=0.0, rarm_over=0.0,
-    heat_fill=0.0, tear1=0.0, twitch=0.0, curl_up=0.0, quiver=0.0,   # slow-burn acting: liquid heat rising in the head, etc.
+    heat_fill=0.0, sick=0.0, tear1=0.0, twitch=0.0, curl_up=0.0, quiver=0.0,   # slow-burn acting: liquid heat rising in the head, etc.
     saccade=0.5, breath=1.0, breath_rate=1.0,                         # life: eye micro-moves + breathing (rate-aware)
     lag=1.0, lhand_lag=1.0, rhand_lag=1.0, feet_lag=0.0,              # follow-through amounts (0 = rigid)
     # cartoon symbols around the head, 0..1
@@ -396,7 +396,7 @@ def draw_head(cr, p, blink, t=0.0):
         top = HEAD_R + 4 - (2 * HEAD_R + 8) * min(1.0, hf)
         wave = [(-HEAD_R - 10 + k * (2 * HEAD_R + 20) / 16, top + 3.5 * math.sin(k * 0.9 + t * 4.2)) for k in range(17)]
         path(cr, wave); cr.line_to(HEAD_R + 10, HEAD_R + 12); cr.line_to(-HEAD_R - 10, HEAD_R + 12); cr.close_path()
-        fill_paper(cr, (0.96, 0.47, 0.39)); cr.new_path()
+        fill_paper(cr, lerp((0.96, 0.47, 0.39), (0.62, 0.82, 0.38), p.get("sick", 0.0))); cr.new_path()   # sick: airsick green
         if hf < 0.98: path(cr, wave); stroke_ink(cr, 3, alpha=0.55)
         cr.restore()
         path(cr, circle_pts(0, 0, HEAD_R, sid=3)); cr.close_path(); stroke_ink(cr, 8)
