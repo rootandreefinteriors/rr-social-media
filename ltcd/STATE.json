@@ -1,47 +1,50 @@
 {
   "show": "let the comments decide",
-  "day": 7,
+  "day": 8,
   "last_episode": {
-    "day": 7,
+    "day": 8,
     "type": "comment",
-    "folder": "episodes/ep007",
-    "video": "videos/day007.mp4",
-    "posted_at": "2026-10-29T19:00:00-04:00 (scheduled; re-cut 2 swapped in ~4 PM on Justin's notes)",
+    "folder": "episodes/ep008",
+    "video": "videos/day008.mp4",
+    "posted_at": "2026-10-30T19:00:00-04:00 (scheduled)",
     "buffer": {
-      "tiktok": "6ae39d779b16b0bc451f6c18",
-      "instagram": "6ae39d799b16b0bc451f6cae"
+      "tiktok": "6ae4eeac260ad0ee5bc5f255",
+      "instagram": "6ae4eeae10a950f1373e87bf"
     },
     "comment": {
       "platform": "instagram",
-      "username": "nerdbpy",
-      "text": "Join Hogwarts.",
+      "username": "second_degree_burn",
+      "text": "Fly a plane",
       "likes": 0
     }
   },
-  "ask_since_day": 7,
+  "ask_since_day": 8,
   "waiting_streak": 0,
   "world": {
-    "location": "the empty white room (the starter void) - expelled from wizard school on day 7, he fell out of the sky into it. No background: plain paper + the engine floor line; body offset 0 (x 540), camera ~ (540, 930, 1.12). His EXPELLED letter lies on the floor to his right (O.draw_letter(cr, ~700, FLOOR_Y - 14, 380, 30, ())). He stays here until a comment moves him (the burger place, Platform 9 3/4 wall + DOOR TO WIZARD SCHOOL, and the castle still exist off in the world for callbacks).",
+    "location": "the airfield (day 8): walked right out of the empty white room into it. O.draw_airfield_world(cr, t, x0=1300, sign_x=2230, sock_x=4300, hangar_x=1950): sky, clouds, grass, runway, hangar, windsock, FLIGHT SCHOOL sign. His little red plane is planted nose-first in the grass, tail up, smouldering, at x ~14870 (seat (XI, FLOOR_Y-425), pitch pi/2: O.draw_plane(..., wheel=False) + dirt mound); he stands ~820 px left of it (body offset ~13510, x ~14050), camera ~ (x+60, 930, 1.12). The white room (EXPELLED letter on its floor) is off to the left at x < 1300.",
     "companions": [],
     "props": [
-      "he is sooty (soot=0.65, frizz=0.5) - can wash off any time",
-      "his acceptance letter with a red EXPELLED stamp across it, on the floor beside him (O.draw_letter(..., stamp='EXPELLED'))",
-      "the brown delivery owl (O.draw_owl, can point with a wing) - stayed at the castle; callback possible",
-      "elsewhere: the burger place + wrapper pile; a long brick wall with a 9 3/4 sign and a DOOR TO WIZARD SCHOOL in it (O.draw_brick_wall / O.draw_free_door); the castle (O.draw_castle_world) with the same door standing in its courtyard"
+      "he is sooty (soot=0.65, frizz=0.5) and still a bit airsick green (sick=1.0, heat_fill ~0.4) - both can wear off any time",
+      "the little red propeller plane, planted nose-down in the airfield (O.draw_plane); its landing wheel came off and bonked him (O.plane_wheel), rolled away",
+      "the EXPELLED acceptance letter, on the floor of the empty white room",
+      "the brown delivery owl (O.draw_owl) - stayed at the castle; callback possible",
+      "elsewhere: the burger place + wrapper pile; the 9 3/4 brick wall + DOOR TO WIZARD SCHOOL; the castle"
     ],
     "traits": [
       "beat the block game on hardcore with half a heart (day 4)",
       "ate a billion burgers, which launched him into space on a cartoon poop jet; belly deflated back to a stick (day 5)",
       "rocked a mom's baby to sleep and fell asleep holding it; she kissed him on the cheek and he blushed (day 6). The mom (O.draw_mom: long brown hair + bun, pink dress) shops at the burger place - callback possible",
-      "EXPELLED FOREVER from wizard school (day 7): read his acceptance letter, sprinted into the 9 3/4 wall and bounced off, used the door in the wall instead, the giant talking hat found no brain in his head (hello... echoed) and blasted him into the empty white room"
+      "EXPELLED FOREVER from wizard school (day 7): read his acceptance letter, sprinted into the 9 3/4 wall and bounced off, used the door in the wall instead, the giant talking hat found no brain in his head (hello... echoed) and blasted him into the empty white room",
+      "flew a plane (day 8): took off from the FLIGHT SCHOOL airfield, did loop after loop until his head filled up airsick green, the engine died, the plane hung in the sky, then nosedived and planted itself in the field; he was flung out onto his butt and the wheel bonked him"
     ],
-    "notes": "Day 7 (re-cut 2 on Justin's notes): owl drops the letter; he reads it, then shows us (YOU'RE IN.); owl points right; he walks, owl hovering; brick wall with 9 3/4 sign; owl points; he backs up, legs spin, sprints, SMACK, slides down, tips over, stars; owl points again, camera pulls out: DOOR TO WIZARD SCHOOL further along the same wall; jump cut, he's up, walks through; castle (door stands clear to the left); giant hat: HMM. / ... / eye peeks out a patch / HELLO? (hello... echoes inside his head) / THERE'S NO BRAIN IN THIS HEAD. / EXPELLED. / FOREVER. -> blasts him into the sky; he lands in the empty white room, sooty; the letter flutters down after him: EXPELLED stamped across it; the ask."
+    "notes": "Day 8: reads the card in the white room; walks right into an airfield; cut into the cockpit; engine coughs, catches; taxi, takeoff, level; 10 loops, faster and faster, head filling green; engine dies, prop stops, plane hangs; spinning nosedive with a smoke spiral; BOOM, planted nose-first; flung out, lands on butt; the wheel pops off and bonks him; the ask beside the wreck."
   },
   "used_comments": [
     "Beat Mc in hardcore mode:)",
     "Eat a billion big Mac’s",
     "Rock a baby to sleep. (My mom said this)",
-    "Join Hogwarts."
+    "Join Hogwarts.",
+    "Fly a plane"
   ],
   "history": [
     {
@@ -78,6 +81,11 @@
       "day": 7,
       "type": "comment",
       "summary": "@nerdbpy (IG): 'Join Hogwarts.' -> RE-CUT 2 on Justin's notes: owl drops the letter; he reads it, shows us YOU'RE IN.; owl points; he sprints into the 9 3/4 brick wall, bounces off, stars; owl points again: a DOOR TO WIZARD SCHOOL in the same wall; through it to the castle; the giant talking hat checks his head (hello... echoes): THERE'S NO BRAIN IN THIS HEAD. EXPELLED. FOREVER. -> blasts him into the empty white room; the letter follows him down, EXPELLED stamped across it; deadpan ask (72.6 s)"
+    },
+    {
+      "day": 8,
+      "type": "comment",
+      "summary": "@second_degree_burn (IG): 'Fly a plane' -> white room -> walks into an airfield (FLIGHT SCHOOL sign); cockpit: engine coughs, catches; takeoff; loops faster and faster, head fills airsick green, dead stare; engine dies, plane hangs in the sky; spinning nosedive, plane planted nose-first; flung out onto his butt; the wheel bonks him; deadpan ask on the airfield (59.0 s)"
     }
   ]
 }
