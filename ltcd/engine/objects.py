@@ -39,6 +39,8 @@ with moves.Scene.place(..., pop=True).
     draw_plane(cr, x, y, ang, t, part, prop) little red propeller plane, side view, nose to the right; (x, y) = the pilot
                                            seat (his hip goes here), ang = pitch (rad, + = nose down). part "back" =
                                            tail fin; "front" = fuselage/wing/wheels/prop (covers him below the chest)
+    draw_space(cr, t, cx, cy)              black space, stars, the curve of the Earth below (centre-bottom at cx, cy)
+    draw_puke(cr, x, y, r, t, ang)         a wobbly floating zero-g blob of green cartoon puke; draw_flames(...) re-entry fire
     draw_airfield_world(cr, t, x0, x1)     pale sky + clouds + grass airfield (right of x0): windsock, hangar, a
                                            FLIGHT SCHOOL sign; plane_wheel(...) one loose landing-gear wheel
 """
@@ -1562,9 +1564,14 @@ def draw_hangar(cr, cx, yb=FLOOR_Y, w=1200, h=720):
 def draw_airfield_world(cr, t, x0=1300, x1=40000, sign_x=2350, sock_x=3700, hangar_x=1950):
     """pale sky up to deep blue high above, clouds, a grass airfield right of x0 with a long runway strip, a hangar,
     a windsock and a FLIGHT SCHOOL sign. Left of x0 nothing is drawn (the empty white room)."""
-    g = cairo.LinearGradient(0, 900, 0, -3200)
-    g.add_color_stop_rgb(0.0, 0.80, 0.89, 0.98); g.add_color_stop_rgb(1.0, 0.45, 0.62, 0.92)
-    cr.rectangle(x0, -9000, x1 - x0, 9000 + FLOOR_Y); cr.set_source(g); cr.fill()
+    g = cairo.LinearGradient(0, 900, 0, -9000)                             # pale sky -> blue -> the black of space
+    g.add_color_stop_rgb(0.0, 0.80, 0.89, 0.98); g.add_color_stop_rgb(0.42, 0.45, 0.62, 0.92)
+    g.add_color_stop_rgb(0.75, 0.10, 0.14, 0.35); g.add_color_stop_rgb(1.0, 0.02, 0.02, 0.06)
+    cr.rectangle(x0, -16000, x1 - x0, 16000 + FLOOR_Y); cr.set_source(g); cr.fill()
+    for k in range(400):                                                    # stars, high up
+        sx = x0 + (k * 7919) % int(x1 - x0); sy = -4800 - (k * 3571) % 11000
+        a = clamp01((-sy - 4800) / 2500) * (0.6 + 0.4 * math.sin(t * 2 + k))
+        cr.rectangle(sx, sy, 9, 9); cr.set_source_rgba(1, 1, 0.92, a); cr.fill()
     for k in range(60):                                                     # clouds, all the way along
         cx = x0 + 600 + k * 640 + 230 * math.sin(k * 2.3)
         cy = -2800 + ((k * 977) % 3300)
@@ -1581,3 +1588,50 @@ def draw_airfield_world(cr, t, x0=1300, x1=40000, sign_x=2350, sock_x=3700, hang
     sketch_rect(cr, sign_x - 14, FLOOR_Y - 420, sign_x + 14, FLOOR_Y, 5, sid=9440, fill=(0.6, 0.6, 0.62))
     sketch_rect(cr, sign_x - 230, FLOOR_Y - 560, sign_x + 230, FLOOR_Y - 380, 6, sid=9441, fill=(1, 1, 1))
     draw_text(cr, "FLIGHT SCHOOL", sign_x, FLOOR_Y - 470, 62, color=(200, 40, 34), max_w=420)
+
+PUKE = (0.62, 0.80, 0.30)
+PUKE_D = (0.45, 0.62, 0.18)
+def draw_puke(cr, x, y, r, t=0.0, ang=0.0, squash=0.0):
+    """wobbly cartoon blob of green puke, centre (x, y), radius r (squash 0..1 flattens it into a splat)."""
+    pts = []
+    for k in range(24):
+        a = 2 * math.pi * k / 24
+        rr = r * (1 + 0.12 * math.sin(3 * a + t * 5) + 0.07 * math.sin(5 * a - t * 7))
+        pts.append((x + math.cos(a + ang) * rr * (1 + 0.8 * squash), y + math.sin(a + ang) * rr * (1 - 0.75 * squash)))
+    sketch_poly(cr, pts, max(4, r * 0.08), sid=9500, fill=PUKE, amp=0.3)
+    for k, (dx, dy, kr) in enumerate(((-0.35, 0.2, 0.18), (0.3, -0.1, 0.14), (0.05, 0.4, 0.12), (0.4, 0.35, 0.1))):
+        cr.arc(x + (dx * math.cos(ang) - dy * math.sin(ang)) * r * (1 + 0.8 * squash),
+               y + (dx * math.sin(ang) + dy * math.cos(ang)) * r * (1 - 0.75 * squash), kr * r, 0, 2 * math.pi)
+        cr.set_source_rgb(*PUKE_D); cr.fill()
+    cr.arc(x - 0.3 * r, y - 0.35 * r * (1 - 0.75 * squash), 0.14 * r, 0, 2 * math.pi); cr.set_source_rgba(1, 1, 1, 0.7); cr.fill()
+
+def draw_flames(cr, pts, t=0.0, w=1.0):
+    """a flickering cartoon fire tongue along pts (from the hot end outwards), outer orange + inner yellow."""
+    for col, k in (((1.0, 0.45, 0.10), 1.0), ((1.0, 0.85, 0.25), 0.55)):
+        left, right = [], []
+        n = len(pts)
+        for i, (x, y) in enumerate(pts):
+            u = i / max(1, n - 1)
+            hw = w * k * (1 - u) ** 0.8 * (1 + 0.25 * math.sin(t * 31 + i * 1.7))
+            if i < n - 1: dx, dy = pts[i + 1][0] - x, pts[i + 1][1] - y
+            else: dx, dy = x - pts[i - 1][0], y - pts[i - 1][1]
+            L_ = math.hypot(dx, dy) or 1.0; nx, ny = -dy / L_, dx / L_
+            left.append((x + nx * hw, y + ny * hw)); right.append((x - nx * hw, y - ny * hw))
+        sketch_poly(cr, left + right[::-1], 5 if k == 1.0 else 0.1, sid=9510, fill=col, amp=0.4)
+
+def draw_space(cr, t, cx, cy, R=9000.0):
+    cr.rectangle(cx - 20000, cy - 30000, 40000, 40000); cr.set_source_rgb(0.02, 0.02, 0.06); cr.fill()
+    for k in range(260):
+        sx = cx - 3000 + (k * 7919) % 6000; sy = cy - R - 4200 + (k * 3571) % 4800
+        cr.rectangle(sx, sy, 8, 8); cr.set_source_rgba(1, 1, 0.92, 0.55 + 0.45 * math.sin(t * 2 + k)); cr.fill()
+    ex, ey = cx, cy                                                         # the Earth, its top at cy - R
+    for i, (dr, a) in enumerate(((260, 0.12), (170, 0.2), (90, 0.35))):    # atmosphere glow
+        cr.arc(ex, ey, R + dr, 0, 2 * math.pi); cr.set_source_rgba(0.55, 0.78, 1.0, a); cr.fill()
+    cr.arc(ex, ey, R, 0, 2 * math.pi); cr.set_source_rgb(0.24, 0.50, 0.86); cr.fill()
+    cr.save(); cr.arc(ex, ey, R, 0, 2 * math.pi); cr.clip()
+    for k, (dx, w_, h_) in enumerate(((-1500, 900, 260), (300, 1300, 380), (1900, 700, 220), (-3200, 1100, 300))):
+        sketch_ellipse(cr, ex + dx, ey - R + 260 + 60 * k, w_, h_, 5, sid=9520 + k, fill=(0.42, 0.70, 0.36))
+    for k in range(6):
+        sketch_ellipse(cr, ex - 2600 + k * 1050, ey - R + 120 + 90 * (k % 3), 380, 50, 0.1, sid=9530 + k, fill=(1, 1, 1), alpha=0.8)
+    cr.restore()
+    cr.arc(ex, ey, R, 0, 2 * math.pi); stroke_ink(cr, 8)

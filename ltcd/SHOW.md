@@ -43,6 +43,20 @@ Daily loop: **post 7:00 PM ET → comments come in → 3:00 PM ET next day: comm
   (drag + overshoot), soft curved limbs, breathing and eye micro-movements — let them work: prefer fewer, longer,
   well-timed moves over many snappy ones. Physical contact must be real (if he touches, tickles, grabs or is grabbed,
   the parts actually meet). Use HARD CUTS (`S.cut`) instead of animating awkward in-betweens (climbing in/out, lifts).
+- **His look (user, 2026-10-30): no weird appearance stuff.** Anything that changes how he looks (soot, a face
+  tint, a colour filling his head, frizz) must make sense AND pay off inside the same episode, then he's back to his
+  normal plain white self. Never carry soot or a tint across episodes (lingering soot on his face reads as blackface).
+  Sick/green has to lead somewhere (he pukes, then he's normal again). Never end an episode with him still altered.
+- **Bigger + meaner (user, 2026-10-30):** push the escalation further than feels reasonable (flying a plane -> he
+  climbs out of the atmosphere into space, then falls all the way back down). Family Guy / Adult Swim timing: the
+  uncomfortably long deadpan hold, the beat where nothing happens, then the hard cut to disaster. Skip small gags
+  that need explaining or look awkward (a wheel bouncing off his head read badly) and spend the time on the big ones.
+- **Audit the animation before rendering (user, 2026-10-30: "I really don't want to correct it manually each
+  time").** Render a still every 0.5 s for the WHOLE episode and look at every one (contact sheets of ~24). Check:
+  first frame after every hard cut (cut one frame early: `S.cut(T - 1/30, ...)`, and key the new pose at T - 1/30),
+  limbs poking out of things, props overlapping the comment card or his face, camera lagging behind fast motion, stray
+  bits of off-screen props at the frame edge, backgrounds that fail to draw (cairo gradients far from the origin fail -
+  use solid bands), and that every gag reads at phone size. Fix, re-check the fixed times, then render.
 - **Acting toolkit:** `pose(body, face, **overrides)` with POSES, EXPR (incl. the deadpan set), eye styles, mouth
   styles, extras (heat_fill, tear1, twitch, quiver, curl_up, sweat, tears, soot, frizz), procedural cycles, lean,
   squash/stretch, and Track easings. The old cute vocabulary (blush, hearts, starstruck, pleading) is retired unless a

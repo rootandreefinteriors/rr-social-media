@@ -388,6 +388,8 @@ def draw_head(cr, p, blink, t=0.0):
     so = p.get("soot", 0.0)               # 0..1: cartoon-explosion soot (eyes stay white)
     fill = lerp(PAPER, (1.0, 0.6, 0.52), ft) if ft > 0.01 else PAPER
     if so > 0.01: fill = lerp(fill, (0.42, 0.41, 0.40), so)
+    sk = p.get("sick", 0.0)               # 0..1: airsick, the whole face goes green (puking resets it)
+    if sk > 0.01: fill = lerp(fill, (0.67, 0.86, 0.47), sk)
     sketch_circle(cr, 0, 0, HEAD_R, 8, sid=3, fill=fill)
     hf = p.get("heat_fill", 0.0)
     if hf > 0.004:
@@ -396,7 +398,7 @@ def draw_head(cr, p, blink, t=0.0):
         top = HEAD_R + 4 - (2 * HEAD_R + 8) * min(1.0, hf)
         wave = [(-HEAD_R - 10 + k * (2 * HEAD_R + 20) / 16, top + 3.5 * math.sin(k * 0.9 + t * 4.2)) for k in range(17)]
         path(cr, wave); cr.line_to(HEAD_R + 10, HEAD_R + 12); cr.line_to(-HEAD_R - 10, HEAD_R + 12); cr.close_path()
-        fill_paper(cr, lerp((0.96, 0.47, 0.39), (0.62, 0.82, 0.38), p.get("sick", 0.0))); cr.new_path()   # sick: airsick green
+        fill_paper(cr, (0.96, 0.47, 0.39)); cr.new_path()
         if hf < 0.98: path(cr, wave); stroke_ink(cr, 3, alpha=0.55)
         cr.restore()
         path(cr, circle_pts(0, 0, HEAD_R, sid=3)); cr.close_path(); stroke_ink(cr, 8)
