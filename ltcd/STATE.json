@@ -6,7 +6,7 @@
     "type": "comment",
     "folder": "episodes/ep008",
     "video": "videos/day008.mp4",
-    "posted_at": "2026-10-30T19:00:00-04:00 (scheduled)",
+    "posted_at": "2026-10-30T19:00:00-04:00 (scheduled; re-cut on Justin's notes ~5 PM)",
     "buffer": {
       "tiktok": "6ae4eeac260ad0ee5bc5f255",
       "instagram": "6ae4eeae10a950f1373e87bf"
@@ -21,11 +21,11 @@
   "ask_since_day": 8,
   "waiting_streak": 0,
   "world": {
-    "location": "the airfield (day 8): walked right out of the empty white room into it. O.draw_airfield_world(cr, t, x0=1300, sign_x=2230, sock_x=4300, hangar_x=1950): sky, clouds, grass, runway, hangar, windsock, FLIGHT SCHOOL sign. His little red plane is planted nose-first in the grass, tail up, smouldering, at x ~14870 (seat (XI, FLOOR_Y-425), pitch pi/2: O.draw_plane(..., wheel=False) + dirt mound); he stands ~820 px left of it (body offset ~13510, x ~14050), camera ~ (x+60, 930, 1.12). The white room (EXPELLED letter on its floor) is off to the left at x < 1300.",
+    "location": "the airfield (day 8): walked right out of the empty white room into it. O.draw_airfield_world(cr, t, x0=1300, sign_x=2230, sock_x=4300, hangar_x=1950): sky, clouds, grass, runway, hangar, windsock, FLIGHT SCHOOL sign. His little red plane is planted nose-first in the grass, tail up, smouldering, at x 9000 (seat (9000, FLOOR_Y-425), pitch pi/2: O.draw_plane(..., wheel=False) + dirt mound); he stands ~820 px left of it (he stands ~1250 px left of it: body offset 7210, x 7750), camera ~ (x+60, 930, 1.12). The white room (EXPELLED letter on its floor) is off to the left at x < 1300. A flattened green puke puddle lies on the runway ~280 px to his left (O.draw_puke(..., squash=0.85)).",
     "companions": [],
     "props": [
-      "he is sooty (soot=0.65, frizz=0.5) and still a bit airsick green (sick=1.0, heat_fill ~0.4) - both can wear off any time",
-      "the little red propeller plane, planted nose-down in the airfield (O.draw_plane); its landing wheel came off and bonked him (O.plane_wheel), rolled away",
+      "the little red propeller plane, planted nose-down in the airfield (O.draw_plane, part back+front), dirt mound round the nose, smouldering a bit",
+      "a flattened puddle of his space puke on the runway beside him (O.draw_puke squash=0.85) - gross callback possible",
       "the EXPELLED acceptance letter, on the floor of the empty white room",
       "the brown delivery owl (O.draw_owl) - stayed at the castle; callback possible",
       "elsewhere: the burger place + wrapper pile; the 9 3/4 brick wall + DOOR TO WIZARD SCHOOL; the castle"
@@ -35,9 +35,9 @@
       "ate a billion burgers, which launched him into space on a cartoon poop jet; belly deflated back to a stick (day 5)",
       "rocked a mom's baby to sleep and fell asleep holding it; she kissed him on the cheek and he blushed (day 6). The mom (O.draw_mom: long brown hair + bun, pink dress) shops at the burger place - callback possible",
       "EXPELLED FOREVER from wizard school (day 7): read his acceptance letter, sprinted into the 9 3/4 wall and bounced off, used the door in the wall instead, the giant talking hat found no brain in his head (hello... echoed) and blasted him into the empty white room",
-      "flew a plane (day 8): took off from the FLIGHT SCHOOL airfield, did loop after loop until his head filled up airsick green, the engine died, the plane hung in the sky, then nosedived and planted itself in the field; he was flung out onto his butt and the wheel bonked him"
+      "flew a plane (day 8): took off from the FLIGHT SCHOOL airfield, looped until he went green, climbed out of the atmosphere into space, puked a zero-g blob (back to normal), fell back down on fire and planted the plane nose-first in the field; the flaming puke landed next to him. He looks completely normal again (no soot, no tint)."
     ],
-    "notes": "Day 8: reads the card in the white room; walks right into an airfield; cut into the cockpit; engine coughs, catches; taxi, takeoff, level; 10 loops, faster and faster, head filling green; engine dies, prop stops, plane hangs; spinning nosedive with a smoke spiral; BOOM, planted nose-first; flung out, lands on butt; the wheel pops off and bonks him; the ask beside the wreck."
+    "notes": "Day 8 (re-cut on Justin's notes): white room -> airfield; cockpit; loops, face slowly green; pulls up into space (Earth below); prop dies, silence, he pukes a floating blob, face back to normal, long stare; plane drops; re-entry on fire with the burning blob behind; crash, giant dust cloud; flung out onto his butt; the flaming puke splats beside him and sizzles out; ask on the airfield. APPEARANCE RULE: he is plain white again - never carry soot or tints forward."
   },
   "used_comments": [
     "Beat Mc in hardcore mode:)",
@@ -85,7 +85,7 @@
     {
       "day": 8,
       "type": "comment",
-      "summary": "@second_degree_burn (IG): 'Fly a plane' -> white room -> walks into an airfield (FLIGHT SCHOOL sign); cockpit: engine coughs, catches; takeoff; loops faster and faster, head fills airsick green, dead stare; engine dies, plane hangs in the sky; spinning nosedive, plane planted nose-first; flung out onto his butt; the wheel bonks him; deadpan ask on the airfield (59.0 s)"
+      "summary": "@second_degree_burn (IG): 'Fly a plane' -> RE-CUT on Justin's notes: white room -> airfield; takeoff; loops until his face goes green; keeps climbing into space; engine dies in the silence; pukes a zero-g blob (back to normal); long stare; plane drops; re-entry on fire; crashes nose-first into the airfield (giant dust cloud); flung out onto his butt; the flaming puke splats beside him; deadpan ask on the airfield (65.6 s)"
     }
   ]
 }
