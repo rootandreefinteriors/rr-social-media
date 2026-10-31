@@ -1,50 +1,51 @@
 {
   "show": "let the comments decide",
-  "day": 8,
+  "day": 9,
   "last_episode": {
-    "day": 8,
+    "day": 9,
     "type": "comment",
-    "folder": "episodes/ep008",
-    "video": "videos/day008.mp4",
-    "posted_at": "2026-10-30T19:00:00-04:00 (scheduled; re-cut on Justin's notes ~5 PM)",
+    "folder": "episodes/ep009",
+    "video": "videos/day009.mp4",
+    "posted_at": "2026-10-31T19:00:00-04:00 (scheduled)",
     "buffer": {
-      "tiktok": "6ae4eeac260ad0ee5bc5f255",
-      "instagram": "6ae4eeae10a950f1373e87bf"
+      "tiktok": "6ae63fe1cf3a3112f3bcbd44",
+      "instagram": "6ae63fdfab019b90871e39e8"
     },
     "comment": {
       "platform": "instagram",
-      "username": "second_degree_burn",
-      "text": "Fly a plane",
-      "likes": 0
+      "username": "nicolascechettoschuller",
+      "text": "Go to green hill",
+      "likes": 1
     }
   },
-  "ask_since_day": 8,
+  "ask_since_day": 9,
   "waiting_streak": 0,
   "world": {
-    "location": "the airfield (day 8): walked right out of the empty white room into it. O.draw_airfield_world(cr, t, x0=1300, sign_x=2230, sock_x=4300, hangar_x=1950): sky, clouds, grass, runway, hangar, windsock, FLIGHT SCHOOL sign. His little red plane is planted nose-first in the grass, tail up, smouldering, at x 9000 (seat (9000, FLOOR_Y-425), pitch pi/2: O.draw_plane(..., wheel=False) + dirt mound); he stands ~820 px left of it (he stands ~1250 px left of it: body offset 7210, x 7750), camera ~ (x+60, 930, 1.12). The white room (EXPELLED letter on its floor) is off to the left at x < 1300. A flattened green puke puddle lies on the runway ~280 px to his left (O.draw_puke(..., squash=0.85)).",
+    "location": "the green hill (day 9): a generic speed-game world right of the airfield. O.draw_green_hill_world(cr, t, x0=9800, x1=68000, palms=[...], flowers=[...]) (blue sky bands, clouds, far rounded hills, sparkling water, palm trees, sunflowers, grass on checkered brown dirt); the airfield (planted plane at x 9000) is just left of x 9800 with a GREEN HILL arrow signpost at 9480 (O.draw_signpost). A giant checkered loop (O.draw_loop) stands at x ~22250 (R 900). He ended at body offset 58780 (x 59320), ~680 px left of the palm tree he hit (O.draw_palm(cr, 59950, t, 980, s=1.25)); one ring lies flat on the grass right of the tree (x 60330, O.draw_ring(..., flat=1)). Camera for the ask ~ (x+60, 930, 1.12). Ring HUD O.draw_ring_hud showed RINGS 0 (red) at the end - optional callback.",
     "companions": [],
     "props": [
-      "the little red propeller plane, planted nose-down in the airfield (O.draw_plane, part back+front), dirt mound round the nose, smouldering a bit",
-      "a flattened puddle of his space puke on the runway beside him (O.draw_puke squash=0.85) - gross callback possible",
-      "the EXPELLED acceptance letter, on the floor of the empty white room",
-      "the brown delivery owl (O.draw_owl) - stayed at the castle; callback possible",
-      "elsewhere: the burger place + wrapper pile; the 9 3/4 brick wall + DOOR TO WIZARD SCHOOL; the castle"
+      "the green-hill palm tree he smacked into (x 59950) and one flat ring beside it",
+      "the giant loop back along the hill (x ~22250)",
+      "back at the airfield: the little red plane planted nose-down (x 9000) and the flattened puke puddle (x 7470)",
+      "the EXPELLED letter in the empty white room; the owl at the castle; the burger place + wrapper pile; the 9 3/4 wall"
     ],
     "traits": [
       "beat the block game on hardcore with half a heart (day 4)",
       "ate a billion burgers, which launched him into space on a cartoon poop jet; belly deflated back to a stick (day 5)",
       "rocked a mom's baby to sleep and fell asleep holding it; she kissed him on the cheek and he blushed (day 6). The mom (O.draw_mom: long brown hair + bun, pink dress) shops at the burger place - callback possible",
       "EXPELLED FOREVER from wizard school (day 7): read his acceptance letter, sprinted into the 9 3/4 wall and bounced off, used the door in the wall instead, the giant talking hat found no brain in his head (hello... echoed) and blasted him into the empty white room",
-      "flew a plane (day 8): took off from the FLIGHT SCHOOL airfield, looped until he went green, climbed out of the atmosphere into space, puked a zero-g blob (back to normal), fell back down on fire and planted the plane nose-first in the field; the flaming puke landed next to him. He looks completely normal again (no soot, no tint)."
+      "flew a plane (day 8): took off from the FLIGHT SCHOOL airfield, looped until he went green, climbed out of the atmosphere into space, puked a zero-g blob (back to normal), fell back down on fire and planted the plane nose-first in the field; the flaming puke landed next to him. He looks completely normal again (no soot, no tint).",
+      "went to green hill (day 9): collected rings deadpan, ran faster and faster until his legs were a blur wheel, ran a giant loop, hit RINGS 999, outran the camera, smacked flat into a palm tree; every ring burst out of him (RINGS 0); slid down onto his butt. Looks completely normal."
     ],
-    "notes": "Day 8 (re-cut on Justin's notes): white room -> airfield; cockpit; loops, face slowly green; pulls up into space (Earth below); prop dies, silence, he pukes a floating blob, face back to normal, long stare; plane drops; re-entry on fire with the burning blob behind; crash, giant dust cloud; flung out onto his butt; the flaming puke splats beside him and sizzles out; ask on the airfield. APPEARANCE RULE: he is plain white again - never carry soot or tints forward."
+    "notes": "Day 9: airfield -> green hill on foot; rings; run; loop; outruns camera; empty palm tree hold; WHAM; ring explosion; slides down; one last ring rolls up and falls flat; steps out from under the tree; ask. Generic only: no hedgehog, no game name/logo."
   },
   "used_comments": [
     "Beat Mc in hardcore mode:)",
     "Eat a billion big Mac’s",
     "Rock a baby to sleep. (My mom said this)",
     "Join Hogwarts.",
-    "Fly a plane"
+    "Fly a plane",
+    "Go to green hill"
   ],
   "history": [
     {
@@ -86,6 +87,11 @@
       "day": 8,
       "type": "comment",
       "summary": "@second_degree_burn (IG): 'Fly a plane' -> RE-CUT on Justin's notes: white room -> airfield; takeoff; loops until his face goes green; keeps climbing into space; engine dies in the silence; pukes a zero-g blob (back to normal); long stare; plane drops; re-entry on fire; crashes nose-first into the airfield (giant dust cloud); flung out onto his butt; the flaming puke splats beside him; deadpan ask on the airfield (65.6 s)"
+    },
+    {
+      "day": 9,
+      "type": "comment",
+      "summary": "@nicolascechettoschuller (IG): 'Go to green hill' -> airfield: reads it; walks past the planted plane and a GREEN HILL sign into a generic green hill; takes a floating ring (RINGS 1), walks to the next (RINGS 2); goes for the line of rings, walk -> run -> blur-wheel legs; runs a giant loop; RINGS 999; outruns the camera; CUT: a quiet palm tree, long hold; WHAM he hits it flat; every ring bursts out (RINGS 0, red); stuck, deadpan; slides down onto his butt; one last ring rolls up and falls flat; he steps out from under the tree; deadpan ask (57.2 s)"
     }
   ]
 }
