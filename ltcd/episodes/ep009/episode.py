@@ -12,9 +12,9 @@ RUN     He goes for them: walking, then jogging, then running, faster and faster
         the camera and is gone. Dust settles. Empty hill.
 GOAL    RE-CUT on Justin's notes (2026-10-31): he blasts past the end-of-level sign and skids to a stop; the sign
         spins and lands on his face. Level done: he strikes the victory stance (hand on hip, peace sign up), dead
-        stare. HE HAS PASSED. He holds it. The most harmless little ladybug robot putters up, very slowly. It pokes his
-        shin. Every one of his 999 rings bursts out of him. RINGS 0. He holds the stance through all of it.
-END     Lowers the peace sign. Looks at the bug. It leaves. The ask, there, past the goal (where he lives now).
+        stare. He holds it. The most harmless little ladybug robot putters up, very slowly. It pokes his
+        shin and knocks him flat on his back; every one of his 999 rings bursts out of him. RINGS 0. He lies there.
+END     The bug leaves. He sits up, stands. The ask, there, past the goal (where he lives now).
 MUSIC   Original chiptune in the 90s speed-game style (written for this episode, not a copy of any game's music):
         kicks in as he crosses into the green hill, cuts out at the goal; a short original victory jingle; game-style
         ring chimes and the ring-scatter jingle.
@@ -160,10 +160,13 @@ T_POSE = T_STOP + 3.3                     # victory stance
 T_BUG0 = T_POSE + 2.4                     # the bug sets off
 T_BUG1 = T_BUG0 + 4.0                     # ... arrives at his foot
 T_POKE = T_BUG1 + 0.8
-T_DOWN = T_POKE + 3.0
-T_BUGOFF = T_DOWN + 1.0
-T_US = T_DOWN + 1.8
-T_ASK = T_US + 1.0
+T_DOWN = T_POKE                           # the stance ends here
+T_KD = T_POKE + 0.75                      # knocked flat on his back
+T_BUGOFF = T_KD + 1.8
+T_UP = T_KD + 3.0                         # sits up
+T_STAND2 = T_UP + 1.1
+T_US = T_STAND2 + 0.9
+T_ASK = T_US + 0.9
 
 _t = T_R
 while _t < T_STOP + 0.1:
@@ -319,7 +322,7 @@ def goal_sign(cr, t, p, ly):
         L.motion_lines(cr, x - 200, cy - 60, math.pi, n=3, length=90, spread=60, alpha=0.6 * (1 - ramp(t, T_SIGN - 0.8, T_SIGN)), sid=7310)
 S.prop(goal_sign)
 
-# ================================================================ VICTORY STANCE. HE HAS PASSED.
+# ================================================================ VICTORY STANCE.
 L.POSES["victory"] = dict(lelb=(415, 965), lhand=(476, 1092), lhand_t="fist", relb=(705, 790), rhand=(740, 615),
                           rhand_t="peace", lfoot=(470, FLOOR_Y), rfoot=(625, FLOOR_Y), lknee=(495, 1300), rknee=(600, 1300),
                           lean=0.04, tilt=-0.07, lfoot_dir=-0.6, rfoot_dir=0.8)
@@ -328,20 +331,10 @@ S.set(T_POSE, "victory", "dead_stare", dur=0.18, ease="back", look=(0.0, 0.0))
 S.set(T_BUG0 + 1.8, "victory", "dead_stare", dur=0.5, look=(0.75, 0.85))        # eyes only: the bug
 S.set(T_BUG1 + 0.6, "victory", "dead_stare", dur=0.3, look=(0.0, 0.0))          # back to us. holding.
 S.blink(T_POSE + 1.6, T_BUG1 + 0.2)
-def banner(cr, t):
-    if not (T_POSE + 0.3 <= t < T_POSE + 3.2): return
-    u = smooth(ramp(t, T_POSE + 0.3, T_POSE + 0.6)) - smooth(ramp(t, T_POSE + 2.8, T_POSE + 3.2))
-    x = lerp(-900, 140, u)
-    L.sketch_rect(cr, x, 1290, x + 800, 1400, 6, sid=7320, fill=(0.20, 0.42, 0.90))
-    for k in range(4): L.sketch_rect(cr, x - 60 - k * 0 , 1300 + k * 25, x - 10, 1312 + k * 25, 0.1, sid=7321 + k, fill=(1.0, 0.82, 0.15))
-    for dx, dy in ((-4, 0), (4, 0), (0, -4), (0, 4)):
-        O.draw_text(cr, "HE HAS PASSED", x + 400 + dx, 1345 + dy, 66, color=(18, 18, 22))
-    O.draw_text(cr, "HE HAS PASSED", x + 400, 1345, 66, color=(255, 255, 255))
-S.overlay(banner)
 def peace(cr, t, p, ly):
     """a big readable V: two chunky fingers up out of his raised mitt."""
     if ly != "front": return
-    k = smooth(ramp(t, T_POSE + 0.05, T_POSE + 0.2)) * (1 - smooth(ramp(t, T_DOWN, T_DOWN + 0.25)))
+    k = smooth(ramp(t, T_POSE + 0.05, T_POSE + 0.2)) * (1 - smooth(ramp(t, T_DOWN, T_DOWN + 0.04)))
     if k < 0.05: return
     hx, hy = p["rhand"]
     for ang in (-0.32, 0.18):
@@ -378,10 +371,41 @@ S.prop(bug)
 for k in range(int((T_BUG1 - T_BUG0) * 3)): S.sfx(T_BUG0 + 0.6 + k / 3, "tok", 0.012)
 
 # ---------------------------------------------------------------- the poke: every ring comes out
-S.set(T_POKE + 0.02, "victory", "dead_stare", dur=0.05, ease="snap", stretch=-0.12, look=(0.0, 0.0))
-S.set(T_POKE + 0.12, "victory", "dead_stare", dur=0.35, ease="back", stretch=0.0, look=(0.0, 0.0))
-S.shake(T_POKE, 0.4, 10)
-S.sfx(T_POKE, "boop", 0.05)
+L.POSES["hurt"] = dict(lelb=(430, 700), lhand=(385, 565), relb=(650, 700), rhand=(695, 565), lhand_t="open", rhand_t="open",
+                       lknee=(470, 1250), lfoot=(440, 1400), rknee=(600, 1240), rfoot=(640, 1390), nowalk=1.0)
+S.set(T_POKE + 0.03, "hurt", "dead_stare", dur=0.12, ease="snap", lag=0.0, eyescale=1.15, nowalk=1.0)
+S.shake(T_POKE, 0.4, 12)
+S.sfx(T_POKE, "bonk", 0.06)
+def knock(tt, p):
+    if not (T_POKE + 0.03 <= tt < T_KD): return p
+    u = (tt - T_POKE - 0.03) / (T_KD - T_POKE - 0.03)
+    dx, dy = -300 * u, -210 * 4 * u * (1 - u)
+    a = -1.35 * smooth(u)
+    h = p["hip"]; c, s_ = math.cos(a), math.sin(a)
+    for j in L.JOINTS:
+        ddx, ddy = p[j][0] - h[0], p[j][1] - h[1]
+        p[j] = (h[0] + dx + ddx * c - ddy * s_, h[1] + dy + ddx * s_ + ddy * c)
+    p["tilt"] = p.get("tilt", 0.0) + a
+    return p
+S.hook(knock)
+S.xkeys.append((T_KD - 1 / 30, SX_STOP - 520, 0.001, "linear"))
+S.set(T_KD - 1 / 30, "lie_back", "dead_stare", dur=0.0, lag=0.0, nowalk=1.0, look=(0.0, -0.2))
+S.set(T_KD + 0.1, "lie_back", "dead_stare", dur=0.3, lag=0.6, nowalk=1.0, look=(0.0, -0.2))
+S.sfx(T_KD, "thud", 0.14); S.shake(T_KD, 0.35, 14)
+def kd_fx(cr, t, p, ly):
+    if ly == "front" and T_KD <= t < T_KD + 0.8: L.draw_poof(cr, X_STOP - 300, FLOOR_Y - 40, (t - T_KD) / 0.8, r=230, sid=34)
+S.prop(kd_fx)
+S.blink(T_KD + 1.3)
+S.set(T_KD + 1.9, "lie_back", "dead_stare", dur=0.5, nowalk=1.0, look=(0.6, 0.3))          # the bug, leaving
+S.set(T_UP - 0.3, "lie_back", "dead_stare", dur=0.3, nowalk=1.0, look=(0.0, -0.2))
+S.xkeys.append((T_UP, SX_STOP - 300, 0.5, "smooth"))
+S.set(T_UP, "sit_floor", "dead_stare", dur=0.5, nowalk=1.0, look=(0.0, 0.0))
+S.stand(T_STAND2, face="dead_stare")
+S.x = SX_STOP - 300
+S.blink(T_US - 0.3)
+S.camera(T_POKE + 0.05, X_STOP - 270, 990, 0.86, 0.5)
+S.camera(T_STAND2, X_STOP - 300 + 60, 960, 1.05, 1.0)
+
 _rr = random.Random(9)
 BURST = []
 for i in range(130):
@@ -403,12 +427,6 @@ def burst(cr, t, p, ly):
         x, y = traj[min(fr, len(traj) - 1)]
         O.draw_ring(cr, x, y, t + ph, r=44)
 S.prop(burst)
-
-S.set(T_DOWN, "stand", "dead_stare", dur=0.8, look=(0.7, 0.9), tilt=0.06)      # lowers it. looks at the bug.
-S.set(T_BUGOFF + 0.4, "stand", "dead_stare", dur=0.5, look=(0.9, 0.6), tilt=0.04)  # watches it go
-S.set(T_US, "stand", "dead_stare", dur=0.4, look=(0.0, 0.0), tilt=0.0)          # us
-S.blink(T_US + 0.6)
-S.camera(T_DOWN + 0.3, X_STOP + 60, 960, 1.05, 2.0)
 
 # ================================================================ the ask, past the goal
 S.t = T_ASK
@@ -448,42 +466,92 @@ def snare():
 def hat():
     tt = _t(0.05); n = _nr.standard_normal(len(tt)); n = n - np.convolve(n, np.ones(4) / 4, "same")
     return (n * np.exp(-tt / 0.012) * 0.5).astype(np.float32)
-E8 = 60 / 152 / 2                                           # eighth note at 152 bpm
-# an original 8-bar tune over C | Am | Dm | G  (pairs: midi or None rest, length in eighths)
-MEL = [(76, 1), (79, 1), (84, 2), (83, 1), (79, 1), (81, 2),
-       (79, 1), (76, 1), (72, 2), (74, 1), (76, 2), (None, 1),
-       (77, 1), (81, 1), (86, 2), (84, 1), (81, 1), (83, 2),
-       (81, 1), (79, 1), (77, 1), (74, 1), (79, 3), (None, 1),
-       (76, 1), (79, 1), (84, 2), (83, 1), (79, 1), (81, 2),
-       (79, 1), (76, 1), (84, 2), (83, 1), (81, 1), (79, 2),
-       (77, 1), (76, 1), (74, 1), (77, 1), (81, 2), (84, 2),
-       (83, 2), (86, 2), (84, 3), (None, 1)]
-ROOTS = [36, 33, 38, 31] * 2
-CHORD = {36: (64, 67, 71), 33: (60, 64, 67), 38: (65, 69, 72), 31: (65, 67, 71)}
+# ---- Mega Drive-style FM: 2-op FM with operator feedback, slap bass, brassy lead with vibrato + echo, PSG arps
+def fm(m, d, ratio=1.0, idx=2.0, idx_dec=0.15, idx_floor=0.4, fb=0.0, att=0.004, dec=0.3, sus=0.0, vib=0.0, det=0.0):
+    tt = _t(d); f = mtof(m) * (1 + det)
+    if vib: f = f * (1 + vib * np.sin(2 * np.pi * 5.5 * tt) * np.clip((tt - 0.12) / 0.15, 0, 1))
+    ph = 2 * np.pi * np.cumsum(f) / SR
+    I = idx * (idx_floor + (1 - idx_floor) * np.exp(-tt / idx_dec))
+    mod = np.sin(ph * ratio + fb * np.sin(ph * ratio))
+    env = np.minimum(1, tt / att) * (sus + (1 - sus) * np.exp(-tt / dec)) * np.minimum(1, (d - tt) / 0.015)
+    return (np.sin(ph + I * mod) * env).astype(np.float32)
+def slap(m, d):                                     # FM slap bass: hard pluck, metallic attack, round tail
+    tt = _t(d); thump = np.sin(2 * np.pi * mtof(m) * tt) * np.exp(-tt / 0.12)
+    return (fm(m, d, ratio=1.0, idx=5.0, idx_dec=0.03, idx_floor=0.15, fb=0.6, dec=0.16, sus=0.25) * 0.8 + thump[:len(tt)] * 0.5).astype(np.float32)
+def brass(m, d):                                    # bright FM lead, two slightly detuned voices
+    return (fm(m, d, ratio=1.0, idx=2.6, idx_dec=0.08, idx_floor=0.55, fb=0.35, att=0.012, dec=0.5, sus=0.55, vib=0.006) +
+            fm(m, d, ratio=1.0, idx=2.2, idx_dec=0.08, idx_floor=0.5, fb=0.2, att=0.012, dec=0.5, sus=0.55, vib=0.006, det=0.004) * 0.6)
+def epiano(m, d):
+    return fm(m, d, ratio=14.0, idx=0.9, idx_dec=0.02, idx_floor=0.0, dec=0.35, sus=0.1) * 0.5 + fm(m, d, ratio=1.0, idx=0.6, dec=0.4, sus=0.15) * 0.6
+def psg(m, d):
+    tt = _t(d); sq = np.sign(np.sin(2 * np.pi * mtof(m) * tt))
+    return (sq * np.exp(-tt / 0.06) * np.minimum(1, (d - tt) / 0.005)).astype(np.float32)
+def kick():
+    tt = _t(0.2); return (np.sin(2 * np.pi * np.cumsum(50 + 170 * np.exp(-tt / 0.025)) / SR) * np.exp(-tt / 0.09)).astype(np.float32)
+def snare():
+    tt = _t(0.2); n = _nr.standard_normal(len(tt)); n = n - np.convolve(n, np.ones(3) / 3, "same") * 0.5
+    return (n * np.exp(-tt / 0.07) * 0.7 + np.sin(2 * np.pi * np.cumsum(260 * np.exp(-tt / 0.05) + 160) / SR) * np.exp(-tt / 0.05) * 0.6).astype(np.float32)
+def hat(open_=False):
+    d = 0.18 if open_ else 0.05
+    tt = _t(d); n = _nr.standard_normal(len(tt)); n = n - np.convolve(n, np.ones(4) / 4, "same")
+    return (n * np.exp(-tt / (0.06 if open_ else 0.012)) * 0.5).astype(np.float32)
+NOTE = {"C": 0, "C#": 1, "D": 2, "D#": 3, "E": 4, "F": 5, "F#": 6, "G": 7, "G#": 8, "A": 9, "A#": 10, "B": 11}
+def nm(s_): return 12 * (int(s_[-1]) + 1) + NOTE[s_[:-1]]
+S16 = 60 / 140 / 4                                   # 16th note at 140 bpm
+BAR = 16 * S16
+# an ORIGINAL tune: syncopated 16th-note melody over a bright jazzy major progression (16ths: start, length)
+MELODY = [
+    [("A5", 2, 2), ("C6", 4, 2), ("E6", 6, 3), ("D6", 10, 2), ("C6", 12, 2), ("A5", 14, 2)],
+    [("G5", 0, 3), ("E5", 3, 3), ("G5", 6, 2), ("A5", 8, 3), ("C#6", 11, 2), ("E6", 13, 3)],
+    [("F6", 0, 3), ("E6", 3, 1), ("D6", 4, 2), ("C6", 6, 2), ("A5", 8, 4), ("F5", 12, 2), ("A5", 14, 2)],
+    [("G5", 0, 5), ("B5", 6, 2), ("D6", 8, 2), ("F6", 10, 3), ("E6", 13, 3)],
+    [("A5", 2, 2), ("C6", 4, 2), ("E6", 6, 3), ("G6", 9, 3), ("E6", 12, 2), ("C6", 14, 2)],
+    [("D6", 0, 3), ("B5", 3, 3), ("G5", 6, 2), ("A5", 8, 2), ("C#6", 10, 2), ("E6", 12, 2), ("G6", 14, 2)],
+    [("F6", 0, 2), ("E6", 2, 2), ("D6", 4, 2), ("C6", 6, 2), ("B5", 8, 3), ("D6", 11, 3), ("F6", 14, 2)],
+    [("E6", 0, 6), ("D6", 6, 2), ("C6", 8, 7)],
+]
+# (chord tones for stabs/arps, bass root) per half bar
+HARM = [(("F4", "A4", "C5", "E5"), "F2"), (("F4", "A4", "C5", "E5"), "F2"),
+        (("E4", "G4", "B4", "D5"), "E2"), (("C#4", "E4", "G4", "A4"), "A1"),
+        (("D4", "F4", "A4", "C5"), "D2"), (("D4", "F4", "A4", "C5"), "D2"),
+        (("D4", "F4", "A4", "C5"), "G1"), (("D4", "F4", "G4", "B4"), "G1"),
+        (("F4", "A4", "C5", "E5"), "F2"), (("F4", "A4", "C5", "E5"), "F2"),
+        (("E4", "G4", "B4", "D5"), "E2"), (("C#4", "E4", "G4", "A4"), "A1"),
+        (("D4", "F4", "A4", "C5"), "D2"), (("D4", "F4", "G4", "B4"), "G1"),
+        (("C4", "E4", "G4", "B4"), "C2"), (("C4", "E4", "G4", "B4"), "C2")]
+BASS_PAT = [(0, 0, 2), (3, 12, 1), (4, 0, 1), (6, 12, 2)]          # (16th, octave offset, length) per half bar: slap groove
 def place(buf, sig, t0, g):
     i = int(t0 * SR)
     if i < 0 or i >= len(buf): return
     m = min(len(sig), len(buf) - i); buf[i:i + m] += sig[:m] * g
 def music(buf, t0, t1):
-    bar = 8 * E8; loop = 8 * bar
-    k = 0
+    loop = 8 * BAR; k = 0
+    lead = np.zeros_like(buf)
     while t0 + k * loop < t1:
         b0 = t0 + k * loop
-        tm = b0
-        for m, d in MEL:
-            if m is not None and tm < t1: place(buf, fm_note(m, d * E8 * 0.95, decay=0.18 + 0.08 * d), tm, 0.55)
-            tm += d * E8
-        for bi, r in enumerate(ROOTS):
-            for e in range(8):
-                te = b0 + bi * bar + e * E8
-                if te >= t1: continue
-                place(buf, bass_note(r + (12 if e % 2 else 0), E8 * 0.9), te, 0.45)
-                if e in (0, 4): place(buf, kick(), te, 0.8)
-                if e in (2, 6): place(buf, snare(), te, 0.35)
-                place(buf, hat(), te + E8 / 2, 0.25)
-                if e in (1, 3, 5, 7):                                      # off-beat chord stabs
-                    for cm in CHORD[r]: place(buf, fm_note(cm, E8 * 0.5, idx=1.0, ratio=1.0, decay=0.06), te, 0.12)
+        for bi, bar in enumerate(MELODY):
+            for n_, st, ln in bar:
+                te = b0 + bi * BAR + st * S16
+                if te < t1:
+                    sig = brass(nm(n_), ln * S16 * 0.98)
+                    place(lead, sig, te, 0.5); place(lead, brass(nm(n_) - 12, ln * S16 * 0.98), te, 0.16)
+        for hi, (ch, root) in enumerate(HARM):
+            h0 = b0 + hi * 8 * S16
+            if h0 >= t1: continue
+            r = nm(root)
+            for st, oc, ln in BASS_PAT: place(buf, slap(r + oc, ln * S16 * 0.95), h0 + st * S16, 0.42)
+            for st in (2, 5):                                          # syncopated e-piano stabs
+                for cm in ch: place(buf, epiano(nm(cm), S16 * 1.6), h0 + st * S16, 0.10)
+            for st in range(8):                                        # PSG arpeggio, high and quiet
+                place(buf, psg(nm(ch[st % 4]) + 12, S16 * 0.9), h0 + st * S16, 0.05)
+                place(buf, hat(), h0 + st * S16, 0.22 if st % 2 else 0.12)
+            place(buf, kick(), h0, 0.9); place(buf, snare(), h0 + 4 * S16, 0.6)
+            place(buf, kick(), h0 + (6 if hi % 2 == 0 else 3) * S16, 0.55)
+            if hi % 2 == 1: place(buf, hat(True), h0 + 6 * S16, 0.25); place(buf, snare(), h0 + 7 * S16, 0.22)
         k += 1
+    echo = int(3 * S16 * SR)                                           # 3/16 echo on the lead
+    lead[echo:] += lead[:-echo] * 0.28
+    buf += lead
 def ring_chime():
     a = fm_note(100, 0.07, idx=1.2, ratio=3.0, decay=0.05); b = fm_note(105, 0.35, idx=1.2, ratio=3.0, decay=0.12)
     out = np.zeros(len(a) + len(b), np.float32); out[:len(a)] += a; out[int(0.055 * SR):int(0.055 * SR) + len(b)] += b
@@ -493,12 +561,12 @@ def scatter(buf, t0):
     for k in range(22):
         tk = t0 + 0.9 * (k / 22) ** 1.3
         place(buf, fm_note(rr.choice((96, 98, 100, 103, 105, 108)) - int(8 * k / 22), 0.2, idx=1.5, ratio=3.0, decay=0.07), tk, 0.55 - 0.015 * k)
-def jingle(buf, t0):
-    s = 60 / 152 / 4
-    seq = [(72, 0), (76, 1), (79, 2), (84, 3), (83, 5), (84, 6), (88, 8)]
-    for m, k in seq: place(buf, fm_note(m, 1.2 if k == 8 else 0.3, decay=0.5 if k == 8 else 0.12), t0 + k * s, 0.6)
-    for cm in (60, 64, 67, 72): place(buf, fm_note(cm, 1.3, idx=0.8, ratio=1.0, decay=0.5), t0 + 8 * s, 0.22)
-    place(buf, kick(), t0 + 8 * s, 0.8)
+def jingle(buf, t0):                                     # short original level-clear fanfare
+    seq = [("C5", 0, 1), ("E5", 1, 1), ("G5", 2, 1), ("C6", 3, 2), ("A5", 6, 1), ("B5", 7, 1), ("C6", 8, 1), ("D6", 9, 2), ("E6", 12, 10)]
+    for n_, st, ln in seq: place(buf, brass(nm(n_), ln * S16 * 0.98), t0 + st * S16, 0.5)
+    for n_, st in (("C3", 0), ("G2", 6), ("C3", 12)): place(buf, slap(nm(n_), 6 * S16), t0 + st * S16, 0.45)
+    for cm in ("C4", "E4", "G4", "B4"): place(buf, epiano(nm(cm), 10 * S16), t0 + 12 * S16, 0.14)
+    place(buf, kick(), t0, 0.8); place(buf, kick(), t0 + 12 * S16, 0.9); place(buf, hat(True), t0 + 12 * S16, 0.3)
 def sign_spin(buf, t0, t1):
     tk = t0
     while tk < t1:
@@ -518,11 +586,11 @@ def bright(n):
     i0, i1 = int((T_PASS - 0.15) * SR), int((T_PASS + 0.15) * SR)
     mus[i0:i1] *= np.linspace(1, 0, i1 - i0); mus[i1:] = 0
     mus[int(T_MUSIC0 * SR):int(T_MUSIC0 * SR) + 400] *= np.linspace(0, 1, 400)
-    buf += mus * 0.055
+    mus /= max(1e-6, np.abs(mus).max()); buf += mus * 0.075
     ch = ring_chime()
     for tc in [T_GET1, T_GET2] + [tc for tc, _ in RING_T][:12]: place(buf, ch, tc, 0.05)
     sp = np.zeros(n, np.float32); sign_spin(sp, T_PASS, T_SIGN); buf += sp * 0.05
-    jg = np.zeros(n, np.float32); jingle(jg, T_POSE); buf += jg * 0.07
+    jg = np.zeros(n, np.float32); jingle(jg, T_POSE); jg /= max(1e-6, np.abs(jg).max()); buf += jg * 0.075
     sc = np.zeros(n, np.float32); scatter(sc, T_POKE + 0.03); buf += sc * 0.09
     return buf
 _orig_soften = L._soften

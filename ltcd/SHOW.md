@@ -76,7 +76,10 @@ Daily loop: **post 7:00 PM ET → comments come in → 3:00 PM ET next day: comm
   he loses every ring). Still draw everything ourselves and write our own music - no ripped sprites, logos or audio.
   Get the fan details right (e.g. that character isn't hurt by palm trees - getting hit is what costs the rings).
 - **Music (user, 2026-10-31):** game-style music + game-style sound effects are welcome in game episodes - an ORIGINAL
-  tune in the style (episode-made synth, like ep009's chiptune), under the action, cut at the key moment.
+  tune in the style (episode-made synth), under the action, cut at the key moment. User 2026-10-31: the first chiptune "doesn't
+  sound like sonic at all" - match the console's actual sound: for a 90s Sega game that's YM2612-style FM (slap bass, brassy
+  FM lead with vibrato + echo, e-piano stabs, PSG square arps, punchy drums), syncopated 16ths, jazzy major chords (ep009).
+  No on-screen banners/captions that explain the joke ("HE HAS PASSED" was "stupid and unnecessary"). Enemy hits knock him down.
 ## Episode types
 1. **Episode 1 — "the ask"** (`episodes/ep001`, already posted in the older cuter style). The ending of every
    episode is now the deadpan ask (`S.the_ask(..., mood="deadpan")`, the default): dig at hip, clipboard, scribble,

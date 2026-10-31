@@ -21,7 +21,7 @@
   "ask_since_day": 9,
   "waiting_streak": 0,
   "world": {
-    "location": "the green hill (day 9): generic speed-game world right of the airfield. O.draw_green_hill_world(cr, t, x0=9800, x1=60000, loop=(LX, 900), palms=..., flowers=...) (blue sky bands, clouds, far hills, sparkling water, palms, sunflowers, grass on checkered dirt); the airfield (planted plane x 9000) is left of x 9800 with a GREEN HILL arrow sign at 9480. Giant loop at x ~22250 (R 900). He ended just past the end-of-level GOAL sign (spinning plate on a pole, landed showing his own face) at body offset ~= X_STOP-540 from ep009 (see episode.py: X_STOP; sign at X_STOP-650). Ask camera ~ (x+60, 930, 1.12). RINGS HUD (O.draw_ring_hud) ended at 0, red.",
+    "location": "the green hill (day 9): generic speed-game world right of the airfield. O.draw_green_hill_world(cr, t, x0=9800, x1=60000, loop=(LX, 900), palms=..., flowers=...) (blue sky bands, clouds, far hills, sparkling water, palms, sunflowers, grass on checkered dirt); the airfield (planted plane x 9000) is left of x 9800 with a GREEN HILL arrow sign at 9480. Giant loop at x ~22250 (R 900). He ended past the end-of-level GOAL sign (spinning plate on a pole, landed showing his own face): body offset SX_STOP-300 in ep009 (episode.py X_STOP; the sign is at X_STOP-650, ~350 px to his left). Ask camera ~ (x+60, 930, 1.12). RINGS HUD (O.draw_ring_hud) ended at 0, red.",
     "companions": [],
     "props": [
       "the GOAL sign showing his face, just behind him (left)",
@@ -36,9 +36,9 @@
       "rocked a mom's baby to sleep and fell asleep holding it; she kissed him on the cheek and he blushed (day 6). The mom (O.draw_mom: long brown hair + bun, pink dress) shops at the burger place - callback possible",
       "EXPELLED FOREVER from wizard school (day 7): read his acceptance letter, sprinted into the 9 3/4 wall and bounced off, used the door in the wall instead, the giant talking hat found no brain in his head (hello... echoed) and blasted him into the empty white room",
       "flew a plane (day 8): took off from the FLIGHT SCHOOL airfield, looped until he went green, climbed out of the atmosphere into space, puked a zero-g blob (back to normal), fell back down on fire and planted the plane nose-first in the field; the flaming puke landed next to him. He looks completely normal again (no soot, no tint).",
-      "went to green hill (day 9): collected rings deadpan, ran until his legs were a blur wheel, ran a giant loop, RINGS 999, blasted past the GOAL sign and skidded to a stop; victory stance with a peace sign (HE HAS PASSED); the most harmless little ladybug robot puttered up and poked his shin and every ring burst out of him (RINGS 0). Looks normal."
+      "went to green hill (day 9): collected rings deadpan, ran until his legs were a blur wheel, ran a giant loop, RINGS 999, blasted past the GOAL sign and skidded to a stop; victory stance with a peace sign; the most harmless little ladybug robot puttered up, poked him and knocked him flat on his back; every ring burst out of him (RINGS 0). Looks normal."
     ],
-    "notes": "Day 9 RE-CUT on Justin's notes: no palm-tree hit; goal sign + victory stance + tiny enemy poke = ring loss; original chiptune music + game-style ring/jingle sounds. Parody is fine (SHOW.md)."
+    "notes": "Day 9 RE-CUT 2 on Justin's notes: no banner; the bug's poke knocks him down (arc back, flat on his back), rings burst; Mega Drive-style FM music (original tune: slap bass, brass lead, PSG arps). Parody is fine (SHOW.md)."
   },
   "used_comments": [
     "Beat Mc in hardcore mode:)",
@@ -92,7 +92,7 @@
     {
       "day": 9,
       "type": "comment",
-      "summary": "@nicolascechettoschuller (IG): 'Go to green hill' -> RE-CUT on Justin's notes: airfield -> walks into a generic green hill (music kicks in); rings; run; blur legs; giant loop; RINGS 999; blasts past the GOAL sign, skids; sign spins and lands on his face; victory stance + peace sign, HE HAS PASSED, jingle; a tiny ladybug robot putters up very slowly and pokes him; every ring bursts out (RINGS 0); he holds the pose; lowers it; bug leaves; deadpan ask (56.9 s). Original chiptune + game-style SFX."
+      "summary": "@nicolascechettoschuller (IG): 'Go to green hill' -> RE-CUT on Justin's notes: airfield -> walks into a generic green hill (music kicks in); rings; run; blur legs; giant loop; RINGS 999; blasts past the GOAL sign, skids; sign spins and lands on his face; victory stance + peace sign, jingle; a tiny ladybug robot putters up very slowly, pokes him and knocks him flat on his back; every ring bursts out (RINGS 0); bug leaves; he sits up, stands; deadpan ask (57.8 s). Original Mega Drive-style FM music + game-style SFX."
     }
   ]
 }
