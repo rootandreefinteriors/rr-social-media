@@ -43,6 +43,15 @@ with moves.Scene.place(..., pop=True).
     draw_puke(cr, x, y, r, t, ang)         a wobbly floating zero-g blob of green cartoon puke; draw_flames(...) re-entry fire
     draw_airfield_world(cr, t, x0, x1)     pale sky + clouds + grass airfield (right of x0): windsock, hangar, a
                                            FLIGHT SCHOOL sign; plane_wheel(...) one loose landing-gear wheel
+    draw_ring(cr, x, y, t, r)              a spinning gold ring (the generic speed-game collectible); flat=0..1 lies down
+    draw_palm(cr, x, t, h, bend)           cartoon palm tree (banded trunk, big fronds) standing at x on the floor
+    draw_sunflower(cr, x, t, h)            a big sunflower whose petals turn slowly
+    draw_loop(cr, cx, R, t)                giant checkered loop-de-loop: running surface radius R, bottom at (cx, FLOOR_Y)
+    draw_green_hill_world(cr, t, x0, ...)  generic green-hill speed-game world right of x0: blue sky bands, clouds,
+                                           far hills, sparkling water, palms, sunflowers, grass on checkered brown
+                                           dirt; optional loop; nothing drawn left of x0 (no names, no characters)
+    draw_signpost(cr, x, text)             a wooden arrow signpost pointing right
+    draw_ring_hud(cr, n, ...)              screen-space RINGS counter (top-left, inside the safe zone)
 """
 import math
 import cairo
@@ -1635,3 +1644,156 @@ def draw_space(cr, t, cx, cy, R=9000.0):
         sketch_ellipse(cr, ex - 2600 + k * 1050, ey - R + 120 + 90 * (k % 3), 380, 50, 0.1, sid=9530 + k, fill=(1, 1, 1), alpha=0.8)
     cr.restore()
     cr.arc(ex, ey, R, 0, 2 * math.pi); stroke_ink(cr, 8)
+
+
+# ---------------------------------------------------------------- green hill (generic speed-game world, day 9)
+GOLD_R = (1.0, 0.80, 0.12)
+GH_GRASS = (0.36, 0.74, 0.25)
+GH_GRASS_D = (0.24, 0.55, 0.16)
+GH_DIRT = ((0.80, 0.50, 0.20), (0.58, 0.33, 0.12))
+GH_SKY = ((0.62, 0.84, 1.0), (0.22, 0.48, 0.92))
+GH_WATER = (0.24, 0.55, 0.92)
+
+def draw_ring(cr, x, y, t=0.0, r=52.0, flat=0.0, alpha=1.0, spin=4.0):
+    """spinning gold ring centre (x, y). flat 0..1 = tipped over lying on the floor (thin horizontal ellipse)."""
+    w = max(0.18, abs(math.cos(t * spin))) if flat <= 0 else 1.0
+    rx, ry = r * w, r * (1 - 0.82 * flat)
+    cr.push_group()
+    cr.save(); cr.translate(x, y); cr.scale(max(rx, 1) / r, max(ry, 1) / r)
+    cr.arc(0, 0, r, 0, 2 * math.pi); cr.restore()
+    cr.set_source_rgb(*INK); cr.set_line_width(26); cr.stroke_preserve()
+    cr.set_source_rgb(*GOLD_R); cr.set_line_width(14); cr.stroke()
+    cr.save(); cr.translate(x, y); cr.scale(max(rx, 1) / r, max(ry, 1) / r)
+    cr.arc(0, 0, r, math.pi * 1.1, math.pi * 1.45); cr.restore()
+    cr.set_source_rgba(1, 1, 0.85, 0.9); cr.set_line_width(5); cr.stroke()
+    cr.pop_group_to_source(); cr.paint_with_alpha(alpha)
+
+def draw_sparkle(cr, x, y, u, r=70, color=GOLD_R):
+    """a little 4-point collect sparkle, u 0..1 life."""
+    if not (0 <= u < 1): return
+    a = 1 - u; s = r * (0.4 + 0.8 * u)
+    for k in range(4):
+        ang = k * math.pi / 2 + 0.4
+        cr.move_to(x + math.cos(ang) * s * 0.3, y + math.sin(ang) * s * 0.3)
+        cr.line_to(x + math.cos(ang) * s, y + math.sin(ang) * s)
+    cr.set_source_rgba(*INK, a); cr.set_line_width(9); cr.stroke_preserve()
+    cr.set_source_rgba(*color, a); cr.set_line_width(5); cr.stroke()
+
+def palm_pt(x, h, bend, u, yb=FLOOR_Y):
+    """point at height fraction u (0 foot .. 1 top) of a palm trunk of height h, leaning right by bend."""
+    return (x + 60 * math.sin(u * 2.2) + bend * 260 * u * u, yb - h * u)
+
+def draw_palm(cr, x, t=0.0, h=820.0, bend=0.0, yb=FLOOR_Y, s=1.0, sid=0):
+    """cartoon palm tree: banded trunk curving a little, six big fronds and coconuts on top."""
+    n = 9
+    for k in range(n):                                                   # trunk segments, alternating tan / brown
+        u0, u1 = k / n, (k + 1) / n
+        (ax, ay), (bx, by) = palm_pt(x, h, bend, u0, yb), palm_pt(x, h, bend, u1, yb)
+        w0, w1 = 52 * s * (1 - 0.35 * u0), 52 * s * (1 - 0.35 * u1)
+        pts = [(ax - w0, ay), (bx - w1, by + 4), (bx + w1, by + 4), (ax + w0, ay)]
+        sketch_poly(cr, pts, 5, sid=sid + 9600 + k, fill=((0.80, 0.58, 0.32) if k % 2 == 0 else (0.62, 0.42, 0.20)), amp=0.4)
+    tx, ty = palm_pt(x, h, bend, 1.0, yb)
+    sw = math.sin(t * 1.3 + x * 0.01) * 0.06 + bend * 0.6
+    for k, (ang, L_) in enumerate(((-2.9, 380), (-2.3, 420), (-1.75, 330), (-1.25, 400), (-0.7, 430), (-0.15, 370))):
+        a = ang + sw
+        tip = (tx + math.cos(a) * L_ * s, ty + math.sin(a) * L_ * s + 140 * s * abs(math.cos(a)))
+        mid = (tx + math.cos(a) * L_ * 0.55 * s, ty + math.sin(a) * L_ * 0.55 * s - 40 * s)
+        nx, ny = -math.sin(a), math.cos(a)
+        pts = [(tx, ty), (mid[0] + nx * 55 * s, mid[1] + ny * 55 * s), tip, (mid[0] - nx * 40 * s, mid[1] - ny * 40 * s)]
+        sketch_poly(cr, pts, 5, sid=sid + 9620 + k, fill=GH_GRASS if k % 2 else GH_GRASS_D, amp=0.5)
+    for k, (dx, dy) in enumerate(((-30, 30), (25, 35), (0, 55))):
+        sketch_circle(cr, tx + dx * s, ty + dy * s, 26 * s, 4, sid=sid + 9640 + k, fill=(0.45, 0.30, 0.15))
+
+def draw_sunflower(cr, x, t=0.0, h=300.0, yb=FLOOR_Y, sid=0):
+    sketch_line(cr, [(x, yb), (x + 6, yb - h)], 9, sid=sid + 9650, amp=0.4, color=GH_GRASS_D)
+    sketch_ellipse(cr, x - 40, yb - h * 0.4, 40, 16, 4, rot=-0.5, sid=sid + 9651, fill=GH_GRASS)
+    cx, cy = x + 6, yb - h
+    sp = t * 0.8 + x
+    for k in range(10):
+        a = sp + k * 2 * math.pi / 10
+        sketch_ellipse(cr, cx + math.cos(a) * 62, cy + math.sin(a) * 62, 36, 18, 3.5, rot=a, sid=sid + 9652 + k, fill=(1.0, 0.82, 0.15))
+    sketch_circle(cr, cx, cy, 42, 4.5, sid=sid + 9665, fill=(0.50, 0.30, 0.12))
+
+def draw_signpost(cr, x, text="GREEN HILL", yb=FLOOR_Y):
+    sketch_rect(cr, x - 14, yb - 430, x + 14, yb, 5, sid=9670, fill=(0.62, 0.42, 0.24))
+    pts = [(x - 250, yb - 560), (x + 200, yb - 560), (x + 280, yb - 485), (x + 200, yb - 410), (x - 250, yb - 410)]
+    sketch_poly(cr, pts, 6, sid=9671, fill=(0.80, 0.60, 0.36))
+    draw_text(cr, text, x - 15, yb - 485, 60, max_w=420)
+
+def _visible(cr, pad=600):
+    x0, y0, x1, y1 = cr.clip_extents()
+    return x0 - pad, y0 - pad, x1 + pad, y1 + pad
+
+def draw_loop(cr, cx, R, t=0.0, yb=FLOOR_Y, part="back"):
+    """giant checkered loop. Running surface = circle radius R around (cx, yb - R); the band goes outward 110 px."""
+    cy = yb - R; n = 40; W_ = 110
+    if part == "back":
+        for k in range(n):
+            a0, a1 = 2 * math.pi * k / n, 2 * math.pi * (k + 1) / n
+            cr.move_to(cx + R * math.cos(a0), cy + R * math.sin(a0))
+            cr.arc(cx, cy, R, a0, a1); cr.arc_negative(cx, cy, R + W_, a1, a0); cr.close_path()
+            cr.set_source_rgb(*GH_DIRT[k % 2]); cr.fill()
+        cr.arc(cx, cy, R + W_, 0, 2 * math.pi); cr.set_source_rgb(*INK); cr.set_line_width(9); cr.stroke()
+        cr.arc(cx, cy, R + 14, 0, 2 * math.pi); cr.set_source_rgb(*GH_GRASS); cr.set_line_width(28); cr.stroke()
+        cr.arc(cx, cy, R, 0, 2 * math.pi); cr.set_source_rgb(*INK); cr.set_line_width(8); cr.stroke()
+        for sx in (-1, 1):                                                  # little ramps where it meets the ground
+            pts = [(cx + sx * (R * 0.55), yb), (cx + sx * (R * 0.98), yb - R * 0.35), (cx + sx * (R + W_ + 120), yb)]
+            sketch_poly(cr, pts, 6, sid=9680 + (sx > 0), fill=GH_DIRT[1], amp=0.4)
+
+def draw_green_hill_world(cr, t, x0=9700, x1=80000, loop=None, palms=(), flowers=(), yb=FLOOR_Y):
+    """generic green-hill world right of x0 (nothing left of it). loop = (cx, R) or None."""
+    vx0, vy0, vx1, vy1 = _visible(cr)
+    a, b = max(x0, vx0), min(x1, vx1)
+    if b <= a: return
+    cr.save(); cr.rectangle(x0, vy0 - 10, x1 - x0, vy1 - vy0 + 20); cr.clip()
+    _gh_draw(cr, t, x0, x1, a, b, vy0, vy1, loop, palms, flowers, yb)
+    cr.restore()
+
+def _gh_draw(cr, t, x0, x1, a, b, vy0, vy1, loop, palms, flowers, yb):
+    top = min(vy0, yb - 200)
+    nb = 30                                                                  # sky: solid bands (no far-off gradients)
+    for k in range(nb):
+        y_hi = yb - 260 - (k + 1) * 110
+        y_lo = yb - 260 - k * 110 if k else yb + 10
+        if k == nb - 1: y_hi = min(y_hi, top - 10)
+        cr.rectangle(a, y_hi, b - a, y_lo - y_hi + 1); cr.set_source_rgb(*lerp(GH_SKY[0], GH_SKY[1], min(1.0, k / 18))); cr.fill()
+    for k in range(int((a - x0) // 900) - 1, int((b - x0) // 900) + 2):    # clouds
+        cx = x0 + k * 900 + 200 * math.sin(k * 2.1)
+        draw_cloud(cr, cx + 12 * math.sin(t * 0.3 + k), yb - 1230 - 260 * ((k * 37) % 5) / 5, 0.75 + 0.3 * ((k * 13) % 4) / 4)
+    for k in range(int((a - x0) // 700) - 1, int((b - x0) // 700) + 2):    # far rounded hills
+        hx = x0 + k * 700 + 150 * math.sin(k * 1.7); hr = 300 + 90 * ((k * 7) % 3)
+        cr.arc(hx, yb - 300 + hr * 0.25, hr, math.pi, 2 * math.pi); cr.close_path()
+        cr.set_source_rgb(0.56, 0.80, 0.50); cr.fill_preserve(); cr.set_source_rgba(*INK, 0.5); cr.set_line_width(5); cr.stroke()
+    cr.rectangle(a, yb - 300, b - a, 300); cr.set_source_rgb(*GH_WATER); cr.fill()      # sparkling water
+    for k in range(int((a - x0) // 160), int((b - x0) // 160) + 1):
+        wx = x0 + k * 160 + 40 * math.sin(t * 1.5 + k); wy = yb - 260 + (k * 53) % 200
+        cr.rectangle(wx, wy, 70, 7); cr.set_source_rgba(1, 1, 1, 0.55 + 0.45 * math.sin(t * 3 + k)); cr.fill()
+    sketch_line(cr, [(a, yb - 300), (b, yb - 300)], 4, sid=9690, amp=0.6, alpha=0.6)
+    for px, ph in palms:
+        if a - 700 < px < b + 700: draw_palm(cr, px, t, ph, sid=int(px) % 97)
+    if loop: draw_loop(cr, loop[0], loop[1], t, yb)
+    sq = 90                                                                   # checkered dirt below the grass
+    i0, i1 = int((a - x0) // sq), int((b - x0) // sq) + 1
+    for row in range(int(max(0, (min(vy1, yb + 3000) - yb - 60)) // sq) + 2):
+        y = yb + 60 + row * sq
+        for i in range(i0, i1):
+            cr.rectangle(x0 + i * sq, y, sq + 0.5, sq + 0.5); cr.set_source_rgb(*GH_DIRT[(i + row) % 2]); cr.fill()
+    cr.rectangle(a, yb, b - a, 60); cr.set_source_rgb(*GH_GRASS); cr.fill()             # grass strip, scalloped
+    cr.move_to(a, yb + 60)
+    for i in range(int((a - x0) // 60), int((b - x0) // 60) + 2):
+        xx = x0 + i * 60; cr.line_to(xx + 30, yb + 92); cr.line_to(xx + 60, yb + 60)
+    cr.line_to(b, yb + 60); cr.close_path(); cr.set_source_rgb(*GH_GRASS); cr.fill()
+    sketch_line(cr, [(a, yb), (b, yb)], 4, sid=9691, amp=1.0, alpha=0.85)
+    for fx in flowers:
+        if a - 200 < fx < b + 200: draw_sunflower(cr, fx, t, 280 + 60 * (int(fx) % 3), sid=int(fx) % 53)
+
+def draw_ring_hud(cr, n, x=70, y=330, alpha=1.0, warn=0.0):
+    """screen-space RINGS counter, left-anchored. warn 0..1 turns the number red (flashing is up to the caller)."""
+    if alpha <= 0.01: return
+    col = lerp((255, 205, 30), (230, 40, 30), warn)
+    cr.push_group()
+    for txt, xx, size in (("RINGS", x, 70), (str(int(n)), x + 245, 76)):
+        for dx, dy in ((-4, 0), (4, 0), (0, -4), (0, 4), (-3, -3), (3, 3), (-3, 3), (3, -3)):
+            draw_text(cr, txt, xx + dx, y + dy, size, color=(18, 18, 22), anchor="left")
+        draw_text(cr, txt, xx, y, size, color=tuple(int(c) for c in (col if txt != "RINGS" else (255, 205, 30))), anchor="left")
+    cr.pop_group_to_source(); cr.paint_with_alpha(alpha)
