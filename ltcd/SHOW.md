@@ -70,6 +70,13 @@ Daily loop: **post 7:00 PM ET → comments come in → 3:00 PM ET next day: comm
   walked out of it to the right into a new world and now lives outside a generic red/yellow burger place (pale sky,
   paper ground, wrappers everywhere): `O.draw_burger_world` with body offset 2000. Moving to a new place is fine
   when the comment calls for it (user note 2026-10-27: start where he is, then walk/travel to the new world).
+- **Game episodes + parody (user, 2026-10-31):** "parody is protected - you are being way too paranoid about copyright."
+  When a comment is about a game/show, lean INTO the parody: its look, its moves, its enemies, its end-of-level beats,
+  played by him (day 9: the speed-game goal sign, victory stance with a peace sign, a tiny harmless enemy pokes him and
+  he loses every ring). Still draw everything ourselves and write our own music - no ripped sprites, logos or audio.
+  Get the fan details right (e.g. that character isn't hurt by palm trees - getting hit is what costs the rings).
+- **Music (user, 2026-10-31):** game-style music + game-style sound effects are welcome in game episodes - an ORIGINAL
+  tune in the style (episode-made synth, like ep009's chiptune), under the action, cut at the key moment.
 ## Episode types
 1. **Episode 1 — "the ask"** (`episodes/ep001`, already posted in the older cuter style). The ending of every
    episode is now the deadpan ask (`S.the_ask(..., mood="deadpan")`, the default): dig at hip, clipboard, scribble,

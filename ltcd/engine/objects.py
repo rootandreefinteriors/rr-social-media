@@ -1797,3 +1797,23 @@ def draw_ring_hud(cr, n, x=70, y=330, alpha=1.0, warn=0.0):
             draw_text(cr, txt, xx + dx, y + dy, size, color=(18, 18, 22), anchor="left")
         draw_text(cr, txt, xx, y, size, color=tuple(int(c) for c in (col if txt != "RINGS" else (255, 205, 30))), anchor="left")
     cr.pop_group_to_source(); cr.paint_with_alpha(alpha)
+
+def draw_ladybot(cr, x, yb=FLOOR_Y, t=0.0, face=-1, poke=0.0, look_up=0.0, bob=0.0, wheel_ang=0.0, s=1.0):
+    """the most harmless little speed-game enemy: a red ladybug robot on one wheel. (x, yb) = wheel contact.
+    face -1 = facing left. poke 0..1 shoots its little nose out; look_up 0..1 tilts the eye up."""
+    cr.save(); cr.translate(x, yb - bob); cr.scale(face * -1 * s, s)          # local: facing LEFT = -x
+    sketch_circle(cr, 0, -30, 30, 5, sid=9700, fill=(0.55, 0.60, 0.68))       # the wheel
+    cr.move_to(0, -30); cr.line_to(22 * math.cos(wheel_ang), -30 + 22 * math.sin(wheel_ang)); stroke_ink(cr, 4)
+    sketch_line(cr, [(0, -30), (10, -62)], 6, sid=9701)
+    nose = 30 + 45 * poke                                                       # the poker
+    sketch_poly(cr, [(-70, -108), (-70 - nose, -98), (-70, -88)], 4, sid=9702, fill=(0.75, 0.76, 0.80))
+    pts = [(-80 + 160 * k / 16, -60 - 75 * math.sin(math.pi * k / 16)) for k in range(17)]
+    sketch_poly(cr, pts, 6, sid=9703, fill=(0.88, 0.18, 0.16))                  # red dome
+    for k, (dx, dy, r) in enumerate(((10, -112, 11), (40, -92, 9), (-15, -80, 8), (52, -70, 7))):
+        cr.arc(dx, dy, r, 0, 2 * math.pi); fill_ink(cr); cr.new_path()
+    sketch_line(cr, [(15, -133), (15, -60)], 3, sid=9704, alpha=0.6)
+    sketch_circle(cr, -48, -100, 19, 4, sid=9705, fill=WHITE)                   # one big eye
+    cr.arc(-54 + 2 * look_up, -100 - 9 * look_up, 7.5, 0, 2 * math.pi); fill_ink(cr); cr.new_path()
+    sketch_line(cr, [(-30, -132), (-38, -158)], 3.5, sid=9706)                  # antenna
+    sketch_circle(cr, -39, -162, 6, 3, sid=9707, fill=(1.0, 0.82, 0.15))
+    cr.restore()

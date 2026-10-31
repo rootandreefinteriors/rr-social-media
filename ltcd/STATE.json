@@ -21,13 +21,14 @@
   "ask_since_day": 9,
   "waiting_streak": 0,
   "world": {
-    "location": "the green hill (day 9): a generic speed-game world right of the airfield. O.draw_green_hill_world(cr, t, x0=9800, x1=68000, palms=[...], flowers=[...]) (blue sky bands, clouds, far rounded hills, sparkling water, palm trees, sunflowers, grass on checkered brown dirt); the airfield (planted plane at x 9000) is just left of x 9800 with a GREEN HILL arrow signpost at 9480 (O.draw_signpost). A giant checkered loop (O.draw_loop) stands at x ~22250 (R 900). He ended at body offset 58780 (x 59320), ~680 px left of the palm tree he hit (O.draw_palm(cr, 59950, t, 980, s=1.25)); one ring lies flat on the grass right of the tree (x 60330, O.draw_ring(..., flat=1)). Camera for the ask ~ (x+60, 930, 1.12). Ring HUD O.draw_ring_hud showed RINGS 0 (red) at the end - optional callback.",
+    "location": "the green hill (day 9): generic speed-game world right of the airfield. O.draw_green_hill_world(cr, t, x0=9800, x1=60000, loop=(LX, 900), palms=..., flowers=...) (blue sky bands, clouds, far hills, sparkling water, palms, sunflowers, grass on checkered dirt); the airfield (planted plane x 9000) is left of x 9800 with a GREEN HILL arrow sign at 9480. Giant loop at x ~22250 (R 900). He ended just past the end-of-level GOAL sign (spinning plate on a pole, landed showing his own face) at body offset ~= X_STOP-540 from ep009 (see episode.py: X_STOP; sign at X_STOP-650). Ask camera ~ (x+60, 930, 1.12). RINGS HUD (O.draw_ring_hud) ended at 0, red.",
     "companions": [],
     "props": [
-      "the green-hill palm tree he smacked into (x 59950) and one flat ring beside it",
-      "the giant loop back along the hill (x ~22250)",
-      "back at the airfield: the little red plane planted nose-down (x 9000) and the flattened puke puddle (x 7470)",
-      "the EXPELLED letter in the empty white room; the owl at the castle; the burger place + wrapper pile; the 9 3/4 wall"
+      "the GOAL sign showing his face, just behind him (left)",
+      "the little red ladybug robot (O.draw_ladybot) - poked him, then puttered off to the right; callback possible",
+      "the giant loop back along the hill",
+      "back at the airfield: the planted red plane and the puke puddle",
+      "the EXPELLED letter in the white room; the owl at the castle; the burger place; the 9 3/4 wall"
     ],
     "traits": [
       "beat the block game on hardcore with half a heart (day 4)",
@@ -35,9 +36,9 @@
       "rocked a mom's baby to sleep and fell asleep holding it; she kissed him on the cheek and he blushed (day 6). The mom (O.draw_mom: long brown hair + bun, pink dress) shops at the burger place - callback possible",
       "EXPELLED FOREVER from wizard school (day 7): read his acceptance letter, sprinted into the 9 3/4 wall and bounced off, used the door in the wall instead, the giant talking hat found no brain in his head (hello... echoed) and blasted him into the empty white room",
       "flew a plane (day 8): took off from the FLIGHT SCHOOL airfield, looped until he went green, climbed out of the atmosphere into space, puked a zero-g blob (back to normal), fell back down on fire and planted the plane nose-first in the field; the flaming puke landed next to him. He looks completely normal again (no soot, no tint).",
-      "went to green hill (day 9): collected rings deadpan, ran faster and faster until his legs were a blur wheel, ran a giant loop, hit RINGS 999, outran the camera, smacked flat into a palm tree; every ring burst out of him (RINGS 0); slid down onto his butt. Looks completely normal."
+      "went to green hill (day 9): collected rings deadpan, ran until his legs were a blur wheel, ran a giant loop, RINGS 999, blasted past the GOAL sign and skidded to a stop; victory stance with a peace sign (HE HAS PASSED); the most harmless little ladybug robot puttered up and poked his shin and every ring burst out of him (RINGS 0). Looks normal."
     ],
-    "notes": "Day 9: airfield -> green hill on foot; rings; run; loop; outruns camera; empty palm tree hold; WHAM; ring explosion; slides down; one last ring rolls up and falls flat; steps out from under the tree; ask. Generic only: no hedgehog, no game name/logo."
+    "notes": "Day 9 RE-CUT on Justin's notes: no palm-tree hit; goal sign + victory stance + tiny enemy poke = ring loss; original chiptune music + game-style ring/jingle sounds. Parody is fine (SHOW.md)."
   },
   "used_comments": [
     "Beat Mc in hardcore mode:)",
@@ -91,7 +92,7 @@
     {
       "day": 9,
       "type": "comment",
-      "summary": "@nicolascechettoschuller (IG): 'Go to green hill' -> airfield: reads it; walks past the planted plane and a GREEN HILL sign into a generic green hill; takes a floating ring (RINGS 1), walks to the next (RINGS 2); goes for the line of rings, walk -> run -> blur-wheel legs; runs a giant loop; RINGS 999; outruns the camera; CUT: a quiet palm tree, long hold; WHAM he hits it flat; every ring bursts out (RINGS 0, red); stuck, deadpan; slides down onto his butt; one last ring rolls up and falls flat; he steps out from under the tree; deadpan ask (57.2 s)"
+      "summary": "@nicolascechettoschuller (IG): 'Go to green hill' -> RE-CUT on Justin's notes: airfield -> walks into a generic green hill (music kicks in); rings; run; blur legs; giant loop; RINGS 999; blasts past the GOAL sign, skids; sign spins and lands on his face; victory stance + peace sign, HE HAS PASSED, jingle; a tiny ladybug robot putters up very slowly and pokes him; every ring bursts out (RINGS 0); he holds the pose; lowers it; bug leaves; deadpan ask (56.9 s). Original chiptune + game-style SFX."
     }
   ]
 }
