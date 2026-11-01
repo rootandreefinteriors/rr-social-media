@@ -33,6 +33,26 @@ git config user.name "Claude (LTCD routine)"; git config user.email "noreply@ant
   ("Qualifies only if all true" + "Don't get trolled") wins. Write down why each higher-ranked one was skipped.
 - No winner → this is a **waiting episode**.
 
+## 2b. Write the beat sheet FIRST and pass the gate (user, 2026-11-01 - day 10 needed two re-cuts)
+Before any code, write `ltcd/episodes/epNNN/BEATS.md`: one line per beat with its time (s), what happens, and WHY it
+happens (what causes it in the story). Then check every line below. If any answer is "no", rewrite the beats - do not
+start coding until all pass, and copy the checklist with your answers into BEATS.md.
+1. **Never go back:** does the episode END in the new world the comment sent him to? Nothing sends him back to an
+   earlier world (no "blasted home", no "it was all for nothing").
+2. **Cause and effect:** can each beat be explained as "because of the previous beat"? Every gag is used at the
+   moment it is USEFUL to the story (a power-up gets used to solve a problem, not shown off at the end).
+3. **Consistency:** anything destroyed, eaten, lost or used up stays gone. Nothing comes back unless the story shows
+   how. Trace each important prop from its first appearance to its last.
+4. **Payoff:** does the climax actually do what the comment asked, in a big satisfying way (the quest is completed,
+   the villain falls), followed by one final button joke? A twist must not cancel the request.
+5. **Attention:** walk the timeline in 3-second windows. Does each window have something new (an action, a cut,
+   a reveal, a threat, a joke)? No walks longer than ~2 s, no holds longer than ~1.5 s unless tension is building.
+   At least one tension beat (a threat closing in, a near miss, a countdown).
+6. **Fans:** at least 3 in-jokes or memes a fan of the reference would recognise, drawn into the world (signs,
+   props, famous moments) - never explained with a banner.
+7. **Length:** total 60-75 s including the ask (60 s minimum for monetization).
+8. **Kid test:** would a bored 14-year-old keep watching past second 3? Is the first 3 seconds already moving?
+
 ## 3. Write the episode
 - New folder `ltcd/episodes/epNNN/` (NNN = STATE.day + 1, zero-padded). **Build it with `engine/moves.py`** (the
   `Scene` builder) — never hand-place joints. **Format + humour reference: `ltcd/episodes/ep005`** (user-approved
