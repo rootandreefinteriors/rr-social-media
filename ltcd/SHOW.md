@@ -47,6 +47,14 @@ Daily loop: **post 7:00 PM ET → comments come in → 3:00 PM ET next day: comm
   tint, a colour filling his head, frizz) must make sense AND pay off inside the same episode, then he's back to his
   normal plain white self. Never carry soot or a tint across episodes (lingering soot on his face reads as blackface).
   Sick/green has to lead somewhere (he pukes, then he's normal again). Never end an episode with him still altered.
+- **NEVER GO BACK (user, 2026-11-01, after the day 10 first cut sent him home to green hill):** once he leaves a world
+  he does NOT return to it - not as a punchline, not by being blasted back, not "it was all for nothing". The episode
+  ends (the ask) in the NEW world the comment took him to, and he lives there now.
+- **Attention (user, 2026-11-01: "keep the attention of a 14 year old TikTok kid with ADHD"):** something new happens
+  every 2-3 s; a deadpan hold is max ~1.5 s unless something big is building in it; no long walks (run, cut, or get
+  carried); stack tension beats (a threat closing in, a heartbeat, a countdown, a near miss) and fan in-jokes / memes
+  for the reference (day 10: ONE DOES NOT SIMPLY WALK INTO MORDOR on the gate, the eagles, the searchlight eye, the
+  ring makes him invisible, his speed-game reflex makes him dive after the ring). Shorter is fine (~45-55 s).
 - **Bigger + meaner (user, 2026-10-30):** push the escalation further than feels reasonable (flying a plane -> he
   climbs out of the atmosphere into space, then falls all the way back down). Family Guy / Adult Swim timing: the
   uncomfortably long deadpan hold, the beat where nothing happens, then the hard cut to disaster. Skip small gags

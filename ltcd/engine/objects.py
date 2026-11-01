@@ -1855,7 +1855,7 @@ def draw_volcano(cr, vx, h, t=0.0, yb=FLOOR_Y, w=1800, glow=1.0, smoke=1.0):
         a = (t * 0.12 + k / 5) % 1.0
         draw_smoke_puff(cr, vx - 600 * a, ry - 120 - 1500 * a, 120 + 380 * a, alpha=smoke * (1 - a) * 0.85, dark=0.75)
 
-def draw_eye_tower(cr, x, h, t=0.0, yb=FLOOR_Y, look=0.0, lid=0.0, s=1.0, water=0.0):
+def draw_eye_tower(cr, x, h, t=0.0, yb=FLOOR_Y, look=0.0, lid=0.0, s=1.0, water=0.0, look_y=0.0, flare=1.0):
     """a tall black spiked tower with a giant flaming slit eye cradled between two horns at the top.
     look -1..1 moves the pupil left/right, lid 0..1 closes the eye (it blinks), water 0..1 a big tear forming."""
     top = yb - h
@@ -1874,7 +1874,7 @@ def draw_eye_tower(cr, x, h, t=0.0, yb=FLOOR_Y, look=0.0, lid=0.0, s=1.0, water=
     for k in range(10):                                                        # flames round the eye
         a = 2 * math.pi * k / 10 + 0.3
         bx, by = ex + math.cos(a) * ew * 0.9, ey + math.sin(a) * eh * 0.9
-        L = (90 + 40 * math.sin(t * 9 + k * 2.1)) * s
+        L = (90 + 40 * math.sin(t * 9 + k * 2.1)) * s * flare
         draw_flames(cr, [(bx + math.cos(a) * L * i / 5, by + math.sin(a) * L * i / 5 - 18 * s * i / 5) for i in range(6)], t + k, w=46 * s)
     def almond():
         cr.move_to(ex - ew, ey); cr.curve_to(ex - ew * 0.5, ey - eh * 1.35, ex + ew * 0.5, ey - eh * 1.35, ex + ew, ey)
@@ -1883,7 +1883,7 @@ def draw_eye_tower(cr, x, h, t=0.0, yb=FLOOR_Y, look=0.0, lid=0.0, s=1.0, water=
     cr.save(); almond(); cr.clip()
     cr.arc(ex, ey, ew * 0.6, 0, 2 * math.pi); cr.set_source_rgb(*LAVA_B); cr.fill()
     px = ex + look * ew * 0.45
-    cr.save(); cr.translate(px, ey); cr.scale(0.22, 1.0); cr.arc(0, 0, eh * 0.95, 0, 2 * math.pi); cr.restore()
+    cr.save(); cr.translate(px, ey + look_y * eh * 0.35); cr.scale(0.22, 1.0); cr.arc(0, 0, eh * 0.95, 0, 2 * math.pi); cr.restore()
     cr.set_source_rgb(0.05, 0.03, 0.03); cr.fill()
     if lid > 0.01:                                                             # lids meet in the middle
         lc = (0.12, 0.10, 0.11)
@@ -1896,7 +1896,7 @@ def draw_eye_tower(cr, x, h, t=0.0, yb=FLOOR_Y, look=0.0, lid=0.0, s=1.0, water=
         cr.arc(ex + ew * 0.8, ey + eh * 0.55 + 30 * s * water, r, 0, 2 * math.pi)
         cr.set_source_rgb(0.70, 0.84, 0.94); cr.fill_preserve(); stroke_ink(cr, 4 * s)
 
-def draw_dark_land_world(cr, t, x0=24900, x1=45000, volcano=None, tower=None, yb=FLOOR_Y, ash=1.0):
+def draw_dark_land_world(cr, t, x0=24900, x1=45000, volcano=None, tower=None, yb=FLOOR_Y, ash=1.0, gate=None):
     """generic dark land right of x0: blood-orange sky in solid bands, jagged far mountains, an ash plain with
     glowing cracks. volcano = (vx, h[, w]) or None; tower = dict(x, h, look, lid, water) or None."""
     vx0, vy0, vx1, vy1 = _visible(cr)
@@ -1919,7 +1919,8 @@ def draw_dark_land_world(cr, t, x0=24900, x1=45000, volcano=None, tower=None, yb
         sketch_poly(cr, pts, 5, sid=9830 + layer, fill=col, amp=0.3)
     if volcano: draw_volcano(cr, volcano[0], volcano[1], t, yb, w=volcano[2] if len(volcano) > 2 else 1800)
     if tower: draw_eye_tower(cr, tower["x"], tower["h"], t, yb, look=tower.get("look", 0.0), lid=tower.get("lid", 0.0),
-                             water=tower.get("water", 0.0))
+                             water=tower.get("water", 0.0), look_y=tower.get("look_y", 0.0), flare=tower.get("flare", 1.0))
+    if gate: draw_black_gate(cr, gate, t, yb)
     cr.rectangle(a, yb, b - a, max(200, vy1 - yb + 20)); cr.set_source_rgb(*DL_ASH); cr.fill()
     sketch_line(cr, [(a, yb), (b, yb)], 4, sid=9840, amp=1.0, alpha=0.9)
     for k in range(int((a - x0) // 430), int((b - x0) // 430) + 2):          # glowing cracks + rocks
@@ -1974,3 +1975,78 @@ def draw_lava_chamber(cr, t, edge, lava_y, yb=FLOOR_Y, x0=None, rise=0.0, glow=1
     sketch_poly(cr, ledge, 7, sid=9870, fill=(0.20, 0.15, 0.14), amp=0.4)
     path(cr, [(edge + 30, yb + 90), (edge - 15, yb + 230), (edge + 20, yb + 420)]); stroke_ink(cr, 14, (0.85, 0.40, 0.12))
     sketch_line(cr, [(vx0 - 50, yb), (edge, yb)], 5, sid=9871, amp=1.0)
+
+
+def draw_black_gate(cr, x, t=0.0, yb=FLOOR_Y, w=1500, h=1150, sign="ONE DOES NOT SIMPLY WALK INTO MORDOR"):
+    """a huge black iron gate in a spiked wall between two jagged cliffs, a plank sign nailed on it. x = centre."""
+    for sx in (-1, 1):                                                         # cliffs either side
+        c0 = x + sx * w / 2
+        pts = [(c0, yb), (c0, yb - h - 150), (c0 + sx * 260, yb - h - 600), (c0 + sx * 520, yb - h - 300),
+               (c0 + sx * 800, yb - h - 750), (c0 + sx * 1300, yb - h - 200), (c0 + sx * 1500, yb)]
+        sketch_poly(cr, pts, 7, sid=9900 + (sx > 0), fill=(0.20, 0.16, 0.16), amp=0.4)
+    sketch_rect(cr, x - w / 2, yb - h, x + w / 2, yb, 7, sid=9902, fill=(0.13, 0.11, 0.12))
+    for k in range(13):                                                        # spikes along the top
+        sx0 = x - w / 2 + k * w / 12
+        sketch_poly(cr, [(sx0 - 40, yb - h), (sx0, yb - h - 140), (sx0 + 40, yb - h)], 5, sid=9903 + k % 5, fill=(0.13, 0.11, 0.12))
+    gw, gh = 520, 820                                                          # the gate doors
+    sketch_rect(cr, x - gw, yb - gh, x + gw, yb, 7, sid=9910, fill=(0.22, 0.19, 0.20))
+    sketch_line(cr, [(x, yb - gh), (x, yb)], 7, sid=9911)
+    for row in range(5):
+        for col in range(8):
+            cr.arc(x - gw + 65 + col * (2 * gw - 130) / 7, yb - gh + 90 + row * 160, 14, 0, 2 * math.pi)
+            cr.set_source_rgb(0.45, 0.42, 0.42); cr.fill_preserve(); stroke_ink(cr, 3)
+    sw, sh = 760, 230                                                          # the plank sign
+    cy = yb - gh - 60
+    sketch_rect(cr, x - sw / 2, cy - sh / 2, x + sw / 2, cy + sh / 2, 6, sid=9912, fill=(0.80, 0.60, 0.36))
+    draw_text(cr, sign, x, cy, 64, max_w=sw - 60)
+    for sx in (-1, 1):
+        cr.arc(x + sx * (sw / 2 - 26), cy, 9, 0, 2 * math.pi); fill_ink(cr)
+
+EAGLE = (0.48, 0.32, 0.18)
+EAGLE_D = (0.36, 0.23, 0.12)
+def draw_eagle(cr, x, y, t=0.0, flap=1.0, s=1.0, face=1, look=0.0, alarm=0.0, grip=True):
+    """a giant brown eagle seen from the side-ish, wings beating. (x, y) = where the talons grip (bottom).
+    face 1 = facing right. alarm 0..1 = eyes wide + feathers puffed."""
+    cr.save(); cr.translate(x, y); cr.scale(s * face, s)
+    by = -330                                                                  # body centre above the talons
+    ph = math.sin(t * 9.0) * flap
+    for k, (dx, dy) in enumerate(((-30, 0), (30, 0))):                         # legs + talons
+        sketch_line(cr, [(dx, by + 80), (dx * 1.4, -40), (dx * 1.2, 0)], 14, sid=9920 + k, color=(0.95, 0.75, 0.20))
+        for c in (-1, 0, 1):
+            sketch_line(cr, [(dx * 1.2, 0), (dx * 1.2 + c * 26, 30)], 9, sid=9922 + k * 3 + c)
+    for side, shade in ((-1, EAGLE_D), (1, EAGLE)):                            # wings: far one darker
+        tip_y = by - 360 * ph * side * 0.0 - 330 * ph
+        pts = [(-60, by - 40), (-260, by - 120 - 200 * ph), (-560, tip_y - 60), (-760, tip_y + 40), (-560, tip_y + 90),
+               (-620, tip_y + 150), (-420, by - 10 + 60 * ph), (-60, by + 60)]
+        if side < 0: pts = [(px_ * 0.85 + 40, py_ - 40) for px_, py_ in pts]
+        sketch_poly(cr, pts, 6, sid=9930 + (side > 0), fill=shade, amp=0.3)
+    sketch_poly(cr, [(-140, by + 40), (-380, by + 140), (-360, by + 40), (-400, by - 20), (-140, by - 30)], 6, sid=9932, fill=EAGLE_D)
+    sketch_ellipse(cr, 0, by, 210, 120 + 20 * alarm, 6, sid=9933, fill=EAGLE)
+    sketch_circle(cr, 190, by - 120, 92 + 10 * alarm, 6, sid=9934, fill=(0.97, 0.96, 0.93))     # white head
+    sketch_poly(cr, [(260, by - 150), (360, by - 120), (340, by - 70), (300, by - 90), (262, by - 95)], 5, sid=9935,
+                fill=(0.98, 0.78, 0.18), amp=0.3)                              # hooked beak
+    er = 22 + 14 * alarm
+    cr.arc(215, by - 140, er, 0, 2 * math.pi); cr.set_source_rgb(1, 1, 1); cr.fill_preserve(); stroke_ink(cr, 4)
+    cr.arc(215 + 8 * look, by - 140, er * 0.45, 0, 2 * math.pi); fill_ink(cr)
+    sketch_line(cr, [(185, by - 175 + 10 * alarm), (250, by - 160 - 6 * alarm)], 7, sid=9936)  # stern brow
+    cr.restore()
+
+def draw_eagle_feather(cr_, x, y, ang, sid=0):
+    cr_.save(); cr_.translate(x, y); cr_.rotate(ang)
+    sketch_ellipse(cr_, 0, 0, 46, 14, 4, sid=sid, fill=EAGLE)
+    cr_.restore()
+
+def draw_beam(cr, src, tgt, width=320, alpha=1.0, locked=0.0):
+    """the eye's searchlight: a cone from src to tgt (width at the target end). locked 0..1 = brighter, redder."""
+    dx, dy = tgt[0] - src[0], tgt[1] - src[1]
+    L_ = math.hypot(dx, dy) or 1.0; nx, ny = -dy / L_, dx / L_
+    w = width / 2
+    pts = [(src[0] + nx * 30, src[1] + ny * 30), (tgt[0] + nx * w, tgt[1] + ny * w), (tgt[0] - nx * w, tgt[1] - ny * w),
+           (src[0] - nx * 30, src[1] - ny * 30)]
+    col = lerp((1.0, 0.85, 0.35), (1.0, 0.45, 0.15), locked)
+    cr.move_to(*pts[0])
+    for p_ in pts[1:]: cr.line_to(*p_)
+    cr.close_path(); cr.set_source_rgba(*col, (0.28 + 0.2 * locked) * alpha); cr.fill()
+    for a, b in ((pts[0], pts[1]), (pts[3], pts[2])):
+        cr.move_to(*a); cr.line_to(*b); cr.set_source_rgba(*col, 0.7 * alpha); cr.set_line_width(6); cr.stroke()
+    sketch_ellipse(cr, tgt[0], tgt[1], w, w * 0.45, 0.1, sid=9940, fill=col, alpha=(0.25 + 0.25 * locked) * alpha)
