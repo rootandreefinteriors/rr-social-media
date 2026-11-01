@@ -1,23 +1,22 @@
 """Day 10 — COMMENT episode: @second_degree_burn "Pick up a ring and take it to mordor" (Instagram, day 9 reel, 0 likes).
-RE-CUT on Justin's notes (2026-11-01): once he leaves a world he never goes back (he stays in Mordor); far faster
-pacing, more tension, more in-jokes for fans of the ring story (parody: everything drawn by us, no characters).
-The ring is his own gold green-hill ring (the RINGS counter is the running gag).
+RE-CUT 2 on Justin's notes (2026-11-01): he never goes back to an old world (stays in Mordor); ADHD pacing; tension;
+fan in-jokes; the story has to make sense and pay off (the ring is destroyed for good, the eye falls); >= 60 s.
+Parody of the ring story: everything drawn by us, no characters. The ring is his own gold green-hill ring.
 
-GRAB    Green hill, past the GOAL sign. Reads the comment. One ring left in the grass. Snatch. RINGS 1.
-RUN     He runs right at speed-game speed, past a MORDOR sign into the dark land, skids to a stop at a giant black
-        gate. The plank sign on it: ONE DOES NOT SIMPLY WALK INTO MORDOR. He reads it. Looks at us.
-EAGLES  (the "why didn't they just use the eagles" joke) He digs at his hip, pulls out a whistle, tweets. A GIANT
-        EAGLE swoops in, grabs him and hauls him over the wall.
-SEARCH  Flying over the dark land. A searchlight beam from the giant eye sweeps the sky (cut: the eye, scanning).
-        Heartbeat. The beam closes in... LOCKS ON. Cut: the eye narrows. The eagle sees it, looks at him, lets go
-        and bolts. He hangs in mid-air one beat. Looks at us. Drops - straight into the volcano.
-LAVA    Inside: he lands on the ledge over the lava. Holds the ring out. Heartbeat. Lets go. RINGS 0 (the game's
-        ring-loss sound). His eye twitches. Speed-game reflex: he DIVES after it, snatches it off the lava -
-        RINGS 1 - and a lava geyser fires him straight up and out of the volcano.
-EYE     He crashes down on his butt at the foot of the eye's tower. The eye swings down onto him and flares.
-        He looks at the eye. At the ring. At us. Puts the ring on - and vanishes (only the ring floats). The eye
-        darts around, losing it. The ring tiptoes away. He takes it off - reappears right under the eye. It glares.
-        He drops the ring at his feet. The ask, in Mordor, with the eye glaring over his shoulder (he lives here now).
+GRAB    Green hill. Reads the comment. One ring left in the grass. Snatch. RINGS 1.
+RUN     Speed-game sprint past a MORDOR sign to the black gate: ONE DOES NOT SIMPLY WALK INTO MORDOR. Reads it. Us.
+EAGLES  Pulls a whistle from his hip, tweets: a giant eagle swoops in and flies him over the wall.
+SEARCH  The eye's searchlight sweeps the sky (heartbeat; cut: the eye scanning). It closes in. He looks at the ring...
+        puts it on and VANISHES. The beam finds: a giant eagle carrying nothing but a floating ring. Locks on the eagle.
+        Cut: the eye narrows. The eagle looks at its empty talons, at the eye - lets go and bolts. The ring drops
+        straight down into the volcano.
+LAVA    Thud on the ledge (only the ring visible). He takes it off: back. Holds it over the lava. Heartbeat. Lets go.
+        RINGS 0. Eye twitch - speed-game reflex - he lunges after it and teeters on the edge, arms windmilling, while
+        the ring sizzles and MELTS. He steadies. Rumble. The lava rises...
+BOOM    The volcano erupts and fires him out. Cut: the eye shakes, bulges - and blows up. The tower collapses.
+END     He crash-lands in the rubble at the tower's foot. A chunk lands next to him. The burnt-out eyeball rolls up and
+        stops beside him. Then - now that it's all over - the eagle shows up and lands next to him. He looks at it.
+        At us. The ask, in the ruins of Mordor (he lives here now), the eagle beside him.
 """
 import sys, os, math, random
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "engine"))
@@ -37,7 +36,7 @@ FLOWERS = [10350, 11650, 12900, 13650, 14800, 15400, 18400, 19700, 21300, 22400]
 BORDER = 24900.0
 SIGN_X = 24560.0
 GATE_X = 27600.0
-XG = GATE_X - 500                          # where he skids to a stop, in front of the gate
+XG = GATE_X - 500
 SXG = XG - 540
 TX, TH = 32600.0, 1330.0                   # the eye tower
 EYE = (TX, FLOOR_Y - TH + 40)
@@ -47,9 +46,10 @@ SXI = 49460.0                              # inside the volcano (x 50000)
 XI = 540 + SXI
 EDGE = XI + 150
 LAVA_Y = FLOOR_Y + 900
-XL = TX - 850                              # he lands at the tower's foot
+XL = TX - 900                              # he lands in the rubble at the tower's foot
 SXL = XL - 540
 RING0 = (X0 - 150, FLOOR_Y - 16)
+EAGLE_LAND = (XL - 520, FLOOR_Y)
 
 # ---------------------------------------------------------------- timeline
 T_PICK = 2.85
@@ -59,25 +59,29 @@ T_BLOW = 12.25
 T_SWOOP, T_GRAB = 13.0, 13.5
 CUT_FLY = 14.2
 CUT_E1, CUT_B1 = 16.0, 16.8                # cut: the eye scanning
-T_LOCK = 18.0
-CUT_E2, CUT_B2 = 18.2, 19.0                # cut: the eye narrows
-T_LETGO, T_FALL = 19.6, 20.1
-CUT_IN = 20.9
-T_ILAND = 21.4
-T_REACH = 22.0
-T_DROP = 24.0
+T_RINGON, T_INVIS = 18.0, 18.4             # puts the ring on: gone
+T_LOCK = 18.9                              # the beam locks on... the eagle
+CUT_E2, CUT_B2 = 19.1, 19.8                # cut: the eye narrows
+T_LETGO, T_FALL = 20.6, 21.0
+CUT_IN = 21.8
+T_ILAND = 22.3
+T_OFF = 22.9                               # takes it off: back
+T_REACH = 23.8
+T_DROP = 26.0
 T_LAVA = T_DROP + math.sqrt(2 * (LAVA_Y - 20 - 955) / 2600)
-T_DIVE = 24.9
-T_CATCH = 25.9
-T_GEYSER = 26.0
-CUT_OUT = 26.8
-CUT_T = 28.4
-T_TLAND = 29.0
-T_SWIVEL = 29.4
-T_ON, T_VANISH = 31.2, 31.7
-T_BACK = 34.4
-T_PUTDOWN = 35.3
-T_ASK = 36.0
+T_LUNGE, T_STEADY = 26.55, 28.5
+T_MELT = T_LAVA + 1.1
+T_RUMBLE = 29.4
+CUT_OUT = 31.2
+CUT_EYE, T_POP = 33.0, 34.1
+CUT_T = 35.0
+T_TLAND = 35.6
+T_CHUNK = 36.2
+T_ROLL0, T_ROLL1 = 36.9, 38.1              # the burnt-out eyeball rolls up
+T_EAGLE0, T_EAGLE1 = 39.3, 40.1            # the eagle shows up. now.
+T_STAND = 42.3
+T_ASK = 43.2
+ASK_HOLD = 11.0
 
 S = M.Scene(x0=SX0)
 S.auto_blinks = False
@@ -102,10 +106,15 @@ def beam_target(t):
     h = hip_target(t)
     if h is None: return None
     if t < T_LOCK:
-        k = 1 - smooth(ramp(t, 15.0, T_LOCK))                     # sweeps, closing in
-        return (h[0] + 1500 * k * math.sin(t * 2.6), h[1] + 500 * k * math.cos(t * 1.9))
-    return h
+        k = 1 - smooth(ramp(t, 15.0, T_LOCK - 0.3))
+        return (h[0] + 1500 * k * math.sin(t * 2.6) + 120, h[1] + 500 * k * math.cos(t * 1.9) - 300 * smooth(ramp(t, T_INVIS, T_LOCK)))
+    return (h[0] + 40, h[1] - 830) if t < T_LETGO else eagle_xy(t)
 
+def eagle_xy(t):
+    st = eagle_state(t)
+    return (st[0], st[1] - 260) if st else (P1[0], P1[1])
+
+POP_SHAKE = []
 def eye_state(t):
     st = dict(look=0.6, look_y=0.0, lid=0.0, flare=1.0)
     if CUT_FLY <= t < CUT_IN:
@@ -114,17 +123,9 @@ def eye_state(t):
         if CUT_E1 <= t < CUT_B1: st.update(look=math.sin((t - CUT_E1) * 7) * 0.8, lid=0.15)
         if t >= T_LOCK:
             st.update(look=0.0, lid=0.5 * smooth(ramp(t, CUT_E2 + 0.1, CUT_E2 + 0.5)), flare=lerp(1.0, 1.7, ramp(t, T_LOCK, CUT_E2 + 0.5)))
-    elif t >= CUT_T:
-        k = smooth(ramp(t, T_SWIVEL, T_SWIVEL + 0.3))
-        hx = 540 + S.x if False else XL
-        st.update(look=lerp(0.6, (XL - TX) / 1300, k), look_y=lerp(-0.6, 1.0, k), lid=0.3 * k, flare=1.0 + 0.5 * k)
-        if T_VANISH <= t < T_BACK:                                # lost him: darts around, wide open
-            st.update(look=0.9 * math.sin(t * 7.5), look_y=0.4 + 0.6 * math.sin(t * 5.1), lid=0.0, flare=1.3)
-        if t >= T_BACK:
-            k2 = smooth(ramp(t, T_BACK + 0.1, T_BACK + 0.3))
-            st.update(look=lerp(0.5, (XL - 120 - TX) / 1300, k2), look_y=1.0, lid=0.0, flare=lerp(1.3, 1.9, k2))
-            if t >= T_ASK + 9.0:                                  # ...eyes the ring on the ground
-                st.update(look=lerp(st["look"], (XL + 10 - TX) / 1300, smooth(ramp(t, T_ASK + 9.0, T_ASK + 10.0))))
+    elif CUT_IN <= t < CUT_T:                                     # the ring melts: the eye loses it
+        k = ramp(t, CUT_EYE, T_POP)
+        st.update(look=0.35 * math.sin(t * 41) * k, look_y=0.35 * math.cos(t * 37) * k, lid=0.0, flare=1.0 + 1.8 * k)
     return st
 
 # ================================================================ worlds
@@ -142,18 +143,38 @@ def goal_sign(cr):
     O.sketch_curve(cr, (0, -97), (-10, -150), (18, -140), 5, sid=7306)
     cr.restore()
 
+def ruins(cr, t):
+    """the tower after the eye blew: a jagged smoking stump, rubble round the base."""
+    x, yb = TX, FLOOR_Y; tw = 150
+    top = yb - TH * 0.5
+    pts = [(x - tw * 1.9, yb), (x - tw * 1.3, top + 90), (x - tw * 0.9, top - 40), (x - tw * 0.4, top + 60), (x, top - 90),
+           (x + tw * 0.5, top + 40), (x + tw * 1.0, top - 20), (x + tw * 1.35, top + 110), (x + tw * 1.9, yb)]
+    L.sketch_poly(cr, pts, 7, sid=7800, fill=(0.12, 0.10, 0.11), amp=0.4)
+    for k in range(3):
+        L.sketch_rect(cr, x - 18, top + 260 + 230 * k, x + 18, top + 310 + 230 * k, 3, sid=7801 + k, fill=(0.30, 0.25, 0.25))
+    for k in range(4):
+        a = (t * 0.25 + k / 4) % 1.0
+        O.draw_smoke_puff(cr, x - 60 + 40 * k - 200 * a, top - 120 - 900 * a, 80 + 260 * a, alpha=(1 - a) * 0.85, dark=0.8)
+    O.draw_flames(cr, [(x + 60, top + 10 - 30 * i) for i in range(6)], t, w=60)
+    for i, (dx, r) in enumerate(((-420, 90), (-300, 60), (330, 110), (460, 70), (-560, 50), (580, 55))):
+        L.sketch_poly(cr, [(x + dx - r, yb + 4), (x + dx - r * 0.6, yb - r * 0.9), (x + dx + r * 0.5, yb - r), (x + dx + r, yb + 4)],
+                      5, sid=7810 + i, fill=(0.14, 0.12, 0.13))
+
 def world(cr, t):
     if CUT_IN <= t < CUT_OUT:
-        rise = 0.0
+        rise = 640 * smooth(ramp(t, T_RUMBLE + 0.3, CUT_OUT))
         O.draw_lava_chamber(cr, t, EDGE, LAVA_Y, rise=rise)
         return
     if t < CUT_FLY:
         O.draw_green_hill_world(cr, t, x0=9800, x1=BORDER, palms=PALMS, flowers=FLOWERS)
         goal_sign(cr)
         O.draw_signpost(cr, SIGN_X, "MORDOR")
+    if t >= T_POP:
+        O.draw_dark_land_world(cr, t, x0=BORDER, x1=45000, volcano=(VX, VH, VW), gate=GATE_X, tower=None)
+        ruins(cr, t)
+        return
     es = eye_state(t)
-    O.draw_dark_land_world(cr, t, x0=BORDER, x1=45000, volcano=(VX, VH, VW), gate=GATE_X,
-                           tower=dict(x=TX, h=TH, **es))
+    O.draw_dark_land_world(cr, t, x0=BORDER, x1=45000, volcano=(VX, VH, VW), gate=GATE_X, tower=dict(x=TX, h=TH, **es))
 S.background(world)
 
 # ================================================================ GRAB: reads it, snatches the last ring
@@ -241,27 +262,36 @@ def carried(tt, p):
     return p
 S.hook(carried)
 
+
 def eagle_state(t):
-    """(talon x, talon y, alarm, look) or None"""
+    """(talon x, talon y, alarm, look, flap, face) or None"""
     if t < T_SWOOP: return None
     if t < T_GRAB:
         u = smooth((t - T_SWOOP) / (T_GRAB - T_SWOOP))
-        tgt = (XG, 1118 - 648)
-        return (lerp(XG - 1500, tgt[0], u), lerp(-300, tgt[1], u) - 250 * math.sin(math.pi * u), 0.0, 0.0)
+        return (lerp(XG - 1500, XG, u), lerp(-300, 1118 - 648, u) - 250 * math.sin(math.pi * u), 0.0, 0.0, 1.3, 1)
     if t < T_LETGO:
         h = hip_target(t)
         alarm = smooth(ramp(t, CUT_B2, CUT_B2 + 0.15))
         look = 0.0
-        if CUT_B2 <= t: look = 1.0 if t < CUT_B2 + 0.35 else -0.2       # at the eye... at him
-        return (h[0], h[1] - 648, alarm, look)
-    s = t - T_LETGO
-    return (P1[0] + 1600 * s, P1[1] - 648 - 1300 * s - 300 * s * s, 1.0, 1.0)
+        if CUT_B2 <= t: look = 1.0 if (t < CUT_B2 + 0.3 or CUT_B2 + 0.65 <= t < CUT_B2 + 0.85) else -0.6   # talons... eye... talons
+        return (h[0], h[1] - 648, alarm, look, 1.0, 1)
+    if t < CUT_IN:
+        s = t - T_LETGO
+        return (P1[0] + 1600 * s, P1[1] - 648 - 1300 * s - 300 * s * s, 1.0, 1.0, 1.4, 1)
+    if t < T_EAGLE0: return None
+    if t < T_EAGLE1:                                              # shows up now that it's over
+        u = smooth((t - T_EAGLE0) / (T_EAGLE1 - T_EAGLE0))
+        return (lerp(EAGLE_LAND[0] - 1500, EAGLE_LAND[0], u), lerp(-700, EAGLE_LAND[1], u), 0.0, 0.0, 1.2 * (1 - u) + 0.15, 1)
+    look = 0.8
+    if T_EAGLE1 + 1.2 <= t < T_EAGLE1 + 2.4: look = -0.6                          # looks at the ruins
+    if t >= T_ASK + ASK_HOLD * 0.35 + 6.9: look = 0.9
+    return (EAGLE_LAND[0], EAGLE_LAND[1], 0.0, look, 0.06, 1)
 def eagle(cr, t, p, ly):
     if ly != "front": return
     st = eagle_state(t)
-    if st is None or t >= CUT_IN: return
-    x, y, alarm, look = st
-    O.draw_eagle(cr, x, y, t, flap=1.0 if t > T_GRAB else 1.3, s=0.8, look=look, alarm=alarm)
+    if st is None: return
+    x, y, alarm, look, flap, face = st
+    O.draw_eagle(cr, x, y, t, flap=flap, s=0.8, look=look, alarm=alarm, face=face)
     if T_LETGO <= t < T_LETGO + 1.2:                              # feathers everywhere
         rr = random.Random(7)
         for i in range(10):
@@ -272,7 +302,7 @@ def eagle(cr, t, p, ly):
 S.prop(eagle)
 S.sfx(T_SWOOP, "whoosh", 0.06)
 
-# ================================================================ SEARCH: flight, beam, lock, drop
+# ================================================================ SEARCH: flight, beam, the ring goes on, lock, drop
 S.cut(CUT_FLY - 1 / 30)
 _ct = CUT_FLY - 1 / 30
 CAM_E = (EYE[0], EYE[1] - 40, 1.5)
@@ -286,15 +316,14 @@ while _ct < CUT_IN - 1 / 30:
 for c in (CUT_E1, CUT_B1, CUT_E2, CUT_B2): S.cuts.append(c - 1 / 30)
 S.set(CUT_FLY, "hang", "dead_stare", dur=0.0, look=(0.3, 0.6), lag=0.0)
 S.set(15.6, "hang", "dead_stare", dur=0.3, look=(0.6, 0.9), lag=0.0)                 # the beam below
-S.set(17.2, "hang", "dead_stare", dur=0.3, look=(0.0, 0.0), lag=0.0)                 # us
-S.set(T_LOCK + 0.05, "hang", "dead_stare", dur=0.1, ease="snap", look=(0.6, 0.9), lag=0.0, eyescale=1.12)
-S.set(CUT_B2 + 0.4, "hang", "dead_stare", dur=0.2, look=(0.5, -0.9), lag=0.0)       # up at the eagle
+S.set(17.0, "hang", "dead_stare", dur=0.25, look=(-0.5, -0.6), lag=0.0)              # the ring on his wrist...
+S.set(17.5, "hang", "dead_stare", dur=0.25, look=(0.0, 0.0), lag=0.0)                # us.
+S.set(T_INVIS, "hang", "dead_stare", dur=0.0, show=0.0, lag=0.0)                    # gone
+S.sfx(T_INVIS, "twinkle", 0.08)
 L.POSES["hang_alone"] = dict(L.POSES["hang"])
-S.set(T_LETGO + 0.05, "hang_alone", "dead_stare", dur=0.15, look=(0.5, -0.9), lag=0.0, lhand_t="open", rhand_t="open")
-S.set(T_LETGO + 0.25, "hang_alone", "dead_stare", dur=0.15, look=(0.0, 0.0), lag=0.0, lhand_t="open", rhand_t="open")   # us
-S.set(T_FALL + 0.1, "hang_alone", "dead_stare", dur=0.2, look=(0.0, 0.6), lag=0.0, eyescale=1.15, lhand_t="open", rhand_t="open")
+S.set(T_LETGO + 0.05, "hang_alone", "dead_stare", dur=0.15, show=0.0, lag=0.0, lhand_t="open", rhand_t="open")
 S.sfx(CUT_FLY, "wind", 0.04, dur=CUT_IN - CUT_FLY)
-for k in range(10):                                               # heartbeat while the beam closes in
+for k in range(9):                                                # heartbeat while the beam closes in
     tk = 15.2 + k * (0.42 - 0.02 * k)
     S.sfx(tk, "thud", 0.05 + 0.006 * k); S.sfx(tk + 0.16, "thud", 0.035 + 0.004 * k)
 S.sfx(T_LOCK, "kaboom", 0.09, dur=2.0)
@@ -304,14 +333,13 @@ def beam(cr, t, p, ly):
     if CUT_E1 <= t < CUT_B1 or CUT_E2 <= t < CUT_B2:
         bt = beam_target(t); O.draw_beam(cr, (EYE[0], EYE[1] - 40), (EYE[0] + (bt[0] - EYE[0]) * 0.3, EYE[1] - 1500), width=500,
                                          alpha=ramp(t, 15.0, 15.4), locked=float(t >= T_LOCK)); return
-    bt = beam_target(t)
-    O.draw_beam(cr, (EYE[0], EYE[1]), bt, width=620, alpha=ramp(t, 15.0, 15.4), locked=smooth(ramp(t, T_LOCK, T_LOCK + 0.2)))
+    O.draw_beam(cr, (EYE[0], EYE[1]), beam_target(t), width=620, alpha=ramp(t, 15.0, 15.4), locked=smooth(ramp(t, T_LOCK, T_LOCK + 0.2)))
 S.prop(beam)
 
 # ================================================================ LAVA: inside the volcano
 CAM_IN = (EDGE + 100, 1500, 0.6)
 S.cut(CUT_IN - 1 / 30, cam=CAM_IN, x=SXI)
-S.set(CUT_IN - 1 / 30, "cannonball", "dead_stare", dur=0.0, lag=0.0, nowalk=1.0)
+S.set(CUT_IN - 1 / 30, "stand", "dead_stare", dur=0.0, lag=0.0, nowalk=1.0, show=0.0)
 def drop_in(tt, p):
     if not (CUT_IN - 1 / 30 <= tt < T_ILAND): return p
     u = (tt - CUT_IN) / (T_ILAND - CUT_IN)
@@ -319,57 +347,55 @@ def drop_in(tt, p):
     for j in L.JOINTS: p[j] = (p[j][0], p[j][1] + dy)
     return p
 S.hook(drop_in)
-S.set(T_ILAND - 0.05, "crouch", "dead_stare", dur=0.05, ease="snap", stretch=-0.3, lag=0.0, nowalk=1.0)
-S.set(T_ILAND + 0.25, "stand", "dead_stare", dur=0.25, ease="back", lag=0.6, sweat=0.7)
 S.sfx(T_ILAND, "thud", 0.18); S.shake(T_ILAND, 0.35, 14)
+def land_in_fx(cr, t, p, ly):
+    if ly == "front" and T_ILAND <= t < T_ILAND + 0.7: L.draw_poof(cr, XI, FLOOR_Y - 30, (t - T_ILAND) / 0.7, r=160, sid=31)
+    if ly == "front" and T_OFF <= t < T_OFF + 0.5: L.burst_lines(cr, XI, 900, (t - T_OFF) / 0.5, r0=200, r1=360, n=10, sid=82)
+S.prop(land_in_fx)
 L.POSES["hold_ring_r"] = dict(relb=(650, 930), rhand=(690, 830), rhand_t="grip")
 L.POSES["reach_r"] = dict(relb=(668, 935), rhand=(752, 905), rhand_t="grip")
-S.set(T_ILAND + 0.5, "hold_ring_r", "dead_stare", dur=0.25, look=(0.7, 0.9), sweat=0.7)      # the lava
+S.set(T_OFF, "hold_ring_r", "dead_stare", dur=0.0, show=1.0, look=(0.0, 0.0), sweat=0.6)
+S.sfx(T_OFF, "pop", 0.08)
+S.set(T_OFF + 0.45, "hold_ring_r", "dead_stare", dur=0.25, look=(0.7, 0.9), sweat=0.7)       # the lava
 S.set(T_REACH, "reach_r", "dead_stare", dur=0.3, look=(0.8, 0.35), sweat=0.8)
-S.set(T_REACH + 1.0, "reach_r", "dead_stare", dur=0.3, look=(0.0, 0.0), sweat=0.85)          # us
+S.set(T_REACH + 0.9, "reach_r", "dead_stare", dur=0.3, look=(0.0, 0.0), sweat=0.85)          # us
+S.set(T_REACH + 1.6, "reach_r", "dead_stare", dur=0.3, look=(0.8, 0.35), tilt=0.06, sweat=0.9)   # the ring. last look.
 S.set(T_DROP, "reach_r", "dead_stare", dur=0.06, ease="snap", rhand_t="open", sweat=0.9)
-S.set(T_DROP + 0.2, "reach_r", "dead_stare", dur=0.25, look=(0.8, 0.95), tilt=0.08, rhand_t="open", sweat=0.9)
-S.set(T_DROP + 0.5, "stand", "dead_stare", dur=0.3, look=(0.8, 0.95), tilt=0.08, sweat=0.9, twitch=1.0)
-S.set(T_DIVE - 0.12, "crouch", "dead_stare", dur=0.1, look=(0.8, 0.95), sweat=0.9, lag=0.0, nowalk=1.0)
-S.set(T_DIVE, "cannonball", "dead_stare", dur=0.08, ease="snap", look=(0.6, 0.9), lag=0.0, nowalk=1.0, lid=0.0)
-L.POSES["grab_down"] = dict(L.POSES["cannonball"]); L.POSES["grab_down"].update(relb=(620, 1200), rhand=(660, 1330), rhand_t="grip")
-S.set(T_CATCH - 0.15, "grab_down", "dead_stare", dur=0.12, look=(0.4, 0.9), lag=0.0, nowalk=1.0)
-S.set(T_GEYSER + 0.05, "cannonball", "dead_stare", dur=0.08, look=(0.0, 0.0), lag=0.0, nowalk=1.0, eyescale=1.2, lid=0.0)
+S.set(T_DROP + 0.2, "reach_r", "dead_stare", dur=0.25, look=(0.8, 0.95), tilt=0.08, rhand_t="open", sweat=0.9, twitch=1.0)
 for k in range(5):
     tk = T_REACH + 0.2 + k * 0.4; S.sfx(tk, "thud", 0.05); S.sfx(tk + 0.15, "thud", 0.035)
-DIVE_END = (EDGE + 470, LAVA_Y - 300)
-def dive(tt, p):
-    if not (T_DIVE <= tt < CUT_OUT): return p
-    h0 = (XI, 1118)
-    if tt < T_CATCH:
-        u = (tt - T_DIVE) / (T_CATCH - T_DIVE)
-        tx, ty = lerp(h0[0], DIVE_END[0], 1 - (1 - u) ** 2.5), lerp(h0[1], DIVE_END[1], u * u) - 260 * math.sin(math.pi * u) * (1 - u)
-        a = -2 * math.pi * smooth(u)
-    elif tt < T_GEYSER:
-        tx, ty, a = DIVE_END[0], DIVE_END[1], 0.0
-    else:
-        s = tt - T_GEYSER
-        tx, ty, a = DIVE_END[0], DIVE_END[1] - 3800 * s * s - 400 * s, 0.0
-    h = p["hip"]; c, s_ = math.cos(a), math.sin(a)
-    for j in L.JOINTS:
-        dx, dy = p[j][0] - h[0], p[j][1] - h[1]
-        p[j] = (tx + dx * c - dy * s_, ty + dx * s_ + dy * c)
-    p["tilt"] = p.get("tilt", 0.0) + a
+# the lunge: speed-game reflex. he teeters on the edge, arms windmilling, and does NOT go after it.
+L.POSES["teeter"] = dict(lelb=(450, 760), lhand=(400, 640), relb=(640, 760), rhand=(690, 640), lhand_t="open", rhand_t="open",
+                         lean=-0.3, tiptoe=1.0, nowalk=1.0)
+S.set(T_LUNGE, "teeter", "dead_stare", dur=0.15, ease="snap", look=(0.6, 0.95), eyescale=1.15, sweat=1.0, lag=0.3)
+S.set(T_STEADY - 0.3, "teeter", "dead_stare", dur=0.3, look=(0.6, 0.95), eyescale=1.15, sweat=1.0, lag=0.3, lean=-0.18)
+S.set(T_STEADY, "stand", "dead_stare", dur=0.25, ease="back", look=(0.6, 0.95), sweat=1.0, lean=0.04)
+S.set(T_STEADY + 0.5, "stand", "dead_stare", dur=0.3, look=(0.0, 0.0), sweat=0.9)            # us. phew.
+def windmill(tt, p):
+    if not (T_LUNGE + 0.1 <= tt < T_STEADY): return p
+    k = 1 - ramp(tt, T_STEADY - 0.3, T_STEADY)
+    for hd, el, ph in (("lhand", "lelb", 0.0), ("rhand", "relb", math.pi)):
+        sx, sy = p["neck"][0] + (-40 if hd == "lhand" else 40), p["neck"][1] + 40
+        a = tt * 15 + ph
+        p[hd] = lerp(p[hd], (sx + 300 * math.cos(a), sy + 300 * math.sin(a)), k)
+        p[el] = lerp(p[el], (sx + 160 * math.cos(a + 0.3), sy + 160 * math.sin(a + 0.3)), k)
     return p
-S.hook(dive)
-S.sfx(T_DIVE, "whoosh", 0.06)
-S.sfx(T_LAVA, "sploosh", 0.05); S.sfx(T_LAVA + 0.1, "simmer", 0.04, dur=1.0)
-S.sfx(T_GEYSER, "kaboom", 0.4, dur=2.6); S.shake(T_GEYSER, 0.8, 26)
-S.camera(T_DIVE, EDGE + 160, 1650, 0.6, T_CATCH - T_DIVE)
-def geyser(cr, t, p, ly):
-    if ly != "back" or not (T_GEYSER - 0.15 <= t < CUT_OUT): return
-    s = t - T_GEYSER
-    if s < 0:                                                    # the lava bulges under him
-        L.sketch_ellipse(cr, DIVE_END[0], LAVA_Y, 200 * (1 + s / 0.15), 60, 5, sid=7650, fill=O.LAVA_B); return
-    top = LAVA_Y - 6000 * min(1.0, s / 0.5)
-    pts = [(DIVE_END[0] + 30 * math.sin(i + t * 9), LAVA_Y + 40 - (LAVA_Y + 40 - top) * i / 20) for i in range(21)]
-    O.draw_stream(cr, pts, w=330, color=O.LAVA, lumps=True); O.draw_stream(cr, pts, w=150, color=O.LAVA_B, lumps=False)
-S.prop(geyser)
+S.hook(windmill)
+S.sfx(T_LUNGE, "skid", 0.05, dur=0.3); S.sfx(T_LUNGE + 0.1, "whoosh", 0.03, dur=1.6)
+S.sfx(T_LAVA, "sploosh", 0.05); S.sfx(T_LAVA + 0.1, "simmer", 0.05, dur=1.2)
+S.sfx(T_MELT, "poof", 0.08)
+# rumble. lava rises. eyes go wide.
+S.set(T_RUMBLE + 0.4, "stand", "dead_stare", dur=0.4, look=(0.75, 0.9), tilt=0.05, sweat=1.0)
+S.set(T_RUMBLE + 0.9, "stand", "dead_stare", dur=0.8, look=(0.75, 0.9), tilt=0.05, sweat=1.0, eyescale=1.22, pupil=0.5, lid=0.0)
+S.set(CUT_OUT - 0.4, "stand", "dead_stare", dur=0.3, look=(0.0, 0.0), sweat=1.0, eyescale=1.25, pupil=0.45, lid=0.0)   # us
+S.sfx(T_RUMBLE, "kaboom", 0.08, dur=2.6)
+for i in range(6): S.shake(T_RUMBLE + 0.3 * i, 0.35, 3 + 3 * i)
+def melt_fx(cr, t, p, ly):
+    if ly == "front" and T_MELT <= t < T_MELT + 0.6:
+        u = (t - T_MELT) / 0.6
+        L.sketch_circle(cr, XI + 216 + 260 * 1.1, LAVA_Y - 10, 60 + 160 * u, 0.1, sid=7710, fill=O.LAVA_B, alpha=1 - u)
+        L.burst_lines(cr, XI + 216 + 260 * 1.1, LAVA_Y - 10, u, r0=80, r1=230, n=10, sid=7711)
+S.prop(melt_fx)
 
 # ================================================================ BOOM: the volcano fires him out
 CAM_OUT = (VX - 200, -2600, 0.4)
@@ -379,7 +405,7 @@ S.cut(CUT_OUT - 1 / 30, cam=CAM_OUT, x=VX - 540)
 S.set(CUT_OUT - 1 / 30, "cannonball", "dead_stare", dur=0.0, lag=0.0, nowalk=1.0, eyescale=1.2, lid=0.0)
 S.sfx(CUT_OUT + 0.2, "whoosh", 0.06)
 def fired(tt, p):
-    if not (CUT_OUT - 1 / 30 <= tt < CUT_T - 1 / 30): return p
+    if not (CUT_OUT - 1 / 30 <= tt < CUT_EYE - 1 / 30): return p
     u = max(0.0, (tt - CUT_OUT - 0.05) / 1.5)
     tx = VX - 2000 * u ** 0.8; ty = VRIM[2] - 150 - 5600 * u ** 1.5; a = -3 * 2 * math.pi * u
     h = p["hip"]; c, s_ = math.cos(a), math.sin(a)
@@ -392,7 +418,7 @@ S.hook(fired)
 _re = random.Random(10)
 ROCKS = [(_re.uniform(-0.6, 0.6), _re.uniform(2600, 5200), _re.uniform(60, 130), _re.uniform(0, 0.5)) for _ in range(16)]
 def eruption(cr, t, p, ly):
-    if not (CUT_OUT <= t < CUT_T): return
+    if not (CUT_OUT <= t < CUT_EYE): return
     s = t - CUT_OUT; cx, cy = VX, VRIM[2]
     if ly == "back":
         h = 9000 * smooth(min(1.0, s / 0.5)); w = 640 + 70 * math.sin(t * 13)
@@ -412,12 +438,38 @@ def eruption(cr, t, p, ly):
         if s < 0.8: L.draw_impact(cr, cx, cy, min(1.0, s * 3), r=900, sid=76)
 S.prop(eruption)
 
-# ================================================================ EYE: crash at the tower's foot. vanish. reappear. the ask.
-CAM_T = (TX - 450, 850, 0.62)
+# ================================================================ the eye: shakes, bulges, BLOWS UP
+S.cut(CUT_EYE - 1 / 30, cam=(EYE[0], EYE[1] + 250, 1.0))
+S.camera(CUT_EYE, EYE[0], EYE[1] + 250, 1.12, T_POP - CUT_EYE, ease="linear")
+S.camera(T_POP, EYE[0], EYE[1] + 400, 0.8, 0.4)
+for i in range(5): S.shake(CUT_EYE + 0.2 * i, 0.3, 4 + 3 * i)
+S.sfx(CUT_EYE, "whine", 0.05, dur=T_POP - CUT_EYE)
+S.sfx(T_POP, "kaboom", 0.45, dur=2.6); S.shake(T_POP, 1.0, 34); S.flash(T_POP, 0.35, color=(1.0, 0.85, 0.5))
+_rp = random.Random(21)
+DEBRIS = [(_rp.uniform(-math.pi, 0), _rp.uniform(900, 2200), _rp.uniform(30, 80)) for _ in range(22)]
+def eye_pop(cr, t, p, ly):
+    if ly != "front" or not (T_POP <= t < CUT_T + 1.4): return
+    s = t - T_POP; ex, ey = EYE
+    if s < 1.0:
+        for i in range(14):                                       # a ball of fire
+            a = 2 * math.pi * i / 14
+            r = 900 * smooth(min(1.0, s * 3))
+            O.draw_flames(cr, [(ex + math.cos(a) * r * k / 5, ey + math.sin(a) * r * k / 5) for k in range(6)], t + i, w=170 * (1 - s))
+        L.draw_impact(cr, ex, ey, min(1.0, s * 3), r=700, sid=77)
+    for i, (a, sp, r) in enumerate(DEBRIS):                       # tower chunks raining down
+        x = ex + math.cos(a) * sp * s; y = ey + math.sin(a) * sp * s + 1800 * s * s
+        if y < FLOOR_Y - r: L.sketch_rect(cr, x - r, y - r, x + r, y + r, 4, sid=7820 + i, fill=(0.12, 0.10, 0.11))
+    for i in range(6):
+        a = (s * 0.6 + i / 6) % 1.0
+        O.draw_smoke_puff(cr, ex + (i - 2.5) * 200, ey - 300 * a, 200 + 400 * a, alpha=(1 - a) * 0.8 * max(0, 1 - s / 2.4), dark=0.8)
+S.prop(eye_pop)
+
+# ================================================================ END: crash-lands in the rubble. the dud eye. the eagle shows up.
+CAM_T = (XL + 250, 860, 0.62)
 S.cut(CUT_T - 1 / 30, cam=CAM_T, x=SXL)
 S.set(CUT_T - 1 / 30, "cannonball", "dead_stare", dur=0.0, lag=0.0, nowalk=1.0)
 S.set(T_TLAND - 0.12, "sit_floor", "dead_stare", dur=0.12, lag=0.0, nowalk=1.0)
-S.sfx(T_TLAND - 0.55, "slide_down", 0.06, dur=0.55)
+S.sfx(T_TLAND - 0.5, "slide_down", 0.06, dur=0.5)
 def drop_t(tt, p):
     if not (CUT_T - 1 / 30 <= tt < T_TLAND): return p
     u = (tt - CUT_T) / (T_TLAND - CUT_T)
@@ -425,39 +477,51 @@ def drop_t(tt, p):
     for j in L.JOINTS: p[j] = (p[j][0], p[j][1] + dy)
     return p
 S.hook(drop_t)
-L.POSES["sit_ring"] = dict(L.POSES["sit_floor"]); L.POSES["sit_ring"].update(relb=(640, 1180), rhand=(700, 1090), rhand_t="grip")
-S.set(T_TLAND, "sit_ring", "dead_stare", dur=0.06, ease="snap", stretch=-0.3, nowalk=1.0)
-S.set(T_TLAND + 0.15, "sit_ring", "dead_stare", dur=0.3, ease="back", stretch=0.0, nowalk=1.0)
+S.set(T_TLAND, "sit_floor", "dead_stare", dur=0.06, ease="snap", stretch=-0.3, nowalk=1.0)
+S.set(T_TLAND + 0.15, "sit_floor", "dead_stare", dur=0.3, ease="back", stretch=0.0, nowalk=1.0)
 S.sfx(T_TLAND, "thud", 0.18); S.shake(T_TLAND, 0.4, 14)
-def land_fx(cr, t, p, ly):
-    if ly == "front" and T_TLAND <= t < T_TLAND + 0.7: L.draw_poof(cr, XL, FLOOR_Y - 40, (t - T_TLAND) / 0.7, r=200, sid=32)
-S.prop(land_fx)
-S.sfx(T_SWIVEL, "kaboom", 0.08, dur=2.0); S.shake(T_SWIVEL + 0.1, 0.5, 6)
-S.set(T_SWIVEL + 0.35, "sit_ring", "dead_stare", dur=0.25, look=(0.8, -0.9), tilt=-0.1, nowalk=1.0)    # up at the eye
-S.set(30.4, "sit_ring", "dead_stare", dur=0.25, look=(0.8, 0.1), tilt=0.05, nowalk=1.0)               # the ring
-S.set(30.85, "sit_ring", "dead_stare", dur=0.25, look=(0.0, 0.0), tilt=0.0, nowalk=1.0)               # us
-L.POSES["ring_on"] = dict(L.POSES["sit_floor"]); L.POSES["ring_on"].update(relb=(640, 1180), rhand=(690, 1100), rhand_t="mitt",
-                                                                           lelb=(560, 1200), lhand=(640, 1110), lhand_t="grip")
-S.set(T_ON, "ring_on", "dead_stare", dur=0.2, look=(0.7, 0.3), nowalk=1.0)
-S.set(T_VANISH, "ring_on", "dead_stare", dur=0.0, show=0.0, nowalk=1.0)
-S.sfx(T_VANISH, "twinkle", 0.08)
-L.POSES["sneak_r"] = dict(relb=(640, 1000), rhand=(660, 1080), rhand_t="mitt")
-S.set(32.2, "sneak_r", "dead_stare", dur=0.3, show=0.0)                         # (invisible) stands up...
-S.xkeys.append((32.9, SXL - 120, 1.2, "smooth")); S.x = SXL - 120                # ...and tiptoes away
-S.set(32.9, "sneak_r", "dead_stare", dur=0.2, show=0.0, tiptoe=1.0)
-S.set(T_BACK, "hold_ring_r", "dead_stare", dur=0.0, show=1.0, look=(0.0, 0.0))  # takes it off: right there
-S.sfx(T_BACK, "pop", 0.08)
-S.set(T_BACK + 0.45, "hold_ring_r", "dead_stare", dur=0.2, look=(0.8, -0.9), tilt=-0.1)              # the eye. glaring.
-S.set(T_BACK + 0.9, "hold_ring_r", "dead_stare", dur=0.25, look=(0.0, 0.0), tilt=0.0)                # us
-S.set(T_PUTDOWN, "stand", "dead_stare", dur=0.15)
-S.sfx(T_PUTDOWN + 0.35, "tok", 0.03)
-S.blink(T_PUTDOWN + 0.4)
+CHUNK = (XL + 260, FLOOR_Y)
+def chunk(cr, t, p, ly):
+    if ly != "front" or t < T_CHUNK - 0.4: return
+    u = min(1.0, (t - T_CHUNK + 0.4) / 0.4)
+    y = lerp(-900, CHUNK[1] - 70, u * u)
+    L.sketch_rect(cr, CHUNK[0] - 80, y - 70, CHUNK[0] + 80, y + 70, 5, sid=7830, fill=(0.12, 0.10, 0.11))
+    if T_CHUNK <= t < T_CHUNK + 0.6: L.draw_poof(cr, CHUNK[0], FLOOR_Y - 30, (t - T_CHUNK) / 0.6, r=150, sid=33)
+S.prop(chunk)
+S.sfx(T_CHUNK, "thud", 0.14); S.shake(T_CHUNK, 0.3, 10)
+S.set(T_CHUNK + 0.3, "sit_floor", "dead_stare", dur=0.2, look=(0.7, 0.5), nowalk=1.0)       # the chunk
+S.set(T_CHUNK + 0.75, "sit_floor", "dead_stare", dur=0.2, look=(0.0, 0.0), nowalk=1.0)      # us
+# the burnt-out eyeball rolls up and stops beside him
+DUD = (XL + 520, FLOOR_Y - 150)
+def dud(cr, t, p, ly):
+    if ly != "front" or t < T_ROLL0: return
+    u = smooth(ramp(t, T_ROLL0, T_ROLL1))
+    x = lerp(XL + 1500, DUD[0], u); ang = -(x - DUD[0]) / 150 + 0.25 * math.exp(-max(0, t - T_ROLL1) * 4) * math.sin((t - T_ROLL1) * 14)
+    y = DUD[1]
+    L.sketch_circle(cr, x, y, 150, 6, sid=7840, fill=(0.62, 0.48, 0.30))
+    cr.save(); cr.translate(x, y); cr.rotate(ang)
+    cr.save(); cr.scale(0.22, 1.0); cr.arc(0, 0, 110, 0, 2 * math.pi); cr.restore(); cr.set_source_rgb(0.2, 0.15, 0.12); cr.fill()
+    for q in ([(-120, -40), (-60, -10), (-30, 40)], [(60, -110), (90, -50), (130, -30)]):
+        L.sketch_line(cr, q, 4, sid=7841)
+    cr.restore()
+    k = (t * 0.7) % 1.0
+    O.draw_smoke_puff(cr, x + 30, y - 170 - 200 * k, 30 + 50 * k, alpha=0.6 * (1 - k), dark=0.6)
+S.prop(dud)
+for k in range(5): S.sfx(T_ROLL0 + 0.2 + k * 0.2, "tok", 0.015)
+S.sfx(T_ROLL1 + 0.05, "thud", 0.06)
+S.set(T_ROLL0 + 0.6, "sit_floor", "dead_stare", dur=0.3, look=(0.85, 0.3), nowalk=1.0)     # the eye. what's left.
+S.set(T_ROLL1 + 0.7, "sit_floor", "dead_stare", dur=0.3, look=(0.0, 0.0), nowalk=1.0)      # us
+S.blink(T_ROLL1 + 1.0)
+S.sfx(T_EAGLE0, "whoosh", 0.06); S.sfx(T_EAGLE1, "thud", 0.06)
+S.set(T_EAGLE1 + 0.4, "sit_floor", "dead_stare", dur=0.5, look=(-0.85, 0.0), nowalk=1.0)    # the eagle. NOW it shows up.
+S.set(T_EAGLE1 + 1.6, "sit_floor", "dead_stare", dur=0.4, look=(0.0, 0.0), nowalk=1.0)     # us
+S.blink(T_EAGLE1 + 2.0)
+S.stand(T_STAND, face="dead_stare")
+S.camera(T_STAND, XL + 150, 880, 0.66, 0.8)
 S.t = T_ASK
-S.the_ask(T_ASK, hold=7.0, push=False)
-S.camera(T_PUTDOWN, TX - 550, 840, 0.66, 0.8)
+S.the_ask(T_ASK, hold=ASK_HOLD, push=False)
 
-# ================================================================ the ring prop, start to finish
-RING_END = (XL - 120 + 130, FLOOR_Y - 16)
+# ================================================================ the ring prop
 def ring(cr, t, p, ly):
     if t < T_PICK:
         if ly == "back":
@@ -468,47 +532,30 @@ def ring(cr, t, p, ly):
     if t < CUT_IN:
         if CUT_E1 <= t < CUT_B1 or CUT_E2 <= t < CUT_B2: return
         hx, hy = p["lhand"]
-        if t < T_GRAB: O.draw_ring(cr, hx - 6, hy - 50, t, r=40, spin=0.0)
-        else: O.draw_ring(cr, hx - 8, hy + 52, t, r=36, spin=0.0)            # hanging off his wrist
-        L.draw_grips(cr, p); return
+        if t < T_GRAB: O.draw_ring(cr, hx - 6, hy - 50, t, r=40, spin=0.0); L.draw_grips(cr, p); return
+        k = smooth(ramp(t, T_RINGON, T_INVIS - 0.05))          # slides from his wrist onto his mitt
+        O.draw_ring(cr, hx - 8 * (1 - k), hy + 52 * (1 - k), t, r=lerp(36, 46, k), spin=0.0)
+        if t >= T_INVIS: O.draw_sparkle(cr, hx + 30, hy - 30, ((t - T_INVIS) % 0.9) / 0.5, r=35)
+        return
+    if t < T_OFF:                                                 # (invisible) on his hand, falling in, landing
+        hx, hy = p["rhand"]; O.draw_ring(cr, hx, hy, t, r=40, spin=0.0); return
     if t < T_DROP:
-        if t < T_ILAND + 0.2: return
         hx, hy = p["rhand"]
         O.draw_ring(cr, hx + 6, hy - 50 if t < T_REACH + 0.15 else hy + 50, t, r=40, spin=0.0); L.draw_grips(cr, p); return
     if t < T_LAVA:
         s = t - T_DROP; O.draw_ring(cr, XI + 216, 955 + 0.5 * 2600 * s * s, t, r=40, spin=3.0); return
-    if t < T_CATCH:                                               # floats on the lava, sinking, sizzling
-        s = t - T_LAVA
-        O.draw_ring(cr, XI + 216 + 260 * s, LAVA_Y - 30 + 22 * s, 0.0, r=40, flat=0.6)
+    if t < T_MELT:                                                # floats on the lava, sinking, glowing, melting
+        s = t - T_LAVA; k = s / (T_MELT - T_LAVA)
+        O.draw_ring(cr, XI + 216 + 260 * s, LAVA_Y - 30 + 30 * k, 0.0, r=40 * (1 - 0.4 * k), flat=0.6)
         O.draw_splash(cr, XI + 216, LAVA_Y, s / 0.6, color=O.LAVA, n=8, r=120, sid=7700)
-        O.draw_smoke_puff(cr, XI + 216, LAVA_Y - 80 - 160 * (s % 0.5), 30 + 40 * (s % 0.5), alpha=0.6, dark=0.4); return
-    if t < CUT_T:
-        hx, hy = p["rhand"]; O.draw_ring(cr, hx + 4, hy - 46, t, r=36, spin=0.0); return
-    if t < T_ON:
-        hx, hy = p["rhand"]; O.draw_ring(cr, hx + 6, hy - 50, t, r=40, spin=0.0); L.draw_grips(cr, p); return
-    if t < T_BACK:                                                # slid onto his mitt (around it); then floats alone
-        hx, hy = p["rhand"]; k = smooth(ramp(t, T_ON, T_VANISH - 0.1))
-        O.draw_ring(cr, hx, hy - 50 * (1 - k), t, r=lerp(40, 30, k), spin=0.0)
-        if t >= T_VANISH: O.draw_sparkle(cr, hx + 30, hy - 30, ((t - T_VANISH) % 0.9) / 0.5, r=35)
-        return
-    if t < T_PUTDOWN + 0.35:
-        hx, hy = p["rhand"]
-        if t < T_PUTDOWN: O.draw_ring(cr, hx + 6, hy - 50, t, r=40, spin=0.0); L.draw_grips(cr, p); return
-        u = (t - T_PUTDOWN) / 0.35
-        O.draw_ring(cr, lerp(hx, RING_END[0], u), lerp(hy, RING_END[1], u * u), t, r=40, spin=4.0); return
-    O.draw_ring(cr, RING_END[0], RING_END[1], 0.0, r=44, flat=0.75 * (1 - math.exp(-(t - T_PUTDOWN - 0.35) * 5)))
+        O.draw_smoke_puff(cr, XI + 216 + 260 * s, LAVA_Y - 80 - 160 * (s % 0.5), 30 + 40 * (s % 0.5), alpha=0.6, dark=0.4)
 S.prop(ring)
-def vanish_fx(cr, t, p, ly):
-    if ly == "front":
-        if T_VANISH <= t < T_VANISH + 0.6: L.burst_lines(cr, p["hip"][0], p["hip"][1] - 200, (t - T_VANISH) / 0.6, r0=120, r1=300, n=10, sid=81)
-        if T_BACK <= t < T_BACK + 0.5: L.burst_lines(cr, p["hip"][0], p["hip"][1] - 200, (t - T_BACK) / 0.5, r0=200, r1=360, n=10, sid=82)
-S.prop(vanish_fx)
 
 # ---------------------------------------------------------------- HUD: the RINGS counter (the running gag)
 def hud(cr, t):
-    if t < T_PICK or t > T_PUTDOWN + 0.8: return
-    a = ramp(t, T_PICK, T_PICK + 0.2) * (1 - ramp(t, T_PUTDOWN + 0.3, T_PUTDOWN + 0.8))
-    if T_DROP <= t < T_CATCH: n, warn = 0, (0.5 + 0.5 * math.cos((t - T_DROP) * 12))
+    if t < T_PICK or t > T_ROLL1 + 1.5: return
+    a = ramp(t, T_PICK, T_PICK + 0.2) * (1 - ramp(t, T_ROLL1 + 1.0, T_ROLL1 + 1.5))
+    if t >= T_DROP: n, warn = 0, (0.5 + 0.5 * math.cos((t - T_DROP) * 12)) if t < T_DROP + 2.5 else 1.0
     else: n, warn = 1, 0.0
     O.draw_ring_hud(cr, n, y=1420, alpha=a, warn=warn)
 S.overlays.insert(0, hud)
@@ -540,9 +587,9 @@ def scatter(buf, t0):
         place(buf, fm_note(rr.choice((2093, 2349, 2637, 3136, 3520)) * 2 ** (-0.6 * k / 14), 0.2, idx=1.5, decay=0.07), tk, 0.5 - 0.02 * k)
 def extra(n):
     buf = np.zeros(n, np.float32)
-    chime(buf, T_PICK); chime(buf, T_CATCH)
+    chime(buf, T_PICK)
     whistle_s(buf, T_BLOW + 0.15)
-    screech(buf, T_SWOOP - 0.1); screech(buf, CUT_B2 + 0.1, 0.5)
+    screech(buf, T_SWOOP - 0.1); screech(buf, CUT_B2 + 0.1, 0.5); screech(buf, T_EAGLE0 + 0.2, 0.4)
     scatter(buf, T_DROP + 0.05)
     return buf * 0.12
 _orig_soften = L._soften
@@ -550,5 +597,5 @@ def _soften_plus(x): return _orig_soften(x) + extra(len(x))
 L._soften = _soften_plus
 
 if __name__ == "__main__":
-    print(f"lava {T_LAVA:.2f} end {S.t:.2f}", file=sys.stderr)
+    print(f"lava {T_LAVA:.2f} melt {T_MELT:.2f} end {S.t:.2f}", file=sys.stderr)
     S.render("day010.mp4")

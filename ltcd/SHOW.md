@@ -54,7 +54,11 @@ Daily loop: **post 7:00 PM ET → comments come in → 3:00 PM ET next day: comm
   every 2-3 s; a deadpan hold is max ~1.5 s unless something big is building in it; no long walks (run, cut, or get
   carried); stack tension beats (a threat closing in, a heartbeat, a countdown, a near miss) and fan in-jokes / memes
   for the reference (day 10: ONE DOES NOT SIMPLY WALK INTO MORDOR on the gate, the eagles, the searchlight eye, the
-  ring makes him invisible, his speed-game reflex makes him dive after the ring). Shorter is fine (~45-55 s).
+  ring makes him invisible, his speed-game reflex nearly sends him in after the ring).
+- **Make it make sense + pay it off (user, 2026-11-01):** every gag has a reason in the story and comes at the moment
+  it's useful (the invisibility hides him FROM the searchlight; it's not a random beat at the end). Once something is
+  destroyed it stays destroyed. The ending must resolve the request in a satisfying way (the ring melts -> the eye
+  blows up -> the tower falls) and then land a final button joke (the eagle shows up after it's all over).
 - **Bigger + meaner (user, 2026-10-30):** push the escalation further than feels reasonable (flying a plane -> he
   climbs out of the atmosphere into space, then falls all the way back down). Family Guy / Adult Swim timing: the
   uncomfortably long deadpan hold, the beat where nothing happens, then the hard cut to disaster. Skip small gags
@@ -93,7 +97,7 @@ Daily loop: **post 7:00 PM ET → comments come in → 3:00 PM ET next day: comm
    episode is now the deadpan ask (`S.the_ask(..., mood="deadpan")`, the default): dig at hip, clipboard, scribble,
    flip, dead stare, one slow blink, cut.
 2. **Comment episode** — he does what the winning comment says, in this style, then ends with the clipboard beat.
-   - **Length: average ~60 s, never more than 75 s.** Simple requests can be drawn out for comedy; complicated ones
+   - **Length: MINIMUM 60 s (monetization, user 2026-11-01), never more than 75 s.** Simple requests can be drawn out for comedy; complicated ones
      get a simplified, funny take. Both are part of the humour.
    - **Pacing (user note 2026-10-26):** don't rush. Give each beat time to land before the cut. For time jumps or a
      multi-scene story, use FULL-SCREEN title cards (black, big centred text, ~1.5 s — e.g. DAY 1 / NIGHT 1 / DAY 41)

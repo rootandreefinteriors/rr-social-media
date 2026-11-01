@@ -21,13 +21,15 @@
   "ask_since_day": 10,
   "waiting_streak": 0,
   "world": {
-    "location": "MORDOR, at the foot of the eye tower (day 10; he never goes back to green hill). O.draw_dark_land_world(cr, t, x0=24900, x1=45000, volcano=(34200, 3600, 3400), gate=27600, tower=dict(x=32600, h=1330, look=..., look_y=..., lid=..., flare=...)) - ash plain, blood-orange sky in bands, the black gate (ONE DOES NOT SIMPLY WALK INTO MORDOR sign) at 27600, the black tower with the giant flaming eye at 32600, the erupting volcano behind it. Body offset 31090 (x 31630), the eye up and to his right; ask camera (32050, 840, 0.66) with push=False so the eye stays in frame glaring over his shoulder. The gold ring lies at his right foot (x 31760).",
-    "companions": [],
+    "location": "MORDOR, in the rubble at the foot of the ruined eye tower (day 10; he never goes back to green hill). O.draw_dark_land_world(cr, t, x0=24900, x1=45000, volcano=(34200, 3600, 3400), gate=27600, tower=None) + ep010 ruins(cr, t) (smoking jagged stump of the tower at x 32600, rubble). Black gate (ONE DOES NOT SIMPLY WALK INTO MORDOR) at 27600, the volcano (just erupted) behind. Body offset 31160 (x 31700); ask camera (31850, 880, 0.66), push=False. The giant eagle stands at his left (x 31180, O.draw_eagle s=0.8, flap~0.06); the burnt-out eyeball lies to his right (x 32220); a tower chunk at x 31960.",
+    "companions": [
+      "the giant eagle (O.draw_eagle, s 0.8) - comes when he blows his whistle; bolted when the eye locked on, showed up again only after it was all over (the book joke). Now stands next to him."
+    ],
     "props": [
-      "the gold ring (his green-hill ring): lying at his right foot; putting it on makes him invisible",
-      "the giant flaming eye on the tower right behind him - it knows he's there and it is FURIOUS",
-      "the black gate with the ONE DOES NOT SIMPLY WALK INTO MORDOR sign; the volcano (just erupted)",
-      "the giant eagle - comes when he blows his whistle (pulled from his hip), bolted when the eye locked on; callback possible",
+      "the burnt-out giant eyeball (dud, smoking) lying beside him; the ruined tower stump; rubble",
+      "the RING IS DESTROYED (melted in the lava). RINGS 0. Never bring it back.",
+      "his whistle (pulled from his hip - summons the eagle)",
+      "the black gate with the ONE DOES NOT SIMPLY WALK INTO MORDOR sign; the volcano",
       "far behind (never going back): green hill, the airfield, the burger place"
     ],
     "traits": [
@@ -37,9 +39,9 @@
       "EXPELLED FOREVER from wizard school (day 7): read his acceptance letter, sprinted into the 9 3/4 wall and bounced off, used the door in the wall instead, the giant talking hat found no brain in his head (hello... echoed) and blasted him into the empty white room",
       "flew a plane (day 8): took off from the FLIGHT SCHOOL airfield, looped until he went green, climbed out of the atmosphere into space, puked a zero-g blob (back to normal), fell back down on fire and planted the plane nose-first in the field; the flaming puke landed next to him. He looks completely normal again (no soot, no tint).",
       "went to green hill (day 9): collected rings deadpan, ran until his legs were a blur wheel, ran a giant loop, RINGS 999, blasted past the GOAL sign and skidded to a stop; victory stance with a peace sign; the most harmless little ladybug robot puttered up, poked him and knocked him flat on his back; every ring burst out of him (RINGS 0). Looks normal.",
-      "took a ring to mordor (day 10, re-cut): snatched the last ring on green hill (RINGS 1), ran to the black gate (ONE DOES NOT SIMPLY WALK INTO MORDOR), whistled up a giant eagle that flew him over the wall; the eye's searchlight locked on, the eagle dropped him into the volcano; he let the ring fall into the lava (RINGS 0), then his speed-game reflex made him dive after it and snatch it back (RINGS 1); a lava geyser fired him out of the volcano onto his butt at the foot of the eye tower; he put the ring on and vanished while the eye searched, then reappeared right under it. He lives in Mordor now. Looks normal."
+      "took the ring to mordor (day 10, re-cut 2): snatched the last ring on green hill, ran to the black gate (ONE DOES NOT SIMPLY WALK INTO MORDOR), whistled up a giant eagle; when the eye's searchlight closed in he put the ring on and went invisible, so the beam locked on the eagle carrying a floating ring, and the eagle dropped him into the volcano; he dropped the ring into the lava and nearly went in after it (speed-game reflex), it melted; the eye blew up, the tower fell, the volcano fired him out into the rubble; the eagle showed up after it was all over. He lives in Mordor now. Looks normal."
     ],
-    "notes": "Day 10 RE-CUT on Justin's notes: never return to an old world; ADHD pacing (something every 2-3 s), tension, fan in-jokes. RINGS HUD as a running gag (bottom-left). SHOW.md updated."
+    "notes": "Day 10 RE-CUT 2 on Justin's notes: never return to an old world; ADHD pacing; tension; in-jokes; the story must make sense and pay off (destroyed stays destroyed); >= 60 s. SHOW.md + DAILY.md updated."
   },
   "used_comments": [
     "Beat Mc in hardcore mode:)",
@@ -99,7 +101,7 @@
     {
       "day": 10,
       "type": "comment",
-      "summary": "@second_degree_burn (IG): 'Pick up a ring and take it to mordor' -> RE-CUT: snatches the last ring (RINGS 1); runs at speed-game speed past a MORDOR sign to the black gate: ONE DOES NOT SIMPLY WALK INTO MORDOR; pulls a whistle from his hip, a giant eagle swoops in and flies him over the wall; the eye's searchlight sweeps (heartbeat), locks on; the eagle bolts and drops him into the volcano; on the ledge he lets the ring fall into the lava (RINGS 0), eye twitch, dives after it, snatches it off the lava (RINGS 1); a lava geyser fires him out of the volcano; crash-lands at the foot of the eye tower; the eye swings onto him; he puts the ring on and vanishes, the eye darts around, the ring tiptoes off; he reappears right under the glaring eye, drops the ring; deadpan ask with the eye over his shoulder (49.9 s)"
+      "summary": "@second_degree_burn (IG): 'Pick up a ring and take it to mordor' -> RE-CUT 2: snatches the last ring (RINGS 1); sprints to the black gate (ONE DOES NOT SIMPLY WALK INTO MORDOR); whistle -> giant eagle flies him over the wall; the eye's searchlight sweeps (heartbeat), closes in; he puts the ring on and vanishes; the beam locks on the eagle carrying a floating ring; the eagle looks at its empty talons, at the eye, drops him and bolts; the ring falls into the volcano; he lands invisible on the ledge, takes it off; holds it over the lava, lets go (RINGS 0); lunges after it on reflex and teeters on the edge, arms windmilling, as it melts; rumble, lava rises; the volcano fires him out; the eye shakes and blows up, the tower collapses; he crash-lands in the rubble; a chunk lands next to him; the burnt-out eyeball rolls up beside him; the eagle shows up now that it's over; deadpan ask in the ruins with the eagle (61.1 s)"
     }
   ]
 }

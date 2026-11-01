@@ -55,7 +55,7 @@ git config user.name "Claude (LTCD routine)"; git config user.email "noreply@ant
 - **Comment episode:** he does what the comment says, cartoon style. Pin the comment card (`S.card`) for the whole
   episode — it auto-shrinks long comments; keep his head, his fx and every prop BELOW it (if something tall must
   appear, widen the camera like t3_dino: `S.camkeys[0] = (0, (540, 840, 0.9), 0)` and `the_ask(..., push=False)`).
-  Average ~60 s, max 75 s. Continuity per SHOW.md (≤3 major persistent things; use cartoon consequences to remove
+  MINIMUM 60 s (monetization), max 75 s. Continuity per SHOW.md (≤3 major persistent things; use cartoon consequences to remove
   things). End with `the_ask` (dig at hip -> clipboard -> scribble -> flip: TELL ME WHAT TO DO NEXT IN THE COMMENTS).
 - **He stays where the last episode left him** (STATE `world.location`, SHOW.md "Where he is"): draw that place as the
   background of every episode, comment or waiting, and do the ask there. Never cut back to the white void.
