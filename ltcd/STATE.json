@@ -1,34 +1,34 @@
 {
   "show": "let the comments decide",
-  "day": 9,
+  "day": 10,
   "last_episode": {
-    "day": 9,
+    "day": 10,
     "type": "comment",
-    "folder": "episodes/ep009",
-    "video": "videos/day009.mp4",
-    "posted_at": "2026-10-31T19:00:00-04:00 (scheduled)",
+    "folder": "episodes/ep010",
+    "video": "videos/day010.mp4",
+    "posted_at": "2026-11-01T19:00:00-05:00 (scheduled)",
     "buffer": {
-      "tiktok": "6ae63fe1cf3a3112f3bcbd44",
-      "instagram": "6ae63fdfab019b90871e39e8"
+      "tiktok": "PENDING",
+      "instagram": "PENDING"
     },
     "comment": {
       "platform": "instagram",
-      "username": "nicolascechettoschuller",
-      "text": "Go to green hill",
-      "likes": 1
+      "username": "second_degree_burn",
+      "text": "Pick up a ring and take it to mordor",
+      "likes": 0
     }
   },
-  "ask_since_day": 9,
+  "ask_since_day": 10,
   "waiting_streak": 0,
   "world": {
-    "location": "the green hill (day 9): generic speed-game world right of the airfield. O.draw_green_hill_world(cr, t, x0=9800, x1=60000, loop=(LX, 900), palms=..., flowers=...) (blue sky bands, clouds, far hills, sparkling water, palms, sunflowers, grass on checkered dirt); the airfield (planted plane x 9000) is left of x 9800 with a GREEN HILL arrow sign at 9480. Giant loop at x ~22250 (R 900). He ended past the end-of-level GOAL sign (spinning plate on a pole, landed showing his own face): body offset SX_STOP-300 in ep009 (episode.py X_STOP; the sign is at X_STOP-650, ~350 px to his left). Ask camera ~ (x+60, 930, 1.12). RINGS HUD (O.draw_ring_hud) ended at 0, red.",
+    "location": "back on the green hill, past the GOAL sign (day 10 ended where day 9 did): O.draw_green_hill_world(cr, t, x0=9800, x1=24900, palms=..., flowers=...) + the GOAL sign showing his face at x 23061 (ep010 goal_sign()). Body offset 22871.36 (x 23411), ask camera ~ (x+60, 930, 1.12). To the RIGHT of x 24900 (MORDOR arrow sign at 24560) is the dark land: O.draw_dark_land_world(cr, t, x0=24900, x1=45000, volcano=(31500, 3600, 3400), tower=dict(x=29500, h=1330, look, lid, water)) - ash plain, blood-orange sky, the giant volcano, the black tower with the giant flaming eye. No ring HUD on screen.",
     "companions": [],
     "props": [
+      "the gold ring - dropped in the volcano, it came back and lies in the grass by his right foot (RING0 = x 23561, lying flat)",
       "the GOAL sign showing his face, just behind him (left)",
-      "the little red ladybug robot (O.draw_ladybot) - poked him, then puttered off to the right; callback possible",
-      "the giant loop back along the hill",
-      "back at the airfield: the planted red plane and the puke puddle",
-      "the EXPELLED letter in the white room; the owl at the castle; the burger place; the 9 3/4 wall"
+      "the dark land to the right: the volcano (erupted) and the eye tower (the eye lost a staring contest to him)",
+      "the little red ladybug robot (O.draw_ladybot) - puttered off to the right on day 9; callback possible",
+      "back at the airfield: the planted red plane and the puke puddle; the burger place; the white room"
     ],
     "traits": [
       "beat the block game on hardcore with half a heart (day 4)",
@@ -36,9 +36,10 @@
       "rocked a mom's baby to sleep and fell asleep holding it; she kissed him on the cheek and he blushed (day 6). The mom (O.draw_mom: long brown hair + bun, pink dress) shops at the burger place - callback possible",
       "EXPELLED FOREVER from wizard school (day 7): read his acceptance letter, sprinted into the 9 3/4 wall and bounced off, used the door in the wall instead, the giant talking hat found no brain in his head (hello... echoed) and blasted him into the empty white room",
       "flew a plane (day 8): took off from the FLIGHT SCHOOL airfield, looped until he went green, climbed out of the atmosphere into space, puked a zero-g blob (back to normal), fell back down on fire and planted the plane nose-first in the field; the flaming puke landed next to him. He looks completely normal again (no soot, no tint).",
-      "went to green hill (day 9): collected rings deadpan, ran until his legs were a blur wheel, ran a giant loop, RINGS 999, blasted past the GOAL sign and skidded to a stop; victory stance with a peace sign; the most harmless little ladybug robot puttered up, poked him and knocked him flat on his back; every ring burst out of him (RINGS 0). Looks normal."
+      "went to green hill (day 9): collected rings deadpan, ran until his legs were a blur wheel, ran a giant loop, RINGS 999, blasted past the GOAL sign and skidded to a stop; victory stance with a peace sign; the most harmless little ladybug robot puttered up, poked him and knocked him flat on his back; every ring burst out of him (RINGS 0). Looks normal.",
+      "took a ring to mordor (day 10): picked up the last ring from green hill, walked into the dark land, won a staring contest with the giant flaming eye (it watered and blinked first), dropped the ring into the volcano from the ledge; the volcano erupted and fired him into the sky; he fell back onto his butt on the green hill and the ring fell out of the sky, bonked his head and landed in the grass exactly where it started. Looks normal (sweat only during the heat)."
     ],
-    "notes": "Day 9 RE-CUT 2 on Justin's notes: no banner; the bug's poke knocks him down (arc back, flat on his back), rings burst; Mega Drive-style FM music (original tune: slap bass, brass lead, PSG arps). Parody is fine (SHOW.md)."
+    "notes": "Day 10: parody of the ring quest (generic eye tower + volcano drawn by us, MORDOR on a signpost). No music this time (not a game episode)."
   },
   "used_comments": [
     "Beat Mc in hardcore mode:)",
@@ -46,7 +47,8 @@
     "Rock a baby to sleep. (My mom said this)",
     "Join Hogwarts.",
     "Fly a plane",
-    "Go to green hill"
+    "Go to green hill",
+    "Pick up a ring and take it to mordor"
   ],
   "history": [
     {
@@ -93,6 +95,11 @@
       "day": 9,
       "type": "comment",
       "summary": "@nicolascechettoschuller (IG): 'Go to green hill' -> RE-CUT on Justin's notes: airfield -> walks into a generic green hill (music kicks in); rings; run; blur legs; giant loop; RINGS 999; blasts past the GOAL sign, skids; sign spins and lands on his face; victory stance + peace sign, jingle; a tiny ladybug robot putters up very slowly, pokes him and knocks him flat on his back; every ring bursts out (RINGS 0); bug leaves; he sits up, stands; deadpan ask (57.8 s). Original Mega Drive-style FM music + game-style SFX."
+    },
+    {
+      "day": 10,
+      "type": "comment",
+      "summary": "@second_degree_burn (IG): 'Pick up a ring and take it to mordor' -> green hill: picks up the last leftover ring; walks right past a MORDOR sign into the dark land (ash, red sky, giant volcano, black tower with a flaming eye that follows him); staring contest in hard cuts, the eye waters and blinks first; CUT inside the volcano: holds the ring out over the lava, long hold, drops it, plink, silence, rumble, lava rises, eyes go wide; FLASH: the volcano erupts and fires him out of the top, spinning; CUT: green hill, he falls onto his butt; the ring falls out of the sky, bonks his head and lands where it was at the start; deadpan ask (65.1 s)"
     }
   ]
 }

@@ -1817,3 +1817,160 @@ def draw_ladybot(cr, x, yb=FLOOR_Y, t=0.0, face=-1, poke=0.0, look_up=0.0, bob=0
     sketch_line(cr, [(-30, -132), (-38, -158)], 3.5, sid=9706)                  # antenna
     sketch_circle(cr, -39, -162, 6, 3, sid=9707, fill=(1.0, 0.82, 0.15))
     cr.restore()
+
+
+# ---------------------------------------------------------------- the dark land (day 10): ash plain, volcano, the eye
+DL_SKY = ((0.92, 0.42, 0.16), (0.46, 0.17, 0.12))
+DL_ASH = (0.30, 0.27, 0.26)
+DL_ROCK = (0.22, 0.18, 0.18)
+LAVA = (1.0, 0.45, 0.10)
+LAVA_B = (1.0, 0.84, 0.28)
+EYE_FIRE = (1.0, 0.62, 0.12)
+
+def volcano_rim(vx, h, yb=FLOOR_Y):
+    """(left rim x, right rim x, rim y) of the volcano drawn by draw_volcano."""
+    return vx - 280, vx + 280, yb - h
+
+def draw_volcano(cr, vx, h, t=0.0, yb=FLOOR_Y, w=1800, glow=1.0, smoke=1.0):
+    """a big dark cartoon volcano: concave cone, glowing crater, lava streaks, a lazy smoke plume."""
+    lx, rx, ry = volcano_rim(vx, h, yb)
+    pts = [(vx - w, yb)]
+    for k in range(1, 12):
+        u = k / 12; pts.append((lerp(vx - w, lx, u), yb - h * (u ** 1.3)))
+    pts += [(lx, ry), (rx, ry)]
+    for k in range(11, 0, -1):
+        u = k / 12; pts.append((lerp(vx + w, rx, u), yb - h * (u ** 1.3)))
+    pts.append((vx + w, yb))
+    sketch_poly(cr, pts, 7, sid=9800, fill=(0.27, 0.21, 0.20), amp=0.5)
+    sketch_ellipse(cr, vx, ry, 280, 46, 6, sid=9801, fill=lerp((0.5, 0.2, 0.1), LAVA, glow))
+    for k, (sx, ln) in enumerate(((-0.55, 0.55), (0.25, 0.7), (0.7, 0.4), (-0.15, 0.35))):    # lava streaks
+        x0 = vx + sx * 240; q = []
+        for i in range(10):
+            u = ln * i / 9; yy = ry + h * u
+            spread = (w - 280) * (u ** (1 / 1.3)) * (1 if sx > 0 else -1) * abs(sx) * 0.9
+            q.append((x0 + spread + 22 * math.sin(i * 1.3 + k), yy))
+        cr.set_line_cap(cairo.LINE_CAP_ROUND)
+        path(cr, q); stroke_ink(cr, 30); path(cr, q); stroke_ink(cr, 18, LAVA)
+    for k in range(5):                                                         # smoke plume, drifting left
+        a = (t * 0.12 + k / 5) % 1.0
+        draw_smoke_puff(cr, vx - 600 * a, ry - 120 - 1500 * a, 120 + 380 * a, alpha=smoke * (1 - a) * 0.85, dark=0.75)
+
+def draw_eye_tower(cr, x, h, t=0.0, yb=FLOOR_Y, look=0.0, lid=0.0, s=1.0, water=0.0):
+    """a tall black spiked tower with a giant flaming slit eye cradled between two horns at the top.
+    look -1..1 moves the pupil left/right, lid 0..1 closes the eye (it blinks), water 0..1 a big tear forming."""
+    top = yb - h
+    tw = 150 * s
+    body = [(x - tw * 1.9, yb), (x - tw * 0.9, top + 260 * s), (x - tw * 1.25, top + 120 * s), (x - tw * 0.6, top + 200 * s),
+            (x + tw * 0.6, top + 200 * s), (x + tw * 1.25, top + 120 * s), (x + tw * 0.9, top + 260 * s), (x + tw * 1.9, yb)]
+    sketch_poly(cr, body, 7, sid=9810, fill=(0.12, 0.10, 0.11), amp=0.4)
+    for sx in (-1, 1):                                                         # the two horns
+        horn = [(x + sx * tw * 0.75, top + 210 * s), (x + sx * tw * 1.25, top + 60 * s), (x + sx * tw * 0.95, top - 220 * s),
+                (x + sx * tw * 1.55, top + 40 * s), (x + sx * tw * 1.25, top + 230 * s)]
+        sketch_poly(cr, horn, 6, sid=9811 + (sx > 0), fill=(0.12, 0.10, 0.11), amp=0.3)
+    for k in range(4):                                                         # little windows
+        sketch_rect(cr, x - 18 * s, top + (420 + 230 * k) * s, x + 18 * s, top + (470 + 230 * k) * s, 3, sid=9813 + k, fill=EYE_FIRE)
+    ex, ey = x, top + 40 * s
+    ew, eh = 210 * s, 105 * s
+    for k in range(10):                                                        # flames round the eye
+        a = 2 * math.pi * k / 10 + 0.3
+        bx, by = ex + math.cos(a) * ew * 0.9, ey + math.sin(a) * eh * 0.9
+        L = (90 + 40 * math.sin(t * 9 + k * 2.1)) * s
+        draw_flames(cr, [(bx + math.cos(a) * L * i / 5, by + math.sin(a) * L * i / 5 - 18 * s * i / 5) for i in range(6)], t + k, w=46 * s)
+    def almond():
+        cr.move_to(ex - ew, ey); cr.curve_to(ex - ew * 0.5, ey - eh * 1.35, ex + ew * 0.5, ey - eh * 1.35, ex + ew, ey)
+        cr.curve_to(ex + ew * 0.5, ey + eh * 1.35, ex - ew * 0.5, ey + eh * 1.35, ex - ew, ey); cr.close_path()
+    almond(); cr.set_source_rgb(*EYE_FIRE); cr.fill()
+    cr.save(); almond(); cr.clip()
+    cr.arc(ex, ey, ew * 0.6, 0, 2 * math.pi); cr.set_source_rgb(*LAVA_B); cr.fill()
+    px = ex + look * ew * 0.45
+    cr.save(); cr.translate(px, ey); cr.scale(0.22, 1.0); cr.arc(0, 0, eh * 0.95, 0, 2 * math.pi); cr.restore()
+    cr.set_source_rgb(0.05, 0.03, 0.03); cr.fill()
+    if lid > 0.01:                                                             # lids meet in the middle
+        lc = (0.12, 0.10, 0.11)
+        cr.rectangle(ex - ew, ey - eh * 1.2, ew * 2, eh * 1.2 * lid); cr.set_source_rgb(*lc); cr.fill()
+        cr.rectangle(ex - ew, ey + eh * 1.2 * (1 - lid), ew * 2, eh * 1.2 * lid); cr.set_source_rgb(*lc); cr.fill()
+    cr.restore()
+    almond(); stroke_ink(cr, 7 * s)
+    if water > 0.02:                                                           # a fat tear welling at the corner
+        r = 26 * s * water
+        cr.arc(ex + ew * 0.8, ey + eh * 0.55 + 30 * s * water, r, 0, 2 * math.pi)
+        cr.set_source_rgb(0.70, 0.84, 0.94); cr.fill_preserve(); stroke_ink(cr, 4 * s)
+
+def draw_dark_land_world(cr, t, x0=24900, x1=45000, volcano=None, tower=None, yb=FLOOR_Y, ash=1.0):
+    """generic dark land right of x0: blood-orange sky in solid bands, jagged far mountains, an ash plain with
+    glowing cracks. volcano = (vx, h[, w]) or None; tower = dict(x, h, look, lid, water) or None."""
+    vx0, vy0, vx1, vy1 = _visible(cr)
+    a, b = max(x0, vx0), min(x1, vx1)
+    if b <= a: return
+    cr.save(); cr.rectangle(x0, vy0 - 10, x1 - x0, vy1 - vy0 + 20); cr.clip()
+    top = min(vy0, yb - 200)
+    for k in range(30):
+        y_hi = yb - 200 - (k + 1) * 120
+        y_lo = yb - 200 - k * 120 if k else yb + 10
+        if k == 29: y_hi = min(y_hi, top - 10)
+        cr.rectangle(a, y_hi, b - a, y_lo - y_hi + 1); cr.set_source_rgb(*lerp(DL_SKY[0], DL_SKY[1], min(1.0, k / 12))); cr.fill()
+    for layer, (base, amp_, col, step) in enumerate(((yb - 380, 420, (0.36, 0.20, 0.17), 520), (yb - 180, 300, DL_ROCK, 380))):
+        k0, k1 = int((a - x0) // step) - 1, int((b - x0) // step) + 2
+        pts = [(x0 + k0 * step, yb + 10)]
+        for k in range(k0, k1 + 1):
+            hh = amp_ * (0.45 + 0.55 * (((k * 7 + layer * 3) % 5) / 4))
+            pts.append((x0 + k * step, base - hh)); pts.append((x0 + (k + 0.5) * step, base - hh * 0.35))
+        pts.append((x0 + (k1 + 1) * step, yb + 10))
+        sketch_poly(cr, pts, 5, sid=9830 + layer, fill=col, amp=0.3)
+    if volcano: draw_volcano(cr, volcano[0], volcano[1], t, yb, w=volcano[2] if len(volcano) > 2 else 1800)
+    if tower: draw_eye_tower(cr, tower["x"], tower["h"], t, yb, look=tower.get("look", 0.0), lid=tower.get("lid", 0.0),
+                             water=tower.get("water", 0.0))
+    cr.rectangle(a, yb, b - a, max(200, vy1 - yb + 20)); cr.set_source_rgb(*DL_ASH); cr.fill()
+    sketch_line(cr, [(a, yb), (b, yb)], 4, sid=9840, amp=1.0, alpha=0.9)
+    for k in range(int((a - x0) // 430), int((b - x0) // 430) + 2):          # glowing cracks + rocks
+        cx = x0 + k * 430 + 120 * math.sin(k * 2.3)
+        cy = yb + 70 + (k * 37) % 140
+        q = [(cx - 110, cy), (cx - 50, cy + 18), (cx, cy - 6), (cx + 60, cy + 14), (cx + 120, cy - 2)]
+        path(cr, q); stroke_ink(cr, 14); path(cr, q); stroke_ink(cr, 7, lerp(LAVA, LAVA_B, 0.5 + 0.5 * math.sin(t * 2 + k)))
+        if k % 3 == 0:
+            rx = cx + 200
+            sketch_poly(cr, [(rx - 60, yb + 2), (rx - 35, yb - 50), (rx + 20, yb - 62), (rx + 60, yb + 2)], 5, sid=9850 + k % 7, fill=DL_ROCK)
+    if ash > 0.01:                                                             # ash drifting down
+        for k in range(int((a - x0) // 140), int((b - x0) // 140) + 1):
+            for j in range(3):
+                fx = x0 + k * 140 + 60 * math.sin(t * 0.7 + k * 1.3 + j)
+                fy = vy0 + ((t * 90 + k * 211 + j * 577) % max(1.0, (yb - vy0)))
+                cr.rectangle(fx, fy, 10, 10); cr.set_source_rgba(0.55, 0.52, 0.50, 0.75 * ash); cr.fill()
+    cr.restore()
+
+def draw_lava_chamber(cr, t, edge, lava_y, yb=FLOOR_Y, x0=None, rise=0.0, glow=1.0):
+    """inside the volcano: rock walls lit orange from below, a rock ledge (the floor) ending at x = edge, a sheer drop
+    to a bubbling lava pool at lava_y (rise px lifts the lava). Fills everything visible."""
+    vx0, vy0, vx1, vy1 = _visible(cr)
+    if x0 is not None: vx0 = max(vx0, x0)
+    for k in range(int((vy1 - vy0) // 140) + 2):                              # wall: solid bands, hotter lower down
+        y = vy0 + k * 140
+        u = min(1.0, max(0.0, (y - (yb - 1600)) / (lava_y - (yb - 1600))))
+        cr.rectangle(vx0, y, vx1 - vx0, 141); cr.set_source_rgb(*lerp((0.16, 0.08, 0.07), (0.62, 0.22, 0.08), u * glow)); cr.fill()
+    for k in range(int((vx1 - vx0) // 380) + 2):                               # cracks in the far wall
+        x = vx0 - (vx0 % 380) + k * 380
+        q = [(x, yb - 1300 + 90 * (k % 3)), (x + 60, yb - 1100), (x + 10, yb - 900 + 40 * (k % 2)), (x + 80, yb - 700)]
+        path(cr, q); stroke_ink(cr, 5, alpha=0.6)
+    ly = lava_y - rise
+    cr.rectangle(vx0, ly, vx1 - vx0, vy1 - ly + 10); cr.set_source_rgb(*LAVA); cr.fill()
+    q = [(x, ly + 14 * math.sin(x / 120 + t * 2.2)) for x in range(int(vx0) - 60, int(vx1) + 80, 40)]
+    path(cr, q + [(vx1 + 80, ly + 60), (vx0 - 60, ly + 60)]); cr.close_path(); cr.set_source_rgb(*LAVA); cr.fill()
+    path(cr, q); stroke_ink(cr, 7)
+    for k in range(int((vx1 - vx0) // 170) + 1):                               # bright swirls + bubbles
+        x = vx0 + k * 170 + 50 * math.sin(t + k)
+        y = ly + 70 + (k * 47) % 160
+        sketch_ellipse(cr, x, y, 50, 12, 0.1, sid=9860 + k % 9, fill=LAVA_B, alpha=0.8)
+        u = (t * 0.8 + k * 0.37) % 1.0
+        if u < 0.5:
+            r = 14 + 40 * u
+            cr.arc(x + 40, ly + 6 - r * 0.4, r, math.pi, 2 * math.pi); cr.set_source_rgb(*LAVA_B); cr.fill_preserve(); stroke_ink(cr, 4)
+    for k in range(6):                                                         # heat shimmer rising off the pool
+        u = (t * 0.5 + k / 6) % 1.0
+        x = edge + 150 + k * 140
+        q = [(x + 18 * math.sin(i * 1.4 + t * 4), ly - 60 - u * 700 - i * 40) for i in range(6)]
+        path(cr, q); cr.set_source_rgba(1.0, 0.85, 0.5, 0.35 * (1 - u)); cr.set_line_width(5); cr.stroke()
+    ledge = [(vx0 - 50, yb), (edge, yb), (edge + 30, yb + 90), (edge - 15, yb + 230), (edge + 20, yb + 420),
+             (edge - 40, yb + 640), (edge - 10, vy1 + 50), (vx0 - 50, vy1 + 50)]
+    sketch_poly(cr, ledge, 7, sid=9870, fill=(0.20, 0.15, 0.14), amp=0.4)
+    path(cr, [(edge + 30, yb + 90), (edge - 15, yb + 230), (edge + 20, yb + 420)]); stroke_ink(cr, 14, (0.85, 0.40, 0.12))
+    sketch_line(cr, [(vx0 - 50, yb), (edge, yb)], 5, sid=9871, amp=1.0)
