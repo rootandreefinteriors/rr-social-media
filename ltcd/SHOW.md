@@ -59,6 +59,12 @@ Daily loop: **post 7:00 PM ET → comments come in → 3:00 PM ET next day: comm
   harm toward animals** (no hissing at him, no flinging, crushing, bursting, burying or bonking animals or with animals).
 - **Take requests at their real-world meaning (user, 2026-11-02):** a "cat shelter" is a rescue shelter for homeless
   cats (rescue, care, adoption) - not a doghouse or a cat tree. Look up what the thing actually is before staging it.
+- **Craft (user, 2026-11-02: "be an expert professional animator"):** he never just vanishes into an effect - if he
+  builds something he stays on screen doing it (hammer swings, each tap synced to a swing). Every sound must sound
+  like the thing it is (the synthesized low-rumble "purr" sounded like a dump truck idling - never use it; use soft
+  mews). No awkward faces (toothy grins, tongue-out concentrating) unless the beat needs them. Never show the edge of
+  a world: hide a world-to-world border behind something (a smoke wall he runs through) and draw the new world far
+  enough left/right that no camera move ever shows blank paper.
 - **Real-cause tie-in (user, 2026-11-02):** when a comment is about helping animals/people, end with him writing a
   real way to help on his clipboard (day 11: "TO HELP SAVE REAL CATS, PLEASE DONATE TO THE CAT HOUSE ON THE KINGS AT
   CATHOUSEONTHEKINGS.COM" - the largest no-cage, no-kill cat sanctuary we could find accepting online donations; verify

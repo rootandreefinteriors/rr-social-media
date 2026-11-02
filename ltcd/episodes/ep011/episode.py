@@ -139,7 +139,7 @@ def world(cr, t):
         ruins(cr, t)
         eyeball(cr, *EYEB)
         O.draw_eagle(cr, EAGLE_X, FLOOR_Y, t, flap=0.06, s=0.8, look=0.8 if t < T_RUN + 0.5 else 0.9, face=1)
-    O.draw_town_world(cr, t, x0=BORDER, x1=40000)
+    O.draw_town_world(cr, t, x0=BORDER if t < T_RUN1 + 1.0 else 20000, x1=40000)
     O.draw_tree(cr, TREE, FLOOR_Y, t, h=TREE_H)
     if t >= T_CLOUD1 - 0.05:
         sc = back_out(min(1.0, (t - T_CLOUD1 + 0.05) / 0.35), 1.6)
@@ -201,6 +201,16 @@ while _ct < T_RUN1 + 0.6:
              dur=1 / 15, ease="linear")
     _ct += 1 / 15
 S.camera(T_RUN1 + 0.7, XA + 330, 1120, 1.15, 0.6)
+def smoke_wall(cr, t, p, ly):
+    """a wall of Mordor smoke at the border (hides where one world meets the other); he runs through it."""
+    if ly != "front" or t >= T_RUN1 + 1.0: return
+    for i in range(-4, 16):
+        for j in range(2):
+            y = FLOOR_Y + 200 - i * 260 + 40 * math.sin(t * 1.3 + i)
+            x = BORDER - 120 + 240 * j + 60 * math.sin(t * 0.9 + i * 1.7 + j)
+            dark = lerp(0.8, 0.25, j)
+            O.draw_smoke_puff(cr, x, y, 260 + 40 * math.sin(i * 2.3 + j), alpha=1.0, dark=dark)
+S.prop(smoke_wall)
 def run_fx(cr, t, p, ly):
     if ly != "back" or not (T_RUN + 0.2 <= t < T_RUN1 - 0.2): return
     h = p["hip"]
@@ -222,8 +232,8 @@ S.set(T_HBLINK, "crouch_reach", "deadpan", dur=0.3, look=(0.8, 0.5), lid=1.0)   
 S.set(T_HBLINK + 0.55, "crouch_reach", "deadpan", dur=0.3, look=(0.8, 0.5), lid=0.3, brow=0.2)
 S.cut(T_PICK - FR)
 S.set(T_PICK - FR, "cradle", "deadpan", dur=0.0, look=(0.3, 0.8), tilt=0.06)              # holding it
-S.set(T_SMILE0, "cradle", "deadpan", dur=0.3, look=(0.0, 0.0), mouth="teeth", smile=0.9, open=0.25, lid=0.25)   # "be happy": stiff
-S.set(T_SMILE0 + 0.5, "cradle", "deadpan", dur=0.3, look=(0.3, 0.8), mouth="teeth", smile=0.9, open=0.25, lid=0.25, tilt=0.06)
+S.set(T_SMILE0, "cradle", "neutral", dur=0.5, look=(0.0, 0.0), smile=0.45, lid=0.2)   # "be happy": a small try
+S.set(T_SMILE0 + 0.6, "cradle", "neutral", dur=0.4, look=(0.3, 0.8), smile=0.5, lid=0.2, tilt=0.06)
 S.set(T_SMILE1, "cradle", "neutral", dur=0.7, look=(0.3, 0.85), smile=0.75, lid=0.2, tilt=0.08)                 # it purrs: soft
 S.set(T_SMILE1 + 0.6, "cradle", "neutral", dur=0.3, look=(0.0, 0.0), smile=0.75, lid=0.15)
 S.camera(T_PICK, XA + 300, 1060, 1.15, 1.5)
@@ -240,21 +250,26 @@ S.camera(T_HEAD - 0.2, XA + 300, 980, 0.95, 0.6)
 
 # ---------------------------------------------------------------- the hammer + the build
 def hammer(cr, x, y, s, t, p):
-    if T_CLOUD0 + 0.2 <= t: return
+    if T_CLOUD1 + 0.6 <= t: return
     O.draw_hammer(cr, x, y, s=0.9 * s, ang=0.15)
 _k0 = len(S.keys)
 S.pocket_pull(T_PULL, "hammer", hammer, (0, 0), held=True, offset=(0, 10), narrow_w=0)
 for i in range(_k0, len(S.keys)):
-    k = S.keys[i]; d = dict(k[1]); d.update(L.EXPR["deadpan"]); d["open"] = 0.0; d["eyescale"] = 1.0; d["smile"] = 0.35
+    k = S.keys[i]; d = dict(k[1]); d.update(dict(L.EXPR["neutral"])); d.update(eyes="normal", mouth="auto", tongue=0.0, blush=0.0, open=0.0, eyescale=1.0, smile=0.4, lid=0.15, brow=0.1, worry=0.0, skeptic=0.0, fx_sparkle=0.0)
     S.keys[i] = (k[0], d) + tuple(k[2:])
-S.set(T_CLOUD0 - 0.3, "crouch", "deadpan", dur=0.15, look=(0.8, 0.0))
-S._hop(T_CLOUD0 - 0.05, 70, 0.1)
-S.set(T_CLOUD0 + 0.2, "stand", "deadpan", dur=0.0, show=0.0)
-S.camera(T_CLOUD0 - 0.4, SH - 250, 900, 0.62, 0.5)
-for k in range(9): S.sfx(T_CLOUD0 + 0.3 + k * 0.3, ("clack", "tok", "tap")[k % 3], 0.04)
-S.sfx(T_CLOUD0, "poof", 0.1)
-S.cut(T_CLOUD1 - 0.05, x=SXB)
-S.set(T_CLOUD1 - 0.05, "stand", "neutral", dur=0.0, show=1.0, look=(0.8, -0.5), smile=0.3, sweat=0.3)
+S.walk_to(T_CLOUD0 - 0.5, SXB, 0.45)
+S.set(T_CLOUD0 - 0.1, "stand", "neutral", dur=0.2, look=(0.8, 0.1), turn=0.5, smile=0.4)
+S.camera(T_CLOUD0 - 0.5, SH - 300, 940, 0.66, 0.5)
+L.POSES["ham_up"] = dict(relb=(670, 820), rhand=(700, 690), rhand_t="grip")
+L.POSES["ham_dn"] = dict(relb=(690, 960), rhand=(800, 1010), rhand_t="grip")
+HITS = [T_CLOUD0 + 0.35 + k * 0.32 for k in range(8)]
+for k, th in enumerate(HITS):                                     # one swing = one tap, in sync
+    S.set(th - 0.2, "ham_up", "neutral", dur=0.14, look=(0.8, 0.2), turn=0.5, smile=0.4, brow=0.15)
+    S.set(th, "ham_dn", "neutral", dur=0.07, ease="snap", look=(0.8, 0.3), turn=0.5, smile=0.4, brow=0.15)
+    S.sfx(th, ("tap", "tok")[k % 2], 0.05)
+S.set(HITS[-1] + 0.3, "stand", "neutral", dur=0.3, look=(0.8, 0.0), turn=0.5, smile=0.4)
+S.sfx(T_CLOUD0, "poof", 0.06)
+S.set(T_CLOUD1 + 0.05, "stand", "neutral", dur=0.3, look=(0.8, -0.5), turn=0.3, smile=0.4, brow=0.3)
 S.sfx(T_CLOUD1, "pop", 0.12); S.sfx(T_CLOUD1 + 0.1, "ding", 0.05)
 S.set(T_CLOUD1 + 0.8, "stand", "neutral", dur=0.3, look=(0.0, 0.0), smile=0.5)
 
@@ -390,7 +405,7 @@ S.prop(page_flip)
 
 # ================================================================ cats
 def head_kitten(t):
-    return T_HEAD + 0.3 <= t and not (T_CLOUD0 + 0.2 <= t < T_CLOUD1 - 0.05) and not (CUT_ADOPT - FR <= t < CUT_MOM - FR) \
+    return T_HEAD + 0.3 <= t and not (CUT_ADOPT - FR <= t < CUT_MOM - FR) \
         and not (CUT_HUG - FR <= t < CUT_ASK - FR)
 
 def kitten(cr, t, p):
@@ -610,7 +625,7 @@ def extra(n):
     buf = np.zeros(n, np.float32)
     place(buf, meow(1300, 0.3), T_MEW, 0.35)
     place(buf, meow(1250, 0.35), T_POPUP + 0.1, 0.5)
-    place(buf, purr(T_LOOK - T_SMILE1 + 0.8), T_SMILE1 - 0.6, 0.35)
+    place(buf, meow(1350, 0.28), T_SMILE1 - 0.3, 0.25)
     rr = random.Random(5)
     for k in range(4): place(buf, meow(rr.uniform(800, 1200), 0.35), T_LOOK + 0.1 + k * 0.4, 0.25)
     place(buf, meow(900, 0.4), CUT_TREE + 0.3, 0.35)
@@ -618,7 +633,7 @@ def extra(n):
     for k in range(6): place(buf, meow(rr.uniform(800, 1300), 0.3), T_CAN + 0.1 + k * 0.07, 0.25)
     place(buf, meow(1000, 0.35), MUG_N[1] + 0.3, 0.25)
     place(buf, meow(1200, 0.35), T_MCAT + 0.3, 0.3)
-    place(buf, purr(CUT_ASK - CUT_HUG + 0.3), CUT_HUG, 0.4)
+    place(buf, meow(1300, 0.3), CUT_HUG + 0.5, 0.25)
     place(buf, meow(1300, 0.3), T_ASK + 7.5, 0.2)
     return buf * 0.5
 _orig_soften = L._soften
