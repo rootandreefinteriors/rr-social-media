@@ -17,13 +17,19 @@ You only read Buffer. **Never create, edit or delete a Buffer post.** The only f
   If you have several Buffer connectors, call `get_account` on each and use the one with that email.
 - **`nigel-bane/CATALOG.md`**: what each episode is: script, idea, how it addresses "you", prop, tension, visual
   device, hook, length, cover. Episodes are keyed by **caption word**, the last word of the post text.
+- **`nigel-bane/BIBLE.md`**: the series plan. What the show is, the hook test, the per-episode rules, the devices, and
+  the chapters: each chapter is a territory of questions about the viewer, with an idea bank (props, tension, hooks)
+  for the current chapter and seed ideas for later ones.
+- **`nigel-bane/LEDGER.md`**: what has been produced, day by day (idea, caption, length, window, prop, hook), plus the
+  fixed upcoming beats. Use it to see which day is next and which ideas and props are already used.
 - **`nigel-bane/reviews/`**: earlier briefings (`YYYY-MM-DD.md`) and raw numbers (`snapshots/YYYY-MM-DD.csv`). Read the
   most recent briefing first: did its recommendations get used, and did they help?
 
 ## 0. Setup
 - Run `git pull --ff-only`.
 - If this repository is not checked out (no `nigel-bane/` folder), fetch the inputs with curl:
-  - `https://raw.githubusercontent.com/rootandreefinteriors/rr-social-media/main/nigel-bane/CATALOG.md`
+  - `https://raw.githubusercontent.com/rootandreefinteriors/rr-social-media/main/nigel-bane/CATALOG.md` (and
+    `BIBLE.md`, `LEDGER.md` in the same folder)
   - the newest `reviews/` files, from the GitHub API listing `https://api.github.com/repos/rootandreefinteriors/rr-social-media/contents/nigel-bane/reviews`
 
   Then skip step 6 and say in the briefing that the repository was not attached.
@@ -147,6 +153,14 @@ scored, say whether their scores are higher than Days 1–16. Account for their 
 not just views.
 
 ## 5. Recommend
+Read BIBLE.md and LEDGER.md before writing this section. Work out the next day to be produced (the day after the last
+row in LEDGER's "Produced" table) and which chapter it falls in. Recommendations must fit that plan:
+- Episode ideas go in the current chapter's territory. Prefer adapting or re-ranking ideas already in its idea bank;
+  a new idea must sit in the same territory. Say which bank idea each suggestion builds on, or that it is new.
+- Don't re-pitch ideas, props or hooks the ledger shows are already used, and don't contradict the upcoming fixed beats
+  (dread days, prop arrivals and exits, chapter landings) unless you argue for moving one under "Plan changes".
+- If the data argues against something in the bible, put it under "Plan changes" with the evidence.
+
 Recommendations must respect the show's locked rules. If the data seems to argue against a locked rule, put it under
 **"Worth questioning"** with the evidence. Don't put it in the main list.
 
@@ -179,8 +193,8 @@ Recommendations must respect the show's locked rules. If the data seems to argue
   - the tension mechanism
   - the hook line
 - **Plan changes for the creator to consider:** 2–4 points on the series plan. Examples: chapter pacing, which devices to
-  repeat or retire, how often to run dread days, runtime, cover choice. The plan itself isn't in this repository; the
-  creator applies these.
+  repeat or retire, how often to run dread days, runtime, cover choice. Name the BIBLE.md section each one would change.
+  Don't edit BIBLE.md or LEDGER.md yourself; the creator keeps the master copies and applies these.
 - **Worth questioning:** 0–2 bullets, only with real evidence.
 
 ## 6. Save and publish the report
