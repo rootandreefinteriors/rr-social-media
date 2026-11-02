@@ -154,12 +154,16 @@ not just views.
 
 ## 5. Recommend
 Read BIBLE.md and LEDGER.md before writing this section. Work out the next day to be produced (the day after the last
-row in LEDGER's "Produced" table) and which chapter it falls in. Recommendations must fit that plan:
-- Episode ideas go in the current chapter's territory. Prefer adapting or re-ranking ideas already in its idea bank;
-  a new idea must sit in the same territory. Say which bank idea each suggestion builds on, or that it is new.
-- Don't re-pitch ideas, props or hooks the ledger shows are already used, and don't contradict the upcoming fixed beats
-  (dread days, prop arrivals and exits, chapter landings) unless you argue for moving one under "Plan changes".
-- If the data argues against something in the bible, put it under "Plan changes" with the evidence.
+row in LEDGER's "Produced" table) and which chapter it falls in. By default, recommendations fit that plan:
+- Episode ideas go in the current chapter's territory, adapting or re-ranking ideas already in its idea bank or adding
+  new ones in the same territory. Say which bank idea each suggestion builds on, or that it is new.
+- Don't re-pitch ideas, props or hooks the ledger shows are already used, and keep the upcoming fixed beats (dread days,
+  prop arrivals and exits, chapter landings).
+
+You may go further than that (a different territory, moving or dropping a fixed beat, reworking a chapter, changing
+something in the bible) only with a nearly irrefutable reason: strong, consistent evidence across several episodes and
+ideally both platforms, not one outlier or a low-confidence pattern. Put any such change under "Plan changes", mark it
+as a departure from the plan, and lay out the evidence and why the plan as written can't get the same result.
 
 Recommendations must respect the show's locked rules. If the data seems to argue against a locked rule, put it under
 **"Worth questioning"** with the evidence. Don't put it in the main list.
