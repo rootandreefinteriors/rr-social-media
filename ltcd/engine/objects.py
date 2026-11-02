@@ -2050,3 +2050,231 @@ def draw_beam(cr, src, tgt, width=320, alpha=1.0, locked=0.0):
     for a, b in ((pts[0], pts[1]), (pts[3], pts[2])):
         cr.move_to(*a); cr.line_to(*b); cr.set_source_rgba(*col, 0.7 * alpha); cr.set_line_width(6); cr.stroke()
     sketch_ellipse(cr, tgt[0], tgt[1], w, w * 0.45, 0.1, sid=9940, fill=col, alpha=(0.25 + 0.25 * locked) * alpha)
+
+
+# ---------------------------------------------------------------- cats (day 11): cats, a little cat shelter, a giant cat tower
+CAT_COLS = dict(
+    black=((0.17, 0.16, 0.18), (1.0, 0.82, 0.18)),          # (fur, eyes)
+    orange=((0.96, 0.62, 0.26), (0.55, 0.80, 0.30)),
+    grey=((0.64, 0.64, 0.68), (0.95, 0.80, 0.25)),
+    white=((0.98, 0.97, 0.95), (0.40, 0.70, 0.95)),
+    cream=((0.95, 0.86, 0.66), (0.55, 0.78, 0.35)),
+    brown=((0.60, 0.44, 0.30), (0.95, 0.78, 0.22)),
+)
+CAT_KINDS = ("orange", "grey", "black", "white", "cream", "brown")
+PINK = (0.96, 0.62, 0.66)
+
+def _cat_ear(cr, a, b, c, fur, sid):
+    sketch_poly(cr, [a, b, c], 4, sid=sid, fill=fur, amp=0.4)
+    mx, my = (a[0] + b[0] + c[0]) / 3, (a[1] + b[1] + c[1]) / 3
+    q = [lerp(p_, (mx, my), 0.45) for p_ in (a, b, c)]
+    cr.move_to(*q[0]); cr.line_to(*q[1]); cr.line_to(*q[2]); cr.close_path(); cr.set_source_rgb(*PINK); cr.fill()
+
+def cat_face(cr, hx, hy, r, col="orange", look=(0.0, 0.0), blink=0.0, hiss=0.0, glow=0.0, sid=0, ears=True, stripes=None,
+             eye_open=1.0):
+    """a front-facing cat head centred (hx, hy), radius r: ears, slit-pupil eyes, pink nose, whiskers.
+    blink 0..1 closes the eyes (slow blink), hiss 0..1 opens the mouth, glow 0..1 makes the eyes burn."""
+    fur, eye = CAT_COLS.get(col, CAT_COLS["orange"])
+    if ears:
+        _cat_ear(cr, (hx - r * 0.95, hy - r * 0.35), (hx - r * 0.78, hy - r * 1.35), (hx - r * 0.2, hy - r * 0.85), fur, sid + 1)
+        _cat_ear(cr, (hx + r * 0.2, hy - r * 0.85), (hx + r * 0.78, hy - r * 1.35), (hx + r * 0.95, hy - r * 0.35), fur, sid + 2)
+    sketch_ellipse(cr, hx, hy, r * 1.08, r * 0.92, 4, sid=sid + 3, fill=fur)
+    if stripes or col in ("orange", "brown", "grey"):
+        for k in (-1, 0, 1):
+            sketch_line(cr, [(hx + k * r * 0.22, hy - r * 0.9), (hx + k * r * 0.18, hy - r * 0.6)], max(2.0, r * 0.07), sid=sid + 4 + k,
+                        color=lerp(fur, INK, 0.45))
+    ink = (0.95, 0.93, 0.9) if col == "black" else INK
+    ey = hy - r * 0.08
+    for side in (-1, 1):
+        ex = hx + side * r * 0.42
+        cr.new_path(); rx, ry = r * 0.27, r * 0.31 * eye_open
+        cr.save(); cr.translate(ex, ey); cr.scale(1.0, max(0.02, 1 - blink)); cr.arc(0, 0, rx, 0, 2 * math.pi); cr.restore()
+        cr.set_source_rgb(*lerp(eye, (1.0, 0.95, 0.4), glow)); cr.fill_preserve(); stroke_ink(cr, max(2.0, r * 0.06))
+        if blink < 0.85:
+            px, py = ex + look[0] * rx * 0.35, ey + look[1] * ry * 0.3
+            cr.save(); cr.translate(px, py); cr.scale(0.22 + 0.5 * hiss, (1 - blink) * 0.85); cr.arc(0, 0, ry, 0, 2 * math.pi); cr.restore()
+            fill_ink(cr); cr.new_path()
+            if glow > 0.05:
+                cr.arc(ex, ey, rx * (1.5 + 0.3 * glow), 0, 2 * math.pi); cr.set_source_rgba(1.0, 0.7, 0.2, 0.25 * glow); cr.fill()
+        else:
+            sketch_line(cr, [(ex - rx, ey), (ex, ey + rx * 0.35), (ex + rx, ey)], max(2.0, r * 0.07), sid=sid + 8 + side, color=ink)
+    nx, ny = hx, hy + r * 0.28
+    cr.move_to(nx - r * 0.12, ny - r * 0.06); cr.line_to(nx + r * 0.12, ny - r * 0.06); cr.line_to(nx, ny + r * 0.08); cr.close_path()
+    cr.set_source_rgb(*PINK); cr.fill()
+    if hiss > 0.05:
+        cr.save(); cr.translate(nx, ny + r * 0.32); cr.scale(1.0, 0.4 + 0.9 * hiss); cr.arc(0, 0, r * 0.26, 0, 2 * math.pi); cr.restore()
+        cr.set_source_rgb(0.45, 0.08, 0.1); cr.fill_preserve(); stroke_ink(cr, max(2.0, r * 0.05))
+        for side in (-1, 1):                                             # fangs
+            cr.move_to(nx + side * r * 0.15, ny + r * 0.2); cr.line_to(nx + side * r * 0.09, ny + r * 0.36); cr.line_to(nx + side * r * 0.03, ny + r * 0.2)
+            cr.close_path(); cr.set_source_rgb(1, 1, 1); cr.fill()
+    else:
+        sketch_line(cr, [(nx - r * 0.22, ny + r * 0.2), (nx - r * 0.1, ny + r * 0.26), (nx, ny + r * 0.1), (nx + r * 0.1, ny + r * 0.26),
+                         (nx + r * 0.22, ny + r * 0.2)], max(2.0, r * 0.05), sid=sid + 12, color=ink, amp=0.4)
+    for side in (-1, 1):
+        for k in (-1, 0, 1):
+            sketch_line(cr, [(hx + side * r * 0.45, ny + r * 0.05 + k * r * 0.1), (hx + side * r * 1.35, ny - r * 0.05 + k * r * 0.22)],
+                        max(1.5, r * 0.035), sid=sid + 14 + k + 3 * (side > 0), color=ink, amp=0.4)
+
+def _cat_tail(cr, pts, fur, w, sid, puff=0.0):
+    w = w * (1 + 1.4 * puff)
+    cr.set_line_cap(cairo.LINE_CAP_ROUND); cr.set_line_join(cairo.LINE_JOIN_ROUND)
+    path(cr, pts); stroke_ink(cr, w + 8); path(cr, pts); stroke_ink(cr, w, fur)
+
+def draw_cat(cr, x, yb, s=1.0, t=0.0, kind="sit", col="orange", face=1, look=(0.0, 0.0), blink=0.0, phase=0.0, puff=0.0,
+             hiss=0.0, glow=0.0, sid=0, swish=1.0, alpha=1.0, tilt=0.0):
+    """a cartoon cat standing on (x, yb). kind: "sit" (front, tail curled), "loaf" (tucked in), "walk"/"run" (side view,
+    facing `face` = +1 right / -1 left, legs cycling with `phase`), "puff" (side view, arched back, fur up, hissing),
+    "fall" (spread out, mid-air). ~200 px tall sitting at s=1."""
+    fur, _ = CAT_COLS.get(col, CAT_COLS["orange"])
+    cr.save(); cr.translate(x, yb); cr.rotate(tilt); cr.scale(s, s)
+    if alpha < 0.999: cr.push_group()
+    sw = math.sin(t * 2.6 + sid) * swish
+    if kind in ("sit", "loaf"):
+        if kind == "sit":
+            _cat_tail(cr, [(-30, -14), (-80, -18), (-102, -50), (-96 + 10 * sw, -100), (-80 + 22 * sw, -128)], fur, 16, sid)
+            sketch_ellipse(cr, 0, -62, 54, 64, 4, sid=sid + 20, fill=fur)
+            sketch_ellipse(cr, 0, -48, 26, 34, 0.1, sid=sid + 21, fill=lerp(fur, (1, 1, 1), 0.35))
+            for side in (-1, 1): sketch_ellipse(cr, side * 20, -8, 18, 10, 4, sid=sid + 22 + (side > 0), fill=fur)
+            cat_face(cr, 3, -146, 48, col, look, blink, hiss, glow, sid + 30)
+        else:
+            _cat_tail(cr, [(40, -10), (75, -6), (90, -20)], fur, 14, sid)
+            sketch_ellipse(cr, 0, -40, 72, 42, 4, sid=sid + 20, fill=fur)
+            cat_face(cr, -18, -88, 42, col, look, blink, hiss, glow, sid + 30)
+    elif kind == "fall":
+        for k, (ax, ay) in enumerate(((-60, -40), (60, -40), (-50, -110), (50, -110))):
+            sketch_line(cr, [(0, -80), (ax * 1.2, ay - 10)], 14, sid=sid + 40 + k)
+        _cat_tail(cr, [(0, -60), (-20, 10), (10, 40 + 10 * sw)], fur, 14, sid)
+        sketch_ellipse(cr, 0, -80, 50, 56, 4, sid=sid + 20, fill=fur)
+        cat_face(cr, 0, -150, 44, col, look, blink, hiss, glow, sid + 30)
+    else:                                                                       # side view: walk / run / puff
+        cr.scale(face, 1)
+        run = 1.0 if kind == "run" else 0.0
+        arch = puff
+        by = -86 - 30 * arch - 8 * run * abs(math.sin(phase))
+        amp = 26 + 30 * run
+        for k, (lx, ph) in enumerate(((-52, 0.0), (48, math.pi), (-40, math.pi), (60, 0.0))):
+            fx = lx + amp * math.sin(phase + ph) * (1 - arch); fy = -6 * max(0.0, math.cos(phase + ph)) * (1 + run)
+            col_l = lerp(fur, INK, 0.25) if k < 2 else fur
+            cr.set_line_cap(cairo.LINE_CAP_ROUND)
+            path(cr, [(lx * 0.8, by + 10), (fx, fy - 6)]); stroke_ink(cr, 22); path(cr, [(lx * 0.8, by + 10), (fx, fy - 6)]); stroke_ink(cr, 14, col_l)
+        tail_up = 1.0 - 0.6 * run
+        _cat_tail(cr, [(-70, by - 4), (-112, by - 40 * tail_up - 10), (-120 + 10 * sw, by - 100 * tail_up), (-104 + 18 * sw, by - 140 * tail_up)],
+                  fur, 16, sid, puff=puff)
+        body = []
+        for i in range(25):
+            a = 2 * math.pi * i / 24
+            rx, ry = 82, 42
+            bx, byy = rx * math.cos(a), ry * math.sin(a) - (36 * arch * math.cos(a / 2) ** 8 if math.sin(a) < 0 else 0)
+            if arch > 0.02 and math.sin(a) < 0:                                 # fur standing up on the back
+                spike = 14 * arch * (1 if i % 2 else -0.3)
+                bx, byy = bx * (1 + spike / 90), byy - spike
+            body.append((bx, by + byy))
+        sketch_poly(cr, body, 4, sid=sid + 20, fill=fur, amp=0.3)
+        hx_, hy_ = 86, by - 34 - 10 * arch
+        cr.save(); cr.translate(hx_, hy_); cr.scale(face, 1)            # face stays readable (un-mirror the face)
+        cat_face(cr, 0, 0, 40, col, look=(0.5 * face + look[0], look[1]), blink=blink, hiss=hiss, glow=glow, sid=sid + 30)
+        cr.restore()
+    if alpha < 0.999: cr.pop_group_to_source(); cr.paint_with_alpha(alpha)
+    cr.restore()
+
+def draw_cat_shelter(cr, x, yb=FLOOR_Y, t=0.0, bulge=0.0, heads=0, s=1.0, sign="CAT SHELTER"):
+    """a little stone cat shelter (built from a tower chunk): dark stone-block walls, a pitched roof, a round cat door,
+    a plank sign on the roof. bulge 0..1 = over capacity (walls swell + wobble, cracks); heads = cat heads poking out."""
+    w, hw, rh = 330 * s, 230 * s, 170 * s
+    sx = 1 + bulge * (0.20 + 0.06 * math.sin(t * 31))
+    sy = 1 + bulge * (0.10 + 0.04 * math.sin(t * 27 + 1))
+    cr.save(); cr.translate(x, yb); cr.scale(sx, sy)
+    stone = (0.24, 0.21, 0.22)
+    sketch_rect(cr, -w / 2, -hw, w / 2, 0, 6, sid=9960, fill=stone)
+    for row in range(4):                                                       # stone blocks
+        yy = -hw + row * hw / 4
+        sketch_line(cr, [(-w / 2, yy), (w / 2, yy)], 3, sid=9961 + row, color=(0.45, 0.42, 0.42))
+        off = (row % 2) * w / 6
+        for k in range(4):
+            xx = -w / 2 + off + k * w / 3
+            if -w / 2 < xx < w / 2: sketch_line(cr, [(xx, yy), (xx, yy + hw / 4)], 3, sid=9965 + k, color=(0.45, 0.42, 0.42))
+    roof = [(-w / 2 - 40 * s, -hw + 4), (0, -hw - rh), (w / 2 + 40 * s, -hw + 4)]
+    sketch_poly(cr, roof, 6, sid=9970, fill=(0.16, 0.13, 0.14))
+    cr.move_to(-62 * s, 0); cr.line_to(-62 * s, -70 * s); cr.arc(0, -70 * s, 62 * s, math.pi, 2 * math.pi); cr.line_to(62 * s, 0); cr.close_path()
+    cr.set_source_rgb(0.05, 0.04, 0.05); cr.fill_preserve(); stroke_ink(cr, 5)
+    wx, wy = 105 * s, -150 * s                                                 # window
+    sketch_rect(cr, wx - 38 * s, wy - 34 * s, wx + 38 * s, wy + 34 * s, 5, sid=9971, fill=(0.05, 0.04, 0.05))
+    pw, ph = 290 * s, 60 * s                                                   # the plank sign on the roof
+    py = -hw - rh * 0.42
+    sketch_rect(cr, -pw / 2, py - ph / 2, pw / 2, py + ph / 2, 5, sid=9972, fill=(0.85, 0.66, 0.40))
+    draw_text(cr, sign, 0, py, 30 * s, max_w=pw - 16)
+    if bulge > 0.45:                                                           # cracks
+        k = (bulge - 0.45) / 0.55
+        for q in ([(-w / 2, -hw * 0.7), (-w / 2 + 60 * k, -hw * 0.6), (-w / 2 + 40 * k, -hw * 0.4), (-w / 2 + 110 * k, -hw * 0.3)],
+                  [(w / 2, -hw * 0.3), (w / 2 - 70 * k, -hw * 0.45), (w / 2 - 50 * k, -hw * 0.65)],
+                  [(-20, -hw - rh * 0.9), (10, -hw - rh * 0.7), (-15, -hw - rh * 0.55)]):
+            sketch_line(cr, q, 4, sid=9975)
+    spots = [(0, -40 * s, 34), (wx, wy, 26), (-90 * s, -hw - 40 * s, 30), (60 * s, -hw - 100 * s, 28), (-150 * s, -60 * s, 26),
+             (150 * s, -40 * s, 26), (-40 * s, -hw - 140 * s, 26), (0, -150 * s, 0)]
+    for i in range(min(heads, len(spots) - 1)):
+        hx, hy, r = spots[i]
+        bob = 6 * math.sin(t * 7 + i * 2.1)
+        cat_face(cr, hx, hy + bob, r * s, CAT_KINDS[i % len(CAT_KINDS)], look=(0.3 * math.sin(t + i), 0.0), sid=9980 + i * 20)
+    cr.restore()
+
+def draw_hammer(cr, x, y, s=1.0, ang=0.0):
+    """a cartoon claw hammer; (x, y) = where the hand grips the handle."""
+    cr.save(); cr.translate(x, y); cr.rotate(ang); cr.scale(s, s)
+    sketch_rect(cr, -11, -150, 11, 40, 5, sid=9990, fill=(0.80, 0.60, 0.36))
+    sketch_poly(cr, [(-70, -190), (52, -190), (52, -138), (-30, -138), (-70, -150)], 5, sid=9991, fill=(0.55, 0.57, 0.62))
+    sketch_poly(cr, [(52, -186), (96, -210), (82, -168), (52, -150)], 4, sid=9992, fill=(0.55, 0.57, 0.62))
+    cr.restore()
+
+# the giant cat tower: platform tops (dx, dy from the base, half width) - cats sit on these
+CAT_TOWER_PLATFORMS = [(-250, -380, 150), (240, -560, 150), (-240, -790, 140), (230, -990, 130), (0, -1190, 120),
+                       (-470, -1090, 110), (0, -120, 300)]
+CAT_TOWER_LEDGE = (-470, -1090)            # the small high ledge on the left where the burnt-out eyeball sits
+
+def cat_tower_spots(x, yb=FLOOR_Y):
+    """(world x, world y) seats for cats, filled in order (the top seat between the horns is index 0 ... kept for the kitten)."""
+    out = [(x, yb - 1190)]
+    for dx, dy, hw in CAT_TOWER_PLATFORMS[:4]:
+        n = 3 if hw >= 140 else 2
+        for k in range(n):
+            out.append((x + dx + (k - (n - 1) / 2) * hw * 0.62, yb + dy))
+    for k in range(6): out.append((x - 250 + k * 100, yb - 120))
+    return out
+
+def draw_cat_tower(cr, x, yb=FLOOR_Y, t=0.0, sign="CAT SHELTER", hammer=True):
+    """the old eye tower rebuilt as a giant cat tree: rope-wrapped scratching trunk, carpeted platforms on posts, cubby
+    boxes with round holes, dangling toy mice, the two black horns on top with a cushion between them, a sign at the base."""
+    rope, rope_d = (0.88, 0.76, 0.56), (0.66, 0.52, 0.34)
+    carpet, carpet_d = (0.56, 0.50, 0.64), (0.42, 0.37, 0.50)
+    top = yb - 1190
+    for sx in (-1, 1):                                                         # the old horns, now holding the top cushion
+        horn = [(x + sx * 90, top + 20), (x + sx * 150, top - 60), (x + sx * 120, top - 260), (x + sx * 200, top - 70), (x + sx * 170, top + 30)]
+        sketch_poly(cr, horn, 6, sid=9811 + (sx > 0), fill=(0.12, 0.10, 0.11), amp=0.3)
+    tw = 70
+    sketch_rect(cr, x - tw, top + 20, x + tw, yb - 120, 6, sid=10000, fill=rope)  # rope-wrapped trunk
+    yy = top + 40
+    while yy < yb - 130:
+        sketch_line(cr, [(x - tw + 4, yy + 16), (x + tw - 4, yy)], 4, sid=10001 + int(yy) % 7, color=rope_d, amp=0.6)
+        yy += 30
+    for i, (dx, dy, hw) in enumerate(CAT_TOWER_PLATFORMS[:4] + [CAT_TOWER_PLATFORMS[5]]):
+        px, py = x + dx, yb + dy
+        if abs(dx) > tw:                                                       # arm from the trunk to the platform
+            sx = 1 if dx > 0 else -1
+            sketch_rect(cr, min(x, px), py + 34, max(x, px), py + 62, 5, sid=10010 + i, fill=rope_d)
+        sketch_rect(cr, px - 26, py + 40, px + 26, py + 220 if i < 4 else py + 120, 5, sid=10020 + i, fill=rope)   # post
+        sketch_rect(cr, px - hw, py, px + hw, py + 40, 6, sid=10030 + i, fill=carpet)
+        sketch_line(cr, [(px - hw + 8, py + 8), (px + hw - 8, py + 8)], 3, sid=10040 + i, color=carpet_d)
+        if i in (0, 3):                                                        # dangling toy mouse
+            mx = px + (hw - 20) * (1 if dx > 0 else -1); sw = 0.35 * math.sin(t * 2.2 + i)
+            ex, ey = mx + 120 * math.sin(sw), py + 40 + 120 * math.cos(sw)
+            sketch_line(cr, [(mx, py + 40), (ex, ey)], 3, sid=10050 + i)
+            sketch_ellipse(cr, ex, ey + 18, 16, 22, 3, sid=10055 + i, fill=(0.72, 0.72, 0.76))
+    for i, (bx, by, bw, bh) in enumerate(((x + 170, yb - 120, 200, 170), (x - 330, yb - 560, 180, 150))):   # cubby boxes
+        sketch_rect(cr, bx - bw / 2, by - bh, bx + bw / 2, by, 6, sid=10060 + i, fill=carpet)
+        sketch_circle(cr, bx, by - bh / 2, bh * 0.3, 5, sid=10062 + i, fill=(0.08, 0.06, 0.08))
+    sketch_ellipse(cr, x, top + 6, 140, 34, 6, sid=10070, fill=(0.85, 0.30, 0.30))   # top cushion
+    if hammer:                                                                 # the hammer, stuck in the trunk
+        draw_hammer(cr, x + 60, yb - 330, s=0.9, ang=1.9)
+    bw, bh = 600, 120                                                          # carpeted base + the sign
+    sketch_rect(cr, x - bw / 2, yb - bh, x + bw / 2, yb, 6, sid=10080, fill=carpet_d)
+    sketch_rect(cr, x - 230, yb - 112, x + 230, yb - 16, 5, sid=10081, fill=(0.85, 0.66, 0.40))
+    draw_text(cr, sign, x, yb - 64, 62, max_w=430)
