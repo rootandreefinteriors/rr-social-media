@@ -21,18 +21,16 @@
   "ask_since_day": 11,
   "waiting_streak": 0,
   "world": {
-    "location": "MORDOR, at the foot of the giant CAT TOWER (the old eye tower rebuilt as a cat tree, day 11). O.draw_dark_land_world(cr, t, x0=24900, x1=45000, volcano=(34200, 3600, 3400), gate=27600, tower=None) + O.draw_cat_tower(cr, 32600, FLOOR_Y, t) (cats seated on O.cat_tower_spots; the black kitten on the top cushion between the horns). The black gate's doors now stand open. Body offset 31420 (x 31960); ask camera (32140, 880, 0.66), push=False. The giant eagle stands at x 31180 (O.draw_eagle s=0.8). The burnt-out eyeball lies at x ~31630 (left of him). Rubble of the little stone shelter at x 31990. ~20 cats sit around on the ground.",
+    "location": "A SUNNY LITTLE TOWN right of Mordor (day 11; Mordor is over, never go back): O.draw_town_world(cr, t, x0=33400, x1=40000) (blue sky bands, sun, clouds, green hills, pastel houses, grass + pale sidewalk), O.draw_tree(cr, 36950, FLOOR_Y, t, h=1900), the CAT RESCUE SHELTER O.draw_rescue_shelter(cr, 35700, FLOOR_Y, t, window_cats=3, banner='ADOPTION DAY') (35200-36200, door at 35700), the FREE KITTEN box O.draw_box(cr, 34800, FLOOR_Y + 20, label='FREE KITTEN'). Body offset 34560 (x 35100), the black kitten loafing on his head (O.draw_cat kind='loaf' col='black' s 0.62 at head - 104). Ask camera (35300, 1000, 0.98). Next episode: he walks out to the right into a new world.",
     "companions": [
-      "the giant eagle (O.draw_eagle, s 0.8) at his left",
-      "the cats: a colony of ~45 cartoon cats (O.draw_cat, colours O.CAT_KINDS) living in the cat tower + around it; the tiny black kitten (O.draw_cat col='black', s 0.7) is the boss - it sits on top where the Eye was (glowing slit eyes) and knocks things off ledges"
+      "the black kitten (O.draw_cat col='black', s 0.62): he adopted it; it lives on his head (if it fits, it sits). It slow-blinks at him.",
+      "left behind in Mordor (never going back): the giant eagle"
     ],
     "props": [
-      "the CAT TOWER (O.draw_cat_tower at x 32600): rope trunk, carpeted platforms, cubbies, toy mice, the old horns on top, sign CAT SHELTER, the hammer stuck in the trunk",
-      "the burnt-out giant eyeball (dud) lying on the ground left of him (it fell on him from the tower ledge)",
-      "rubble of the little stone cat shelter (burst over capacity) at x 31990",
-      "the RING IS DESTROYED (day 10). Never bring it back.",
-      "his whistle (summons the eagle); the black gate (ONE DOES NOT SIMPLY WALK INTO MORDOR), doors open; the volcano",
-      "far behind (never going back): green hill, the airfield, the burger place"
+      "the CAT RESCUE SHELTER he built (rescued cats inside, ADOPTION DAY banner; inside: ADOPT ME board, cat condos, bowls, a fancy bed nobody uses + its box)",
+      "the hammer (pulled from his hip)",
+      "the RING IS DESTROYED (day 10)",
+      "far behind (never going back): Mordor, green hill, the airfield, the burger place"
     ],
     "traits": [
       "beat the block game on hardcore with half a heart (day 4)",
@@ -42,9 +40,9 @@
       "flew a plane (day 8): took off from the FLIGHT SCHOOL airfield, looped until he went green, climbed out of the atmosphere into space, puked a zero-g blob (back to normal), fell back down on fire and planted the plane nose-first in the field; the flaming puke landed next to him. He looks completely normal again (no soot, no tint).",
       "went to green hill (day 9): collected rings deadpan, ran until his legs were a blur wheel, ran a giant loop, RINGS 999, blasted past the GOAL sign and skidded to a stop; victory stance with a peace sign; the most harmless little ladybug robot puttered up, poked him and knocked him flat on his back; every ring burst out of him (RINGS 0). Looks normal.",
       "took the ring to mordor (day 10, re-cut 2): snatched the last ring on green hill, ran to the black gate (ONE DOES NOT SIMPLY WALK INTO MORDOR), whistled up a giant eagle; when the eye's searchlight closed in he put the ring on and went invisible, so the beam locked on the eagle carrying a floating ring, and the eagle dropped him into the volcano; he dropped the ring into the lava and nearly went in after it (speed-game reflex), it melted; the eye blew up, the tower fell, the volcano fired him out into the rubble; the eagle showed up after it was all over. He lives in Mordor now. Looks normal.",
-      "built a cat shelter and was happy about it (day 11): a kitten showed up, his forced grin made it hiss, he hammered a tower chunk into a little stone CAT SHELTER, cats flooded through the black gate (they simply walked into Mordor), buried him to the neck and stacked on his head, the shelter burst (every cat landed on its feet), he rebuilt the whole eye tower into a giant cat tower, the kitten took the top (the new Eye) and slow-blinked at him, he finally smiled for real - then the kitten pushed the eyeball off the ledge onto him. He got up still smiling. Looks normal."
+      "built a CAT RESCUE SHELTER and was happy about it (day 11, re-cut): ran out of Mordor into a sunny town, found a black kitten in a FREE KITTEN box (slow blinks), built the shelter, rescued a cat from a tree and a line of kittens, fed them (one can - every head turned), they chose the box over the fancy bed, a cat pushed his mug off the shelf (he caught it), on adoption day the mom from day 6 adopted the orange cat, he stamped ADOPTED on every photo - the last was the kitten's, so he adopted it. Real smile. It rides on his head now. Looks normal."
     ],
-    "notes": "Day 11: comment episode (cats). Never go back; keep the cats as a colony (can be thinned by cartoon consequences)."
+    "notes": "Day 11 re-cut on Justin's notes: every episode moves on to a new world; match the comment's tone (wholesome = warm, no harm to animals); real-world meaning; donation line for helping requests."
   },
   "used_comments": [
     "Beat Mc in hardcore mode:)",
@@ -110,7 +108,7 @@
     {
       "day": 11,
       "type": "comment",
-      "summary": "@angela.tgz (IG): 'Build a cat shelter and be happy about it' -> a black kitten pads in; his forced dead-eyed grin makes it hiss; hammer from his hip; build cloud turns the tower chunk into a little stone CAT SHELTER; the kitten moves in; stiff thumbs-up; rumble - the black gate opens and a flood of cats simply walks into Mordor (one sits on the sign); the wave buries him to the neck, cats loaf on the eagle, a 7-cat stack grows on his head while his smile gets wider and twitchier; the over-full shelter bursts, every cat lands on its feet; he runs into a giant build cloud and turns the ruined eye tower into a giant CAT TOWER; cats fill it; the kitten takes the top where the Eye was (glowing slit eyes, ring of fire), slow-blinks; he slow-blinks back and finally smiles for real; the kitten nudges the burnt-out eyeball off the ledge while staring at him - bonk; he gets up still smiling; ask with the smile stuck on (~66 s)"
+      "summary": "@angela.tgz (IG): 'Build a cat shelter and be happy about it' -> RE-CUT on Justin's notes: reads it in Mordor, hears a mew, runs right into a sunny town; a black kitten in a FREE KITTEN box; slow blinks; he picks it up, stiff smile, it purrs, the smile softens; strays everywhere; the kitten climbs onto his head; hammer; build cloud -> CAT RESCUE SHELTER; rescues a tree cat and a line of kittens; inside: the can (every head turns), the box over the fancy bed, the mug pushed off the shelf (caught); ADOPTION DAY - the mom adopts the orange cat; he stamps ADOPTED on every photo, the last is the kitten's - he adopts it, hug, real smile; ask: TO HELP SAVE REAL CATS, PLEASE DONATE TO THE CAT HOUSE ON THE KINGS AT CATHOUSEONTHEKINGS.COM -> page flip -> TELL ME WHAT TO DO NEXT IN THE COMMENTS (68.3 s)"
     }
   ]
 }

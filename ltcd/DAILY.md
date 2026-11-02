@@ -33,6 +33,12 @@ git config user.name "Claude (LTCD routine)"; git config user.email "noreply@ant
   ("Qualifies only if all true" + "Don't get trolled") wins. Write down why each higher-ranked one was skipped.
 - No winner → this is a **waiting episode**.
 
+## 2a. Tone + place check (user, 2026-11-02)
+- The new episode happens in a NEW world: he leaves the last world to the right in the first seconds (SHOW.md "EVERY
+  EPISODE MOVES ON"). Never stage the episode in the previous setting.
+- Read the comment's tone. Wholesome/animal/kindness requests = warm, cute, no harm to animals; take the request at its
+  real-world meaning (a cat shelter = a rescue shelter). Helping requests end with a real donation line (SHOW.md).
+
 ## 2b. Write the beat sheet FIRST and pass the gate (user, 2026-11-01 - day 10 needed two re-cuts)
 Before any code, write `ltcd/episodes/epNNN/BEATS.md`: one line per beat with its time (s), what happens, and WHY it
 happens (what causes it in the story). Then check every line below. If any answer is "no", rewrite the beats - do not

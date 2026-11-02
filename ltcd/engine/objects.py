@@ -2278,3 +2278,168 @@ def draw_cat_tower(cr, x, yb=FLOOR_Y, t=0.0, sign="CAT SHELTER", hammer=True):
     sketch_rect(cr, x - bw / 2, yb - bh, x + bw / 2, yb, 6, sid=10080, fill=carpet_d)
     sketch_rect(cr, x - 230, yb - 112, x + 230, yb - 16, 5, sid=10081, fill=(0.85, 0.66, 0.40))
     draw_text(cr, sign, x, yb - 64, 62, max_w=430)
+
+
+# ---------------------------------------------------------------- the sunny town + the CAT RESCUE SHELTER (day 11 re-cut)
+TOWN_SKY = ((0.80, 0.91, 0.99), (0.52, 0.76, 0.96))
+TOWN_GRASS = (0.62, 0.82, 0.45)
+WALK = (0.86, 0.85, 0.82)
+SHELTER_WALL = (0.99, 0.93, 0.80)
+SHELTER_ROOF = (0.80, 0.36, 0.30)
+SHELTER_DOOR = (0.38, 0.62, 0.46)
+
+def _house(cr, x, yb, w, h, col, sid):
+    sketch_rect(cr, x - w / 2, yb - h, x + w / 2, yb, 5, sid=sid, fill=col)
+    sketch_poly(cr, [(x - w / 2 - 30, yb - h + 4), (x, yb - h - w * 0.45), (x + w / 2 + 30, yb - h + 4)], 5, sid=sid + 1, fill=(0.72, 0.42, 0.36))
+    for k in (-1, 1):
+        sketch_rect(cr, x + k * w * 0.22 - 34, yb - h * 0.7, x + k * w * 0.22 + 34, yb - h * 0.7 + 64, 4, sid=sid + 2 + k, fill=(0.90, 0.96, 1.0))
+    sketch_rect(cr, x - 36, yb - 130, x + 36, yb, 4, sid=sid + 5, fill=(0.60, 0.44, 0.32))
+
+def draw_town_world(cr, t, x0=33400, x1=60000, yb=FLOOR_Y):
+    """a sunny little town right of x0: soft blue sky (solid bands), sun, clouds, green hills, pastel houses, grass and a
+    pale sidewalk as the floor. Nothing drawn left of x0."""
+    vx0, vy0, vx1, vy1 = _visible(cr)
+    a, b = max(x0, vx0), min(x1, vx1)
+    if b <= a: return
+    cr.save(); cr.rectangle(x0, vy0 - 10, x1 - x0, vy1 - vy0 + 20); cr.clip()
+    top = min(vy0, yb - 200)
+    for k in range(30):
+        y_hi = yb - 300 - (k + 1) * 120; y_lo = yb - 300 - k * 120 if k else yb + 10
+        if k == 29: y_hi = min(y_hi, top - 10)
+        cr.rectangle(a, y_hi, b - a, y_lo - y_hi + 1); cr.set_source_rgb(*lerp(TOWN_SKY[0], TOWN_SKY[1], min(1.0, k / 12))); cr.fill()
+    sx = x0 + 2600
+    if a - 400 < sx < b + 400:
+        sketch_circle(cr, sx, yb - 1500, 120, 6, sid=10100, fill=(1.0, 0.86, 0.35))
+    for k in range(int((a - x0) // 900) - 1, int((b - x0) // 900) + 2):
+        draw_cloud(cr, x0 + k * 900 + 200 + 30 * math.sin(t * 0.2 + k), yb - 1250 - 160 * (k % 3), s=0.9 + 0.2 * (k % 2))
+    step = 520
+    k0, k1 = int((a - x0) // step) - 1, int((b - x0) // step) + 2
+    pts = [(x0 + k0 * step, yb + 10)]
+    for k in range(k0, k1 + 1):
+        pts.append((x0 + k * step, yb - 330 - 90 * ((k * 3) % 4) / 3)); pts.append((x0 + (k + 0.5) * step, yb - 300))
+    pts.append((x0 + (k1 + 1) * step, yb + 10))
+    sketch_poly(cr, pts, 5, sid=10101, fill=(0.70, 0.86, 0.55), amp=0.3)
+    cols = ((0.98, 0.84, 0.80), (0.82, 0.90, 0.98), (0.99, 0.95, 0.76), (0.86, 0.94, 0.84))
+    for k in range(int((a - x0) // 1300) - 1, int((b - x0) // 1300) + 2):
+        hx = x0 + 650 + k * 1300
+        if k % 3 == 1: continue                                           # gaps between houses
+        _house(cr, hx, yb - 120, 420, 360, cols[k % 4], 10110 + (k % 5) * 6)
+    cr.rectangle(a, yb - 120, b - a, 120); cr.set_source_rgb(*TOWN_GRASS); cr.fill()
+    sketch_line(cr, [(a, yb - 120), (b, yb - 120)], 4, sid=10140, amp=1.0)
+    cr.rectangle(a, yb, b - a, max(200, vy1 - yb + 20)); cr.set_source_rgb(*WALK); cr.fill()
+    sketch_line(cr, [(a, yb), (b, yb)], 4, sid=10141, amp=1.0)
+    for k in range(int((a - x0) // 260), int((b - x0) // 260) + 2):          # paving joints
+        xx = x0 + k * 260
+        sketch_line(cr, [(xx, yb + 4), (xx - 60, yb + 300)], 3, sid=10142, color=(0.70, 0.69, 0.66))
+    cr.restore()
+
+def draw_tree(cr, x, yb=FLOOR_Y, t=0.0, h=900, sid=10200):
+    """a big round leafy cartoon tree with one long branch to the right (a cat can sit on it at branch_tip)."""
+    sketch_poly(cr, [(x - 60, yb), (x - 40, yb - h * 0.6), (x + 40, yb - h * 0.6), (x + 60, yb)], 6, sid=sid, fill=(0.62, 0.44, 0.30))
+    sketch_poly(cr, [(x + 20, yb - h * 0.45), (x + 300, yb - h * 0.62), (x + 300, yb - h * 0.58), (x + 30, yb - h * 0.37)], 5,
+                sid=sid + 1, fill=(0.62, 0.44, 0.30))
+    for k, (dx, dy, r) in enumerate(((-150, -0.78, 200), (130, -0.82, 210), (0, -0.98, 230), (-60, -0.70, 170), (90, -0.68, 160))):
+        sketch_circle(cr, x + dx + 6 * math.sin(t * 1.3 + k), yb + h * dy, r, 6, sid=sid + 2 + k, fill=(0.46, 0.72, 0.36))
+
+def tree_branch_tip(x, yb=FLOOR_Y, h=900): return (x + 270, yb - h * 0.61)
+
+def draw_box(cr, x, yb=FLOOR_Y, s=1.0, label=None, flaps=1.0, sid=10300):
+    """an open cardboard box (bottom centre (x, yb)); label = marker text on the front."""
+    w, h = 230 * s, 150 * s
+    for sx in (-1, 1):                                                         # open flaps
+        sketch_poly(cr, [(x + sx * w / 2, yb - h), (x + sx * (w / 2 + 60 * s * flaps), yb - h - 50 * s * flaps), (x + sx * (w / 2 - 20 * s), yb - h - 60 * s * flaps),
+                         (x + sx * (w / 2 - 60 * s), yb - h)], 4, sid=sid + (sx > 0), fill=(0.80, 0.62, 0.40))
+    sketch_rect(cr, x - w / 2, yb - h, x + w / 2, yb, 5, sid=sid + 2, fill=(0.86, 0.68, 0.45))
+    if label: draw_text(cr, label, x, yb - h / 2, 34 * s, max_w=w - 16)
+
+def draw_mug(cr, x, y, s=1.0, ang=0.0):
+    """a coffee mug, bottom centre (x, y)."""
+    cr.save(); cr.translate(x, y); cr.rotate(ang); cr.scale(s, s)
+    sketch_circle(cr, 40, -45, 22, 6, sid=10310, fill=None)
+    sketch_rect(cr, -40, -90, 40, 0, 5, sid=10311, fill=(0.40, 0.66, 0.85))
+    cr.restore()
+
+def draw_cat_bed(cr, x, yb=FLOOR_Y, s=1.0):
+    """a fancy round cushion cat bed (purple velvet, gold trim) - the one no cat will use."""
+    sketch_ellipse(cr, x, yb - 50 * s, 170 * s, 60 * s, 6, sid=10320, fill=(0.62, 0.42, 0.72))
+    sketch_ellipse(cr, x, yb - 64 * s, 120 * s, 32 * s, 5, sid=10321, fill=(0.74, 0.56, 0.82))
+    sketch_line(cr, [(x - 160 * s, yb - 40 * s), (x + 160 * s, yb - 40 * s)], 4, sid=10322, color=(0.92, 0.74, 0.25))
+
+def draw_rescue_shelter(cr, x, yb=FLOOR_Y, t=0.0, door=0.0, window_cats=3, banner=None, s=1.0):
+    """the CAT RESCUE SHELTER: a cosy two-storey building, cream walls, red roof, a big sign, flower boxes, two
+    windows with cats in them, a green door with a paw print. door 0..1 opens it. banner = a hanging banner text."""
+    w, h = 1000 * s, 780 * s
+    sketch_rect(cr, x - w / 2, yb - h, x + w / 2, yb, 7, sid=10400, fill=SHELTER_WALL)
+    sketch_poly(cr, [(x - w / 2 - 60, yb - h + 6), (x - w / 2 + 40, yb - h - 170 * s), (x + w / 2 - 40, yb - h - 170 * s),
+                     (x + w / 2 + 60, yb - h + 6)], 7, sid=10401, fill=SHELTER_ROOF)
+    sw, sh = 820 * s, 140 * s                                                    # the sign
+    sy = yb - h + 20 * s
+    sketch_rect(cr, x - sw / 2, sy, x + sw / 2, sy + sh, 6, sid=10402, fill=(1.0, 1.0, 0.98))
+    draw_text(cr, "CAT RESCUE SHELTER", x, sy + sh / 2, 60 * s, max_w=sw - 20, color=(170, 50, 40))
+    for k, wx in enumerate((x - 300 * s, x + 300 * s)):                       # windows with cats in them
+        wy0, wy1 = yb - h + 230 * s, yb - h + 470 * s
+        sketch_rect(cr, wx - 130 * s, wy0, wx + 130 * s, wy1, 6, sid=10403 + k, fill=(0.86, 0.94, 1.0))
+        sketch_line(cr, [(wx, wy0), (wx, wy1)], 4, sid=10405 + k)
+        n = max(0, min(2, window_cats - 2 * k))
+        for j in range(n):
+            cat_face(cr, wx - 60 * s + j * 120 * s, wy1 - 50 * s + 6 * math.sin(t * 2 + j + k), 42 * s, CAT_KINDS[(k * 2 + j) % 6], sid=10410 + 20 * (k * 2 + j))
+        sketch_rect(cr, wx - 150 * s, wy1, wx + 150 * s, wy1 + 50 * s, 5, sid=10407 + k, fill=(0.66, 0.46, 0.32))  # flower box
+        for f in range(5):
+            fx = wx - 120 * s + f * 60 * s
+            sketch_circle(cr, fx, wy1 - 6, 18 * s, 4, sid=10450 + f, fill=((0.96, 0.45, 0.55), (1.0, 0.82, 0.3), (0.75, 0.55, 0.9))[f % 3])
+    dw, dh = 220 * s, 330 * s                                                    # the door
+    cr.rectangle(x - dw / 2, yb - dh, dw, dh); cr.set_source_rgb(0.98, 0.86, 0.60); cr.fill()
+    if door < 0.98:
+        ow = dw * (1 - door)
+        sketch_rect(cr, x - dw / 2, yb - dh, x - dw / 2 + ow, yb, 6, sid=10460, fill=SHELTER_DOOR)
+        if ow > 60:
+            px, py = x - dw / 2 + ow / 2, yb - dh * 0.55                       # paw print
+            sketch_circle(cr, px, py, 26 * s * ow / dw, 3, sid=10461, fill=(1, 1, 1))
+            for j, (ax, ay) in enumerate(((-30, -36), (-10, -50), (12, -50), (32, -36))):
+                sketch_circle(cr, px + ax * s * ow / dw, py + ay * s, 9 * s * ow / dw, 3, sid=10462 + j, fill=(1, 1, 1))
+    sketch_rect(cr, x - dw / 2, yb - dh, x + dw / 2, yb, 6, sid=10466, fill=None)
+    if banner:
+        bw = 700 * s; by = yb - h - 240 * s
+        sketch_line(cr, [(x - bw / 2 - 40, by - 30), (x + bw / 2 + 40, by - 30)], 4, sid=10470)
+        sketch_poly(cr, [(x - bw / 2, by - 30), (x + bw / 2, by - 30), (x + bw / 2 - 30, by + 90), (x - bw / 2 + 30, by + 90)], 5,
+                    sid=10471, fill=(1.0, 0.85, 0.40))
+        draw_text(cr, banner, x, by + 30, 62 * s, max_w=bw - 80, color=(170, 50, 40))
+
+INTERIOR_WALL = (0.99, 0.94, 0.86)
+def draw_shelter_inside(cr, t, x0, x1, yb=FLOOR_Y):
+    """inside the shelter: cream walls with a wainscot, a sunny window, a warm wood floor. (Furniture drawn by the episode.)"""
+    vx0, vy0, vx1, vy1 = _visible(cr)
+    a, b = max(x0, vx0), min(x1, vx1)
+    cr.rectangle(a, vy0 - 10, b - a, yb - vy0 + 10); cr.set_source_rgb(*INTERIOR_WALL); cr.fill()
+    cr.rectangle(a, yb - 300, b - a, 300); cr.set_source_rgb(0.92, 0.80, 0.66); cr.fill()
+    sketch_line(cr, [(a, yb - 300), (b, yb - 300)], 4, sid=10500)
+    for k in range(int((a - x0) // 120), int((b - x0) // 120) + 2):
+        sketch_line(cr, [(x0 + k * 120, yb - 296), (x0 + k * 120, yb)], 2, sid=10501, color=(0.80, 0.66, 0.52))
+    cr.rectangle(a, yb, b - a, max(200, vy1 - yb + 20)); cr.set_source_rgb(0.80, 0.62, 0.42); cr.fill()
+    sketch_line(cr, [(a, yb), (b, yb)], 5, sid=10502)
+    for k in range(int((a - x0) // 340), int((b - x0) // 340) + 2):
+        sketch_line(cr, [(x0 + k * 340, yb + 4), (x0 + k * 340 - 50, yb + 400)], 3, sid=10503, color=(0.66, 0.48, 0.32))
+
+def draw_cat_photo(cr, x, y, col, stamp=0.0, s=1.0, sid=10600):
+    """a polaroid of a cat pinned to the board; stamp 0..1 slams a red ADOPTED stamp across it."""
+    w, h = 150 * s, 170 * s
+    sketch_rect(cr, x - w / 2, y - h / 2, x + w / 2, y + h / 2, 4, sid=sid, fill=(1, 1, 1))
+    cr.rectangle(x - w / 2 + 12, y - h / 2 + 12, w - 24, h - 50); cr.set_source_rgb(0.86, 0.94, 1.0); cr.fill()
+    cr.save(); cr.rectangle(x - w / 2 + 12, y - h / 2 + 12, w - 24, h - 50); cr.clip()
+    cat_face(cr, x, y - 14 * s, 40 * s, col, sid=sid + 2)
+    cr.restore()
+    cr.arc(x, y - h / 2 + 4, 8, 0, 2 * math.pi); cr.set_source_rgb(0.9, 0.25, 0.25); cr.fill()
+    if stamp > 0.01:
+        k = 1.0 + 0.6 * (1 - min(1.0, stamp))
+        cr.save(); cr.translate(x, y + 10); cr.rotate(-0.25); cr.scale(k, k)
+        cr.rectangle(-82 * s, -24 * s, 164 * s, 48 * s); cr.set_source_rgba(0.85, 0.15, 0.15, 0.9 * min(1.0, stamp * 2)); cr.set_line_width(5); cr.stroke()
+        draw_text(cr, "ADOPTED", 0, 0, 34 * s, color=(215, 40, 40), alpha=min(1.0, stamp * 2))
+        cr.restore()
+
+def draw_stamp(cr, x, y, s=1.0):
+    """a rubber stamp; (x, y) = bottom of the stamp face."""
+    cr.save(); cr.translate(x, y); cr.scale(s, s)
+    sketch_rect(cr, -42, -34, 42, 0, 4, sid=10620, fill=(0.85, 0.20, 0.20))
+    sketch_rect(cr, -14, -90, 14, -34, 4, sid=10621, fill=(0.62, 0.44, 0.30))
+    sketch_circle(cr, 0, -108, 26, 4, sid=10622, fill=(0.62, 0.44, 0.30))
+    cr.restore()

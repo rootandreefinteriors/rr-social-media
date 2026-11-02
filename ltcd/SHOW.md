@@ -50,6 +50,19 @@ Daily loop: **post 7:00 PM ET → comments come in → 3:00 PM ET next day: comm
 - **NEVER GO BACK (user, 2026-11-01, after the day 10 first cut sent him home to green hill):** once he leaves a world
   he does NOT return to it - not as a punchline, not by being blasted back, not "it was all for nothing". The episode
   ends (the ask) in the NEW world the comment took him to, and he lives there now.
+- **EVERY EPISODE MOVES ON (user, 2026-11-02 - said many times; the day 11 first cut stayed in Mordor):** an episode
+  never takes place in the previous episode's setting. It opens where he is for a beat (read the comment), then he
+  WALKS/RUNS OUT TO THE RIGHT into a brand-new world, and the whole episode + the ask happen there. The old world is over.
+- **READ THE ROOM - match the tone to the comment (user, 2026-11-02: "you are so tone deaf").** The deadpan/Adult Swim
+  tone is the default for edgy/absurd requests. A wholesome request (animals, kindness, rescuing, helping) gets a WARM,
+  cute, light-hearted episode: gentle in-jokes, a real smile that he earns, no meanness. **Never any violence, fear or
+  harm toward animals** (no hissing at him, no flinging, crushing, bursting, burying or bonking animals or with animals).
+- **Take requests at their real-world meaning (user, 2026-11-02):** a "cat shelter" is a rescue shelter for homeless
+  cats (rescue, care, adoption) - not a doghouse or a cat tree. Look up what the thing actually is before staging it.
+- **Real-cause tie-in (user, 2026-11-02):** when a comment is about helping animals/people, end with him writing a
+  real way to help on his clipboard (day 11: "TO HELP SAVE REAL CATS, PLEASE DONATE TO THE CAT HOUSE ON THE KINGS AT
+  CATHOUSEONTHEKINGS.COM" - the largest no-cage, no-kill cat sanctuary we could find accepting online donations; verify
+  the org + URL with a web search first), then flip the page to the usual ask. Put the same line in the caption.
 - **Attention (user, 2026-11-01: "keep the attention of a 14 year old TikTok kid with ADHD"):** something new happens
   every 2-3 s; a deadpan hold is max ~1.5 s unless something big is building in it; no long walks (run, cut, or get
   carried); stack tension beats (a threat closing in, a heartbeat, a countdown, a near miss) and fan in-jokes / memes
