@@ -2443,3 +2443,226 @@ def draw_stamp(cr, x, y, s=1.0):
     sketch_rect(cr, -14, -90, 14, -34, 4, sid=10621, fill=(0.62, 0.44, 0.30))
     sketch_circle(cr, 0, -108, 26, 4, sid=10622, fill=(0.62, 0.44, 0.30))
     cr.restore()
+
+# ============================================================ FUN PARK (day 12: theme park right of the town)
+PARK_PINK = (0.97, 0.62, 0.72)
+PARK_TEAL = (0.42, 0.80, 0.78)
+PARK_YEL = (1.0, 0.84, 0.32)
+PARK_RED = (0.90, 0.30, 0.28)
+PARK_PURP = (0.68, 0.52, 0.86)
+PARK_PLAZA = (0.93, 0.88, 0.80)
+BALLOON_COLS = (PARK_RED, PARK_YEL, PARK_TEAL, PARK_PINK, PARK_PURP, (0.45, 0.65, 0.95))
+
+def draw_park_world(cr, t, x0=38550, x1=70000, yb=FLOOR_Y, grid_x0=33400):
+    """the FUN PARK, right of x0: the same sky + clouds + paving grid as the town (so the seam can be hidden behind the
+    gate), soft purple hills, a hedge strip, bunting, and a warm plaza floor. Rides are drawn by the episode."""
+    vx0, vy0, vx1, vy1 = _visible(cr)
+    a, b = max(x0, vx0), min(x1, vx1)
+    if b <= a: return
+    cr.save(); cr.rectangle(x0, vy0 - 10, x1 - x0, vy1 - vy0 + 20); cr.clip()
+    top = min(vy0, yb - 200)
+    for k in range(40):
+        y_hi = yb - 300 - (k + 1) * 120; y_lo = yb - 300 - k * 120 if k else yb + 10
+        if k == 39: y_hi = min(y_hi, top - 10)
+        cr.rectangle(a, y_hi, b - a, y_lo - y_hi + 1); cr.set_source_rgb(*lerp(TOWN_SKY[0], TOWN_SKY[1], min(1.0, k / 12))); cr.fill()
+    for k in range(int((a - grid_x0) // 900) - 1, int((b - grid_x0) // 900) + 2):
+        draw_cloud(cr, grid_x0 + k * 900 + 200 + 30 * math.sin(t * 0.2 + k), yb - 1250 - 160 * (k % 3), s=0.9 + 0.2 * (k % 2))
+    step = 520                                                                  # the town's hills, continued (same grid)
+    k0, k1 = int((a - grid_x0) // step) - 1, int((b - grid_x0) // step) + 2
+    pts = [(grid_x0 + k0 * step, yb + 10)]
+    for k in range(k0, k1 + 1):
+        pts.append((grid_x0 + k * step, yb - 330 - 90 * ((k * 3) % 4) / 3)); pts.append((grid_x0 + (k + 0.5) * step, yb - 300))
+    pts.append((grid_x0 + (k1 + 1) * step, yb + 10))
+    sketch_poly(cr, pts, 5, sid=10101, fill=(0.70, 0.86, 0.55), amp=0.3)
+    cr.rectangle(a, yb - 120, b - a, 120); cr.set_source_rgb(*TOWN_GRASS); cr.fill()
+    for k in range(int((a - x0) // 150) - 1, int((b - x0) // 150) + 2):       # hedge bumps
+        sketch_circle(cr, x0 + k * 150 + 75, yb - 120, 80, 4, sid=12110 + (k % 4), fill=(0.46, 0.70, 0.36))
+    cr.rectangle(a, yb, b - a, max(200, vy1 - yb + 20)); cr.set_source_rgb(*WALK); cr.fill()
+    sketch_line(cr, [(a, yb), (b, yb)], 4, sid=10141, amp=1.0)
+    for k in range(int((a - grid_x0) // 260), int((b - grid_x0) // 260) + 2):   # same paving joints as the town
+        xx = grid_x0 + k * 260
+        sketch_line(cr, [(xx, yb + 4), (xx - 60, yb + 300)], 3, sid=10142, color=(0.70, 0.69, 0.66))
+    cr.restore()
+
+def draw_balloon(cr, x, y, r=46, col=PARK_RED, string=160, t=0.0, sid=12200):
+    bx = x + 6 * math.sin(t * 1.7 + sid)
+    sketch_line(cr, [(bx, y + r * 1.15), (x + 10 * math.sin(t * 1.3 + sid), y + r + string)], 2.5, sid=sid + 1)
+    sketch_ellipse(cr, bx, y, r * 0.86, r, 4, sid=sid, fill=col)
+    cr.arc(bx - r * 0.3, y - r * 0.35, r * 0.16, 0, 2 * math.pi); cr.set_source_rgba(1, 1, 1, 0.8); cr.fill()
+
+def draw_balloon_bunch(cr, x, y, t=0.0, n=7, sid=12300):
+    for i in range(n):
+        a = i * 2.4
+        draw_balloon(cr, x + 70 * math.cos(a) * (i / n + 0.3), y - 80 * math.sin(a) * (i / n + 0.3) - 40 * (i % 3),
+                     r=48 + 6 * (i % 2), col=BALLOON_COLS[i % 6], string=200 + 30 * (i % 3), t=t, sid=sid + 7 * i)
+
+def draw_park_gate(cr, x, yb=FLOOR_Y, t=0.0, sign="FUN PARK"):
+    """the entrance: two striped towers, an arch with the sign, balloon bunches, and tall hedges both sides (they hide
+    the town/park seam behind them)."""
+    for k, dx in enumerate((-1, 1)):                                            # tall hedges
+        for j in range(6):
+            hx = x + dx * (520 + 120 * j)
+            sketch_circle(cr, hx, yb - 260 - 40 * (j % 2), 190, 5, sid=12400 + 10 * k + j, fill=(0.40, 0.64, 0.32))
+        sketch_rect(cr, x + dx * 470 - (0 if dx > 0 else 760), yb - 320, x + dx * 470 + (760 if dx > 0 else 0), yb, 5, sid=12420 + k,
+                    fill=(0.40, 0.64, 0.32))
+    for k, dx in enumerate((-1, 1)):                                            # towers
+        tx = x + dx * 380
+        sketch_rect(cr, tx - 90, yb - 1250, tx + 90, yb, 6, sid=12430 + k, fill=(1.0, 0.97, 0.92))
+        for j in range(8):
+            y0 = yb - 1250 + j * 156
+            if j % 2 == 0:
+                cr.rectangle(tx - 87, y0 + 3, 174, 78); cr.set_source_rgb(*PARK_RED); cr.fill()
+        sketch_rect(cr, tx - 90, yb - 1250, tx + 90, yb, 6, sid=12432 + k, fill=None)
+        sketch_poly(cr, [(tx - 130, yb - 1250), (tx, yb - 1480), (tx + 130, yb - 1250)], 6, sid=12434 + k, fill=PARK_TEAL)
+        sketch_line(cr, [(tx, yb - 1480), (tx, yb - 1580)], 4, sid=12436 + k)
+        sketch_poly(cr, [(tx, yb - 1580), (tx + 70 * (1 + 0.2 * math.sin(t * 4 + k)), yb - 1555), (tx, yb - 1530)], 3, sid=12438 + k, fill=PARK_YEL)
+        draw_balloon_bunch(cr, tx + dx * 200, yb - 900, t, sid=12500 + 60 * k)
+    ay = yb - 1080                                                              # the arch + sign
+    sketch_poly(cr, [(x - 300, ay + 60), (x - 280, ay - 90), (x, ay - 200), (x + 280, ay - 90), (x + 300, ay + 60), (x, ay - 50)], 6,
+                sid=12440, fill=PARK_YEL)
+    sketch_rect(cr, x - 330, ay - 120, x + 330, ay + 70, 6, sid=12441, fill=(1.0, 1.0, 0.98))
+    draw_text(cr, sign, x, ay - 25, 104, color=(200, 50, 60), max_w=620)
+    for i in range(9):                                                          # light bulbs
+        bx = x - 300 + i * 75
+        on = (int(t * 6) + i) % 2
+        cr.arc(bx, ay + 52, 11, 0, 2 * math.pi); cr.set_source_rgb(*(PARK_YEL if on else (1, 1, 0.9))); cr.fill_preserve(); stroke_ink(cr, 3)
+
+def draw_bunting(cr, xa, xb, y, sag=80, n=None, sid=12600):
+    n = n or max(3, int((xb - xa) // 90))
+    pts = [(lerp(xa, xb, i / 20), y + sag * 4 * (i / 20) * (1 - i / 20)) for i in range(21)]
+    sketch_line(cr, pts, 3, sid=sid)
+    for i in range(n):
+        u = (i + 0.5) / n; px, py = lerp(xa, xb, u), y + sag * 4 * u * (1 - u)
+        sketch_poly(cr, [(px - 30, py), (px + 30, py), (px, py + 60)], 3, sid=sid + 1 + i % 5, fill=BALLOON_COLS[i % 6], amp=0.5)
+
+def draw_ferris_wheel(cr, x, yb=FLOOR_Y, R=700, t=0.0, spin=0.12):
+    """a big ferris wheel behind everything; it turns slowly."""
+    hy = yb - R - 220
+    for dx in (-1, 1):
+        sketch_line(cr, [(x, hy), (x + dx * R * 0.55, yb)], 14, sid=12700 + (dx > 0))
+    sketch_circle(cr, x, hy, R, 9, sid=12702, fill=None)
+    sketch_circle(cr, x, hy, R * 0.92, 4, sid=12703, fill=None)
+    n = 10
+    for i in range(n):
+        a = t * spin + i * 2 * math.pi / n
+        sketch_line(cr, [(x, hy), (x + R * math.cos(a), hy + R * math.sin(a))], 4, sid=12704 + i)
+    for i in range(n):
+        a = t * spin + i * 2 * math.pi / n
+        gx, gy = x + R * math.cos(a), hy + R * math.sin(a)
+        sketch_line(cr, [(gx, gy), (gx, gy + 40)], 4, sid=12720 + i)
+        sketch_rect(cr, gx - 60, gy + 40, gx + 60, gy + 130, 5, sid=12730 + i, fill=BALLOON_COLS[i % 6])
+    sketch_circle(cr, x, hy, 60, 6, sid=12750, fill=PARK_YEL)
+
+def draw_teacup(cr, x, yb, s=1.0, col=PARK_PINK, part="whole", ph=0.0, sid=12800):
+    """a giant spinning teacup ride car, bottom centre (x, yb). part 'back' = the inside rim, 'front' = the bowl (covers
+    a rider from the chest down). ph = spin phase (the dots slide round)."""
+    w, h = 520 * s, 330 * s
+    if part in ("back", "whole"):
+        sketch_ellipse(cr, x, yb - h, w / 2, 70 * s, 6, sid=sid, fill=lerp(col, (0.3, 0.2, 0.25), 0.35))
+    if part in ("front", "whole"):
+        pts = [(x - w / 2, yb - h)]
+        for i in range(21):
+            a = math.pi * i / 20
+            pts.append((x - w / 2 * math.cos(a), yb - h + 10 * s + (h - 40 * s) * math.sin(a) ** 0.6))
+        pts.append((x + w / 2, yb - h))
+        for i in range(21):
+            a = math.pi * i / 20
+            pts.append((x + w / 2 * math.cos(a), yb - h + 70 * s * math.sin(a)))
+        sketch_poly(cr, pts, 6, sid=sid + 1, fill=col, amp=0.5)
+        cr.save()
+        cr.new_path(); [cr.line_to(*p_) for p_ in pts]; cr.close_path(); cr.clip()
+        for i in range(6):                                                    # polka dots sliding round
+            a = ph + i * math.pi / 3
+            c = math.cos(a)
+            if math.sin(a) < 0: continue
+            sketch_circle(cr, x + w * 0.42 * c, yb - h * 0.45 + 20 * s * (1 - abs(c)), 34 * s * (0.4 + 0.6 * math.sin(a)), 3, sid=sid + 3 + i,
+                          fill=(1.0, 0.97, 0.9))
+        cr.restore()
+        sketch_rect(cr, x - 70 * s, yb - 30 * s, x + 70 * s, yb, 4, sid=sid + 10, fill=lerp(col, (0.3, 0.2, 0.25), 0.3))
+        sketch_ellipse(cr, x + w / 2 + 40 * s, yb - h * 0.55, 60 * s, 80 * s, 10 * s, sid=sid + 11, fill=None)   # handle
+
+def draw_cup_wheel(cr, x, y, s=1.0, ang=0.0, sid=12850):
+    """the spin wheel in the middle of a teacup (seen a little from above), on a post."""
+    sketch_rect(cr, x - 12 * s, y, x + 12 * s, y + 200 * s, 4, sid=sid, fill=(0.75, 0.75, 0.78))
+    sketch_ellipse(cr, x, y, 120 * s, 38 * s, 6, sid=sid + 1, fill=(0.95, 0.95, 0.97))
+    for i in range(4):
+        a = ang + i * math.pi / 4
+        sketch_line(cr, [(x - 110 * s * math.cos(a), y - 34 * s * math.sin(a)), (x + 110 * s * math.cos(a), y + 34 * s * math.sin(a))], 4, sid=sid + 2 + i)
+    sketch_ellipse(cr, x, y, 26 * s, 10 * s, 4, sid=sid + 7, fill=PARK_RED)
+
+def draw_cup_platform(cr, x, yb=FLOOR_Y, w=1500):
+    sketch_ellipse(cr, x, yb + 30, w / 2, 110, 6, sid=12870, fill=(0.82, 0.78, 0.92))
+    sketch_ellipse(cr, x, yb + 30, w / 2 - 60, 80, 3, sid=12871, fill=None)
+
+def draw_height_sign(cr, x, yb=FLOOR_Y, line_y=415, light=0.0, arm=330, text=("YOU MUST BE", "THIS TALL", "TO RIDE")):
+    """YOU MUST BE THIS TALL TO RIDE: a post with a big board and a cartoon arm sticking out LEFT at height line_y,
+    plus a light on top (light 0 red .. 1 green)."""
+    sketch_rect(cr, x - 22, line_y - 40, x + 22, yb, 5, sid=12900, fill=(0.98, 0.90, 0.40))
+    for j in range(int((yb - line_y) // 70)):
+        yy = yb - 70 * (j + 1)
+        sketch_line(cr, [(x - 22, yy), (x - 2, yy)], 3, sid=12901)
+    sketch_rect(cr, x - 30, line_y - 6, x - arm, line_y + 18, 5, sid=12902, fill=PARK_RED)       # the arm
+    sketch_ellipse(cr, x - arm - 20, line_y + 6, 34, 26, 5, sid=12903, fill=(1, 1, 1))
+    bw, bh = 420, 300
+    by = line_y + 110; bx = x + 20 + bw / 2
+    sketch_rect(cr, bx - bw / 2, by, bx + bw / 2, by + bh, 6, sid=12904, fill=(1.0, 1.0, 0.98))
+    for i, ln in enumerate(text):
+        draw_text(cr, ln, bx, by + 60 + i * 88, 58, color=(200, 50, 60), max_w=bw - 40)
+    col = lerp((0.85, 0.2, 0.2), (0.25, 0.85, 0.35), light)
+    if light > 0.5:
+        cr.arc(x, line_y - 100, 90, 0, 2 * math.pi); cr.set_source_rgba(0.4, 1.0, 0.5, 0.3 * light); cr.fill()
+    sketch_rect(cr, x - 8, line_y - 60, x + 8, line_y - 30, 4, sid=12906, fill=(0.6, 0.6, 0.6))
+    sketch_circle(cr, x, line_y - 100, 46, 6, sid=12905, fill=col)
+
+def draw_ride_gate(cr, x, yb=FLOOR_Y, open_=0.0):
+    """a little swing gate (post + bar) that swings open."""
+    sketch_rect(cr, x - 20, yb - 420, x + 20, yb, 5, sid=12920, fill=(0.75, 0.75, 0.78))
+    L_ = 380 * math.cos(open_ * math.pi / 2 * 0.95)
+    sketch_rect(cr, x + 10, yb - 360, x + 10 + max(30, L_), yb - 320, 4, sid=12921, fill=PARK_RED)
+
+def track_normal(ang): return (math.sin(ang), -math.cos(ang))
+
+def draw_track(cr, pts, yb=FLOOR_Y, supports=True, sid=12950, col=(0.36, 0.58, 0.92)):
+    """roller coaster track along pts (list of (x, y)): two rails + ties, white support legs down to the ground."""
+    if supports:
+        for i in range(0, len(pts), 14):
+            x, y = pts[i]
+            if y < yb - 60:
+                sketch_line(cr, [(x, y + 20), (x, yb)], 7, sid=sid + 1 + (i // 14) % 7, color=(0.55, 0.55, 0.6))
+    cr.set_line_cap(cairo.LINE_CAP_ROUND); cr.set_line_join(cairo.LINE_JOIN_ROUND)
+    path(cr, pts); stroke_ink(cr, 30); path(cr, pts); stroke_ink(cr, 20, col)
+    for i in range(0, len(pts) - 1, 4):
+        (x0, y0), (x1, y1) = pts[i], pts[i + 1]
+        a = math.atan2(y1 - y0, x1 - x0); nx, ny = track_normal(a)
+        sketch_line(cr, [(x0 - nx * 26, y0 - ny * 26), (x0 + nx * 6, y0 + ny * 6)], 4, sid=sid + 9)
+
+def draw_coaster_car(cr, x, y, ang=0.0, part="front", bar=1.0, s=1.0, col=PARK_RED, sign=None):
+    """the front coaster car, car-local origin = on the track under the car centre; 'up' is the track normal.
+    part 'back' = seat back behind the rider, 'front' = the body that covers him from the hips down + the lap bar."""
+    cr.save(); cr.translate(x, y); cr.rotate(ang); cr.scale(s, s)
+    if part == "back":
+        sketch_rect(cr, -230, -470, -150, -120, 6, sid=13000, fill=lerp(col, (0, 0, 0), 0.25))
+    else:
+        for wx in (-150, 150):
+            sketch_circle(cr, wx, -18, 30, 5, sid=13001 + (wx > 0), fill=(0.3, 0.3, 0.33))
+        pts = [(-250, -40), (-250, -250), (-120, -260), (180, -250), (300, -170), (300, -40)]
+        sketch_poly(cr, pts, 7, sid=13003, fill=col, amp=0.5)
+        sketch_line(cr, [(-240, -120), (290, -120)], 4, sid=13004, color=(1.0, 0.85, 0.35))
+        if sign: draw_text(cr, sign, 20, -175, 40, color=(255, 250, 235), max_w=480)
+        if bar > 0.01:                                                       # lap bar (swings down)
+            a0 = 1.4 * (1 - bar)
+            cr.save(); cr.translate(150, -250); cr.rotate(a0)
+            sketch_line(cr, [(0, 0), (-110, -50), (-170, -50)], 18, sid=13005, color=(0.25, 0.25, 0.28))
+            cr.restore()
+    cr.restore()
+
+def draw_photo_screen(cr, x, y, w=620, h=470, title="RIDE PHOTO", inner=None):
+    """the on-ride photo monitor at the exit: a dark frame, a title, inner(cr, x0, y0, w, h) draws the photo."""
+    sketch_rect(cr, x - w / 2 - 30, y - h / 2 - 110, x + w / 2 + 30, y + h / 2 + 30, 7, sid=13100, fill=(0.22, 0.22, 0.26))
+    draw_text(cr, title, x, y - h / 2 - 55, 66, color=(255, 220, 90), max_w=w)
+    sketch_rect(cr, x - w / 2, y - h / 2, x + w / 2, y + h / 2, 5, sid=13101, fill=(0.80, 0.91, 0.99))
+    if inner:
+        cr.save(); cr.rectangle(x - w / 2, y - h / 2, w, h); cr.clip()
+        inner(cr, x - w / 2, y - h / 2, w, h)
+        cr.restore()
+        sketch_rect(cr, x - w / 2, y - h / 2, x + w / 2, y + h / 2, 5, sid=13102, fill=None)
