@@ -31,8 +31,46 @@ Update after every episode. "Tally" = marks on the wall at the END of the episod
 | 24 | Reflection | `flipping` | 66.2s | IDEA: you've never seen your own face — only the one that knows it's being watched; everyone else gets the other one, "the one you're making right now, watching this." Night window as mirror; reflection mirrors tilt/arm/eyes/blinks; he shuts his eyes and snaps them open — it's already looking. "...Too slow." | 24 | – | – | night; black window = mirror | uncanny/unease | his reflection | "Everyone you've ever met has seen a face you never will. Yours, when you're not watching it." |
 | 25 | Proof (CH1 END) | `guessing` | 64.3s | IDEA: you can't prove anyone's real; you decide, every morning. He draws the 25th mark on camera (five full hands); knocks once more and waits in silence — nothing; the sun melts the snow; a small raised hand. "Nobody ever proves it. You just keep showing up for each other." | 25 (drawn on camera) | – | his knock, unanswered | morning sun, snow melting, icicle | lonely → warm → uncanny | tally, melting snow | "Twenty-five nights you've come back. I've never once checked if it was the same you." |
 
+## Four elements (C / R / E / T)
+Check this before scripting. Within any 3 days, don't repeat the command's wording, the area of life R lands on, the
+emotional colour, or the tension mechanism (BIBLE.md, "The four required elements"). Add a row for every episode.
+✗ = missing.
+
+| Day | C: command after the open | R: area of life | E: colour | T: tension mechanism |
+|---|---|---|---|---|
+| 1 | ✗ | perception, time | lonely | ✗ |
+| 2 | ✗ | proof, other minds | uncanny | ✗ |
+| 3 | ✗ | mood | wistful | ✗ |
+| 4 | ✗ | memory | tender | ✗ |
+| 5 | ✗ | memory | warm | ✗ |
+| 6 | ✗ | perception, names | eerie | ✗ (low: bird glimpse) |
+| 7 | ✗ | waiting | lonely | ✗ (low: window shrinks) |
+| 8 | ✗ | your eyes, body | awe → eerie | ✗ (low: the hum) |
+| 9 | ✗ | sleep | uneasy | ✗ |
+| 10 | ✗ | identity, mornings | tender | ✗ |
+| 11 | ✗ | decisions | uneasy | ✗ (low: will it land) |
+| 12 | "Don't move. Look." | being seen | tender | will the bird stay? |
+| 13 | "Watch." | habits, copying | eerie | ✗ (low) |
+| 14 | ✗ | performing | uneasy | ✗ (low) |
+| 15 | ✗ | loss, naming | melancholy | the bird might leave, then does |
+| 16 DREAD | ✗ | the question as reflex | dread | form: repeated open, weaker knocks, camera creeping in |
+| 17 | "Shh. Come here. Look." | **screen**, feed | unease | web trembles (low-med) |
+| 18 | "Don't move." | **phone at 1 a.m.**, leaving home | unease → warm | creature trapped; held pose; the dare + 3 s silence |
+| 19 | ✗ (said to the moth) | **lit screen** | lonely | creature drifting into the web |
+| 20 | "Shh. Get down. Listen." | **phone buzz**, being reached | lonely → warm | listening silence → tap from our side |
+| 21 | "Shh. Don't blink." | perception, your brain | unease | endurance: no blinking |
+| 22 | "Wait. Listen to that." | noise, **phone** | unease | 10 s of real silence |
+| 23 DREAD | ✗ | the world you've only been told about | lonely → unease | a walk that never ends |
+| 24 | ✗ | your own face | uncanny | trying to catch the reflection |
+| 25 | ✗ (re-cut if possible: "Count them with me.") | proving others are real | lonely → warm → uncanny | knock, then silence |
+
+The planned C and T for D26–60 are in BIBLE.md, Chapter 2. Copy each one here when its episode is made, noting any
+change.
+
 ## Upcoming
 Chapter 1 ended on D25. **Chapter 2 "The Room" (D26–60): see BIBLE.md** — an idea bank in a suggested running order
 (D26 the spider leaves and the web comes down — nothing in the room is permanent; crack D27–30; the tag and the chair
 from D31; dread days D35 and D47; chapter landing D60). Pick each episode's idea
-first; props, tension and hook follow from it.
+first; props, tension and hook follow from it. **Every Chapter 2 line now has its command (C) and tension (T) written in;
+use them, or replace them with something equally strong, and keep all four elements.** Runtime is 61 s minimum, dread
+days included (D35, D47).

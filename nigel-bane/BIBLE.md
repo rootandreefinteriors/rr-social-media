@@ -1,7 +1,20 @@
 # NIGEL BANE — Series Bible (Arc 1: "The Room", Days 1–360)
 
-Rewritten 2026-10-23, idea-first, after the user rejected a plot-heavy draft. Where this and older notes disagree, this
-wins; CLAUDE.md §1 keeps the user's notes verbatim.
+Rewritten 2026-10-23, idea-first, after the user rejected a plot-heavy draft. Updated 2026-11-03 after the engagement
+review (`reviews/2026-11-03.md`): the four required elements, the monetisation goal, runtime, and a command and tension
+for every Chapter 2 episode. Where this and older notes disagree, this wins; CLAUDE.md §1 keeps the user's notes
+verbatim.
+
+## The goal
+**Monetise on TikTok.** That needs **100,000 TikTok views in a rolling 30 days**. As far as we know, Creator Rewards also
+needs 10,000 followers and only counts videos **longer than 1 minute**; check TikTok's current terms.
+
+Every video goes to both TikTok and Instagram. An episode is judged on its **combined** performance, weighted toward
+TikTok. Nothing is changed for one platform only; if a video takes off on just one of them, so be it.
+
+At the end of Chapter 1, TikTok had about 9,200 views in total. The best episodes get roughly 500–1,100 views in their
+first week and keep climbing for 10 days or more. Reaching 100k means about 3,300 views a day, so the typical episode
+has to perform like the best ones do now. The lever is the four elements below, in every episode.
 
 ## What the show is
 A sympathetic stick figure in a white room knocks on the glass between him and us — our screen — and asks "Hello? Is
@@ -33,12 +46,37 @@ It must be **about the viewer**, make them **think about their own life**, and l
 - **Window:** upper-right, in colour; its sky mirrors his mood and shows weather and night. No lighting tricks on the room.
 - **Presence:** Nigel is the only character in the room, all 360 days — no people, no doubles. Plausible small creatures
   (spider, fly, moth, mouse) can be props. Outside the window: birds, weather, later a far-window figure.
-- **Voice** ElevenLabs "Roboto", eleven_v3, ~100–130 words. **Length** 60–70 s (dread days may run ~45–55 s).
+- **Voice** ElevenLabs "Roboto", eleven_v3, ~100–130 words. **Length 61–70 s, dread days included.** TikTok only pays
+  on videos over a minute, so 61 s is the floor even after trimming. A dread day that needs to feel short gets there
+  with a longer held silence, not by being cut under a minute.
 - **Captions:** tally + one lowercase *-ing* word. **Cover:** a chosen frame — distinctive pose, no caption on screen.
+
+## The four required elements (every episode, no exceptions)
+These four are the biggest difference between episodes that perform and episodes that don't, so all four go in every
+script. In the 2026-11-03 review, episodes with all four averaged +1.00 on TikTok against −0.44 for episodes with none.
+Each must be **used differently** from one episode to the next.
+- **C · A command to the viewer, the instant the open ends.** It is said *while* he does the opening action, as one
+  beat: "Don't move." *(frozen mid-step)* · "Shh. Get down. Listen." *(drops to the floor)*. Vary the words: look up,
+  hold still, count with me, point to it, don't touch the glass, try it right now, close your eyes. Don't open with
+  "Shh" more than once a week.
+- **R · The scene, related back to the viewer's own life.** The prop or event becomes a line about **you**: the web is
+  what you spin, the moth is you and the bright screen. Vary the part of life it lands on: your body, your home, sleep,
+  memory, the people you love, strangers, time, habits, the screen. **The phone or screen is the link at most once a
+  week.**
+- **E · An emotion, evoked through what he says or implies about the viewer.** The base is always unsettling (see #5
+  below, "a notch more each week"). The colour on top varies: lonely, tender, eerie, quietly frightening, calm with
+  something wrong underneath. Never horror.
+- **T · Tension that keeps the viewer watching to see what happens.** Use the mechanisms in #4 below. **A creature in
+  danger at most once a week.** Tension built from form works as well: Day 16's repeated open, Day 21's refusal to
+  blink, Day 22's held silence.
+
+**Variation rule:** check the Ledger's four-elements table before scripting. Within any 3 days, don't repeat the
+command's wording, the area of life R lands on, the emotional colour, or the tension mechanism.
 
 ## Every episode (priority order)
 1. **One idea about you,** said a few ways. Never a list of separate thoughts.
-2. **Action the instant the open ends** — he's already doing something physical. No topic announcements, no recaps.
+2. **Action the instant the open ends, with the command (C)** — he's already doing something physical and tells you to
+   do something with him. No topic announcements, no recaps.
 3. **A prop** (creature, object, weather, light, sound) that he notices and handles — the doorway to the idea.
 4. **Building tension, held almost the whole episode** — a rubber band stretching, a balloon still being pumped. Vary
    it: a stare held too long; silence that keeps getting longer; a sound creeping up; something filling, piling,
@@ -64,7 +102,7 @@ It must be **about the viewer**, make them **think about their own life**, and l
   quiet, unsettling background question (who keeps this room?) — never the episode's subject.
 - **Knocks from our side** happen rarely and only when they serve the day's idea. Never explained in Arc 1.
 - **Dread days** (2 per chapter): something is badly wrong and Nigel knows it — but they are still built on an idea about
-  the viewer, said plainly. Full polish, never glitches.
+  the viewer, said plainly, and carry all four elements. Full polish, never glitches. 61 s minimum (see Length).
 - **Parked until there's an audience:** silent anomalies, rerun days, caption tricks, unremarked oddities.
 
 ---
@@ -84,90 +122,131 @@ under your noise (D22) · DREAD: everything past where you stopped walking is tr
 The room you're in right now, the body you're in, the radius of your life, comfort as confinement, the people and
 systems that keep you that you never see. Opens with the spider's exit (D26); then the crack (D27–30) and tagged gifts
 (from D31) — each prop leaves within a few episodes. A suggested running order — reorder freely, but keep each line's idea, prop and hook intact.
+Each line now carries its **C** (command, said during the opening action) and **T** (tension). R and E come from the
+idea and the hook. Re-check the variation rule if you reorder.
 
 - **26 · Gone** — *You never see things arrive or leave. You just notice, one morning, that they've been gone a
   while.* The spider is gone; the web is empty and torn, the bundles with it. He searches the corner (tension: where?);
   one silk thread glints up into nothing. "She got in. I don't know how. She got out. I don't know how either." When he
   touches the web it lets go and drifts down in pieces — the corner is bare. → "You never see anything leave. You just
   notice, one morning, that it's been gone for a while."
+  **C:** "Look in the corner. Tell me she's there." · **T:** the search, corner by corner, then the web letting go piece by piece as he touches it.
 - **27 · Crack** — *You stop seeing damage after about a week.* A hairline crack appears low on our side of the glass
   (polished, phone-crack thin); it creeps while he talks. → "Whatever's been cracked in your life the longest… you
   stopped seeing it about a week in."
+  **C:** "Don't touch the glass." · **T:** the crack creeps a little each time he speaks; will it reach the edge? It stops just short at the cut.
 - **28 · Used to it** — *You can get used to anything — that's how people stay in rooms they should leave.* The crack is
   bigger; midway he stops looking at it, and we notice he stopped. → "You can get used to anything. That's how you end
   up staying."
+  **C:** "Keep your eyes on it." · **T:** the crack ticks louder each time; midway he stops looking and we notice; it keeps ticking and he never looks back.
 - **29 · Taped** — *You've been fixed by people you'll never thank.* Tape over the crack, on our side. → "Somebody
   fixed something for you today. You'll never find out what."
+  **C:** "Hold still. Let me see." (he leans in to the tape) · **T:** one corner of the tape keeps lifting in a draught; will it hold to the end? It holds.
 - **30 · Healed** — *Healing is mostly forgetting exactly where it hurt.* Clean glass; his hand searches for where it
   was. "Glass doesn't heal." → "You heal by forgetting where it was. Then you can't find it again."
+  **C:** "Point to where it was." · **T:** his hand searches the clean glass the whole episode, slower and slower, and never finds it.
 - **31 · A tag** — *Almost nothing in your room did you choose.* A paper tag on the floor: "for nigel." → "Look
   around. Count what you actually chose."
+  **C:** "Look down. What's on your floor?" · **T:** he won't turn the tag over; he circles it and turns it on the last beat: "for nigel".
 - **32 · The chair** — *Everything made for you is shaping you* (the chair decides how you sit; the phone how you hold
   your head). A chair with the matching tag. → "Everything made for you is also making you."
+  **C:** "Sit up. Look how you're holding your head." · **T:** a test: hold that posture until he's finished; he holds an awkward pose of his own, and it gets harder.
 - **33 · Won't sit** — *Comfort is a kind of holding.* He circles the chair and won't sit (tension: will he?). →
   "Every comfortable thing is holding you a little."
+  **C:** "Don't sit down. Not yet." · **T:** he circles the chair, closer each lap; will he sit? He doesn't, and ends with a hand on its back.
 - **34 · Sits** — *Habits are furniture — you become the shape of what you sit in.* → "After a while it isn't you
   sitting in the chair. It's the chair sitting in you."
+  **C:** "Try to stand up. Right now. Without your hands." · **T:** the dare: he waits for you to try, then tries it himself from the chair and can't quite; a long hold.
 - **35 · DREAD: Upstairs** — *You've explained away every sound in your home and never checked one.* Footsteps cross
   the ceiling. There is no upstairs. He doesn't move. → "You've decided what every sound in your house is. You've never
   once gone to look."
+  **C:** "Quiet. Look up." · **T:** footsteps cross the ceiling, stop right above him, then cross back; he doesn't move. 61 s+ with long holds.
 - **36 · Empty room** — *Your room spends more time without you than with you.* He walks out of frame; we hold on the
   empty room; he talks from off-screen. → "Nobody has ever seen what your room does when you're not in it."
+  **C:** "Stay here. Watch the room for me." · **T:** he walks out of frame; we hold on the empty room while a small sound starts in the corner and creeps closer; he names it from off-screen (he notices). Without this C/T it is Day 14 again, one of the weakest episodes.
 - **37 · Ceiling** — *There's a whole surface over you every night you never look at.* He lies down, looks up. →
   "Something has been above you every night of your life. You've never once looked up at it."
+  **C:** "Lie down with me." · **T:** a stare held too long: he won't look away from the ceiling; each cut it's slightly closer, and he notices on the last line.
 - **38 · Dust** — *Some of the dust in your room used to be you.* Dust turning in a sunbeam; he holds out a hand. →
   "You've been slowly turning into your room."
+  **C:** "Hold out your hand. Into the light." · **T:** one mote drifts down toward his palm; will it land before the sunbeam slides off him?.
 - **39 · Two rooms** — *You're in two rooms right now: that one, and the one in your hand.* He asks you to look up for
   three seconds — and waits (test). → "That room's been waiting behind you the whole time."
+  **C:** "Look up. Three seconds." (the test) · **T:** he waits; the silence holds past three, to five, to ten.
 - **40 · Light left on** — *You leave a light on so the room isn't empty when you come back — as if you're two people.*
   A tagged lamp, which burns out by the end (one-episode prop). → "You keep a light on for yourself. Like someone's
   coming home who isn't you."
+  **C:** "Don't turn it off." · **T:** the lamp flickers lower all episode and burns out on the hook.
 - **41 · Corner** — *Every room has a corner nobody looks at.* The bare corner where the web was. → "There's a corner in your room
   you haven't looked at in years. It's looked at you every day."
+  **C:** "Don't look behind you. Keep looking at me." · **T:** he backs toward the bare corner without turning round; how close will he get?.
 - **42 · Nine places** — *Your whole life happens in about nine places.* He counts steps from the window to the tally:
   twelve. → "Your whole life fits in about nine places. You've never counted them."
+  **C:** "Count with me." · **T:** the step count; will the room still be the same size? It isn't: twelve.
 - **43 · Eleven steps** — *Lives shrink so slowly you never notice — the friend you stopped calling, the street you
   stopped taking.* Eleven steps. → "Nobody decides to make their life smaller. It just loses a step at a time."
+  **C:** "Count again." · **T:** the count comes up short; he recounts, slower, and it is still short.
 - **44 · Nine steps** — *Measuring a life makes it smaller.* Nine; the window is nearly over the tally; he stops
   counting. → "The more carefully you count your life, the less of it there is."
+  **C:** "Don't count this time." · **T:** he walks the path without counting and stops just short of the tally; the window is almost over it.
 - **45 · Home smell** — *Your home has a smell you'll only notice if you're gone long enough to forget it.* A tagged
   cup, steaming, drunk and gone by the end. → "You only notice home once it's stopped being yours."
+  **C:** "Breathe in. Through your nose." · **T:** the steam thins; he waits for the last wisp before drinking; the cup is empty and gone by the end.
 - **46 · Doorways** — *Walking through a doorway makes you forget why you came in — your brain files the old room away.*
   There's no door; he keeps walking the same path. → "Every room you've ever left still has a little of you in it."
+  **C:** "Walk with me." · **T:** he walks the same path lap after lap, and each lap something small has changed in the room (he notices).
 - **47 · DREAD: Can't look** — *You've never had a single minute where nobody could see you.* The whole monologue
-  facing the wall; at the end a knock from our side. He flinches, doesn't turn. → "Don't."
+  facing the wall; at the end a knock from our side. He flinches, doesn't turn. → "You've never had a single minute where nobody could see you. Don't turn
+  around."
+  **C:** "Look away from me." · **T:** the whole monologue facing the wall; the silences lengthen; a knock from our side; he flinches and doesn't turn.
 - **48 · Echo** — *Something in you has heard every thought you never said.* The room starts echoing his last words
   back, a beat late (he notices). → "Someone in there has heard every single thing you've never said."
+  **C:** "Say something. Out loud." · **T:** the echo comes back a beat late, then a little sooner each time, until it starts before he speaks.
 - **49 · Wallpaper** — *You stopped seeing your view years ago.* The same cloud in the window, every day this week —
   he only now notices. → "The view stopped being a view the day you stopped looking at it."
+  **C:** "Look out your window. Is it the same as yesterday?" · **T:** he compares the cloud with his memory; will it move? It never does, and he notices.
 - **50 · Breath** — *The air in your room has been in other lungs.* His breath fogs our glass (polished). → "You're
   breathing someone right now."
+  **C:** "Breathe on your screen." · **T:** his fog patch on our glass shrinks while he holds his breath; it is gone before he breathes again.
 - **51 · Rectangle** — *You'll spend a third of your life unconscious in a rectangle, trusting the door.* He lies down
   on the floor by the chair. → "You hand yourself over every night and call it rest."
+  **C:** "Close your eyes. I'll tell you when." · **T:** he counts the seconds you are "gone"; a long real silence; "...Open.".
 - **52 · Re-inked** — *Something keeps you running all night that never asks permission* (your heart, your liver, the
   people on night shift). The tally has been neatly re-inked overnight. → "Something kept you going all night. It
   didn't ask. It never will."
+  **C:** "Two fingers on your wrist. Find it." · **T:** he counts heartbeats against the tally, past where the episode should end.
 - **53 · Taken back** — *Nothing you have is yours; it's all on loan.* The chair is gone; only its tag is left on
   the floor. → "Nothing you own is yours. You're just the last one holding it."
+  **C:** "Look at what's in your hand." · **T:** he searches for the chair and finds only the tag; he turns it over last.
 - **54 · Body** — *You've never been anywhere without your body.* Signature: his outline glows as he traces it. →
   "You've never once been anywhere it didn't take you."
+  **C:** "Put your hand flat on the glass." · **T:** his glowing outline nearly closes; will the line meet? It meets on the last word.
 - **55 · After you** — *Someone will sleep where you sleep and never know you existed.* He scratches a tag of his own,
   "for whoever," and leaves it on the floor. → "Someone will sleep where you sleep and never once think of you."
+  **C:** "Watch me write this." · **T:** he scratches the tag letter by letter; who is it for? "for whoever.".
 - **56 · Thank you** — *You've been thanked for things you don't remember doing.* His tag is gone; in its place: "for
   nigel. thank you." → "Somebody still thinks about something you said once. You don't even remember saying it."
+  **C:** "Read it with me." · **T:** he won't read the new tag until the end.
 - **57 · 3am** — *Some rooms you only live in at 3am.* Night; the chair's shadow has moved (he sees it). → "There's a
   version of your room you only meet at three in the morning. It knows you better."
-- **58 · Here** — *Wherever you are, you call it "here." You've never once been anywhere else.* → "Everything that
+  **C:** "Keep still. Watch the chair's shadow." · **T:** the shadow creeps while he watches and stops whenever he stares at it.
+- **58 · Here** — *Wherever you are, you call it "here." You've never once been anywhere else.* A dry leaf on the
+  outside ledge (see T). → "Everything that
   isn't here is just a rumour you believe."
+  **C:** "Watch the leaf." · **T:** **new prop:** a dry leaf on the outside ledge. Each gust edges it toward the drop; it goes over on the hook, out of "here" (one-episode prop).
 - **59 · Keeper** — *Someone made almost everything you touched today. You'll never meet them.* A new tag arrives on a
   small blanket (one episode). → "Every object you own is a note from a stranger."
+  **C:** "Touch something near you. Somebody made that." · **T:** he won't unfold the blanket until the end, where the tag is.
 - **60 · Stopped looking (CHAPTER END)** — *Home is wherever you stopped looking for somewhere else.* Everything that
   arrived has gone again; the room is as empty as the first day. He looks around it as if for the first time. → "Here is just
   wherever you stopped looking for somewhere else."
+  **C:** "Look around your room. Slowly." · **T:** as he looks, the camera pulls back on a room that is emptier with every shot; at the end only the tally is left.
 
 ## Chapters 3–12 — territories and seed ideas
 Each gets a full idea bank like Chapter 2 about two weeks before we reach it. Seeds below are starting points, not a
-schedule. Keep the eye-colour milestones and Day 360.
+schedule. Keep the eye-colour milestones and Day 360. **Every line in a new bank gets its C and T written in at the
+same time**, as in Chapter 2, and is checked against the variation rule. Seeds that can become a test or dare for the
+viewer make the best anchors (Day 18's "Try to stop watching me" is the best episode so far). Plan about one per week.
 
 **Ch 3 — Days (D61–90) · What is a life made of?** Routine, repetition, time, habit, Sisyphus. Props: a morning ritual,
 a tagged cup (rain fills it), the tally itself. Seeds: *your life is mostly Tuesdays* · *you'll forget almost every day
@@ -266,4 +345,4 @@ everywhere since Day 1 · "the glass gets a little thinner" (D1) → the crack (
 
 ## Production
 Engine `engine/nigel.py`; episodes in `episodes/epNNN_slug/episode.py`. Pipeline, IDs, gotchas, helpers
-(`check_words.py`, `cover_gaps.py`): CLAUDE.md. Update `LEDGER.md` after every episode.
+(`check_words.py`, `cover_gaps.py`): CLAUDE.md. Update `LEDGER.md` after every episode, including its four-elements row.
