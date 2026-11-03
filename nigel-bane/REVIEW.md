@@ -127,6 +127,10 @@ Work on TikTok and Instagram **separately**; the two audiences behave differentl
 - Report it against the 100,000 target, with the daily rate needed and the current daily rate (the TikTok view gain
   per day since the last snapshot).
 - Flag every episode under 61 s. TikTok's Creator Rewards counts only videos over 1 minute.
+- Report the latest follower count from LEDGER.md's "Monetisation status" against 10,000 (Buffer doesn't report
+  followers). Say whether the AI-label question in BIBLE.md "The goal" is still open.
+- Check the "Build on what works" list in BIBLE.md against the new data. Do arcs, reaches through the glass and dares
+  still out-perform? Recommend updates to that list under "Plan changes".
 
 ## 4. Explain it: the four elements first, then everything else
 **The four required elements** (BIBLE.md): every episode should carry all four. Tag each scored episode from the

@@ -31,6 +31,13 @@ Update after every episode. "Tally" = marks on the wall at the END of the episod
 | 24 | Reflection | `flipping` | 66.2s | IDEA: you've never seen your own face — only the one that knows it's being watched; everyone else gets the other one, "the one you're making right now, watching this." Night window as mirror; reflection mirrors tilt/arm/eyes/blinks; he shuts his eyes and snaps them open — it's already looking. "...Too slow." | 24 | – | – | night; black window = mirror | uncanny/unease | his reflection | "Everyone you've ever met has seen a face you never will. Yours, when you're not watching it." |
 | 25 | Proof (CH1 END) | `guessing` | 64.3s | IDEA: you can't prove anyone's real; you decide, every morning. He draws the 25th mark on camera (five full hands); knocks once more and waits in silence — nothing; the sun melts the snow; a small raised hand. "Nobody ever proves it. You just keep showing up for each other." | 25 (drawn on camera) | – | his knock, unanswered | morning sun, snow melting, icicle | lonely → warm → uncanny | tally, melting snow | "Twenty-five nights you've come back. I've never once checked if it was the same you." |
 
+## Monetisation status (TikTok Creator Rewards; targets in BIBLE.md "The goal")
+Update weekly. Followers come from TikTok's app (Buffer doesn't report them); views come from the engagement review.
+
+| Date | TikTok followers (target 10,000) | TikTok views, last 30 days (target 100,000) | Views/day | AI label decision |
+|---|---|---|---|---|
+| 2026-11-03 | ? (fill in) | ~9,200 (all-time; the show is 24 days old) | ~800 | open: see BIBLE.md |
+
 ## Four elements (C / R / E / T)
 Check this before scripting. Within any 3 days, don't repeat the command's wording, the area of life R lands on, the
 emotional colour, or the tension mechanism (BIBLE.md, "The four required elements"). Add a row for every episode.
@@ -72,5 +79,5 @@ Chapter 1 ended on D25. **Chapter 2 "The Room" (D26–60): see BIBLE.md** — an
 (D26 the spider leaves and the web comes down — nothing in the room is permanent; crack D27–30; the tag and the chair
 from D31; dread days D35 and D47; chapter landing D60). Pick each episode's idea
 first; props, tension and hook follow from it. **Every Chapter 2 line now has its command (C) and tension (T) written in;
-use them, or replace them with something equally strong, and keep all four elements.** Runtime is 61 s minimum, dread
+use them, or replace them with something equally strong, and keep all four elements.** New: a mouse arc runs from D36 to D46, starting in D36 and leaving in D46 (BIBLE.md, Chapter 2). Runtime is 61 s minimum, dread
 days included (D35, D47).

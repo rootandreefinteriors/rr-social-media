@@ -6,8 +6,28 @@ for every Chapter 2 episode. Where this and older notes disagree, this wins; CLA
 verbatim.
 
 ## The goal
-**Monetise on TikTok.** That needs **100,000 TikTok views in a rolling 30 days**. As far as we know, Creator Rewards also
-needs 10,000 followers and only counts videos **longer than 1 minute**; check TikTok's current terms.
+**Monetise on TikTok through the Creator Rewards Program.** Requirements as of Nov 2026, from third-party summaries;
+confirm them in TikTok Studio → Creator Rewards before relying on them:
+- **10,000 followers.**
+- **100,000 video views in the last 30 days**, rolling.
+- **Videos must be at least 1 minute long** to earn. Shorter videos earn nothing from the programme.
+- **Original content only.** Reposts, duets and re-uploads don't count. Payment is by "qualified views", mainly from the
+  For You feed; one source says a video needs at least 1,000 qualified views, but that is unconfirmed.
+- **Account:** the owner is 18 or older (19 in South Korea), it is a personal account rather than a business account,
+  it is in a supported country, and it is in good standing with no Community Guidelines strikes.
+- **⚠ The AI label is the biggest open risk.** The format below currently says "AI label off". TikTok requires a label
+  on realistic AI-generated images, audio or video, and encourages one on anything fully AI-generated, which includes
+  the AI voice. Sources disagree on whether AI-made videos can earn Creator Rewards at all: some say a labelled video
+  can, others say "unoriginal or synthetic content" makes an account ineligible. An unlabelled video that TikTok flags
+  itself can be penalised. **Settle this before the account nears the thresholds.** Check TikTok's AI-generated content
+  policy and the Creator Rewards eligibility screen, and decide whether to turn the label on.
+
+**Where we are (2026-11-03):**
+- TikTok: about 9,200 views in total, 24 days after launch, gaining about 800 a day.
+- Followers: not available from Buffer. Record them in LEDGER.md's "Monetisation status" each week.
+- Needed: about 3,300 TikTok views a day, so roughly four times the current rate.
+- Followers come from viewers wanting the next episode. That is why prop arcs and recurring beats matter (see "Build on
+  what works").
 
 Every video goes to both TikTok and Instagram. An episode is judged on its **combined** performance, weighted toward
 TikTok. Nothing is changed for one platform only; if a video takes off on just one of them, so be it.
@@ -70,6 +90,24 @@ Each must be **used differently** from one episode to the next.
   danger at most once a week.** Tension built from form works as well: Day 16's repeated open, Day 21's refusal to
   blink, Day 22's held silence.
 
+## Build on what works (from the reviews; update as data comes in)
+Compound what has already worked, rather than adding a new kind of thing each day.
+- **Prop arcs that escalate (3–5 episodes, the stakes going up every episode).** The spider arc (D17–20) is the best
+  run so far, with about 940–1,080 TikTok views each and every episode an over-performer. The bird arc (D11–15) went
+  well while the stakes rose (D12 "will it stay?", 802 views) and sagged when they didn't (D14, 105 views). Run **2–3
+  arcs per chapter**. Each arc episode must still read cold, and each must raise the stakes: arrival → approach →
+  contact or threat → exit. Arcs are what make people follow.
+- **Reaching through the glass.** D17 "I felt you get here" got the most TikTok views (1,077). D20's taps from our side
+  got the most shares (33). D18's dare is the best episode overall. This includes him sensing you, things happening
+  on our side of the glass (crack, tape, breath, a handprint), and dares or tests for the viewer. **Aim for one about
+  every 3–4 days.** Keep actual knocks from our side rarer, about every 10 days, so they stay a shock.
+- **Dares and tests the viewer can actually do** (D18 "Try to stop watching me"). **About one a week.**
+- **Tension from form:** D16's repeated open was third overall and got the most comments of any dread day. Use it on
+  dread days.
+- **Body visuals** (threads out of him, extreme eye close-ups, the erase). Used in 3 of the top 6 episodes overall.
+- **Avoid:** episodes about him performing or meta-commentary on being watched with no stakes (D14), and plot-tease
+  endings (Days 1–11, the weakest).
+
 **Variation rule:** check the Ledger's four-elements table before scripting. Within any 3 days, don't repeat the
 command's wording, the area of life R lands on, the emotional colour, or the tension mechanism.
 
@@ -100,7 +138,8 @@ command's wording, the area of life R lands on, the emotional colour, or the ten
   Nigel, the window, the tally. Plan a prop's exit the day it arrives.
 - **Tagged gifts.** Now and then an object appears with a paper tag, "for nigel." Not his handwriting; there's no door. A
   quiet, unsettling background question (who keeps this room?) — never the episode's subject.
-- **Knocks from our side** happen rarely and only when they serve the day's idea. Never explained in Arc 1.
+- **Knocks from our side** happen about every 10 days, only when they serve the day's idea. Never explained in Arc 1.
+  Smaller reaches through the glass (see "Build on what works") come more often, about every 3–4 days.
 - **Dread days** (2 per chapter): something is badly wrong and Nigel knows it — but they are still built on an idea about
   the viewer, said plainly, and carry all four elements. Full polish, never glitches. 61 s minimum (see Length).
 - **Parked until there's an audience:** silent anomalies, rerun days, caption tricks, unremarked oddities.
@@ -124,6 +163,13 @@ systems that keep you that you never see. Opens with the spider's exit (D26); th
 (from D31) — each prop leaves within a few episodes. A suggested running order — reorder freely, but keep each line's idea, prop and hook intact.
 Each line now carries its **C** (command, said during the opening action) and **T** (tension). R and E come from the
 idea and the hook. Re-check the variation rule if you reorder.
+**Arcs in this chapter:**
+- **The crack** (D27–30), on *our* side of the glass: a reach through the glass four days running.
+- **The tag and the chair** (D31–34, D53).
+- **NEW: the mouse** (D36–46). Something lives in the room only when he isn't looking. It ends unexplained, the way
+  the spider's did: unseen → coming closer → watching from the corner → gone with no hole.
+
+Reaches through the glass: D27, D29, D34 (dare), D39 (test), D47 (knock), D50, D54, D55.
 
 - **26 · Gone** — *You never see things arrive or leave. You just notice, one morning, that they've been gone a
   while.* The spider is gone; the web is empty and torn, the bundles with it. He searches the corner (tension: where?);
@@ -161,15 +207,21 @@ idea and the hook. Re-check the variation rule if you reorder.
   the ceiling. There is no upstairs. He doesn't move. → "You've decided what every sound in your house is. You've never
   once gone to look."
   **C:** "Quiet. Look up." · **T:** footsteps cross the ceiling, stop right above him, then cross back; he doesn't move. 61 s+ with long holds.
-- **36 · Empty room** — *Your room spends more time without you than with you.* He walks out of frame; we hold on the
-  empty room; he talks from off-screen. → "Nobody has ever seen what your room does when you're not in it."
-  **C:** "Stay here. Watch the room for me." · **T:** he walks out of frame; we hold on the empty room while a small sound starts in the corner and creeps closer; he names it from off-screen (he notices). Without this C/T it is Day 14 again, one of the weakest episodes.
+- **36 · Empty room (mouse arc 1/4)** — *Your room spends more time without you than with you.* He walks out of
+  frame. On the empty room, **a mouse** comes out of the bare corner where the web was, crosses the floor and sniffs
+  the tally. His footsteps return and it's gone. He heard it: "Something lives in here. It waits until I leave." →
+  "Nobody has ever seen what your room does when you're not in it."
+  **C:** "Stay here. Watch the room for me. Tell me if anything moves." · **T:** will it still be out when he comes
+  back? It slips into the corner a beat before he steps in. (Reworked from a plain walk-out, which would have repeated
+  D14, one of the weakest episodes.)
 - **37 · Ceiling** — *There's a whole surface over you every night you never look at.* He lies down, looks up. →
   "Something has been above you every night of your life. You've never once looked up at it."
   **C:** "Lie down with me." · **T:** a stare held too long: he won't look away from the ceiling; each cut it's slightly closer, and he notices on the last line.
-- **38 · Dust** — *Some of the dust in your room used to be you.* Dust turning in a sunbeam; he holds out a hand. →
-  "You've been slowly turning into your room."
-  **C:** "Hold out your hand. Into the light." · **T:** one mote drifts down toward his palm; will it land before the sunbeam slides off him?.
+- **38 · Dust (mouse arc 2/4)** — *Some of the dust in your room used to be you.* Dust turning in a sunbeam. The mouse
+  sits in the light, eating what the room has shed. He holds out a hand. → "You've been slowly turning into your
+  room."
+  **C:** "Hold out your hand. Slowly. Into the light." · **T:** will it come to him before the sunbeam slides away? It
+  touches his fingertip as the light leaves.
 - **39 · Two rooms** — *You're in two rooms right now: that one, and the one in your hand.* He asks you to look up for
   three seconds — and waits (test). → "That room's been waiting behind you the whole time."
   **C:** "Look up. Three seconds." (the test) · **T:** he waits; the silence holds past three, to five, to ten.
@@ -177,9 +229,11 @@ idea and the hook. Re-check the variation rule if you reorder.
   A tagged lamp, which burns out by the end (one-episode prop). → "You keep a light on for yourself. Like someone's
   coming home who isn't you."
   **C:** "Don't turn it off." · **T:** the lamp flickers lower all episode and burns out on the hook.
-- **41 · Corner** — *Every room has a corner nobody looks at.* The bare corner where the web was. → "There's a corner in your room
-  you haven't looked at in years. It's looked at you every day."
-  **C:** "Don't look behind you. Keep looking at me." · **T:** he backs toward the bare corner without turning round; how close will he get?.
+- **41 · Corner (mouse arc 3/4)** — *Every room has a corner nobody looks at.* The bare corner where the web was. Two
+  small eyes shine there all episode, watching him. → "There's a corner in your room you haven't looked at in years.
+  It's looked at you every day."
+  **C:** "Don't look behind you. Keep looking at me." · **T:** he backs toward the corner without turning round, toward
+  the eyes; how close will he get? The eyes blink out a beat before he reaches it.
 - **42 · Nine places** — *Your whole life happens in about nine places.* He counts steps from the window to the tally:
   twelve. → "Your whole life fits in about nine places. You've never counted them."
   **C:** "Count with me." · **T:** the step count; will the room still be the same size? It isn't: twelve.
@@ -192,9 +246,12 @@ idea and the hook. Re-check the variation rule if you reorder.
 - **45 · Home smell** — *Your home has a smell you'll only notice if you're gone long enough to forget it.* A tagged
   cup, steaming, drunk and gone by the end. → "You only notice home once it's stopped being yours."
   **C:** "Breathe in. Through your nose." · **T:** the steam thins; he waits for the last wisp before drinking; the cup is empty and gone by the end.
-- **46 · Doorways** — *Walking through a doorway makes you forget why you came in — your brain files the old room away.*
-  There's no door; he keeps walking the same path. → "Every room you've ever left still has a little of you in it."
-  **C:** "Walk with me." · **T:** he walks the same path lap after lap, and each lap something small has changed in the room (he notices).
+- **46 · Doorways (mouse arc 4/4, the exit)** — *Walking through a doorway makes you forget why you came in — your
+  brain files the old room away.* There's no door; he keeps walking the same path. Each lap, the mouse is somewhere
+  else; on the last lap, it's gone. He checks the corner: no hole. "It got out. There's no way out. It got out." →
+  "Every room you've ever left still has a little of you in it."
+  **C:** "Walk with me." · **T:** laps; where is the mouse this time? Then it's gone, and there's no hole. Don't make
+  the exit look like a way out (Day 360's door must stay the only one).
 - **47 · DREAD: Can't look** — *You've never had a single minute where nobody could see you.* The whole monologue
   facing the wall; at the end a knock from our side. He flinches, doesn't turn. → "You've never had a single minute where nobody could see you. Don't turn
   around."
@@ -222,8 +279,9 @@ idea and the hook. Re-check the variation rule if you reorder.
   "You've never once been anywhere it didn't take you."
   **C:** "Put your hand flat on the glass." · **T:** his glowing outline nearly closes; will the line meet? It meets on the last word.
 - **55 · After you** — *Someone will sleep where you sleep and never know you existed.* He scratches a tag of his own,
-  "for whoever," and leaves it on the floor. → "Someone will sleep where you sleep and never once think of you."
-  **C:** "Watch me write this." · **T:** he scratches the tag letter by letter; who is it for? "for whoever.".
+  "for whoever," then presses it flat to our glass, writing toward us (a reach through the glass), and leaves it on
+  the floor. → "Someone will sleep where you sleep and never once think of you."
+  **C:** "Watch me write this." · **T:** he scratches the tag letter by letter; who is it for? "for whoever."
 - **56 · Thank you** — *You've been thanked for things you don't remember doing.* His tag is gone; in its place: "for
   nigel. thank you." → "Somebody still thinks about something you said once. You don't even remember saying it."
   **C:** "Read it with me." · **T:** he won't read the new tag until the end.
@@ -245,7 +303,8 @@ idea and the hook. Re-check the variation rule if you reorder.
 ## Chapters 3–12 — territories and seed ideas
 Each gets a full idea bank like Chapter 2 about two weeks before we reach it. Seeds below are starting points, not a
 schedule. Keep the eye-colour milestones and Day 360. **Every line in a new bank gets its C and T written in at the
-same time**, as in Chapter 2, and is checked against the variation rule. Seeds that can become a test or dare for the
+same time**, as in Chapter 2, and is checked against the variation rule. Each bank also needs **2–3 escalating prop
+arcs** and a reach through the glass about every 3–4 days (see "Build on what works"). Seeds that can become a test or dare for the
 viewer make the best anchors (Day 18's "Try to stop watching me" is the best episode so far). Plan about one per week.
 
 **Ch 3 — Days (D61–90) · What is a life made of?** Routine, repetition, time, habit, Sisyphus. Props: a morning ritual,
@@ -334,7 +393,8 @@ everywhere since Day 1 · "the glass gets a little thinner" (D1) → the crack (
   the fifth hand). Milestones: D100 · D300 · D360 exactly 360.
 - **Eye colours:** start set (curious, uncanny, drifting, awe, melancholy, lonely, warm, unease, void). Unlocks: gold
   "hope" ~D84–88 · green "envy" ~D128 · silver "peace" D150 · near-white "fixation" D345+.
-- **Props come and go.** The spider and her web (D17–25, with the wrapped fly and moth) leave on D26. Long-running
+- **Props come and go.** The spider and her web (D17–25, with the wrapped fly and moth) leave on D26. The mouse is in
+  D36–46 and leaves on D46. Long-running
   objects named in the Ch3–12 seeds (the plant, the pencil, the far figure's lamp) get planned exits when each chapter is
   detailed — nothing stays for good.
 
