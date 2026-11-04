@@ -1,4 +1,4 @@
-"""parallel render helper: python render_par.py N  -> renders day014.mp4 using N worker processes."""
+"""parallel render helper: python render_par.py N  -> renders day013.mp4 using N worker processes."""
 import sys, os, subprocess
 HERE = os.path.dirname(os.path.abspath(__file__))
 if len(sys.argv) > 2 and sys.argv[1] == "--chunk":
@@ -26,7 +26,7 @@ for p in procs: p.wait()
 with open("parts.txt", "w") as fh:
     for i in range(n): fh.write(f"file 'part{i}.mp4'\n")
 subprocess.check_call(["ffmpeg", "-y", "-loglevel", "error", "-f", "concat", "-safe", "0", "-i", "parts.txt", "-i", "mix.wav",
-                       "-c:v", "copy", "-ar", "48000", "-c:a", "aac", "-b:a", "160k", "-movflags", "+faststart", "-shortest", "day014.mp4"])
+                       "-c:v", "copy", "-ar", "48000", "-c:a", "aac", "-b:a", "160k", "-movflags", "+faststart", "-shortest", "day013.mp4"])
 for i in range(n): os.remove(f"part{i}.mp4")
 os.remove("parts.txt")
-print("done day014.mp4", NF, "frames")
+print("done day013.mp4", NF, "frames")

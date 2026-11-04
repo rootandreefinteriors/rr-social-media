@@ -1,16 +1,15 @@
 {
   "show": "let the comments decide",
-  "day": 14,
+  "day": 13,
   "last_episode": {
-    "day": 14,
+    "day": 13,
     "type": "comment",
-    "folder": "episodes/ep014",
-    "video": "videos/day014.mp4",
-    "due": "2026-11-05",
-    "posted_at": "2026-11-05T19:00:00-05:00 (scheduled, @853e105)",
+    "folder": "episodes/ep013",
+    "video": "videos/day013.mp4",
+    "posted_at": "2026-11-04T19:00:00-05:00 (scheduled)",
     "buffer": {
-      "tiktok": "6aebbc01571331155354c405",
-      "instagram": "6aebbc03321c00b92451d936"
+      "tiktok": "6aeb839009e5f61702c4a2ae",
+      "instagram": "6aeb839209e5f61702c4a32f"
     },
     "comment": {
       "platform": "instagram",
@@ -18,12 +17,12 @@
       "text": "Go to the movies!",
       "likes": 0
     },
-    "note": "made 2026-11-04 on Justin's request (the comment arrived after the day 13 sweep); scheduled for 2026-11-05 7 PM. The 2026-11-05 routine run must not make another episode."
+    "note": "the comment arrived after the day 13 sweep; Justin swapped it in for tonight, replacing the day 13 waiting episode (kept in tests/unused_ep013_waiting)."
   },
   "ask_since_day": 13,
   "waiting_streak": 0,
   "world": {
-    "location": "MEGAPLEX 30, a movie theater (day 14; FUN PARK is over, never go back). Street: O.draw_city_night (night, dusk fade from the park's back gate at 56000), O.draw_megaplex at 58400, O.draw_no_pets. Inside: lobby (concessions), and the theater: rows of red seats (O.draw_seat_row / O.draw_seat_front), the screen, a hole in the ceiling. He ends standing in the aisle of the theater (ep014 front set, FX=120000, aisle x ~121250, lights up), kitten loafed on his head holding the ride photo. Ask camera ~ (ASKX, 930, 1.15). Next episode: he walks out to the right into a new world.",
+    "location": "MEGAPLEX 30, a movie theater (day 13; FUN PARK is over, never go back). Street: O.draw_city_night (night, dusk fade from the park's back gate at 56000), O.draw_megaplex at 58400, O.draw_no_pets. Inside: lobby (concessions), and the theater: rows of red seats (O.draw_seat_row / O.draw_seat_front), the screen, a hole in the ceiling. He ends standing in the aisle of the theater (ep013 front set, FX=120000, aisle x ~121250, lights up), kitten loafed on his head holding the ride photo. Ask camera ~ (ASKX, 930, 1.15). Next episode: he walks out to the right into a new world.",
     "companions": [
       "the black kitten (O.draw_cat col='black', s 0.62): rides on his head (loaf at head - 104); flattened into a 'hat' to get past NO PETS; bored straight man; still holds the ride photo in its mouth.",
       "left behind in Mordor (never going back): the giant eagle"
@@ -46,9 +45,9 @@
       "took the ring to mordor (day 10, re-cut 2): snatched the last ring on green hill, ran to the black gate (ONE DOES NOT SIMPLY WALK INTO MORDOR), whistled up a giant eagle; when the eye's searchlight closed in he put the ring on and went invisible, so the beam locked on the eagle carrying a floating ring, and the eagle dropped him into the volcano; he dropped the ring into the lava and nearly went in after it (speed-game reflex), it melted; the eye blew up, the tower fell, the volcano fired him out into the rubble; the eagle showed up after it was all over. He lives in Mordor now. Looks normal.",
       "built a CAT RESCUE SHELTER and was happy about it (day 11, re-cut): ran out of Mordor into a sunny town, found a black kitten in a FREE KITTEN box (slow blinks), built the shelter, rescued a cat from a tree and a line of kittens, fed them (one can - every head turned), they chose the box over the fancy bed, a cat pushed his mug off the shelf (he caught it), on adoption day the mom from day 6 adopted the orange cat, he stamped ADOPTED on every photo - the last was the kitten's, so he adopted it. Real smile. It rides on his head now. Looks normal.",
       "took his cat to the theme park (day 12): ran from the town into FUN PARK; teacups - the kitten batted the wheel until it spun crazy fast and he laughed for real, then dizzy; YOU MUST BE THIS TALL - short by a hair until the kitten sat up on his head (DING); THE BIG ONE coaster: lift hill, hang at the top, the kitten's slow blink gave him the nerve, arms up (despite KEEP ARMS AND LEGS INSIDE), drop, two loops, airtime, FLASH; the RIDE PHOTO shows him screaming with joy and the kitten bored. Looks normal.",
-      "went to the movies (day 14): ran out of FUN PARK's back gate (BYE NOW!) to MEGAPLEX 30 (EXPLOSION 7, NOW IN 4D); NO PETS - the kitten flattened into a hat and the usher let it slide; SMALL popcorn $47.50, bigger than him; the card reader asked for a tip and he pressed 30% ($61.75) under the cashier's stare; an empty theater and a giant in a top hat sat right in front of him (leaning didn't help); 47 previews, ate all the popcorn before the movie; the 4D seat sprayed him, blew him dry, bucked like a rodeo, launched the tall guy through the roof and looped him around the theater; he finally saw the KA-BOOM; stayed for the post-credits scene and the tall guy fell back in through the roof. Looks normal."
+      "went to the movies (day 13): ran out of FUN PARK's back gate (BYE NOW!) to MEGAPLEX 30 (EXPLOSION 7, NOW IN 4D); NO PETS - the kitten flattened into a hat and the usher let it slide; SMALL popcorn $47.50, bigger than him; the card reader asked for a tip and he pressed 30% ($61.75) under the cashier's stare; an empty theater and a giant in a top hat sat right in front of him (leaning didn't help); 47 previews, ate all the popcorn before the movie; the 4D seat sprayed him, blew him dry, bucked like a rodeo, launched the tall guy through the roof and looped him around the theater; he finally saw the KA-BOOM; stayed for the post-credits scene and the tall guy fell back in through the roof. Looks normal."
     ],
-    "notes": "Day 14: deadpan / Family Guy timing; the kitten is never harmed. Every episode moves on to a new world."
+    "notes": "Day 13: deadpan / Family Guy timing; the kitten is never harmed. Every episode moves on to a new world."
   },
   "used_comments": [
     "Beat Mc in hardcore mode:)",
@@ -125,11 +124,6 @@
     },
     {
       "day": 13,
-      "type": "waiting",
-      "summary": "no new comments on the day 12 posts; at the FUN PARK exit station, kitten (with the ride photo) loafed on his head, holds the sign, turns it, writes WE'LL WAIT. under the message, dead stare, the kitten slow-blinks (21 s)"
-    },
-    {
-      "day": 14,
       "type": "comment",
       "summary": "@second_degree_burn (IG): 'Go to the movies!' -> reads it at the ride exit, runs out the park's back gate (BYE NOW!) to MEGAPLEX 30; NO PETS: the kitten flattens into a hat, the usher stares, narrows his eyes, waves him in; SMALL popcorn $47.50 is taller than him; tip screen 20/25/30% + tiny 'no tip', the cashier stares, clock ticks, he presses 30% ($61.75); empty theater, PLEASE SILENCE YOUR PHONES, a giant in a top hat sits right in front, leans when he leans; PREVIEW 1 OF 47, eats faster and faster, PREVIEW 47 OF 47, empty, one last kernel; 4D: tilt, water jet, fans blow him dry, rodeo, the tall guy is catapulted through the roof, he loops the theater (FLASH), KA-BOOM on the screen; THE END, credits, POST-CREDITS SCENE - the tall guy drops back in through the hole; ask in the aisle (69.4 s)"
     }
