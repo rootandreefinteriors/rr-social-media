@@ -2666,3 +2666,241 @@ def draw_photo_screen(cr, x, y, w=620, h=470, title="RIDE PHOTO", inner=None):
         inner(cr, x - w / 2, y - h / 2, w, h)
         cr.restore()
         sketch_rect(cr, x - w / 2, y - h / 2, x + w / 2, y + h / 2, 5, sid=13102, fill=None)
+
+
+# ------------------------------------------------------------------ the movies (day 14) ---
+NIGHT_SKY = ((0.10, 0.12, 0.26), (0.16, 0.18, 0.36), (0.24, 0.24, 0.44))
+CINE_RED, CINE_RED_D = (0.72, 0.14, 0.18), (0.50, 0.08, 0.12)
+CINE_WALL = (0.16, 0.10, 0.14)
+CINE_GOLD = (1.0, 0.82, 0.30)
+STAFF_RED = (0.84, 0.16, 0.20)
+COAT = (0.22, 0.22, 0.28)
+
+def draw_city_night(cr, t, x0, x1, yb=FLOOR_Y, fade=0.0):
+    """a night street right of x0: solid sky bands (no far-from-origin gradients), stars, dark buildings with lit windows,
+    a sidewalk. Hide the seam at x0 behind something (the park's back gate)."""
+    vx0, vy0, vx1, vy1 = _visible(cr)
+    a, b = max(x0, vx0), min(x1, vx1)
+    if b <= a: return
+    cr.save(); cr.rectangle(x0, vy0 - 10, x1 - x0, vy1 - vy0 + 20); cr.clip()
+    top = min(vy0, yb - 3000)
+    bands = [(top, yb - 1500, NIGHT_SKY[0]), (yb - 1500, yb - 900, NIGHT_SKY[1]), (yb - 900, yb + 10, NIGHT_SKY[2])]
+    day = [TOWN_SKY[1], lerp(TOWN_SKY[0], TOWN_SKY[1], 0.5), TOWN_SKY[0]]
+    def dusk(x): return clamp01((x - x0) / fade) if fade > 0 else 1.0
+    step = 40
+    for k in range(int((a - x0) // step), int((b - x0) // step) + 1):        # evening falls over `fade` px (solid strips)
+        xs = x0 + k * step; u = dusk(xs + step / 2)
+        for (y0, y1, col), dc in zip(bands, day):
+            cr.rectangle(xs, y0, step + 1, y1 - y0 + 1); cr.set_source_rgb(*lerp(dc, col, smooth(u))); cr.fill()
+    for k in range(int((a - x0) // 110) - 1, int((b - x0) // 110) + 2):            # stars
+        sx = x0 + k * 110 + 47 * math.sin(k * 12.9898); sy = yb - 1100 - 900 * abs(math.sin(k * 78.233))
+        tw = (0.6 + 0.4 * math.sin(t * 3 + k)) * smooth(clamp01(dusk(sx) * 1.5 - 0.5))
+        cr.arc(sx, sy, 4 + 2 * (k % 3), 0, 2 * math.pi); cr.set_source_rgba(1, 1, 0.85, tw); cr.fill()
+    for k in range(int((a - x0 - fade * 0.4) // 420) - 1, int((b - x0) // 420) + 2):            # buildings
+        bx = x0 + fade * 0.4 + k * 420; h = 700 + 380 * abs(math.sin(k * 3.7)); w = 380
+        sketch_rect(cr, bx, yb - h, bx + w, yb, 5, sid=14000 + (k % 7), fill=(0.20, 0.20, 0.32))
+        for i in range(3):
+            for j in range(int(h // 160) - 1):
+                if math.sin(k * 7 + i * 3 + j * 5) > -0.2:
+                    wx, wy = bx + 50 + i * 115, yb - h + 60 + j * 160
+                    cr.rectangle(wx, wy, 60, 80); cr.set_source_rgb(1.0, 0.86, 0.45); cr.fill()
+    for k in range(int((a - x0) // step), int((b - x0) // step) + 1):
+        xs = x0 + k * step
+        cr.rectangle(xs, yb, step + 1, max(200, vy1 - yb + 20)); cr.set_source_rgb(*lerp(WALK, (0.42, 0.42, 0.48), smooth(dusk(xs + step / 2)))); cr.fill()
+    sketch_line(cr, [(a, yb), (b, yb)], 4, sid=14010, amp=1.0)
+    for k in range(int((a - x0) // 260), int((b - x0) // 260) + 2):
+        xx = x0 + k * 260
+        sketch_line(cr, [(xx, yb + 4), (xx - 60, yb + 300)], 3, sid=14011, color=(0.32, 0.32, 0.38))
+    cr.restore()
+
+def _bulbs(cr, x0, y0, x1, y1, t, step=60, r=10, sid=0):
+    """chasing marquee bulbs around a rectangle."""
+    pts = []
+    n_x, n_y = max(2, int((x1 - x0) / step)), max(2, int((y1 - y0) / step))
+    for i in range(n_x + 1): pts.append((x0 + (x1 - x0) * i / n_x, y0))
+    for i in range(1, n_y + 1): pts.append((x1, y0 + (y1 - y0) * i / n_y))
+    for i in range(1, n_x + 1): pts.append((x1 - (x1 - x0) * i / n_x, y1))
+    for i in range(1, n_y): pts.append((x0, y1 - (y1 - y0) * i / n_y))
+    for i, (bx, by) in enumerate(pts):
+        on = (i + int(t * 8)) % 3 == 0
+        cr.arc(bx, by, r, 0, 2 * math.pi); cr.set_source_rgb(*((1.0, 0.95, 0.55) if on else (0.85, 0.62, 0.22)))
+        cr.fill_preserve(); stroke_ink(cr, 3)
+
+def draw_megaplex(cr, x, yb=FLOOR_Y, t=0.0):
+    """MEGAPLEX 30: a red movie palace. Big bulb sign on top, a marquee (EXPLOSION 7 / NOW IN 4D), lit glass doors in the
+    middle (x-160..x+160), poster cases either side."""
+    w = 1000
+    sketch_rect(cr, x - w, yb - 1500, x + w, yb, 7, sid=14100, fill=CINE_RED)
+    for k in range(-4, 5):                                                     # pilasters
+        cr.rectangle(x + k * 220 - 14, yb - 1500, 28, 1500); cr.set_source_rgb(*CINE_RED_D); cr.fill()
+    sketch_rect(cr, x - w, yb - 1500, x + w, yb, 7, sid=14101, fill=None)
+    # top sign
+    sketch_rect(cr, x - 560, yb - 1890, x + 560, yb - 1540, 7, sid=14102, fill=(0.14, 0.12, 0.20))
+    _bulbs(cr, x - 530, yb - 1860, x + 530, yb - 1570, t, step=70, r=12, sid=14103)
+    draw_text(cr, "MEGAPLEX 30", x, yb - 1715, 150, color=(255, 214, 80), max_w=980)
+    for dx in (-420, 420): sketch_line(cr, [(x + dx, yb - 1540), (x + dx, yb - 1500)], 10, sid=14104)
+    # marquee
+    sketch_poly(cr, [(x - 820, yb - 1300), (x + 820, yb - 1300), (x + 900, yb - 1140), (x - 900, yb - 1140)], 7, sid=14105, fill=(0.98, 0.95, 0.85))
+    _bulbs(cr, x - 800, yb - 1280, x + 800, yb - 1160, t, step=80, r=9, sid=14106)
+    draw_text(cr, "EXPLOSION 7", x, yb - 1245, 70, color=(30, 30, 34), max_w=1400)
+    draw_text(cr, "NOW IN 4D", x, yb - 1185, 52, color=(200, 40, 50), max_w=1400)
+    # doors
+    sketch_rect(cr, x - 200, yb - 640, x + 200, yb, 7, sid=14107, fill=(1.0, 0.86, 0.50))
+    sketch_line(cr, [(x, yb - 640), (x, yb)], 6, sid=14108)
+    for dx in (-30, 30): sketch_line(cr, [(x + dx, yb - 360), (x + dx, yb - 260)], 8, sid=14109 + (dx > 0))
+    # poster cases: the EXPLOSION 7 poster (a giant starburst)
+    for k, px in enumerate((x - 650, x + 650)):
+        sketch_rect(cr, px - 190, yb - 820, px + 190, yb - 220, 7, sid=14112 + k, fill=(0.12, 0.10, 0.16))
+        draw_boom(cr, px, yb - 560, 150, t=t, sid=14120 + 10 * k)
+        draw_text(cr, "EXPLOSION 7", px, yb - 300, 46, color=(255, 214, 80), max_w=340)
+        _bulbs(cr, px - 190, yb - 820, px + 190, yb - 220, t, step=75, r=7, sid=14114 + k)
+
+def draw_boom(cr, x, y, r, t=0.0, sid=14130, alpha=1.0):
+    """a cartoon explosion starburst (orange + yellow), for posters and the movie screen."""
+    for k, (rr, col) in enumerate(((1.0, (0.96, 0.42, 0.16)), (0.66, (1.0, 0.80, 0.25)), (0.34, (1.0, 0.97, 0.75)))):
+        pts = []
+        n = 14
+        for i in range(2 * n):
+            ang = i * math.pi / n + 0.15 * k + 0.05 * math.sin(t * 9 + i)
+            q = r * rr * (1.0 if i % 2 == 0 else 0.62)
+            pts.append((x + math.cos(ang) * q, y + math.sin(ang) * q))
+        sketch_poly(cr, pts, 5, sid=sid + k, fill=col, alpha=alpha, amp=0.8)
+
+def draw_no_pets(cr, x, yb=FLOOR_Y):
+    """a sign on a post by the door: a cat in a red circle with a slash, NO PETS."""
+    sketch_rect(cr, x - 14, yb - 640, x + 14, yb, 5, sid=14140, fill=(0.75, 0.70, 0.62))
+    sketch_ellipse(cr, x, yb + 4, 90, 18, 4, sid=14141, fill=(0.75, 0.70, 0.62))
+    sketch_rect(cr, x - 170, yb - 920, x + 170, yb - 560, 6, sid=14142, fill=(1, 1, 1))
+    cy = yb - 775
+    sketch_ellipse(cr, x, cy + 30, 52, 40, 4, sid=14143, fill=(0.15, 0.15, 0.18))        # cat silhouette
+    sketch_circle(cr, x, cy - 30, 36, 4, sid=14144, fill=(0.15, 0.15, 0.18))
+    for d in (-1, 1):
+        sketch_poly(cr, [(x + d * 14, cy - 58), (x + d * 34, cy - 84), (x + d * 36, cy - 44)], 3, sid=14145 + (d > 0), fill=(0.15, 0.15, 0.18))
+    cr.arc(x, cy, 110, 0, 2 * math.pi); stroke_ink(cr, 20, (0.88, 0.16, 0.18))
+    cr.move_to(x - 78, cy - 78); cr.line_to(x + 78, cy + 78); stroke_ink(cr, 20, (0.88, 0.16, 0.18))
+    draw_text(cr, "NO PETS", x, yb - 610, 56, color=(200, 30, 40), max_w=320)
+
+def draw_staff(cr, t, p, blink=0.0, s=1.0, kind="usher", alpha=1.0):
+    """a cinema worker on his rig (p = constrained pose, world coords): red vest, and a red cap that hides the curl.
+    kind "usher" (pillbox cap) or "cashier" (visor). Drawn scaled s around the feet."""
+    if alpha < 0.01: return
+    fx = (p["lfoot"][0] + p["rfoot"][0]) / 2
+    cr.push_group()
+    cr.save(); cr.translate(fx, FLOOR_Y); cr.scale(s, s); cr.translate(-fx, -FLOOR_Y)
+    q = dict(p); q["larm_over"] = q["rarm_over"] = 1.0
+    C.draw_guy(cr, t, q, blink)
+    nx, ny = p["neck"]; hpx, hpy = p["hip"]
+    sketch_poly(cr, [(nx - 40, ny + 18), (nx + 40, ny + 18), (hpx + 62, hpy - 10), (hpx + 60, hpy + 40), (hpx - 60, hpy + 40),
+                     (hpx - 62, hpy - 10)], 6, sid=14150, fill=STAFF_RED, amp=1.0)
+    for k in range(3): cr.arc(nx, ny + 90 + 90 * k, 8, 0, 2 * math.pi); cr.set_source_rgb(*CINE_GOLD); cr.fill_preserve(); stroke_ink(cr, 3)
+    C.draw_arm_over(cr, q, "l"); C.draw_arm_over(cr, q, "r")
+    hx, hy = p["head"]; tl = p.get("tilt", 0.0); tn = p.get("turn", 0.0)
+    cr.save(); cr.translate(hx, hy); cr.rotate(tl)
+    R = C.HEAD_R
+    if kind == "usher":
+        sketch_rect(cr, -80 + 20 * tn, -R - 70, 80 + 20 * tn, -R + 22, 6, sid=14151, fill=STAFF_RED)
+        cr.rectangle(-78 + 20 * tn, -R - 10, 156, 16); cr.set_source_rgb(*CINE_GOLD); cr.fill()
+    else:
+        sketch_poly(cr, [(-112, -R + 50), (-80, -R - 20), (80, -R - 20), (112, -R + 50)], 6, sid=14152, fill=STAFF_RED)
+        sketch_poly(cr, [(40 * tn - 70, -R + 40), (40 * tn + 70, -R + 40), (40 * tn + 120 + 40 * tn, -R + 66), (40 * tn - 120 + 40 * tn, -R + 66)],
+                    5, sid=14153, fill=STAFF_RED)
+    cr.restore()
+    cr.restore()
+    cr.pop_group_to_source(); cr.paint_with_alpha(alpha)
+
+def draw_giant_back(cr, x, y, s=1.0, tilt=0.0, sid=14160):
+    """the tall guy, seen from behind (in the theater): a dark coat's shoulders, the back of a big round head and a
+    very tall top hat. (x, y) = the middle of his shoulders. ~1.7x our guy."""
+    cr.save(); cr.translate(x, y); cr.rotate(tilt); cr.scale(s, s)
+    sketch_poly(cr, [(-230, 260), (-215, 40), (-120, -10), (120, -10), (215, 40), (230, 260)], 7, sid=sid, fill=COAT)
+    sketch_rect(cr, -26, -60, 26, 0, 6, sid=sid + 1, fill=PAPER)
+    sketch_circle(cr, 0, -190, 150, 8, sid=sid + 2, fill=PAPER)
+    sketch_ellipse(cr, 0, -318, 190, 34, 6, sid=sid + 3, fill=(0.12, 0.12, 0.14))
+    sketch_rect(cr, -118, -660, 118, -322, 7, sid=sid + 4, fill=(0.12, 0.12, 0.14))
+    cr.rectangle(-116, -400, 232, 40); cr.set_source_rgb(0.62, 0.14, 0.18); cr.fill()
+    cr.restore()
+
+def draw_popcorn(cr, x, yb, s=1.0, level=1.0, t=0.0, ang=0.0, label="SMALL", sid=14170):
+    """a red/white striped popcorn bucket, bottom-centre at (x, yb). At s=1: 520 tall, 400 wide at the top.
+    level 1 = heaped, 0 = empty (dark inside shows)."""
+    cr.save(); cr.translate(x, yb); cr.rotate(ang); cr.scale(s, s)
+    H, TW, BW = 520, 200, 150
+    if level > 0.02:                                                       # the heap
+        hh = 40 + 200 * level
+        for i in range(11):
+            u = i / 10; px = -TW + 2 * TW * u; py = -H - hh * math.sin(math.pi * u) * 0.9 + 18
+            sketch_circle(cr, px * 0.92, py + 30, 42 + 8 * math.sin(i * 2.1), 4, sid=sid + i, fill=(1.0, 0.96, 0.78))
+        for i in range(7):
+            u = (i + 0.5) / 7; px = -TW * 0.75 + 1.5 * TW * u; py = -H - hh * math.sin(math.pi * u) * 0.65
+            sketch_circle(cr, px, py + 50, 40, 4, sid=sid + 20 + i, fill=(1.0, 0.92, 0.62))
+    pts = [(-TW, -H), (TW, -H), (BW, 0), (-BW, 0)]
+    sketch_poly(cr, pts, 7, sid=sid + 41, fill=(1, 1, 1))
+    cr.save(); path(cr, pts); cr.close_path(); cr.clip()
+    for k in range(-3, 4):
+        if k % 2 == 0: continue
+        cr.move_to(k * 62 - 31, -H); cr.line_to(k * 62 + 31, -H); cr.line_to(k * 47 + 23, 0); cr.line_to(k * 47 - 23, 0); cr.close_path()
+        cr.set_source_rgb(0.86, 0.18, 0.20); cr.fill()
+    cr.restore()
+    sketch_poly(cr, pts, 7, sid=sid + 42, fill=None)
+    if level <= 0.02:
+        sketch_ellipse(cr, 0, -H, TW, 34, 6, sid=sid + 40, fill=(0.24, 0.12, 0.12))
+    if label:
+        sketch_circle(cr, 0, -H * 0.5, 92, 5, sid=sid + 43, fill=(1, 1, 1))
+        draw_text(cr, label, 0, -H * 0.5, 50, color=(200, 30, 40), max_w=160)
+    cr.restore()
+
+def draw_kernel(cr, x, y, r=26, sid=14190):
+    sketch_circle(cr, x, y, r, 4, sid=sid, fill=(1.0, 0.95, 0.75))
+    sketch_circle(cr, x + r * 0.5, y - r * 0.4, r * 0.6, 3, sid=sid + 1, fill=(1.0, 0.92, 0.62))
+
+def draw_card_reader(cr, x, yb, ang=0.0, s=1.0, sid=14200):
+    """the little card terminal on the counter (bottom-centre at x, yb). ang = how far it has swivelled to face him."""
+    cr.save(); cr.translate(x, yb); cr.scale(s, s)
+    sketch_rect(cr, -30, -70, 30, 0, 5, sid=sid, fill=(0.3, 0.3, 0.34))
+    cr.translate(0, -70); sx = max(0.25, abs(math.cos(ang)))
+    cr.scale(sx, 1)
+    sketch_rect(cr, -95, -200, 95, 0, 6, sid=sid + 1, fill=(0.22, 0.22, 0.26))
+    sketch_rect(cr, -75, -180, 75, -60, 4, sid=sid + 2, fill=(0.80, 0.93, 0.98))
+    for i in range(3): sketch_rect(cr, -70 + i * 50, -45, -30 + i * 50, -15, 3, sid=sid + 3 + i, fill=(0.55, 0.55, 0.6))
+    cr.restore()
+
+def draw_tip_screen(cr, W, H, t=0.0, press=None, total=None, sid=14220):
+    """INSERT SHOT (screen space, fills the frame): the card reader's screen asking for a tip on popcorn.
+    press = None / "30" (that button lit). total = text shown after paying."""
+    cr.set_source_rgb(0.18, 0.12, 0.10); cr.paint()                            # the counter, out of focus
+    sketch_rect(cr, 60, 360, W - 60, 1720, 9, sid=sid, fill=(0.22, 0.22, 0.26))
+    sketch_rect(cr, 110, 420, W - 110, 1560, 6, sid=sid + 1, fill=(0.85, 0.95, 0.99))
+    for i in range(3): sketch_rect(cr, 160 + i * 270, 1600, 380 + i * 270, 1680, 4, sid=sid + 2 + i, fill=(0.55, 0.55, 0.6))
+    if total:
+        draw_text(cr, "THANK YOU!", W / 2, 760, 110, color=(30, 30, 34))
+        draw_text(cr, total, W / 2, 1000, 150, color=(30, 30, 34))
+        draw_text(cr, "POPCORN (SMALL)", W / 2, 1200, 60, color=(90, 90, 100))
+        return
+    draw_text(cr, "ADD A TIP?", W / 2, 580, 120, color=(30, 30, 34))
+    for i, pct in enumerate(("20%", "25%", "30%")):
+        y = 790 + i * 210
+        lit = press == pct
+        sketch_rect(cr, 200, y - 80, W - 200, y + 80, 6, sid=sid + 10 + i, fill=(0.30, 0.62, 0.95) if lit else (1, 1, 1))
+        draw_text(cr, pct, W / 2, y, 100, color=(255, 255, 255) if lit else (30, 30, 34))
+    draw_text(cr, "no tip", W - 240, 1490, 42, color=(130, 130, 140))
+
+def draw_seat_row(cr, cx, y, n=9, w=200, h=220, gap=16, s=1.0, sid=14260, skip=()):
+    """a row of cinema seat BACKS seen from behind; tops at y. skip = seat indices left out (someone's seat flew off)."""
+    total = n * w + (n - 1) * gap
+    for i in range(n):
+        if i in skip: continue
+        x0 = cx - total * s / 2 + i * (w + gap) * s
+        sketch_rect(cr, x0, y, x0 + w * s, y + h * s, 6, sid=sid + i, fill=CINE_RED)
+        cr.rectangle(x0 + 14 * s, y + 14 * s, w * s - 28 * s, 26 * s); cr.set_source_rgb(*CINE_RED_D); cr.fill()
+
+def draw_seat_front(cr, x, y, s=1.0, sid=14290, part="all"):
+    """one cinema seat seen from the front (the seat he sits in / empty seats behind him). (x, y) = top of the back."""
+    cr.save(); cr.translate(x, y); cr.scale(s, s)
+    if part in ("all", "back"):
+        sketch_rect(cr, -130, 0, 130, 420, 7, sid=sid, fill=CINE_RED)
+        sketch_rect(cr, -100, 30, 100, 330, 5, sid=sid + 1, fill=CINE_RED_D)
+    if part in ("all", "arms"):
+        for d in (-1, 1):
+            sketch_rect(cr, d * 150 - 30, 330, d * 150 + 30, 560, 6, sid=sid + 2 + (d > 0), fill=(0.30, 0.20, 0.22))
+            sketch_rect(cr, d * 150 - 44, 310, d * 150 + 44, 350, 5, sid=sid + 4 + (d > 0), fill=(0.38, 0.26, 0.28))
+    cr.restore()
