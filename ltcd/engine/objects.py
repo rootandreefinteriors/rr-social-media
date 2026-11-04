@@ -2743,7 +2743,7 @@ def draw_megaplex(cr, x, yb=FLOOR_Y, t=0.0):
     sketch_poly(cr, [(x - 820, yb - 1300), (x + 820, yb - 1300), (x + 900, yb - 1140), (x - 900, yb - 1140)], 7, sid=14105, fill=(0.98, 0.95, 0.85))
     _bulbs(cr, x - 800, yb - 1280, x + 800, yb - 1160, t, step=80, r=9, sid=14106)
     draw_text(cr, "EXPLOSION 7", x, yb - 1245, 70, color=(30, 30, 34), max_w=1400)
-    draw_text(cr, "NOW IN 4D", x, yb - 1185, 52, color=(200, 40, 50), max_w=1400)
+    draw_text(cr, "TONIGHT ONLY", x, yb - 1185, 52, color=(200, 40, 50), max_w=1400)
     # doors
     sketch_rect(cr, x - 200, yb - 640, x + 200, yb, 7, sid=14107, fill=(1.0, 0.86, 0.50))
     sketch_line(cr, [(x, yb - 640), (x, yb)], 6, sid=14108)
@@ -2903,4 +2903,40 @@ def draw_seat_front(cr, x, y, s=1.0, sid=14290, part="all"):
         for d in (-1, 1):
             sketch_rect(cr, d * 150 - 30, 330, d * 150 + 30, 560, 6, sid=sid + 2 + (d > 0), fill=(0.30, 0.20, 0.22))
             sketch_rect(cr, d * 150 - 44, 310, d * 150 + 44, 350, 5, sid=sid + 4 + (d > 0), fill=(0.38, 0.26, 0.28))
+    cr.restore()
+
+HAT_BROWN, HAT_BAND = (0.66, 0.44, 0.24), (0.36, 0.22, 0.12)
+def draw_cowboy_hat(cr, x, y, s=1.0, ang=0.0, sid=14950):
+    """a tiny cowboy hat; (x, y) = the middle of the brim."""
+    cr.save(); cr.translate(x, y); cr.rotate(ang); cr.scale(s, s)
+    sketch_poly(cr, [(-46, 0), (-40, -52), (-16, -66), (0, -56), (16, -66), (40, -52), (46, 0)], 5, sid=sid, fill=HAT_BROWN)
+    cr.rectangle(-44, -16, 88, 13); cr.set_source_rgb(*HAT_BAND); cr.fill()
+    path(cr, [(-100, -14), (-80, 4), (-40, 14), (40, 14), (80, 4), (100, -14), (84, 10), (40, 26), (-40, 26), (-84, 10)]); cr.close_path()
+    cr.set_source_rgb(*HAT_BROWN); cr.fill_preserve(); stroke_ink(cr, 5)
+    cr.restore()
+
+def draw_periscope(cr, bx, by, top, view="front", sid=14960):
+    """a grey periscope. front view: eyepiece box centred at (bx, by), the tube goes straight up to y=top, where the
+    top box shows its mirror (facing the camera). back view: just the tube + the back of the top box."""
+    G, GD = (0.62, 0.64, 0.68), (0.40, 0.42, 0.46)
+    w = 44
+    if top < by - 40:
+        sketch_rect(cr, bx - w / 2, top + 40, bx + w / 2, by - 30, 5, sid=sid, fill=G)
+        for k in range(1, 4):                                                   # telescoping joints
+            yy = by - 30 - (by - 30 - top - 40) * k / 4
+            sketch_rect(cr, bx - w / 2 - 5, yy - 8, bx + w / 2 + 5, yy + 8, 4, sid=sid + 1 + k, fill=GD)
+    sketch_rect(cr, bx - 60, top - 40, bx + 60, top + 45, 6, sid=sid + 6, fill=G)
+    if view == "front":
+        sketch_rect(cr, bx - 42, top - 26, bx + 42, top + 30, 4, sid=sid + 7, fill=(0.70, 0.86, 0.98))
+        sketch_rect(cr, bx - 58, by - 34, bx + 58, by + 34, 6, sid=sid + 8, fill=G)
+        sketch_line(cr, [(bx - 40, by + 12), (bx + 40, by + 12)], 4, sid=sid + 9, color=GD)
+
+def draw_car(cr, x, y, s=1.0, ang=0.0, col=(0.88, 0.18, 0.18), sid=14980):
+    """a little cartoon getaway car (side view, facing right), (x, y) = between the wheels on the ground."""
+    cr.save(); cr.translate(x, y); cr.rotate(ang); cr.scale(s, s)
+    sketch_rect(cr, -120, -70, 120, -20, 5, sid=sid, fill=col)
+    sketch_poly(cr, [(-70, -70), (-45, -115), (40, -115), (70, -70)], 5, sid=sid + 1, fill=col)
+    sketch_poly(cr, [(-52, -74), (-36, -104), (-4, -104), (-4, -74)], 3, sid=sid + 2, fill=(0.75, 0.90, 1.0))
+    sketch_poly(cr, [(6, -74), (6, -104), (34, -104), (54, -74)], 3, sid=sid + 3, fill=(0.75, 0.90, 1.0))
+    for wx in (-70, 70): sketch_circle(cr, wx, -18, 26, 5, sid=sid + 4 + (wx > 0), fill=(0.15, 0.15, 0.18))
     cr.restore()

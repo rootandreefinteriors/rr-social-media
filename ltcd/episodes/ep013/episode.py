@@ -1,11 +1,11 @@
 """Day 13 - COMMENT episode: @second_degree_burn "Go to the movies!" (Instagram, day 12 reel, 0 likes).
-Deadpan, Family Guy timing. The kitten rides on his head the whole time (the bored straight man), never harmed.
-See BEATS.md for the beat sheet + gate.
+Deadpan, Family Guy timing. The kitten rides on his head the whole time, never harmed. See BEATS.md.
 
-PARK EXIT -> run right through the park's back gate -> MEGAPLEX 30 (NO PETS: the kitten becomes a hat; the usher
-stares) -> LOBBY (SMALL popcorn, $47.50, the TIP SCREEN) -> THEATER (empty; the tall guy in a top hat sits right in
-front; 47 previews; the popcorn is gone before the movie; 4D: water, fans, rodeo -> the tall guy is launched through
-the roof, he loops the theater, finally sees the movie) -> credits -> post-credits: the tall guy drops back in -> ASK.
+PARK EXIT -> run right through the park's back gate -> MEGAPLEX 30 (NO PETS: he pulls out a tiny cowboy hat and puts
+it on the kitten; the usher stares him down, lets it slide) -> LOBBY (SMALL popcorn $47.50, the TIP SCREEN) ->
+THEATER (hat tossed; empty theater; a giant in a top hat sits right in front; 47 previews; the popcorn is gone before
+the movie; the movie starts and he can't see it -> he pulls out a periscope, raises it over the hat, and watches
+EXPLOSION 7 through it) -> THE END: the tall guy finally gets up and leaves -> ASK in the aisle.
 """
 import sys, os, math
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "engine"))
@@ -70,35 +70,35 @@ T_TURN = 1.75
 T_RUN, T_RUN1 = 2.0, 4.1
 T_LOOKUP = 4.5
 T_WALK, T_WALK1 = 5.5, 6.4
-T_SIGN = 6.55; T_UPCAT = 7.0; T_FLAT = 7.25
-T_STARE = 7.9; T_TWITCH = 9.6; T_NARROW = 10.3; T_STEP = 10.75; T_IN = 11.4
-CUT_LOBBY = 12.0
-T_POINT = 12.3; T_DROP = 12.9; T_LOOKB = 13.3; T_TAP = 14.0; T_SWIVEL = 14.35
-CUT_TIP1 = 14.8
-CUT_TWO = 16.3
-CUT_TIP2 = 18.2; T_SLIDE = 18.55; T_PRESS = 19.0; T_TOTAL = 19.25
-CUT_TAKE = 19.9
-CUT_THEATER = 20.9
-T_GIANT_IN = 21.6; T_GIANT_SIT = 23.2
-T_LEAN1 = 23.7; T_LEAN2 = 24.5
-CUT_STARE = 25.4
-CUT_PREV1 = 26.8
-CUT_EAT = 28.2
-CUT_PREV47 = 31.4
-CUT_EMPTY = 32.4; T_RATTLE = 32.9; T_KERNEL = 33.8; T_EATK = 34.3
-CUT_4D = 35.2
-CUT_SEAT = 36.4; T_TILT = 36.6; T_WATER = 37.2; T_WATER1 = 37.9
-T_FANS = 38.9; T_FANS1 = 40.4
-T_RODEO = 40.4
-CUT_LAUNCH = 42.2; T_GLAUNCH = 42.7; T_CRASH = 42.88
-T_LOOP0 = 43.7; T_LOOP1 = 45.9
-T_BOOM = 46.2
-CUT_LIT = 47.8; T_BOING = 48.2
-CUT_CREDITS = 49.6; T_END = 49.6; T_LIGHTS = 50.2; T_ROLL0 = 50.6; T_ROLL1 = 52.4
-T_POST = 52.4; T_GFALL = 52.9; T_GLAND = 53.25
-CUT_ASK = 55.3
-T_ASK = 55.5
-ASK_HOLD = 7.0
+T_SIGN = 6.55; T_UPCAT = 7.0; T_DIG = 7.35; T_HATPOP = 7.95; T_HATON = 8.45
+T_STARE = 8.9; T_TWITCH = 10.2; T_NARROW = 10.8; T_STEP = 11.25; T_IN = 11.9
+CUT_LOBBY = 12.4
+T_POINT = 12.7; T_DROP = 13.3; T_LOOKB = 13.7; T_TAP = 14.4; T_SWIVEL = 14.75
+CUT_TIP1 = 15.2
+CUT_TWO = 16.7
+CUT_TIP2 = 18.6; T_SLIDE = 18.95; T_PRESS = 19.4; T_TOTAL = 19.65
+CUT_TAKE = 20.3
+CUT_THEATER = 21.3; T_HATOFF = 21.75; T_TOSS = 22.35          # front: the hat comes off, tossed
+CUT_BACK1 = 23.3
+T_GIANT_IN = 23.7; T_GIANT_SIT = 25.3
+T_LEAN1 = 25.8; T_LEAN2 = 26.6
+CUT_STARE = 27.5
+CUT_PREV1 = 28.9
+CUT_EAT = 30.3
+CUT_PREV47 = 33.5
+CUT_EMPTY = 34.5; T_RATTLE = 35.0; T_KERNEL = 35.9; T_EATK = 36.4
+CUT_MOVIE = 37.3; T_LEAN3 = 37.8                               # back: the movie starts. he can't see it.
+CUT_PULL = 39.0; T_DIG2 = 39.35; T_SCOPE_POP = 39.95; T_SCOPE_UP = 40.15; T_SCOPE_EXT = 40.45
+CUT_SCOPE_BACK = 41.2                                          # back: the periscope rises over the hat
+CUT_POV = 42.5                                                 # the periscope view: the movie
+CUT_WATCH = 46.7                                               # front: watching through it
+CUT_END = 48.2; T_GSTAND = 48.7; T_GLEAVE = 49.1; T_LIGHTS = 49.5; T_LOWER = 50.7
+CUT_FINAL = 51.6; T_STOW = 52.0
+CUT_ASK = 53.4
+T_ASK = 53.6
+ASK_HOLD = 7.5
+MOVIE_BOOM = CUT_POV + 0.9                                    # the building blows up (in the movie)
+
 
 S = M.Scene(x0=SXE)
 S.auto_blinks = False
@@ -108,13 +108,31 @@ CAM0 = (XE + 60, 930, 1.12)
 S.camkeys[0] = (0.0, CAM0, 0); S.cam = CAM0
 TK = []                                       # (t, kind, a) world-set switches, for the background
 
+
 def setting(t):
     if t < CUT_LOBBY - FR: return "street"
     if t < CUT_THEATER - FR: return "lobby"
     if CUT_ASK - FR <= t: return "front"
-    for a, b in ((CUT_STARE, CUT_PREV1), (CUT_EAT, CUT_PREV47), (CUT_EMPTY, CUT_4D), (CUT_SEAT, CUT_LAUNCH), (CUT_LIT, CUT_CREDITS)):
+    for a, b in ((CUT_THEATER, CUT_BACK1), (CUT_STARE, CUT_PREV1), (CUT_EAT, CUT_PREV47), (CUT_EMPTY, CUT_MOVIE),
+                 (CUT_PULL, CUT_SCOPE_BACK), (CUT_WATCH, CUT_END), (CUT_FINAL, CUT_ASK)):
         if a - FR <= t < b - FR: return "front"
     return "back"
+
+def hat_state(t):
+    """where the tiny cowboy hat is: None / 'hand' / 'cat' / 'fly'."""
+    if t < T_HATPOP or t >= T_TOSS + 0.8: return None
+    if t < T_HATON: return "hand"
+    if t < T_HATOFF: return "cat"
+    if t < T_TOSS: return "hand"
+    return "fly"
+
+def scope_ext(t):
+    """periscope extension 0..1 (front shot goes to 0.35, the back shot to 1, then it comes down at T_LOWER)."""
+    if t < T_SCOPE_EXT: return 0.0
+    e = 0.35 * smooth(ramp(t, T_SCOPE_EXT, T_SCOPE_EXT + 0.5)) + 0.65 * smooth(ramp(t, CUT_SCOPE_BACK + 0.2, CUT_SCOPE_BACK + 1.0))
+    return e * (1 - smooth(ramp(t, T_LOWER, T_LOWER + 0.7)))
+def scope_on(t): return T_SCOPE_POP <= t < T_STOW + 0.35
+def scope_up(t): return smooth(ramp(t, T_SCOPE_UP, T_SCOPE_UP + 0.3)) * (1 - smooth(ramp(t, T_LOWER + 0.5, T_LOWER + 0.9)))
 
 # ================================================================ helpers
 def npc_pose(x, face="deadpan", body="stand", **kw):
@@ -221,9 +239,9 @@ def lobby(cr, t):
     ang = 0.0 if t < T_SWIVEL else lerp(0.0, math.pi, smooth(ramp(t, T_SWIVEL, T_SWIVEL + 0.4)))
     O.draw_card_reader(cr, READER_X, COUNTER_Y - 25, ang=ang)
 
+
 # ================================================================ THEATER (from behind)
 BACKCAM = (TX, 800, 0.95)
-WIDECAM = (TX, 560, 0.8)
 SCR = (TX - 440, 100, TX + 440, 640)          # the movie screen
 G_ROW_Y, H_ROW_Y, N_ROW_Y = 790.0, 905.0, 1190.0
 GIANT_SHOULDER_Y = 880.0
@@ -232,44 +250,75 @@ def lights(t): return smooth(ramp(t, T_LIGHTS, T_LIGHTS + 1.0))
 def wall_col(t, base): return lerp(base, (0.62, 0.46, 0.48), 0.6 * lights(t))
 
 def giant_state(t):
-    """(x, y, visible) of the tall guy's shoulders in the back view."""
+    """(x, y) of the tall guy's shoulders in the back view, or None."""
     if t < T_GIANT_IN: return None
-    x_in = TX + 1000
     if t < T_GIANT_SIT:
         u = smooth(ramp(t, T_GIANT_IN, T_GIANT_SIT - 0.25))
-        x = lerp(x_in, TX, u); y = GIANT_SHOULDER_Y - 200 + 12 * abs(math.sin(t * 7)) * (1 - u)
+        x = lerp(TX + 1000, TX, u); y = GIANT_SHOULDER_Y - 200 + 12 * abs(math.sin(t * 7)) * (1 - u)
         if t > T_GIANT_SIT - 0.25: y = lerp(GIANT_SHOULDER_Y - 200, GIANT_SHOULDER_Y, smooth(ramp(t, T_GIANT_SIT - 0.25, T_GIANT_SIT)))
         return (x, y)
-    if t < T_GLAUNCH:
-        return (TX + lean_giant(t), GIANT_SHOULDER_Y + rodeo_dy(t, 0.7))
-    if t < T_GFALL:
-        u = t - T_GLAUNCH
-        return (TX, GIANT_SHOULDER_Y - 6000 * u * u - 400 * u) if u < 0.5 else None
-    u = smooth(ramp(t, T_GFALL, T_GLAND, "linear")) if t < T_GLAND else 1.0
-    yy = lerp(-900, GIANT_SHOULDER_Y, ramp(t, T_GFALL, T_GLAND, "linear") ** 2)
-    return (TX, yy + 18 * pulse(t, T_GLAND + 0.05, 0.08))
+    if t < T_GSTAND: return (TX + lean_giant(t), GIANT_SHOULDER_Y)
+    y = lerp(GIANT_SHOULDER_Y, GIANT_SHOULDER_Y - 200, smooth(ramp(t, T_GSTAND, T_GSTAND + 0.35)))
+    u = ramp(t, T_GLEAVE, T_GLEAVE + 1.3, "linear")
+    if u >= 1: return None
+    return (TX + 1300 * u, y + 12 * abs(math.sin(t * 7)) * (u > 0))
 
 def lean_amt(t):
     """his head lean in the back view (-1 left .. +1 right)."""
-    return -1.0 * smooth(ramp(t, T_LEAN1, T_LEAN1 + 0.3)) + 2.0 * smooth(ramp(t, T_LEAN2, T_LEAN2 + 0.35)) - 1.0 * smooth(ramp(t, CUT_STARE - 0.3, CUT_STARE))
+    a = -1.0 * smooth(ramp(t, T_LEAN1, T_LEAN1 + 0.3)) + 2.0 * smooth(ramp(t, T_LEAN2, T_LEAN2 + 0.35)) - 1.0 * smooth(ramp(t, CUT_STARE - 0.3, CUT_STARE))
+    a += -1.0 * smooth(ramp(t, T_LEAN3, T_LEAN3 + 0.25)) + 1.0 * smooth(ramp(t, T_LEAN3 + 0.75, T_LEAN3 + 1.0))
+    return a
 def lean_giant(t): return 150 * lean_amt(t - 0.35)
 
-def rodeo_k(t): return smooth(ramp(t, T_RODEO, T_RODEO + 1.2)) * (1 - smooth(ramp(t, T_LOOP0 - 0.3, T_LOOP0)))
-def rodeo_dy(t, a=1.0):
-    k = rodeo_k(t)
-    if k <= 0: return 0.0
-    f = 3.0 + 4.0 * ramp(t, T_RODEO, T_RODEO + 2.5)
-    return -a * k * 55 * abs(math.sin(t * f * math.pi))
-def tilt_4d(t): return 22 * smooth(ramp(t, T_TILT, T_TILT + 0.5)) * (1 - smooth(ramp(t, T_FANS1, T_FANS1 + 0.3)))
-
-def loop_u(t): return smooth(ramp(t, T_LOOP0, T_LOOP1)) if T_LOOP0 <= t < T_LOOP1 + 0.4 else 0.0
-LOOP_R = 340.0
-def loop_xform(t):
-    """(dx, dy, ang) of his seat during the loop around the theater (back view)."""
-    u = loop_u(t)
-    if u <= 0 or u >= 1: return (0.0, 0.0, 0.0)
-    th = 2 * math.pi * u
-    return (LOOP_R * 0.9 * math.sin(th), -LOOP_R * (1 - math.cos(th)), th)
+def draw_movie(cr, x0, y0, w, h, t):
+    """EXPLOSION 7, as it plays: title card, then a desert road; a getaway car races in, the building blows up, the
+    car jumps through the fireball, title slam."""
+    cr.save(); cr.rectangle(x0, y0, w, h); cr.clip()
+    mt = t - CUT_MOVIE
+    if mt < 1.6:
+        cr.rectangle(x0, y0, w, h); cr.set_source_rgb(0.06, 0.06, 0.08); cr.fill()
+        draw_text(cr, "EXPLOSION 7", x0 + w / 2, y0 + h / 2, w * 0.13, color=(255, 214, 80), max_w=w * 0.9)
+        cr.restore(); return
+    for k, col in enumerate(((0.98, 0.62, 0.30), (0.99, 0.74, 0.42), (1.0, 0.85, 0.58))):
+        cr.rectangle(x0, y0 + h * 0.2 * k, w, h * 0.2 + 1); cr.set_source_rgb(*col); cr.fill()
+    gy = y0 + h * 0.62
+    sketch_circle(cr, x0 + w * 0.2, y0 + h * 0.2, h * 0.08, 4, sid=15000, fill=(1.0, 0.95, 0.7))
+    sketch_poly(cr, [(x0 - 10, gy), (x0 + w * 0.1, gy - h * 0.16), (x0 + w * 0.3, gy - h * 0.16), (x0 + w * 0.36, gy)], 4, sid=15001, fill=(0.80, 0.42, 0.26))
+    cr.rectangle(x0, gy, w, h - (gy - y0)); cr.set_source_rgb(0.88, 0.70, 0.44); cr.fill()
+    sketch_line(cr, [(x0, gy), (x0 + w, gy)], 4, sid=15002)
+    cr.rectangle(x0, gy + h * 0.1, w, h * 0.06); cr.set_source_rgb(0.30, 0.30, 0.34); cr.fill()
+    for k in range(6):
+        cr.rectangle(x0 + ((k * 0.2 - mt * 0.6) % 1.2) * w - 0.1 * w, gy + h * 0.125, w * 0.06, h * 0.012); cr.set_source_rgb(1, 1, 0.8); cr.fill()
+    road_y = gy + h * 0.16
+    bx = x0 + w * 0.6; bw = w * 0.14
+    e = t - MOVIE_BOOM
+    if e < 0.08:                                                           # the building
+        sketch_rect(cr, bx - bw / 2, gy - h * 0.34, bx + bw / 2, gy + h * 0.02, 5, sid=15003, fill=(0.62, 0.62, 0.66))
+        for i in range(2):
+            for j in range(4):
+                cr.rectangle(bx - bw * 0.32 + i * bw * 0.4, gy - h * 0.3 + j * h * 0.075, bw * 0.24, h * 0.045); cr.set_source_rgb(0.3, 0.4, 0.6); cr.fill()
+    else:
+        sketch_poly(cr, [(bx - bw * 0.7, gy + h * 0.02), (bx - bw * 0.3, gy - h * 0.06), (bx + bw * 0.1, gy - h * 0.03), (bx + bw * 0.6, gy + h * 0.02)], 4, sid=15004, fill=(0.45, 0.42, 0.44))
+    if 0 <= e < 2.6:                                                      # the fireball
+        r = h * 0.42 * back_out(min(1.0, e / 0.35), 1.6) * (1 - 0.35 * smooth(ramp(e, 1.6, 2.6)))
+        O.draw_boom(cr, bx, gy - h * 0.12, r, t=t, sid=15010)
+    # the car
+    if e < 0.3:
+        u = ramp(t, MOVIE_BOOM - 1.4, MOVIE_BOOM + 0.3, "linear") if t >= MOVIE_BOOM - 1.4 else ((mt - 1.6) * 0.35) % 1.0
+        cx = x0 + lerp(0.0, 0.36, u) * w; cy = road_y; ang = 0.0
+    elif e < 1.3:
+        u = (e - 0.3) / 1.0
+        cx = x0 + lerp(0.36, 1.05, u) * w; cy = road_y - h * 0.5 * 4 * u * (1 - u); ang = -0.35 + 0.6 * u
+    else:
+        cx = None
+    if cx is not None:
+        for k in range(3):
+            sketch_line(cr, [(cx - w * 0.14, cy - h * (0.03 + 0.03 * k)), (cx - w * 0.3, cy - h * (0.03 + 0.03 * k))], 4, sid=15020 + k, color=(1, 1, 1))
+        O.draw_car(cr, cx, cy, s=w / 1100, ang=ang)
+    if e >= 1.6:                                                          # title slam
+        sc = back_out(min(1.0, (e - 1.6) / 0.3), 1.8)
+        draw_text(cr, "EXPLOSION 7", x0 + w / 2, y0 + h * 0.3, w * 0.075 * max(0.05, sc), color=(140, 20, 20), rot=-0.05)
+    cr.restore()
 
 def screen_content(cr, t):
     x0, y0, x1, y1 = SCR; cx, cy = (x0 + x1) / 2, (y0 + y1) / 2
@@ -280,26 +329,12 @@ def screen_content(cr, t):
         big("PLEASE SILENCE", 76, cy - 60); big("YOUR PHONES", 76, cy + 40)
     elif t < CUT_PREV47 - FR:
         strip("PREVIEW|1 OF 47"); big("IN A WORLD...", 90)
-    elif t < CUT_4D - FR:
+    elif t < CUT_MOVIE - FR:
         strip("PREVIEW|47 OF 47"); big("COMING SOON", 90)
-    elif t < T_BOOM:
-        strip("FEATURE|PRESENTATION"); big("4D", 200, cy, col=(255, 214, 80))
-    elif t < T_END:
-        u = ramp(t, T_BOOM, T_BOOM + 0.5)
-        cr.rectangle(x0, y0, x1 - x0, y1 - y0); cr.set_source_rgb(0.98, 0.70, 0.30); cr.fill()
-        O.draw_boom(cr, cx, cy + 20, 120 + 330 * back_out(u, 1.4), t=t, sid=14400)
-        draw_text(cr, "KA-BOOM", cx, cy + 20, 120, color=(140, 30, 20), rot=-0.06, alpha=min(1.0, u * 3))
-    elif t < T_ROLL0:
-        big("THE END", 110)
-    elif t < T_POST:
-        u = (t - T_ROLL0) / (T_ROLL1 - T_ROLL0)
-        lines = ["EXPLOSION 7", "", "DIRECTED BY", "SOMEBODY", "", "4D EFFECTS", "A GUY WITH A HOSE", "", "NO PETS WERE", "ALLOWED"]
-        for i, ln in enumerate(lines):
-            if not ln: continue
-            yy = y1 + 40 + i * 70 - u * (len(lines) * 70 + 600)
-            if y0 + 20 < yy < y1 - 10: draw_text(cr, ln, cx, yy, 50, color=(230, 230, 230), max_w=x1 - x0 - 60)
+    elif t < CUT_END - FR:
+        draw_movie(cr, x0, y0, x1 - x0, y1 - y0, t)
     else:
-        big("POST-CREDITS", 92, cy - 50); big("SCENE", 92, cy + 50)
+        big("THE END", 120)
 
 def theater_back(cr, t):
     vx0, vy0, vx1, vy1 = O._visible(cr)
@@ -308,14 +343,6 @@ def theater_back(cr, t):
     cr.rectangle(vx0, vy0, vx1 - vx0, ceil - vy0); cr.set_source_rgb(*wall_col(t, (0.08, 0.06, 0.09))); cr.fill()
     for k in range(-6, 7): sketch_line(cr, [(TX + k * 260, vy0), (TX + k * 260, ceil)], 3, sid=14500 + k % 4, color=(0.20, 0.16, 0.20))
     sketch_line(cr, [(vx0, ceil), (vx1, ceil)], 5, sid=14510)
-    if t >= T_CRASH:                                                          # the hole the tall guy went through
-        pts = [(TX - 190, ceil), (TX - 150, ceil - 70), (TX - 60, ceil - 40), (TX, ceil - 110), (TX + 80, ceil - 50), (TX + 170, ceil - 80), (TX + 200, ceil)]
-        sketch_poly(cr, pts + [(TX + 200, vy0), (TX - 190, vy0)], 5, sid=14511, fill=(0.10, 0.12, 0.26))
-        for k in range(5):
-            cr.arc(TX - 120 + 60 * k, ceil - 300 - 90 * (k % 2), 4, 0, 2 * math.pi); cr.set_source_rgb(1, 1, 0.85); cr.fill()
-        cr.move_to(TX - 170, ceil); cr.line_to(TX + 180, ceil); cr.line_to(TX + 420, FLOOR_Y); cr.line_to(TX - 420, FLOOR_Y); cr.close_path()
-        cr.set_source_rgba(0.85, 0.88, 1.0, 0.10); cr.fill()
-    # curtains + screen
     for d in (-1, 1):
         x_ = TX + d * 470
         sketch_rect(cr, x_ - 70, ceil, x_ + 70, 760, 5, sid=14512 + (d > 0), fill=O.CINE_RED_D)
@@ -323,33 +350,10 @@ def theater_back(cr, t):
     sketch_rect(cr, x0, y0, x1, y1, 6, sid=14514, fill=(0.10, 0.10, 0.13))
     cr.save(); cr.rectangle(x0, y0, x1 - x0, y1 - y0); cr.clip(); screen_content(cr, t); cr.restore()
     sketch_rect(cr, x0, y0, x1, y1, 6, sid=14515, fill=None)
-    # the 4D sign on the left wall
-    on = T_4D_ON <= t
-    sketch_rect(cr, TX - 660, 470, TX - 540, 610, 5, sid=14516, fill=(1.0, 0.85, 0.3) if on else (0.25, 0.22, 0.24))
-    draw_text(cr, "4D", TX - 600, 540, 60, color=(160, 30, 30) if on else (90, 80, 85))
-    # far rows, then the tall guy's row
     O.draw_seat_row(cr, TX, 680, n=11, w=150, h=120, gap=12, s=0.75, sid=14520)
     g = giant_state(t)
-    clip_hole = t >= T_CRASH and (t < T_GFALL)
-    if g:
-        cr.save()
-        if T_GLAUNCH <= t < T_GFALL or (T_GFALL <= t < T_GLAND):
-            cr.rectangle(vx0, ceil - 120, vx1 - vx0, vy1); cr.clip()
-        O.draw_giant_back(cr, g[0], g[1] + rodeo_dy(t, 0.7) * (t < T_GLAUNCH), s=GS, tilt=0.03 * math.sin(t * 2))
-        if T_GLAUNCH <= t < T_GLAUNCH + 0.4:
-            for k in range(5): L.motion_lines(cr, g[0] - 160 + 80 * k, g[1] + 330, math.pi / 2, n=1, length=420, alpha=0.9, sid=14570 + k, width=7)
-        cr.restore()
-    skip = ()
-    O.draw_seat_row(cr, TX, G_ROW_Y + rodeo_dy(t, 0.5), n=11, w=170, h=150, gap=14, s=0.85, sid=14540, skip=skip)
-    if CUT_4D - FR <= t < T_RODEO:                                           # rumble
-        pass
-    if t < T_CRASH + 0.6 and t >= T_CRASH:                                 # debris
-        for k in range(8):
-            u = (t - T_CRASH) / 0.6
-            dx = (k - 3.5) * 70 * (1 + u); dy = ceil + 1600 * u * u * (0.6 + 0.1 * k) - 200 * u
-            sketch_rect(cr, TX + dx - 20, dy - 20, TX + dx + 20, dy + 20, 4, sid=14560 + k, fill=(0.35, 0.30, 0.34))
-def T_PREV_DARK(t): return False
-T_4D_ON = CUT_4D + 0.3
+    if g: O.draw_giant_back(cr, g[0], g[1], s=GS, tilt=0.03 * math.sin(t * 2))
+    O.draw_seat_row(cr, TX, G_ROW_Y, n=11, w=170, h=150, gap=14, s=0.85, sid=14540)
 
 def world(cr, t):
     st = setting(t)
@@ -362,11 +366,6 @@ S.background(world)
 # ================================================================ THEATER (from the front: his seat)
 FRONTCAM = (FX + 60, 860, 1.2)
 SEAT_Y = 740.0
-def screen_light(t):
-    """colour of the light from the screen on the front set."""
-    if T_BOOM <= t < T_END: return (0.98, 0.62, 0.28), 0.10 + 0.03 * math.sin(t * 20)
-    return (0.55, 0.65, 0.95), 0.10 + 0.03 * math.sin(t * 5.3) * math.sin(t * 2.1)
-def seat_dy(t): return rodeo_dy(t) + (-tilt_4d(t) * 0.3)
 def theater_front(cr, t):
     vx0, vy0, vx1, vy1 = O._visible(cr)
     cr.rectangle(vx0, vy0, vx1 - vx0, vy1 - vy0); cr.set_source_rgb(*wall_col(t, (0.12, 0.08, 0.11))); cr.fill()
@@ -376,11 +375,12 @@ def theater_front(cr, t):
     for k in range(-3, 8):
         if k == 0: continue
         O.draw_seat_front(cr, FX + k * 300, SEAT_Y, s=1.0, sid=14620 + k, part="all")
-    O.draw_seat_front(cr, FX, SEAT_Y + seat_dy(t), s=1.0, sid=14620, part="back")
+    O.draw_seat_front(cr, FX, SEAT_Y, s=1.0, sid=14620, part="back")
     cr.rectangle(vx0, FLOOR_Y, vx1 - vx0, vy1 - FLOOR_Y); cr.set_source_rgb(0.22, 0.10, 0.12); cr.fill()
-    if t >= CUT_ASK - FR:                                                   # the aisle (the ask): steps with little lights
+    if t >= CUT_ASK - FR:
         for k in range(3):
             cr.arc(ASKX - 300 + k * 300, FLOOR_Y + 40, 9, 0, 2 * math.pi); cr.set_source_rgb(*O.CINE_GOLD); cr.fill()
+
 
 # ================================================================ HIM
 # --- park exit, read, run
@@ -406,20 +406,63 @@ def run_fx(cr, t, p, ly):
     for k, dy in enumerate((-400, -200, 0)):
         L.motion_lines(cr, h[0] - 200, h[1] + dy, math.pi, n=1, length=360, alpha=0.7, sid=7110 + k, width=6)
 S.prop(run_fx)
-# --- the door
+# --- the door: NO PETS -> a tiny cowboy hat over the kitten. the usher stares.
 DOORCAM = (MX + 20, 880, 0.92)
 S.walk_to(T_WALK, XDOOR - 540, T_WALK1 - T_WALK)
 S.camera(T_WALK, *DOORCAM, dur=1.0)
 S.set(T_SIGN, "stand", "deadpan", dur=0.35, look=(-0.9, 0.2), turn=-0.3)                 # the NO PETS sign
 S.set(T_UPCAT, "stand", "deadpan", dur=0.3, look=(-0.1, -1.0), turn=0.0, brow=0.1)         # ...up at the kitten
-S.set(T_FLAT + 0.35, "stand", "deadpan", dur=0.35, look=(0.85, -0.1), turn=0.45)           # at the usher
+S.set(T_DIG, "stand", "deadpan", dur=0.3, look=(0.3, 0.8), turn=0.1)                       # digs at his hip
+S.set(T_HATPOP + 0.05, "stand", "deadpan", dur=0.3, look=(0.2, -0.9), turn=0.0)            # puts it on the cat
+S.set(T_STARE - 0.3, "stand", "deadpan", dur=0.35, look=(0.85, -0.1), turn=0.45)           # at the usher
 S.set(T_TWITCH + 0.15, "stand", "deadpan", dur=0.1, look=(0.85, -0.1), turn=0.45, twitch=0.6)
 S.set(T_TWITCH + 0.5, "stand", "deadpan", dur=0.3, look=(0.85, -0.1), turn=0.45)
 S.set(T_STEP + 0.4, "stand", "deadpan", dur=0.3, look=(0.9, 0.0), turn=0.5)
-S.camera(T_STARE, MX + 40, 860, 1.02, 2.4)                         # slow push on the stare
+S.camera(T_STARE - 0.2, (XDOOR + XUSH) / 2, 620, 1.3, 0.5)          # in on the stare
+S.camera(T_STARE + 0.4, (XDOOR + XUSH) / 2, 610, 1.4, 1.9)
 S.walk_to(T_IN, XDOOR - 540 + 330, CUT_LOBBY - T_IN - 0.25)
-S.sfx(T_FLAT, "squeak", 0.03); S.sfx(T_TWITCH, "tick", 0.04); S.sfx(T_STEP + 0.25, "pat", 0.05)
-S.blink(8.6)
+S.sfx(T_DIG + 0.1, "rummage", 0.05, dur=0.5); S.sfx(T_HATPOP, "pop", 0.08); S.sfx(T_HATON, "pat", 0.05)
+S.sfx(T_TWITCH, "tick", 0.04); S.sfx(T_STEP + 0.25, "pat", 0.05)
+S.blink(9.6)
+def hat_hook(t, p):
+    """the hand: digs at the hip, pops the hat out, sets it on the kitten (door); later takes it off and tosses it."""
+    if T_DIG <= t < T_HATON + 0.4:
+        hip = (p["hip"][0] + 48, p["hip"][1] - 26)
+        top = (p["head"][0] + 30, p["head"][1] - 190)
+        if t < T_HATPOP:
+            u = smooth(ramp(t, T_DIG, T_DIG + 0.2)); dig = ramp(t, T_DIG + 0.2, T_DIG + 0.3)
+            q = (hip[0] + 14 * math.sin(t * 24) * dig, hip[1] + 6 * math.sin(t * 31) * dig)
+            p["rhand"] = lerp(p["rhand"], q, u)
+        elif t < T_HATON:
+            q = lerp(hip, top, smooth(ramp(t, T_HATPOP, T_HATON - 0.05)))
+            p["rhand"] = q; p["relb"] = (q[0] + 120, (q[1] + p["neck"][1]) / 2 + 120); p["rhand_t"] = "grip"
+        else:
+            p["rhand"] = lerp(top, p["rhand"], smooth(ramp(t, T_HATON, T_HATON + 0.4)))
+    if T_HATOFF - 0.4 <= t < T_TOSS + 0.45:
+        top = (p["head"][0] + 30, p["head"][1] - 190)
+        if t < T_HATOFF: q = lerp(p["rhand"], top, smooth(ramp(t, T_HATOFF - 0.4, T_HATOFF)))
+        elif t < T_TOSS: q = lerp(top, (p["head"][0] + 120, p["head"][1] - 260), smooth(ramp(t, T_HATOFF + 0.1, T_TOSS)))
+        else: q = lerp((p["head"][0] + 120, p["head"][1] - 260), p["rhand"], smooth(ramp(t, T_TOSS + 0.05, T_TOSS + 0.45)))
+        p["rhand"] = q; p["relb"] = (q[0] + 110, (q[1] + p["neck"][1]) / 2 + 130); p["rhand_t"] = "grip" if t < T_TOSS else "open"
+    return p
+S.hook(hat_hook)
+def cowboy_hat(cr, t, p, ly):
+    if ly != "front": return
+    st = hat_state(t)
+    if st is None: return
+    if st == "hand":
+        hx, hy = p["rhand"]
+        if t < T_HATON and t < T_HATPOP + 0.25: L.burst_lines(cr, hx, hy - 40, (t - T_HATPOP) / 0.4, r0=60, r1=130, n=8, sid=31)
+        O.draw_cowboy_hat(cr, hx - 10, hy - 6, s=0.82, ang=0.1)
+        L.draw_grips(cr, p)
+    elif st == "cat":
+        x, y, a = kitten_spot(p)
+        O.draw_cowboy_hat(cr, x - 8, y - 70, s=0.82, ang=a * 0.6 - 0.08)
+    else:                                                                  # tossed over his shoulder, off frame left
+        u = (t - T_TOSS) / 0.8
+        x0, y0 = p["head"][0] + 120, p["head"][1] - 260
+        O.draw_cowboy_hat(cr, x0 - 1100 * u, y0 - 380 * math.sin(math.pi * min(1, u * 0.9)) + 500 * u * u, s=0.82, ang=-9 * u)
+
 
 # --- LOBBY
 LOBBYCAM = (LX + 90, 880, 0.95)
@@ -485,35 +528,39 @@ def held_bucket(cr, t, p, ly):
     L.draw_grips(cr, p)
 S.prop(held_bucket)
 
-# --- THEATER: back view
+# --- THEATER
 L.POSES["cine_sit"] = dict(head=(540, 790), neck=(540, 915), hip=(540, 1250), lelb=(450, 1030), lhand=(395, 1062),
                            relb=(630, 1030), rhand=(685, 1062), lhand_t="grip", rhand_t="grip",
                            lknee=(470, 1270), rknee=(610, 1270), lfoot=(470, FLOOR_Y), rfoot=(610, FLOOR_Y), nowalk=1.0)
 SIT = dict(lag=0.4, nowalk=1.0)
-def back_cut(t):
-    S.cut(t - FR, cam=BACKCAM, x=TX - 540)
+def back_cut(t, cam=BACKCAM):
+    S.cut(t - FR, cam=cam, x=TX - 540)
     S.set(t - FR, "cine_sit", "deadpan", dur=0.0, back=1.0, **SIT)
 def front_cut(t, cam=FRONTCAM, **kw):
     S.cut(t - FR, cam=cam, x=FX - 540)
     S.set(t - FR, "cine_sit", "deadpan", dur=0.0, **SIT, **kw)
-back_cut(CUT_THEATER)
-S.camera(CUT_THEATER, TX, 780, 1.0, 2.0)
-S.sfx(T_GIANT_IN, "step", 0.04); S.sfx(T_GIANT_IN + 0.5, "step", 0.04); S.sfx(T_GIANT_IN + 1.0, "step", 0.04)
+BUCK = (FX + 300, SEAT_Y + 400)              # the bucket in the seat next to him (bottom-centre)
+# he sits down, takes the hat off the cat and tosses it
+front_cut(CUT_THEATER, cam=(FX + 60, 840, 1.25), look=(0.0, 0.0))
+S.set(T_HATOFF - 0.4, "cine_sit", "deadpan", dur=0.3, look=(0.2, -1.0), **SIT)
+S.set(T_TOSS + 0.2, "cine_sit", "deadpan", dur=0.3, look=(0.0, 0.0), **SIT)
+S.sfx(T_TOSS, "whoosh", 0.05)
+# back: the empty theater. the tall guy.
+back_cut(CUT_BACK1)
+S.camera(CUT_BACK1, TX, 780, 1.0, 1.6)
+for k in range(3): S.sfx(T_GIANT_IN + 0.5 * k, "step", 0.04)
 S.sfx(T_GIANT_SIT, "thud", 0.14); S.shake(T_GIANT_SIT, 0.25, 6)
-S.sfx(T_LEAN1, "squeak", 0.025); S.sfx(T_LEAN1 + 0.35, "squeak", 0.02); S.sfx(T_LEAN2, "squeak", 0.025); S.sfx(T_LEAN2 + 0.35, "squeak", 0.02)
-# reaction: front, dead stare at us
+for tl in (T_LEAN1, T_LEAN2): S.sfx(tl, "squeak", 0.025); S.sfx(tl + 0.35, "squeak", 0.02)
 front_cut(CUT_STARE, cam=(FX + 30, 820, 1.32))
 S.set(CUT_STARE + 0.5, "cine_sit", "dead_stare", dur=0.4, look=(0.0, 0.0), **SIT)
 S.camera(CUT_STARE, FX + 30, 800, 1.42, 1.4)
 back_cut(CUT_PREV1)
-S.camera(CUT_PREV1, *BACKCAM, dur=0.01)
 # eating faster and faster (front)
-front_cut(CUT_EAT, look=(0.0, -0.2))
+front_cut(CUT_EAT, cam=(FX + 120, 880, 1.15), look=(0.0, -0.2))
 EAT_TS = []
 _tt = CUT_EAT + 0.2; per = 0.85
 while _tt < CUT_PREV47 - 0.25:
     EAT_TS.append((_tt, per)); _tt += per; per = max(0.2, per * 0.8)
-BUCK = (FX + 300, SEAT_Y + 400)              # the bucket in the seat next to him (bottom-centre)
 def level(t):
     if t < CUT_EAT: return 1.0
     if t < CUT_PREV47: return lerp(1.0, 0.12, ramp(t, CUT_EAT, CUT_PREV47 - 0.2, "linear") ** 0.8)
@@ -524,30 +571,25 @@ def eat_hook(t, p):
         if t0 <= t < t0 + d:
             u = (t - t0) / d
             dip = (BUCK[0] - 30, BUCK[1] - 520 * 0.75 - 30); mouth = (p["head"][0] + 30, p["head"][1] + 60)
-            if u < 0.45: q = lerp(dip, mouth, smooth(u / 0.45))
-            else: q = lerp(mouth, dip, smooth((u - 0.45) / 0.55))
+            q = lerp(dip, mouth, smooth(u / 0.45)) if u < 0.45 else lerp(mouth, dip, smooth((u - 0.45) / 0.55))
             p["rhand"] = q; p["relb"] = (q[0] + 90, q[1] + 170); p["rhand_t"] = "fist"
-            p["open"] = 0.5 * pulse(u, 0.4, 0.08); p["mouth"] = "auto"
             break
     return p
 S.hook(eat_hook)
 for t0, d in EAT_TS: S.sfx(t0 + d * 0.45, "chomp", 0.035)
-S.camera(CUT_EAT, FX + 120, 880, 1.15, 0.01)
 S.set(CUT_EAT + 1.6, "cine_sit", "deadpan", dur=0.5, look=(0.0, 0.0), lid=0.45, **SIT)
 back_cut(CUT_PREV47)
-S.camera(CUT_PREV47, *BACKCAM, dur=0.01)
 # the empty bucket + the last kernel
 front_cut(CUT_EMPTY, cam=(FX + 120, 880, 1.15), look=(0.8, 0.7), turn=0.3)
 def kernel_hook(t, p):
-    if not (CUT_EMPTY - FR <= t < CUT_4D - FR): return p
+    if not (CUT_EMPTY - FR <= t < CUT_MOVIE - FR): return p
     dip = (BUCK[0] - 40, BUCK[1] - 400); mouth = (p["head"][0] + 25, p["head"][1] + 70)
     if T_RATTLE - 0.3 <= t < T_KERNEL:
         g = smooth(ramp(t, T_RATTLE - 0.3, T_RATTLE))
         q = lerp(p["rhand"], (dip[0] + 18 * math.sin(t * 40) * (t > T_RATTLE), dip[1] + 8 * math.sin(t * 31) * (t > T_RATTLE)), g)
         p["rhand"] = q; p["relb"] = (q[0] + 80, q[1] + 170); p["rhand_t"] = "fist"
     elif T_KERNEL <= t < T_EATK + 0.4:
-        u = smooth(ramp(t, T_KERNEL, T_EATK))
-        q = lerp(dip, mouth, u); p["rhand"] = q; p["relb"] = (q[0] + 90, q[1] + 170); p["rhand_t"] = "fist"
+        q = lerp(dip, mouth, smooth(ramp(t, T_KERNEL, T_EATK))); p["rhand"] = q; p["relb"] = (q[0] + 90, q[1] + 170); p["rhand_t"] = "fist"
     return p
 S.hook(kernel_hook)
 S.set(T_KERNEL, "cine_sit", "deadpan", dur=0.4, look=(0.3, 0.5), turn=0.1, **SIT)
@@ -560,138 +602,120 @@ def kernel_prop(cr, t, p, ly):
     if ly == "front" and T_KERNEL <= t < T_EATK + 0.12:
         hx, hy = p["rhand"]; O.draw_kernel(cr, hx + 6, hy - 34, r=18)
 S.prop(kernel_prop)
-# 4D on (back)
-back_cut(CUT_4D)
-S.camera(CUT_4D, *BACKCAM, dur=0.01)
-S.sfx(T_4D_ON, "ding", 0.06); S.shake(CUT_4D + 0.6, 0.6, 4)
-# the seat: tilt, water, fans, rodeo (front)
-front_cut(CUT_SEAT, look=(0.0, 0.0))
-S.set(T_TILT + 0.3, "cine_sit", "deadpan", dur=0.25, look=(0.0, 0.0), eyescale=1.06, brow=0.15, **SIT)
-S.set(T_WATER + 0.25, "cine_sit", "dead_stare", dur=0.12, ease="snap", look=(0.0, 0.0), lid=0.75, **SIT)
-S.set(T_WATER1 + 0.2, "cine_sit", "dead_stare", dur=0.3, look=(0.0, 0.0), lid=0.38, **SIT)                       # dripping. stare.
-S.set(T_FANS + 0.1, "cine_sit", "deadpan", dur=0.25, look=(0.0, 0.0), lid=0.6, **SIT)
-S.set(T_FANS1 - 0.1, "cine_sit", "deadpan", dur=0.3, look=(0.0, 0.0), lid=0.4, **SIT)
-S.set(T_RODEO + 0.6, "cine_sit", "deadpan", dur=0.3, look=(0.0, 0.0), eyescale=1.1, brow=0.3, **SIT)
-S.sfx(T_TILT, "slide_down", 0.03); S.sfx(T_WATER, "sploosh", 0.12); S.sfx(T_WATER1 + 0.3, "drip", 0.06); S.sfx(T_WATER1 + 0.7, "drip", 0.05)
-S.sfx(T_FANS, "wind", 0.10, dur=T_FANS1 - T_FANS + 0.2)
-for k in range(10): S.sfx(T_RODEO + 0.2 + 0.18 * k, "thud", 0.03 + 0.004 * k)
-S.camera(CUT_SEAT, FX + 60, 850, 1.25, 2.0)
-S.shake(T_RODEO, CUT_LAUNCH - T_RODEO, 16)
-def seat_hook(t, p):
-    st = setting(t)
-    if not (CUT_THEATER - FR <= t < CUT_ASK - FR): return p
-    dy = rodeo_dy(t) - tilt_4d(t) * 0.3 if st == "front" else rodeo_dy(t)
-    if st == "back":
-        lx = 130 * lean_amt(t)
-        for j in ("head", "neck"): p[j] = (p[j][0] + lx, p[j][1])
-        p["tilt"] = p.get("tilt", 0.0) + 0.12 * lean_amt(t)
-    if abs(dy) > 0.01:
-        for j in L.JOINTS: p[j] = (p[j][0], p[j][1] + dy)
-    if st == "front" and tilt_4d(t) > 0:
-        p["head"] = (p["head"][0], p["head"][1] + 0.6 * tilt_4d(t)); p["tilt"] = p.get("tilt", 0.0) - 0.004 * tilt_4d(t)
-    if st == "back":
-        dx_, dy_, ang = loop_xform(t)
-        if ang:
-            cx_, cy_ = TX, H_ROW_Y + 100
-            c, s_ = math.cos(ang), math.sin(ang)
-            for j in L.JOINTS:
-                x_, y_ = p[j][0] - cx_, p[j][1] - cy_
-                p[j] = (cx_ + dx_ + x_ * c - y_ * s_, cy_ + dy_ + x_ * s_ + y_ * c)
-            p["tilt"] = p.get("tilt", 0.0) + ang
-    return p
-S.hook(seat_hook)
-def water(cr, t, p, ly):
-    if ly != "front" or setting(t) != "front": return
-    hx, hy = p["head"]
-    if T_WATER <= t < T_WATER1:
-        u = ramp(t, T_WATER, T_WATER + 0.12, "linear")
-        n = 18; pts = []
-        for i in range(n):
-            k = i / (n - 1)
-            pts.append((lerp(FX + 620, hx + 40, k * u + (1 - u)), lerp(hy - 140, hy + 10, k) - 60 * math.sin(math.pi * k), 26 + 34 * k))
-        O.draw_spray(cr, pts, color=(0.62, 0.82, 0.98), dark=(0.40, 0.64, 0.90), t=t)
-        for k in range(6):
-            a = k * 1.1 + t * 7; r = 90 + 40 * ((t * 5 + k) % 1)
-            O.draw_droplet(cr, hx + 40 + math.cos(a) * r, hy + math.sin(a) * r * 0.7, 9, color=(0.62, 0.82, 0.98))
-    if T_WATER1 <= t < T_FANS + 0.4:                                     # dripping (the fans blow it off)
-        for k in range(5):
-            ph = ((t - T_WATER1) * (1.3 + 0.2 * k) + k * 0.37) % 1.0
-            x_ = hx - 90 + 45 * k + (300 * ramp(t, T_FANS, T_FANS + 0.4) * -1)
-            y_ = hy + 40 + 260 * ph * ph
-            O.draw_droplet(cr, x_, y_, 9 + 2 * (k % 2), color=(0.62, 0.82, 0.98))
-        cr.save(); cr.translate(hx, hy)
-        sketch_ellipse(cr, -30, 120, 70, 14, 3, sid=14700, fill=(0.62, 0.82, 0.98), alpha=1 - ramp(t, T_FANS, T_FANS + 0.4))
-        cr.restore()
-    if T_FANS <= t < T_FANS1:                                            # wind lines blasting from the right
-        for k in range(7):
-            ph = ((t * 3.5 + k * 0.29) % 1.0)
-            y_ = hy - 260 + k * 85
-            x_ = FX + 700 - ph * 1300
-            sketch_line(cr, [(x_, y_), (x_ + 300, y_ + 6 * math.sin(k + t * 9))], 9, sid=14710 + k, color=(0.92, 0.95, 1.0), alpha=0.9 * math.sin(math.pi * ph))
-S.prop(water)
-# the launch (back, wide)
-S.cut(CUT_LAUNCH - FR, cam=WIDECAM, x=TX - 540)
-S.set(CUT_LAUNCH - FR, "cine_sit", "deadpan", dur=0.0, back=1.0, **SIT)
-S.shake(CUT_LAUNCH, T_LOOP0 - CUT_LAUNCH, 10)
-S.sfx(T_GLAUNCH, "spring", 0.10); S.sfx(T_GLAUNCH + 0.05, "whoosh", 0.08); S.sfx(T_CRASH, "kaboom", 0.25, dur=1.2); S.shake(T_CRASH, 0.5, 22)
-S.sfx(T_LOOP0, "spring", 0.10); S.sfx(T_LOOP0 + 0.1, "whoosh", 0.08, dur=1.8)
-T_FLASH = T_LOOP0 + (T_LOOP1 - T_LOOP0) * 0.5
-S.flash(T_FLASH, 0.35); S.sfx(T_FLASH, "tick", 0.1); S.sfx(T_FLASH + 0.02, "pop", 0.05)
-S.sfx(T_LOOP1, "thud", 0.2); S.shake(T_LOOP1, 0.4, 18)
-S.set(T_LOOP1 + 0.2, "cine_sit", "deadpan", dur=0.3, back=1.0, **SIT)
-S.camera(T_LOOP1 + 0.1, TX, 760, 0.9, 0.8)                         # in on the screen: KA-BOOM
-S.sfx(T_BOOM + 0.05, "kaboom", 0.4, dur=1.6)
-S.shake(T_BOOM + 0.05, 0.6, 8)
-# lit by the movie (front): the curl springs back
-front_cut(CUT_LIT, cam=(FX + 40, 830, 1.32), look=(0.0, -0.1))
-S.set(T_BOING + 0.6, "cine_sit", "deadpan", dur=0.4, look=(0.0, -0.4), smile=0.15, **SIT)
-# credits + the post-credits scene (back)
-back_cut(CUT_CREDITS)
-S.camera(CUT_CREDITS, *BACKCAM, dur=0.01)
-S.camera(T_ROLL0, TX, 790, 1.02, 3.0)
-S.sfx(T_GFALL, "slide_down", 0.05); S.sfx(T_GLAND, "thud", 0.2); S.shake(T_GLAND, 0.35, 14)
-S.camera(T_GLAND + 0.3, TX, 760, 1.12, 1.6)
-S.blink(54.4)
+# the movie starts (back): he can't see it. one more lean.
+back_cut(CUT_MOVIE)
+S.sfx(CUT_MOVIE + 1.7, "kaboom", 0.12, dur=1.0)
+S.sfx(T_LEAN3, "squeak", 0.025); S.sfx(T_LEAN3 + 0.75, "squeak", 0.02)
+# front: the periscope
+front_cut(CUT_PULL, cam=(FX + 80, 800, 1.18), look=(0.0, 0.0))
+S.set(T_DIG2, "cine_sit", "deadpan", dur=0.3, look=(0.5, 0.8), **SIT)
+S.set(T_SCOPE_POP + 0.1, "cine_sit", "deadpan", dur=0.3, look=(0.3, -0.2), **SIT)
+S.set(T_SCOPE_UP + 0.3, "cine_sit", "deadpan", dur=0.3, look=(0.0, -0.1), **SIT)
+S.sfx(T_DIG2 + 0.1, "rummage", 0.05, dur=0.5); S.sfx(T_SCOPE_POP, "pop", 0.09); S.sfx(T_SCOPE_EXT, "slide_up", 0.05)
+# back: it rises over the hat
+back_cut(CUT_SCOPE_BACK, cam=(TX, 700, 0.9))
+S.sfx(CUT_SCOPE_BACK + 0.2, "slide_up", 0.06)
+# the periscope view (insert)
+S.sfx(CUT_POV, "tick", 0.05)
+S.sfx(MOVIE_BOOM, "kaboom", 0.4, dur=1.8); S.sfx(MOVIE_BOOM + 0.3, "whoosh", 0.07); S.sfx(MOVIE_BOOM + 1.6, "thud", 0.12)
+# front: watching. lit by the explosions.
+front_cut(CUT_WATCH, cam=(FX + 60, 820, 1.3), look=(0.0, 0.0))
+S.set(CUT_WATCH + 0.6, "cine_sit", "deadpan", dur=0.8, look=(0.0, 0.0), smile=0.45, **SIT)
+S.sfx(CUT_WATCH + 0.3, "kaboom", 0.08, dur=1.0)
+# back: THE END. the tall guy gets up and leaves. now he can see the screen.
+back_cut(CUT_END)
+S.sfx(T_GSTAND, "squeak", 0.04); 
+for k in range(3): S.sfx(T_GLEAVE + 0.4 * k, "step", 0.04)
+S.sfx(T_LOWER, "slide_down", 0.05)
+S.camera(T_GLEAVE + 0.6, TX, 780, 1.08, 1.6)
+# front: dead stare. the periscope goes back where it came from.
+front_cut(CUT_FINAL, cam=(FX + 30, 820, 1.32), look=(0.0, 0.0))
+S.set(T_STOW, "cine_sit", "dead_stare", dur=0.3, look=(0.0, 0.0), **SIT)
+S.sfx(T_STOW + 0.15, "zip_down", 0.05)
+S.blink(CUT_FINAL + 1.1)
 # --- THE ASK (in the aisle)
 S.cut(CUT_ASK - FR, cam=(ASKX, 930, 1.15), x=ASKX - 540)
 S.set(CUT_ASK - FR, "stand", "deadpan", dur=0.0)
 S.t = T_ASK
 S.the_ask(T_ASK, hold=ASK_HOLD)
 
-# his seat-row backs + the near rows (back view), his seat + armrests (front view), the bucket
+def scope_hook(t, p):
+    if not scope_on(t) or setting(t) != "front": return p
+    hx, hy = p["head"]
+    if t < T_SCOPE_POP:
+        return p
+    if T_STOW <= t:
+        q = lerp((hx + 70, hy + 230), (p["hip"][0] + 60, p["hip"][1] - 40), smooth(ramp(t, T_STOW, T_STOW + 0.3)))
+        p["rhand"] = q; p["relb"] = (q[0] + 90, q[1] + 120); p["rhand_t"] = "grip"; return p
+    u = scope_up(t)
+    by = lerp(hy + 230, hy - 14, u); bx = hx + 78
+    p["lhand"] = (bx - 62, by + 30); p["lelb"] = (bx - 140, by + 170)
+    p["rhand"] = (bx + 62, by + 30); p["relb"] = (bx + 140, by + 170)
+    p["lhand_t"] = p["rhand_t"] = "grip"
+    return p
+S.hook(scope_hook)
+def dig_hook(t, p):
+    if T_DIG2 <= t < T_SCOPE_POP:
+        hip = (p["hip"][0] + 90, p["hip"][1] - 30)
+        u = smooth(ramp(t, T_DIG2, T_DIG2 + 0.2)); dig = ramp(t, T_DIG2 + 0.2, T_DIG2 + 0.3)
+        p["rhand"] = lerp(p["rhand"], (hip[0] + 14 * math.sin(t * 24) * dig, hip[1] + 6 * math.sin(t * 31) * dig), u)
+    return p
+S.hook(dig_hook)
+def periscope(cr, t, p, ly):
+    if ly != "front" or not scope_on(t): return
+    st = setting(t); hx, hy = p["head"]; e = scope_ext(t)
+    if st == "front":
+        if t >= T_STOW + 0.3: return
+        if t >= T_STOW:
+            x, y = p["rhand"]; O.draw_periscope(cr, x, y, y - 120, "front"); return
+        u = scope_up(t); by = lerp(hy + 230, hy - 14, u); bx = hx + 78
+        O.draw_periscope(cr, bx, by, by - 160 - e * 1400, "front")
+        if t < T_SCOPE_POP + 0.3: L.burst_lines(cr, bx, by, (t - T_SCOPE_POP) / 0.4, r0=80, r1=170, n=9, sid=33)
+        L.draw_grips(cr, p)
+    elif st == "back" and CUT_SCOPE_BACK - FR <= t < CUT_FINAL - FR:
+        bx = hx + 60
+        O.draw_periscope(cr, bx, hy - 60, hy - 160 - e * 560, "back")
+S.prop(periscope)
+
+# his row (back view), his seat + armrests + bucket (front view)
 def seats_front_layer(cr, t, p, ly):
     st = setting(t)
     if st == "back" and ly == "back" and CUT_THEATER - FR <= t:
-        # the bucket in the seat beside him (top shows over the seat back)
-        if t >= CUT_THEATER - FR:
-            O.draw_popcorn(cr, TX + 205, H_ROW_Y + 240 + rodeo_dy(t), s=0.6, level=level(t), t=t, label="")
+        O.draw_popcorn(cr, TX + 205, H_ROW_Y + 240, s=0.6, level=level(t), t=t, label="")
     if st == "back" and ly == "front":
-        dx_, dy_, ang = loop_xform(t)
-        skip = (4,) if ang else ()
-        O.draw_seat_row(cr, TX, H_ROW_Y + rodeo_dy(t), n=9, w=190, h=260, gap=16, s=1.0, sid=14800, skip=skip)
-        if ang:
-            cx_, cy_ = TX, H_ROW_Y + 100
-            u = loop_u(t); n = 14                                          # white speed trail along the loop
-            for i in range(n):
-                th = 2 * math.pi * max(0.0, u - 0.03 * (i + 1))
-                if th <= 0: break
-                x_ = cx_ + LOOP_R * 0.9 * math.sin(th); y_ = cy_ - 200 - LOOP_R * (1 - math.cos(th))
-                th2 = 2 * math.pi * max(0.0, u - 0.03 * (i + 2))
-                x2 = cx_ + LOOP_R * 0.9 * math.sin(th2); y2 = cy_ - 200 - LOOP_R * (1 - math.cos(th2))
-                sketch_line(cr, [(x_, y_), (x2, y2)], 10, sid=14900 + i, color=(0.95, 0.95, 1.0), alpha=1 - i / n)
-            cr.save(); cr.translate(cx_ + dx_, cy_ + dy_); cr.rotate(ang); cr.translate(-cx_, -cy_)
-            O.draw_seat_row(cr, TX, H_ROW_Y, n=1, w=190, h=260, s=1.0, sid=14804)
-            cr.restore()
-        O.draw_seat_row(cr, TX, N_ROW_Y + rodeo_dy(t, 0.6), n=7, w=240, h=320, gap=20, s=1.0, sid=14820)
-    if st == "front" and t < CUT_ASK - FR:
-        dy = seat_dy(t)
-        if ly == "front":
-            O.draw_seat_front(cr, FX, SEAT_Y + dy, s=1.0, sid=14620, part="arms")
-            L.draw_grips(cr, p)
-            O.draw_popcorn(cr, BUCK[0], BUCK[1] + dy, s=0.75, level=level(t), t=t)
-            for k in range(-3, 4):                                       # the row in front (backs to us) hides his legs
-                O.draw_seat_row(cr, FX + k * 330, 1215 + rodeo_dy(t, 0.4), n=1, w=290, h=300, s=1.0, sid=14840 + k)
+        O.draw_seat_row(cr, TX, H_ROW_Y, n=9, w=190, h=260, gap=16, s=1.0, sid=14800)
+        O.draw_seat_row(cr, TX, N_ROW_Y, n=7, w=240, h=320, gap=20, s=1.0, sid=14820)
+    if st == "front" and CUT_THEATER - FR <= t < CUT_ASK - FR and ly == "front":
+        O.draw_seat_front(cr, FX, SEAT_Y, s=1.0, sid=14620, part="arms")
+        L.draw_grips(cr, p)
+        O.draw_popcorn(cr, BUCK[0], BUCK[1], s=0.75, level=level(t), t=t)
+        for k in range(-3, 4):
+            O.draw_seat_row(cr, FX + k * 330, 1215, n=1, w=290, h=300, s=1.0, sid=14840 + k)
 S.prop(seats_front_layer)
+def lean_hook(t, p):
+    if setting(t) == "back" and CUT_BACK1 - FR <= t < CUT_ASK - FR:
+        lx = 130 * lean_amt(t)
+        for j in ("head", "neck"): p[j] = (p[j][0] + lx, p[j][1])
+        p["tilt"] = p.get("tilt", 0.0) + 0.12 * lean_amt(t)
+    return p
+S.hook(lean_hook)
+
+# the periscope view: an insert (screen space, under the card)
+def pov(cr, t):
+    if not (CUT_POV - FR <= t < CUT_WATCH - FR): return
+    W_, H_ = L.W, L.H
+    cr.set_source_rgb(0.03, 0.03, 0.04); cr.paint()
+    cx, cy, R = W_ / 2, 1010, 470
+    cr.save(); cr.arc(cx, cy, R, 0, 2 * math.pi); cr.clip()
+    draw_movie(cr, cx - R * 1.25, cy - R, 2.5 * R, 2 * R, t)
+    a = 1 - ramp(t, CUT_POV, CUT_POV + 0.25)
+    if a > 0: cr.set_source_rgba(0, 0, 0, a); cr.paint()
+    cr.restore()
+    cr.arc(cx, cy, R, 0, 2 * math.pi); cr.set_source_rgb(0.03, 0.03, 0.04); cr.set_line_width(26); cr.stroke()
+    for (x1, y1, x2, y2) in ((cx - R, cy, cx - 60, cy), (cx + 60, cy, cx + R, cy), (cx, cy - R, cx, cy - 60), (cx, cy + 60, cx, cy + R)):
+        cr.move_to(x1, y1); cr.line_to(x2, y2); cr.set_source_rgba(0, 0, 0, 0.35); cr.set_line_width(4); cr.stroke()
+S.overlays.insert(0, pov)
+
 
 # ================================================================ the kitten (always on his head)
 def kitten_spot(p, lift=0.0):
@@ -713,40 +737,36 @@ def kitten(cr, t, p, ly):
     st = setting(t)
     if st == "back":
         kitten_back(cr, x, y, KS, a); return
-    look = (0.0, 0.0); blink = 0.0; flat = 0.0
+    look = (0.0, 0.0); blink = 0.0
     if st == "street":
         if T_TURN <= t < T_RUN1 + 0.6: look = (0.9, -0.2)
         if T_LOOKUP <= t < T_WALK1: look = (0.6, -0.9)
-        flat = smooth(ramp(t, T_FLAT, T_FLAT + 0.3)) * (1 - smooth(ramp(t, T_STEP + 0.8, T_STEP + 1.1)))
-        if flat > 0: blink = flat
-        if T_STEP + 0.3 <= t < T_STEP + 0.8: blink = 0.5                       # opens one eye... (both, a crack)
-        if T_TWITCH <= t < T_TWITCH + 0.25: a += 0.05 * math.sin((t - T_TWITCH) * 60)
+        if T_HATPOP <= t < T_HATON: look = (0.4, -0.6)                          # watches the hat come
+        if T_HATON <= t: look = (0.8, 0.1)                                     # ...then stares at the usher too
+        if T_TWITCH <= t < T_TWITCH + 0.3: a += 0.06 * math.sin((t - T_TWITCH) * 60)
     if st == "lobby":
         look = (0.7, -0.6) if t < T_TAP else (0.6, 0.3)
         if CUT_TWO - FR <= t < CUT_TIP2: look = (0.8, 0.0); blink = 0.3
     if st == "front":
         look = (0.0, -0.3)
+        if T_HATOFF - 0.3 <= t < T_TOSS + 0.6: look = (-0.8, -0.3) if t >= T_TOSS else (0.3, -0.6)
         if CUT_EAT - FR <= t < CUT_PREV47: look = (0.6, 0.8)
-        if T_WATER <= t < T_FANS1: blink = 0.85
-        if CUT_LIT - FR <= t < CUT_CREDITS:
-            look = (0.0, 0.0)
-            if T_BOING + 0.6 <= t < T_BOING + 1.4: blink = math.sin(math.pi * (t - T_BOING - 0.6) / 0.8)
+        if CUT_PULL - FR <= t < CUT_SCOPE_BACK: look = (0.5, 0.5) if t < T_SCOPE_POP else (0.5, -0.9)
+        if CUT_WATCH - FR <= t < CUT_END:
+            look = (0.4, -0.9)
+            if CUT_WATCH + 0.6 <= t < CUT_WATCH + 1.4: blink = math.sin(math.pi * (t - CUT_WATCH - 0.6) / 0.8)
         if t >= CUT_ASK - FR: look = (0.0, 0.0)
-    cr.save()
-    if flat > 0:
-        cr.translate(x, y); cr.scale(1 + 0.18 * flat, 1 - 0.28 * flat); cr.translate(-x, -y)
-    wob_ = 0.0
-    if T_FANS <= t < T_FANS1: wob_ = 0.06 * math.sin(t * 40)
-    O.draw_cat(cr, x, y, s=KS, t=t, kind="loaf", col="black", look=look, blink=blink, sid=2000, tilt=a * 0.6 + wob_, swish=0.0 if flat else 1.0)
-    cr.restore()
-    mini_photo(cr, x - 85, y - 30 + 10 * flat, 0.38, a * 0.6 - 0.35)
+    O.draw_cat(cr, x, y, s=KS, t=t, kind="loaf", col="black", look=look, blink=blink, sid=2000, tilt=a * 0.6)
 S.prop(kitten)
+S.prop(cowboy_hat)
 
-# light from the screen washing over the front shots
+# light from the screen washing over the front shots (orange flashes while he watches the movie)
 def wash(cr, t):
-    if setting(t) != "front" or t >= CUT_ASK - FR: return
-    if CUT_TIP1 - FR <= t < CUT_TAKE - FR: return
-    col, a = screen_light(t)
+    if setting(t) != "front" or t >= CUT_ASK - FR or t < CUT_THEATER - FR: return
+    if CUT_WATCH - FR <= t < CUT_END:
+        a = 0.10 + 0.06 * max(0.0, math.sin(t * 13)) ; col = (0.98, 0.62, 0.28)
+    else:
+        a = 0.08 + 0.03 * math.sin(t * 5.3) * math.sin(t * 2.1); col = (0.55, 0.65, 0.95)
     cr.set_source_rgba(col[0], col[1], col[2], a * (1 - 0.6 * lights(t))); cr.paint()
 S.overlays.insert(0, wash)
 
