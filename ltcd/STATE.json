@@ -1,25 +1,16 @@
 {
   "show": "let the comments decide",
-  "day": 12,
+  "day": 13,
   "last_episode": {
-    "day": 12,
-    "type": "comment",
-    "folder": "episodes/ep012",
-    "video": "videos/day012.mp4",
-    "posted_at": "2026-11-03T19:00:00-05:00 (scheduled, @059a0fb)",
-    "buffer": {
-      "tiktok": "6aea371f033b67220a60c6cf",
-      "instagram": "6aea371ddfa67473393b7733"
-    },
-    "comment": {
-      "platform": "instagram",
-      "username": "bloody_reckless_1995",
-      "text": "Take your cat to the theme park and go on rides, have fun",
-      "likes": 0
-    }
+    "day": 13,
+    "type": "waiting",
+    "folder": "episodes/ep013",
+    "video": "videos/day013.mp4",
+    "posted_at": "2026-11-04T19:00:00-05:00 (scheduled)",
+    "buffer": {}
   },
   "ask_since_day": 12,
-  "waiting_streak": 0,
+  "waiting_streak": 1,
   "world": {
     "location": "FUN PARK, a theme park right of the town (day 12; the town is over, never go back): O.draw_park_world(cr, t, x0=38550, x1=70000) (town sky/hills/paving continued, hedge strip), O.draw_park_gate at 38550 (FUN PARK arch, hides the town seam), O.draw_ferris_wheel at 40750 R700, teacups O.draw_cup_platform/O.draw_teacup at 40500, YOU MUST BE THIS TALL sign O.draw_height_sign at 41950, coaster THE BIG ONE O.draw_track (path built in episodes/ep012/episode.py: station 43000, lift to ~45700, loops at 48000 and 51200, EXIT station 53400), RIDE PHOTO screen O.draw_photo_screen at ~54840. He ends at the EXIT station, body offset 53740 (x 54280), kitten loafed on his head holding the ride photo. Ask camera ~ (54400, 940, 1.18). Next episode: he walks out to the right into a new world.",
     "companions": [
@@ -43,7 +34,8 @@
       "built a CAT RESCUE SHELTER and was happy about it (day 11, re-cut): ran out of Mordor into a sunny town, found a black kitten in a FREE KITTEN box (slow blinks), built the shelter, rescued a cat from a tree and a line of kittens, fed them (one can - every head turned), they chose the box over the fancy bed, a cat pushed his mug off the shelf (he caught it), on adoption day the mom from day 6 adopted the orange cat, he stamped ADOPTED on every photo - the last was the kitten's, so he adopted it. Real smile. It rides on his head now. Looks normal.",
       "took his cat to the theme park (day 12): ran from the town into FUN PARK; teacups - the kitten batted the wheel until it spun crazy fast and he laughed for real, then dizzy; YOU MUST BE THIS TALL - short by a hair until the kitten sat up on his head (DING); THE BIG ONE coaster: lift hill, hang at the top, the kitten's slow blink gave him the nerve, arms up (despite KEEP ARMS AND LEGS INSIDE), drop, two loops, airtime, FLASH; the RIDE PHOTO shows him screaming with joy and the kitten bored. Looks normal."
     ],
-    "notes": "Day 12: warm tone (wholesome request), kitten never harmed or scared. Every episode moves on to a new world."
+    "notes": "Day 12: warm tone (wholesome request), kitten never harmed or scared. Every episode moves on to a new world.",
+    "sign_line": "WE'LL WAIT."
   },
   "used_comments": [
     "Beat Mc in hardcore mode:)",
@@ -116,6 +108,11 @@
       "day": 12,
       "type": "comment",
       "summary": "@bloody_reckless_1995 (IG): 'Take your cat to the theme park and go on rides, have fun' -> reads it in the town, a coaster rumble far off, kitten perks up; runs right through the FUN PARK arch; teacups: the kitten hops onto the wheel and bats it, faster and faster, he laughs; dizzy; the kitten stares up at THE BIG ONE; YOU MUST BE THIS TALL: short by a hair even on tiptoe, the kitten sits up -> DING; KEEP ARMS AND LEGS INSIDE, lap bar; lift hill clack, hang at the top (heartbeat), the kitten slow-blinks, arms up; drop, loop, airtime, loop 2, FLASH, brakes, biggest smile; RIDE PHOTO: him screaming with joy, the kitten bored; the photo prints, the kitten keeps it; ask at the exit (63.1 s)"
+    },
+    {
+      "day": 13,
+      "type": "waiting",
+      "summary": "no new comments on the day 12 posts; at the FUN PARK exit station, kitten (with the ride photo) loafed on his head, holds the sign, turns it, writes WE'LL WAIT. under the message, dead stare, the kitten slow-blinks (21 s)"
     }
   ]
 }
