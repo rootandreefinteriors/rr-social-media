@@ -7,8 +7,11 @@
     "folder": "episodes/ep014",
     "video": "videos/day014.mp4",
     "due": "2026-11-05",
-    "posted_at": "2026-11-05T19:00:00-05:00 (scheduled)",
-    "buffer": {},
+    "posted_at": "2026-11-05T19:00:00-05:00 (scheduled, @853e105)",
+    "buffer": {
+      "tiktok": "6aebbc01571331155354c405",
+      "instagram": "6aebbc03321c00b92451d936"
+    },
     "comment": {
       "platform": "instagram",
       "username": "second_degree_burn",
