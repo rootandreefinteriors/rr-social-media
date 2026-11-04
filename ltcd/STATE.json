@@ -6,8 +6,11 @@
     "type": "waiting",
     "folder": "episodes/ep013",
     "video": "videos/day013.mp4",
-    "posted_at": "2026-11-04T19:00:00-05:00 (scheduled)",
-    "buffer": {}
+    "posted_at": "2026-11-04T19:00:00-05:00 (scheduled, @9620d7f)",
+    "buffer": {
+      "tiktok": "6aeb839009e5f61702c4a2ae",
+      "instagram": "6aeb839209e5f61702c4a32f"
+    }
   },
   "ask_since_day": 12,
   "waiting_streak": 1,
