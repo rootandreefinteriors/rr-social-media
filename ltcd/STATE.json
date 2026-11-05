@@ -1,38 +1,38 @@
 {
   "show": "let the comments decide",
-  "day": 13,
+  "day": 14,
   "last_episode": {
-    "day": 13,
+    "day": 14,
     "type": "comment",
-    "folder": "episodes/ep013",
-    "video": "videos/day013.mp4",
-    "posted_at": "2026-11-04T21:00:00-05:00 (scheduled; moved from 7 PM for the re-cut)",
+    "folder": "episodes/ep014",
+    "video": "videos/day014.mp4",
+    "posted_at": "2026-11-05T19:00:00-05:00 (scheduled)",
     "buffer": {
-      "tiktok": "6aeb839009e5f61702c4a2ae",
-      "instagram": "6aeb839209e5f61702c4a32f"
+      "tiktok": "PENDING",
+      "instagram": "PENDING"
     },
     "comment": {
-      "platform": "instagram",
-      "username": "second_degree_burn",
-      "text": "Go to the movies!",
+      "platform": "tiktok",
+      "username": "thatboypiwko",
+      "text": "Go to the racetrack",
       "likes": 0
-    },
-    "note": "the comment arrived after the day 13 sweep; Justin swapped it in for tonight, replacing the day 13 waiting episode (kept in tests/unused_ep013_waiting)."
+    }
   },
-  "ask_since_day": 13,
+  "ask_since_day": 14,
   "waiting_streak": 0,
   "world": {
-    "location": "MEGAPLEX 30, a movie theater (day 13; FUN PARK is over, never go back). Street: O.draw_city_night (night, dusk fade from the park's back gate at 56000), O.draw_megaplex at 58400, O.draw_no_pets. Inside: lobby (concessions), and the theater: rows of red seats (O.draw_seat_row / O.draw_seat_front), the screen, a hole in the ceiling. He ends standing in the aisle of the theater (ep013 front set, FX=120000, aisle x ~121250, lights up), kitten loafed on his head holding the ride photo. Ask camera ~ (ASKX, 930, 1.15). Next episode: he walks out to the right into a new world.",
+    "location": "SPEEDWAY racetrack, VICTORY LANE (day 14; the theater is over, never go back). Draw: O.draw_raceway(cr, t, ox=11000.0) (sky, grandstand + crowd, catch fence, ad wall, asphalt) + O.draw_victory_arch(cr, VX, FLOOR_Y, w=1700) with VX=500000; car #0 (O.draw_racecar, button=True) parked at VX+1000; the giant trophy (O.draw_trophy, s=0.8) at VX-450 with the kitten asleep in its cup. He ends standing at VX-60 (body offset VX-600). Ask camera ~ (VX-180, 930, 0.9), push=False. Next episode: he walks out to the right into a new world.",
     "companions": [
-      "the black kitten (O.draw_cat col='black', s 0.62): rides on his head (loaf at head - 104). It no longer has the ride photo (dropped, user 2026-11-04). Wore a tiny cowboy hat to get past NO PETS (hat tossed in the theater).",
+      "the black kitten (O.draw_cat col='black', s 0.62) wearing a tiny red racing helmet (O.draw_kitten_helmet). It pressed the DO NOT PRESS button twice and won the race. At the end of day 14 it hopped off his head and curled up asleep in the trophy cup (it can ride on his head again next episode, helmet on).",
       "left behind in Mordor (never going back): the giant eagle"
     ],
     "props": [
-      "a periscope he pulls from his hip (put back); an empty SMALL popcorn bucket left on the seat; the tiny cowboy hat was tossed in the theater",
-      "an empty SMALL popcorn bucket (left on the seat)",
+      "race car #0 (red open-wheel, O.draw_racecar; DO NOT PRESS button on the roll hoop) parked in victory lane",
+      "a giant gold 1ST trophy (O.draw_trophy) - the kitten sleeps in it",
+      "an empty milk bottle (the winner's milk, drunk); the periscope went back into his hip on day 13",
       "left behind in the town: the CAT RESCUE SHELTER he built",
       "the RING IS DESTROYED (day 10)",
-      "far behind (never going back): FUN PARK, the town, Mordor, green hill, the airfield, the burger place"
+      "far behind (never going back): MEGAPLEX 30, FUN PARK, the town, Mordor, green hill, the airfield, the burger place"
     ],
     "traits": [
       "beat the block game on hardcore with half a heart (day 4)",
@@ -44,7 +44,8 @@
       "took the ring to mordor (day 10, re-cut 2): snatched the last ring on green hill, ran to the black gate (ONE DOES NOT SIMPLY WALK INTO MORDOR), whistled up a giant eagle; when the eye's searchlight closed in he put the ring on and went invisible, so the beam locked on the eagle carrying a floating ring, and the eagle dropped him into the volcano; he dropped the ring into the lava and nearly went in after it (speed-game reflex), it melted; the eye blew up, the tower fell, the volcano fired him out into the rubble; the eagle showed up after it was all over. He lives in Mordor now. Looks normal.",
       "built a CAT RESCUE SHELTER and was happy about it (day 11, re-cut): ran out of Mordor into a sunny town, found a black kitten in a FREE KITTEN box (slow blinks), built the shelter, rescued a cat from a tree and a line of kittens, fed them (one can - every head turned), they chose the box over the fancy bed, a cat pushed his mug off the shelf (he caught it), on adoption day the mom from day 6 adopted the orange cat, he stamped ADOPTED on every photo - the last was the kitten's, so he adopted it. Real smile. It rides on his head now. Looks normal.",
       "took his cat to the theme park (day 12): ran from the town into FUN PARK; teacups - the kitten batted the wheel until it spun crazy fast and he laughed for real, then dizzy; YOU MUST BE THIS TALL - short by a hair until the kitten sat up on his head (DING); THE BIG ONE coaster: lift hill, hang at the top, the kitten's slow blink gave him the nerve, arms up (despite KEEP ARMS AND LEGS INSIDE), drop, two loops, airtime, FLASH; the RIDE PHOTO shows him screaming with joy and the kitten bored. Looks normal.",
-      "went to the movies (day 13): ran out of FUN PARK's back gate (BYE NOW!) to MEGAPLEX 30 (EXPLOSION 7, TONIGHT ONLY); NO PETS - he put a tiny cowboy hat on the kitten and the usher stared him down but let it slide; SMALL popcorn $47.50, taller than him; the card reader asked for a tip and he pressed 30% ($61.75) under the cashier's stare; in an empty theater a giant in a top hat sat right in front of him (leaning didn't help); 47 previews, ate all the popcorn before the movie; pulled out a periscope and watched EXPLOSION 7 over the hat (car, building blows up, car jumps the fireball); the tall guy got up and left at THE END. Looks normal."
+      "went to the movies (day 13): ran out of FUN PARK's back gate (BYE NOW!) to MEGAPLEX 30 (EXPLOSION 7, TONIGHT ONLY); NO PETS - he put a tiny cowboy hat on the kitten and the usher stared him down but let it slide; SMALL popcorn $47.50, taller than him; the card reader asked for a tip and he pressed 30% ($61.75) under the cashier's stare; in an empty theater a giant in a top hat sat right in front of him (leaning didn't help); 47 previews, ate all the popcorn before the movie; pulled out a periscope and watched EXPLOSION 7 over the hat (car, building blows up, car jumps the fireball); the tall guy got up and left at THE END. Looks normal.",
+      "went to the racetrack (day 14): ran out the theater's EXIT door onto a speedway pit lane; the crew chief's board said YOU.; he pulled a tiny racing helmet from his hip for the kitten (none for himself); five red lights... lights out, his car stalled; the kitten pressed DO NOT PRESS and the car launched; passed everyone; a 2.1 s pit stop where a crew guy squeegeed his face; white flag, stuck behind black #1; he nodded, the kitten pressed it again: mega boost, won at the checkered flag (the wind spun the flagman and took his flag), skidded into VICTORY LANE; drank the winner's milk; the kitten fell asleep in the trophy. Looks normal."
     ],
     "notes": "Day 13: deadpan / Family Guy timing; the kitten is never harmed. Every episode moves on to a new world."
   },
@@ -58,7 +59,8 @@
     "Pick up a ring and take it to mordor",
     "Build a cat shelter and be happy about it",
     "Take your cat to the theme park and go on rides, have fun",
-    "Go to the movies!"
+    "Go to the movies!",
+    "Go to the racetrack"
   ],
   "history": [
     {
@@ -125,6 +127,11 @@
       "day": 13,
       "type": "comment",
       "summary": "@second_degree_burn (IG): 'Go to the movies!' -> RE-CUT on Justin's notes: runs out the park's back gate to MEGAPLEX 30; NO PETS: tiny cowboy hat on the kitten, the usher stares him down, waves him in; SMALL popcorn $47.50; tip screen, the cashier stares, he presses 30% ($61.75); tosses the hat in the theater; a giant in a top hat sits right in front, leans when he leans; 47 previews, eats it all before the movie; the movie starts, he can't see it -> pulls out a periscope, raises it over the hat, watches the car jump the explosion; THE END - the tall guy gets up and leaves; ask in the aisle (68.0 s)"
+    },
+    {
+      "day": 14,
+      "type": "comment",
+      "summary": "@thatboypiwko (TikTok): 'Go to the racetrack' -> theater EXIT -> speedway pit lane, board YOU., tiny helmet for the kitten; start lights out, he stalls; kitten presses DO NOT PRESS -> launch, passes everyone; 2.1 s pit stop + squeegee; white flag, stuck behind #1; kitten presses it again -> mega boost, checkered flag, skids into victory lane; trophy, milk; the kitten sleeps in the trophy; ask in victory lane (61.1 s)"
     }
   ]
 }

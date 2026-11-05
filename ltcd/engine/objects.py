@@ -2780,7 +2780,7 @@ def draw_no_pets(cr, x, yb=FLOOR_Y):
     cr.move_to(x - 78, cy - 78); cr.line_to(x + 78, cy + 78); stroke_ink(cr, 20, (0.88, 0.16, 0.18))
     draw_text(cr, "NO PETS", x, yb - 610, 56, color=(200, 30, 40), max_w=320)
 
-def draw_staff(cr, t, p, blink=0.0, s=1.0, kind="usher", alpha=1.0):
+def draw_staff(cr, t, p, blink=0.0, s=1.0, kind="usher", alpha=1.0, vest=None):
     """a cinema worker on his rig (p = constrained pose, world coords): red vest, and a red cap that hides the curl.
     kind "usher" (pillbox cap) or "cashier" (visor). Drawn scaled s around the feet."""
     if alpha < 0.01: return
@@ -2791,13 +2791,25 @@ def draw_staff(cr, t, p, blink=0.0, s=1.0, kind="usher", alpha=1.0):
     C.draw_guy(cr, t, q, blink)
     nx, ny = p["neck"]; hpx, hpy = p["hip"]
     sketch_poly(cr, [(nx - 40, ny + 18), (nx + 40, ny + 18), (hpx + 62, hpy - 10), (hpx + 60, hpy + 40), (hpx - 60, hpy + 40),
-                     (hpx - 62, hpy - 10)], 6, sid=14150, fill=STAFF_RED, amp=1.0)
-    for k in range(3): cr.arc(nx, ny + 90 + 90 * k, 8, 0, 2 * math.pi); cr.set_source_rgb(*CINE_GOLD); cr.fill_preserve(); stroke_ink(cr, 3)
+                     (hpx - 62, hpy - 10)], 6, sid=14150, fill=vest or (CREW_ORANGE if kind in ("crew", "flag") else STAFF_RED), amp=1.0)
+    if kind in ("crew", "flag"):
+        cr.rectangle(nx - 50, ny + 150, 100, 22); cr.set_source_rgb(0.95, 0.95, 0.92); cr.fill()
+    else:
+        for k in range(3): cr.arc(nx, ny + 90 + 90 * k, 8, 0, 2 * math.pi); cr.set_source_rgb(*CINE_GOLD); cr.fill_preserve(); stroke_ink(cr, 3)
     C.draw_arm_over(cr, q, "l"); C.draw_arm_over(cr, q, "r")
     hx, hy = p["head"]; tl = p.get("tilt", 0.0); tn = p.get("turn", 0.0)
     cr.save(); cr.translate(hx, hy); cr.rotate(tl)
     R = C.HEAD_R
-    if kind == "usher":
+    if kind in ("crew", "flag"):                                                 # racing cap (+ headset for the crew)
+        cap = CREW_BLUE if kind == "crew" else (0.15, 0.15, 0.18)
+        sketch_poly(cr, [(-108, -R + 46), (-88, -R - 30), (0, -R - 52), (88, -R - 30), (108, -R + 46)], 6, sid=14154, fill=cap)
+        sketch_poly(cr, [(60 * tn - 60, -R + 40), (60 * tn + 150, -R + 40), (60 * tn + 150, -R + 62), (60 * tn - 60, -R + 62)], 5,
+                    sid=14155, fill=cap)
+        if kind == "crew":
+            cr.arc(0, 0, R + 14, math.pi * 1.05, math.pi * 1.95); stroke_ink(cr, 9)
+            for d in (-1, 1): sketch_ellipse(cr, d * (R + 6), 0, 22, 40, 5, sid=14156 + (d > 0), fill=(0.2, 0.2, 0.24))
+            sketch_line(cr, [(-(R + 6), 30), (-R + 20, 90), (-50, 100)], 5, sid=14158)
+    elif kind == "usher":
         sketch_rect(cr, -80 + 20 * tn, -R - 70, 80 + 20 * tn, -R + 22, 6, sid=14151, fill=STAFF_RED)
         cr.rectangle(-78 + 20 * tn, -R - 10, 156, 16); cr.set_source_rgb(*CINE_GOLD); cr.fill()
     else:
@@ -2940,3 +2952,286 @@ def draw_car(cr, x, y, s=1.0, ang=0.0, col=(0.88, 0.18, 0.18), sid=14980):
     sketch_poly(cr, [(6, -74), (6, -104), (34, -104), (54, -74)], 3, sid=sid + 3, fill=(0.75, 0.90, 1.0))
     for wx in (-70, 70): sketch_circle(cr, wx, -18, 26, 5, sid=sid + 4 + (wx > 0), fill=(0.15, 0.15, 0.18))
     cr.restore()
+
+# ============================================================ RACETRACK (day 14) ===
+CREW_ORANGE = (0.98, 0.55, 0.16)
+CREW_BLUE = (0.22, 0.40, 0.80)
+CAR0 = (0.92, 0.20, 0.18)                  # his car (#0)
+CAR0_D = (0.70, 0.12, 0.12)
+ASPHALT = (0.38, 0.38, 0.42)
+TRACK_SKY = ((0.66, 0.84, 0.98), (0.52, 0.76, 0.96))
+CROWD_COLS = ((0.90, 0.30, 0.28), (0.98, 0.84, 0.32), (0.42, 0.80, 0.78), (0.45, 0.65, 0.95), (0.97, 0.62, 0.72),
+              (0.68, 0.52, 0.86), (1.0, 1.0, 1.0), (0.30, 0.30, 0.34))
+RC_SEAT = (0.0, -360.0)                    # car-local: his hip (cockpit centre)
+RC_BUTTON = (-135.0, -1000.0)             # car-local: the DO NOT PRESS button (base centre), on an arm off the roll hoop
+RC_EXHAUST = (-660.0, -250.0)
+
+def rc_pt(x, yb, ang, lx, ly, s=1.0):
+    """car-local -> world (car origin = ground point under the cockpit; ang rotates about the REAR wheel contact)."""
+    px, py = -430.0 * s, 0.0
+    qx, qy = lx * s - px, ly * s - py
+    ca, sa = math.cos(ang), math.sin(ang)
+    return (x + px + qx * ca - qy * sa, yb + py + qx * sa + qy * ca)
+
+def _tyre(cr, x, y, r, spin=0.0, sid=0):
+    sketch_circle(cr, x, y, r, 6, sid=sid, fill=(0.14, 0.14, 0.16))
+    sketch_circle(cr, x, y, r * 0.45, 4, sid=sid + 1, fill=(0.70, 0.72, 0.76))
+    for k in range(3):
+        a = spin + k * 2 * math.pi / 3
+        sketch_line(cr, [(x, y), (x + r * 0.42 * math.cos(a), y + r * 0.42 * math.sin(a))], 4, sid=sid + 2 + k, amp=0.2)
+
+def draw_tyre(cr, x, y, r=110, ang=0.0, sid=17090):
+    _tyre(cr, x, y, r, ang, sid)
+
+def draw_racecar(cr, x, yb=FLOOR_Y, s=1.0, ang=0.0, part="all", col=CAR0, num="0", t=0.0, spin=0.0, driver=False,
+                 button=False, pressed=0.0, hoop_h=None, sid=17000, wheels=True, look=0.0):
+    """an open-wheel race car, side view facing right. (x, yb) = the ground under the cockpit. part "back" = engine
+    cover, roll hoop (+ the DO NOT PRESS button), rear wing - drawn behind the driver; "front" = side pod, nose, wheels
+    - drawn over his legs; "all" = both (+ a helmeted driver if driver=True). ang tilts it about the rear wheel."""
+    dk = lerp(col, (0, 0, 0), 0.3)
+    cr.save()
+    px = -430.0 * s
+    cr.translate(x + px, yb); cr.rotate(ang); cr.translate(-px, 0); cr.scale(s, s)
+    if part in ("back", "all"):
+        sketch_rect(cr, -680, -560, -540, -500, 5, sid=sid, fill=dk)                       # rear wing
+        sketch_line(cr, [(-640, -500), (-600, -330)], 8, sid=sid + 1, amp=0.3)
+        sketch_line(cr, [(-570, -500), (-540, -330)], 8, sid=sid + 2, amp=0.3)
+        sketch_poly(cr, [(-650, -170), (-650, -320), (-420, -360), (-200, -470), (-120, -470), (-120, -200)], 6, sid=sid + 3, fill=col)
+        hh = hoop_h if hoop_h is not None else (1000 if button else 560)
+        px_ = -235
+        sketch_rect(cr, px_ - 22, -hh, px_ + 22, -440, 5, sid=sid + 4, fill=(0.85, 0.86, 0.90))   # roll hoop post
+        for k in range(int((hh - 470) // 90)):
+            cr.rectangle(px_ - 20, -hh + 30 + 90 * k, 40, 30); cr.set_source_rgb(*col); cr.fill()
+        if button:
+            bx, by_ = RC_BUTTON
+            sketch_rect(cr, px_ - 22, by_ - 22, bx + 30, by_ + 10, 5, sid=sid + 15, fill=(0.85, 0.86, 0.90))   # the arm
+            sketch_rect(cr, bx - 56, by_ - 30, bx + 56, by_, 5, sid=sid + 5, fill=(0.3, 0.3, 0.34))
+            py_ = by_ - 30 + 14 * pressed
+            sketch_poly(cr, [(bx - 44, py_), (bx - 40, py_ - 26), (bx - 18, py_ - 42), (bx + 18, py_ - 42), (bx + 40, py_ - 26), (bx + 44, py_)],
+                        5, sid=sid + 6, fill=(0.95, 0.12, 0.12))
+            sketch_rect(cr, px_ - 100, -900, px_ + 100, -770, 5, sid=sid + 7, fill=(1.0, 0.86, 0.20))
+            draw_text(cr, "DO NOT", px_, -862, 44, color=(20, 20, 24), max_w=185)
+            draw_text(cr, "PRESS", px_, -805, 44, color=(20, 20, 24), max_w=185)
+        if driver:
+            sketch_circle(cr, 0, -510, 92, 6, sid=sid + 8, fill=lerp(col, (1, 1, 1), 0.5))
+            cr.save(); cr.translate(0, -510); cr.rotate(look)
+            sketch_rect(cr, 10, -40, 92, 10, 4, sid=sid + 9, fill=(0.12, 0.14, 0.2))
+            cr.restore()
+    if part in ("front", "all"):
+        sketch_poly(cr, [(-640, -140), (-640, -300), (-170, -330), (-170, -400), (160, -400), (250, -320), (780, -250), (830, -200),
+                         (790, -150), (160, -130)], 7, sid=sid + 10, fill=col)
+        sketch_line(cr, [(-600, -230), (760, -205)], 10, sid=sid + 11, amp=0.3, color=(1, 1, 1))
+        sketch_rect(cr, 620, -150, 880, -112, 5, sid=sid + 12, fill=dk)                        # front wing
+        sketch_circle(cr, -300, -235, 62, 5, sid=sid + 13, fill=(1, 1, 1))
+        draw_text(cr, num, -300, -235, 76, color=(20, 20, 24))
+        sketch_poly(cr, [(-170, -400), (160, -400), (120, -430), (-150, -430)], 5, sid=sid + 14, fill=dk)  # cockpit rim
+        if wheels:
+            _tyre(cr, -430, -118, 118, spin, sid + 20)
+            _tyre(cr, 460, -100, 100, spin * 1.2, sid + 30)
+    cr.restore()
+
+def draw_kitten_helmet(cr, x, y, s=0.62, ang=0.0, sid=17100):
+    """a tiny racing helmet for the loafed kitten; (x, y) = the kitten's loaf spot (as kitten_spot returns)."""
+    cr.save(); cr.translate(x, y); cr.rotate(ang); cr.scale(s, s)
+    hx, hy = -18, -88
+    pts = [(hx - 50 + 100 * k / 16 - 0, hy - 8 - 54 * math.sin(math.pi * k / 16)) for k in range(17)]
+    sketch_poly(cr, pts + [(hx + 52, hy - 2), (hx - 52, hy - 2)], 5, sid=sid, fill=CAR0)
+    cr.rectangle(hx - 6, hy - 62, 12, 54); cr.set_source_rgb(1, 1, 1); cr.fill()
+    sketch_line(cr, [(hx - 54, hy - 4), (hx + 56, hy - 4)], 7, sid=sid + 1, amp=0.3)
+    cr.restore()
+
+def draw_start_lights(cr, x, y, n_on=0, s=1.0, sid=17120):
+    """the start gantry's light bar: five pods, two red lamps each. n_on lamps-pods lit (0..5)."""
+    cr.save(); cr.translate(x, y); cr.scale(s, s)
+    sketch_rect(cr, -360, -26, 360, 26, 6, sid=sid, fill=(0.18, 0.18, 0.2))
+    for i in range(5):
+        cx = -280 + 140 * i
+        sketch_rect(cr, cx - 52, -10, cx + 52, 230, 6, sid=sid + 1 + i, fill=(0.12, 0.12, 0.14))
+        for j in range(2):
+            on = i < n_on
+            sketch_circle(cr, cx, 60 + 100 * j, 36, 4, sid=sid + 10 + 2 * i + j, fill=(1.0, 0.16, 0.12) if on else (0.30, 0.10, 0.10))
+            if on:
+                cr.arc(cx - 10, 50 + 100 * j, 10, 0, 2 * math.pi); cr.set_source_rgba(1, 1, 1, 0.7); cr.fill()
+    cr.restore()
+
+def draw_pit_board(cr, x, y, text, s=1.0, ang=0.0, sid=17140):
+    """a pit board on a pole: (x, y) = the bottom of the board (the pole hangs below it)."""
+    cr.save(); cr.translate(x, y); cr.rotate(ang); cr.scale(s, s)
+    sketch_line(cr, [(0, 0), (0, 160)], 12, sid=sid, amp=0.3)
+    sketch_rect(cr, -190, -230, 190, 0, 7, sid=sid + 1, fill=(0.10, 0.10, 0.12))
+    draw_text(cr, text, 0, -115, 120, color=(255, 214, 80), max_w=340)
+    cr.restore()
+
+def draw_flag(cr, x, y, kind="white", t=0.0, w=300, h=200, wave=1.0, sid=17160):
+    """a waving flag on a short stick; (x, y) = the top of the stick (flag flies to the right)."""
+    sketch_line(cr, [(x, y), (x, y + h + 140)], 9, sid=sid, amp=0.3)
+    n = 10
+    def pt(u, v):
+        return (x + w * u, y + h * v + wave * 26 * math.sin(t * 11 - u * 5) * u)
+    top = [pt(k / n, 0) for k in range(n + 1)]; bot = [pt(k / n, 1) for k in range(n, -1, -1)]
+    sketch_poly(cr, top + bot, 5, sid=sid + 1, fill=(1, 1, 1))
+    if kind == "checker":
+        for i in range(6):
+            for j in range(4):
+                if (i + j) % 2: continue
+                q = [pt(i / 6, j / 4), pt((i + 1) / 6, j / 4), pt((i + 1) / 6, (j + 1) / 4), pt(i / 6, (j + 1) / 4)]
+                path(cr, q); cr.close_path(); cr.set_source_rgb(0.1, 0.1, 0.12); cr.fill()
+        sketch_poly(cr, top + bot, 5, sid=sid + 2, fill=None)
+
+def draw_checker_strip(cr, x, y0, y1, w=90, sq=45):
+    for j in range(int((y1 - y0) // sq) + 1):
+        for i in range(int(w // sq)):
+            cr.rectangle(x + i * sq, y0 + j * sq, sq, sq)
+            cr.set_source_rgb(*((0.1, 0.1, 0.12) if (i + j) % 2 else (1, 1, 1))); cr.fill()
+
+def draw_raceway(cr, t, ox=0.0, x0=-1e9, yb=FLOOR_Y, marks=(), hats=0.0, hat_t0=0.0, blur=0.0):
+    """the racetrack seen from the infield, side-scrolling: sky, grandstand + crowd, catch fence, the outer wall with
+    ads, the asphalt. ox = how far the scenery has scrolled LEFT (treadmill), x0 = left edge (a wall hides it).
+    marks = (kind, world_x) extras on the track: "pit" (a painted box with a 0), "finish" (checker strip)."""
+    vx0, vy0, vx1, vy1 = _visible(cr)
+    lx = max(vx0, x0)
+    cr.rectangle(lx, vy0, vx1 - lx, 420 - vy0); cr.set_source_rgb(*TRACK_SKY[0]); cr.fill()
+    # grandstand roof + seats + crowd
+    cr.rectangle(lx, 240, vx1 - lx, 60); cr.set_source_rgb(0.30, 0.32, 0.38); cr.fill()
+    cr.rectangle(lx, 300, vx1 - lx, 690); cr.set_source_rgb(0.72, 0.72, 0.76); cr.fill()
+    sketch_line(cr, [(lx, 300), (vx1, 300)], 5, sid=17200)
+    step = 52.0
+    k0 = int((lx + ox) // step) - 1; k1 = int((vx1 + ox) // step) + 1
+    for row in range(10):
+        yy = 340 + row * 62
+        for k in range(k0, k1):
+            xx = k * step - ox + (row % 2) * step / 2
+            if xx < lx - 30: continue
+            hsh = (k * 7919 + row * 104729) % 97
+            if hsh < 12: continue
+            col = CROWD_COLS[hsh % len(CROWD_COLS)]
+            bob = 6 * math.sin(t * 9 + hsh) if hsh % 3 == 0 else 0
+            cr.arc(xx, yy + bob, 17, 0, 2 * math.pi); cr.set_source_rgb(*col); cr.fill_preserve()
+            cr.set_source_rgb(*INK); cr.set_line_width(3); cr.stroke()
+            if hats > 0 and hsh % 4 == 0:                                             # hats blown off by the pass
+                u = max(0.0, t - hat_t0 - (hsh % 7) * 0.03)
+                if u > 0:
+                    hx_, hy_ = xx - 900 * u, yy - 18 - 1300 * u + 900 * u * u
+                    cr.save(); cr.translate(hx_, hy_); cr.rotate(-6 * u)
+                    cr.rectangle(-18, -14, 36, 14); cr.set_source_rgb(*CROWD_COLS[(hsh + 3) % 8]); cr.fill_preserve(); stroke_ink(cr, 3)
+                    cr.restore()
+    for k in range(int((lx + ox) // 600) - 1, int((vx1 + ox) // 600) + 2):           # roof posts
+        xx = k * 600 - ox
+        sketch_line(cr, [(xx, 300), (xx, 990)], 6, sid=17210 + k % 5, amp=0.3, color=(0.45, 0.46, 0.5))
+    # catch fence
+    cr.set_source_rgba(0.35, 0.36, 0.4, 0.55); cr.set_line_width(3)
+    for k in range(int((lx + ox) // 70) - 1, int((vx1 + ox) // 70) + 2):
+        xx = k * 70 - ox
+        cr.move_to(xx, 780); cr.line_to(xx, 990); cr.stroke()
+    cr.move_to(lx, 780); cr.line_to(vx1, 780); cr.stroke()
+    # the wall + ads
+    cr.rectangle(lx, 990, vx1 - lx, 140); cr.set_source_rgb(0.97, 0.97, 0.95); cr.fill()
+    cr.rectangle(lx, 1100, vx1 - lx, 30); cr.set_source_rgb(0.86, 0.20, 0.20); cr.fill()
+    ads = ("GO FAST", "TIRES", "SPEEDWAY", "TURN LEFT", "OIL")
+    for k in range(int((lx + ox) // 900) - 1, int((vx1 + ox) // 900) + 2):
+        xx = k * 900 - ox
+        if xx < lx - 400: continue
+        draw_text(cr, ads[k % len(ads)], xx + 300, 1045, 58, color=(40, 60, 140) if k % 2 else (200, 50, 40), max_w=520)
+    sketch_line(cr, [(lx, 990), (vx1, 990)], 5, sid=17220)
+    sketch_line(cr, [(lx, 1130), (vx1, 1130)], 5, sid=17221)
+    # asphalt
+    cr.rectangle(lx, 1130, vx1 - lx, vy1 - 1130); cr.set_source_rgb(*ASPHALT); cr.fill()
+    for k in range(int((lx + ox) // 400) - 1, int((vx1 + ox) // 400) + 2):            # dashes (show the speed)
+        xx = k * 400 - ox
+        cr.rectangle(xx, yb + 70, 200, 16); cr.set_source_rgb(0.95, 0.95, 0.92); cr.fill()
+    cr.rectangle(lx, 1300, vx1 - lx, 10); cr.set_source_rgb(0.95, 0.95, 0.92); cr.fill()
+    for kind, wx in marks:
+        xx = wx - ox
+        if xx < vx0 - 1200 or xx > vx1 + 1200: continue
+        if kind == "pit":
+            cr.set_source_rgb(1.0, 0.86, 0.2); cr.set_line_width(14)
+            cr.rectangle(xx - 800, 1330, 1600, yb + 150 - 1330); cr.stroke()
+            draw_text(cr, "0", xx + 650, yb + 120, 70, color=(255, 214, 50))
+        elif kind == "finish":
+            draw_checker_strip(cr, xx - 45, 1130, vy1, 90)
+    if blur > 0:
+        for k in range(16):
+            yy = 330 + k * 92
+            cr.move_to(vx0, yy); cr.line_to(vx1, yy); cr.set_source_rgba(1, 1, 1, 0.25 * blur); cr.set_line_width(10); cr.stroke()
+
+def draw_back_door(cr, x, yb=FLOOR_Y, open_=0.0, x_left=-1e9):
+    """the megaplex's back wall (everything left of x), with the EXIT door at x - 260 swinging open toward us."""
+    vx0, vy0, vx1, vy1 = _visible(cr)
+    cr.rectangle(vx0, vy0, x - vx0, vy1 - vy0); cr.set_source_rgb(0.52, 0.22, 0.20); cr.fill()
+    for j in range(int((vy0) // 70) - 1, int(vy1 // 70) + 1):                     # bricks
+        yy = j * 70
+        cr.move_to(vx0, yy); cr.line_to(x, yy); cr.set_source_rgba(0.3, 0.1, 0.1, 0.6); cr.set_line_width(4); cr.stroke()
+        for i in range(int((vx0) // 150) - 1, int(x // 150) + 1):
+            xx = i * 150 + (75 if j % 2 else 0)
+            if xx < x: cr.move_to(xx, yy); cr.line_to(xx, yy + 70); cr.stroke()
+    sketch_line(cr, [(x, vy0), (x, yb)], 7, sid=17300)
+    dx0, dx1, dy0 = x - 460, x - 60, yb - 820
+    sketch_rect(cr, dx0, dy0, dx1, yb, 7, sid=17301, fill=(0.95, 0.98, 1.0))       # daylight... (inside is bright)
+    sketch_rect(cr, dx0 + 40, dy0 - 170, dx1 - 40, dy0 - 50, 6, sid=17302, fill=(0.20, 0.70, 0.35))
+    draw_text(cr, "EXIT", (dx0 + dx1) / 2, dy0 - 110, 72, color=(255, 255, 255))
+    w = (dx1 - dx0) * (1 - 0.85 * open_)
+    sketch_rect(cr, dx1 - w if open_ < 0.5 else dx1, dy0, dx1 if open_ < 0.5 else dx1 + (dx1 - dx0) * 0.85 * open_, yb, 7, sid=17303,
+                fill=(0.62, 0.64, 0.68))
+
+def draw_trophy(cr, x, yb=FLOOR_Y, s=1.0, part="all", sid=17400):
+    """a giant gold trophy (~1150 tall at s=1). part "back" = the cup's inside rim, "front" = everything else."""
+    G, GD = (1.0, 0.80, 0.22), (0.86, 0.62, 0.12)
+    cr.save(); cr.translate(x, yb); cr.scale(s, s)
+    if part in ("back", "all"):
+        sketch_ellipse(cr, 0, -1120, 300, 50, 6, sid=sid, fill=(0.62, 0.44, 0.08))
+    if part in ("front", "all"):
+        sketch_rect(cr, -240, -140, 240, 0, 7, sid=sid + 1, fill=(0.28, 0.20, 0.14))
+        sketch_rect(cr, -190, -230, 190, -140, 6, sid=sid + 2, fill=(0.28, 0.20, 0.14))
+        cr.rectangle(-120, -110, 240, 60); cr.set_source_rgb(*GD); cr.fill()
+        draw_text(cr, "1ST", 0, -80, 50, color=(60, 40, 10))
+        sketch_poly(cr, [(-60, -230), (-40, -560), (40, -560), (60, -230)], 6, sid=sid + 3, fill=G)
+        sketch_ellipse(cr, 0, -580, 120, 40, 5, sid=sid + 4, fill=GD)
+        for d in (-1, 1):                                                           # handles
+            sketch_curve(cr, (d * 260, -1050), (d * 470, -900), (d * 180, -760), 22, sid=sid + 5 + (d > 0), color=INK)
+            sketch_curve(cr, (d * 260, -1050), (d * 470, -900), (d * 180, -760), 12, sid=sid + 5 + (d > 0), amp=0.0, color=GD)
+        cup = [(-300 + 0, -1120)] + [(300 * math.cos(math.pi - a), -1120 + 500 * math.sin(a) ** 0.8) for a in [math.pi * k / 24 for k in range(1, 24)]] + [(300, -1120)]
+        sketch_poly(cr, cup, 7, sid=sid + 8, fill=G)
+        cr.arc(-120, -1000, 30, 0, 2 * math.pi); cr.set_source_rgba(1, 1, 1, 0.6); cr.fill()
+        sketch_line(cr, [(-300, -1120), (300, -1120)], 7, sid=sid + 9)
+    cr.restore()
+
+def draw_milk(cr, x, y, s=1.0, ang=0.0, level=1.0, sid=17420):
+    """a glass milk bottle; (x, y) = its middle."""
+    cr.save(); cr.translate(x, y); cr.rotate(ang); cr.scale(s, s)
+    body = [(-55, 110), (-55, -20), (-30, -70), (-28, -120), (28, -120), (30, -70), (55, -20), (55, 110)]
+    sketch_poly(cr, body, 5, sid=sid, fill=(0.88, 0.94, 0.98))
+    if level > 0.01:
+        top = 110 - 200 * level
+        cr.save(); path(cr, body); cr.close_path(); cr.clip()
+        cr.rectangle(-60, top, 120, 240); cr.set_source_rgb(1, 1, 1); cr.fill(); cr.restore()
+        sketch_line(cr, [(-50, top), (50, top)], 3, sid=sid + 1, amp=0.2, alpha=0.5)
+    sketch_poly(cr, body, 5, sid=sid + 2, fill=None)
+    sketch_rect(cr, -40, -10, 40, 60, 3, sid=sid + 3, fill=(0.45, 0.65, 0.95))
+    draw_text(cr, "MILK", 0, 25, 30, color=(255, 255, 255))
+    cr.restore()
+
+def draw_squeegee(cr, x, y, ang=0.0, s=1.0, sid=17440):
+    """(x, y) = the middle of the rubber blade; the handle goes off to the right/down."""
+    cr.save(); cr.translate(x, y); cr.rotate(ang); cr.scale(s, s)
+    sketch_line(cr, [(0, 0), (40, 300)], 12, sid=sid, amp=0.3, color=(0.45, 0.45, 0.5))
+    sketch_rect(cr, -14, -110, 14, 110, 5, sid=sid + 1, fill=(0.2, 0.2, 0.22))
+    cr.restore()
+
+def draw_confetti(cr, t, t0, x0, x1, y_top, n=60, seed=3):
+    u = t - t0
+    if u < 0: return
+    for k in range(n):
+        h = (k * 2654435761 + seed) % 1000 / 1000.0
+        h2 = (k * 40503 + seed * 7) % 1000 / 1000.0
+        x = x0 + (x1 - x0) * h + 60 * math.sin(u * 3 + k)
+        y = y_top - 300 * h2 + u * (350 + 200 * h)
+        cr.save(); cr.translate(x, y); cr.rotate(u * 5 + k)
+        cr.rectangle(-14, -8, 28, 16); cr.set_source_rgb(*CROWD_COLS[k % 6]); cr.fill()
+        cr.restore()
+
+def draw_victory_arch(cr, x, yb=FLOOR_Y, w=1500, h=1250, sid=17460):
+    for d in (-1, 1):
+        sketch_rect(cr, x + d * w / 2 - 40, yb - h, x + d * w / 2 + 40, yb, 6, sid=sid + (d > 0), fill=(0.95, 0.95, 0.92))
+    sketch_rect(cr, x - w / 2 - 80, yb - h - 170, x + w / 2 + 80, yb - h + 10, 7, sid=sid + 2, fill=(0.12, 0.12, 0.14))
+    draw_checker_strip(cr, x - w / 2 - 70, yb - h - 160, yb - h - 115, w + 140, 45)
+    draw_text(cr, "VICTORY LANE", x, yb - h - 50, 96, color=(255, 214, 80), max_w=w)
