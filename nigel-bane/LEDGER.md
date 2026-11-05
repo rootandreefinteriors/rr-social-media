@@ -30,13 +30,15 @@ Update after every episode. "Tally" = marks on the wall at the END of the episod
 | 23 | Edge (DREAD, live) | `unraveling` | 54.5s | IDEA: everything past where you've been is something you were told. He takes the spider's thread and walks to find the wall; it never comes; the room's hum fades; thread thins; camera pulls back — the window a speck far behind. | 23 | – | – | day; floor line forever | lonely → unease | the thread | "Everything past where you stopped walking... you're just trusting it's there." |
 | 24 | Reflection | `flipping` | 66.2s | IDEA: you've never seen your own face — only the one that knows it's being watched; everyone else gets the other one, "the one you're making right now, watching this." Night window as mirror; reflection mirrors tilt/arm/eyes/blinks; he shuts his eyes and snaps them open — it's already looking. "...Too slow." | 24 | – | – | night; black window = mirror | uncanny/unease | his reflection | "Everyone you've ever met has seen a face you never will. Yours, when you're not watching it." |
 | 25 | Proof (CH1 END) | `guessing` | 64.3s | IDEA: you can't prove anyone's real; you decide, every morning. He draws the 25th mark on camera (five full hands); knocks once more and waits in silence — nothing; the sun melts the snow; a small raised hand. "Nobody ever proves it. You just keep showing up for each other." | 25 (drawn on camera) | – | his knock, unanswered | morning sun, snow melting, icicle | lonely → warm → uncanny | tally, melting snow | "Twenty-five nights you've come back. I've never once checked if it was the same you." |
+| 26 | Gone (CH2 OPENS) | `loosening` | 63.8s | IDEA: you never see anything leave; you just notice it's been gone a while. The spider is gone; the web hangs empty and torn. Right after the open he spins round pointing at it: "Look in the corner. Tell me she's there." Searches web, wall, floor. YOU: someone you talked to every day, a song you knew every word to — "There was a last time for all of them. Nobody told you." "Everything you have right now is already leaving. Slowly enough that it looks like staying." He tugs the dragline; **the web lets go and drifts down in pieces** (engine `web_torn`/`web_fall`); a wisp settles on his hand. | 26 (already there) | – | – | overcast day | unease → lonely → melancholy → uncanny | **web comes down; the spider arc ends** | "You never see anything leave. You just notice, one morning, that it's been gone for a while." |
 
 ## Monetisation status (TikTok Creator Rewards; targets in BIBLE.md "The goal")
-Update weekly. Followers come from TikTok's app (Buffer doesn't report them); views come from the engagement review.
+Views come from the engagement reviews. The user tracks followers in TikTok's app; don't ask for them. AI label: never
+(user's decision, 2026-11-05, final).
 
-| Date | TikTok followers (target 10,000) | TikTok views, last 30 days (target 100,000) | Views/day | AI label decision |
-|---|---|---|---|---|
-| 2026-11-03 | ? (fill in) | ~9,200 (all-time; the show is 24 days old) | ~800 | open: see BIBLE.md |
+| Date | TikTok views, last 30 days (target 100,000) | Views/day |
+|---|---|---|
+| 2026-11-03 | ~9,200 (all-time; the show is 24 days old) | ~800 |
 
 ## Four elements (C / R / E / T)
 Check this before scripting. Within any 3 days, don't repeat the command's wording, the area of life R lands on, the
@@ -70,6 +72,7 @@ emotional colour, or the tension mechanism (BIBLE.md, "The four required element
 | 23 DREAD | ✗ | the world you've only been told about | lonely → unease | a walk that never ends |
 | 24 | ✗ | your own face | uncanny | trying to catch the reflection |
 | 25 | ✗ (re-cut if possible: "Count them with me.") | proving others are real | lonely → warm → uncanny | knock, then silence |
+| 26 | "Look in the corner. Tell me she's there." | people, songs, things you lose | melancholy, eerie underneath | the search; the web letting go |
 
 The planned C and T for D26–60 are in BIBLE.md, Chapter 2. Copy each one here when its episode is made, noting any
 change.

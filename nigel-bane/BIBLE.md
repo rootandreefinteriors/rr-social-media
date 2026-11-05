@@ -15,16 +15,12 @@ confirm them in TikTok Studio → Creator Rewards before relying on them:
   For You feed; one source says a video needs at least 1,000 qualified views, but that is unconfirmed.
 - **Account:** the owner is 18 or older (19 in South Korea), it is a personal account rather than a business account,
   it is in a supported country, and it is in good standing with no Community Guidelines strikes.
-- **⚠ The AI label is the biggest open risk.** The format below currently says "AI label off". TikTok requires a label
-  on realistic AI-generated images, audio or video, and encourages one on anything fully AI-generated, which includes
-  the AI voice. Sources disagree on whether AI-made videos can earn Creator Rewards at all: some say a labelled video
-  can, others say "unoriginal or synthetic content" makes an account ineligible. An unlabelled video that TikTok flags
-  itself can be penalised. **Settle this before the account nears the thresholds.** Check TikTok's AI-generated content
-  policy and the Creator Rewards eligibility screen, and decide whether to turn the label on.
+- **AI label: never (user's decision, 2026-11-05, final).** Posts go out with the AI label off. Don't raise it
+  again, and don't recommend turning it on.
 
 **Where we are (2026-11-03):**
 - TikTok: about 9,200 views in total, 24 days after launch, gaining about 800 a day.
-- Followers: not available from Buffer. Record them in LEDGER.md's "Monetisation status" each week.
+- Followers: the user tracks them in TikTok's app. Don't ask for them.
 - Needed: about 3,300 TikTok views a day, so roughly four times the current rate.
 - Followers come from viewers wanting the next episode. That is why prop arcs and recurring beats matter (see "Build on
   what works").
@@ -123,7 +119,9 @@ command's wording, the area of life R lands on, the emotional colour, or the ten
 5. **Unsettle on purpose,** a notch more each week: a flat, disturbing truth about the viewer; the room or sound behaving
    wrong (he always notices); him seeming to sense you. Never horror, gore, jump scares or menace.
 6. **Imply the lift** with an image or gesture (sun on the snow, a hand on the glass). Never state a moral.
-7. **Reads cold.** A first-time viewer must follow it. No effects that need explaining; callbacks are a bonus layer only.
+7. **Reads cold.** About 99% of viewers are first-timers (user, 2026-11-05). A first-time viewer must follow every line:
+   show and name the prop in this video, no pronouns for things from earlier days, and any change (gone, bigger, healed)
+   happens on camera here. No effects that need explaining; callbacks are a bonus layer only.
 8. **Few shots, slow moves:** ~4–6 setups, long holds, real silences — but never a dead stretch.
 9. **Foreshadow → pay off on camera** within the episode.
 10. **Nigel notices.** Silent anomalies stay parked until there's a real following.

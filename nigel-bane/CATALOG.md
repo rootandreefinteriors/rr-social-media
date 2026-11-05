@@ -325,3 +325,16 @@ Post time is 9 PM ET. Day 13 went out a day late (missed slot); every later day 
 - **hook:** "Twenty-five nights you've come back. I've never once checked if it was the same you." *Viewer-centric, unsettling.*
 - **cover:** 47.4 s, waiting at the glass with his fist raised.
 - **script:** Hello? Is anyone out there? That's a whole hand. Five of them. Twenty-five days of asking that. And I still can't prove anyone's there. You can't either, you know. Not about anyone. Your friends could be very good guesses. The people in your phone, just words arriving. You've never seen a single thought that wasn't yours. You just... decide. Every morning, without noticing, you decide they're real. I'll knock once more. ...Nothing. Nobody ever proves it. You just keep showing up for each other. Twenty-five nights you've come back. I've never once checked if it was the same you.
+
+### D26 · loosening · "Gone" · 2026-11-05 (Thu) · 63.8 s — Chapter 2 opens
+- **idea:** you never see anything leave; you just notice, one day, that it's been gone a while.
+- **you:** strong. "Someone you used to talk to every day. A song you knew every word to. There was a last time for all of them. Nobody told you."
+- **first seconds:** command during the action: spins round pointing up at the empty web: "Look in the corner. Tell me she's there."
+- **prop:** the spider's web, empty and torn; the spider gone. The web comes down on camera (prop exit).
+- **tension:** medium-strong. The search, place by place (web, wall, floor), then he tugs the thread and the web lets go piece by piece in silence.
+- **visual:** signature: the web breaking up and drifting down in pieces; a wisp of silk settles on his open hand.
+- **dread:** no. Unsettling line: "Everything you have right now is already leaving. Slowly enough that it looks like staying."
+- **hook:** "You never see anything leave. You just notice, one morning, that it's been gone for a while." *Viewer-centric, unsettling.*
+- **four elements:** C "Look in the corner. Tell me she's there." · R people, songs, things you lose · E melancholy, eerie underneath · T the search, then the web letting go.
+- **cover:** 51.6 s, his hand on the thread under the torn web.
+- **script:** Hello? Is anyone out there? Look in the corner. Tell me she's there. ...She's not on the web. Not on the wall. ...Not on the floor. She got in. I don't know how. ...She got out. I don't know how either. I looked at that corner every day. I can't tell you the last time I actually saw her. You have one of those. Someone you used to talk to every day. A song you knew every word to. There was a last time for all of them. Nobody told you. Everything you have right now is already leaving. Slowly enough that it looks like staying. ...Oh. You never see anything leave. You just notice, one morning, that it's been gone for a while.
