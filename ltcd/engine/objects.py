@@ -2794,6 +2794,8 @@ def draw_staff(cr, t, p, blink=0.0, s=1.0, kind="usher", alpha=1.0, vest=None):
                      (hpx - 62, hpy - 10)], 6, sid=14150, fill=vest or (CREW_ORANGE if kind in ("crew", "flag") else STAFF_RED), amp=1.0)
     if kind in ("crew", "flag"):
         cr.rectangle(nx - 50, ny + 150, 100, 22); cr.set_source_rgb(0.95, 0.95, 0.92); cr.fill()
+    elif kind == "plain":
+        pass
     else:
         for k in range(3): cr.arc(nx, ny + 90 + 90 * k, 8, 0, 2 * math.pi); cr.set_source_rgb(*CINE_GOLD); cr.fill_preserve(); stroke_ink(cr, 3)
     C.draw_arm_over(cr, q, "l"); C.draw_arm_over(cr, q, "r")
@@ -2809,6 +2811,8 @@ def draw_staff(cr, t, p, blink=0.0, s=1.0, kind="usher", alpha=1.0, vest=None):
             cr.arc(0, 0, R + 14, math.pi * 1.05, math.pi * 1.95); stroke_ink(cr, 9)
             for d in (-1, 1): sketch_ellipse(cr, d * (R + 6), 0, 22, 40, 5, sid=14156 + (d > 0), fill=(0.2, 0.2, 0.24))
             sketch_line(cr, [(-(R + 6), 30), (-R + 20, 90), (-50, 100)], 5, sid=14158)
+    elif kind == "plain":
+        pass
     elif kind == "usher":
         sketch_rect(cr, -80 + 20 * tn, -R - 70, 80 + 20 * tn, -R + 22, 6, sid=14151, fill=STAFF_RED)
         cr.rectangle(-78 + 20 * tn, -R - 10, 156, 16); cr.set_source_rgb(*CINE_GOLD); cr.fill()
@@ -3235,3 +3239,272 @@ def draw_victory_arch(cr, x, yb=FLOOR_Y, w=1500, h=1250, sid=17460):
     sketch_rect(cr, x - w / 2 - 80, yb - h - 170, x + w / 2 + 80, yb - h + 10, 7, sid=sid + 2, fill=(0.12, 0.12, 0.14))
     draw_checker_strip(cr, x - w / 2 - 70, yb - h - 160, yb - h - 115, w + 140, 45)
     draw_text(cr, "VICTORY LANE", x, yb - h - 50, 96, color=(255, 214, 80), max_w=w)
+
+# ============================================================ THE WHITE PARTY (day 14) ===
+LIMO = (0.10, 0.10, 0.12)
+TINT = (0.20, 0.22, 0.30)
+SKIN_HOST = (0.45, 0.30, 0.21)
+SUIT = (0.98, 0.98, 0.96)
+CREAM = (0.97, 0.92, 0.82)
+GOLD = (0.96, 0.78, 0.25)
+OIL = (0.99, 0.86, 0.52)
+
+def draw_limo(cr, x, yb=FLOOR_Y, s=1.0, door=0.0, t=0.0, spin=0.0, sid=18000):
+    """a long black car, side view facing right; (x, yb) = ground under the middle. door = rear door swing 0..1
+    (the door is at x-330..x-40)."""
+    cr.save(); cr.translate(x, yb); cr.scale(s, s)
+    sketch_poly(cr, [(-980, -150), (-980, -420), (-700, -460), (-560, -720), (420, -720), (620, -470), (960, -430), (990, -300),
+                     (990, -150)], 7, sid=sid, fill=LIMO)
+    for (a, b) in ((-660, -360), (-300, 20), (60, 380)):                       # tinted windows
+        pts = [(a, -480), (a + 30 if a == -660 else a, -690), (b, -690), (b if b < 380 else 560, -480)] if a != -660 else [(-660, -480), (-540, -690), (-360, -690), (-360, -480)]
+        sketch_poly(cr, pts, 5, sid=sid + 1 + (a > 0), fill=TINT)
+        sketch_line(cr, [(pts[0][0] + 40, -520), (pts[0][0] + 120, -650)], 6, sid=sid + 5, color=(1, 1, 1), alpha=0.35)
+    sketch_line(cr, [(-960, -300), (970, -300)], 6, sid=sid + 6, color=(0.75, 0.76, 0.8))
+    sketch_rect(cr, 940, -400, 990, -350, 4, sid=sid + 7, fill=(1.0, 0.95, 0.7))
+    sketch_rect(cr, -985, -400, -955, -350, 4, sid=sid + 8, fill=(0.9, 0.15, 0.15))
+    for wx in (-640, 640):
+        sketch_circle(cr, wx, -120, 120, 6, sid=sid + 9 + (wx > 0), fill=(0.08, 0.08, 0.09))
+        sketch_circle(cr, wx, -120, 55, 4, sid=sid + 11 + (wx > 0), fill=(0.75, 0.76, 0.8))
+        for k in range(3):
+            a = spin + k * 2.094
+            sketch_line(cr, [(wx, -120), (wx + 50 * math.cos(a), -120 + 50 * math.sin(a))], 4, sid=sid + 13 + k, amp=0.2)
+    # the rear door (x -300..20): opens toward us (it swings out to the left)
+    if door > 0.01:
+        sketch_rect(cr, -300, -690, 20, -160, 5, sid=sid + 20, fill=(0.03, 0.03, 0.05))      # the dark doorway
+        w = 320 * (1 - 0.75 * door)
+        sketch_poly(cr, [(-300, -690), (-300 - w * 0.9, -700 - 40 * door), (-300 - w * 0.9, -150 + 30 * door), (-300, -160)], 6, sid=sid + 21, fill=LIMO)
+    else:
+        sketch_line(cr, [(-300, -700), (-300, -160)], 4, sid=sid + 22, color=(0.3, 0.3, 0.34))
+        sketch_line(cr, [(20, -700), (20, -160)], 4, sid=sid + 23, color=(0.3, 0.3, 0.34))
+        sketch_rect(cr, -60, -400, -10, -380, 3, sid=sid + 24, fill=(0.75, 0.76, 0.8))
+    cr.restore()
+
+def draw_night_sky(cr, yb=FLOOR_Y, t=0.0, ox=0.0):
+    vx0, vy0, vx1, vy1 = _visible(cr)
+    for (y0, y1, col) in ((vy0, yb - 1500, NIGHT_SKY[0]), (yb - 1500, yb - 900, NIGHT_SKY[1]), (yb - 900, vy1, NIGHT_SKY[2])):
+        cr.rectangle(vx0, y0, vx1 - vx0, y1 - y0 + 1); cr.set_source_rgb(*col); cr.fill()
+    for k in range(int((vx0 + ox * 0.2) // 130) - 1, int((vx1 + ox * 0.2) // 130) + 2):
+        sx = k * 130 - ox * 0.2 + 47 * math.sin(k * 12.9898); sy = yb - 1000 - 1100 * abs(math.sin(k * 78.233))
+        cr.arc(sx, sy, 4 + 2 * (k % 3), 0, 2 * math.pi); cr.set_source_rgba(1, 1, 0.85, 0.6 + 0.4 * math.sin(t * 3 + k)); cr.fill()
+
+def draw_fountain(cr, x, yb=FLOOR_Y, t=0.0, s=1.0, sid=18100):
+    cr.save(); cr.translate(x, yb); cr.scale(s, s)
+    sketch_ellipse(cr, 0, -60, 420, 70, 6, sid=sid, fill=(0.85, 0.85, 0.88))
+    sketch_rect(cr, -420, -60, 420, 0, 6, sid=sid + 1, fill=(0.85, 0.85, 0.88))
+    sketch_rect(cr, -40, -420, 40, -60, 5, sid=sid + 2, fill=(0.88, 0.88, 0.9))
+    sketch_ellipse(cr, 0, -420, 200, 40, 5, sid=sid + 3, fill=(0.88, 0.88, 0.9))
+    for k in range(-3, 4):                                                       # water arcs
+        pts = [(k * 10 + 280 * k / 3 * u, -430 - 300 * u * (1 - u) * 2.2 + 360 * u * u) for u in [i / 10 for i in range(11)]]
+        sketch_line(cr, pts, 6, sid=sid + 10 + k, color=(0.55, 0.78, 0.98), alpha=0.85)
+    sketch_line(cr, [(0, -440), (0, -720 - 20 * math.sin(t * 9))], 10, sid=sid + 20, color=(0.55, 0.78, 0.98))
+    cr.restore()
+
+def draw_hedge(cr, x, yb=FLOOR_Y, s=1.0, sid=18120):
+    cr.save(); cr.translate(x, yb); cr.scale(s, s)
+    sketch_rect(cr, -30, -120, 30, 0, 4, sid=sid, fill=(0.40, 0.26, 0.16))
+    sketch_circle(cr, 0, -260, 150, 5, sid=sid + 1, fill=(0.20, 0.42, 0.24))
+    cr.restore()
+
+def draw_lamp(cr, x, yb=FLOOR_Y, sid=18130):
+    sketch_line(cr, [(x, yb), (x, yb - 900)], 10, sid=sid, amp=0.3, color=(0.12, 0.12, 0.14))
+    cr.arc(x, yb - 930, 110, 0, 2 * math.pi); cr.set_source_rgba(1, 0.9, 0.5, 0.25); cr.fill()
+    sketch_circle(cr, x, yb - 930, 44, 5, sid=sid + 1, fill=(1.0, 0.92, 0.55))
+
+def draw_sign(cr, x, yb, text, sid=18140, w=520, size=58):
+    sketch_line(cr, [(x, yb), (x, yb - 520)], 10, sid=sid, amp=0.3, color=(0.4, 0.3, 0.2))
+    sketch_rect(cr, x - w / 2, yb - 720, x + w / 2, yb - 500, 6, sid=sid + 1, fill=(1, 1, 0.97))
+    lines = text.split("|")
+    for i, ln in enumerate(lines):
+        draw_text(cr, ln, x, yb - 610 + (i - (len(lines) - 1) / 2) * size * 1.05, size, color=(30, 30, 34), max_w=w - 30)
+
+def draw_gate(cr, x, yb=FLOOR_Y, sid=18160, text="WHITE PARTY"):
+    for d in (-1, 1):
+        sketch_rect(cr, x + d * 700 - 60, yb - 1250, x + d * 700 + 60, yb, 7, sid=sid + (d > 0), fill=(0.92, 0.92, 0.9))
+        sketch_circle(cr, x + d * 700, yb - 1290, 60, 5, sid=sid + 2 + (d > 0), fill=GOLD)
+    sketch_rect(cr, x - 640, yb - 1250, x + 640, yb - 1080, 6, sid=sid + 4, fill=(0.12, 0.12, 0.14))
+    draw_text(cr, text, x, yb - 1165, 96, color=(255, 214, 80), max_w=1200)
+    for k in range(-8, 9):
+        sketch_line(cr, [(x + k * 75, yb - 1080), (x + k * 75, yb - 820)], 5, sid=sid + 10 + k % 4, amp=0.3, color=(0.75, 0.6, 0.2))
+
+def draw_mansion(cr, x, yb=FLOOR_Y, t=0.0, door=0.0, sid=18200):
+    """a huge white mansion; the front doors (x-300..x+300, 900 tall) at the top of three steps."""
+    W = 2600
+    sketch_poly(cr, [(x - W - 100, yb - 2050), (x, yb - 2700), (x + W + 100, yb - 2050)], 8, sid=sid, fill=(0.30, 0.30, 0.36))
+    sketch_rect(cr, x - W, yb - 2050, x + W, yb - 120, 8, sid=sid + 1, fill=(0.97, 0.95, 0.90))
+    for i in range(-5, 6):
+        if abs(i) <= 1: continue
+        for j in range(2):
+            wx, wy = x + i * 430, yb - 1850 + j * 820
+            sketch_rect(cr, wx - 120, wy, wx + 120, wy + 520, 5, sid=sid + 10 + (i + j) % 7, fill=(1.0, 0.88, 0.50))
+            sketch_line(cr, [(wx, wy), (wx, wy + 520)], 4, sid=sid + 20, amp=0.2)
+    for k in (-3, -1.4, 1.4, 3):                                                  # columns
+        cx = x + k * 260
+        sketch_rect(cr, cx - 60, yb - 1900, cx + 60, yb - 120, 6, sid=sid + 30 + int(k * 2) % 9, fill=(1, 1, 0.98))
+    sketch_rect(cr, x - 1000, yb - 2000, x + 1000, yb - 1880, 6, sid=sid + 40, fill=(1, 1, 0.98))
+    draw_text(cr, "WHITE PARTY", x, yb - 1940, 90, color=(200, 160, 40), max_w=1800)
+    for k in range(3):
+        sketch_rect(cr, x - 900 + 80 * k, yb - 120 + 40 * k, x + 900 - 80 * k, yb - 80 + 40 * k, 5, sid=sid + 50 + k, fill=(0.92, 0.92, 0.94))
+    draw_double_door(cr, x, yb - 120, door, sid=sid + 60)
+    cr.arc(x, yb - 1300, 120, 0, 2 * math.pi); cr.set_source_rgba(1, 0.9, 0.5, 0.2); cr.fill()
+
+def draw_double_door(cr, x, yb, open_=0.0, w=600, h=900, sid=18260):
+    sketch_rect(cr, x - w / 2 - 40, yb - h - 40, x + w / 2 + 40, yb, 7, sid=sid, fill=(0.85, 0.80, 0.70))
+    sketch_rect(cr, x - w / 2, yb - h, x + w / 2, yb, 6, sid=sid + 1, fill=(1.0, 0.88, 0.55))        # warm light inside
+    if open_ > 0.01:
+        for k in range(5):
+            cr.arc(x - 200 + 100 * k, yb - h + 220, 18, 0, 2 * math.pi); cr.set_source_rgba(0.6, 0.45, 0.2, 0.5); cr.fill()
+    lw = w / 2 * (1 - 0.8 * open_)
+    for d in (-1, 1):
+        x0 = x + d * w / 2
+        pts = [(x0, yb - h), (x0 - d * lw, yb - h + 30 * open_), (x0 - d * lw, yb - 30 * open_), (x0, yb)]
+        sketch_poly(cr, pts, 6, sid=sid + 2 + (d > 0), fill=(0.36, 0.20, 0.12))
+        hx = x0 - d * lw * 0.85
+        sketch_circle(cr, hx, yb - h / 2, 18, 4, sid=sid + 4 + (d > 0), fill=GOLD)
+
+def draw_hall(cr, t, x0=-1e9, x1=1e9, yb=FLOOR_Y, sid=18300, windows=True):
+    """a grand ballroom: cream walls, red curtains, gold trim, a black-and-white marble floor."""
+    vx0, vy0, vx1, vy1 = _visible(cr)
+    a, b = max(vx0, x0), min(vx1, x1)
+    cr.rectangle(a, vy0, b - a, yb - vy0); cr.set_source_rgb(*CREAM); cr.fill()
+    cr.rectangle(a, yb - 360, b - a, 18); cr.set_source_rgb(*GOLD); cr.fill()
+    cr.rectangle(a, vy0, b - a, 60 - vy0); cr.set_source_rgb(0.92, 0.86, 0.74); cr.fill()
+    if windows:
+        for k in range(int(a // 900) - 1, int(b // 900) + 2):
+            wx = k * 900 + 450
+            sketch_rect(cr, wx - 160, 220, wx + 160, yb - 420, 6, sid=sid + k % 5, fill=(0.16, 0.18, 0.34))
+            for d in (-1, 1):
+                sketch_poly(cr, [(wx + d * 160, 180), (wx + d * 260, 180), (wx + d * 230, yb - 400), (wx + d * 150, yb - 400)], 5,
+                            sid=sid + 10 + (d > 0), fill=(0.72, 0.12, 0.16))
+    cr.rectangle(a, yb, b - a, vy1 - yb); cr.set_source_rgb(0.96, 0.96, 0.94); cr.fill()
+    for k in range(int(a // 160) - 1, int(b // 160) + 2):
+        for j in range(6):
+            if (k + j) % 2:
+                cr.rectangle(k * 160, yb + j * 100, 160, 100); cr.set_source_rgb(0.16, 0.16, 0.18); cr.fill()
+    sketch_line(cr, [(a, yb), (b, yb)], 5, sid=sid + 20)
+
+def draw_chandelier(cr, x, y, t=0.0, sid=18330):
+    sketch_line(cr, [(x, -600), (x, y - 120)], 6, sid=sid, amp=0.2)
+    sketch_ellipse(cr, x, y, 260, 50, 6, sid=sid + 1, fill=GOLD)
+    for k in range(-3, 4):
+        cx = x + k * 80
+        sketch_line(cr, [(cx, y), (cx, y + 70 + 10 * (k % 2))], 4, sid=sid + 2, amp=0.2)
+        cr.arc(cx, y + 80, 14, 0, 2 * math.pi); cr.set_source_rgb(0.75, 0.9, 1.0); cr.fill_preserve(); stroke_ink(cr, 3)
+        cr.arc(cx, y - 30, 26, 0, 2 * math.pi); cr.set_source_rgba(1, 0.9, 0.5, 0.35 + 0.1 * math.sin(t * 5 + k)); cr.fill()
+        sketch_line(cr, [(cx, y), (cx, y - 30)], 8, sid=sid + 3, amp=0.2, color=(1, 1, 1))
+
+def draw_coupe(cr, x, y, s=1.0, ang=0.0, full=True, sid=18350):
+    """a champagne coupe; (x, y) = the base."""
+    cr.save(); cr.translate(x, y); cr.rotate(ang); cr.scale(s, s)
+    sketch_line(cr, [(-26, 0), (26, 0)], 5, sid=sid, amp=0.2)
+    sketch_line(cr, [(0, 0), (0, -60)], 5, sid=sid + 1, amp=0.2)
+    pts = [(-46, -60 - 30 * math.sin(math.pi * u)) for u in []]
+    sketch_poly(cr, [(-50, -90), (50, -90), (24, -62), (-24, -62)], 4, sid=sid + 2, fill=(1.0, 0.92, 0.60) if full else (0.92, 0.96, 1.0))
+    cr.restore()
+
+def draw_champagne_tower(cr, x, yb=FLOOR_Y, t=0.0, fall=0.0, t0=0.0, sid=18360):
+    """a table with a pyramid of coupes. fall > 0: the glasses fly everywhere (u = seconds since the crash)."""
+    sketch_rect(cr, x - 260, yb - 420, x + 260, yb - 380, 5, sid=sid, fill=(1, 1, 1))
+    sketch_poly(cr, [(x - 260, yb - 380), (x + 260, yb - 380), (x + 220, yb), (x - 220, yb)], 5, sid=sid + 1, fill=(1, 1, 1))
+    rows = 4
+    for r in range(rows):
+        n = rows - r
+        for i in range(n):
+            gx = x + (i - (n - 1) / 2) * 104; gy = yb - 420 - r * 92
+            if fall > 0:
+                h = (i * 13 + r * 7) % 11 / 11.0
+                vx = (h - 0.5) * 2400; vy = -900 - 900 * h
+                gx += vx * fall; gy += vy * fall + 2600 * fall * fall
+                draw_coupe(cr, gx, gy, 1.0, ang=fall * (8 * h - 4), full=False, sid=sid + 10 + (i + r) % 6)
+            else:
+                draw_coupe(cr, gx, gy, 1.0, sid=sid + 10 + (i + r) % 6)
+
+def draw_easel(cr, x, yb=FLOOR_Y, text="DRESS CODE:|ALL WHITE", sid=18400):
+    for d in (-1, 1): sketch_line(cr, [(x + d * 30, yb - 900), (x + d * 170, yb)], 8, sid=sid + (d > 0), amp=0.3, color=(0.45, 0.3, 0.18))
+    sketch_rect(cr, x - 220, yb - 920, x + 220, yb - 480, 6, sid=sid + 2, fill=(0.12, 0.12, 0.14))
+    cr.rectangle(x - 205, yb - 905, 410, 410); cr.set_source_rgb(*GOLD); cr.set_line_width(4); cr.stroke()
+    for i, ln in enumerate(text.split("|")):
+        draw_text(cr, ln, x, yb - 760 + i * 90, 62, color=(255, 255, 255), max_w=380)
+
+def draw_baby_oil(cr, x, y, s=1.0, ang=0.0, squeeze=0.0, sid=18420):
+    """a big bottle of baby oil; (x, y) = its middle (cap points up at ang=0)."""
+    cr.save(); cr.translate(x, y); cr.rotate(ang); cr.scale(s * (1 + 0.08 * squeeze), s * (1 - 0.05 * squeeze))
+    body = [(-70, 150), (-70, -60), (-50, -120), (-28, -140), (28, -140), (50, -120), (70, -60), (70, 150)]
+    sketch_poly(cr, body, 6, sid=sid, fill=(0.99, 0.80, 0.70))
+    cr.save(); path(cr, body); cr.close_path(); cr.clip()
+    cr.rectangle(-70, -40, 140, 190); cr.set_source_rgba(*OIL, 0.8); cr.fill(); cr.restore()
+    sketch_poly(cr, body, 6, sid=sid + 1, fill=None)
+    sketch_rect(cr, -30, -200, 30, -140, 5, sid=sid + 2, fill=(1.0, 0.55, 0.70))
+    sketch_rect(cr, -58, -30, 58, 110, 4, sid=sid + 3, fill=(1, 1, 1))
+    draw_text(cr, "BABY", 0, 10, 40, color=(230, 80, 130))
+    draw_text(cr, "OIL", 0, 62, 44, color=(230, 80, 130))
+    sketch_line(cr, [(-48, -90), (-48, 120)], 6, sid=sid + 4, color=(1, 1, 1), alpha=0.6, amp=0.2)
+    cr.restore()
+
+def draw_oil_stream(cr, pts, w=20, sid=18440):
+    if len(pts) < 2: return
+    path(cr, pts); cr.set_source_rgba(*OIL, 0.9); cr.set_line_width(w); cr.set_line_cap(cairo.LINE_CAP_ROUND); cr.stroke()
+    path(cr, pts); cr.set_source_rgba(1, 1, 1, 0.6); cr.set_line_width(w * 0.3); cr.stroke()
+
+def draw_oil_puddle(cr, x, yb, r, sid=18450):
+    sketch_ellipse(cr, x, yb + 20, r, r * 0.16, 4, sid=sid, fill=OIL, alpha=0.95)
+    sketch_ellipse(cr, x - r * 0.3, yb + 14, r * 0.25, r * 0.04, 0.1, sid=sid + 1, fill=(1, 1, 1), alpha=0.7)
+
+def draw_gift_bag(cr, x, y, s=1.0, sid=18460):
+    cr.save(); cr.translate(x, y); cr.scale(s, s)
+    for d in (-1, 1): sketch_curve(cr, (d * 60, -130), (d * 30, -230), (d * 10 - 0, -130), 6, sid=sid + (d > 0))
+    sketch_poly(cr, [(-110, -130), (110, -130), (100, 120), (-100, 120)], 6, sid=sid + 2, fill=(1, 1, 1))
+    draw_text(cr, "PARTY", 0, -40, 44, color=(200, 160, 40))
+    draw_text(cr, "FAVOR", 0, 10, 44, color=(200, 160, 40))
+    cr.restore()
+
+def draw_host(cr, p, t=0.0, s=1.15, smirk=0.3, bottle=None, squeeze=0.0, glance=0.0):
+    """the party host: brown skin, short black hair, a trimmed beard, dark sunglasses, an all-white suit and a gold chain.
+    p = a constrained rig pose (world coords, feet on FLOOR_Y); drawn scaled s around the feet. bottle = 'r'/'l' hand
+    holding the baby oil."""
+    fx = (p["lfoot"][0] + p["rfoot"][0]) / 2
+    cr.save(); cr.translate(fx, FLOOR_Y); cr.scale(s, s); cr.translate(-fx, -FLOOR_Y)
+    cr.set_line_cap(cairo.LINE_CAP_ROUND); cr.set_line_join(cairo.LINE_JOIN_ROUND)
+    def limb(a, b, c, w=44):
+        path(cr, [a, b, c]); cr.set_source_rgb(*INK); cr.set_line_width(w + 10); cr.stroke()
+        path(cr, [a, b, c]); cr.set_source_rgb(*SUIT); cr.set_line_width(w); cr.stroke()
+    hip, neck = p["hip"], p["neck"]
+    for sd in ("l", "r"):                                                       # legs + shoes
+        limb((hip[0] + (-24 if sd == "l" else 24), hip[1]), p[sd + "knee"], p[sd + "foot"])
+        fx_, fy_ = p[sd + "foot"]
+        sketch_ellipse(cr, fx_ + (-14 if sd == "l" else 14), fy_ - 10, 46, 22, 5, sid=18500 + (sd == "r"), fill=(0.08, 0.08, 0.1))
+    nx, ny = neck; hx_, hy_ = hip
+    jacket = [(nx - 70, ny + 10), (nx + 70, ny + 10), (hx_ + 82, hy_ + 30), (hx_ - 82, hy_ + 30)]
+    sketch_poly(cr, jacket, 6, sid=18502, fill=SUIT)
+    sketch_poly(cr, [(nx - 30, ny + 10), (nx + 30, ny + 10), (nx, ny + 150)], 4, sid=18503, fill=(0.95, 0.95, 0.93))
+    sketch_line(cr, [(nx - 40, ny + 10), (nx - 10, ny + 200)], 4, sid=18504, amp=0.3)
+    sketch_line(cr, [(nx + 40, ny + 10), (nx + 10, ny + 200)], 4, sid=18505, amp=0.3)
+    pts = [(nx - 42 + 84 * u, ny + 20 + 110 * math.sin(math.pi * u)) for u in [i / 12 for i in range(13)]]   # gold chain
+    path(cr, pts); cr.set_source_rgb(*GOLD); cr.set_line_width(9); cr.stroke()
+    for sd in ("l", "r"):                                                       # arms + hands
+        sh = (nx + (-62 if sd == "l" else 62), ny + 30)
+        limb(sh, p[sd + "elb"], p[sd + "hand"], 38)
+        hx2, hy2 = p[sd + "hand"]
+        sketch_circle(cr, hx2, hy2, 26, 5, sid=18510 + (sd == "r"), fill=SKIN_HOST)
+    if bottle:                                                                  # held by the neck, label clear
+        bx, by = p[bottle + "hand"]
+        sketch_circle(cr, bx, by, 26, 5, sid=18512, fill=SKIN_HOST)
+        draw_baby_oil(cr, bx, by + 120, s=1.0, ang=0.12 if bottle == "r" else -0.12, squeeze=squeeze)
+        sketch_circle(cr, bx + 6, by - 4, 22, 4, sid=18512, fill=SKIN_HOST)
+    hx, hy = p["head"]; tl = p.get("tilt", 0.0); tn = p.get("turn", 0.0)
+    cr.save(); cr.translate(hx, hy); cr.rotate(tl)
+    R = 112
+    sketch_rect(cr, -30, R - 30, 30, R + 40, 5, sid=18513, fill=SKIN_HOST)
+    sketch_circle(cr, 0, 0, R, 7, sid=18514, fill=SKIN_HOST)
+    cr.save(); cr.arc(0, 0, R - 4, 0, 2 * math.pi); cr.clip()
+    cr.rectangle(-R, -R, 2 * R, 52); cr.set_source_rgb(0.08, 0.06, 0.06); cr.fill()            # short hair
+    cr.arc(0, 30, R - 6, 0.12 * math.pi, 0.88 * math.pi); cr.set_line_width(36); cr.set_source_rgb(0.12, 0.08, 0.07); cr.stroke()   # beard
+    cr.restore()
+    ox = 26 * tn
+    sketch_rect(cr, ox - 26, 18, ox + 26, 30, 3, sid=18515, fill=(0.12, 0.08, 0.07))           # moustache
+    sketch_line(cr, [(ox - 28 + 0, 62), (ox + 0, 66 + 10 * smirk), (ox + 30, 56 - 14 * smirk)], 5, sid=18516, amp=0.2)
+    for d in (-1, 1):                                                           # the sunglasses
+        sketch_rect(cr, ox + d * 50 - 40, -40, ox + d * 50 + 40, 8, 5, sid=18517 + (d > 0), fill=(0.04, 0.04, 0.06))
+        sketch_line(cr, [(ox + d * 50 - 24, -30), (ox + d * 50 - 6, -6)], 5, sid=18519, color=(1, 1, 1), alpha=0.5, amp=0.1)
+    sketch_line(cr, [(ox - 10, -24), (ox + 10, -24)], 6, sid=18520, amp=0.1)
+    cr.restore()
+    cr.restore()
