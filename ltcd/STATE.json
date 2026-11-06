@@ -1,37 +1,37 @@
 {
   "show": "let the comments decide",
-  "day": 14,
+  "day": 15,
   "last_episode": {
-    "day": 14,
+    "day": 15,
     "type": "comment",
-    "folder": "episodes/ep014",
-    "video": "videos/day014.mp4",
-    "posted_at": "2026-11-05T19:00:00-05:00 (scheduled)",
+    "folder": "episodes/ep015",
+    "video": "videos/day015.mp4",
+    "posted_at": "2026-11-06T19:00:00-05:00 (scheduled)",
     "buffer": {
-      "tiktok": "6aecdafea6434c50c62a3d15",
-      "instagram": "6aecdb01682ebe26c5bd2d14"
+      "tiktok": "6aee29ae004e4879a70e4159",
+      "instagram": "6aee29b09214322f68a89ab6"
     },
     "comment": {
       "platform": "instagram",
-      "username": "sohomnilesh",
-      "text": "Go to diddy party",
+      "username": "nicolascechettoschuller",
+      "text": "Seja feliz",
       "likes": 0
-    },
-    "note": "Justin swapped this in (2026-11-05) over the racetrack cut (tests/unused_ep014_racetrack); the racetrack never aired."
+    }
   },
-  "ask_since_day": 14,
+  "ask_since_day": 15,
   "waiting_streak": 0,
   "world": {
-    "location": "THE BACK SEAT OF A BLACK CAR, speeding away from the WHITE PARTY mansion at night (day 14). Draw: the interior from ep014 seat() (dark cabin, rear window with the mansion shrinking/the night road, leather seat back, front seats covering his legs), SEATX=260000, him at body offset SEATX-540, ask camera (SEATX, 930, 1.0) push=False. Next episode: the car stops / he gets out to the right into a new world.",
+    "location": "A SUNNY BEACH (day 15): O.draw_beach_world(cr, t, BX-6000, BX+12000, BX-1300, sugar_x=BX+2600) with BX=700000 (sky bands, sun, sea, granite dome + cable car in the bay, sand floor, palms + umbrellas; mosaic sidewalk left of BX-1300). The rainbow O.draw_rainbow(cr, TX+3600, FLOOR_Y, 1530, band=60) with TX=BX-300 stands behind him; he is at centre x ~705313 (body offset ~704773), the kite lying on the sand ~330 px to his right. S.floor=False. Next episode: he leaves to the right into a new world.",
     "companions": [
-      "none: the kitten is gone (Justin, 2026-11-05)",
+      "none",
       "left behind in Mordor (never going back): the giant eagle"
     ],
     "props": [
-      "the black car (O.draw_limo) he is riding in; a PARTY FAVOR bag (O.draw_gift_bag) - he tossed the tiny baby oil out the window",
+      "a yellow smiley KITE (O.draw_kite) lying on the sand next to him",
+      "the black car is GONE (it dropped him at the beach and reversed away for good, day 15)",
       "left behind in the town: the CAT RESCUE SHELTER he built",
       "the RING IS DESTROYED (day 10)",
-      "far behind (never going back): the WHITE PARTY mansion, MEGAPLEX 30, FUN PARK, the town, Mordor, green hill, the airfield, the burger place"
+      "far behind (never going back): the back of the black car, the WHITE PARTY mansion, MEGAPLEX 30, FUN PARK, the town, Mordor, green hill, the airfield, the burger place"
     ],
     "traits": [
       "beat the block game on hardcore with half a heart (day 4)",
@@ -44,7 +44,8 @@
       "built a CAT RESCUE SHELTER and was happy about it (day 11, re-cut): ran out of Mordor into a sunny town, found a black kitten in a FREE KITTEN box (slow blinks), built the shelter, rescued a cat from a tree and a line of kittens, fed them (one can - every head turned), they chose the box over the fancy bed, a cat pushed his mug off the shelf (he caught it), on adoption day the mom from day 6 adopted the orange cat, he stamped ADOPTED on every photo - the last was the kitten's, so he adopted it. Real smile. It rides on his head now. Looks normal.",
       "took his cat to the theme park (day 12): ran from the town into FUN PARK; teacups - the kitten batted the wheel until it spun crazy fast and he laughed for real, then dizzy; YOU MUST BE THIS TALL - short by a hair until the kitten sat up on his head (DING); THE BIG ONE coaster: lift hill, hang at the top, the kitten's slow blink gave him the nerve, arms up (despite KEEP ARMS AND LEGS INSIDE), drop, two loops, airtime, FLASH; the RIDE PHOTO shows him screaming with joy and the kitten bored. Looks normal.",
       "went to the movies (day 13): ran out of FUN PARK's back gate (BYE NOW!) to MEGAPLEX 30 (EXPLOSION 7, TONIGHT ONLY); NO PETS - he put a tiny cowboy hat on the kitten and the usher stared him down but let it slide; SMALL popcorn $47.50, taller than him; the card reader asked for a tip and he pressed 30% ($61.75) under the cashier's stare; in an empty theater a giant in a top hat sat right in front of him (leaning didn't help); 47 previews, ate all the popcorn before the movie; pulled out a periscope and watched EXPLOSION 7 over the hat (car, building blows up, car jumps the fireball); the tall guy got up and left at THE END. Looks normal.",
-      "went to the white party (day 14): a black car took him up an endless driveway to a mansion; the doors opened by themselves; passed the ALL WHITE dress code by being a white stick figure; ate one canape; the host (white suit, shades, gold chain) tapped him on the shoulder, staredown, pulled out a bottle of baby oil and chased him through the west wing doors; he slid under the champagne table, the host wiped out into the champagne tower; he escaped into the car; the party favor was a tiny baby oil, tossed out the window. Looks normal."
+      "went to the white party (day 14): a black car took him up an endless driveway to a mansion; the doors opened by themselves; passed the ALL WHITE dress code by being a white stick figure; ate one canape; the host (white suit, shades, gold chain) tapped him on the shoulder, staredown, pulled out a bottle of baby oil and chased him through the west wing doors; he slid under the champagne table, the host wiped out into the champagne tower; he escaped into the car; the party favor was a tiny baby oil, tossed out the window. Looks normal.",
+      "was told to be happy (day 15, 'Seja feliz'): the black car dropped him at a sunny beach and left; he couldn't smile, a finger smile flopped, a seagull stole all three scoops of his ice cream, a little rain cloud appeared over his head and followed him, lightning zapped the empty cone; he sat in the rain; the cloud's gust gave him the idea of a kite; it yanked him up through the cloud into the sun - he laughed for real, looped; the abandoned cloud rained out into a rainbow, the wind died, he slid down the rainbow and landed in the sand; the seagull dropped one scoop on his head and he ate it. Real smile. Looks normal."
     ],
     "notes": "Day 13: deadpan / Family Guy timing; the kitten is never harmed. Every episode moves on to a new world."
   },
@@ -59,7 +60,8 @@
     "Build a cat shelter and be happy about it",
     "Take your cat to the theme park and go on rides, have fun",
     "Go to the movies!",
-    "Go to diddy party"
+    "Go to diddy party",
+    "Seja feliz"
   ],
   "history": [
     {
@@ -131,6 +133,11 @@
       "day": 14,
       "type": "comment",
       "summary": "@sohomnilesh (IG): 'Go to diddy party' (Justin's pick + outline) -> theater EXIT -> black car -> endless driveway -> mansion doors open by themselves -> ALL WHITE dress code (he passes) -> canape -> the host in a white suit + shades taps his shoulder, staredown, BABY OIL -> chase through the west wing doors -> oil slick: he slides under the table, the host wipes out into the champagne tower -> escape to the car -> party favor: tiny baby oil, tossed -> ask in the back seat (63.2 s). Racetrack cut archived, never aired."
+    },
+    {
+      "day": 15,
+      "type": "comment",
+      "summary": "@nicolascechettoschuller (IG): 'Seja feliz' -> back seat, brakes; out at a beach (mosaic sidewalk), the car reverses away for good; forced smile sags; finger smile flops; ice cream - a seagull steals all three scoops; a rain cloud pops over his head, follows him, lightning zaps the empty cone; he sits in the rain; the cloud's gust -> kite -> yanked up through the cloud into the sun, smiles, laughs, loop-de-loop past the cable car; the cloud rains out -> rainbow, wind dies, he slides down the rainbow, lands in the sand; the gull drops one scoop on his head, he eats it, real smile; ask on the beach with a small smile (62.2 s)"
     }
   ]
 }
