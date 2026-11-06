@@ -364,3 +364,16 @@ Post time is 9 PM ET. Day 13 went out a day late (missed slot); every later day 
 - **four elements:** C "Keep your eyes on it." · R staying: a job, a town, an ache · E calm with something wrong underneath · T a tick that gets louder each time; he stops reacting and turns away
 - **cover:** 55.2 s, turned away toward the dusk window, the crack across the frame.
 - **script:** Hello? Is anyone out there? Keep your eyes on it. There's a crack in your screen. Right there. It ticks. ...Listen. The first time it did that, I jumped. The second time, I counted. By now it's just... part of the room. That's how it works on you, too. The job that was only for a year. The town you were leaving after the summer. The ache you stopped mentioning. Nobody decides to stay. You just stop jumping. I'm not looking at it anymore. You noticed that. You can get used to anything. That's how you end up staying.
+
+### D29 · mending · "Taped" · 2026-11-08 (Sun) · 61.8 s
+- **idea:** you've been fixed by people you'll never thank.
+- **you:** strong. "Someone salted the steps before you walked on them. Someone checked the brakes on your bus. Someone stayed up at three in the morning, so a stranger wouldn't be alone."
+- **first seconds:** leans right up to the glass, nose almost on it: "Hold still. Let me see."
+- **prop:** clear tape over the crack on OUR side of the glass (arc 3/4), named plainly for new viewers.
+- **tension:** medium-strong. One corner of the tape peels up twice while he holds his breath in dead silence; it settles; "...It's holding."
+- **visual:** the yellowed tape with its corner curling off the glass, its shadow underneath; night turning to dawn.
+- **dread:** no. Unsettling lines: "On your side. I can't reach your side." / "They did it while I was asleep."
+- **hook:** "Somebody fixed something for you today. You'll never find out what." *Viewer-centric, unsettling.*
+- **four elements:** C "Hold still. Let me see." · R strangers who look after you · E tender, eerie underneath · T the tape's corner keeps lifting; will it hold? It holds.
+- **cover:** 19.5 s, right up at the glass holding his breath while the tape corner lifts.
+- **script:** Hello? Is anyone out there? Hold still. Let me see. ...Someone put tape over the crack in your screen. On your side. I can't reach your side. Don't. They did it while I was asleep. They didn't knock. They didn't leave a note. They just fixed it, and left. That happens to you all the time. Someone salted the steps before you walked on them. Someone checked the brakes on your bus. Someone stayed up at three in the morning, so a stranger wouldn't be alone. You'll never know their names. ...It's holding. Somebody fixed something for you today. You'll never find out what.
