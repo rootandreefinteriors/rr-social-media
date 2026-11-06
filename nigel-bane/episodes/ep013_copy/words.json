@@ -1,0 +1,492 @@
+[
+ {
+  "text": "Hello?",
+  "start": 0.369,
+  "end": 0.64
+ },
+ {
+  "text": "Is",
+  "start": 1.12,
+  "end": 1.71
+ },
+ {
+  "text": "anyone",
+  "start": 1.767,
+  "end": 2.11
+ },
+ {
+  "text": "out",
+  "start": 2.17,
+  "end": 2.35
+ },
+ {
+  "text": "there?",
+  "start": 2.403,
+  "end": 2.83
+ },
+ {
+  "text": "It's",
+  "start": 3.777,
+  "end": 3.87
+ },
+ {
+  "text": "still",
+  "start": 3.937,
+  "end": 4.27
+ },
+ {
+  "text": "here.",
+  "start": 4.366,
+  "end": 4.83
+ },
+ {
+  "text": "Watch.",
+  "start": 5.07,
+  "end": 6.35
+ },
+ {
+  "text": "I",
+  "start": 7.87,
+  "end": 8.35
+ },
+ {
+  "text": "tilt",
+  "start": 8.446,
+  "end": 8.83
+ },
+ {
+  "text": "my",
+  "start": 8.883,
+  "end": 8.99
+ },
+ {
+  "text": "head...",
+  "start": 9.118,
+  "end": 10.64
+ },
+ {
+  "text": "it",
+  "start": 11.32,
+  "end": 11.48
+ },
+ {
+  "text": "tilts",
+  "start": 11.56,
+  "end": 11.96
+ },
+ {
+  "text": "its",
+  "start": 12.06,
+  "end": 12.36
+ },
+ {
+  "text": "head.",
+  "start": 12.44,
+  "end": 12.92
+ },
+ {
+  "text": "I",
+  "start": 13.96,
+  "end": 14.48
+ },
+ {
+  "text": "copied",
+  "start": 14.537,
+  "end": 14.88
+ },
+ {
+  "text": "that",
+  "start": 14.928,
+  "end": 15.12
+ },
+ {
+  "text": "from",
+  "start": 15.152,
+  "end": 15.28
+ },
+ {
+  "text": "somewhere,",
+  "start": 15.344,
+  "end": 16.08
+ },
+ {
+  "text": "probably.",
+  "start": 16.16,
+  "end": 16.96
+ },
+ {
+  "text": "Everything",
+  "start": 17.098,
+  "end": 18.33
+ },
+ {
+  "text": "I",
+  "start": 18.41,
+  "end": 18.49
+ },
+ {
+  "text": "do,",
+  "start": 18.597,
+  "end": 18.97
+ },
+ {
+  "text": "I",
+  "start": 19.13,
+  "end": 19.29
+ },
+ {
+  "text": "copied.",
+  "start": 19.359,
+  "end": 19.85
+ },
+ {
+  "text": "The",
+  "start": 20.07,
+  "end": 20.73
+ },
+ {
+  "text": "way",
+  "start": 20.79,
+  "end": 20.97
+ },
+ {
+  "text": "I",
+  "start": 21.01,
+  "end": 21.05
+ },
+ {
+  "text": "stand.",
+  "start": 21.197,
+  "end": 22.01
+ },
+ {
+  "text": "The",
+  "start": 22.29,
+  "end": 23.08
+ },
+ {
+  "text": "way",
+  "start": 23.14,
+  "end": 23.32
+ },
+ {
+  "text": "I",
+  "start": 23.36,
+  "end": 23.4
+ },
+ {
+  "text": "say",
+  "start": 23.48,
+  "end": 23.72
+ },
+ {
+  "text": "hello.",
+  "start": 23.813,
+  "end": 24.36
+ },
+ {
+  "text": "Somebody",
+  "start": 24.564,
+  "end": 25.86
+ },
+ {
+  "text": "did",
+  "start": 25.92,
+  "end": 26.1
+ },
+ {
+  "text": "it",
+  "start": 26.153,
+  "end": 26.26
+ },
+ {
+  "text": "first,",
+  "start": 26.367,
+  "end": 27.14
+ },
+ {
+  "text": "and",
+  "start": 27.16,
+  "end": 27.22
+ },
+ {
+  "text": "I",
+  "start": 27.3,
+  "end": 27.38
+ },
+ {
+  "text": "just",
+  "start": 27.428,
+  "end": 27.62
+ },
+ {
+  "text": "kept",
+  "start": 27.7,
+  "end": 28.02
+ },
+ {
+  "text": "it.",
+  "start": 28.1,
+  "end": 28.42
+ },
+ {
+  "text": "You",
+  "start": 28.78,
+  "end": 29.47
+ },
+ {
+  "text": "too.",
+  "start": 29.61,
+  "end": 30.62
+ },
+ {
+  "text": "Your",
+  "start": 30.62,
+  "end": 31.13
+ },
+ {
+  "text": "laugh",
+  "start": 31.21,
+  "end": 31.61
+ },
+ {
+  "text": "is",
+  "start": 31.663,
+  "end": 31.77
+ },
+ {
+  "text": "somebody",
+  "start": 31.823,
+  "end": 32.25
+ },
+ {
+  "text": "else's",
+  "start": 32.314,
+  "end": 32.65
+ },
+ {
+  "text": "laugh.",
+  "start": 32.743,
+  "end": 33.37
+ },
+ {
+  "text": "Your",
+  "start": 33.61,
+  "end": 34.42
+ },
+ {
+  "text": "walk",
+  "start": 34.516,
+  "end": 34.9
+ },
+ {
+  "text": "is",
+  "start": 34.953,
+  "end": 35.06
+ },
+ {
+  "text": "a",
+  "start": 35.1,
+  "end": 35.14
+ },
+ {
+  "text": "walk",
+  "start": 35.22,
+  "end": 35.54
+ },
+ {
+  "text": "you",
+  "start": 35.58,
+  "end": 35.7
+ },
+ {
+  "text": "saw",
+  "start": 35.78,
+  "end": 36.02
+ },
+ {
+  "text": "once,",
+  "start": 36.116,
+  "end": 36.58
+ },
+ {
+  "text": "and",
+  "start": 36.64,
+  "end": 36.82
+ },
+ {
+  "text": "liked.",
+  "start": 36.9,
+  "end": 37.46
+ },
+ {
+  "text": "So",
+  "start": 37.99,
+  "end": 38.55
+ },
+ {
+  "text": "what's",
+  "start": 38.598,
+  "end": 38.95
+ },
+ {
+  "text": "left,",
+  "start": 39.046,
+  "end": 39.51
+ },
+ {
+  "text": "if",
+  "start": 39.697,
+  "end": 40.07
+ },
+ {
+  "text": "you",
+  "start": 40.11,
+  "end": 40.23
+ },
+ {
+  "text": "take",
+  "start": 40.294,
+  "end": 40.55
+ },
+ {
+  "text": "all",
+  "start": 40.59,
+  "end": 40.71
+ },
+ {
+  "text": "the",
+  "start": 40.75,
+  "end": 40.87
+ },
+ {
+  "text": "copies",
+  "start": 40.927,
+  "end": 41.27
+ },
+ {
+  "text": "away?",
+  "start": 41.35,
+  "end": 41.75
+ },
+ {
+  "text": "I",
+  "start": 42.87,
+  "end": 42.95
+ },
+ {
+  "text": "tried",
+  "start": 43.003,
+  "end": 43.27
+ },
+ {
+  "text": "it",
+  "start": 43.323,
+  "end": 43.43
+ },
+ {
+  "text": "this",
+  "start": 43.478,
+  "end": 43.67
+ },
+ {
+  "text": "morning.",
+  "start": 43.75,
+  "end": 45.02
+ },
+ {
+  "text": "Standing",
+  "start": 45.109,
+  "end": 45.82
+ },
+ {
+  "text": "still.",
+  "start": 45.913,
+  "end": 46.46
+ },
+ {
+  "text": "Not",
+  "start": 46.74,
+  "end": 47.58
+ },
+ {
+  "text": "copying",
+  "start": 47.66,
+  "end": 48.22
+ },
+ {
+  "text": "anything.",
+  "start": 48.282,
+  "end": 48.86
+ },
+ {
+  "text": "There",
+  "start": 49.913,
+  "end": 50.72
+ },
+ {
+  "text": "wasn't",
+  "start": 50.768,
+  "end": 51.04
+ },
+ {
+  "text": "much",
+  "start": 51.104,
+  "end": 51.36
+ },
+ {
+  "text": "there.",
+  "start": 51.44,
+  "end": 52.0
+ },
+ {
+  "text": "And",
+  "start": 53.961,
+  "end": 54.001
+ },
+ {
+  "text": "I'm",
+  "start": 54.041,
+  "end": 54.161
+ },
+ {
+  "text": "not",
+  "start": 54.201,
+  "end": 54.321
+ },
+ {
+  "text": "sure",
+  "start": 54.401,
+  "end": 54.721
+ },
+ {
+  "text": "anymore",
+  "start": 54.801,
+  "end": 55.361
+ },
+ {
+  "text": "which",
+  "start": 55.454,
+  "end": 55.921
+ },
+ {
+  "text": "of",
+  "start": 55.974,
+  "end": 56.081
+ },
+ {
+  "text": "us",
+  "start": 56.188,
+  "end": 56.401
+ },
+ {
+  "text": "tilted",
+  "start": 56.492,
+  "end": 57.041
+ },
+ {
+  "text": "first.",
+  "start": 57.161,
+  "end": 57.921
+ }
+]

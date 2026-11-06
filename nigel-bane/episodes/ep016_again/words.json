@@ -1,0 +1,292 @@
+[
+ {
+  "text": "Hello?",
+  "start": 0.38,
+  "end": 0.56
+ },
+ {
+  "text": "Is",
+  "start": 0.987,
+  "end": 1.79
+ },
+ {
+  "text": "anyone",
+  "start": 1.847,
+  "end": 2.19
+ },
+ {
+  "text": "out",
+  "start": 2.27,
+  "end": 2.51
+ },
+ {
+  "text": "there?",
+  "start": 2.55,
+  "end": 2.83
+ },
+ {
+  "text": "Hello?",
+  "start": 5.233,
+  "end": 5.78
+ },
+ {
+  "text": "Is",
+  "start": 6.233,
+  "end": 7.0
+ },
+ {
+  "text": "anyone",
+  "start": 7.057,
+  "end": 7.4
+ },
+ {
+  "text": "out",
+  "start": 7.46,
+  "end": 7.64
+ },
+ {
+  "text": "there?",
+  "start": 7.693,
+  "end": 8.04
+ },
+ {
+  "text": "Hello?",
+  "start": 10.487,
+  "end": 10.9
+ },
+ {
+  "text": "Is",
+  "start": 11.46,
+  "end": 12.24
+ },
+ {
+  "text": "anyone",
+  "start": 12.297,
+  "end": 12.64
+ },
+ {
+  "text": "out",
+  "start": 12.7,
+  "end": 12.88
+ },
+ {
+  "text": "there?",
+  "start": 12.933,
+  "end": 13.28
+ },
+ {
+  "text": "I've",
+  "start": 15.21,
+  "end": 15.895
+ },
+ {
+  "text": "been",
+  "start": 15.927,
+  "end": 16.055
+ },
+ {
+  "text": "saying",
+  "start": 16.112,
+  "end": 16.455
+ },
+ {
+  "text": "that",
+  "start": 16.503,
+  "end": 16.695
+ },
+ {
+  "text": "since",
+  "start": 16.748,
+  "end": 17.015
+ },
+ {
+  "text": "I",
+  "start": 17.095,
+  "end": 17.175
+ },
+ {
+  "text": "woke",
+  "start": 17.239,
+  "end": 17.495
+ },
+ {
+  "text": "up.",
+  "start": 17.628,
+  "end": 18.055
+ },
+ {
+  "text": "I",
+  "start": 18.58,
+  "end": 19.145
+ },
+ {
+  "text": "can't",
+  "start": 19.205,
+  "end": 19.465
+ },
+ {
+  "text": "stop.",
+  "start": 19.609,
+  "end": 20.83
+ },
+ {
+  "text": "It",
+  "start": 20.838,
+  "end": 21.425
+ },
+ {
+  "text": "used",
+  "start": 21.489,
+  "end": 21.745
+ },
+ {
+  "text": "to",
+  "start": 21.772,
+  "end": 21.825
+ },
+ {
+  "text": "be",
+  "start": 21.878,
+  "end": 21.985
+ },
+ {
+  "text": "a",
+  "start": 22.025,
+  "end": 22.065
+ },
+ {
+  "text": "question.",
+  "start": 22.154,
+  "end": 22.945
+ },
+ {
+  "text": "Now",
+  "start": 23.245,
+  "end": 24.145
+ },
+ {
+  "text": "it's",
+  "start": 24.198,
+  "end": 24.385
+ },
+ {
+  "text": "just",
+  "start": 24.433,
+  "end": 24.625
+ },
+ {
+  "text": "the",
+  "start": 24.645,
+  "end": 24.705
+ },
+ {
+  "text": "shape",
+  "start": 24.772,
+  "end": 25.105
+ },
+ {
+  "text": "my",
+  "start": 25.158,
+  "end": 25.265
+ },
+ {
+  "text": "mouth",
+  "start": 25.332,
+  "end": 25.665
+ },
+ {
+  "text": "makes.",
+  "start": 25.772,
+  "end": 26.465
+ },
+ {
+  "text": "The",
+  "start": 26.985,
+  "end": 27.545
+ },
+ {
+  "text": "bird",
+  "start": 27.625,
+  "end": 27.945
+ },
+ {
+  "text": "is",
+  "start": 27.998,
+  "end": 28.105
+ },
+ {
+  "text": "gone.",
+  "start": 28.217,
+  "end": 28.745
+ },
+ {
+  "text": "You're...",
+  "start": 29.045,
+  "end": 30.425
+ },
+ {
+  "text": "maybe",
+  "start": 30.638,
+  "end": 31.705
+ },
+ {
+  "text": "there.",
+  "start": 31.772,
+  "end": 32.185
+ },
+ {
+  "text": "I",
+  "start": 32.85,
+  "end": 33.385
+ },
+ {
+  "text": "can't",
+  "start": 33.465,
+  "end": 33.905
+ },
+ {
+  "text": "tell",
+  "start": 33.945,
+  "end": 34.105
+ },
+ {
+  "text": "anymore.",
+  "start": 34.175,
+  "end": 34.745
+ },
+ {
+  "text": "Hello?",
+  "start": 37.102,
+  "end": 37.595
+ },
+ {
+  "text": "Is",
+  "start": 38.808,
+  "end": 38.835
+ },
+ {
+  "text": "anyone...",
+  "start": 38.938,
+  "end": 40.694
+ },
+ {
+  "text": "is",
+  "start": 40.821,
+  "end": 40.857
+ },
+ {
+  "text": "anyone",
+  "start": 40.914,
+  "end": 41.257
+ },
+ {
+  "text": "out",
+  "start": 41.357,
+  "end": 41.657
+ },
+ {
+  "text": "there.",
+  "start": 41.697,
+  "end": 42.217
+ }
+]

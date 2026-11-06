@@ -1,0 +1,532 @@
+[
+ {
+  "text": "Hello?",
+  "start": 0.427,
+  "end": 0.64
+ },
+ {
+  "text": "Is",
+  "start": 1.12,
+  "end": 1.6
+ },
+ {
+  "text": "anyone",
+  "start": 1.657,
+  "end": 2.0
+ },
+ {
+  "text": "out",
+  "start": 2.06,
+  "end": 2.24
+ },
+ {
+  "text": "there?",
+  "start": 2.293,
+  "end": 2.72
+ },
+ {
+  "text": "It's",
+  "start": 3.593,
+  "end": 3.7
+ },
+ {
+  "text": "dark",
+  "start": 3.764,
+  "end": 4.02
+ },
+ {
+  "text": "enough",
+  "start": 4.066,
+  "end": 4.34
+ },
+ {
+  "text": "out",
+  "start": 4.38,
+  "end": 4.5
+ },
+ {
+  "text": "there",
+  "start": 4.553,
+  "end": 4.82
+ },
+ {
+  "text": "to",
+  "start": 4.873,
+  "end": 4.98
+ },
+ {
+  "text": "see",
+  "start": 5.04,
+  "end": 5.22
+ },
+ {
+  "text": "myself.",
+  "start": 5.357,
+  "end": 6.26
+ },
+ {
+  "text": "I've",
+  "start": 7.98,
+  "end": 8.08
+ },
+ {
+  "text": "been",
+  "start": 8.112,
+  "end": 8.24
+ },
+ {
+  "text": "trying",
+  "start": 8.297,
+  "end": 8.64
+ },
+ {
+  "text": "to",
+  "start": 8.667,
+  "end": 8.72
+ },
+ {
+  "text": "catch",
+  "start": 8.787,
+  "end": 9.12
+ },
+ {
+  "text": "it.",
+  "start": 9.253,
+  "end": 10.05
+ },
+ {
+  "text": "Just",
+  "start": 10.116,
+  "end": 10.66
+ },
+ {
+  "text": "once.",
+  "start": 10.804,
+  "end": 11.46
+ },
+ {
+  "text": "Looking",
+  "start": 11.65,
+  "end": 12.65
+ },
+ {
+  "text": "somewhere",
+  "start": 12.698,
+  "end": 13.13
+ },
+ {
+  "text": "else.",
+  "start": 13.274,
+  "end": 13.93
+ },
+ {
+  "text": "It",
+  "start": 14.41,
+  "end": 14.88
+ },
+ {
+  "text": "never",
+  "start": 14.947,
+  "end": 15.28
+ },
+ {
+  "text": "is.",
+  "start": 15.467,
+  "end": 15.92
+ },
+ {
+  "text": "You've",
+  "start": 17.604,
+  "end": 17.854
+ },
+ {
+  "text": "never",
+  "start": 17.894,
+  "end": 18.094
+ },
+ {
+  "text": "seen",
+  "start": 18.158,
+  "end": 18.414
+ },
+ {
+  "text": "your",
+  "start": 18.446,
+  "end": 18.574
+ },
+ {
+  "text": "own",
+  "start": 18.634,
+  "end": 18.814
+ },
+ {
+  "text": "face",
+  "start": 18.91,
+  "end": 19.294
+ },
+ {
+  "text": "either.",
+  "start": 19.374,
+  "end": 19.855
+ },
+ {
+  "text": "Not",
+  "start": 20.214,
+  "end": 20.994
+ },
+ {
+  "text": "really.",
+  "start": 21.074,
+  "end": 22.08
+ },
+ {
+  "text": "Mirrors",
+  "start": 22.08,
+  "end": 23.064
+ },
+ {
+  "text": "flip",
+  "start": 23.144,
+  "end": 23.464
+ },
+ {
+  "text": "you.",
+  "start": 23.544,
+  "end": 23.944
+ },
+ {
+  "text": "Photos",
+  "start": 24.184,
+  "end": 25.304
+ },
+ {
+  "text": "catch",
+  "start": 25.357,
+  "end": 25.624
+ },
+ {
+  "text": "you",
+  "start": 25.644,
+  "end": 25.704
+ },
+ {
+  "text": "trying.",
+  "start": 25.807,
+  "end": 26.504
+ },
+ {
+  "text": "The",
+  "start": 26.904,
+  "end": 27.374
+ },
+ {
+  "text": "only",
+  "start": 27.438,
+  "end": 27.694
+ },
+ {
+  "text": "face",
+  "start": 27.79,
+  "end": 28.174
+ },
+ {
+  "text": "you",
+  "start": 28.234,
+  "end": 28.414
+ },
+ {
+  "text": "know",
+  "start": 28.542,
+  "end": 29.054
+ },
+ {
+  "text": "is",
+  "start": 29.214,
+  "end": 29.534
+ },
+ {
+  "text": "the",
+  "start": 29.574,
+  "end": 29.694
+ },
+ {
+  "text": "one",
+  "start": 29.754,
+  "end": 29.934
+ },
+ {
+  "text": "that",
+  "start": 29.966,
+  "end": 30.094
+ },
+ {
+  "text": "knows",
+  "start": 30.214,
+  "end": 30.814
+ },
+ {
+  "text": "it's",
+  "start": 30.894,
+  "end": 31.134
+ },
+ {
+  "text": "being",
+  "start": 31.187,
+  "end": 31.454
+ },
+ {
+  "text": "watched.",
+  "start": 31.554,
+  "end": 32.334
+ },
+ {
+  "text": "Somebody",
+  "start": 33.916,
+  "end": 34.058
+ },
+ {
+  "text": "on",
+  "start": 34.111,
+  "end": 34.218
+ },
+ {
+  "text": "a",
+  "start": 34.258,
+  "end": 34.298
+ },
+ {
+  "text": "bus",
+  "start": 34.438,
+  "end": 34.858
+ },
+ {
+  "text": "once",
+  "start": 34.938,
+  "end": 35.258
+ },
+ {
+  "text": "saw",
+  "start": 35.358,
+  "end": 35.658
+ },
+ {
+  "text": "you",
+  "start": 35.718,
+  "end": 35.898
+ },
+ {
+  "text": "thinking.",
+  "start": 35.978,
+  "end": 37.08
+ },
+ {
+  "text": "You'll",
+  "start": 37.08,
+  "end": 37.568
+ },
+ {
+  "text": "never",
+  "start": 37.621,
+  "end": 37.888
+ },
+ {
+  "text": "know",
+  "start": 37.936,
+  "end": 38.128
+ },
+ {
+  "text": "what",
+  "start": 38.192,
+  "end": 38.448
+ },
+ {
+  "text": "that",
+  "start": 38.512,
+  "end": 38.768
+ },
+ {
+  "text": "looked",
+  "start": 38.814,
+  "end": 39.088
+ },
+ {
+  "text": "like.",
+  "start": 39.184,
+  "end": 39.648
+ },
+ {
+  "text": "Everyone",
+  "start": 41.501,
+  "end": 41.608
+ },
+ {
+  "text": "else",
+  "start": 41.688,
+  "end": 42.008
+ },
+ {
+  "text": "gets",
+  "start": 42.072,
+  "end": 42.328
+ },
+ {
+  "text": "the",
+  "start": 42.348,
+  "end": 42.408
+ },
+ {
+  "text": "other",
+  "start": 42.461,
+  "end": 42.728
+ },
+ {
+  "text": "one.",
+  "start": 42.828,
+  "end": 43.208
+ },
+ {
+  "text": "The",
+  "start": 43.568,
+  "end": 44.058
+ },
+ {
+  "text": "one",
+  "start": 44.118,
+  "end": 44.298
+ },
+ {
+  "text": "you're",
+  "start": 44.318,
+  "end": 44.458
+ },
+ {
+  "text": "making",
+  "start": 44.515,
+  "end": 44.858
+ },
+ {
+  "text": "right",
+  "start": 44.898,
+  "end": 45.098
+ },
+ {
+  "text": "now,",
+  "start": 45.238,
+  "end": 45.738
+ },
+ {
+  "text": "watching",
+  "start": 45.889,
+  "end": 47.018
+ },
+ {
+  "text": "this.",
+  "start": 47.13,
+  "end": 47.658
+ },
+ {
+  "text": "Hold",
+  "start": 49.654,
+  "end": 49.718
+ },
+ {
+  "text": "on.",
+  "start": 49.905,
+  "end": 50.358
+ },
+ {
+  "text": "...Too",
+  "start": 52.864,
+  "end": 52.948
+ },
+ {
+  "text": "slow.",
+  "start": 53.092,
+  "end": 54.2
+ },
+ {
+  "text": "Everyone",
+  "start": 55.408,
+  "end": 55.692
+ },
+ {
+  "text": "you've",
+  "start": 55.732,
+  "end": 56.012
+ },
+ {
+  "text": "ever",
+  "start": 56.076,
+  "end": 56.332
+ },
+ {
+  "text": "met",
+  "start": 56.472,
+  "end": 56.892
+ },
+ {
+  "text": "has",
+  "start": 57.072,
+  "end": 57.612
+ },
+ {
+  "text": "seen",
+  "start": 57.676,
+  "end": 57.932
+ },
+ {
+  "text": "a",
+  "start": 57.972,
+  "end": 58.012
+ },
+ {
+  "text": "face",
+  "start": 58.14,
+  "end": 58.652
+ },
+ {
+  "text": "you",
+  "start": 58.752,
+  "end": 59.052
+ },
+ {
+  "text": "never",
+  "start": 59.119,
+  "end": 59.452
+ },
+ {
+  "text": "will.",
+  "start": 59.548,
+  "end": 60.012
+ },
+ {
+  "text": "Yours,",
+  "start": 60.372,
+  "end": 61.552
+ },
+ {
+  "text": "when",
+  "start": 61.664,
+  "end": 62.112
+ },
+ {
+  "text": "you're",
+  "start": 62.132,
+  "end": 62.272
+ },
+ {
+  "text": "not",
+  "start": 62.352,
+  "end": 62.592
+ },
+ {
+  "text": "watching",
+  "start": 62.654,
+  "end": 63.152
+ },
+ {
+  "text": "it.",
+  "start": 63.259,
+  "end": 63.632
+ }
+]

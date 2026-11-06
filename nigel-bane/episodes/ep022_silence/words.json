@@ -1,0 +1,532 @@
+[
+ {
+  "text": "Hello?",
+  "start": 0.427,
+  "end": 0.64
+ },
+ {
+  "text": "Is",
+  "start": 1.05,
+  "end": 1.41
+ },
+ {
+  "text": "anyone",
+  "start": 1.467,
+  "end": 1.81
+ },
+ {
+  "text": "out",
+  "start": 1.87,
+  "end": 2.05
+ },
+ {
+  "text": "there?",
+  "start": 2.117,
+  "end": 2.53
+ },
+ {
+  "text": "Wait.",
+  "start": 3.503,
+  "end": 3.69
+ },
+ {
+  "text": "Listen",
+  "start": 3.873,
+  "end": 4.56
+ },
+ {
+  "text": "to",
+  "start": 4.613,
+  "end": 4.72
+ },
+ {
+  "text": "that.",
+  "start": 4.816,
+  "end": 5.2
+ },
+ {
+  "text": "The",
+  "start": 6.665,
+  "end": 6.68
+ },
+ {
+  "text": "icicle.",
+  "start": 6.813,
+  "end": 7.56
+ },
+ {
+  "text": "It's",
+  "start": 7.94,
+  "end": 8.42
+ },
+ {
+  "text": "been",
+  "start": 8.452,
+  "end": 8.58
+ },
+ {
+  "text": "doing",
+  "start": 8.647,
+  "end": 8.98
+ },
+ {
+  "text": "that",
+  "start": 9.06,
+  "end": 9.38
+ },
+ {
+  "text": "since",
+  "start": 9.433,
+  "end": 9.7
+ },
+ {
+  "text": "the",
+  "start": 9.74,
+  "end": 9.86
+ },
+ {
+  "text": "sun",
+  "start": 9.96,
+  "end": 10.26
+ },
+ {
+  "text": "came",
+  "start": 10.308,
+  "end": 10.5
+ },
+ {
+  "text": "out.",
+  "start": 10.6,
+  "end": 10.98
+ },
+ {
+  "text": "I've",
+  "start": 11.33,
+  "end": 11.8
+ },
+ {
+  "text": "never",
+  "start": 11.867,
+  "end": 12.2
+ },
+ {
+  "text": "heard",
+  "start": 12.253,
+  "end": 12.52
+ },
+ {
+  "text": "anything",
+  "start": 12.573,
+  "end": 13.0
+ },
+ {
+  "text": "so",
+  "start": 13.107,
+  "end": 13.32
+ },
+ {
+  "text": "loud.",
+  "start": 13.432,
+  "end": 14.04
+ },
+ {
+  "text": "When's",
+  "start": 14.674,
+  "end": 14.898
+ },
+ {
+  "text": "the",
+  "start": 14.938,
+  "end": 15.058
+ },
+ {
+  "text": "last",
+  "start": 15.122,
+  "end": 15.378
+ },
+ {
+  "text": "time",
+  "start": 15.474,
+  "end": 15.858
+ },
+ {
+  "text": "you",
+  "start": 15.898,
+  "end": 16.018
+ },
+ {
+  "text": "heard",
+  "start": 16.098,
+  "end": 16.498
+ },
+ {
+  "text": "nothing?",
+  "start": 16.638,
+  "end": 17.698
+ },
+ {
+  "text": "Not",
+  "start": 18.07,
+  "end": 18.508
+ },
+ {
+  "text": "your",
+  "start": 18.556,
+  "end": 18.748
+ },
+ {
+  "text": "phone.",
+  "start": 18.828,
+  "end": 19.308
+ },
+ {
+  "text": "Not",
+  "start": 19.628,
+  "end": 20.118
+ },
+ {
+  "text": "a",
+  "start": 20.198,
+  "end": 20.278
+ },
+ {
+  "text": "show",
+  "start": 20.374,
+  "end": 20.758
+ },
+ {
+  "text": "on",
+  "start": 20.918,
+  "end": 21.238
+ },
+ {
+  "text": "in",
+  "start": 21.318,
+  "end": 21.478
+ },
+ {
+  "text": "the",
+  "start": 21.518,
+  "end": 21.638
+ },
+ {
+  "text": "other",
+  "start": 21.678,
+  "end": 21.878
+ },
+ {
+  "text": "room.",
+  "start": 21.99,
+  "end": 22.518
+ },
+ {
+  "text": "Not",
+  "start": 22.91,
+  "end": 23.428
+ },
+ {
+  "text": "music",
+  "start": 23.508,
+  "end": 23.908
+ },
+ {
+  "text": "in",
+  "start": 23.988,
+  "end": 24.148
+ },
+ {
+  "text": "your",
+  "start": 24.18,
+  "end": 24.308
+ },
+ {
+  "text": "ears",
+  "start": 24.42,
+  "end": 24.868
+ },
+ {
+  "text": "on",
+  "start": 24.948,
+  "end": 25.108
+ },
+ {
+  "text": "the",
+  "start": 25.128,
+  "end": 25.188
+ },
+ {
+  "text": "way",
+  "start": 25.248,
+  "end": 25.428
+ },
+ {
+  "text": "somewhere.",
+  "start": 25.5,
+  "end": 26.228
+ },
+ {
+  "text": "Nothing.",
+  "start": 26.478,
+  "end": 27.448
+ },
+ {
+  "text": "Most",
+  "start": 28.254,
+  "end": 28.318
+ },
+ {
+  "text": "people",
+  "start": 28.364,
+  "end": 28.638
+ },
+ {
+  "text": "can't",
+  "start": 28.718,
+  "end": 29.038
+ },
+ {
+  "text": "do",
+  "start": 29.118,
+  "end": 29.278
+ },
+ {
+  "text": "it.",
+  "start": 29.385,
+  "end": 29.678
+ },
+ {
+  "text": "They",
+  "start": 29.918,
+  "end": 30.398
+ },
+ {
+  "text": "reach",
+  "start": 30.465,
+  "end": 30.798
+ },
+ {
+  "text": "for",
+  "start": 30.838,
+  "end": 30.958
+ },
+ {
+  "text": "something",
+  "start": 31.014,
+  "end": 31.518
+ },
+ {
+  "text": "by",
+  "start": 31.598,
+  "end": 31.758
+ },
+ {
+  "text": "seven.",
+  "start": 31.851,
+  "end": 32.398
+ },
+ {
+  "text": "Let's",
+  "start": 33.123,
+  "end": 33.408
+ },
+ {
+  "text": "try.",
+  "start": 33.468,
+  "end": 33.728
+ },
+ {
+  "text": "Ten",
+  "start": 34.028,
+  "end": 34.518
+ },
+ {
+  "text": "seconds.",
+  "start": 34.618,
+  "end": 35.7
+ },
+ {
+  "text": "I'll",
+  "start": 35.7,
+  "end": 36.058
+ },
+ {
+  "text": "go",
+  "start": 36.138,
+  "end": 36.298
+ },
+ {
+  "text": "first.",
+  "start": 36.391,
+  "end": 36.938
+ },
+ {
+  "text": "...Did",
+  "start": 47.222,
+  "end": 47.278
+ },
+ {
+  "text": "you",
+  "start": 47.318,
+  "end": 47.438
+ },
+ {
+  "text": "hear",
+  "start": 47.486,
+  "end": 47.678
+ },
+ {
+  "text": "it?",
+  "start": 47.785,
+  "end": 48.078
+ },
+ {
+  "text": "Under",
+  "start": 48.291,
+  "end": 48.948
+ },
+ {
+  "text": "the",
+  "start": 48.988,
+  "end": 49.108
+ },
+ {
+  "text": "hum?",
+  "start": 49.228,
+  "end": 49.748
+ },
+ {
+  "text": "It's",
+  "start": 50.445,
+  "end": 50.538
+ },
+ {
+  "text": "always",
+  "start": 50.618,
+  "end": 51.098
+ },
+ {
+  "text": "there.",
+  "start": 51.178,
+  "end": 51.658
+ },
+ {
+  "text": "It",
+  "start": 52.02,
+  "end": 52.378
+ },
+ {
+  "text": "was",
+  "start": 52.438,
+  "end": 52.618
+ },
+ {
+  "text": "there",
+  "start": 52.698,
+  "end": 53.098
+ },
+ {
+  "text": "before",
+  "start": 53.178,
+  "end": 53.658
+ },
+ {
+  "text": "you",
+  "start": 53.698,
+  "end": 53.818
+ },
+ {
+  "text": "could",
+  "start": 53.858,
+  "end": 54.058
+ },
+ {
+  "text": "talk.",
+  "start": 54.17,
+  "end": 54.778
+ },
+ {
+  "text": "There's",
+  "start": 55.385,
+  "end": 55.498
+ },
+ {
+  "text": "something",
+  "start": 55.546,
+  "end": 55.978
+ },
+ {
+  "text": "under",
+  "start": 56.058,
+  "end": 56.458
+ },
+ {
+  "text": "all",
+  "start": 56.558,
+  "end": 56.858
+ },
+ {
+  "text": "your",
+  "start": 56.89,
+  "end": 57.018
+ },
+ {
+  "text": "noise.",
+  "start": 57.151,
+  "end": 58.22
+ },
+ {
+  "text": "You",
+  "start": 58.22,
+  "end": 58.538
+ },
+ {
+  "text": "keep",
+  "start": 58.602,
+  "end": 58.858
+ },
+ {
+  "text": "it",
+  "start": 58.885,
+  "end": 58.938
+ },
+ {
+  "text": "playing",
+  "start": 59.028,
+  "end": 59.658
+ },
+ {
+  "text": "so",
+  "start": 59.791,
+  "end": 60.058
+ },
+ {
+  "text": "you",
+  "start": 60.098,
+  "end": 60.218
+ },
+ {
+  "text": "don't",
+  "start": 60.278,
+  "end": 60.538
+ },
+ {
+  "text": "have",
+  "start": 60.586,
+  "end": 60.778
+ },
+ {
+  "text": "to",
+  "start": 60.858,
+  "end": 61.018
+ },
+ {
+  "text": "meet",
+  "start": 61.066,
+  "end": 61.258
+ },
+ {
+  "text": "it.",
+  "start": 61.365,
+  "end": 61.738
+ }
+]

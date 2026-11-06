@@ -1,0 +1,672 @@
+[
+ {
+  "text": "Hello?",
+  "start": 0.484,
+  "end": 1.065
+ },
+ {
+  "text": "Is",
+  "start": 1.065,
+  "end": 1.4
+ },
+ {
+  "text": "anyone",
+  "start": 1.457,
+  "end": 1.8
+ },
+ {
+  "text": "out",
+  "start": 1.86,
+  "end": 2.04
+ },
+ {
+  "text": "there?",
+  "start": 2.093,
+  "end": 2.44
+ },
+ {
+  "text": "Four",
+  "start": 4.286,
+  "end": 4.35
+ },
+ {
+  "text": "lines.",
+  "start": 4.497,
+  "end": 5.665
+ },
+ {
+  "text": "I",
+  "start": 5.75,
+  "end": 5.97
+ },
+ {
+  "text": "drew",
+  "start": 6.05,
+  "end": 6.37
+ },
+ {
+  "text": "this",
+  "start": 6.418,
+  "end": 6.61
+ },
+ {
+  "text": "one.",
+  "start": 6.71,
+  "end": 7.385
+ },
+ {
+  "text": "I",
+  "start": 7.45,
+  "end": 7.69
+ },
+ {
+  "text": "watched",
+  "start": 7.75,
+  "end": 8.17
+ },
+ {
+  "text": "myself",
+  "start": 8.261,
+  "end": 8.81
+ },
+ {
+  "text": "do",
+  "start": 8.89,
+  "end": 9.05
+ },
+ {
+  "text": "it.",
+  "start": 9.13,
+  "end": 9.37
+ },
+ {
+  "text": "But",
+  "start": 9.675,
+  "end": 9.97
+ },
+ {
+  "text": "the",
+  "start": 10.01,
+  "end": 10.13
+ },
+ {
+  "text": "third",
+  "start": 10.21,
+  "end": 10.61
+ },
+ {
+  "text": "one...",
+  "start": 10.73,
+  "end": 11.17
+ },
+ {
+  "text": "it's",
+  "start": 11.515,
+  "end": 11.99
+ },
+ {
+  "text": "my",
+  "start": 12.07,
+  "end": 12.23
+ },
+ {
+  "text": "handwriting.",
+  "start": 12.303,
+  "end": 13.27
+ },
+ {
+  "text": "My",
+  "start": 13.545,
+  "end": 14.01
+ },
+ {
+  "text": "hand.",
+  "start": 14.138,
+  "end": 14.81
+ },
+ {
+  "text": "I",
+  "start": 15.105,
+  "end": 15.38
+ },
+ {
+  "text": "just",
+  "start": 15.428,
+  "end": 15.62
+ },
+ {
+  "text": "don't",
+  "start": 15.68,
+  "end": 15.94
+ },
+ {
+  "text": "remember",
+  "start": 16.002,
+  "end": 16.5
+ },
+ {
+  "text": "it.",
+  "start": 16.58,
+  "end": 16.82
+ },
+ {
+  "text": "And",
+  "start": 17.155,
+  "end": 17.5
+ },
+ {
+  "text": "then",
+  "start": 17.532,
+  "end": 17.66
+ },
+ {
+  "text": "I",
+  "start": 17.74,
+  "end": 17.82
+ },
+ {
+  "text": "thought,",
+  "start": 17.88,
+  "end": 18.38
+ },
+ {
+  "text": "well,",
+  "start": 18.492,
+  "end": 19.18
+ },
+ {
+  "text": "I",
+  "start": 19.445,
+  "end": 19.7
+ },
+ {
+  "text": "don't",
+  "start": 19.76,
+  "end": 20.18
+ },
+ {
+  "text": "remember",
+  "start": 20.207,
+  "end": 20.42
+ },
+ {
+  "text": "most",
+  "start": 20.5,
+  "end": 20.82
+ },
+ {
+  "text": "things.",
+  "start": 20.923,
+  "end": 21.7
+ },
+ {
+  "text": "I",
+  "start": 21.985,
+  "end": 22.24
+ },
+ {
+  "text": "don't",
+  "start": 22.28,
+  "end": 22.48
+ },
+ {
+  "text": "remember",
+  "start": 22.542,
+  "end": 23.04
+ },
+ {
+  "text": "learning",
+  "start": 23.084,
+  "end": 23.44
+ },
+ {
+  "text": "to",
+  "start": 23.493,
+  "end": 23.6
+ },
+ {
+  "text": "talk.",
+  "start": 23.728,
+  "end": 24.4
+ },
+ {
+  "text": "I",
+  "start": 24.685,
+  "end": 24.95
+ },
+ {
+  "text": "don't",
+  "start": 24.99,
+  "end": 25.19
+ },
+ {
+  "text": "remember",
+  "start": 25.243,
+  "end": 25.67
+ },
+ {
+  "text": "the",
+  "start": 25.69,
+  "end": 25.75
+ },
+ {
+  "text": "first",
+  "start": 25.817,
+  "end": 26.15
+ },
+ {
+  "text": "time",
+  "start": 26.246,
+  "end": 26.63
+ },
+ {
+  "text": "I",
+  "start": 26.75,
+  "end": 26.87
+ },
+ {
+  "text": "saw",
+  "start": 26.97,
+  "end": 27.27
+ },
+ {
+  "text": "a",
+  "start": 27.39,
+  "end": 27.51
+ },
+ {
+  "text": "color.",
+  "start": 27.617,
+  "end": 28.23
+ },
+ {
+  "text": "Somebody",
+  "start": 28.426,
+  "end": 29.26
+ },
+ {
+  "text": "had",
+  "start": 29.3,
+  "end": 29.42
+ },
+ {
+  "text": "to",
+  "start": 29.473,
+  "end": 29.58
+ },
+ {
+  "text": "be",
+  "start": 29.66,
+  "end": 29.82
+ },
+ {
+  "text": "there",
+  "start": 29.873,
+  "end": 30.14
+ },
+ {
+  "text": "for",
+  "start": 30.2,
+  "end": 30.38
+ },
+ {
+  "text": "all",
+  "start": 30.44,
+  "end": 30.62
+ },
+ {
+  "text": "of",
+  "start": 30.673,
+  "end": 30.78
+ },
+ {
+  "text": "that.",
+  "start": 30.844,
+  "end": 31.18
+ },
+ {
+  "text": "It",
+  "start": 31.515,
+  "end": 31.84
+ },
+ {
+  "text": "was",
+  "start": 31.9,
+  "end": 32.08
+ },
+ {
+  "text": "me.",
+  "start": 32.24,
+  "end": 32.64
+ },
+ {
+  "text": "Supposedly.",
+  "start": 32.94,
+  "end": 34.46
+ },
+ {
+  "text": "So",
+  "start": 34.695,
+  "end": 35.03
+ },
+ {
+  "text": "who",
+  "start": 35.11,
+  "end": 35.35
+ },
+ {
+  "text": "was",
+  "start": 35.43,
+  "end": 35.67
+ },
+ {
+  "text": "he?",
+  "start": 35.777,
+  "end": 36.15
+ },
+ {
+  "text": "The",
+  "start": 36.37,
+  "end": 36.69
+ },
+ {
+  "text": "guy",
+  "start": 36.79,
+  "end": 37.09
+ },
+ {
+  "text": "who",
+  "start": 37.15,
+  "end": 37.33
+ },
+ {
+  "text": "drew",
+  "start": 37.394,
+  "end": 37.65
+ },
+ {
+  "text": "the",
+  "start": 37.69,
+  "end": 37.81
+ },
+ {
+  "text": "third",
+  "start": 37.89,
+  "end": 38.29
+ },
+ {
+  "text": "line.",
+  "start": 38.418,
+  "end": 39.01
+ },
+ {
+  "text": "He's",
+  "start": 39.355,
+  "end": 39.77
+ },
+ {
+  "text": "not",
+  "start": 39.81,
+  "end": 39.93
+ },
+ {
+  "text": "here",
+  "start": 40.01,
+  "end": 40.33
+ },
+ {
+  "text": "anymore.",
+  "start": 40.41,
+  "end": 41.05
+ },
+ {
+  "text": "He",
+  "start": 41.385,
+  "end": 41.69
+ },
+ {
+  "text": "left",
+  "start": 41.754,
+  "end": 42.01
+ },
+ {
+  "text": "me",
+  "start": 42.063,
+  "end": 42.17
+ },
+ {
+  "text": "a",
+  "start": 42.21,
+  "end": 42.25
+ },
+ {
+  "text": "message,",
+  "start": 42.36,
+  "end": 43.29
+ },
+ {
+  "text": "and",
+  "start": 43.49,
+  "end": 43.87
+ },
+ {
+  "text": "the",
+  "start": 43.89,
+  "end": 43.95
+ },
+ {
+  "text": "message",
+  "start": 44.04,
+  "end": 44.67
+ },
+ {
+  "text": "is",
+  "start": 44.75,
+  "end": 44.91
+ },
+ {
+  "text": "just...",
+  "start": 45.038,
+  "end": 46.15
+ },
+ {
+  "text": "you",
+  "start": 46.21,
+  "end": 46.39
+ },
+ {
+  "text": "were",
+  "start": 46.438,
+  "end": 46.63
+ },
+ {
+  "text": "here.",
+  "start": 46.71,
+  "end": 47.19
+ },
+ {
+  "text": "Maybe",
+  "start": 48.203,
+  "end": 48.27
+ },
+ {
+  "text": "that's",
+  "start": 48.334,
+  "end": 48.67
+ },
+ {
+  "text": "what",
+  "start": 48.702,
+  "end": 48.83
+ },
+ {
+  "text": "memory",
+  "start": 48.899,
+  "end": 49.31
+ },
+ {
+  "text": "is.",
+  "start": 49.47,
+  "end": 49.87
+ },
+ {
+  "text": "Notes",
+  "start": 50.137,
+  "end": 50.89
+ },
+ {
+  "text": "from",
+  "start": 50.938,
+  "end": 51.13
+ },
+ {
+  "text": "people",
+  "start": 51.199,
+  "end": 51.61
+ },
+ {
+  "text": "who",
+  "start": 51.67,
+  "end": 51.85
+ },
+ {
+  "text": "used",
+  "start": 51.914,
+  "end": 52.17
+ },
+ {
+  "text": "to",
+  "start": 52.223,
+  "end": 52.33
+ },
+ {
+  "text": "be",
+  "start": 52.383,
+  "end": 52.49
+ },
+ {
+  "text": "you.",
+  "start": 52.61,
+  "end": 53.05
+ },
+ {
+  "text": "I",
+  "start": 53.425,
+  "end": 53.68
+ },
+ {
+  "text": "kind",
+  "start": 53.744,
+  "end": 54.0
+ },
+ {
+  "text": "of",
+  "start": 54.053,
+  "end": 54.16
+ },
+ {
+  "text": "like",
+  "start": 54.224,
+  "end": 54.48
+ },
+ {
+  "text": "him,",
+  "start": 54.54,
+  "end": 54.88
+ },
+ {
+  "text": "actually.",
+  "start": 54.951,
+  "end": 55.68
+ },
+ {
+  "text": "He's",
+  "start": 55.985,
+  "end": 56.42
+ },
+ {
+  "text": "thorough.",
+  "start": 56.482,
+  "end": 57.06
+ },
+ {
+  "text": "Tomorrow",
+  "start": 58.222,
+  "end": 58.506
+ },
+ {
+  "text": "I'm",
+  "start": 58.586,
+  "end": 58.746
+ },
+ {
+  "text": "going",
+  "start": 58.799,
+  "end": 59.066
+ },
+ {
+  "text": "to",
+  "start": 59.119,
+  "end": 59.226
+ },
+ {
+  "text": "try",
+  "start": 59.286,
+  "end": 59.466
+ },
+ {
+  "text": "to",
+  "start": 59.519,
+  "end": 59.626
+ },
+ {
+  "text": "remember",
+  "start": 59.688,
+  "end": 60.186
+ },
+ {
+  "text": "something",
+  "start": 60.25,
+  "end": 60.826
+ },
+ {
+  "text": "on",
+  "start": 60.906,
+  "end": 61.066
+ },
+ {
+  "text": "purpose.",
+  "start": 61.166,
+  "end": 61.946
+ },
+ {
+  "text": "Just",
+  "start": 62.218,
+  "end": 62.676
+ },
+ {
+  "text": "to",
+  "start": 62.729,
+  "end": 62.836
+ },
+ {
+  "text": "see",
+  "start": 62.916,
+  "end": 63.156
+ },
+ {
+  "text": "if",
+  "start": 63.209,
+  "end": 63.316
+ },
+ {
+  "text": "I",
+  "start": 63.356,
+  "end": 63.396
+ },
+ {
+  "text": "can.",
+  "start": 63.556,
+  "end": 64.196
+ }
+]

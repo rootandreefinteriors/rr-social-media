@@ -1,0 +1,537 @@
+[
+ {
+  "text": "Hello?",
+  "start": 0.38,
+  "end": 0.56
+ },
+ {
+  "text": "Is",
+  "start": 0.933,
+  "end": 1.52
+ },
+ {
+  "text": "anyone",
+  "start": 1.577,
+  "end": 1.92
+ },
+ {
+  "text": "out",
+  "start": 1.98,
+  "end": 2.16
+ },
+ {
+  "text": "there?",
+  "start": 2.2,
+  "end": 2.48
+ },
+ {
+  "text": "Go",
+  "start": 3.463,
+  "end": 3.49
+ },
+ {
+  "text": "on.",
+  "start": 3.65,
+  "end": 4.25
+ },
+ {
+  "text": "Not",
+  "start": 4.32,
+  "end": 4.53
+ },
+ {
+  "text": "that",
+  "start": 4.578,
+  "end": 4.77
+ },
+ {
+  "text": "way.",
+  "start": 4.87,
+  "end": 5.25
+ },
+ {
+  "text": "It",
+  "start": 7.113,
+  "end": 7.14
+ },
+ {
+  "text": "wants",
+  "start": 7.22,
+  "end": 7.62
+ },
+ {
+  "text": "the",
+  "start": 7.66,
+  "end": 7.78
+ },
+ {
+  "text": "moon.",
+  "start": 7.892,
+  "end": 8.42
+ },
+ {
+  "text": "Moths",
+  "start": 8.82,
+  "end": 9.78
+ },
+ {
+  "text": "steer",
+  "start": 9.847,
+  "end": 10.18
+ },
+ {
+  "text": "by",
+  "start": 10.26,
+  "end": 10.42
+ },
+ {
+  "text": "it.",
+  "start": 10.527,
+  "end": 11.265
+ },
+ {
+  "text": "They",
+  "start": 11.265,
+  "end": 11.74
+ },
+ {
+  "text": "keep",
+  "start": 11.788,
+  "end": 11.98
+ },
+ {
+  "text": "the",
+  "start": 12.0,
+  "end": 12.06
+ },
+ {
+  "text": "light",
+  "start": 12.127,
+  "end": 12.46
+ },
+ {
+  "text": "at",
+  "start": 12.487,
+  "end": 12.54
+ },
+ {
+  "text": "the",
+  "start": 12.58,
+  "end": 12.7
+ },
+ {
+  "text": "same",
+  "start": 12.78,
+  "end": 13.1
+ },
+ {
+  "text": "angle,",
+  "start": 13.18,
+  "end": 13.74
+ },
+ {
+  "text": "and",
+  "start": 13.86,
+  "end": 14.22
+ },
+ {
+  "text": "fly",
+  "start": 14.34,
+  "end": 14.7
+ },
+ {
+  "text": "straight.",
+  "start": 14.762,
+  "end": 15.34
+ },
+ {
+  "text": "But",
+  "start": 16.225,
+  "end": 16.24
+ },
+ {
+  "text": "a",
+  "start": 16.32,
+  "end": 16.4
+ },
+ {
+  "text": "window",
+  "start": 16.503,
+  "end": 17.12
+ },
+ {
+  "text": "isn't",
+  "start": 17.22,
+  "end": 17.6
+ },
+ {
+  "text": "the",
+  "start": 17.64,
+  "end": 17.76
+ },
+ {
+  "text": "sky.",
+  "start": 17.92,
+  "end": 18.56
+ },
+ {
+  "text": "So",
+  "start": 18.933,
+  "end": 19.46
+ },
+ {
+  "text": "it",
+  "start": 19.513,
+  "end": 19.62
+ },
+ {
+  "text": "just",
+  "start": 19.684,
+  "end": 19.94
+ },
+ {
+  "text": "keeps",
+  "start": 20.007,
+  "end": 20.34
+ },
+ {
+  "text": "hitting",
+  "start": 20.38,
+  "end": 20.66
+ },
+ {
+  "text": "the",
+  "start": 20.68,
+  "end": 20.74
+ },
+ {
+  "text": "glass.",
+  "start": 20.86,
+  "end": 21.62
+ },
+ {
+  "text": "It's",
+  "start": 23.357,
+  "end": 23.45
+ },
+ {
+  "text": "been",
+  "start": 23.498,
+  "end": 23.69
+ },
+ {
+  "text": "doing",
+  "start": 23.743,
+  "end": 24.01
+ },
+ {
+  "text": "that",
+  "start": 24.074,
+  "end": 24.33
+ },
+ {
+  "text": "all",
+  "start": 24.39,
+  "end": 24.57
+ },
+ {
+  "text": "night.",
+  "start": 24.65,
+  "end": 25.13
+ },
+ {
+  "text": "You",
+  "start": 28.3,
+  "end": 28.33
+ },
+ {
+  "text": "do",
+  "start": 28.383,
+  "end": 28.49
+ },
+ {
+  "text": "it",
+  "start": 28.57,
+  "end": 28.73
+ },
+ {
+  "text": "too.",
+  "start": 28.83,
+  "end": 29.21
+ },
+ {
+  "text": "Your",
+  "start": 29.466,
+  "end": 30.22
+ },
+ {
+  "text": "face",
+  "start": 30.316,
+  "end": 30.7
+ },
+ {
+  "text": "is",
+  "start": 30.753,
+  "end": 30.86
+ },
+ {
+  "text": "lit",
+  "start": 30.92,
+  "end": 31.1
+ },
+ {
+  "text": "up",
+  "start": 31.153,
+  "end": 31.26
+ },
+ {
+  "text": "right",
+  "start": 31.3,
+  "end": 31.5
+ },
+ {
+  "text": "now.",
+  "start": 31.6,
+  "end": 31.98
+ },
+ {
+  "text": "Pointed",
+  "start": 32.207,
+  "end": 33.28
+ },
+ {
+  "text": "at",
+  "start": 33.307,
+  "end": 33.36
+ },
+ {
+  "text": "the",
+  "start": 33.38,
+  "end": 33.44
+ },
+ {
+  "text": "brightest",
+  "start": 33.504,
+  "end": 34.08
+ },
+ {
+  "text": "thing",
+  "start": 34.133,
+  "end": 34.4
+ },
+ {
+  "text": "in",
+  "start": 34.427,
+  "end": 34.48
+ },
+ {
+  "text": "the",
+  "start": 34.52,
+  "end": 34.64
+ },
+ {
+  "text": "room.",
+  "start": 34.736,
+  "end": 35.28
+ },
+ {
+  "text": "It",
+  "start": 36.245,
+  "end": 36.75
+ },
+ {
+  "text": "isn't",
+  "start": 36.83,
+  "end": 37.15
+ },
+ {
+  "text": "the",
+  "start": 37.17,
+  "end": 37.23
+ },
+ {
+  "text": "sky",
+  "start": 37.35,
+  "end": 37.71
+ },
+ {
+  "text": "either.",
+  "start": 37.779,
+  "end": 38.27
+ },
+ {
+  "text": "But",
+  "start": 38.61,
+  "end": 39.23
+ },
+ {
+  "text": "you",
+  "start": 39.27,
+  "end": 39.39
+ },
+ {
+  "text": "keep",
+  "start": 39.454,
+  "end": 39.71
+ },
+ {
+  "text": "coming",
+  "start": 39.767,
+  "end": 40.11
+ },
+ {
+  "text": "back",
+  "start": 40.174,
+  "end": 40.43
+ },
+ {
+  "text": "to",
+  "start": 40.483,
+  "end": 40.59
+ },
+ {
+  "text": "it.",
+  "start": 40.697,
+  "end": 40.99
+ },
+ {
+  "text": "She's",
+  "start": 41.89,
+  "end": 42.08
+ },
+ {
+  "text": "been",
+  "start": 42.112,
+  "end": 42.24
+ },
+ {
+  "text": "watching",
+  "start": 42.311,
+  "end": 42.88
+ },
+ {
+  "text": "the",
+  "start": 42.92,
+  "end": 43.04
+ },
+ {
+  "text": "whole",
+  "start": 43.107,
+  "end": 43.44
+ },
+ {
+  "text": "time.",
+  "start": 43.552,
+  "end": 44.08
+ },
+ {
+  "text": "She",
+  "start": 44.44,
+  "end": 45.12
+ },
+ {
+  "text": "doesn't",
+  "start": 45.16,
+  "end": 45.44
+ },
+ {
+  "text": "chase",
+  "start": 45.507,
+  "end": 45.84
+ },
+ {
+  "text": "anything.",
+  "start": 45.911,
+  "end": 47.065
+ },
+ {
+  "text": "She",
+  "start": 47.065,
+  "end": 47.56
+ },
+ {
+  "text": "knows",
+  "start": 47.627,
+  "end": 47.96
+ },
+ {
+  "text": "where",
+  "start": 48.0,
+  "end": 48.2
+ },
+ {
+  "text": "it",
+  "start": 48.227,
+  "end": 48.28
+ },
+ {
+  "text": "ends",
+  "start": 48.344,
+  "end": 48.6
+ },
+ {
+  "text": "up.",
+  "start": 48.733,
+  "end": 49.08
+ },
+ {
+  "text": "Oh.",
+  "start": 52.713,
+  "end": 52.98
+ },
+ {
+  "text": "Things",
+  "start": 54.807,
+  "end": 54.91
+ },
+ {
+  "text": "that",
+  "start": 54.958,
+  "end": 55.15
+ },
+ {
+  "text": "love",
+  "start": 55.214,
+  "end": 55.47
+ },
+ {
+  "text": "the",
+  "start": 55.51,
+  "end": 55.63
+ },
+ {
+  "text": "light",
+  "start": 55.75,
+  "end": 56.35
+ },
+ {
+  "text": "don't",
+  "start": 56.45,
+  "end": 56.91
+ },
+ {
+  "text": "know",
+  "start": 56.974,
+  "end": 57.23
+ },
+ {
+  "text": "when",
+  "start": 57.278,
+  "end": 57.47
+ },
+ {
+  "text": "to",
+  "start": 57.497,
+  "end": 57.55
+ },
+ {
+  "text": "stop",
+  "start": 57.662,
+  "end": 58.11
+ },
+ {
+  "text": "knocking.",
+  "start": 58.199,
+  "end": 58.99
+ }
+]

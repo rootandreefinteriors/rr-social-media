@@ -1,0 +1,527 @@
+[
+ {
+  "text": "Hello?",
+  "start": 0.147,
+  "end": 0.391
+ },
+ {
+  "text": "Is",
+  "start": 0.413,
+  "end": 0.458
+ },
+ {
+  "text": "anyone",
+  "start": 0.48,
+  "end": 1.531
+ },
+ {
+  "text": "out",
+  "start": 1.577,
+  "end": 1.714
+ },
+ {
+  "text": "there?",
+  "start": 1.76,
+  "end": 2.107
+ },
+ {
+  "text": "Don't",
+  "start": 3.11,
+  "end": 3.17
+ },
+ {
+  "text": "move.",
+  "start": 3.19,
+  "end": 3.502
+ },
+ {
+  "text": "That's",
+  "start": 6.09,
+  "end": 6.242
+ },
+ {
+  "text": "what",
+  "start": 6.258,
+  "end": 6.37
+ },
+ {
+  "text": "it",
+  "start": 6.402,
+  "end": 6.466
+ },
+ {
+  "text": "did",
+  "start": 6.498,
+  "end": 6.637
+ },
+ {
+  "text": "wrong.",
+  "start": 6.69,
+  "end": 7.49
+ },
+ {
+  "text": "It",
+  "start": 8.857,
+  "end": 8.87
+ },
+ {
+  "text": "isn't",
+  "start": 8.93,
+  "end": 9.19
+ },
+ {
+  "text": "stuck",
+  "start": 9.27,
+  "end": 9.67
+ },
+ {
+  "text": "until",
+  "start": 9.723,
+  "end": 9.99
+ },
+ {
+  "text": "it",
+  "start": 10.043,
+  "end": 10.15
+ },
+ {
+  "text": "tries",
+  "start": 10.243,
+  "end": 10.71
+ },
+ {
+  "text": "to",
+  "start": 10.737,
+  "end": 10.79
+ },
+ {
+  "text": "leave.",
+  "start": 10.883,
+  "end": 11.43
+ },
+ {
+  "text": "Every",
+  "start": 11.617,
+  "end": 12.39
+ },
+ {
+  "text": "time",
+  "start": 12.454,
+  "end": 12.71
+ },
+ {
+  "text": "it",
+  "start": 12.763,
+  "end": 12.87
+ },
+ {
+  "text": "pulls,",
+  "start": 12.977,
+  "end": 13.91
+ },
+ {
+  "text": "it",
+  "start": 13.963,
+  "end": 14.07
+ },
+ {
+  "text": "finds",
+  "start": 14.137,
+  "end": 14.47
+ },
+ {
+  "text": "another",
+  "start": 14.52,
+  "end": 14.87
+ },
+ {
+  "text": "thread.",
+  "start": 14.95,
+  "end": 15.59
+ },
+ {
+  "text": "You",
+  "start": 16.315,
+  "end": 16.33
+ },
+ {
+  "text": "don't",
+  "start": 16.39,
+  "end": 16.65
+ },
+ {
+  "text": "feel",
+  "start": 16.714,
+  "end": 16.97
+ },
+ {
+  "text": "yours",
+  "start": 17.063,
+  "end": 17.53
+ },
+ {
+  "text": "either.",
+  "start": 17.61,
+  "end": 18.17
+ },
+ {
+  "text": "Not",
+  "start": 18.41,
+  "end": 19.13
+ },
+ {
+  "text": "until",
+  "start": 19.183,
+  "end": 19.45
+ },
+ {
+  "text": "you",
+  "start": 19.47,
+  "end": 19.53
+ },
+ {
+  "text": "try",
+  "start": 19.61,
+  "end": 19.85
+ },
+ {
+  "text": "to",
+  "start": 19.877,
+  "end": 19.93
+ },
+ {
+  "text": "go.",
+  "start": 20.063,
+  "end": 20.41
+ },
+ {
+  "text": "Put",
+  "start": 20.75,
+  "end": 21.34
+ },
+ {
+  "text": "the",
+  "start": 21.38,
+  "end": 21.5
+ },
+ {
+  "text": "phone",
+  "start": 21.553,
+  "end": 21.82
+ },
+ {
+  "text": "down",
+  "start": 21.9,
+  "end": 22.22
+ },
+ {
+  "text": "at",
+  "start": 22.273,
+  "end": 22.38
+ },
+ {
+  "text": "one",
+  "start": 22.42,
+  "end": 22.54
+ },
+ {
+  "text": "in",
+  "start": 22.593,
+  "end": 22.7
+ },
+ {
+  "text": "the",
+  "start": 22.72,
+  "end": 22.78
+ },
+ {
+  "text": "morning.",
+  "start": 22.86,
+  "end": 23.58
+ },
+ {
+  "text": "Stop",
+  "start": 23.804,
+  "end": 24.56
+ },
+ {
+  "text": "checking",
+  "start": 24.613,
+  "end": 25.04
+ },
+ {
+  "text": "if",
+  "start": 25.093,
+  "end": 25.2
+ },
+ {
+  "text": "they",
+  "start": 25.232,
+  "end": 25.36
+ },
+ {
+  "text": "saw",
+  "start": 25.46,
+  "end": 25.76
+ },
+ {
+  "text": "it.",
+  "start": 25.867,
+  "end": 26.16
+ },
+ {
+  "text": "Leave",
+  "start": 26.373,
+  "end": 27.22
+ },
+ {
+  "text": "the",
+  "start": 27.26,
+  "end": 27.38
+ },
+ {
+  "text": "town",
+  "start": 27.46,
+  "end": 27.78
+ },
+ {
+  "text": "you",
+  "start": 27.82,
+  "end": 27.94
+ },
+ {
+  "text": "grew",
+  "start": 27.988,
+  "end": 28.18
+ },
+ {
+  "text": "up",
+  "start": 28.26,
+  "end": 28.42
+ },
+ {
+  "text": "in.",
+  "start": 28.553,
+  "end": 28.9
+ },
+ {
+  "text": "That's",
+  "start": 29.124,
+  "end": 29.92
+ },
+ {
+  "text": "when",
+  "start": 29.952,
+  "end": 30.08
+ },
+ {
+  "text": "you",
+  "start": 30.12,
+  "end": 30.24
+ },
+ {
+  "text": "find",
+  "start": 30.288,
+  "end": 30.48
+ },
+ {
+  "text": "out",
+  "start": 30.56,
+  "end": 30.8
+ },
+ {
+  "text": "how",
+  "start": 30.86,
+  "end": 31.04
+ },
+ {
+  "text": "many",
+  "start": 31.088,
+  "end": 31.28
+ },
+ {
+  "text": "threads",
+  "start": 31.35,
+  "end": 31.84
+ },
+ {
+  "text": "there",
+  "start": 31.893,
+  "end": 32.16
+ },
+ {
+  "text": "were.",
+  "start": 32.224,
+  "end": 32.64
+ },
+ {
+  "text": "She",
+  "start": 33.892,
+  "end": 33.932
+ },
+ {
+  "text": "isn't",
+  "start": 33.992,
+  "end": 34.252
+ },
+ {
+  "text": "even",
+  "start": 34.3,
+  "end": 34.492
+ },
+ {
+  "text": "hungry.",
+  "start": 34.583,
+  "end": 35.212
+ },
+ {
+  "text": "She's",
+  "start": 35.432,
+  "end": 36.252
+ },
+ {
+  "text": "just...",
+  "start": 36.348,
+  "end": 37.452
+ },
+ {
+  "text": "keeping",
+  "start": 37.502,
+  "end": 37.852
+ },
+ {
+  "text": "it.",
+  "start": 37.959,
+  "end": 38.252
+ },
+ {
+  "text": "For",
+  "start": 38.492,
+  "end": 39.142
+ },
+ {
+  "text": "later.",
+  "start": 39.222,
+  "end": 39.782
+ },
+ {
+  "text": "Try",
+  "start": 41.743,
+  "end": 41.823
+ },
+ {
+  "text": "it.",
+  "start": 41.956,
+  "end": 42.303
+ },
+ {
+  "text": "Right",
+  "start": 42.396,
+  "end": 42.863
+ },
+ {
+  "text": "now.",
+  "start": 42.983,
+  "end": 43.423
+ },
+ {
+  "text": "Try",
+  "start": 43.703,
+  "end": 44.333
+ },
+ {
+  "text": "to",
+  "start": 44.413,
+  "end": 44.573
+ },
+ {
+  "text": "stop",
+  "start": 44.637,
+  "end": 44.893
+ },
+ {
+  "text": "watching",
+  "start": 44.946,
+  "end": 45.373
+ },
+ {
+  "text": "me.",
+  "start": 45.506,
+  "end": 45.933
+ },
+ {
+  "text": "...You're",
+  "start": 49.625,
+  "end": 49.813
+ },
+ {
+  "text": "still",
+  "start": 49.866,
+  "end": 50.133
+ },
+ {
+  "text": "here.",
+  "start": 50.213,
+  "end": 50.693
+ },
+ {
+  "text": "Eighteen",
+  "start": 53.02,
+  "end": 53.263
+ },
+ {
+  "text": "days.",
+  "start": 53.423,
+  "end": 54.503
+ },
+ {
+  "text": "I've",
+  "start": 54.673,
+  "end": 55.053
+ },
+ {
+  "text": "never",
+  "start": 55.093,
+  "end": 55.293
+ },
+ {
+  "text": "tried",
+  "start": 55.36,
+  "end": 55.693
+ },
+ {
+  "text": "to",
+  "start": 55.746,
+  "end": 55.853
+ },
+ {
+  "text": "leave.",
+  "start": 55.946,
+  "end": 56.493
+ },
+ {
+  "text": "I",
+  "start": 56.955,
+  "end": 57.353
+ },
+ {
+  "text": "just",
+  "start": 57.401,
+  "end": 57.593
+ },
+ {
+  "text": "assumed",
+  "start": 57.673,
+  "end": 58.233
+ },
+ {
+  "text": "I",
+  "start": 58.273,
+  "end": 58.313
+ },
+ {
+  "text": "could.",
+  "start": 58.406,
+  "end": 58.953
+ }
+]

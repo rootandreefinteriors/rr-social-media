@@ -1,0 +1,8 @@
+# renders and audio stay out of git; the finished upload copy goes to nigel-bane/dayNNN.mp4
+*.wav
+*.mp3
+*.mp4
+*.png
+render.log
+words_raw.json
+__pycache__/

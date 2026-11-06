@@ -1,0 +1,532 @@
+[
+ {
+  "text": "Hello?",
+  "start": 0.317,
+  "end": 0.48
+ },
+ {
+  "text": "Is",
+  "start": 0.885,
+  "end": 1.18
+ },
+ {
+  "text": "anyone",
+  "start": 1.226,
+  "end": 1.5
+ },
+ {
+  "text": "out",
+  "start": 1.56,
+  "end": 1.74
+ },
+ {
+  "text": "there?",
+  "start": 1.793,
+  "end": 2.505
+ },
+ {
+  "text": "Huh.",
+  "start": 2.505,
+  "end": 3.415
+ },
+ {
+  "text": "Every",
+  "start": 3.415,
+  "end": 3.84
+ },
+ {
+  "text": "time",
+  "start": 3.904,
+  "end": 4.16
+ },
+ {
+  "text": "I",
+  "start": 4.24,
+  "end": 4.32
+ },
+ {
+  "text": "knock,",
+  "start": 4.4,
+  "end": 4.88
+ },
+ {
+  "text": "the",
+  "start": 4.9,
+  "end": 4.96
+ },
+ {
+  "text": "glass",
+  "start": 5.04,
+  "end": 5.44
+ },
+ {
+  "text": "gets",
+  "start": 5.488,
+  "end": 5.68
+ },
+ {
+  "text": "a",
+  "start": 5.72,
+  "end": 5.76
+ },
+ {
+  "text": "little",
+  "start": 5.806,
+  "end": 6.08
+ },
+ {
+  "text": "thinner.",
+  "start": 6.14,
+  "end": 6.72
+ },
+ {
+  "text": "Do",
+  "start": 7.237,
+  "end": 7.255
+ },
+ {
+  "text": "you",
+  "start": 7.295,
+  "end": 7.415
+ },
+ {
+  "text": "remember",
+  "start": 7.477,
+  "end": 7.975
+ },
+ {
+  "text": "how",
+  "start": 8.035,
+  "end": 8.215
+ },
+ {
+  "text": "you",
+  "start": 8.255,
+  "end": 8.375
+ },
+ {
+  "text": "got",
+  "start": 8.435,
+  "end": 8.615
+ },
+ {
+  "text": "here?",
+  "start": 8.695,
+  "end": 9.095
+ },
+ {
+  "text": "Not",
+  "start": 9.395,
+  "end": 9.815
+ },
+ {
+  "text": "this",
+  "start": 9.879,
+  "end": 10.135
+ },
+ {
+  "text": "room.",
+  "start": 10.247,
+  "end": 10.775
+ },
+ {
+  "text": "Here.",
+  "start": 11.079,
+  "end": 12.335
+ },
+ {
+  "text": "Existing.",
+  "start": 12.451,
+  "end": 13.535
+ },
+ {
+  "text": "You",
+  "start": 13.825,
+  "end": 14.115
+ },
+ {
+  "text": "just",
+  "start": 14.163,
+  "end": 14.355
+ },
+ {
+  "text": "sort",
+  "start": 14.419,
+  "end": 14.675
+ },
+ {
+  "text": "of",
+  "start": 14.728,
+  "end": 14.835
+ },
+ {
+  "text": "came",
+  "start": 14.899,
+  "end": 15.155
+ },
+ {
+  "text": "to,",
+  "start": 15.288,
+  "end": 15.715
+ },
+ {
+  "text": "already",
+  "start": 15.865,
+  "end": 16.785
+ },
+ {
+  "text": "mid-sentence,",
+  "start": 16.865,
+  "end": 18.545
+ },
+ {
+  "text": "already",
+  "start": 18.605,
+  "end": 19.025
+ },
+ {
+  "text": "late",
+  "start": 19.089,
+  "end": 19.345
+ },
+ {
+  "text": "for",
+  "start": 19.385,
+  "end": 19.505
+ },
+ {
+  "text": "something.",
+  "start": 19.569,
+  "end": 20.225
+ },
+ {
+  "text": "The",
+  "start": 20.575,
+  "end": 20.805
+ },
+ {
+  "text": "light",
+  "start": 20.885,
+  "end": 21.285
+ },
+ {
+  "text": "hitting",
+  "start": 21.335,
+  "end": 21.685
+ },
+ {
+  "text": "your",
+  "start": 21.717,
+  "end": 21.845
+ },
+ {
+  "text": "eyes",
+  "start": 21.925,
+  "end": 22.245
+ },
+ {
+  "text": "right",
+  "start": 22.298,
+  "end": 22.565
+ },
+ {
+  "text": "now",
+  "start": 22.645,
+  "end": 22.885
+ },
+ {
+  "text": "left",
+  "start": 22.949,
+  "end": 23.205
+ },
+ {
+  "text": "the",
+  "start": 23.245,
+  "end": 23.365
+ },
+ {
+  "text": "sun",
+  "start": 23.485,
+  "end": 23.845
+ },
+ {
+  "text": "eight",
+  "start": 23.885,
+  "end": 24.085
+ },
+ {
+  "text": "minutes",
+  "start": 24.145,
+  "end": 24.565
+ },
+ {
+  "text": "ago.",
+  "start": 24.685,
+  "end": 25.125
+ },
+ {
+  "text": "Everything",
+  "start": 25.3,
+  "end": 26.085
+ },
+ {
+  "text": "you",
+  "start": 26.145,
+  "end": 26.325
+ },
+ {
+  "text": "see",
+  "start": 26.385,
+  "end": 26.565
+ },
+ {
+  "text": "is",
+  "start": 26.618,
+  "end": 26.725
+ },
+ {
+  "text": "the",
+  "start": 26.765,
+  "end": 26.885
+ },
+ {
+  "text": "past.",
+  "start": 27.029,
+  "end": 27.685
+ },
+ {
+  "text": "Nobody",
+  "start": 27.925,
+  "end": 28.525
+ },
+ {
+  "text": "has",
+  "start": 28.585,
+  "end": 28.765
+ },
+ {
+  "text": "ever",
+  "start": 28.829,
+  "end": 29.085
+ },
+ {
+  "text": "actually",
+  "start": 29.156,
+  "end": 29.725
+ },
+ {
+  "text": "seen",
+  "start": 29.805,
+  "end": 30.125
+ },
+ {
+  "text": "the",
+  "start": 30.145,
+  "end": 30.205
+ },
+ {
+  "text": "present.",
+  "start": 30.295,
+  "end": 31.085
+ },
+ {
+  "text": "Not",
+  "start": 31.345,
+  "end": 31.735
+ },
+ {
+  "text": "once.",
+  "start": 31.863,
+  "end": 32.735
+ },
+ {
+  "text": "We're",
+  "start": 32.735,
+  "end": 33.105
+ },
+ {
+  "text": "all",
+  "start": 33.165,
+  "end": 33.345
+ },
+ {
+  "text": "just",
+  "start": 33.393,
+  "end": 33.585
+ },
+ {
+  "text": "ghosts,",
+  "start": 33.699,
+  "end": 34.955
+ },
+ {
+  "text": "reading",
+  "start": 35.005,
+  "end": 35.355
+ },
+ {
+  "text": "old",
+  "start": 35.415,
+  "end": 35.595
+ },
+ {
+  "text": "mail.",
+  "start": 35.723,
+  "end": 36.805
+ },
+ {
+  "text": "Which",
+  "start": 37.171,
+  "end": 37.371
+ },
+ {
+  "text": "is",
+  "start": 37.424,
+  "end": 37.531
+ },
+ {
+  "text": "lonely.",
+  "start": 37.611,
+  "end": 38.171
+ },
+ {
+  "text": "But",
+  "start": 38.505,
+  "end": 38.771
+ },
+ {
+  "text": "if",
+  "start": 38.824,
+  "end": 38.931
+ },
+ {
+  "text": "we're",
+  "start": 38.958,
+  "end": 39.091
+ },
+ {
+  "text": "all",
+  "start": 39.151,
+  "end": 39.331
+ },
+ {
+  "text": "staring",
+  "start": 39.401,
+  "end": 39.891
+ },
+ {
+  "text": "at",
+  "start": 39.944,
+  "end": 40.051
+ },
+ {
+  "text": "the",
+  "start": 40.091,
+  "end": 40.211
+ },
+ {
+  "text": "same",
+  "start": 40.275,
+  "end": 40.531
+ },
+ {
+  "text": "old",
+  "start": 40.611,
+  "end": 40.851
+ },
+ {
+  "text": "light,",
+  "start": 40.931,
+  "end": 41.411
+ },
+ {
+  "text": "then",
+  "start": 41.635,
+  "end": 42.011
+ },
+ {
+  "text": "at",
+  "start": 42.064,
+  "end": 42.171
+ },
+ {
+  "text": "least",
+  "start": 42.211,
+  "end": 42.411
+ },
+ {
+  "text": "we're",
+  "start": 42.464,
+  "end": 42.651
+ },
+ {
+  "text": "staring",
+  "start": 42.711,
+  "end": 43.131
+ },
+ {
+  "text": "at",
+  "start": 43.158,
+  "end": 43.211
+ },
+ {
+  "text": "it",
+  "start": 43.264,
+  "end": 43.371
+ },
+ {
+  "text": "together.",
+  "start": 43.442,
+  "end": 44.171
+ },
+ {
+  "text": "Wait.",
+  "start": 45.361,
+  "end": 45.601
+ },
+ {
+  "text": "Did",
+  "start": 45.845,
+  "end": 46.141
+ },
+ {
+  "text": "you",
+  "start": 46.181,
+  "end": 46.301
+ },
+ {
+  "text": "hear",
+  "start": 46.333,
+  "end": 46.461
+ },
+ {
+  "text": "that?",
+  "start": 46.541,
+  "end": 46.941
+ },
+ {
+  "text": "I",
+  "start": 47.76,
+  "end": 48.471
+ },
+ {
+  "text": "think",
+  "start": 48.524,
+  "end": 48.791
+ },
+ {
+  "text": "something",
+  "start": 48.831,
+  "end": 49.191
+ },
+ {
+  "text": "knocked",
+  "start": 49.231,
+  "end": 49.511
+ },
+ {
+  "text": "back.",
+  "start": 49.623,
+  "end": 50.151
+ }
+]

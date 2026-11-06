@@ -1,0 +1,552 @@
+[
+ {
+  "text": "Hello?",
+  "start": 0.427,
+  "end": 0.64
+ },
+ {
+  "text": "Is",
+  "start": 1.013,
+  "end": 1.56
+ },
+ {
+  "text": "anyone",
+  "start": 1.617,
+  "end": 1.96
+ },
+ {
+  "text": "out",
+  "start": 2.02,
+  "end": 2.2
+ },
+ {
+  "text": "there?",
+  "start": 2.267,
+  "end": 2.76
+ },
+ {
+  "text": "Shh.",
+  "start": 3.723,
+  "end": 4.39
+ },
+ {
+  "text": "Don't",
+  "start": 4.48,
+  "end": 4.91
+ },
+ {
+  "text": "blink.",
+  "start": 5.043,
+  "end": 5.79
+ },
+ {
+  "text": "It's",
+  "start": 7.223,
+  "end": 7.33
+ },
+ {
+  "text": "been",
+  "start": 7.378,
+  "end": 7.57
+ },
+ {
+  "text": "snowing",
+  "start": 7.65,
+  "end": 8.21
+ },
+ {
+  "text": "all",
+  "start": 8.27,
+  "end": 8.45
+ },
+ {
+  "text": "night.",
+  "start": 8.543,
+  "end": 9.09
+ },
+ {
+  "text": "I've",
+  "start": 9.49,
+  "end": 10.05
+ },
+ {
+  "text": "been",
+  "start": 10.082,
+  "end": 10.21
+ },
+ {
+  "text": "watching.",
+  "start": 10.299,
+  "end": 11.09
+ },
+ {
+  "text": "I",
+  "start": 11.505,
+  "end": 11.9
+ },
+ {
+  "text": "haven't",
+  "start": 11.953,
+  "end": 12.3
+ },
+ {
+  "text": "seen",
+  "start": 12.364,
+  "end": 12.62
+ },
+ {
+  "text": "a",
+  "start": 12.66,
+  "end": 12.7
+ },
+ {
+  "text": "single",
+  "start": 12.78,
+  "end": 13.26
+ },
+ {
+  "text": "flake",
+  "start": 13.367,
+  "end": 13.82
+ },
+ {
+  "text": "land.",
+  "start": 13.948,
+  "end": 14.54
+ },
+ {
+  "text": "Not",
+  "start": 14.78,
+  "end": 15.5
+ },
+ {
+  "text": "one.",
+  "start": 15.62,
+  "end": 16.06
+ },
+ {
+  "text": "There's",
+  "start": 16.247,
+  "end": 17.07
+ },
+ {
+  "text": "just...",
+  "start": 17.198,
+  "end": 18.51
+ },
+ {
+  "text": "more.",
+  "start": 18.654,
+  "end": 19.31
+ },
+ {
+  "text": "You",
+  "start": 20.908,
+  "end": 20.968
+ },
+ {
+  "text": "blink",
+  "start": 21.048,
+  "end": 21.448
+ },
+ {
+  "text": "about",
+  "start": 21.515,
+  "end": 21.848
+ },
+ {
+  "text": "fifteen",
+  "start": 21.928,
+  "end": 22.488
+ },
+ {
+  "text": "thousand",
+  "start": 22.559,
+  "end": 23.128
+ },
+ {
+  "text": "times",
+  "start": 23.208,
+  "end": 23.608
+ },
+ {
+  "text": "a",
+  "start": 23.648,
+  "end": 23.688
+ },
+ {
+  "text": "day.",
+  "start": 23.808,
+  "end": 24.169
+ },
+ {
+  "text": "Every",
+  "start": 24.408,
+  "end": 25.378
+ },
+ {
+  "text": "one",
+  "start": 25.478,
+  "end": 25.778
+ },
+ {
+  "text": "is",
+  "start": 25.858,
+  "end": 26.018
+ },
+ {
+  "text": "a",
+  "start": 26.098,
+  "end": 26.178
+ },
+ {
+  "text": "little",
+  "start": 26.201,
+  "end": 26.338
+ },
+ {
+  "text": "piece",
+  "start": 26.405,
+  "end": 26.738
+ },
+ {
+  "text": "of",
+  "start": 26.765,
+  "end": 26.818
+ },
+ {
+  "text": "dark.",
+  "start": 26.962,
+  "end": 27.618
+ },
+ {
+  "text": "Add",
+  "start": 27.898,
+  "end": 28.588
+ },
+ {
+  "text": "them",
+  "start": 28.636,
+  "end": 28.828
+ },
+ {
+  "text": "up,",
+  "start": 28.935,
+  "end": 29.228
+ },
+ {
+  "text": "and",
+  "start": 29.368,
+  "end": 29.788
+ },
+ {
+  "text": "you",
+  "start": 29.848,
+  "end": 30.028
+ },
+ {
+  "text": "spend",
+  "start": 30.095,
+  "end": 30.428
+ },
+ {
+  "text": "more",
+  "start": 30.508,
+  "end": 30.828
+ },
+ {
+  "text": "than",
+  "start": 30.876,
+  "end": 31.068
+ },
+ {
+  "text": "an",
+  "start": 31.121,
+  "end": 31.228
+ },
+ {
+  "text": "hour",
+  "start": 31.308,
+  "end": 31.628
+ },
+ {
+  "text": "a",
+  "start": 31.708,
+  "end": 31.788
+ },
+ {
+  "text": "day",
+  "start": 31.888,
+  "end": 32.188
+ },
+ {
+  "text": "with",
+  "start": 32.22,
+  "end": 32.348
+ },
+ {
+  "text": "your",
+  "start": 32.396,
+  "end": 32.588
+ },
+ {
+  "text": "eyes",
+  "start": 32.668,
+  "end": 32.988
+ },
+ {
+  "text": "shut.",
+  "start": 33.084,
+  "end": 33.868
+ },
+ {
+  "text": "And",
+  "start": 34.005,
+  "end": 34.368
+ },
+ {
+  "text": "you've",
+  "start": 34.408,
+  "end": 34.608
+ },
+ {
+  "text": "never",
+  "start": 34.661,
+  "end": 34.928
+ },
+ {
+  "text": "noticed.",
+  "start": 35.028,
+  "end": 35.808
+ },
+ {
+  "text": "Not",
+  "start": 36.108,
+  "end": 36.828
+ },
+ {
+  "text": "once.",
+  "start": 36.972,
+  "end": 37.868
+ },
+ {
+  "text": "Your",
+  "start": 38.015,
+  "end": 38.418
+ },
+ {
+  "text": "brain",
+  "start": 38.525,
+  "end": 39.058
+ },
+ {
+  "text": "cuts",
+  "start": 39.122,
+  "end": 39.378
+ },
+ {
+  "text": "it",
+  "start": 39.431,
+  "end": 39.538
+ },
+ {
+  "text": "out,",
+  "start": 39.638,
+  "end": 40.018
+ },
+ {
+  "text": "and",
+  "start": 40.158,
+  "end": 40.578
+ },
+ {
+  "text": "stitches",
+  "start": 40.64,
+  "end": 41.138
+ },
+ {
+  "text": "the",
+  "start": 41.178,
+  "end": 41.298
+ },
+ {
+  "text": "day",
+  "start": 41.378,
+  "end": 41.618
+ },
+ {
+  "text": "back",
+  "start": 41.682,
+  "end": 41.938
+ },
+ {
+  "text": "together,",
+  "start": 42.009,
+  "end": 42.978
+ },
+ {
+  "text": "so",
+  "start": 43.111,
+  "end": 43.378
+ },
+ {
+  "text": "it",
+  "start": 43.431,
+  "end": 43.538
+ },
+ {
+  "text": "looks",
+  "start": 43.605,
+  "end": 43.938
+ },
+ {
+  "text": "smooth.",
+  "start": 44.029,
+  "end": 44.658
+ },
+ {
+  "text": "My",
+  "start": 45.591,
+  "end": 45.618
+ },
+ {
+  "text": "eyes",
+  "start": 45.73,
+  "end": 46.178
+ },
+ {
+  "text": "are",
+  "start": 46.218,
+  "end": 46.338
+ },
+ {
+  "text": "burning.",
+  "start": 46.418,
+  "end": 47.378
+ },
+ {
+  "text": "I",
+  "start": 48.588,
+  "end": 48.608
+ },
+ {
+  "text": "can't...",
+  "start": 48.708,
+  "end": 50.178
+ },
+ {
+  "text": "See?",
+  "start": 51.548,
+  "end": 51.798
+ },
+ {
+  "text": "More.",
+  "start": 52.134,
+  "end": 53.318
+ },
+ {
+  "text": "Your",
+  "start": 54.18,
+  "end": 54.228
+ },
+ {
+  "text": "brain's",
+  "start": 54.295,
+  "end": 54.788
+ },
+ {
+  "text": "been",
+  "start": 54.82,
+  "end": 54.948
+ },
+ {
+  "text": "cutting",
+  "start": 54.998,
+  "end": 55.348
+ },
+ {
+  "text": "the",
+  "start": 55.388,
+  "end": 55.508
+ },
+ {
+  "text": "dark",
+  "start": 55.588,
+  "end": 55.908
+ },
+ {
+  "text": "out",
+  "start": 55.948,
+  "end": 56.068
+ },
+ {
+  "text": "of",
+  "start": 56.095,
+  "end": 56.148
+ },
+ {
+  "text": "your",
+  "start": 56.18,
+  "end": 56.308
+ },
+ {
+  "text": "life",
+  "start": 56.388,
+  "end": 56.708
+ },
+ {
+  "text": "since",
+  "start": 56.748,
+  "end": 56.948
+ },
+ {
+  "text": "you",
+  "start": 56.988,
+  "end": 57.108
+ },
+ {
+  "text": "were",
+  "start": 57.14,
+  "end": 57.268
+ },
+ {
+  "text": "born.",
+  "start": 57.38,
+  "end": 58.308
+ },
+ {
+  "text": "You",
+  "start": 58.425,
+  "end": 58.808
+ },
+ {
+  "text": "never",
+  "start": 58.875,
+  "end": 59.208
+ },
+ {
+  "text": "asked",
+  "start": 59.275,
+  "end": 59.608
+ },
+ {
+  "text": "what",
+  "start": 59.656,
+  "end": 59.848
+ },
+ {
+  "text": "else",
+  "start": 59.896,
+  "end": 60.088
+ },
+ {
+  "text": "it",
+  "start": 60.168,
+  "end": 60.328
+ },
+ {
+  "text": "cuts.",
+  "start": 60.44,
+  "end": 61.288
+ }
+]

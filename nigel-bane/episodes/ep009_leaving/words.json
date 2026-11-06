@@ -1,0 +1,652 @@
+[
+ {
+  "text": "Hello?",
+  "start": 0.369,
+  "end": 0.56
+ },
+ {
+  "text": "Is",
+  "start": 0.933,
+  "end": 1.32
+ },
+ {
+  "text": "anyone",
+  "start": 1.366,
+  "end": 1.64
+ },
+ {
+  "text": "out",
+  "start": 1.7,
+  "end": 1.88
+ },
+ {
+  "text": "there?",
+  "start": 1.933,
+  "end": 2.28
+ },
+ {
+  "text": "So.",
+  "start": 3.273,
+  "end": 3.42
+ },
+ {
+  "text": "Sleep.",
+  "start": 3.593,
+  "end": 4.54
+ },
+ {
+  "text": "I've",
+  "start": 4.9,
+  "end": 5.4
+ },
+ {
+  "text": "been",
+  "start": 5.448,
+  "end": 5.64
+ },
+ {
+  "text": "thinking",
+  "start": 5.684,
+  "end": 6.04
+ },
+ {
+  "text": "about",
+  "start": 6.12,
+  "end": 6.52
+ },
+ {
+  "text": "what",
+  "start": 6.6,
+  "end": 6.92
+ },
+ {
+  "text": "it",
+  "start": 6.947,
+  "end": 7.0
+ },
+ {
+  "text": "actually",
+  "start": 7.071,
+  "end": 7.64
+ },
+ {
+  "text": "is.",
+  "start": 7.827,
+  "end": 8.58
+ },
+ {
+  "text": "Every",
+  "start": 8.58,
+  "end": 9.08
+ },
+ {
+  "text": "night,",
+  "start": 9.173,
+  "end": 9.8
+ },
+ {
+  "text": "you",
+  "start": 9.84,
+  "end": 9.96
+ },
+ {
+  "text": "just...",
+  "start": 10.104,
+  "end": 11.32
+ },
+ {
+  "text": "leave.",
+  "start": 11.413,
+  "end": 12.04
+ },
+ {
+  "text": "You",
+  "start": 12.28,
+  "end": 12.69
+ },
+ {
+  "text": "lie",
+  "start": 12.77,
+  "end": 13.01
+ },
+ {
+  "text": "down,",
+  "start": 13.09,
+  "end": 13.65
+ },
+ {
+  "text": "you",
+  "start": 13.69,
+  "end": 13.81
+ },
+ {
+  "text": "close",
+  "start": 13.863,
+  "end": 14.13
+ },
+ {
+  "text": "your",
+  "start": 14.162,
+  "end": 14.29
+ },
+ {
+  "text": "eyes,",
+  "start": 14.418,
+  "end": 15.09
+ },
+ {
+  "text": "and",
+  "start": 15.25,
+  "end": 15.68
+ },
+ {
+  "text": "you",
+  "start": 15.72,
+  "end": 15.84
+ },
+ {
+  "text": "go",
+  "start": 15.92,
+  "end": 16.08
+ },
+ {
+  "text": "somewhere",
+  "start": 16.136,
+  "end": 16.64
+ },
+ {
+  "text": "you",
+  "start": 16.7,
+  "end": 16.88
+ },
+ {
+  "text": "can't",
+  "start": 16.94,
+  "end": 17.2
+ },
+ {
+  "text": "remember.",
+  "start": 17.271,
+  "end": 18.08
+ },
+ {
+  "text": "And",
+  "start": 18.3,
+  "end": 18.74
+ },
+ {
+  "text": "you",
+  "start": 18.78,
+  "end": 18.9
+ },
+ {
+  "text": "trust,",
+  "start": 19.033,
+  "end": 19.86
+ },
+ {
+  "text": "completely,",
+  "start": 19.933,
+  "end": 20.82
+ },
+ {
+  "text": "that",
+  "start": 20.948,
+  "end": 21.46
+ },
+ {
+  "text": "the",
+  "start": 21.5,
+  "end": 21.62
+ },
+ {
+  "text": "one",
+  "start": 21.7,
+  "end": 21.94
+ },
+ {
+  "text": "who",
+  "start": 21.98,
+  "end": 22.1
+ },
+ {
+  "text": "wakes",
+  "start": 22.167,
+  "end": 22.5
+ },
+ {
+  "text": "up",
+  "start": 22.553,
+  "end": 22.66
+ },
+ {
+  "text": "in",
+  "start": 22.713,
+  "end": 22.82
+ },
+ {
+  "text": "the",
+  "start": 22.84,
+  "end": 22.9
+ },
+ {
+  "text": "morning",
+  "start": 22.98,
+  "end": 23.54
+ },
+ {
+  "text": "will",
+  "start": 23.604,
+  "end": 23.86
+ },
+ {
+  "text": "be",
+  "start": 24.047,
+  "end": 24.42
+ },
+ {
+  "text": "you.",
+  "start": 24.58,
+  "end": 25.14
+ },
+ {
+  "text": "Nobody",
+  "start": 25.346,
+  "end": 26.12
+ },
+ {
+  "text": "checks.",
+  "start": 26.234,
+  "end": 27.0
+ },
+ {
+  "text": "You",
+  "start": 27.18,
+  "end": 27.68
+ },
+ {
+  "text": "just",
+  "start": 27.728,
+  "end": 27.92
+ },
+ {
+  "text": "wake",
+  "start": 28.0,
+  "end": 28.32
+ },
+ {
+  "text": "up",
+  "start": 28.453,
+  "end": 28.72
+ },
+ {
+  "text": "and",
+  "start": 28.84,
+  "end": 29.2
+ },
+ {
+  "text": "put",
+  "start": 29.26,
+  "end": 29.44
+ },
+ {
+  "text": "yourself",
+  "start": 29.511,
+  "end": 30.08
+ },
+ {
+  "text": "back",
+  "start": 30.128,
+  "end": 30.32
+ },
+ {
+  "text": "on,",
+  "start": 30.48,
+  "end": 30.96
+ },
+ {
+  "text": "like",
+  "start": 31.088,
+  "end": 31.6
+ },
+ {
+  "text": "yesterday's",
+  "start": 31.656,
+  "end": 32.24
+ },
+ {
+  "text": "clothes.",
+  "start": 32.33,
+  "end": 33.04
+ },
+ {
+  "text": "Isn't",
+  "start": 33.34,
+  "end": 33.89
+ },
+ {
+  "text": "that",
+  "start": 33.922,
+  "end": 34.05
+ },
+ {
+  "text": "a",
+  "start": 34.09,
+  "end": 34.13
+ },
+ {
+  "text": "lot",
+  "start": 34.19,
+  "end": 34.37
+ },
+ {
+  "text": "of",
+  "start": 34.397,
+  "end": 34.45
+ },
+ {
+  "text": "trust?",
+  "start": 34.57,
+  "end": 35.25
+ },
+ {
+  "text": "To",
+  "start": 35.517,
+  "end": 35.97
+ },
+ {
+  "text": "hand",
+  "start": 36.05,
+  "end": 36.37
+ },
+ {
+  "text": "yourself",
+  "start": 36.441,
+  "end": 37.01
+ },
+ {
+  "text": "to",
+  "start": 37.037,
+  "end": 37.09
+ },
+ {
+  "text": "the",
+  "start": 37.13,
+  "end": 37.25
+ },
+ {
+  "text": "dark",
+  "start": 37.378,
+  "end": 37.89
+ },
+ {
+  "text": "every",
+  "start": 37.957,
+  "end": 38.29
+ },
+ {
+  "text": "night,",
+  "start": 38.37,
+  "end": 38.93
+ },
+ {
+  "text": "and",
+  "start": 39.05,
+  "end": 39.41
+ },
+ {
+  "text": "expect",
+  "start": 39.513,
+  "end": 40.13
+ },
+ {
+  "text": "to",
+  "start": 40.183,
+  "end": 40.29
+ },
+ {
+  "text": "get",
+  "start": 40.35,
+  "end": 40.53
+ },
+ {
+  "text": "handed",
+  "start": 40.587,
+  "end": 40.93
+ },
+ {
+  "text": "back?",
+  "start": 41.026,
+  "end": 41.57
+ },
+ {
+  "text": "Oh.",
+  "start": 42.344,
+  "end": 42.531
+ },
+ {
+  "text": "There.",
+  "start": 42.718,
+  "end": 43.89
+ },
+ {
+  "text": "Did",
+  "start": 43.89,
+  "end": 44.251
+ },
+ {
+  "text": "you",
+  "start": 44.291,
+  "end": 44.411
+ },
+ {
+  "text": "see",
+  "start": 44.451,
+  "end": 44.571
+ },
+ {
+  "text": "that?",
+  "start": 44.651,
+  "end": 45.051
+ },
+ {
+  "text": "Something",
+  "start": 45.179,
+  "end": 46.191
+ },
+ {
+  "text": "flew",
+  "start": 46.303,
+  "end": 46.751
+ },
+ {
+  "text": "past",
+  "start": 46.831,
+  "end": 47.151
+ },
+ {
+  "text": "the",
+  "start": 47.191,
+  "end": 47.311
+ },
+ {
+  "text": "window.",
+  "start": 47.391,
+  "end": 48.031
+ },
+ {
+  "text": "A",
+  "start": 48.36,
+  "end": 48.711
+ },
+ {
+  "text": "real",
+  "start": 48.775,
+  "end": 49.031
+ },
+ {
+  "text": "thing.",
+  "start": 49.124,
+  "end": 49.671
+ },
+ {
+  "text": "With",
+  "start": 49.879,
+  "end": 50.401
+ },
+ {
+  "text": "wings.",
+  "start": 50.534,
+  "end": 51.281
+ },
+ {
+  "text": "...Anyway.",
+  "start": 51.824,
+  "end": 52.764
+ },
+ {
+  "text": "Maybe",
+  "start": 53.542,
+  "end": 53.809
+ },
+ {
+  "text": "that's",
+  "start": 53.873,
+  "end": 54.209
+ },
+ {
+  "text": "the",
+  "start": 54.249,
+  "end": 54.369
+ },
+ {
+  "text": "trick.",
+  "start": 54.462,
+  "end": 55.35
+ },
+ {
+  "text": "You",
+  "start": 55.35,
+  "end": 55.629
+ },
+ {
+  "text": "don't",
+  "start": 55.669,
+  "end": 55.949
+ },
+ {
+  "text": "sleep",
+  "start": 56.029,
+  "end": 56.429
+ },
+ {
+  "text": "because",
+  "start": 56.479,
+  "end": 56.829
+ },
+ {
+  "text": "you're",
+  "start": 56.869,
+  "end": 57.069
+ },
+ {
+  "text": "tired.",
+  "start": 57.176,
+  "end": 58.13
+ },
+ {
+  "text": "You",
+  "start": 58.13,
+  "end": 58.479
+ },
+ {
+  "text": "sleep",
+  "start": 58.572,
+  "end": 59.039
+ },
+ {
+  "text": "because",
+  "start": 59.089,
+  "end": 59.439
+ },
+ {
+  "text": "you",
+  "start": 59.459,
+  "end": 59.519
+ },
+ {
+  "text": "trust",
+  "start": 59.612,
+  "end": 60.079
+ },
+ {
+  "text": "something.",
+  "start": 60.143,
+  "end": 60.879
+ },
+ {
+  "text": "I'm",
+  "start": 61.24,
+  "end": 61.709
+ },
+ {
+  "text": "going",
+  "start": 61.762,
+  "end": 62.029
+ },
+ {
+  "text": "to",
+  "start": 62.056,
+  "end": 62.109
+ },
+ {
+  "text": "try",
+  "start": 62.169,
+  "end": 62.349
+ },
+ {
+  "text": "again",
+  "start": 62.416,
+  "end": 62.749
+ },
+ {
+  "text": "tonight.",
+  "start": 62.829,
+  "end": 63.81
+ },
+ {
+  "text": "I'll",
+  "start": 63.839,
+  "end": 64.159
+ },
+ {
+  "text": "let",
+  "start": 64.219,
+  "end": 64.399
+ },
+ {
+  "text": "you",
+  "start": 64.439,
+  "end": 64.559
+ },
+ {
+  "text": "know",
+  "start": 64.639,
+  "end": 64.959
+ },
+ {
+  "text": "who",
+  "start": 65.059,
+  "end": 65.359
+ },
+ {
+  "text": "comes",
+  "start": 65.426,
+  "end": 65.759
+ },
+ {
+  "text": "back.",
+  "start": 65.871,
+  "end": 66.479
+ }
+]
