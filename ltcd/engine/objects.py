@@ -3508,3 +3508,216 @@ def draw_host(cr, p, t=0.0, s=1.15, smirk=0.3, bottle=None, squeeze=0.0, glance=
     sketch_line(cr, [(ox - 10, -24), (ox + 10, -24)], 6, sid=18520, amp=0.1)
     cr.restore()
     cr.restore()
+
+
+# ------------------------------------------------------------------ day 15: the beach ("seja feliz") ---
+BEACH_SKY = ((0.78, 0.92, 1.0), (0.42, 0.70, 0.97))
+SEA = (0.30, 0.72, 0.80)
+SEA_D = (0.20, 0.55, 0.68)
+SAND = (0.97, 0.88, 0.66)
+SAND_WET = (0.88, 0.76, 0.52)
+ROCK = (0.42, 0.52, 0.40)
+RAINBOW = ((0.93, 0.25, 0.25), (0.98, 0.58, 0.20), (0.99, 0.88, 0.30), (0.40, 0.80, 0.40), (0.30, 0.55, 0.92), (0.58, 0.38, 0.85))
+
+def draw_sugarloaf(cr, x, yb, h=1300, w=900, sid=15000):
+    """a big rounded granite dome rising out of the sea (bottom-centre x, yb), a smaller hump to its left and a cable
+    car line between their tops."""
+    hx, hh, hw = x - 1100, h * 0.5, w * 0.8
+    for (cx, hh_, ww, s_) in ((hx, hh, hw, sid), (x, h, w, sid + 1)):
+        pts = []
+        for k in range(25):
+            u = k / 24
+            a = math.pi * u
+            pts.append((cx - ww / 2 * math.cos(a) * (1 + 0.15 * math.sin(a * 2)), yb - hh_ * math.sin(a) ** 0.55))
+        sketch_poly(cr, pts, 6, sid=s_, fill=ROCK, amp=0.4)
+        for k in range(3):                                            # a few rock lines
+            sketch_line(cr, [(cx - ww * 0.2 + k * ww * 0.18, yb - hh_ * 0.85), (cx - ww * 0.28 + k * ww * 0.2, yb - hh_ * 0.35)], 3,
+                        sid=s_ + 10 + k, color=(0.30, 0.38, 0.30))
+        sketch_poly(cr, [(cx - ww * 0.3, yb - hh_ * 0.98 + 30), (cx, yb - hh_ - 20), (cx + ww * 0.3, yb - hh_ * 0.98 + 30)], 4,
+                    sid=s_ + 20, fill=(0.35, 0.60, 0.35), amp=0.4)      # green cap
+    a, b = (hx, yb - hh - 10), (x, yb - h - 10)
+    sketch_line(cr, [a, b], 3, sid=sid + 30, amp=0.2)
+    return a, b
+
+def draw_cable_car(cr, a, b, u, s=1.0, sid=15040):
+    """a little cable car cabin hanging from the line a->b at fraction u."""
+    px, py = lerp(a, b, u)
+    sketch_line(cr, [(px, py), (px, py + 60 * s)], 4, sid=sid, amp=0.2)
+    sketch_rect(cr, px - 55 * s, py + 60 * s, px + 55 * s, py + 150 * s, 4, sid=sid + 1, fill=(0.95, 0.85, 0.30))
+    sketch_rect(cr, px - 40 * s, py + 75 * s, px + 40 * s, py + 110 * s, 3, sid=sid + 2, fill=(0.75, 0.90, 0.98))
+
+def draw_promenade(cr, x0, x1, yb, depth=260, sid=15060):
+    """the famous black-and-white wavy mosaic sidewalk, as a floor strip from yb down."""
+    cr.rectangle(x0, yb, x1 - x0, depth); cr.set_source_rgb(0.98, 0.97, 0.94); cr.fill()
+    for row in range(5):
+        y = yb + 30 + row * 52
+        pts = [(x, y + 18 * math.sin((x - x0) / 70.0)) for x in range(int(x0), int(x1) + 20, 20)]
+        if row % 2 == 0:
+            cr.move_to(*pts[0])
+            for p in pts[1:]: cr.line_to(*p)
+            cr.set_source_rgb(0.12, 0.12, 0.14); cr.set_line_width(26); cr.stroke()
+
+def draw_beach_umbrella(cr, x, yb, col=(0.95, 0.35, 0.30), sid=15080):
+    sketch_line(cr, [(x, yb), (x + 30, yb - 520)], 8, sid=sid, amp=0.3)
+    pts = [(x + 30 + 300 * math.cos(math.pi + k * math.pi / 8), yb - 520 - 120 * math.sin(k * math.pi / 8)) for k in range(9)]
+    sketch_poly(cr, pts, 5, sid=sid + 1, fill=col, amp=0.4)
+    for k in (2, 4, 6):
+        a = math.pi + k * math.pi / 8
+        sketch_line(cr, [(x + 30, yb - 640), (x + 30 + 300 * math.cos(a), yb - 520 - 120 * math.sin(k * math.pi / 8))], 3, sid=sid + 2 + k)
+
+def draw_beach_world(cr, t, x0, x1, prom_end, yb=FLOOR_Y, wind=0.0, sugar_x=None):
+    """sunny beach right of x0: deep-blue sky bands, the sun, puffy clouds, the sea with waves, a big granite dome with a
+    cable car out in the bay, sand as the floor; left of prom_end the floor is the wavy mosaic sidewalk."""
+    vx0, vy0, vx1, vy1 = _visible(cr)
+    a, b = max(x0, vx0), min(x1, vx1)
+    if b <= a: return
+    cr.save(); cr.rectangle(x0, vy0 - 10, x1 - x0, vy1 - vy0 + 20); cr.clip()
+    top = min(vy0, yb - 200)
+    nb = int((yb - 400 - top) // 150) + 2
+    for k in range(nb):
+        y_lo = yb - 400 - k * 150 if k else yb + 10; y_hi = yb - 400 - (k + 1) * 150
+        cr.rectangle(a, y_hi, b - a, y_lo - y_hi + 1); cr.set_source_rgb(*lerp(BEACH_SKY[0], BEACH_SKY[1], min(1.0, k / 14))); cr.fill()
+    sx = x0 + 5400
+    if a - 600 < sx < b + 600:
+        for k in range(12):
+            an = k * math.pi / 6 + t * 0.2
+            sketch_line(cr, [(sx + 170 * math.cos(an), yb - 1750 + 170 * math.sin(an)), (sx + 240 * math.cos(an), yb - 1750 + 240 * math.sin(an))], 8, sid=15100 + k, color=(0.98, 0.70, 0.20))
+        sketch_circle(cr, sx, yb - 1750, 130, 6, sid=15099, fill=(1.0, 0.86, 0.35))
+    for k in range(int((a - x0) // 1100) - 1, int((b - x0) // 1100) + 2):
+        draw_cloud(cr, x0 + k * 1100 + 300 + 30 * math.sin(t * 0.2 + k), yb - 1500 - 260 * (k % 3) - 900 * (k % 2), s=0.9 + 0.25 * (k % 2))
+    # the sea
+    cr.rectangle(a, yb - 420, b - a, 260); cr.set_source_rgb(*SEA); cr.fill()
+    if sugar_x is not None and a - 1800 < sugar_x < b + 1800:
+        ca, cb = draw_sugarloaf(cr, sugar_x, yb - 380)
+        draw_cable_car(cr, ca, cb, 0.35 + 0.25 * math.sin(t * 0.25))
+    cr.rectangle(a, yb - 400, b - a, 240); cr.set_source_rgb(*SEA); cr.fill()
+    sketch_line(cr, [(a, yb - 420), (b, yb - 420)], 4, sid=15120, amp=0.6)
+    for k in range(int(a // 300) - 1, int(b // 300) + 2):
+        wx = k * 300 + 60 * math.sin(t * 0.8 + k)
+        yy = yb - 360 + 60 * (k % 3)
+        cr.move_to(wx - 60, yy); cr.curve_to(wx - 30, yy - 18, wx + 30, yy - 18, wx + 60, yy)
+        cr.set_source_rgb(*SEA_D); cr.set_line_width(5); cr.stroke()
+    # sand
+    cr.rectangle(a, yb - 160, b - a, max(400, vy1 - yb + 200)); cr.set_source_rgb(*SAND); cr.fill()
+    cr.rectangle(a, yb - 160, b - a, 50); cr.set_source_rgb(*SAND_WET); cr.fill()
+    foam = [(x, yb - 160 + 10 * math.sin(x / 90.0 + t * 1.5)) for x in range(int(a), int(b) + 40, 40)]
+    sketch_line(cr, foam, 7, sid=15121, color=(1, 1, 1), amp=0.4)
+    for k in range(int(a // 230) - 1, int(b // 230) + 2):                 # sand speckles
+        xx = k * 230 + 70 * math.sin(k * 3.7)
+        cr.arc(xx, yb - 60 + 40 * math.sin(k * 1.9), 5, 0, 2 * math.pi); cr.set_source_rgb(0.85, 0.72, 0.48); cr.fill()
+    for k in range(int((a - x0) // 1900) - 1, int((b - x0) // 1900) + 2):  # palms + umbrellas on the back of the beach
+        bx = x0 + 1200 + k * 1900
+        if bx > prom_end + 300 and k % 2 == 0:
+            draw_beach_umbrella(cr, bx + 300, yb - 100, col=((0.95, 0.35, 0.30), (0.30, 0.60, 0.95), (0.99, 0.80, 0.25))[k % 3], sid=15080 + k % 3 * 10)
+        else:
+            draw_palm(cr, bx, t, h=950, bend=-0.1 - 0.7 * wind, yb=yb - 110, s=0.9, sid=k % 4)
+    if a < prom_end:
+        draw_promenade(cr, a, min(b, prom_end), yb - 30, depth=max(400, vy1 - yb + 200))
+        cr.rectangle(a, yb - 160, min(b, prom_end) - a, 130); cr.set_source_rgb(0.62, 0.62, 0.64); cr.fill()   # the road edge
+    sketch_line(cr, [(a, yb), (b, yb)], 4, sid=15122, amp=1.0, alpha=0.4)
+    cr.restore()
+
+def draw_seagull(cr, x, y, s=1.0, flap=0.0, facing=-1, carry=0, sid=15200):
+    """a white seagull, centre (x, y); flap -1..1 wing angle; facing 1 = flying right, -1 = left; carry = scoops in its beak."""
+    cr.save(); cr.translate(x, y); cr.scale(s * facing, s)             # drawn facing right (facing=1), mirrored for left
+    for side in (-1, 1):                                                # wings
+        ang = flap * 0.9
+        tip = (-40 + 30 * side, -150 * math.cos(ang) * (1 if side > 0 else 0.85) + 20)
+        tip = (-30 + 40 * side, -40 - 140 * math.sin(0.6 + ang))
+        sketch_poly(cr, [(-50, -10), (tip[0] - 60, tip[1] - 10), (tip[0] + 40, tip[1]), (40, -10)], 5, sid=sid + (side > 0),
+                    fill=(0.78, 0.80, 0.84) if side < 0 else (0.88, 0.89, 0.92), amp=0.4)
+    sketch_ellipse(cr, 0, 0, 95, 42, 5, sid=sid + 3, fill=(1, 1, 1))
+    sketch_circle(cr, 80, -30, 40, 5, sid=sid + 4, fill=(1, 1, 1))
+    sketch_poly(cr, [(112, -34), (165, -24), (112, -14)], 4, sid=sid + 5, fill=(0.98, 0.65, 0.15), amp=0.2)
+    cr.arc(90, -40, 7, 0, 2 * math.pi); fill_ink(cr); cr.new_path()
+    sketch_poly(cr, [(-90, -5), (-150, -25), (-150, 20)], 4, sid=sid + 6, fill=(0.78, 0.80, 0.84), amp=0.2)
+    for k in range(carry):
+        sketch_circle(cr, 175 + 20 * k, -10 + 46 * k, 34, 4, sid=sid + 10 + k, fill=SCOOPS[k % 3])
+    cr.restore()
+
+SCOOPS = ((0.97, 0.72, 0.78), (0.74, 0.92, 0.8), (0.99, 0.95, 0.84))
+
+def draw_scoop(cr, x, y, r=48, col=SCOOPS[0], sid=15220):
+    sketch_circle(cr, x, y, r, 5, sid=sid, fill=col)
+    cr.arc(x - r * 0.3, y - r * 0.3, r * 0.18, 0, 2 * math.pi); cr.set_source_rgba(1, 1, 1, 0.8); cr.fill()
+
+def draw_empty_cone(cr, x, y, s=1.0):
+    """just the cone, held at (x, y)."""
+    top = y - 60 * s
+    path(cr, [(x - 46 * s, top), (x, y + 95 * s), (x + 46 * s, top)]); cr.close_path(); fill_paper(cr, (0.93, 0.76, 0.5)); stroke_ink(cr, 6)
+    cr.save(); path(cr, [(x - 46 * s, top), (x, y + 95 * s), (x + 46 * s, top)]); cr.close_path(); cr.clip()
+    for k in range(-4, 5):
+        cr.move_to(x + k * 24 * s - 60 * s, top); cr.line_to(x + k * 24 * s + 60 * s, y + 100 * s)
+        cr.move_to(x + k * 24 * s + 60 * s, top); cr.line_to(x + k * 24 * s - 60 * s, y + 100 * s)
+    stroke_ink(cr, 2.5, alpha=0.5); cr.restore()
+
+def draw_rain_cloud(cr, x, y, s=1.0, dark=0.5, alpha=1.0):
+    """a grey rain cloud, centre (x, y). dark 0 (light grey) .. 1 (storm)."""
+    if s <= 0.02 or alpha <= 0.01: return
+    puffs = [(-110, 20, 70), (-45, -25, 85), (40, -35, 90), (110, 10, 72), (0, 30, 80)]
+    col = lerp((0.82, 0.83, 0.86), (0.34, 0.35, 0.40), dark)
+    cr.push_group()
+    for dx, dy, r in puffs:
+        cr.arc(x + dx * s, y + dy * s, r * s, 0, 2 * math.pi); cr.new_sub_path()
+    cr.set_source_rgb(*INK); cr.set_line_width(14 * s); cr.stroke_preserve(); cr.set_source_rgb(*col); cr.fill()
+    cr.pop_group_to_source(); cr.paint_with_alpha(alpha)
+
+def draw_cloud_rain(cr, t, x, y_top, y_bot, w, amt=1.0, seed=0):
+    """streaks of rain falling from a cloud: x centre, width w, between y_top and y_bot; amt 0..1 density."""
+    n = int(30 * amt)
+    for k in range(n):
+        h1 = (math.sin(k * 12.9898 + seed) * 43758.5453) % 1.0
+        h2 = (math.sin(k * 78.233 + seed) * 12345.678) % 1.0
+        u = ((t * 2.6) + h1) % 1.0
+        xx = x - w / 2 + w * h2
+        yy = y_top + u * (y_bot - y_top)
+        cr.move_to(xx, yy); cr.line_to(xx - 6, yy + 46)
+        cr.set_source_rgb(*INK); cr.set_line_width(9); cr.stroke()
+        cr.move_to(xx, yy); cr.line_to(xx - 6, yy + 46)
+        cr.set_source_rgb(0.55, 0.75, 0.95); cr.set_line_width(5); cr.stroke()
+
+def draw_bolt(cr, x0, y0, x1, y1, sid=15240, alpha=1.0):
+    """a fat zig-zag lightning bolt from (x0, y0) to (x1, y1)."""
+    n = 6
+    pts = []
+    for k in range(n + 1):
+        u = k / n
+        off = (0 if k in (0, n) else (60 if k % 2 else -60))
+        pts.append((x0 + (x1 - x0) * u + off, y0 + (y1 - y0) * u))
+    left = [(px - 22, py) for px, py in pts]; right = [(px + 22, py) for px, py in pts[::-1]]
+    right[0] = (pts[-1][0], pts[-1][1]); left[-1] = (pts[-1][0], pts[-1][1])
+    sketch_poly(cr, left + right, 6, sid=sid, fill=(1.0, 0.92, 0.30), alpha=alpha, amp=0.3)
+
+def draw_kite(cr, x, y, s=1.0, ang=0.0, t=0.0, tail=1.0, sid=15260):
+    """a yellow diamond kite with a smiley face, centre (x, y), and a bow tail that waves."""
+    cr.save(); cr.translate(x, y); cr.rotate(ang); cr.scale(s, s)
+    pts = [(0, -150), (100, -20), (0, 150), (-100, -20)]
+    # tail first (behind)
+    tp = [(0, 150)]
+    for k in range(1, 8):
+        tp.append((40 * math.sin(t * 7 + k * 0.9) * tail, 150 + k * 50))
+    sketch_line(cr, tp, 4, sid=sid + 1, amp=0.3)
+    for k in (2, 4, 6):
+        bx, by = tp[k]
+        sketch_poly(cr, [(bx, by), (bx - 26, by - 16), (bx - 26, by + 16)], 3, sid=sid + 2 + k, fill=(0.95, 0.35, 0.30), amp=0.2)
+        sketch_poly(cr, [(bx, by), (bx + 26, by - 16), (bx + 26, by + 16)], 3, sid=sid + 3 + k, fill=(0.95, 0.35, 0.30), amp=0.2)
+    sketch_poly(cr, pts, 6, sid=sid, fill=(1.0, 0.86, 0.25), amp=0.4)
+    sketch_line(cr, [(0, -150), (0, 150)], 3, sid=sid + 20, alpha=0.5)
+    sketch_line(cr, [(-100, -20), (100, -20)], 3, sid=sid + 21, alpha=0.5)
+    cr.arc(-32, -45, 11, 0, 2 * math.pi); fill_ink(cr); cr.new_path()
+    cr.arc(32, -45, 11, 0, 2 * math.pi); fill_ink(cr); cr.new_path()
+    cr.arc(0, -10, 45, 0.25 * math.pi, 0.75 * math.pi); stroke_ink(cr, 7); cr.new_path()
+    cr.restore()
+
+def draw_rainbow(cr, cx, yb, r, band=55, alpha=1.0, sweep=1.0):
+    """a rainbow arc standing on the ground at yb, centre cx, outer radius r. sweep 0..1 grows it from the left leg."""
+    if alpha <= 0.01 or sweep <= 0.01: return
+    cr.push_group()
+    a0 = math.pi; a1 = math.pi + math.pi * sweep
+    for k, col in enumerate(RAINBOW):
+        ro = r - k * band
+        cr.new_path(); cr.arc(cx, yb, ro, a0, a1); cr.arc_negative(cx, yb, ro - band, a1, a0); cr.close_path()
+        cr.set_source_rgb(*col); cr.fill()
+    cr.new_path(); cr.arc(cx, yb, r, a0, a1); cr.set_source_rgb(*INK); cr.set_line_width(7); cr.stroke()
+    cr.new_path(); cr.arc(cx, yb, r - 6 * band, a0, a1); cr.set_line_width(6); cr.stroke()
+    cr.pop_group_to_source(); cr.paint_with_alpha(alpha)
