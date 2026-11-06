@@ -377,3 +377,16 @@ Post time is 9 PM ET. Day 13 went out a day late (missed slot); every later day 
 - **four elements:** C "Hold still. Let me see." · R strangers who look after you · E tender, eerie underneath · T the tape's corner keeps lifting; will it hold? It holds.
 - **cover:** 19.5 s, right up at the glass holding his breath while the tape corner lifts.
 - **script:** Hello? Is anyone out there? Hold still. Let me see. ...Someone put tape over the crack in your screen. On your side. I can't reach your side. Don't. They did it while I was asleep. They didn't knock. They didn't leave a note. They just fixed it, and left. That happens to you all the time. Someone salted the steps before you walked on them. Someone checked the brakes on your bus. Someone stayed up at three in the morning, so a stranger wouldn't be alone. You'll never know their names. ...It's holding. Somebody fixed something for you today. You'll never find out what.
+
+### D30 · searching · "Healed" · 2026-11-09 (Mon) · 63.2 s
+- **idea:** healing is mostly forgetting exactly where it hurt.
+- **you:** strong. "A scar you'd have to look for now. A name that used to hurt to hear. A song you can listen to again."
+- **first seconds:** points at the tape on the glass: "Point to the crack. Under the tape. Go on." The tape lets go and falls away.
+- **prop:** the tape and (missing) crack on OUR side of the glass (arc 4/4, exit). The change happens on camera so it reads cold.
+- **tension:** medium. A search that never finds anything, slowing down the whole episode until he gives up and rests his hand flat.
+- **visual:** the tape peeling off and falling down the screen; morning sun coming in.
+- **dread:** no. Unsettling line: "Glass doesn't heal. I know that much. Glass doesn't heal."
+- **hook:** "You heal by forgetting where it was. Then you can't find it again." *Viewer-centric, unsettling.*
+- **four elements:** C "Point to the crack. Under the tape. Go on." · R your body and old hurts: scars, names, songs · E calm with something wrong underneath · T his fingertip hunts the glass, slower and slower, and never finds it
+- **cover:** 56.0 s, fingertip on the clean glass, still searching.
+- **script:** Hello? Is anyone out there? Point to the crack. Under the tape. Go on. ...It's gone. There's nothing under there. It was here. ...Or here. Glass doesn't heal. I know that much. Glass doesn't heal. You've got places like this. A scar you'd have to look for now. A name that used to hurt to hear. A song you can listen to again. You didn't decide to get better. One day you went to touch the sore part, and you couldn't find it. I had it a minute ago. You heal by forgetting where it was. Then you can't find it again.
