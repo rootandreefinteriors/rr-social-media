@@ -144,10 +144,13 @@ layer only.
    ```
    sudo apt-get update -qq && sudo apt-get install -y -qq libcairo2-dev pkg-config python3-dev ffmpeg >/dev/null || true
    pip install -q pycairo numpy pillow || pip install -q --break-system-packages pycairo numpy pillow
-   python3 -c "import cairo, numpy, PIL; print('ok')"
+   for p in python3.13 python3 python3.12; do $p -c "import cairo, numpy, PIL" 2>/dev/null && { echo "use: $p"; break; }; done
    ```
-   If `import cairo` fails, pip installed it for another interpreter: use `python3.13` (or whichever works) for every
-   command below. `git pull --ff-only` first.
+   pip installs into one interpreter only (in the cloud it's `python3.13`; plain `python3` there has no cairo). **Use the
+   interpreter that printed, wherever this guide says `python3`.** `git pull --ff-only` first.
+   - Audio and timings download from `elevenlabsusercontent.com`. If that download fails (curl 56 / HTTP 403 from the
+     proxy), the cloud environment's network allowlist is missing that domain: stop, make nothing, and say so in the
+     final message (the owner adds it under the environment's Network access → Allowed domains).
 2. **How many to make.** Day N posts on **2026-11-05 + (N − 26) days** at 9:00 PM America/New_York. Find the next day
    to make: one after the last row of LEDGER's "Produced" table. Check Buffer (Nigel's account: org
    `6ad3b3027648d77341057da5`) with `list_posts` for `scheduled` and `draft` posts: the latest dueAt is how far the show
