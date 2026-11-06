@@ -18,10 +18,11 @@ confirm them in TikTok Studio → Creator Rewards before relying on them:
 - **AI label: never (user's decision, 2026-11-05, final).** Posts go out with the AI label off. Don't raise it
   again, and don't recommend turning it on.
 
-**Where we are (2026-11-03):**
-- TikTok: about 9,200 views in total, 24 days after launch, gaining about 800 a day.
+**Where we are (2026-11-06):**
+- TikTok: about 11,700 views in total, 27 days after launch, gaining about 930 a day (almost all of it from the newest
+  three or four episodes; older ones stop growing after about a week).
 - Followers: the user tracks them in TikTok's app. Don't ask for them.
-- Needed: about 3,300 TikTok views a day, so roughly four times the current rate.
+- Needed: about 3,300 TikTok views a day, so roughly three and a half times the current rate.
 - Followers come from viewers wanting the next episode. That is why prop arcs and recurring beats matter (see "Build on
   what works").
 
@@ -96,10 +97,16 @@ Compound what has already worked, rather than adding a new kind of thing each da
 - **Reaching through the glass.** D17 "I felt you get here" got the most TikTok views (1,077). D20's taps from our side
   got the most shares (33). D18's dare is the best episode overall. This includes him sensing you, things happening
   on our side of the glass (crack, tape, breath, a handprint), and dares or tests for the viewer. **Aim for one about
-  every 3–4 days.** Keep actual knocks from our side rarer, about every 10 days, so they stay a shock.
+  every 3–4 days.** Keep actual knocks from our side rarer, about every 10 days, so they stay a shock. D24
+  "Reflection" (him sensing the face you're making right now) is second overall, with no knock at all.
+- **Catch the viewer in the act (review 2026-11-06).** A line about what the viewer is doing *right now*, while
+  watching: "the face you're making right now, watching this" (D24), "Try to stop watching me" (D18), "it was you"
+  (D20), "most people only ever see the word for you" (D12). These four have the highest shares/saves of the show and
+  average +0.99 overall. Put one in every episode's R. The three weakest episodes (D3, D9, D14) are about Nigel's own
+  situation instead.
 - **Dares and tests the viewer can actually do** (D18 "Try to stop watching me"). **About one a week.**
-- **Tension from form:** D16's repeated open was third overall and got the most comments of any dread day. Use it on
-  dread days.
+- **Tension from form:** D16's repeated open was an over-performer and got the most comments of any dread day. Use it
+  on dread days. Both dread days so far are positive overall (D16 +0.67, D23 +0.22), so two per chapter stays.
 - **Body visuals** (threads out of him, extreme eye close-ups, the erase). Used in 3 of the top 6 episodes overall.
 - **Avoid:** episodes about him performing or meta-commentary on being watched with no stakes (D14), and plot-tease
   endings (Days 1–11, the weakest).
@@ -191,13 +198,17 @@ Reaches through the glass: D27, D29, D34 (dare), D39 (test), D47 (knock), D50, D
   **C:** "Point to where it was." · **T:** his hand searches the clean glass the whole episode, slower and slower, and never finds it.
 - **31 · A tag** — *Almost nothing in your room did you choose.* A paper tag on the floor: "for nigel." → "Look
   around. Count what you actually chose."
-  **C:** "Look down. What's on your floor?" · **T:** he won't turn the tag over; he circles it and turns it on the last beat: "for nigel".
+  **C:** "Look down. What's on your floor?" · **T:** he won't turn the tag over; he stays crouched over it, finger on
+  its corner, held still (not circling — D33 has the laps), and turns it on the last beat: "for nigel".
 - **32 · The chair** — *Everything made for you is shaping you* (the chair decides how you sit; the phone how you hold
   your head). A chair with the matching tag. → "Everything made for you is also making you."
-  **C:** "Sit up. Look how you're holding your head." · **T:** a test: hold that posture until he's finished; he holds an awkward pose of his own, and it gets harder.
+  **C:** "Sit up. Look how you're holding your head." · **T:** he copies your phone hunch and holds it himself; his head
+  sinks a little lower every shot, and he only straightens on the hook. Not a test for the viewer (D34 is the week's
+  dare). **R** lands on the things made for you (the phone, the chair), not on the body (D30 was the body).
 - **33 · Won't sit** — *Comfort is a kind of holding.* He circles the chair and won't sit (tension: will he?). →
   "Every comfortable thing is holding you a little."
-  **C:** "Don't sit down. Not yet." · **T:** he circles the chair, closer each lap; will he sit? He doesn't, and ends with a hand on its back.
+  **C:** "Don't sit down. Not yet." · **T:** he circles the chair, each lap tighter and slower; will he sit? He doesn't,
+  and ends with a hand on its back.
 - **34 · Sits** — *Habits are furniture — you become the shape of what you sit in.* → "After a while it isn't you
   sitting in the chair. It's the chair sitting in you."
   **C:** "Try to stand up. Right now. Without your hands." · **T:** the dare: he waits for you to try, then tries it himself from the chair and can't quite; a long hold.

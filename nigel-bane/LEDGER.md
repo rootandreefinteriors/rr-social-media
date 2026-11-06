@@ -43,6 +43,7 @@ Views come from the engagement reviews. The user tracks followers in TikTok's ap
 | Date | TikTok views, last 30 days (target 100,000) | Views/day |
 |---|---|---|
 | 2026-11-03 | ~9,200 (all-time; the show is 24 days old) | ~800 |
+| 2026-11-06 | 11,735 (all-time; the show is 27 days old) | ~930 |
 
 ## Four elements (C / R / E / T)
 Check this before scripting. Within any 3 days, don't repeat the command's wording, the area of life R lands on, the
@@ -92,3 +93,6 @@ from D31; dread days D35 and D47; chapter landing D60). Pick each episode's idea
 first; props, tension and hook follow from it. **Every Chapter 2 line now has its command (C) and tension (T) written in;
 use them, or replace them with something equally strong, and keep all four elements.** New: a mouse arc runs from D36 to D46, starting in D36 and leaving in D46 (BIBLE.md, Chapter 2). Runtime is 61 s minimum, dread
 days included (D35, D47).
+**Review 2026-11-06:** D32's tension is now his own held phone-hunch (not a viewer test; D34 stays the week's dare)
+and its R lands on the things made for you, not the body. D31 is staged still (crouched over the tag), D33 in
+tightening laps. Every episode's R should include a line catching the viewer in the act (BIBLE "Build on what works").
