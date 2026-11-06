@@ -1,4 +1,6 @@
-# Day 15 - COMMENT episode: @nicolascechettoschuller (Instagram, day 14 reel): "Seja feliz" (0 likes)
+# Day 15 - COMMENT episode (RE-CUT 2026-11-06 on Justin's notes: card shows "Seja feliz (be happy)"; the gull steals the WHOLE cone and drops the same cone back at the end - he catches it and eats it; lightning now hits the sand next to him; the ending smile is a slow build into a big exaggerated grin with a push-in)
+
+# (original header): @nicolascechettoschuller (Instagram, day 14 reel): "Seja feliz" (0 likes)
 
 "Seja feliz" is Portuguese for "be happy" (the same commenter sent him to green hill on day 9). Tone: wholesome request ->
 warm and light; deadpan at the start (he does not know how), a real, earned smile at the end. New world: a sunny
@@ -40,5 +42,5 @@ brings a scoop back).
 4. Payoff: YES - he is visibly, really happy (laughing on the loop, sliding down the rainbow); button = the gull's scoop.
 5. Attention: YES - 3-s windows: read/brake -> out/car leaves -> run/beach -> smile fails -> finger smile -> ice cream -> gull steals -> cloud pops -> follows -> run/rumble -> zap -> sit/gust -> idea/kite -> yank -> through the cloud -> grin -> loop -> rainbow -> slide -> land -> gull -> eat -> ask. Tension: the cloud closing in + thunder + zap.
 6. Fans: YES - the personal rain cloud, the finger-pushed smile, the seagull stealing ice cream, the wavy mosaic sidewalk + granite dome with the cable car (for the commenter), sliding down a rainbow.
-7. Length: YES - 62.2 s (final cut; beats after 9 s land ~0.3-1.6 s earlier than the table, see episode.py timeline).
+7. Length: YES - 62.9 s after the re-cut (was 62.2 s (final cut; beats after 9 s land ~0.3-1.6 s earlier than the table, see episode.py timeline).
 8. Kid test: YES - the car brakes at 1.7 s and he's thrown out onto a new beach by 2.4 s.

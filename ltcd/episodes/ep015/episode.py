@@ -28,6 +28,7 @@ SUGAR = BX + 2600.0
 OX = BX - 540.0                                    # body offset on the beach
 TX = BX - 300.0                                    # take-off point (his centre x)
 RBX, RB = TX + 3600.0, 1500.0                      # the rainbow: centre on the ground, outer radius
+ZAPX = TX + 210.0                                  # lightning hits the sand right next to him
 TH_END = 0.49                                      # where he leaves the rainbow (angle)
 
 # ================================================================ timeline
@@ -46,8 +47,8 @@ T_CATCH = 26.5; T_LIFT = 27.1
 A1 = 29.7; C1 = 31.8; LP1 = 33.4; DR1 = 34.1; SL1 = 37.4; T_LAND = 38.0 + 1 / 60
 T_RAINOUT0 = 28.6; T_RAINOUT1 = 33.0; T_BOW0 = 32.6; T_BOW1 = 33.8
 T_STAND2 = 39.9
-T_GULL2 = 40.5; T_DROP = 41.3; T_PLOP = 41.75; T_LOOKUP = 42.05; T_REACH = 42.7; T_TAKE = 43.05; T_EAT = 43.6; T_SMILE = 44.0
-T_ASK = 45.3
+T_GULL2 = 40.5; T_DROP = 41.3; T_CATCH2 = 41.7; T_LOOKC2 = 42.0; T_EAT = 42.6; T_GONE = 42.9; T_SMILE = 43.4
+T_ASK = 46.0
 ASK_HOLD = 10.0
 
 # ================================================================ the flight path (relative to the take-off point)
@@ -86,7 +87,7 @@ def flying(t): return T_LIFT <= t < T_LAND
 S = M.Scene(x0=SEATX - 540)
 S.auto_blinks = False
 S.floor = False
-S.card("nicolascechettoschuller", "Seja feliz", "0", t0=0.3)
+S.card("nicolascechettoschuller", "Seja feliz (be happy)", "0", t0=0.3)
 SEATCAM = (SEATX, 900, 1.0)
 S.camkeys[0] = (0.0, SEATCAM, 0); S.cam = SEATCAM
 
@@ -155,6 +156,9 @@ def beach(cr, t):
                 u = (t - T_PEEL) - k * 0.12
                 if 0 < u < 1.0:
                     O.draw_smoke_puff(cr, CARX + 1000 + dx * 0.3 - 200 * u + 100 * k, FLOOR_Y - 100 - 140 * u, 100 + 160 * u, alpha=0.7 * (1 - u))
+    if t >= T_ZAP:                                              # the scorch mark stays
+        cr.save(); cr.translate(ZAPX, FLOOR_Y + 20); cr.scale(1, 0.25); cr.arc(0, 0, 110, 0, 2 * math.pi); cr.restore()
+        cr.set_source_rgba(0.25, 0.22, 0.2, 0.7); cr.fill()
     # the rainbow (rain + sun, once the cloud has rained itself out)
     sw = smooth(ramp(t, T_BOW0, T_BOW1))
     O.draw_rainbow(cr, RBX, FLOOR_Y, RB + 30, band=60, sweep=sw)
@@ -186,8 +190,7 @@ def cloud_layer(cr, t, p, ly):
             hx, hy = p["head"]; u = (t - T_DRIP) / 0.25
             O.draw_droplet(cr, hx + 10, lerp(y + 80, hy - 120, u), 14, color=(0.55, 0.75, 0.95))
         if T_ZAP <= t < T_ZAP + 0.22:                             # ZAP
-            hx, hy = p["rhand"]
-            O.draw_bolt(cr, x - 20, y + 70 * s, hx, hy - 110)
+            O.draw_bolt(cr, x - 20, y + 70 * s, ZAPX, FLOOR_Y - 10)
         if T_LIFT + 0.5 <= t < T_LIFT + 0.9:                      # punched out through the top of it
             L.burst_lines(cr, x, y - 80, (t - T_LIFT - 0.5) / 0.4, r0=160, r1=260, n=10, sid=77)
 S.prop(cloud_layer)
@@ -269,26 +272,27 @@ S.set(T_GRAB + 0.15, "lick", "deadpan", dur=0.08, ease="snap", mouth="blep", eye
 S.sfx(T_GRAB, "whoosh", 0.07, dur=0.4); S.sfx(T_GRAB + 0.05, "squeak", 0.04)
 S.set(T_STARE, "hold_cone", "dead_stare", dur=0.4, look=(0.6, -0.5), turn=0.2)
 S.set(T_STARE + 0.5, "hold_cone", "dead_stare", dur=0.3, look=(-0.9, -0.6), turn=-0.3)       # the gull, gone
-S.set(T_US, "hold_cone", "dead_stare", dur=0.3, look=(0.0, 0.0))
+S.set(T_US, "stand", "dead_stare", dur=0.3, look=(0.0, 0.0))
 S.blink(T_US + 0.4)
 # ---- the rain cloud
 S.sfx(T_CLOUD, "pop", 0.06); S.sfx(T_DRIP + 0.25, "drip", 0.06)
-S.set(T_UP, "hold_cone", "deadpan", dur=0.35, look=(0.0, -1.0), tilt=-0.05)
+S.set(T_UP, "stand", "deadpan", dur=0.35, look=(0.0, -1.0), tilt=-0.05)
 S.sfx(T_RAIN, "rain", 0.035, dur=T_LIFT - T_RAIN + 1.5)
-S.set(T_UP + 1.0, "hold_cone", "resigned", dur=0.3, look=(0.0, 0.0))
+S.set(T_UP + 1.0, "stand", "resigned", dur=0.3, look=(0.0, 0.0))
 S.camera(T_CLOUD, BX, 880, 0.85, 1.0)
 S.walk_to(T_STEPR, OX + 300, 0.6)
-S.set(T_UP2, "hold_cone", "deadpan", dur=0.3, look=(-0.3, -1.0))
-S.set(T_RUNL, "hold_cone", "deadpan", dur=0.12, run=1.0, look=(-0.9, 0.0), turn=-0.5, lean=-0.12)
+S.set(T_UP2, "stand", "deadpan", dur=0.3, look=(-0.3, -1.0))
+S.set(T_RUNL, "stand", "deadpan", dur=0.12, run=1.0, look=(-0.9, 0.0), turn=-0.5, lean=-0.12)
 S.xkeys.append((T_RUNL, TX - 540, 0.55, "linear")); S.x = TX - 540
-S.set(T_RUNL + 0.6, "hold_cone", "deadpan", dur=0.25, ease="back", look=(0.0, 0.0))
-S.set(T_UP3, "hold_cone", "holding_it", dur=0.35, look=(0.2, -1.0))
+S.set(T_RUNL + 0.6, "stand", "deadpan", dur=0.25, ease="back", look=(0.0, 0.0))
+S.set(T_UP3, "stand", "holding_it", dur=0.35, look=(0.2, -1.0))
 S.camera(T_RUNL, BX - 150, 880, 0.85, 0.8)
 S.sfx(T_RUMBLE, "kaboom", 0.09, dur=1.4); S.shake(T_RUMBLE, 0.4, 6)
-S.set(T_RUMBLE + 0.3, "hold_cone", "holding_it", dur=0.2, look=(0.2, -1.0), sweat=0.4)
+S.set(T_RUMBLE + 0.3, "stand", "holding_it", dur=0.2, look=(0.2, -1.0), sweat=0.4)
 S.flash(T_ZAP, 0.3); S.shake(T_ZAP, 0.4, 12)
 S.sfx(T_ZAP, "kaboom", 0.16, dur=0.9); S.sfx(T_ZAP + 0.05, "poof", 0.06)
-S.set(T_ZAP + 0.05, "hold_cone", "deadpan", dur=0.06, ease="snap", eyescale=1.3, curl_up=1.0, pupil=0.6, look=(0.0, 0.0))
+S.set(T_ZAP + 0.05, "stand", "deadpan", dur=0.06, ease="snap", eyescale=1.3, curl_up=1.0, pupil=0.6, hop=50, look=(0.6, 0.8), turn=0.3)
+S.set(T_ZAP + 0.3, "stand", "deadpan", dur=0.2, eyescale=1.2, curl_up=0.6, look=(0.6, 0.9), turn=0.3)
 S.set(T_AFTER, "stand", "resigned", dur=0.4, look=(0.5, 0.4))
 S.set(T_SIT - 0.1, "sit_floor", "resigned", dur=0.35, look=(0.0, 0.3), nowalk=1.0)
 S.sfx(T_SIT + 0.2, "thud", 0.05)
@@ -331,20 +335,30 @@ S.set(T_STAND2, "stand", "happy", dur=0.4, smile=0.7, look=(0.0, 0.0))
 # ---- the seagull pays him back
 S.set(T_GULL2 + 0.3, "stand", "happy", dur=0.3, smile=0.7, look=(0.7, -0.9), turn=0.2)
 S.sfx(T_GULL2 + 0.2, "whoosh", 0.04, dur=0.5)
-S.set(T_PLOP + 0.05, "stand", "deadpan", dur=0.08, ease="snap", stretch=-0.15, mouth="auto", smile=0.5, look=(0.0, 0.0))
-S.set(T_PLOP + 0.25, "stand", "deadpan", dur=0.25, ease="back", mouth="auto", smile=0.5, look=(0.0, 0.0))
-S.sfx(T_PLOP, "splat", 0.05)
-S.set(T_LOOKUP, "stand", "deadpan", dur=0.3, mouth="auto", smile=0.5, look=(0.0, -1.0))
-L.POSES["reach_top"] = dict(relb=(690, 640), rhand=(590, 495), rhand_t="grab")
-S.set(T_REACH, "reach_top", "deadpan", dur=0.3, mouth="auto", smile=0.5, look=(0.1, -1.0))
-L.POSES["eat"] = dict(relb=(650, 900), rhand=(590, 730), rhand_t="fist")
-S.set(T_TAKE + 0.1, "eat", "deadpan", dur=0.35, mouth="auto", smile=0.5, look=(0.2, 0.5))
-for k in range(2): S.sfx(T_EAT + 0.05 + 0.25 * k, "chomp", 0.04)
-S.set(T_EAT + 0.1, "stand", "deadpan", dur=0.3, mouth="auto", smile=0.3, look=(0.0, 0.0))
-S.set(T_SMILE, "stand", "happy", dur=0.5, eyes="happy", smile=0.8, look=(0.0, 0.0))
-S.set(T_SMILE + 0.9, "stand", "happy", dur=0.4, smile=0.55, look=(0.0, 0.0))
-S.camera(T_STAND2, LANDX + 60, 860, 0.9, 1.0)
-S.camera(T_LOOKUP, LANDX, 840, 1.0, 1.2)
+S.set(T_DROP - 0.1, "stand", "deadpan", dur=0.2, mouth="o", open=0.25, eyescale=1.2, look=(0.5, -1.0), turn=0.2)
+L.POSES["catch_up"] = dict(relb=(660, 720), rhand=(700, 600), rhand_t="grip")
+S.set(T_DROP + 0.1, "catch_up", "deadpan", dur=0.25, mouth="o", open=0.2, eyescale=1.15, look=(0.5, -1.0), turn=0.2)
+S.set(T_CATCH2 + 0.02, "catch_up", "deadpan", dur=0.08, ease="snap", stretch=-0.12, look=(0.5, -0.8), turn=0.2)
+S.sfx(T_CATCH2, "pat", 0.06)
+S.set(T_CATCH2 + 0.15, "hold_cone", "deadpan", dur=0.35, ease="back", look=(0.7, -0.5), turn=0.2)
+S.set(T_LOOKC2, "hold_cone", "deadpan", dur=0.3, mouth="auto", smile=0.4, lid=0.15, look=(0.0, 0.0))
+L.POSES["eat"] = dict(relb=(660, 880), rhand=(600, 750), rhand_t="grip")
+S.set(T_EAT, "eat", "deadpan", dur=0.25, mouth="o", open=0.9, look=(0.3, 0.5))
+S.sfx(T_EAT + 0.15, "chomp", 0.05); S.sfx(T_EAT + 0.4, "gulp", 0.06)
+S.set(T_GONE, "stand", "deadpan", dur=0.3, mouth="auto", smile=0.2, open=0.0, look=(0.0, 0.0), squash=0.3)
+S.set(T_GONE + 0.25, "stand", "deadpan", dur=0.25, mouth="auto", smile=0.3, look=(0.0, 0.0))
+# the payoff: a slow build into a huge, real grin
+S.set(T_SMILE, "stand", "happy", dur=0.8, mouth="auto", smile=0.75, lid=0.05, brow=0.3, look=(0.0, 0.0))
+S.set(T_SMILE + 0.9, "stand", "happy", dur=0.22, ease="back", mouth="grin", smile=1.0, open=0.8, mouth_w=1.35, eyes="happy",
+      brow=0.75, curl_up=0.45, stretch=0.2)
+S.set(T_SMILE + 1.2, "stand", "happy", dur=0.35, ease="back", mouth="grin", smile=1.0, open=0.75, mouth_w=1.35, eyes="happy",
+      brow=0.7, curl_up=0.3, stretch=0.0)
+S.sfx(T_SMILE + 0.9, "ding", 0.05)
+S.set(T_ASK - 0.45, "stand", "happy", dur=0.4, mouth="auto", smile=0.55, look=(0.0, 0.0))
+S.camera(T_STAND2, LANDX + 60, 850, 0.85, 1.0)
+S.camera(T_SMILE, LANDX, 760, 1.2, 0.9)
+S.camera(T_SMILE + 0.9, LANDX, 700, 1.45, 0.25, "out")
+S.camera(T_ASK - 0.5, LANDX, 840, 1.0, 0.5)
 S.t = T_ASK
 S.the_ask(T_ASK, hold=ASK_HOLD, keep=dict(mouth="auto", smile=0.45))
 
@@ -387,17 +401,18 @@ S.camkeys.sort(key=lambda k: k[0])
 
 # ================================================================ props he holds
 def cone_layer(cr, t, p, ly):
-    if ly != "front" or not (T_POP1 <= t < T_ZAP): return
+    if ly != "front": return
     hx, hy = p["rhand"]
-    if t < T_GRAB: O.draw_cone(cr, hx, hy - 40, 0.85)
-    else: O.draw_empty_cone(cr, hx, hy - 40, 0.85)
-    L.draw_grips(cr, p)
+    if T_POP1 <= t < T_GRAB: O.draw_cone(cr, hx, hy - 40, 0.85); L.draw_grips(cr, p)
+    if T_CATCH2 <= t < T_GONE:
+        sc = 0.85 * (1 - 0.6 * smooth(ramp(t, T_EAT + 0.1, T_GONE)))
+        O.draw_cone(cr, hx, hy - 40, sc); L.draw_grips(cr, p)
 S.prop(cone_layer)
 
 def zap_puff(cr, t, p, ly):
     if ly == "front" and T_ZAP <= t < T_ZAP + 0.6:
         u = (t - T_ZAP) / 0.6
-        O.draw_smoke_puff(cr, 690 + TX - 540 + 0, 820 - 120 * u, 70 + 90 * u, alpha=1 - u, dark=0.5)
+        O.draw_smoke_puff(cr, ZAPX, FLOOR_Y - 60 - 160 * u, 70 + 110 * u, alpha=1 - u, dark=0.5)
 S.prop(zap_puff)
 
 def kite_state(t):
@@ -454,42 +469,38 @@ def kite_layer(cr, t, p, ly):
 S.prop(kite_layer)
 
 # ================================================================ the seagull
+GS = 0.9
 def gull_state(t):
-    """(x, y, facing, carry) or None"""
-    if T_GULL <= t < T_GULLX:                                       # the theft
-        hx = BX + 70 + 150; hy = 790
-        a, b, c = (BX + 1500, 250), (BX + 400, 900), (BX - 1700, 150)
+    """(x, y, facing, has_cone) or None"""
+    if T_GULL <= t < T_GULLX:                                       # the theft: the whole cone, out of his hand
+        g = (BX + 70 - 15 * GS, 740 - 280 * GS)
+        a, c = (BX + 1500, 250), (BX - 1700, 150)
         if t < T_GRAB:
-            u = ramp(t, T_GULL, T_GRAB); q = lerp(a, (hx, hy - 150), smooth(u))
-            return (q[0], q[1] - 120 * math.sin(math.pi * u) * 0, -1, 0)
+            u = ramp(t, T_GULL, T_GRAB); q = lerp(a, g, smooth(u))
+            return (q[0], q[1], -1, False)
         u = ramp(t, T_GRAB, T_GULLX)
-        q = lerp((hx, hy - 150), c, u ** 1.3)
-        return (q[0], q[1], -1, 3)
-    if T_GULL2 <= t < T_DROP + 1.4:                                 # the payback
+        q = lerp(g, c, u ** 1.3)
+        return (q[0], q[1], -1, True)
+    if T_GULL2 <= t < T_DROP + 1.4:                                 # the payback: drops the same cone
+        g = DROP_G
         if t < T_DROP:
-            u = smooth(ramp(t, T_GULL2, T_DROP)); q = lerp((LANDX + 1500, 150), (LANDX + 60, 260), u)
-            return (q[0], q[1], -1, 1)
-        u = ramp(t, T_DROP, T_DROP + 1.4); q = lerp((LANDX + 60, 260), (LANDX - 1700, 0), u ** 1.4)
-        return (q[0], q[1], -1, 0)
+            u = smooth(ramp(t, T_GULL2, T_DROP)); q = lerp((LANDX + 1500, 120), g, u)
+            return (q[0], q[1], -1, True)
+        u = ramp(t, T_DROP, T_DROP + 1.4); q = lerp(g, (LANDX - 1700, 0), u ** 1.4)
+        return (q[0], q[1], -1, False)
     return None
+CATCH_H = (LANDX + 160, 600 - 40)                                  # where the cone ends up (his raised hand)
+DROP_G = (CATCH_H[0] + 15 * GS, 300)                                # gull centre when it lets go
 
 def gull_layer(cr, t, p, ly):
     if ly != "front": return
     g = gull_state(t)
-    if g: O.draw_seagull(cr, g[0], g[1], s=0.9, flap=math.sin(t * 16), facing=g[2], carry=g[3])
-    # the dropped scoop: falls, sits on his head, in his hand, eaten
-    if T_DROP <= t < T_EAT:
-        hx, hy = p["head"]
-        if t < T_PLOP:
-            u = ramp(t, T_DROP, T_PLOP)
-            x = lerp(LANDX + 60 - 155, hx, u); y = lerp(260 - 10, hy - 150, u * u)
-            O.draw_scoop(cr, x, y)
-        elif t < T_TAKE:
-            sq = 1 - 0.25 * trap(t, T_PLOP, T_PLOP + 0.06, T_PLOP + 0.3)
-            cr.save(); cr.translate(hx, hy - 150 + 40 * (1 - sq)); cr.scale(1 / sq, sq); O.draw_scoop(cr, 0, 0); cr.restore()
-        else:
-            rx, ry = p["rhand"]; O.draw_scoop(cr, rx + 5, ry - 45)
-            L.draw_grips(cr, p)
+    if g: O.draw_seagull(cr, g[0], g[1], s=GS, flap=math.sin(t * 16), facing=g[2], cone=g[3])
+    if T_DROP <= t < T_CATCH2:                                      # the cone falls, upright
+        u = ramp(t, T_DROP, T_CATCH2)
+        y0 = DROP_G[1] + 280 * GS
+        x = CATCH_H[0]; y = lerp(y0, CATCH_H[1], u * u)
+        O.draw_cone(cr, x, y, 0.85)
 S.prop(gull_layer)
 
 if __name__ == "__main__":

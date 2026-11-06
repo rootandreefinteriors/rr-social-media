@@ -3617,7 +3617,7 @@ def draw_beach_world(cr, t, x0, x1, prom_end, yb=FLOOR_Y, wind=0.0, sugar_x=None
     sketch_line(cr, [(a, yb), (b, yb)], 4, sid=15122, amp=1.0, alpha=0.4)
     cr.restore()
 
-def draw_seagull(cr, x, y, s=1.0, flap=0.0, facing=-1, carry=0, sid=15200):
+def draw_seagull(cr, x, y, s=1.0, flap=0.0, facing=-1, carry=0, sid=15200, cone=False):
     """a white seagull, centre (x, y); flap -1..1 wing angle; facing 1 = flying right, -1 = left; carry = scoops in its beak."""
     cr.save(); cr.translate(x, y); cr.scale(s * facing, s)             # drawn facing right (facing=1), mirrored for left
     for side in (-1, 1):                                                # wings
@@ -3633,6 +3633,10 @@ def draw_seagull(cr, x, y, s=1.0, flap=0.0, facing=-1, carry=0, sid=15200):
     sketch_poly(cr, [(-90, -5), (-150, -25), (-150, 20)], 4, sid=sid + 6, fill=(0.78, 0.80, 0.84), amp=0.2)
     for k in range(carry):
         sketch_circle(cr, 175 + 20 * k, -10 + 46 * k, 34, 4, sid=sid + 10 + k, fill=SCOOPS[k % 3])
+    if cone:                                                            # a whole ice-cream cone clutched in its feet
+        sketch_line(cr, [(-10, 30), (0, 60)], 4, sid=sid + 30, amp=0.2, color=(0.98, 0.65, 0.15))
+        sketch_line(cr, [(25, 30), (28, 60)], 4, sid=sid + 31, amp=0.2, color=(0.98, 0.65, 0.15))
+        draw_cone(cr, 15, 280, 0.94)
     cr.restore()
 
 SCOOPS = ((0.97, 0.72, 0.78), (0.74, 0.92, 0.8), (0.99, 0.95, 0.84))
