@@ -351,3 +351,16 @@ Post time is 9 PM ET. Day 13 went out a day late (missed slot); every later day 
 - **four elements:** C "Don't touch the glass." · R home, things left unsaid · E eerie → tender · T the crack creeps every time he speaks; stops just short of the edge
 - **cover:** 55.0 s, sitting on the floor beside the crack, keeping watch.
 - **script:** Hello? Is anyone out there? Don't touch the glass. ...That's not on my side. I checked. It's on yours. Every time I talk, it goes a little further. ...So I'll be careful. You have one of these. Not in glass. Something at home that broke years ago. A drawer that sticks. A light that flickers. Something someone said, that you never brought up again. For about a week, you saw it every day. Then you didn't. You didn't fix it. You just stopped seeing it. It's alright. I'll keep looking at this one. For you. Whatever's been cracked in your life the longest... you stopped seeing it about a week in.
+
+### D28 · settling · "Used to it" · 2026-11-07 (Sat) · 62.2 s
+- **idea:** you can get used to anything; nobody decides to stay, you just stop jumping.
+- **you:** strong. "The job that was only for a year. The town you were leaving after the summer. The ache you stopped mentioning."
+- **first seconds:** points straight at the crack across the screen: "Keep your eyes on it."
+- **prop:** the crack in OUR side of the glass, now ticking (arc 2/4). Named plainly for new viewers: "There's a crack in your screen."
+- **tension:** strong. Each tick is louder than the last and the crack creeps; first he flinches, then counts, then turns his back on it. The last, loudest tick runs it to the edge of the screen and he doesn't look.
+- **visual:** he walks away from the crack to the window while the day turns to dusk behind the glass.
+- **dread:** no. Unsettling line: "I'm not looking at it anymore. You noticed that."
+- **hook:** "You can get used to anything. That's how you end up staying." *Viewer-centric, unsettling.*
+- **four elements:** C "Keep your eyes on it." · R staying: a job, a town, an ache · E calm with something wrong underneath · T a tick that gets louder each time; he stops reacting and turns away
+- **cover:** 55.2 s, turned away toward the dusk window, the crack across the frame.
+- **script:** Hello? Is anyone out there? Keep your eyes on it. There's a crack in your screen. Right there. It ticks. ...Listen. The first time it did that, I jumped. The second time, I counted. By now it's just... part of the room. That's how it works on you, too. The job that was only for a year. The town you were leaving after the summer. The ache you stopped mentioning. Nobody decides to stay. You just stop jumping. I'm not looking at it anymore. You noticed that. You can get used to anything. That's how you end up staying.
