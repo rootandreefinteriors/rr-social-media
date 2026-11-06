@@ -338,3 +338,16 @@ Post time is 9 PM ET. Day 13 went out a day late (missed slot); every later day 
 - **four elements:** C "Look in the corner. Tell me she's there." · R people, songs, things you lose · E melancholy, eerie underneath · T the search, then the web letting go.
 - **cover:** 51.6 s, his hand on the thread under the torn web.
 - **script:** Hello? Is anyone out there? Look in the corner. Tell me she's there. ...She's not on the web. Not on the wall. ...Not on the floor. She got in. I don't know how. ...She got out. I don't know how either. I looked at that corner every day. I can't tell you the last time I actually saw her. You have one of those. Someone you used to talk to every day. A song you knew every word to. There was a last time for all of them. Nobody told you. Everything you have right now is already leaving. Slowly enough that it looks like staying. ...Oh. You never see anything leave. You just notice, one morning, that it's been gone for a while.
+
+### D27 · spreading · "Crack" · 2026-11-06 (Fri) · 63.8 s
+- **idea:** you stop seeing damage after about a week; you don't fix it, you just stop seeing it.
+- **you:** strong. "Something at home that broke years ago. A drawer that sticks. A light that flickers. Something someone said, that you never brought up again."
+- **first seconds:** the glass ticks on his last knock and a crack appears where his knuckles hit; he snatches his hand back: "Don't touch the glass."
+- **prop:** a hairline crack in OUR side of the glass (screen-space). Arc: appears D27, ticks D28, taped D29, gone D30.
+- **tension:** strong. It creeps with a dry crackle every time he speaks; will it reach the edge of the screen? It stops just short on the last word.
+- **visual:** a polished phone-screen hairline crack growing across the frame, in front of him; he sits down beside it to keep watch.
+- **dread:** no. Unsettling line: "That's not on my side. I checked. It's on yours."
+- **hook:** "Whatever's been cracked in your life the longest... you stopped seeing it about a week in." *Viewer-centric, unsettling.*
+- **four elements:** C "Don't touch the glass." · R home, things left unsaid · E eerie → tender · T the crack creeps every time he speaks; stops just short of the edge
+- **cover:** 55.0 s, sitting on the floor beside the crack, keeping watch.
+- **script:** Hello? Is anyone out there? Don't touch the glass. ...That's not on my side. I checked. It's on yours. Every time I talk, it goes a little further. ...So I'll be careful. You have one of these. Not in glass. Something at home that broke years ago. A drawer that sticks. A light that flickers. Something someone said, that you never brought up again. For about a week, you saw it every day. Then you didn't. You didn't fix it. You just stopped seeing it. It's alright. I'll keep looking at this one. For you. Whatever's been cracked in your life the longest... you stopped seeing it about a week in.
