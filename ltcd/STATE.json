@@ -1,28 +1,22 @@
 {
   "show": "let the comments decide",
-  "day": 15,
+  "day": 16,
   "last_episode": {
-    "day": 15,
-    "type": "comment",
-    "folder": "episodes/ep015",
-    "video": "videos/day015.mp4",
-    "posted_at": "2026-11-06T19:00:00-05:00 (scheduled)",
+    "day": 16,
+    "type": "waiting",
+    "folder": "episodes/ep016",
+    "video": "videos/day016.mp4",
+    "posted_at": "2026-11-07T19:00:00-05:00 (scheduled)",
     "buffer": {
-      "tiktok": "6aee29ae004e4879a70e4159",
-      "instagram": "6aee29b09214322f68a89ab6"
+      "tiktok": "6aef7813229bf05daf6c3476",
+      "instagram": "6aef781551492b796ef635d4"
     },
-    "comment": {
-      "platform": "instagram",
-      "username": "nicolascechettoschuller",
-      "text": "Seja feliz",
-      "likes": 0
-    },
-    "note": "Re-cut 2026-11-06 on Justin's notes (translation on the card, gull steals/returns the whole cone, bigger final grin)."
+    "note": "No qualifying comment on day 15 (only 'cool' on TikTok - a remark, not a request). He waits on the beach."
   },
   "ask_since_day": 15,
-  "waiting_streak": 0,
+  "waiting_streak": 1,
   "world": {
-    "location": "A SUNNY BEACH (day 15): O.draw_beach_world(cr, t, BX-6000, BX+12000, BX-1300, sugar_x=BX+2600) with BX=700000 (sky bands, sun, sea, granite dome + cable car in the bay, sand floor, palms + umbrellas; mosaic sidewalk left of BX-1300). The rainbow O.draw_rainbow(cr, TX+3600, FLOOR_Y, 1530, band=60) with TX=BX-300 stands behind him; he is at centre x ~705313 (body offset ~704773), the kite lying on the sand ~330 px to his right. S.floor=False. Next episode: he leaves to the right into a new world.",
+    "location": "A SUNNY BEACH (day 15): O.draw_beach_world(cr, t, BX-6000, BX+12000, BX-1300, sugar_x=BX+2600) with BX=700000 (sky bands, sun, sea, granite dome + cable car in the bay, sand floor, palms + umbrellas; mosaic sidewalk left of BX-1300). The rainbow O.draw_rainbow(cr, TX+3600, FLOOR_Y, 1530, band=60) with TX=BX-300 stands behind him; he is at centre x ~705313 (body offset ~704773), the kite lying on the sand ~330 px to his right. S.floor=False. Day 16 (waiting) was drawn here too: ltcd/episodes/ep016 (beach + rainbow + kite, body offset LANDX-540). Next comment episode: he leaves to the right into a new world.",
     "companions": [
       "none",
       "left behind in Mordor (never going back): the giant eagle"
@@ -48,7 +42,8 @@
       "went to the white party (day 14): a black car took him up an endless driveway to a mansion; the doors opened by themselves; passed the ALL WHITE dress code by being a white stick figure; ate one canape; the host (white suit, shades, gold chain) tapped him on the shoulder, staredown, pulled out a bottle of baby oil and chased him through the west wing doors; he slid under the champagne table, the host wiped out into the champagne tower; he escaped into the car; the party favor was a tiny baby oil, tossed out the window. Looks normal.",
       "was told to be happy (day 15, 'Seja feliz'): the black car dropped him at a sunny beach and left; he couldn't smile, a finger smile flopped, a seagull stole his whole ice-cream cone, a little rain cloud appeared over his head and followed him, lightning hit the sand next to him; he sat in the rain; the cloud's gust gave him the idea of a kite; it yanked him up through the cloud into the sun - he laughed for real, looped; the abandoned cloud rained out into a rainbow, the wind died, he slid down the rainbow and landed in the sand; the seagull dropped the same cone back, he caught it and ate it. Huge real grin. Looks normal."
     ],
-    "notes": "Day 13: deadpan / Family Guy timing; the kitten is never harmed. Every episode moves on to a new world."
+    "notes": "Day 13: deadpan / Family Guy timing; the kitten is never harmed. Every episode moves on to a new world.",
+    "sign_line": "I'LL WAIT HERE."
   },
   "used_comments": [
     "Beat Mc in hardcore mode:)",
@@ -139,6 +134,11 @@
       "day": 15,
       "type": "comment",
       "summary": "@nicolascechettoschuller (IG): 'Seja feliz' -> back seat, brakes; out at a beach (mosaic sidewalk), the car reverses away for good; forced smile sags; finger smile flops; ice cream - a seagull steals the whole cone; a rain cloud pops over his head, follows him, lightning hits the sand next to him; he sits in the rain; the cloud's gust -> kite -> yanked up through the cloud into the sun, smiles, laughs, loop-de-loop past the cable car; the cloud rains out -> rainbow, wind dies, he slides down the rainbow, lands in the sand; the gull drops the same cone back, he catches it and eats it, a huge real grin; ask on the beach with a small smile (62.9 s, re-cut)"
+    },
+    {
+      "day": 16,
+      "type": "waiting",
+      "summary": "no qualifying comment on day 15 (TikTok @hmmmmm_ooo0 'cool' is a remark, not a request; IG: none); on the beach, rainbow behind him, kite on the sand: holds the sign, turns it, writes I'LL WAIT HERE. under the message, dead stare (21 s)"
     }
   ]
 }
