@@ -1079,35 +1079,46 @@ def draw_baby(cr, x, y, ang=0.0, st=None, t=0.0, s=1.0):
         sketch_line(cr, [(mx - 7, my - 1), (mx, my + 3), (mx + 7, my - 1)], 3.5, sid=7531, amp=0.3)
     cr.restore()
 
-def draw_mom(cr, t, p, blink=0.0, s=0.92, alpha=1.0):
+def draw_mom(cr, t, p, blink=0.0, s=0.92, alpha=1.0, hair=None, dress=None, bun=True, phones=0.0):
     """draw a mom on his rig. p = a constrained pose (world coords, feet at FLOOR_Y). Long dark hair with a bun on top
     (covers his signature curl), a pink dress, otherwise the same line style. Drawn scaled s around her feet.
     p["back"] = 1 shows her from behind (all hair)."""
     if alpha < 0.01: return
+    HAIR_ = hair or HAIR; DRESS_ = dress or DRESS
     fx = (p["lfoot"][0] + p["rfoot"][0]) / 2
     cr.push_group()
     cr.save(); cr.translate(fx, FLOOR_Y); cr.scale(s, s); cr.translate(-fx, -FLOOR_Y)
     hx, hy = p["head"]; tl = p.get("tilt", 0.0); tn = p.get("turn", 0.0); bk = p.get("back", 0.0) > 0.5
     cr.save(); cr.translate(hx, hy); cr.rotate(tl)                          # hair behind the head
     sketch_poly(cr, [(-135 - 10 * tn, -20), (-120, -110), (-60, -150), (60, -150), (120, -110), (135 - 10 * tn, -20),
-                     (140, 120), (95, 170), (-95, 170), (-140, 120)], 6, sid=7601, fill=HAIR, amp=1.0)
+                     (140, 120), (95, 170), (-95, 170), (-140, 120)], 6, sid=7601, fill=HAIR_, amp=1.0)
     cr.restore()
     q = dict(p); q["larm_over"] = q["rarm_over"] = 1.0
     C.draw_guy(cr, t, q, blink)
     nx, ny = p["neck"]; hpx, hpy = p["hip"]
     sketch_poly(cr, [(nx - 26, ny + 22), (nx + 26, ny + 22), (hpx + 50, hpy - 40), (hpx + 105, hpy + 150), (hpx - 105, hpy + 150),
-                     (hpx - 50, hpy - 40)], 6, sid=7602, fill=DRESS, amp=1.0)
+                     (hpx - 50, hpy - 40)], 6, sid=7602, fill=DRESS_, amp=1.0)
     C.draw_arm_over(cr, q, "l"); C.draw_arm_over(cr, q, "r")
     cr.save(); cr.translate(hx, hy); cr.rotate(tl)                          # bangs (or the whole back of the head) + bun
     cr.save(); cr.arc(0, 0, C.HEAD_R + 2, 0, 2 * math.pi); cr.clip()
     if bk:
-        cr.rectangle(-200, -200, 400, 400); cr.set_source_rgb(*HAIR); cr.fill()
+        cr.rectangle(-200, -200, 400, 400); cr.set_source_rgb(*HAIR_); cr.fill()
     else:
         sketch_poly(cr, [(-140, -160), (140, -160), (140, -40), (60 + 30 * tn, -62), (10 * tn, -80), (-60 + 30 * tn, -60), (-140, -40)],
-                    6, sid=7603, fill=HAIR, amp=0.8)
+                    6, sid=7603, fill=HAIR_, amp=0.8)
     cr.restore()
     if bk: cr.arc(0, 0, C.HEAD_R, 0, 2 * math.pi); stroke_ink(cr, 7)
-    sketch_circle(cr, 8 * tn, -C.HEAD_R - 30, 52, 6, sid=7604, fill=HAIR)
+    if bun: sketch_circle(cr, 8 * tn, -C.HEAD_R - 30, 52, 6, sid=7604, fill=HAIR_)
+    if phones > 0.01 and not bk:                                         # headphones: 0 = round her neck, 1 = on her ears
+        ph = smooth(phones)
+        for sd in (-1, 1):
+            ex, ey = sd * (C.HEAD_R + 6) * (1 - 0.35 * (1 - ph)), lerp(C.HEAD_R + 70, 10, ph)
+            sketch_ellipse(cr, ex, ey, 26, 40, 5, sid=7606 + (sd > 0), fill=(0.20, 0.22, 0.28))
+        if ph > 0.5:
+            cr.arc(0, 10, C.HEAD_R + 12, math.pi * 1.02, math.pi * 1.98); stroke_ink(cr, 14); cr.new_path()
+            cr.arc(0, 10, C.HEAD_R + 12, math.pi * 1.02, math.pi * 1.98); cr.set_source_rgb(0.20, 0.22, 0.28); cr.set_line_width(7); cr.stroke()
+        else:
+            cr.arc(0, C.HEAD_R + 70, C.HEAD_R * 0.75, 0.15 * math.pi, 0.85 * math.pi); stroke_ink(cr, 14); cr.new_path()
     cr.restore()
     cr.restore()
     cr.pop_group_to_source(); cr.paint_with_alpha(alpha)
@@ -3725,3 +3736,237 @@ def draw_rainbow(cr, cx, yb, r, band=55, alpha=1.0, sweep=1.0):
     cr.new_path(); cr.arc(cx, yb, r, a0, a1); cr.set_source_rgb(*INK); cr.set_line_width(7); cr.stroke()
     cr.new_path(); cr.arc(cx, yb, r - 6 * band, a0, a1); cr.set_line_width(6); cr.stroke()
     cr.pop_group_to_source(); cr.paint_with_alpha(alpha)
+
+# ============================================================ day 17: a park at golden hour (girlfriend + baby)
+PARK_SKY = ((1.00, 0.86, 0.62), (0.99, 0.76, 0.58), (0.93, 0.66, 0.62), (0.78, 0.62, 0.72), (0.58, 0.60, 0.80))
+PAVING = (0.86, 0.80, 0.72)
+LAWN = (0.60, 0.78, 0.42)
+SKYLINE = (0.74, 0.58, 0.62)
+ROSE_RED = (0.88, 0.16, 0.24)
+BOOM = (0.26, 0.27, 0.32)
+SAUCE = (0.86, 0.26, 0.16)
+PASTA = (0.99, 0.88, 0.52)
+STORK_ORANGE = (0.98, 0.55, 0.18)
+CAP_BLUE = (0.30, 0.50, 0.86)
+
+def draw_park_world(cr, t, x0, x1, yb=FLOOR_Y, trees=(), lamps=()):
+    """a city park at golden hour, between x0 and x1: warm sky bands (solid, no far gradients), a low sun, a soft
+    skyline, a hedge, a lawn strip, round trees and lamp posts at the given x, and a paved path as the floor."""
+    vx0, vy0, vx1, vy1 = _visible(cr)
+    a, b = max(x0, vx0), min(x1, vx1)
+    if b <= a: return
+    cr.save(); cr.rectangle(x0, vy0 - 10, x1 - x0, vy1 - vy0 + 20); cr.clip()
+    top = min(vy0, yb - 300)
+    nb = int((yb - 300 - top) // 170) + 2
+    for k in range(nb):
+        y_lo = yb - 300 - k * 170 if k else yb + 10; y_hi = yb - 300 - (k + 1) * 170
+        cr.rectangle(a, y_hi, b - a, y_lo - y_hi + 1); cr.set_source_rgb(*PARK_SKY[min(len(PARK_SKY) - 1, k // 2)]); cr.fill()
+    sx = x0 + (x1 - x0) * 0.55                                          # the low sun
+    cr.arc(sx, yb - 760, 330, 0, 2 * math.pi); cr.set_source_rgba(1.0, 0.95, 0.70, 0.35); cr.fill()
+    sketch_circle(cr, sx, yb - 760, 200, 6, sid=19000, fill=(1.0, 0.90, 0.55))
+    for k in range(int((a - x0) // 1300) - 1, int((b - x0) // 1300) + 2):
+        draw_cloud(cr, x0 + k * 1300 + 400 + 30 * math.sin(t * 0.15 + k), yb - 1650 - 240 * (k % 3), s=0.8 + 0.2 * (k % 2))
+    for k in range(int((a - x0) // 260) - 1, int((b - x0) // 260) + 2):  # the skyline, far away
+        bx = x0 + k * 260
+        h = 360 + 260 * abs(math.sin(k * 1.7)) + 160 * (k % 3 == 0)
+        cr.rectangle(bx, yb - 300 - h, 230, h); cr.set_source_rgb(*SKYLINE); cr.fill()
+        for j in range(int(h // 90)):
+            for i in range(2):
+                cr.rectangle(bx + 40 + i * 100, yb - 300 - h + 40 + j * 90, 40, 40)
+        cr.set_source_rgba(1.0, 0.92, 0.70, 0.45); cr.fill()
+    cr.rectangle(a, yb - 420, b - a, 140); cr.set_source_rgb(0.42, 0.62, 0.34); cr.fill()      # hedge band
+    for k in range(int(a // 120) - 1, int(b // 120) + 2):
+        cr.arc(k * 120 + 60, yb - 420, 70, math.pi, 2 * math.pi); cr.set_source_rgb(0.42, 0.62, 0.34); cr.fill()
+    sketch_line(cr, [(x, yb - 420 - 40 * abs(math.sin(x / 120.0 * math.pi))) for x in range(int(a), int(b) + 60, 60)], 4, sid=19001, amp=0.6, alpha=0.5)
+    cr.rectangle(a, yb - 280, b - a, 120); cr.set_source_rgb(*LAWN); cr.fill()
+    for x in trees:
+        if a - 700 < x < b + 700: draw_tree(cr, x, yb - 190, t, h=1100, sid=19010 + int(x) % 7 * 10)
+    cr.rectangle(a, yb - 160, b - a, max(400, vy1 - yb + 200)); cr.set_source_rgb(*PAVING); cr.fill()    # the path
+    sketch_line(cr, [(a, yb - 160), (b, yb - 160)], 5, sid=19002, amp=0.8)
+    for k in range(int(a // 240) - 1, int(b // 240) + 2):
+        cr.move_to(k * 240, yb - 160); cr.line_to(k * 240 - 120, yb + 400)
+    cr.set_source_rgba(0.55, 0.48, 0.40, 0.35); cr.set_line_width(4); cr.stroke()
+    for x in lamps:
+        if a - 300 < x < b + 300: draw_lamp(cr, x, yb - 150, sid=19050 + int(x) % 5 * 3)
+    sketch_line(cr, [(a, yb), (b, yb)], 4, sid=19003, amp=1.0, alpha=0.3)
+    cr.restore()
+
+BENCH_SEAT = 230.0                     # the seat's top, above the floor
+def draw_bench(cr, x, yb=FLOOR_Y, w=820, sid=19100):
+    """a front-on park bench (behind whoever sits on it): backrest slats, seat, iron legs."""
+    wood = (0.70, 0.46, 0.28)
+    for sd in (-1, 1):
+        sketch_line(cr, [(x + sd * (w / 2 - 40), yb), (x + sd * (w / 2 - 40), yb - 560)], 14, sid=sid + (sd > 0), amp=0.3, color=(0.15, 0.15, 0.17))
+    for k in range(3):
+        y0 = yb - 560 + k * 88
+        sketch_rect(cr, x - w / 2, y0, x + w / 2, y0 + 62, 6, sid=sid + 3 + k, fill=wood)
+    sketch_rect(cr, x - w / 2 - 20, yb - BENCH_SEAT, x + w / 2 + 20, yb - BENCH_SEAT + 50, 6, sid=sid + 8, fill=lerp(wood, (0, 0, 0), 0.12))
+
+def draw_rose(cr, x, y, s=1.0, ang=0.0, petals=1.0, sid=19200):
+    """a single red rose held at its stem's middle (x, y); the bloom up and to the side by ang."""
+    cr.save(); cr.translate(x, y); cr.rotate(ang); cr.scale(s, s)
+    sketch_line(cr, [(0, 110), (4, 0), (-2, -150)], 7, sid=sid, amp=0.3, color=(0.20, 0.50, 0.22))
+    sketch_poly(cr, [(2, -40), (50, -70), (70, -40), (30, -30)], 4, sid=sid + 1, fill=(0.35, 0.65, 0.30), amp=0.3)
+    r = 46
+    if petals > 0.5:
+        sketch_circle(cr, -2, -185, r, 6, sid=sid + 2, fill=ROSE_RED)
+        sketch_line(cr, [(-26, -190), (-6, -205), (16, -185), (-2, -170), (-12, -186)], 4, sid=sid + 3, amp=0.3)
+    else:                                                                   # one petal left, drooping
+        sketch_poly(cr, [(-2, -150), (-38, -170), (-30, -205), (-4, -175)], 5, sid=sid + 4, fill=ROSE_RED, amp=0.3)
+    cr.restore()
+
+def draw_petal(cr, x, y, ang=0.0, s=1.0, sid=19210):
+    cr.save(); cr.translate(x, y); cr.rotate(ang); cr.scale(s, s)
+    sketch_poly(cr, [(-30, 0), (0, -20), (30, 0), (0, 22)], 4, sid=sid, fill=ROSE_RED, amp=0.3)
+    cr.restore()
+
+def draw_boombox(cr, x, y, s=1.0, t=0.0, play=0.0, sid=19300):
+    """a chunky boombox, centre (x, y): handle, two speakers that thump while it plays."""
+    cr.save(); cr.translate(x, y); cr.scale(s, s)
+    sketch_line(cr, [(-190, -95), (-170, -150), (170, -150), (190, -95)], 10, sid=sid, amp=0.3)
+    sketch_rect(cr, -260, -100, 260, 110, 7, sid=sid + 1, fill=BOOM)
+    sketch_rect(cr, -70, -70, 70, 10, 5, sid=sid + 2, fill=(0.55, 0.75, 0.85))
+    for k in range(5): sketch_rect(cr, -60 + k * 26, 30, -44 + k * 26, 50, 3, sid=sid + 3 + k, fill=(0.85, 0.85, 0.88))
+    th = play * (0.5 + 0.5 * math.sin(t * 2 * math.pi * 2.2)) ** 2
+    for sd in (-1, 1):
+        sketch_circle(cr, sd * 165, 5, 75 + 7 * th, 6, sid=sid + 10 + (sd > 0), fill=(0.16, 0.16, 0.20))
+        sketch_circle(cr, sd * 165, 5, 30 + 4 * th, 4, sid=sid + 12 + (sd > 0), fill=(0.45, 0.46, 0.52))
+    cr.restore()
+
+def draw_note(cr, x, y, s=1.0, alpha=1.0, double=False, sid=19320):
+    """a music note."""
+    cr.save(); cr.translate(x, y); cr.scale(s, s)
+    sketch_ellipse(cr, 0, 0, 22, 16, 4, rot=-0.4, sid=sid, fill=INK, alpha=alpha)
+    sketch_line(cr, [(18, -4), (18, -80)], 6, sid=sid + 1, amp=0.2, alpha=alpha)
+    if double:
+        sketch_ellipse(cr, 60, -10, 22, 16, 4, rot=-0.4, sid=sid + 2, fill=INK, alpha=alpha)
+        sketch_line(cr, [(78, -14), (78, -90)], 6, sid=sid + 3, amp=0.2, alpha=alpha)
+        sketch_line(cr, [(18, -80), (78, -90)], 12, sid=sid + 4, amp=0.2, alpha=alpha)
+    else:
+        sketch_line(cr, [(18, -80), (44, -56)], 6, sid=sid + 4, amp=0.2, alpha=alpha)
+    cr.restore()
+
+def draw_spaghetti(cr, x, y, s=1.0, t=0.0, steam=1.0, sid=19400):
+    """a plate of spaghetti and meatballs, plate centre (x, y)."""
+    cr.save(); cr.translate(x, y); cr.scale(s, s)
+    sketch_ellipse(cr, 0, 0, 190, 48, 6, sid=sid, fill=(1, 1, 1))
+    sketch_ellipse(cr, 0, -4, 140, 32, 3, sid=sid + 1, fill=None, alpha=0.4)
+    sketch_ellipse(cr, 0, -40, 125, 55, 5, sid=sid + 2, fill=PASTA)
+    for k in range(7):
+        a0 = k * 0.9
+        cr.move_to(-100 + 30 * k, -40 + 20 * math.sin(a0)); cr.curve_to(-60 + 30 * k, -90, -20 + 20 * k, 0, 40 + 10 * k, -50)
+    stroke_ink(cr, 3, alpha=0.6); cr.new_path()
+    sketch_ellipse(cr, 0, -70, 70, 26, 4, sid=sid + 3, fill=SAUCE)
+    for k, (mx, my) in enumerate(((-45, -82), (5, -96), (50, -78))):
+        sketch_circle(cr, mx, my, 26, 4, sid=sid + 5 + k, fill=(0.55, 0.30, 0.20))
+    cr.restore()
+    if steam > 0.01:
+        for k in range(3):
+            u = (t * 0.6 + k / 3) % 1.0
+            xx = x + (-50 + 50 * k) * s + 20 * math.sin(u * 6 + k)
+            pts = [(xx + 18 * math.sin(u * 5 + j * 0.9), y - (110 + 60 * j + 160 * u) * s) for j in range(4)]
+            sketch_line(cr, pts, 6, sid=sid + 20 + k, amp=0.3, color=(1, 1, 1), alpha=steam * math.sin(math.pi * u) * 0.9)
+
+def draw_noodle(cr, a, b, sag=60.0, sid=19450):
+    """one long noodle between two points (two mouths), sagging in the middle."""
+    mx, my = (a[0] + b[0]) / 2, max(a[1], b[1]) + sag
+    for w, col in ((13, INK), (7, PASTA)):
+        cr.move_to(*a); cr.curve_to(a[0] + (mx - a[0]) * 0.5, my, b[0] + (mx - b[0]) * 0.5, my, *b)
+        cr.set_source_rgb(*col); cr.set_line_width(w); cr.set_line_cap(cairo.LINE_CAP_ROUND); cr.stroke()
+
+def draw_book(cr, x, y, s=1.0, ang=0.0, sid=19470):
+    """an open book seen from the front (its cover toward us), centre (x, y)."""
+    cr.save(); cr.translate(x, y); cr.rotate(ang); cr.scale(s, s)
+    sketch_poly(cr, [(-90, -60), (0, -48), (90, -60), (90, 60), (0, 70), (-90, 60)], 5, sid=sid, fill=(0.36, 0.52, 0.72), amp=0.3)
+    sketch_line(cr, [(0, -48), (0, 70)], 4, sid=sid + 1, amp=0.2)
+    cr.restore()
+
+def draw_stork(cr, x, y, s=1.0, t=0.0, flap=0.0, facing=-1, mode="fly", beak=0.0, bundle=True, clip=0.0, look=0.0,
+               nod=0.0, cap_tip=0.0, sid=19500):
+    """a big delivery stork, body centre (x, y), drawn facing left (facing=-1) or right. mode "fly" (legs trailing,
+    wings flapping by flap -1..1) or "stand" (long legs down to y + 560*s, wings folded). It wears a blue delivery cap.
+    bundle: a swaddled baby hanging from its beak in a knotted cloth. clip 0..1 holds out a clipboard (SIGN HERE) with
+    its wing. look -1..1 (head lowered to read the clipboard), nod: a head bob."""
+    cr.save(); cr.translate(x, y); cr.scale(s * facing, s)             # drawn facing RIGHT locally
+    W = (1, 1, 1); BLK = (0.12, 0.12, 0.14)
+    # legs
+    if mode == "stand":
+        for k, dx in enumerate((-20, 40)):
+            sketch_line(cr, [(dx, 60), (dx + 10, 300), (dx, 560)], 8, sid=sid + k, amp=0.3, color=STORK_ORANGE)
+            sketch_line(cr, [(dx - 40, 560), (dx + 60, 560)], 8, sid=sid + 2 + k, amp=0.2, color=STORK_ORANGE)
+    else:
+        for k, dy in enumerate((20, 50)):
+            sketch_line(cr, [(-120, dy), (-380, dy + 40), (-470, dy + 30)], 8, sid=sid + k, amp=0.3, color=STORK_ORANGE)
+    # far wing
+    if mode == "fly":
+        _stork_wing(cr, -60 - 330 * math.sin(0.5 + flap * 0.9), (0.88, 0.89, 0.92), sid + 5, x0=-40)
+    # tail + body
+    sketch_poly(cr, [(-150, -10), (-260, -40), (-250, 30), (-150, 30)], 5, sid=sid + 7, fill=BLK, amp=0.3)
+    sketch_ellipse(cr, 0, 0, 175, 95, 6, sid=sid + 8, fill=W)
+    if mode == "stand":                                                    # folded wing
+        sketch_poly(cr, [(-120, -40), (60, -60), (110, 0), (-40, 60), (-200, 40)], 5, sid=sid + 9, fill=(0.92, 0.93, 0.95), amp=0.3)
+        sketch_poly(cr, [(-120, -10), (-200, 40), (-60, 50)], 5, sid=sid + 10, fill=BLK, amp=0.3)
+    # neck + head
+    hx, hy = 150 + 30 * look, -250 + 70 * look + 18 * nod
+    cr.move_to(110, -40); cr.curve_to(170, -120, 120, -180, hx, hy)
+    cr.set_source_rgb(*INK); cr.set_line_width(58); cr.set_line_cap(cairo.LINE_CAP_ROUND); cr.stroke()
+    cr.move_to(110, -40); cr.curve_to(170, -120, 120, -180, hx, hy)
+    cr.set_source_rgb(*W); cr.set_line_width(44); cr.stroke()
+    sketch_circle(cr, hx, hy, 58, 6, sid=sid + 11, fill=W)
+    ba = 0.25 + 0.5 * look                                                 # beak angle (down when reading)
+    bx, by = hx + 50 * math.cos(ba), hy + 50 * math.sin(ba)
+    tipx, tipy = bx + 210 * math.cos(ba), by + 210 * math.sin(ba)
+    nx, ny = -math.sin(ba), math.cos(ba)
+    sketch_poly(cr, [(bx - 12 * nx, by - 12 * ny), (tipx, tipy), (bx + 14 * nx, by + 14 * ny)], 5, sid=sid + 12, fill=STORK_ORANGE, amp=0.2)
+    if beak > 0.05:
+        sketch_line(cr, [(bx, by), (tipx + 20 * nx * beak, tipy + 60 * ny * beak)], 5, sid=sid + 13, amp=0.2)
+    cr.arc(hx + 18, hy - 16, 10, 0, 2 * math.pi); fill_ink(cr); cr.new_path()
+    sketch_line(cr, [(hx + 2, hy - 36), (hx + 36, hy - 32)], 5, sid=sid + 14, amp=0.2)
+    # the delivery cap
+    cr.save(); cr.translate(hx, hy - 40); cr.rotate(-0.15 - 0.6 * cap_tip)
+    sketch_poly(cr, [(-58, 0), (-50, -60), (40, -62), (56, 0)], 5, sid=sid + 15, fill=CAP_BLUE, amp=0.3)
+    sketch_poly(cr, [(40, 0), (110, 8), (104, 22), (40, 16)], 5, sid=sid + 16, fill=lerp(CAP_BLUE, (0, 0, 0), 0.2), amp=0.2)
+    cr.restore()
+    # the bundle in the beak (a cloth sling knotted at the tip)
+    if bundle:
+        kx, ky = bx + 150 * math.cos(ba), by + 150 * math.sin(ba)
+        sketch_line(cr, [(kx, ky), (kx - 60, ky + 100)], 6, sid=sid + 17, amp=0.3)
+        sketch_line(cr, [(kx, ky), (kx + 60, ky + 100)], 6, sid=sid + 18, amp=0.3)
+        sketch_circle(cr, kx, ky, 16, 4, sid=sid + 19, fill=(1, 1, 1))
+    # near wing (fly) / clipboard wing (stand)
+    if mode == "fly":
+        _stork_wing(cr, -40 - 360 * math.sin(0.4 + flap * 0.9), W, sid + 20, x0=0)
+    cr.restore()
+
+def _stork_wing(cr, tipy, col, sid, x0=0.0):
+    """one flapping wing seen from the side: a long rounded blade from the shoulder to tipy (up < 0 < down),
+    white with black flight feathers on the outer third."""
+    k = tipy
+    root = [(x0 - 90, -10), (x0 + 90, -10)]
+    pts = [root[0], (x0 - 150, k * 0.45), (x0 - 130, k * 0.85), (x0 - 40, k), (x0 + 50, k * 0.95), (x0 + 70, k * 0.5), root[1]]
+    sketch_poly(cr, pts, 6, sid=sid, fill=col, amp=0.4)
+    tipp = [(x0 - 142, k * 0.66), (x0 - 130, k * 0.85), (x0 - 40, k), (x0 + 50, k * 0.95), (x0 + 62, k * 0.66)]
+    sketch_poly(cr, tipp, 5, sid=sid + 1, fill=(0.12, 0.12, 0.14), amp=0.3)
+
+def stork_bundle_pt(x, y, s=1.0, facing=-1, look=0.0, nod=0.0):
+    """world position of the baby bundle that hangs from the stork's beak (centre of the swaddle)."""
+    hx, hy = 150 + 30 * look, -250 + 70 * look + 18 * nod
+    ba = 0.25 + 0.5 * look
+    bx, by = hx + 50 * math.cos(ba), hy + 50 * math.sin(ba)
+    kx, ky = bx + 150 * math.cos(ba), by + 150 * math.sin(ba)
+    return (x + facing * kx * s, y + (ky + 165) * s)
+
+def draw_delivery_board(cr, x, y, s=1.0, ang=0.0, signed=0.0, sid=19600):
+    """the stork's clipboard: SIGN HERE + an X line; signed 0..1 draws his scribble."""
+    cr.save(); cr.translate(x, y); cr.rotate(ang); cr.scale(s, s)
+    sketch_rect(cr, -150, -190, 150, 190, 6, sid=sid, fill=(0.80, 0.62, 0.42))
+    sketch_rect(cr, -125, -160, 125, 170, 4, sid=sid + 1, fill=(1, 1, 1))
+    sketch_rect(cr, -50, -205, 50, -170, 4, sid=sid + 2, fill=(0.7, 0.7, 0.74))
+    draw_text(cr, "SIGN", 0, -95, 64, color=(30, 30, 34))
+    draw_text(cr, "HERE", 0, -25, 64, color=(30, 30, 34))
+    draw_text(cr, "X", -95, 85, 50, color=(30, 30, 34))
+    sketch_line(cr, [(-70, 105), (100, 105)], 4, sid=sid + 3, amp=0.2)
+    if signed > 0.01:
+        pts = [(-60 + 160 * u, 85 + 18 * math.sin(u * 30) - 10 * u) for u in [i / 30 * signed for i in range(31)]]
+        sketch_line(cr, pts, 4, sid=sid + 4, amp=0.2, color=(0.15, 0.25, 0.65))
+    cr.restore()
