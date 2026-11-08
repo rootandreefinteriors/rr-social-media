@@ -14,21 +14,22 @@ pans to the TV: TELL ME WHAT TO DO NEXT IN THE COMMENTS (the ask). Comedic clich
 | 20.4 | MONTAGE (soft music, hard cuts ~2 s): SOLD sign slams into the lawn of a little house / slow dance in the kitchen / family photo on the fridge / cuddled on the couch. | Rom-com montage. |
 | 27.6 | Record scratch. | The turn. |
 | 27.8 | Video games on the couch; she walks in bouncing the crying baby, stares, taps her foot, stands in front of the TV - he leans around her. She storms off. | Breakup trope 1 (subtle) + setup for the ending. |
-| 31.6 | Thermostat war: up, down, up, down, faster - the dial snaps off. | Trope 2. |
-| 35.0 | Tape line down the middle of the couch, arms crossed, heads turned away. | Trope 3. |
-| 37.6 | The argument: her angry scribble bubbles get bigger and bigger; his bubble: "..." | Trope 4 (obvious). |
-| 41.0 | "WE NEED TO TALK." He gulps. | The end of the relationship. |
-| 42.8 | She leaves with a suitcase and the baby. SLAM. A picture frame falls off the wall. | She takes the baby and leaves. |
-| 45.6 | The door opens again: she drags the couch out. SLAM. Only the TV and the console are left. | Button on the divorce trope. |
-| 48.0 | He looks at the TV, at us. Shrug. Sits on the floor, picks up the controller. | Callback. |
-| 50.8 | Pan to the TV: TELL ME WHAT TO DO NEXT IN THE COMMENTS. Hold. | The ask (on the TV). |
+| 31.6 | (Justin's note: thermostat + tape didn't read) THE DISHES: a leaning tower of dirty plates in the sink; she points at it; he walks in, looks at it, looks at her... and puts one more plate on top. It wobbles. She steams. | Trope 2 (chores). |
+| 34.8 | THE VACUUM: he's gaming; she vacuums right in front of the TV, back and forth; he leans left, right; the cord yanks the TV plug - black screen. He's mad (vein); she glares back. | Trope 3 (his side). |
+| 38.0 | 3 AM, the final straw: the room is dark, only her two angry eyes; the clock says 3:00; the door creaks, he tiptoes in... CLICK - the lamp: she's on the couch with the baby. He freezes mid-tiptoe, sheepish grin. | The final straw. |
+| 42.6 | The argument: her angry scribble bubbles get bigger and bigger; his bubble: "..." | Trope 4 (obvious). |
+| 46.0 | "WE NEED TO TALK." He gulps. | The end of the relationship. |
+| 47.8 | She leaves with a suitcase and the baby. SLAM. A picture frame falls off the wall. | She takes the baby and leaves. |
+| 50.6 | The door opens again: she drags the couch out. SLAM. Only the TV and the console are left. | Button on the divorce trope. |
+| 53.0 | He looks at the TV, at us. Shrug. Sits on the floor, picks up the controller. | Callback. |
+| 56.3 | Pan to the TV: TELL ME WHAT TO DO NEXT IN THE COMMENTS. Hold. | The ask (on the TV). |
 
 ## Gate checklist
 1. Never go back: YES - beach for 3 s, then park -> his new house; he ends alone in the house.
-2. Cause and effect: YES - rose fails -> spaghetti works -> kiss -> stork -> family -> montage -> the gaming (neglect) -> fights escalate -> we need to talk -> she leaves with the baby -> takes the couch -> all he has left is the game -> he plays -> the ask on the screen.
-3. Consistency: YES - the girlfriend and the baby leave for good; the couch leaves; the TV/console stay; the stork leaves; he looks normal.
+2. Cause and effect: YES - rose fails -> spaghetti works -> kiss -> stork -> family -> montage -> the gaming (neglect) -> dishes -> vacuum -> 3 AM -> fights escalate -> we need to talk -> she leaves with the baby -> takes the couch -> all he has left is the game -> he plays -> the ask on the screen.
+3. Consistency: YES - the girlfriend and the baby leave for good; the couch leaves; the TV/console stay (plugged back in by the time he plays); the stork leaves; he looks normal.
 4. Payoff: YES - he gets a girlfriend and a baby (the request), then the cliche breakup writes them out; final button = he shrugs and games.
 5. Attention: YES - a cut or a new gag every 1.5-3 s through the montages; tension: the argument bubbles growing, the slam.
-6. Fans: YES - spaghetti kiss, the stork SIGN HERE, the SOLD sign, the montage slow dance, record scratch, thermostat war, tape down the couch, "we need to talk", she takes the couch.
-7. Length: ~61 s.
+6. Fans: YES - spaghetti kiss, the stork SIGN HERE, the SOLD sign, the montage slow dance, record scratch, the gamer boyfriend, the sink full of dishes, vacuuming in front of the TV, coming home at 3 AM to the lamp click, "we need to talk", she takes the couch.
+7. Length: 66.0 s.
 8. Kid test: YES - running by 2 s, cut at 3 s.

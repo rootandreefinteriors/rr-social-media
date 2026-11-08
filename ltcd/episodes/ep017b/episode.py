@@ -1,7 +1,7 @@
 """Day 17 ALT (Justin's direction): @elijah_paradise "Get a girlfriend and have a baby" (Instagram, day 16 reel, 1 like).
 Rom-com speedrun: rose fails, the spaghetti kiss, the delivery stork, a montage (SOLD sign, slow dance, fridge photo,
-couch cuddle), record scratch, the breakup tropes (he games while she bounces the crying baby; thermostat war; tape down
-the couch; the argument; WE NEED TO TALK), she leaves with the baby - and comes back for the couch. He shrugs, sits down,
+couch cuddle), record scratch, the breakup tropes (he games while she bounces the crying baby; the sink full of dishes;
+she vacuums in front of his game; 3 AM, she waits up with the baby; the argument; WE NEED TO TALK), she leaves with the baby - and comes back for the couch. He shrugs, sits down,
 plays video games again; the camera pushes into the TV: TELL ME WHAT TO DO NEXT IN THE COMMENTS. See BEATS.md.
 """
 import sys, os, math
@@ -28,7 +28,7 @@ HX0 = PX - 200.0; GXS = PX + 200.0
 SKX, SKS = PX - 820.0, 1.2                          # the stork lands LEFT of him, facing right
 EX = 1100000.0                                      # the house, outside
 IX = 1300000.0                                      # the house, inside
-COUCHX = IX - 150.0; TVX = IX + 650.0; DOORX = IX - 900.0; FRIDGEX = IX + 1600.0; THX, THY = IX + 1090.0, 860.0
+COUCHX = IX - 150.0; TVX = IX + 650.0; DOORX = IX - 900.0; FRIDGEX = IX + 1600.0; SINKX = IX + 1240.0; LAMPX = IX + 230.0; CLOCK = (IX - 150.0, 560.0); OUTLET = (IX + 1010.0, FLOOR_Y - 230.0)
 SEAT_L, SEAT_R = COUCHX - 190.0, COUCHX + 190.0
 
 # ================================================================ timeline
@@ -48,16 +48,17 @@ M3 = 24.2; T_STICK = 24.75
 M4 = 26.0
 T_SCRATCH = 27.6
 D1 = 27.8; G_IN0, G_IN1 = 27.9, 28.9; T_STARE = 29.1; T_BLOCK0, T_BLOCK1 = 30.1, 30.5; T_LEANA = 30.65; T_STORM0, T_STORM1 = 31.0, 31.55
-D2 = 31.6; THERMO = [(31.9, "g", 74), (32.45, "h", 64), (32.9, "g", 78), (33.3, "h", 60), (33.6, "g", 82), (33.85, "h", 58)]
-T_POPOFF = 34.15; T_US2 = 34.6
-D3 = 35.0; T_TAPE0, T_TAPE1 = 35.15, 35.8; T_CROSS = 36.0; T_AWAY = 36.3
-D4 = 37.6; ARG = [(37.85, 0.35), (38.5, 0.6), (39.15, 1.0)]; T_DOTS = 39.9
-D5 = 41.0; T_GULP = 41.7
-L1 = 42.8; GL0, GL1 = 43.0, 44.05; T_DOOR1 = 43.7; T_SLAM1 = 44.35; T_FRAME = 44.6
-L2 = 45.6; T_DOOR2 = 45.6; GR0, GR1 = 45.75, 46.3; T_GRAB = 46.4; GD0, GD1 = 46.55, 47.45; T_SLAM2 = 47.75
-T_LOOKTV = 48.1; T_US3 = 48.6; T_SHRUG = 48.9; T_WALK = 49.65; T_FLOOR = 50.35; T_PAD = 50.7
-T_PUSH = 51.3; T_TEXT = 51.9
-T_END = 61.0
+D2 = 31.6; HW0, HW1 = 31.7, 32.5; T_LOOKP = 32.6; T_LOOKG = 33.0; T_ADD = 33.4; T_LEAVE = 33.95; T_STEAM = 34.1
+D3 = 34.8; VAC0 = 34.95; T_YANK = 36.6; T_MAD = 36.85
+D3B = 38.0; T_DOOR0 = 38.5; SN0, SN1 = 38.65, 40.0; T_LAMP = 40.2; T_GRIN = 41.4
+SH = 5.0
+D4 = 37.6 + SH; ARG = [(37.85 + SH, 0.35), (38.5 + SH, 0.6), (39.15 + SH, 1.0)]; T_DOTS = 39.9 + SH
+D5 = 41.0 + SH; T_GULP = 41.7 + SH
+L1 = 42.8 + SH; GL0, GL1 = 43.0 + SH, 44.05 + SH; T_DOOR1 = 43.7 + SH; T_SLAM1 = 44.35 + SH; T_FRAME = 44.6 + SH
+L2 = 45.6 + SH; T_DOOR2 = 45.6 + SH; GR0, GR1 = 45.75 + SH, 46.3 + SH; T_GRAB = 46.4 + SH; GD0, GD1 = 46.55 + SH, 47.45 + SH; T_SLAM2 = 47.75 + SH
+T_LOOKTV = 48.1 + SH; T_US3 = 48.6 + SH; T_SHRUG = 48.9 + SH; T_WALK = 49.65 + SH; T_FLOOR = 50.35 + SH; T_PAD = 50.7 + SH
+T_PUSH = 51.3 + SH; T_TEXT = 51.9 + SH
+T_END = 61.0 + SH
 
 # ================================================================ scene
 S = M.Scene(x0=BOX)
@@ -67,9 +68,12 @@ S.card("elijah_paradise", "Get a girlfriend and have a baby", "1", t0=0.3)
 CAM_B = (LANDX, 880, 1.0)
 S.camkeys[0] = (0.0, CAM_B, 0); S.cam = CAM_B
 
-def couch_tape(t):
-    if t < D3: return 0.0
-    return smooth(ramp(t, T_TAPE0, T_TAPE1))
+def couch_tape(t): return 0.0
+def door_open3(t): return smooth(ramp(t, T_DOOR0 - 0.2, T_DOOR0 + 0.1)) * (1 - smooth(ramp(t, SN1, SN1 + 0.3))) if D3B <= t < D4 else 0.0
+def tv_mode(t):
+    if t >= T_TEXT: return "text"
+    if T_YANK + 0.05 <= t < D4: return "off"
+    return "game"
 def couch_x(t):
     if t >= T_SLAM2 - 0.05: return None
     if t >= GD0: return COUCHX + (GX.at(t) - (COUCHX - 610))
@@ -95,28 +99,33 @@ def world(cr, t):
         O.draw_picket_fence(cr, EX - 1500, EX - 300, FLOOR_Y - 140); O.draw_picket_fence(cr, EX + 300, EX + 1500, FLOOR_Y - 140)
         O.draw_sold_sign(cr, EX + 620, FLOOR_Y - 30, drop=smooth(ramp(t, T_SOLD - 0.25, T_SOLD)) if t < T_SOLD else 1.0)
         return
-    O.draw_room(cr, t, IX - 3000, IX + 3000, door_x=DOORX, door_open=door_open(t), frame_x=IX - 450,
+    O.draw_room(cr, t, IX - 3000, IX + 3000, door_x=DOORX, door_open=max(door_open(t), door_open3(t)), frame_x=IX - 450,
                 frame_fall=smooth(ramp(t, T_FRAME, T_FRAME + 0.3)) if t >= T_FRAME else 0.0, win_x=IX + 250 if False else None,
                 kitchen_x=IX + 1000)
     if t < D2 - FR or t >= D3 - FR:
         cx = couch_x(t)
+        if D3B - FR <= t < D4 - FR or (t >= D4 - FR and couch_x(t) is not None and t < L2): pass
         if cx is not None:
             if L2 <= t < T_SLAM2 + 0.1:
                 cr.save(); cr.rectangle(DOORX - 200, -9000, 99999, 99999); cr.clip()
             O.draw_couch(cr, cx, FLOOR_Y - 10, tape=couch_tape(t))
             if L2 <= t < T_SLAM2 + 0.1: cr.restore()
-    O.draw_tv(cr, TVX, FLOOR_Y - 10, t, screen="text" if t >= T_TEXT else "game")
-    O.draw_thermostat(cr, THX, THY, val=thermo_val(t), off=thermo_off(t), t=t)
+    O.draw_wall_clock(cr, *CLOCK, hour=3.0 if D3B - FR <= t < D4 - FR else 7.0, minute=0.0 if D3B - FR <= t < D4 - FR else 20.0)
+    O.draw_side_lamp(cr, LAMPX, FLOOR_Y - 10, on=1.0 if (t >= T_LAMP or t < D3B - FR) else 0.0, glow=1.0 if T_LAMP <= t < D4 - FR else 0.0)
+    O.draw_outlet(cr, *OUTLET)
+    plugged = not (T_YANK <= t < D4)
+    if plugged: sketch_line(cr, [(TVX + 280, FLOOR_Y - 330), (OUTLET[0] - 10, FLOOR_Y - 250), (OUTLET[0], OUTLET[1])], 5, sid=20200, amp=0.4)
+    else:
+        u = min(1.0, (t - T_YANK) / 0.3)
+        sketch_line(cr, [(TVX + 280, FLOOR_Y - 330), (OUTLET[0] - 60 * u, FLOOR_Y - 150 + 80 * u)], 5, sid=20200, amp=0.4)
+    if D3 - FR <= t < D3B - FR:                                    # the vacuum cord, from the outlet
+        q = g_pose(t); vb = vac_base(q)
+        sketch_line(cr, [(OUTLET[0], OUTLET[1] + 20), (OUTLET[0] - 40, FLOOR_Y - 40), (vb + 60, FLOOR_Y - 60)], 4, sid=20201, amp=0.4, color=(0.2, 0.2, 0.25))
+    O.draw_tv(cr, TVX, FLOOR_Y - 10, t, screen=tv_mode(t))
+    O.draw_sink_counter(cr, SINKX, FLOOR_Y - 10, n=24, extra=1 if t >= T_ADD + 0.1 else 0,
+                        wobble=(1 - ramp(t, T_ADD + 0.1, T_ADD + 1.1)) if T_ADD + 0.1 <= t < T_ADD + 1.1 else 0.0, t=t)
     O.draw_fridge(cr, FRIDGEX, FLOOR_Y - 10, photo=1.0 if t >= T_STICK + 0.05 else 0.0)
 S.background(world)
-
-def thermo_val(t):
-    v = 70.0
-    for tt, who, val in THERMO:
-        if t >= tt: v = lerp(v, val, smooth(ramp(t, tt, tt + 0.15)))
-    return v
-def thermo_off(t):
-    return ramp(t, T_POPOFF, T_POPOFF + 1.0, "linear") if t >= T_POPOFF else 0.0
 
 # ================================================================ poses
 def P(name, **kw): L.POSES[name] = kw
@@ -131,7 +140,9 @@ L.POSES["sit_cross"] = dict(L.POSES["sit_bench"], lelb=(470, 1060), lhand=(605, 
 L.POSES["sit_sign"] = dict(L.POSES["sit_bench"], lelb=(410, 1000), lhand=(330, 1060), lhand_t="none")
 L.POSES["floor_pad"] = dict(L.POSES["sit_floor"], lelb=(470, 1210), lhand=(515, 1250), relb=(610, 1210), rhand=(570, 1250), lhand_t="grip", rhand_t="grip")
 L.POSES["dance"] = dict(lelb=(470, 980), lhand=(560, 960), relb=(640, 960), rhand=(700, 980))
-L.POSES["thermo_up"] = dict(relb=(670, 820), rhand=(760, 730), rhand_t="point")
+L.POSES["plate_carry"] = dict(relb=(640, 980), rhand=(700, 950), rhand_t="grip")
+L.POSES["plate_up"] = dict(relb=(700, 760), rhand=(760, 560), rhand_t="grip")
+L.POSES["g_vac"] = dict(lelb=(600, 960), lhand=(680, 960), lhand_t="grip", relb=(630, 980), rhand=(700, 990), rhand_t="grip")
 L.POSES["cross_stand"] = dict(L.POSES["arms_crossed"])
 L.POSES["shrug2"] = dict(L.POSES["shrug"])
 L.POSES["g_read"] = dict(lelb=(470, 960), lhand=(510, 885), relb=(610, 960), rhand=(570, 885), lhand_t="grip", rhand_t="grip")
@@ -274,7 +285,7 @@ S.set(T_SCRATCH, "sit_bench", "dead_stare", dur=0.08, ease="snap", eyescale=1.15
 S.cut(D1 - FR, cam=(IX + 180, 880, 0.8), x=SEAT_L - 540)
 S.set(D1 - FR, "sit_pad", "deadpan", dur=0.0, turn=1.0, look=(1.0, 0.0), lid=0.2, smile=0.15)
 def mash(tt, p):
-    for a, b in ((D1, T_SCRATCH + 999 if False else D2 - FR), (T_PAD, T_END)):
+    for a, b in ((D1, D2 - FR), (D3, T_YANK), (T_PAD, T_END)):
         if a <= tt < b:
             k = 1 if not (T_BLOCK1 <= tt < T_STORM0) else 0.3
             for h in ("lhand", "rhand"): p[h] = (p[h][0] + 5 * math.sin(tt * 47 + (h == "lhand")), p[h][1] + 7 * math.sin(tt * 38) * k)
@@ -284,26 +295,40 @@ for k in range(10): S.sfx(D1 + 0.2 + k * 0.33, "tick", 0.02)
 S.set(T_STARE + 0.4, "sit_pad", "deadpan", dur=0.3, turn=1.0, look=(1.0, 0.0), lid=0.3)
 S.set(T_BLOCK1, "sit_pad", "deadpan", dur=0.25, turn=0.9, look=(0.9, 0.0), lean=0.0, head=(650, 760), neck=(590, 878), tilt=0.25)   # leans around her
 S.set(T_STORM1 + 0.1, "sit_pad", "deadpan", dur=0.3, turn=1.0, look=(1.0, 0.0), lid=0.2)
-# ---- D2 thermostat war
-S.cut(D2 - FR, cam=(THX, 900, 1.0), x=THX - 280 - 540)
-S.set(D2 - FR, "stand", "deadpan", dur=0.0, turn=0.6, look=(0.8, -0.3))
-for tt, who, val in THERMO:
-    if who == "h":
-        S.set(tt - 0.12, "thermo_up", "deadpan", dur=0.1, ease="snap", turn=0.6, look=(0.8, -0.5), lid=0.3)
-        S.set(tt + 0.12, "stand", "deadpan", dur=0.12, turn=0.6, look=(0.8, -0.1), lid=0.3)
-        S.sfx(tt, "clack", 0.04)
-S.set(T_POPOFF - 0.15, "thermo_up", "deadpan", dur=0.1, ease="snap", turn=0.6, look=(0.8, -0.5))
-S.sfx(T_POPOFF, "boing", 0.06); S.sfx(T_POPOFF + 0.9, "tok", 0.05)
-S.set(T_POPOFF + 0.1, "stand", "dead_stare", dur=0.12, eyescale=1.2, curl_up=0.7, look=(0.6, 0.6), turn=0.5)
-S.set(T_US2, "stand", "dead_stare", dur=0.25, look=(0.0, 0.0), turn=0.0)
-# ---- D3 tape down the couch
-S.cut(D3 - FR, cam=(COUCHX, 900, 1.0), x=SEAT_L - 540)
-S.set(D3 - FR, "sit_bench", "dead_stare", dur=0.0, look=(0.8, -0.3), turn=0.4)
-S.sfx(T_TAPE0, "zip", 0.05, dur=0.6)
-S.set(T_CROSS, "sit_cross", "dead_stare", dur=0.25, look=(0.0, 0.0), turn=0.0); S.sfx(T_CROSS, "tok", 0.03)
-S.set(T_AWAY, "sit_cross", "dead_stare", dur=0.3, look=(-0.9, 0.0), turn=-0.9)
-S.set(T_AWAY + 0.8, "sit_cross", "dead_stare", dur=0.2, look=(0.4, 0.0), turn=-0.9)      # side-eye
-S.set(T_AWAY + 1.0, "sit_cross", "dead_stare", dur=0.2, look=(-0.9, 0.0), turn=-0.9)
+# ---- D2 the sink full of dishes (he adds one more)
+S.cut(D2 - FR, cam=(SINKX - 50, 860, 0.85), x=IX + 450 - 540)
+S.set(D2 - FR, "plate_carry", "deadpan", dur=0.0, turn=0.5, look=(0.9, 0.0))
+S.walk_to(HW0, IX + 1000 - 540, HW1 - HW0)
+S.set(T_LOOKP, "plate_carry", "deadpan", dur=0.3, turn=0.4, look=(0.6, -0.9))
+S.set(T_LOOKG, "plate_carry", "dead_stare", dur=0.25, turn=0.5, look=(0.9, 0.0))
+S.set(T_ADD - 0.25, "plate_up", "deadpan", dur=0.25, turn=0.4, look=(0.6, -0.9))
+S.sfx(T_ADD, "clack", 0.05); S.sfx(T_ADD + 0.2, "squeak", 0.02)
+S.set(T_ADD + 0.25, "stand", "deadpan", dur=0.25, turn=0.3, look=(0.6, -0.9))
+S.set(T_LEAVE - 0.2, "stand", "deadpan", dur=0.2, turn=-0.5, look=(-0.9, 0.0))
+S.walk_to(T_LEAVE, IX + 300 - 540, 0.8)
+# ---- D3 she vacuums in front of his game
+S.cut(D3 - FR, cam=(IX + 180, 880, 0.8), x=SEAT_L - 540)
+S.set(D3 - FR, "sit_pad", "deadpan", dur=0.0, turn=1.0, look=(1.0, 0.0), lid=0.2)
+for i in range(4):
+    tt = VAC0 + 0.3 + i * 0.4
+    S.set(tt, "sit_pad", "deadpan", dur=0.15, turn=1.0, look=(1.0, 0.0), lid=0.3 if i < 2 else 0.1, brow=-0.3 * (i > 1),
+          head=(560 + 70 * (1 if i % 2 else -1), 760), neck=(545 + 30 * (1 if i % 2 else -1), 878), tilt=0.2 * (1 if i % 2 else -1))
+S.sfx(VAC0, "wind", 0.08, dur=T_YANK - VAC0 + 0.1)
+S.sfx(T_YANK, "pop", 0.08); S.sfx(T_YANK + 0.05, "slide_down", 0.03, dur=0.3)
+S.set(T_YANK + 0.1, "sit_pad", "dead_stare", dur=0.08, ease="snap", turn=1.0, look=(1.0, 0.0), eyescale=1.2, curl_up=0.6)
+S.set(T_MAD, "sit_pad", "angry", dur=0.25, turn=0.6, look=(0.9, 0.0), vein=1.0, curl_up=0.0)
+# ---- D3B 3 AM: she waits up with the baby; he sneaks in; CLICK
+S.cut(D3B - FR, cam=(IX - 340, 900, 0.7), x=DOORX - 540)
+S.set(D3B - FR, "sneak", "deadpan", dur=0.0, turn=0.5, look=(0.6, 0.0), show=0.0, nowalk=1.0)
+S.set(T_DOOR0 + 0.05, "sneak", "deadpan", dur=0.0, turn=0.5, look=(0.6, 0.0), show=1.0)
+S.xkeys.append((SN0, IX - 600 - 540, SN1 - SN0, "linear")); S.x = IX - 600 - 540
+for k in range(4): S.sfx(SN0 + 0.15 + k * 0.33, "tiptoe", 0.03)
+S.sfx(T_DOOR0, "squeak", 0.03)
+S.set(SN1, "sneak", "deadpan", dur=0.2, turn=0.6, look=(0.8, 0.0))
+S.sfx(T_LAMP, "tick", 0.08)
+S.set(T_LAMP + 0.1, "sneak", "dead_stare", dur=0.08, ease="snap", turn=0.6, look=(0.9, 0.1), eyescale=1.35, curl_up=1.0, pupil=0.55, sneak=0.0)
+S.set(T_GRIN, "sneak", "dead_stare", dur=0.3, turn=0.6, look=(0.9, 0.1), mouth="teeth", smile=0.6, eyescale=1.2, sweat=0.8, sneak=0.0)
+S.set(D4 - 0.3, "sneak", "dead_stare", dur=0.2, turn=0.6, look=(0.9, 0.1), mouth="teeth", smile=0.6, sweat=1.0, sneak=0.0)
 # ---- D4 the argument / D5 we need to talk
 S.cut(D4 - FR, cam=(IX + 20, 860, 1.0), x=IX - 230 - 540)
 S.set(D4 - FR, "stand", "deadpan", dur=0.0, turn=0.5, look=(0.8, 0.0))
@@ -342,7 +367,7 @@ for k in range(24): S.sfx(T_PAD + 0.25 + k * 0.38, "tick", 0.018)
 S.camera(T_PUSH, TVX, FLOOR_Y - 10 - 600, 1.9, 1.4)
 S.flash(T_TEXT, 0.25)
 S.sfx(T_TEXT, "boop", 0.05)
-S.camera(T_TEXT + 1.0, TVX, FLOOR_Y - 10 - 600, 2.0, 7.0)
+S.camera(T_TEXT + 1.0, TVX, FLOOR_Y - 10 - 600, 1.95, 7.0)
 S.t = T_END
 
 # ================================================================ HER
@@ -354,13 +379,13 @@ GXK = [(0.0, PX + 900, 0), (G1A, PX + 900, 0), (G1A, PX - 1150, G1B - G1A, "line
        (M4 - FR, SEAT_R, 0.001, "linear"),
        (D1 - FR, IX - 1500, 0.001, "linear"), (G_IN0, IX + 120, G_IN1 - G_IN0, "out"), (T_BLOCK0, IX + 520, T_BLOCK1 - T_BLOCK0, "smooth"),
        (T_STORM0, IX - 1500, T_STORM1 - T_STORM0 + 0.6, "inn"),
-       (D2 - FR, THX + 300, 0.001, "linear"), (D3 - FR, SEAT_R, 0.001, "linear"), (D4 - FR, IX + 260, 0.001, "linear"),
+       (D2 - FR, SINKX + 380, 0.001, "linear"), (D3 - FR, IX + 520, 0.001, "linear"), (VAC0, IX + 820, 0.4, "smooth"), (VAC0 + 0.4, IX + 380, 0.4, "smooth"), (VAC0 + 0.8, IX + 820, 0.4, "smooth"), (VAC0 + 1.2, IX + 380, 0.4, "smooth"), (T_YANK - 0.05, IX + 120, 0.3, "smooth"), (D3B - FR, SEAT_R, 0.001, "linear"), (D4 - FR, IX + 260, 0.001, "linear"),
        (L1 - FR, IX + 60, 0.001, "linear"), (GL0, DOORX, GL1 - GL0, "linear"),
        (GR0 - 0.05, DOORX, 0.001, "linear"), (GR0, COUCHX - 610, GR1 - GR0, "out"), (GD0, DOORX - 1100, GD1 - GD0 + 0.3, "inn")]
 GX = Track(GXK)
 GW = Track([(0.0, 0.0, 0), (G1A, 1.0, 0.1), (G1B, 0.0, 0.1), (G3A, 1.0, 0.1), (G3B - 0.3, 0.0, 0.3), (G3C, 1.0, 0.1), (G3D - 0.2, 0.0, 0.2),
             (G_IN0, 1.0, 0.1), (G_IN1 - 0.2, 0.0, 0.25), (T_BLOCK0, 1.0, 0.1), (T_BLOCK1 - 0.1, 0.0, 0.1), (T_STORM0, 1.0, 0.1),
-            (D2 - FR, 0.0, 0.001), (GL0, 1.0, 0.1), (GL1, 0.0, 0.1), (GR0, 1.0, 0.1), (GR1 - 0.1, 0.0, 0.15), (GD0, 1.0, 0.1), (GD1 + 0.3, 0.0, 0.1)])
+            (D2 - FR, 0.0, 0.001), (D3B - FR, 0.0, 0.001), (GL0, 1.0, 0.1), (GL1, 0.0, 0.1), (GR0, 1.0, 0.1), (GR1 - 0.1, 0.0, 0.15), (GD0, 1.0, 0.1), (GD1 + 0.3, 0.0, 0.1)])
 GK = [(0.0, L.pose("g_read", "neutral", turn=-0.9, look=(-0.2, 0.85), smile=0.25), 0)]
 def gk(t, body, face, dur=0.25, ease="smooth", **kw): GK.append((t, L.pose(body, face, **kw), dur, ease))
 gk(G3A, "g_read", "neutral", dur=0.0, turn=-0.9, look=(-0.2, 0.85), smile=0.2)
@@ -393,18 +418,16 @@ gk(T_STARE + 0.95, "hold_front", "impatient", dur=0.1, turn=-0.8, look=(-0.9, 0.
 gk(T_BLOCK1 + 0.15, "hold_front", "angry", dur=0.2, turn=-0.8, look=(-0.9, 0.2))
 gk(T_LEANA + 0.1, "hold_front", "furious", dur=0.15, turn=-0.9, look=(-0.9, 0.3))
 gk(T_STORM0, "hold_front", "furious", dur=0.15, turn=-1.0, look=(-1.0, 0.0))
-gk(D2 - FR, "stand", "annoyed", dur=0.0, turn=-0.6, look=(-0.8, -0.3))
-for tt, who, val in THERMO:
-    if who == "g":
-        gk(tt - 0.12, "g_up", "annoyed", dur=0.1, ease="snap", turn=-0.6, look=(-0.8, -0.5))
-        gk(tt + 0.12, "stand", "angry", dur=0.12, turn=-0.6, look=(-0.8, -0.2))
-gk(T_POPOFF - 0.15, "g_up", "angry", dur=0.1, ease="snap", turn=-0.6, look=(-0.8, -0.5))
-gk(T_POPOFF + 0.1, "stand", "surprised", dur=0.12, turn=-0.4, look=(-0.4, 0.6), open=0.4)
-gk(T_US2, "stand", "annoyed", dur=0.25, turn=0.0, look=(0.0, 0.0))
-gk(D3 - FR, "g_sit_tape", "annoyed", dur=0.0, turn=-0.5, look=(-0.6, -0.6))
-gk(T_TAPE1, "g_sit", "annoyed", dur=0.2, turn=-0.3, look=(-0.6, 0.2))
-gk(T_CROSS, "g_sit_cross", "annoyed", dur=0.25, turn=0.0, look=(0.0, 0.0)); gk(T_AWAY, "g_sit_cross", "annoyed", dur=0.3, turn=0.9, look=(0.9, 0.0))
-gk(T_AWAY + 0.8, "g_sit_cross", "annoyed", dur=0.2, turn=0.9, look=(-0.4, 0.0)); gk(T_AWAY + 1.0, "g_sit_cross", "annoyed", dur=0.2, turn=0.9, look=(0.9, 0.0))
+gk(D2 - FR, "g_point", "annoyed", dur=0.0, turn=-0.7, look=(-0.8, -0.6))
+gk(T_LOOKG - 0.1, "g_point", "angry", dur=0.2, turn=-0.8, look=(-0.9, 0.0))
+gk(T_ADD + 0.2, "stand", "angry", dur=0.15, ease="snap", turn=-0.6, look=(-0.6, -0.8), eyescale=1.2)
+gk(T_STEAM, "arms_crossed", "furious", dur=0.2, turn=-0.7, look=(-0.9, 0.0))
+gk(D3 - FR, "g_vac", "annoyed", dur=0.0, turn=0.0, look=(0.6, 0.6), lid=0.4)
+gk(T_YANK, "g_vac", "surprised", dur=0.1, turn=0.0, look=(0.6, 0.4), open=0.3)
+gk(T_MAD + 0.25, "g_vac", "annoyed", dur=0.2, turn=-0.8, look=(-0.9, 0.0), lid=0.5)
+gk(D3B - FR, "g_sit_hold", "angry", dur=0.0, turn=-0.6, look=(-0.9, 0.0))
+gk(T_LAMP + 0.3, "g_sit_hold", "angry", dur=0.2, turn=-0.8, look=(-0.9, 0.0), lid=0.4)
+gk(T_GRIN + 0.3, "g_sit_hold", "furious", dur=0.3, turn=-0.8, look=(-0.9, 0.0))
 gk(D4 - FR, "g_point", "angry", dur=0.0, turn=-0.6, look=(-0.8, 0.0))
 for i, (tt, sz) in enumerate(ARG): gk(tt, "g_point", "furious" if i == 2 else "angry", dur=0.1, ease="snap", turn=-0.7, look=(-0.9, 0.0), hop=10 * i)
 gk(T_DOTS - 0.3, "stand", "angry", dur=0.3, turn=-0.6, look=(-0.8, 0.0), hop=0)
@@ -463,7 +486,7 @@ def g_visible(t):
     if t >= GD1 + 0.35: return False
     return True
 def g_has_baby(t):
-    return (M1 - FR <= t < M2 - FR) or (M4 - FR <= t < D2 - FR) or (L1 - FR <= t < GL1 + 0.1)
+    return (M1 - FR <= t < M2 - FR) or (M4 - FR <= t < D2 - FR) or (D3B - FR <= t < D4 - FR) or (L1 - FR <= t < GL1 + 0.1)
 
 def her(cr, t, p, ly):
     if ly != "back" or not g_visible(t): return
@@ -481,7 +504,7 @@ def her(cr, t, p, ly):
             bx, by = scale_pt(q, q["lhand"]); O.draw_baby(cr, bx + 20, by - 20, 0.0, dict(eyes="open", look=(0.8, 0.0)), t, s=0.8)
             sx, sy = scale_pt(q, q["rhand"]); O.draw_suitcase(cr, sx, sy, s=0.85 * GS)
         else:
-            cry = D1 - FR <= t < D2
+            cry = D1 - FR <= t < D2 - FR
             O.draw_baby(cr, hc[0] + 10, hc[1] - 15, 0.0, dict(eyes="cry", cry=0.8) if cry else dict(eyes="sleep"), t, s=0.8)
             if cry:
                 for i in range(2):
@@ -492,15 +515,17 @@ def her(cr, t, p, ly):
         hx, hy = scale_pt(q, q["rhand"])
         cr.save(); cr.translate(hx + 50, hy); cr.rotate(-0.06)
         O.sketch_rect(cr, -110, -90, 110, 90, 5, sid=19966, fill=(1, 1, 1)); O._photo_fam(cr, 0, 70, 0.55); cr.restore()
-    if D3 - FR <= t < T_TAPE1 + 0.1:                                     # the tape roll
-        hx, hy = scale_pt(q, q["lhand"])
-        ty = lerp(FLOOR_Y - 10 - 650, FLOOR_Y - 50, smooth(ramp(t, T_TAPE0, T_TAPE1)))
-        O.draw_tape_roll(cr, COUCHX, ty)
+    if D3 - FR <= t < D3B - FR:                                          # the vacuum
+        hx, hy = scale_pt(q, ((q["lhand"][0] + q["rhand"][0]) / 2, (q["lhand"][1] + q["rhand"][1]) / 2))
+        O.draw_vacuum(cr, hx, hy, vac_base(q), FLOOR_Y - 10, on=1.0 if VAC0 <= t < T_YANK + 0.3 else 0.0, t=t)
+        grips()
     if clip: cr.restore()
 S.prop(her)
 for t0, t1 in ((G1A, G1B), (G3A, G3B - 0.3), (G_IN0, G_IN1), (GL0, GL1), (GR0, GR1), (GD0, GD1)):
     for k in range(int((t1 - t0) / 0.31)): S.sfx(t0 + 0.12 + k * 0.31, "step", 0.02)
 
+def vac_base(q):
+    return foot_c(q) + 260
 def g_head(t):
     q = g_pose(t); return scale_pt(q, q["head"])
 def g_mouth(t):
@@ -581,7 +606,7 @@ def props_front(cr, t, p, ly):
         b = his_baby(p)
         O.draw_baby(cr, b[0], b[1], 0.0, dict(eyes="open", look=(0.0, -1.0)) if t < M1 else dict(eyes="sleep"), t, s=0.8); L.draw_grips(cr, p)
     # the controller
-    if (D1 - FR <= t < D2 - FR) or t >= T_PAD:
+    if (D1 - FR <= t < D2 - FR) or (D3 - FR <= t < D3B - FR) or t >= T_PAD:
         cx_ = (p["lhand"][0] + p["rhand"][0]) / 2; cy_ = (p["lhand"][1] + p["rhand"][1]) / 2
         O.draw_controller(cr, cx_, cy_ - 5, s=0.8); L.draw_grips(cr, p)
     # the argument bubbles
@@ -612,13 +637,39 @@ def notes(cr, t, p, ly):
         for k in range(2):
             u = ((t - T_MUS) * 0.6 + k / 2) % 1.0
             O.draw_note(cr, p["head"][0] + 220 + 60 * k, p["head"][1] - 60 - 140 * u, s=0.7, alpha=0.8 * math.sin(math.pi * u), double=k == 1, sid=19340 + k)
-    if ly == "front" and T_POPOFF <= t < T_POPOFF + 0.3:
-        L.burst_lines(cr, THX, THY, (t - T_POPOFF) / 0.3, r0=110, r1=180, n=10, sid=81)
+    if ly == "front" and T_YANK <= t < T_YANK + 0.3:
+        L.burst_lines(cr, OUTLET[0], OUTLET[1], (t - T_YANK) / 0.3, r0=60, r1=120, n=8, sid=81)
+    if ly == "front" and D2 - FR <= t < T_ADD + 0.12:                    # his dirty plate
+        hx, hy = p["rhand"]; O.draw_plate(cr, hx, hy - 10, s=0.8); L.draw_grips(cr, p)
+    if ly == "front" and T_STEAM <= t < D3 - FR:
+        hx2, hy2 = g_head(t)
+        for k in range(2):
+            u = ((t - T_STEAM) * 1.5 + k / 2) % 1.0
+            O.draw_smoke_puff(cr, hx2 + (-90 if k else 90) * (1 + u), hy2 - 100 - 120 * u, 30 + 30 * u, alpha=1 - u)
     if ly == "front" and T_SLAM1 <= t < T_SLAM1 + 0.35:
         L.burst_lines(cr, DOORX, FLOOR_Y - 600, (t - T_SLAM1) / 0.35, r0=480, r1=600, n=12, sid=82)
     if ly == "front" and T_SLAM2 <= t < T_SLAM2 + 0.35:
         L.burst_lines(cr, DOORX, FLOOR_Y - 600, (t - T_SLAM2) / 0.35, r0=480, r1=600, n=12, sid=83)
 S.prop(notes)
+
+def night(cr, t):
+    """3 AM: the room is dark; only her two open eyes show. CLICK - the lamp."""
+    if not (D3B - FR <= t < T_LAMP): return
+    cr.set_source_rgba(0.04, 0.05, 0.12, 0.86); cr.paint()
+    door = door_open3(t)
+    q = g_pose(t); hx, hy = scale_pt(q, q["head"])
+    z = L.cam_track.at(t)[2]
+    for sd in (-1, 1):
+        ex, ey = L.world_to_screen(t, (hx + sd * 36 * GS - 20, hy - 10))
+        cr.save(); cr.translate(ex, ey); cr.scale(z, z)
+        cr.save(); cr.scale(1.0, 1.15); cr.arc(0, 0, 22, 0, 2 * math.pi); cr.restore()
+        cr.set_source_rgb(1, 1, 1); cr.fill()
+        lk = -1.0 if t > SN0 + 0.3 else -0.3
+        cr.arc(11 * lk, 2, 9, 0, 2 * math.pi); cr.set_source_rgb(0.05, 0.05, 0.08); cr.fill()
+        cr.move_to(-26, -26 - 6 * sd); cr.line_to(22, -18 + 6 * sd)                 # angry lids
+        cr.set_source_rgb(0.04, 0.05, 0.12); cr.set_line_width(14); cr.stroke()
+        cr.restore()
+S.overlays.insert(0, night)
 
 if __name__ == "__main__":
     print(f"end {S.t:.2f}", file=sys.stderr)

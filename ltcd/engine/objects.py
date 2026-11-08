@@ -4178,3 +4178,63 @@ def draw_fridge(cr, x, yb=FLOOR_Y, photo=0.0, sid=19960):
         _photo_fam(cr, 0, 70, 0.55)
         sketch_circle(cr, 0, -88, 16, 3, sid=sid + 7, fill=(0.95, 0.80, 0.25))
         cr.restore()
+
+def draw_sink_counter(cr, x, yb=FLOOR_Y, n=26, extra=0, wobble=0.0, t=0.0, sid=20000):
+    """a kitchen counter with a sink and a leaning tower of dirty plates (n plates + `extra` freshly added ones on top);
+    wobble 0..1 makes the tower sway."""
+    sketch_rect(cr, x - 260, yb - 430, x + 260, yb - 40, 7, sid=sid, fill=(0.80, 0.66, 0.50))
+    for k in (-1, 1): sketch_rect(cr, x + k * 130 - 110, yb - 380, x + k * 130 + 110, yb - 80, 4, sid=sid + 1 + (k > 0), fill=(0.86, 0.72, 0.56))
+    sketch_rect(cr, x - 290, yb - 460, x + 290, yb - 420, 6, sid=sid + 3, fill=(0.92, 0.92, 0.94))
+    sketch_line(cr, [(x + 150, yb - 460), (x + 150, yb - 560), (x + 60, yb - 570)], 10, sid=sid + 4, amp=0.2, color=(0.6, 0.62, 0.66))
+    y = yb - 470; px = x - 40
+    for k in range(n + extra):
+        sway = wobble * 4.0 * k * math.sin(t * 9) + 1.6 * k * math.sin(k * 0.7)
+        cx = px + sway + (6 * math.sin(k * 2.1))
+        col = (1, 1, 1) if k % 3 else (0.92, 0.95, 1.0)
+        sketch_ellipse(cr, cx, y, 120, 20, 4, sid=sid + 10 + k % 30, fill=col)
+        if k % 4 == 1:
+            cr.arc(cx - 40, y - 4, 7, 0, 2 * math.pi); cr.set_source_rgb(0.86, 0.26, 0.16); cr.fill()
+        y -= 24
+    for k in range(3):
+        sketch_rect(cr, x + 150 + k * 40, yb - 520 - (k % 2) * 30, x + 180 + k * 40, yb - 460, 3, sid=sid + 50 + k, fill=(0.95, 0.80, 0.45))
+    for k in range(3):                                                      # flies (stink)
+        u = t * 2 + k
+        cr.arc(px + 80 * math.sin(u * 1.7), y - 30 + 25 * math.cos(u * 2.3), 6, 0, 2 * math.pi); fill_ink(cr); cr.new_path()
+
+def draw_plate(cr, x, y, s=1.0, sid=20060):
+    sketch_ellipse(cr, x, y, 120 * s, 20 * s, 4, sid=sid, fill=(1, 1, 1))
+    cr.arc(x - 30 * s, y - 4 * s, 7 * s, 0, 2 * math.pi); cr.set_source_rgb(0.86, 0.26, 0.16); cr.fill()
+
+def draw_vacuum(cr, hx, hy, bx, yb=FLOOR_Y, on=0.0, t=0.0, sid=20070):
+    """an upright vacuum: handle in the hand at (hx, hy), the head on the floor at bx."""
+    sketch_line(cr, [(hx, hy), (bx, yb - 120)], 12, sid=sid, amp=0.2, color=(0.30, 0.30, 0.34))
+    sketch_rect(cr, bx - 60, yb - 330 + 4 * on * math.sin(t * 60), bx + 50, yb - 110, 6, sid=sid + 1, fill=(0.88, 0.30, 0.40))
+    sketch_rect(cr, bx - 110, yb - 120, bx + 110, yb - 40, 6, sid=sid + 2, fill=(0.35, 0.35, 0.40))
+    for k in (-1, 1): sketch_circle(cr, bx + k * 80, yb - 30, 22, 4, sid=sid + 3 + (k > 0), fill=(0.15, 0.15, 0.18))
+    if on > 0.01:
+        for k in range(3):
+            u = (t * 3 + k / 3) % 1.0
+            sketch_line(cr, [(bx - 120 - 60 * u, yb - 60 - 30 * k), (bx - 160 - 60 * u, yb - 70 - 30 * k)], 4, sid=sid + 6 + k, alpha=1 - u)
+
+def draw_outlet(cr, x, y, sid=20090):
+    sketch_rect(cr, x - 40, y - 60, x + 40, y + 60, 4, sid=sid, fill=(1, 1, 1))
+    for k in (-1, 1): sketch_line(cr, [(x - 12, y + k * 25 - 8), (x - 12, y + k * 25 + 8)], 4, sid=sid + 1); sketch_line(cr, [(x + 12, y + k * 25 - 8), (x + 12, y + k * 25 + 8)], 4, sid=sid + 2)
+
+def draw_wall_clock(cr, x, y, hour=3.0, minute=0.0, sid=20100):
+    sketch_circle(cr, x, y, 110, 7, sid=sid, fill=(1, 1, 1))
+    for k in range(12):
+        a = k * math.pi / 6
+        sketch_line(cr, [(x + 85 * math.sin(a), y - 85 * math.cos(a)), (x + 98 * math.sin(a), y - 98 * math.cos(a))], 4, sid=sid + 1 + k, amp=0.1)
+    ah = (hour % 12 + minute / 60) * math.pi / 6; am = minute * math.pi / 30
+    sketch_line(cr, [(x, y), (x + 55 * math.sin(ah), y - 55 * math.cos(ah))], 9, sid=sid + 20, amp=0.1)
+    sketch_line(cr, [(x, y), (x + 85 * math.sin(am), y - 85 * math.cos(am))], 6, sid=sid + 21, amp=0.1)
+
+def draw_side_lamp(cr, x, yb=FLOOR_Y, on=0.0, glow=None, sid=20130):
+    sketch_rect(cr, x - 110, yb - 380, x + 110, yb - 340, 5, sid=sid, fill=(0.55, 0.40, 0.28))
+    for k in (-1, 1): sketch_line(cr, [(x + k * 90, yb - 340), (x + k * 90, yb)], 8, sid=sid + 1 + (k > 0), amp=0.2)
+    sketch_line(cr, [(x, yb - 380), (x, yb - 600)], 8, sid=sid + 3, amp=0.2)
+    g = on if glow is None else glow
+    if g > 0.01:
+        cr.arc(x, yb - 640, 420, 0, 2 * math.pi); cr.set_source_rgba(1.0, 0.85, 0.45, 0.25 * g); cr.fill()
+    sketch_poly(cr, [(x - 70, yb - 720), (x + 70, yb - 720), (x + 120, yb - 590), (x - 120, yb - 590)], 6, sid=sid + 4,
+                fill=lerp((0.78, 0.74, 0.62), (1.0, 0.93, 0.62), on))
