@@ -3970,3 +3970,211 @@ def draw_delivery_board(cr, x, y, s=1.0, ang=0.0, signed=0.0, sid=19600):
         pts = [(-60 + 160 * u, 85 + 18 * math.sin(u * 30) - 10 * u) for u in [i / 30 * signed for i in range(31)]]
         sketch_line(cr, pts, 4, sid=sid + 4, amp=0.2, color=(0.15, 0.25, 0.65))
     cr.restore()
+
+# ============================================================ day 17 ALT: the house (rom-com montage + breakup)
+WALL = (0.97, 0.91, 0.80)
+WOODF = (0.80, 0.62, 0.42)
+COUCH = (0.42, 0.55, 0.75)
+TAPE = (0.98, 0.80, 0.30)
+
+def draw_house_front(cr, x, yb=FLOOR_Y, t=0.0, sid=19700):
+    """a little suburban house front (~1300 wide): siding, a red roof, two windows, a front door, a picket fence."""
+    w, h = 1300, 900
+    sketch_rect(cr, x - w / 2, yb - h, x + w / 2, yb - 100, 6, sid=sid, fill=(0.80, 0.88, 0.95))
+    for k in range(1, 9): sketch_line(cr, [(x - w / 2, yb - 100 - k * 95), (x + w / 2, yb - 100 - k * 95)], 2, sid=sid + 1 + k, alpha=0.3)
+    sketch_poly(cr, [(x - w / 2 - 80, yb - h + 6), (x, yb - h - 520), (x + w / 2 + 80, yb - h + 6)], 6, sid=sid + 12, fill=(0.80, 0.34, 0.30))
+    for k in (-1, 1):
+        sketch_rect(cr, x + k * 380 - 130, yb - 700, x + k * 380 + 130, yb - 430, 5, sid=sid + 14 + k, fill=(0.95, 0.92, 0.70))
+        sketch_line(cr, [(x + k * 380, yb - 700), (x + k * 380, yb - 430)], 4, sid=sid + 17 + k)
+    sketch_rect(cr, x - 110, yb - 520, x + 110, yb - 100, 6, sid=sid + 20, fill=(0.85, 0.30, 0.28))
+    cr.arc(x + 70, yb - 300, 12, 0, 2 * math.pi); fill_ink(cr); cr.new_path()
+
+def draw_picket_fence(cr, x0, x1, yb=FLOOR_Y, sid=19740):
+    sketch_line(cr, [(x0, yb - 160), (x1, yb - 160)], 8, sid=sid, color=INK)
+    for k in range(int((x1 - x0) // 90) + 1):
+        xx = x0 + k * 90
+        sketch_poly(cr, [(xx - 28, yb), (xx - 28, yb - 230), (xx, yb - 270), (xx + 28, yb - 230), (xx + 28, yb)], 4, sid=sid + 1 + k % 9, fill=(1, 1, 1), amp=0.3)
+
+def draw_sold_sign(cr, x, yb=FLOOR_Y, drop=1.0, sid=19760):
+    """a real-estate sign on a post: drop 0..1 slams it down from above."""
+    yo = -900 * (1 - drop) ** 2
+    cr.save(); cr.translate(0, yo)
+    sketch_line(cr, [(x - 150, yb), (x - 150, yb - 620)], 10, sid=sid, color=(0.35, 0.25, 0.18))
+    sketch_line(cr, [(x - 150, yb - 600), (x + 170, yb - 600)], 10, sid=sid + 1, color=(0.35, 0.25, 0.18))
+    sketch_rect(cr, x - 110, yb - 580, x + 160, yb - 400, 6, sid=sid + 2, fill=(1, 1, 1))
+    draw_text(cr, "FOR SALE", x + 25, yb - 530, 40, color=(30, 30, 34))
+    cr.save(); cr.translate(x + 25, yb - 455); cr.rotate(-0.12)
+    sketch_rect(cr, -150, -45, 150, 45, 5, sid=sid + 3, fill=(0.88, 0.18, 0.20))
+    draw_text(cr, "SOLD!", 0, 0, 70, color=(255, 255, 255))
+    cr.restore()
+    cr.restore()
+
+def draw_room(cr, t, x0, x1, yb=FLOOR_Y, door_x=None, door_open=0.0, frame_x=None, frame_fall=0.0, win_x=None, kitchen_x=None):
+    """the inside of his house: a cream wall, a wooden floor, a baseboard, a window, a door (open_ 0..1), a picture
+    frame (frame_fall 0..1 drops it to the floor), and from kitchen_x on: tiles + counter."""
+    vx0, vy0, vx1, vy1 = _visible(cr)
+    a, b = max(x0, vx0), min(x1, vx1)
+    if b <= a: return
+    cr.rectangle(a, vy0 - 10, b - a, yb - 140 - vy0 + 10); cr.set_source_rgb(*WALL); cr.fill()
+    cr.rectangle(a, yb - 140, b - a, max(400, vy1 - yb + 200)); cr.set_source_rgb(*WOODF); cr.fill()
+    for k in range(int(a // 200) - 1, int(b // 200) + 2):
+        cr.move_to(k * 200, yb - 140); cr.line_to(k * 200 - 160, yb + 500)
+    cr.set_source_rgba(0.45, 0.32, 0.20, 0.35); cr.set_line_width(4); cr.stroke()
+    sketch_rect(cr, a - 10, yb - 180, b + 10, yb - 140, 5, sid=19800, fill=(1, 1, 1))
+    if kitchen_x is not None and kitchen_x < b:
+        ka = max(a, kitchen_x)
+        cr.rectangle(ka, vy0 - 10, b - ka, yb - 180 - vy0 + 10); cr.set_source_rgb(0.86, 0.93, 0.92); cr.fill()
+        for k in range(int(ka // 90), int(b // 90) + 1):
+            for j in range(int((yb - 1000) // 90), int((yb - 180) // 90)):
+                cr.rectangle(k * 90, j * 90, 90, 90)
+        cr.set_source_rgba(0.5, 0.6, 0.6, 0.25); cr.set_line_width(2); cr.stroke()
+    if win_x is not None and a - 500 < win_x < b + 500:
+        sketch_rect(cr, win_x - 260, yb - 1150, win_x + 260, yb - 650, 7, sid=19801, fill=(0.98, 0.78, 0.60))
+        sketch_line(cr, [(win_x, yb - 1150), (win_x, yb - 650)], 6, sid=19802)
+        sketch_line(cr, [(win_x - 260, yb - 900), (win_x + 260, yb - 900)], 6, sid=19803)
+        for sd in (-1, 1):
+            sketch_poly(cr, [(win_x + sd * 250, yb - 1190), (win_x + sd * 340, yb - 1190), (win_x + sd * 360, yb - 600), (win_x + sd * 270, yb - 640)],
+                        5, sid=19804 + (sd > 0), fill=(0.90, 0.45, 0.42))
+    if door_x is not None and a - 400 < door_x < b + 400:
+        sketch_rect(cr, door_x - 200, yb - 1060, door_x + 200, yb - 140, 7, sid=19810, fill=(0.98, 0.86, 0.62) if door_open > 0.05 else (0.62, 0.42, 0.28))
+        if door_open > 0.05:                                              # the door swung in, toward the wall on the left
+            w_ = 400 * (1 - door_open) + 50 * door_open
+            sketch_rect(cr, door_x - 200, yb - 1060, door_x - 200 + w_, yb - 140, 6, sid=19811, fill=(0.62, 0.42, 0.28))
+        else:
+            cr.arc(door_x + 140, yb - 600, 16, 0, 2 * math.pi); fill_ink(cr); cr.new_path()
+    if frame_x is not None and a - 400 < frame_x < b + 400:
+        y = lerp(yb - 1000, yb - 200, frame_fall ** 2)
+        cr.save(); cr.translate(frame_x, y); cr.rotate(0.6 * frame_fall)
+        sketch_rect(cr, -150, -110, 150, 110, 7, sid=19812, fill=(0.70, 0.52, 0.35))
+        sketch_rect(cr, -115, -80, 115, 80, 4, sid=19813, fill=(0.98, 0.95, 0.90))
+        _photo_fam(cr, 0, 40, 0.5)
+        if frame_fall >= 1.0:
+            for k in range(4): sketch_line(cr, [(-60 + 40 * k, -80), (-20 + 30 * k, 80)], 3, sid=19814 + k, alpha=0.7)
+        cr.restore()
+
+def _photo_fam(cr, x, y, s=1.0):
+    """three tiny stick figures (him, her with long hair, the baby) for photos."""
+    for k, (dx, hair) in enumerate(((-60, False), (60, True))):
+        hx = x + dx * s
+        if hair: sketch_circle(cr, hx, y - 120 * s, 34 * s, 3, sid=19830, fill=(0.62, 0.28, 0.16))
+        sketch_circle(cr, hx, y - 120 * s, 26 * s, 3, sid=19831 + k, fill=(1, 1, 1))
+        sketch_line(cr, [(hx, y - 94 * s), (hx, y - 30 * s)], 3, sid=19833 + k, amp=0.2)
+        sketch_line(cr, [(hx - 20 * s, y), (hx, y - 30 * s), (hx + 20 * s, y)], 3, sid=19835 + k, amp=0.2)
+    sketch_ellipse(cr, x, y - 60 * s, 26 * s, 16 * s, 3, sid=19837, fill=(0.70, 0.84, 0.96))
+
+def draw_couch(cr, x, yb=FLOOR_Y, w=820, tape=0.0, sid=19840):
+    """a front-on couch whose seat top is BENCH_SEAT above the floor (people sit 'on' it). tape 0..1 runs a strip of
+    masking tape down the middle."""
+    sketch_rect(cr, x - w / 2, yb - 640, x + w / 2, yb - BENCH_SEAT, 7, sid=sid, fill=COUCH)
+    for sd in (-1, 1): sketch_rect(cr, x + sd * (w / 2) - 70, yb - 420, x + sd * (w / 2) + 70, yb - 60, 7, sid=sid + 1 + (sd > 0), fill=lerp(COUCH, (0, 0, 0), 0.12))
+    sketch_rect(cr, x - w / 2 + 60, yb - BENCH_SEAT, x + w / 2 - 60, yb - 60, 7, sid=sid + 3, fill=lerp(COUCH, (1, 1, 1), 0.12))
+    sketch_line(cr, [(x, yb - 600), (x, yb - BENCH_SEAT)], 3, sid=sid + 4, alpha=0.4)
+    for sd in (-1, 1): sketch_line(cr, [(x + sd * 300, yb - 60), (x + sd * 300, yb)], 10, sid=sid + 5 + (sd > 0), amp=0.2)
+    if tape > 0.01:
+        y0 = yb - 650; y1 = lerp(y0, yb - 40, tape)
+        sketch_rect(cr, x - 22, y0, x + 22, y1, 3, sid=sid + 8, fill=TAPE, amp=0.4)
+
+def draw_couch_front(cr, x, yb=FLOOR_Y, w=820, tape=0.0, sid=19860):
+    """the couch's seat front (drawn OVER sitters' legs is not needed - kept empty for draw-order symmetry)."""
+    return
+
+def draw_tv(cr, x, yb=FLOOR_Y, t=0.0, screen="game", text_lines=None, glow=1.0, sid=19870):
+    """a TV on a low stand with a console. screen: "game" (a little platformer that blinks), "off", or "text"
+    (text_lines on a dark screen, with a blinking cursor). Screen centre = (x, yb - 600), 460 x 300."""
+    sketch_rect(cr, x - 330, yb - 300, x + 330, yb - 60, 6, sid=sid, fill=(0.55, 0.40, 0.28))
+    for sd in (-1, 1): sketch_line(cr, [(x + sd * 300, yb - 60), (x + sd * 300, yb)], 10, sid=sid + 1 + (sd > 0), amp=0.2)
+    sketch_rect(cr, x + 60, yb - 360, x + 260, yb - 300, 5, sid=sid + 3, fill=(0.18, 0.18, 0.22))
+    cr.arc(x + 230, yb - 330, 8, 0, 2 * math.pi); cr.set_source_rgb(0.3, 0.9, 0.4); cr.fill()
+    sketch_line(cr, [(x, yb - 300), (x, yb - 420)], 14, sid=sid + 4, amp=0.2)
+    sketch_rect(cr, x - 260, yb - 780, x + 260, yb - 420, 8, sid=sid + 5, fill=(0.14, 0.14, 0.18))
+    sx0, sy0, sx1, sy1 = x - 230, yb - 750, x + 230, yb - 450
+    if screen == "game":
+        cr.rectangle(sx0, sy0, sx1 - sx0, sy1 - sy0); cr.set_source_rgb(0.35, 0.65, 0.98); cr.fill()
+        cr.rectangle(sx0, sy1 - 60, sx1 - sx0, 60); cr.set_source_rgb(0.35, 0.75, 0.30); cr.fill()
+        px = sx0 + 60 + ((t * 120) % 300); py = sy1 - 100 - 60 * abs(math.sin(t * 5))
+        cr.rectangle(px, py, 36, 40); cr.set_source_rgb(0.95, 0.30, 0.25); cr.fill()
+        for k in range(3):
+            cx = sx0 + ((k * 160 - t * 90) % (sx1 - sx0))
+            cr.rectangle(cx, sy1 - 170, 40, 40); cr.set_source_rgb(1.0, 0.80, 0.25); cr.fill()
+        if int(t * 4) % 2 == 0:
+            cr.arc(px + 150, py - 20, 10, 0, 2 * math.pi); cr.set_source_rgb(1, 1, 1); cr.fill()
+    elif screen == "text":
+        cr.rectangle(sx0, sy0, sx1 - sx0, sy1 - sy0); cr.set_source_rgb(0.08, 0.10, 0.18); cr.fill()
+        lines = text_lines or ("TELL ME", "WHAT TO DO", "NEXT IN THE", "COMMENTS")
+        n = len(lines)
+        for i, ln in enumerate(lines):
+            draw_text(cr, ln, x, sy0 + 50 + i * 58, 52, color=(255, 255, 255))
+        if int(t * 2.5) % 2 == 0:
+            cr.rectangle(x + 150, sy0 + 30 + (n - 1) * 58, 18, 44); cr.set_source_rgb(1, 1, 1); cr.fill()
+    cr.rectangle(sx0, sy0, sx1 - sx0, sy1 - sy0); cr.set_source_rgba(1, 1, 1, 0.06); cr.fill()
+
+def draw_controller(cr, x, y, s=1.0, ang=0.0, sid=19890):
+    cr.save(); cr.translate(x, y); cr.rotate(ang); cr.scale(s, s)
+    sketch_poly(cr, [(-80, -20), (80, -20), (95, 35), (55, 40), (35, 15), (-35, 15), (-55, 40), (-95, 35)], 5, sid=sid, fill=(0.22, 0.22, 0.27), amp=0.3)
+    for k, c in enumerate(((0.95, 0.3, 0.3), (0.3, 0.8, 0.4))):
+        cr.arc(45 + 18 * k, -2 - 8 * k, 8, 0, 2 * math.pi); cr.set_source_rgb(*c); cr.fill()
+    cr.restore()
+
+def draw_thermostat(cr, x, y, val=70, off=0.0, t=0.0, sid=19900):
+    """a round wall thermostat showing val; off 0..1 = the dial has popped off and flies down-right."""
+    sketch_rect(cr, x - 110, y - 140, x + 110, y + 140, 6, sid=sid, fill=(0.96, 0.96, 0.96))
+    hot = max(0.0, min(1.0, (val - 60) / 20))
+    if off < 0.01:
+        sketch_circle(cr, x, y, 85, 6, sid=sid + 1, fill=lerp((0.55, 0.75, 1.0), (1.0, 0.45, 0.35), hot))
+        draw_text(cr, f"{int(round(val))}", x, y, 66, color=(30, 30, 34))
+    else:
+        cr.arc(x, y, 30, 0, 2 * math.pi); fill_ink(cr); cr.new_path()
+        for k in range(3): sketch_line(cr, [(x - 20 + 20 * k, y + 30), (x - 30 + 25 * k, y + 70)], 4, sid=sid + 5 + k)
+        u = off
+        dx, dy = x + 250 * u, y - 200 * math.sin(math.pi * min(1, u)) + 500 * u * u
+        cr.save(); cr.translate(dx, dy); cr.rotate(8 * u)
+        sketch_circle(cr, 0, 0, 85, 6, sid=sid + 1, fill=lerp((0.55, 0.75, 1.0), (1.0, 0.45, 0.35), hot))
+        cr.restore()
+
+def draw_suitcase(cr, x, y, s=1.0, sid=19920):
+    """hanging from a hand at (x, y)."""
+    cr.save(); cr.translate(x, y); cr.scale(s, s)
+    sketch_line(cr, [(-40, 10), (-40, -20), (40, -20), (40, 10)], 7, sid=sid, amp=0.2)
+    sketch_rect(cr, -150, 10, 150, 230, 7, sid=sid + 1, fill=(0.82, 0.32, 0.36))
+    sketch_line(cr, [(-150, 60), (150, 60)], 4, sid=sid + 2, alpha=0.5)
+    cr.restore()
+
+def draw_tape_roll(cr, x, y, s=1.0, sid=19930):
+    sketch_circle(cr, x, y, 46 * s, 6, sid=sid, fill=TAPE)
+    sketch_circle(cr, x, y, 20 * s, 4, sid=sid + 1, fill=WALL)
+
+def draw_bubble(cr, x, y, w, h, tail, text=None, scribble=0.0, t=0.0, angry=False, sid=19940):
+    """a speech bubble centred (x, y), w x h, tail pointing at `tail`. text, or angry scribble (0..1 density)."""
+    fillc = (1.0, 0.92, 0.90) if angry else (1, 1, 1)
+    sketch_poly(cr, [(x - 50, y + h / 2 - 10), tail, (x + 30, y + h / 2 - 10)], 6, sid=sid, fill=fillc, amp=0.4)
+    sketch_ellipse(cr, x, y, w / 2, h / 2, 7, sid=sid + 1, fill=fillc)
+    if text:
+        draw_text(cr, text, x, y, min(90, h * 0.32), color=(30, 30, 34), max_w=w * 0.82)
+    if scribble > 0.01:
+        n = int(10 + 30 * scribble)
+        pts = []
+        for k in range(n):
+            u = k / n
+            pts.append((x - w * 0.32 + w * 0.64 * ((k * 0.37 + 0.13 * math.sin(k + t * 9)) % 1.0),
+                        y - h * 0.28 + h * 0.56 * ((k * 0.61 + 0.1 * math.cos(k * 1.7 + t * 11)) % 1.0)))
+        sketch_line(cr, pts, 6, sid=sid + 2, amp=0.6, color=(0.80, 0.12, 0.12))
+        for k in range(3):                                                 # grawlix symbols, drawn (no words)
+            gx = x - w * 0.25 + k * w * 0.25; gy = y + h * 0.05 * math.sin(t * 13 + k)
+            if k == 0: cr.arc(gx, gy, h * 0.08, 0, 2 * math.pi); stroke_ink(cr, 5); cr.new_path()
+            if k == 1: draw_star(cr, gx, gy, h * 0.1, color=(0.95, 0.75, 0.2))
+            if k == 2: sketch_line(cr, [(gx, gy - h * 0.12), (gx + h * 0.05, gy), (gx - h * 0.05, gy + 4), (gx, gy + h * 0.12)], 6, sid=sid + 9, color=(0.95, 0.6, 0.1))
+
+def draw_fridge(cr, x, yb=FLOOR_Y, photo=0.0, sid=19960):
+    """a fridge; photo 0..1 = the family photo stuck on it (0 = not there, 1 = on)."""
+    sketch_rect(cr, x - 220, yb - 1150, x + 220, yb - 60, 7, sid=sid, fill=(0.94, 0.96, 0.98))
+    sketch_line(cr, [(x - 220, yb - 760), (x + 220, yb - 760)], 5, sid=sid + 1)
+    for yy in ((yb - 1000, yb - 880), (yb - 700, yb - 450)):
+        sketch_line(cr, [(x - 170, yy[0]), (x - 170, yy[1])], 9, sid=sid + 2, amp=0.2)
+    for k, (mx, my, c) in enumerate(((x + 60, yb - 1050, (0.95, 0.35, 0.30)), (x + 140, yb - 940, (0.30, 0.60, 0.95)))):
+        sketch_circle(cr, mx, my, 18, 3, sid=sid + 3 + k, fill=c)
+    if photo > 0.01:
+        cr.save(); cr.translate(x + 40, yb - 560); cr.rotate(-0.06)
+        sketch_rect(cr, -110, -90, 110, 90, 5, sid=sid + 6, fill=(1, 1, 1))
+        _photo_fam(cr, 0, 70, 0.55)
+        sketch_circle(cr, 0, -88, 16, 3, sid=sid + 7, fill=(0.95, 0.80, 0.25))
+        cr.restore()
