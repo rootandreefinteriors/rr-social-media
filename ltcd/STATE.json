@@ -4,31 +4,30 @@
   "last_episode": {
     "day": 17,
     "type": "comment",
-    "folder": "episodes/ep017",
+    "folder": "episodes/ep017b",
     "video": "videos/day017.mp4",
-    "posted_at": "2026-11-08T19:00:00-05:00 (scheduled)",
+    "posted_at": "2026-11-08T19:58-05:00 (shared now, replacing the 7 PM post)",
     "buffer": {
-      "tiktok": "6af0cd2a562f2e6de9d9a6df",
-      "instagram": "6af0cd2cd6bbae6fa10929e5"
+      "tiktok": "6af11ac0229bf05dafe54179",
+      "instagram": "6af11acb004e4879a7ee816c"
     },
-    "note": "@elijah_paradise (IG, day 16 reel, 1 like): 'Get a girlfriend and have a baby'. Buffer uses commit-pinned raw URL @f60e5d5."
+    "note": "Justin's alt cut (rom-com speedrun into breakup). The 7 PM original (videos/day017_original.mp4, buffer tt 6af0cd2a562f2e6de9d9a6df / ig 6af0cd2cd6bbae6fa10929e5) went out by mistake and must be deleted on TikTok/Instagram by hand. Buffer uses commit-pinned raw URL @121f06e (day017_alt.mp4)."
   },
   "ask_since_day": 17,
   "waiting_streak": 0,
   "world": {
-    "location": "A CITY PARK AT GOLDEN HOUR (day 17): O.draw_park_world(cr, t, PX-6000, PX+8000, trees=(PX-1700, PX-650, PX+900, PX+2300), lamps=(PX-1150, PX+650, PX+2600)) with PX=900000 (warm sky bands, low sun, skyline, hedge, lawn, paved path); O.draw_sign(cr, PX-2000, FLOOR_Y-150, 'PARK|OPEN TILL DUSK', w=560, size=54); O.draw_fountain(cr, PX+1150, FLOOR_Y-20, t, s=0.75); O.draw_bench(cr, PX, FLOOR_Y-10) (seat O.BENCH_SEAT); the boombox on the ground at (PX-560, FLOOR_Y-85, s=0.6); the spaghetti plate on the bench at (PX, FLOOR_Y-10-O.BENCH_SEAT-2, s=0.75). He stands at centre PX-150 (body offset PX-690), his girlfriend (O.draw_mom with hair=(0.62,0.28,0.16), dress=(0.30,0.66,0.66), bun=False, s=0.92) at PX+240 holding the baby (O.draw_baby s=0.85). S.floor=False. See ltcd/episodes/ep017. Next comment episode: he leaves to the right into a new world.",
+    "location": "HIS HOUSE, INSIDE (day 17 alt): O.draw_room(cr, t, IX-3000, IX+3000, door_x=IX-900, frame_x=IX-450 (the family photo lies broken on the floor), kitchen_x=IX+1000) with IX=1300000; the TV + console O.draw_tv(cr, IX+650, FLOOR_Y-10, t, screen='game'), wall clock O.draw_wall_clock(cr, IX-150, 560), side lamp O.draw_side_lamp(cr, IX+230, FLOOR_Y-10, on=1), outlet (IX+1010, FLOOR_Y-230), the sink with the tower of dishes O.draw_sink_counter(cr, IX+1240, FLOOR_Y-10, n=25), fridge O.draw_fridge(cr, IX+1600, FLOOR_Y-10, photo=1). NO COUCH (she took it). He sits on the floor in front of the TV at centre IX+180 (body offset IX-360) with the controller. S.floor=False. See ltcd/episodes/ep017b. Next comment episode: he leaves to the right into a new world.",
     "companions": [
-      "his GIRLFRIEND (auburn hair, teal dress, headphones; reads books) - day 17",
-      "their BABY (delivered by a stork, swaddled in blue) - day 17",
+      "none (the girlfriend left with the baby - day 17)",
       "left behind in Mordor (never going back): the giant eagle"
     ],
     "props": [
-      "a BOOMBOX on the ground by the park bench; the spaghetti plate on the bench",
-      "the delivery STORK flew off (with a second bundle - wrong address)",
+      "his house: the TV + game console + controller, a sink full of dishes; the couch is GONE (she took it)",
+      "left behind in the park: the boombox... (alt cut: no boombox) - nothing",
       "left behind on the beach: the yellow smiley kite",
       "left behind in the town: the CAT RESCUE SHELTER he built",
       "the RING IS DESTROYED (day 10)",
-      "far behind (never going back): the beach, the black car, the WHITE PARTY mansion, MEGAPLEX 30, FUN PARK, the town, Mordor, green hill, the airfield, the burger place"
+      "far behind (never going back): the park, the beach, the black car, the WHITE PARTY mansion, MEGAPLEX 30, FUN PARK, the town, Mordor, green hill, the airfield, the burger place"
     ],
     "traits": [
       "beat the block game on hardcore with half a heart (day 4)",
@@ -43,9 +42,9 @@
       "went to the movies (day 13): ran out of FUN PARK's back gate (BYE NOW!) to MEGAPLEX 30 (EXPLOSION 7, TONIGHT ONLY); NO PETS - he put a tiny cowboy hat on the kitten and the usher stared him down but let it slide; SMALL popcorn $47.50, taller than him; the card reader asked for a tip and he pressed 30% ($61.75) under the cashier's stare; in an empty theater a giant in a top hat sat right in front of him (leaning didn't help); 47 previews, ate all the popcorn before the movie; pulled out a periscope and watched EXPLOSION 7 over the hat (car, building blows up, car jumps the fireball); the tall guy got up and left at THE END. Looks normal.",
       "went to the white party (day 14): a black car took him up an endless driveway to a mansion; the doors opened by themselves; passed the ALL WHITE dress code by being a white stick figure; ate one canape; the host (white suit, shades, gold chain) tapped him on the shoulder, staredown, pulled out a bottle of baby oil and chased him through the west wing doors; he slid under the champagne table, the host wiped out into the champagne tower; he escaped into the car; the party favor was a tiny baby oil, tossed out the window. Looks normal.",
       "was told to be happy (day 15, 'Seja feliz'): the black car dropped him at a sunny beach and left; he couldn't smile, a finger smile flopped, a seagull stole his whole ice-cream cone, a little rain cloud appeared over his head and followed him, lightning hit the sand next to him; he sat in the rain; the cloud's gust gave him the idea of a kite; it yanked him up through the cloud into the sun - he laughed for real, looped; the abandoned cloud rained out into a rainbow, the wind died, he slid down the rainbow and landed in the sand; the seagull dropped the same cone back, he caught it and ate it. Huge real grin. Looks normal.",
-      "got a girlfriend and had a baby (day 17): ran off the beach into a park; held out a rose - she walked past reading; a boombox over his head - she put her headphones on; sat on the bench with spaghetti, the smell brought her over, one noodle, two ends, a cartoon kiss; a delivery stork made him SIGN HERE, flew off still holding the bundle, dropped it, he dove and caught it at the fountain; it cried, he rocked it to sleep (day 6 skills); she leaned on his shoulder; the stork came back with a second bundle, checked its clipboard, shook its head, left. Small real smile. Looks normal."
+      "got a girlfriend and had a baby - and lost them (day 17, alt cut): ran off the beach into a park; she walked past his rose; the spaghetti kiss; the stork made him SIGN HERE and dropped the baby in his lap; montage: SOLD sign, slow dance, fridge photo, couch cuddle; record scratch; he gamed while she bounced the crying baby; he put one more plate on the tower of dishes; she vacuumed in front of his game and the cord unplugged the TV; he snuck in at 3 AM and she clicked on the lamp; the argument; WE NEED TO TALK; she left with the baby, then came back for the couch. He shrugged and sat down on the floor to play video games. Looks normal."
     ],
-    "notes": "Day 17: warm/wholesome tone with deadpan; three-companion limit now reached (girlfriend + baby + the eagle far away). Every episode moves on to a new world.",
+    "notes": "Justin, 2026-11-08: NO recurring characters - it's just him. Write any new people out by the end of the episode. Every episode moves on to a new world.",
     "sign_line": "I'LL WAIT HERE."
   },
   "used_comments": [
@@ -147,7 +146,7 @@
     {
       "day": 17,
       "type": "comment",
-      "summary": "@elijah_paradise (IG): 'Get a girlfriend and have a baby' -> reads it on the beach, runs right; hard cut into a park at golden hour; a rose: she walks past reading, a petal falls; a boombox over his head: she puts her headphones on and leaves, the song winds down; sits on the bench, spaghetti; the smell brings her back, she sits, one noodle, two ends -> a cartoon kiss; he goes rigid, blushes; the delivery stork lands: SIGN HERE; it flies off still holding the bundle, notices, lets go; he dives and catches it at the fountain; cut: it cries, he rocks it to sleep; she leans on his shoulder; the stork returns with a second bundle, checks the clipboard, shakes its head, leaves; she takes the baby; ask in the park (68.6 s)"
+      "summary": "@elijah_paradise (IG): 'Get a girlfriend and have a baby' -> ALT CUT on Justin's notes (posted ~8 PM after the original went out at 7 by mistake): beach -> park: rose ignored; spaghetti kiss; the stork: SIGN HERE, baby in his lap; montage (SOLD, slow dance, fridge photo, couch); record scratch; he games while she bounces the crying baby; one more plate on the dish tower; she vacuums in front of his game, the cord unplugs the TV; 3 AM, dark, her angry eyes, he sneaks in, CLICK; argument bubbles; WE NEED TO TALK; she leaves with the baby; comes back for the couch; he shrugs, sits on the floor, plays; push into the TV: TELL ME WHAT TO DO NEXT IN THE COMMENTS (66.0 s)"
     }
   ]
 }
