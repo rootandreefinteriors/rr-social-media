@@ -4238,3 +4238,255 @@ def draw_side_lamp(cr, x, yb=FLOOR_Y, on=0.0, glow=None, sid=20130):
         cr.arc(x, yb - 640, 420, 0, 2 * math.pi); cr.set_source_rgba(1.0, 0.85, 0.45, 0.25 * g); cr.fill()
     sketch_poly(cr, [(x - 70, yb - 720), (x + 70, yb - 720), (x + 120, yb - 590), (x - 120, yb - 590)], 6, sid=sid + 4,
                 fill=lerp((0.78, 0.74, 0.62), (1.0, 0.93, 0.62), on))
+
+# ------------------------------------------------------------------ day 18: the dinosaur age ---
+PRE_DAY = (0.99, 0.86, 0.62)          # warm prehistoric sky
+PRE_DAY_HI = (0.96, 0.72, 0.50)
+MOD_DAY = (0.74, 0.87, 0.98)
+MOD_DAY_HI = (0.58, 0.77, 0.96)
+NIGHT = (0.10, 0.12, 0.26)
+FERN = (0.36, 0.62, 0.30)
+FERN_D = (0.26, 0.48, 0.24)
+ASH_SKY = (0.62, 0.46, 0.38)
+
+def draw_fern(cr, x, yb=FLOOR_Y, h=600.0, g=1.0, t=0.0, lean=0.0, flat=0.0, col=FERN, sid=21000):
+    """a giant prehistoric fern: 5 arching fronds out of one clump. g 0..1 = grown; flat 0..1 = blown flat (to the left)."""
+    if g < 0.02: return
+    h = h * g
+    for k in range(5):
+        a = -math.pi / 2 + (k - 2) * 0.42 + lean + 0.04 * math.sin(t * 1.1 + k + x * 0.01)
+        a = lerp(a, -math.pi + 0.15 + 0.05 * k, flat)
+        L_ = h * (0.75 + 0.25 * (k % 2)) * (1 - 0.45 * flat)
+        pts = []
+        for i in range(9):
+            u = i / 8
+            bend = a + 0.9 * u * u * (1 if math.cos(a) >= 0 else -1) * (1 - flat)
+            px = x + math.cos(a) * L_ * u + math.cos(bend) * 0.0
+            py = yb + math.sin(a) * L_ * u + (L_ * 0.35 * u * u) * (1 - flat)
+            pts.append((px, py))
+        sketch_line(cr, pts, 7, sid=sid + k, amp=0.5, color=lerp(col, (0.30, 0.25, 0.20), flat * 0.6))
+        for i in range(1, 8):
+            u = i / 8; px, py = pts[i]; qx, qy = pts[i + 1]
+            ang = math.atan2(qy - py, qx - px); ll = 90 * g * (1 - u * 0.6)
+            for sd in (-1, 1):
+                ex_, ey_ = px + math.cos(ang + sd * 1.1) * ll, py + math.sin(ang + sd * 1.1) * ll
+                cr.move_to(px, py); cr.line_to(ex_, ey_)
+        cr.set_source_rgb(*lerp(col, (0.30, 0.25, 0.20), flat * 0.6)); cr.set_line_width(10); cr.set_line_cap(1); cr.stroke()
+
+def draw_cycad(cr, x, yb=FLOOR_Y, h=520.0, g=1.0, t=0.0, sid=21020):
+    """a stubby pineapple-trunk cycad with a crown of stiff leaves."""
+    if g < 0.02: return
+    h *= g; w = 70 * g
+    sketch_poly(cr, [(x - w, yb), (x - w * 0.8, yb - h), (x + w * 0.8, yb - h), (x + w, yb)], 6, sid=sid, fill=(0.62, 0.46, 0.30))
+    for j in range(1, 6):
+        yy = yb - h * j / 6
+        cr.move_to(x - w * 0.9, yy); cr.line_to(x + w * 0.9, yy - 18)
+    stroke_ink(cr, 3, alpha=0.5)
+    for k in range(7):
+        a = -math.pi / 2 + (k - 3) * 0.38 + 0.03 * math.sin(t + k)
+        L_ = 330 * g
+        tip = (x + math.cos(a) * L_, yb - h + math.sin(a) * L_ * 0.8 + 60 * g * abs(k - 3) / 3)
+        sketch_poly(cr, [(x - 12, yb - h), ((x + tip[0]) / 2 + 20 * math.sin(a), (yb - h + tip[1]) / 2 - 22), tip,
+                         ((x + tip[0]) / 2 - 20 * math.sin(a), (yb - h + tip[1]) / 2 + 22), (x + 12, yb - h)], 5, sid=sid + 1 + k, fill=FERN, amp=0.5)
+
+def draw_pterodactyl(cr, x, y, s=1.0, flap=0.0, facing=1, sid=21040):
+    """a flying pterodactyl seen from the side, centre (x, y), facing right (facing=1)."""
+    cr.save(); cr.translate(x, y); cr.scale(s * facing, s)
+    wy = -130 * math.sin(flap)
+    for sd, col in ((-1, (0.66, 0.50, 0.44)), (1, (0.78, 0.60, 0.52))):
+        sketch_poly(cr, [(-40, 0), (-60 + 30 * sd, wy - 20), (-200, wy * 0.7 + 40), (40, 10)], 5, sid=sid + (sd > 0), fill=col, amp=0.4)
+    sketch_ellipse(cr, 0, 0, 80, 30, 5, sid=sid + 2, fill=(0.78, 0.60, 0.52))
+    sketch_poly(cr, [(60, -30), (110, -40), (230, -10), (110, 0), (70, 10)], 5, sid=sid + 3, fill=(0.78, 0.60, 0.52), amp=0.3)
+    sketch_poly(cr, [(80, -32), (20, -80), (70, -38)], 4, sid=sid + 4, fill=(0.78, 0.60, 0.52), amp=0.3)
+    cr.arc(100, -24, 6, 0, 2 * math.pi); fill_ink(cr); cr.new_path()
+    cr.restore()
+
+def draw_meteor(cr, x, y, r, t=0.0, trail=1.0, sid=21050):
+    """a giant flaming meteor at (x, y) radius r, coming down from the upper left; trail runs off up-left."""
+    for k in range(7, 0, -1):                                           # fire trail (tapers, runs off-screen)
+        u = k / 7
+        cx, cy = x - 3.0 * r * u * trail, y - 2.2 * r * u * trail
+        rr = r * (1.25 - 0.55 * u) * (1 + 0.06 * math.sin(t * 20 + k))
+        col = lerp((1.0, 0.92, 0.45), (0.95, 0.35, 0.15), u)
+        cr.arc(cx, cy, rr, 0, 2 * math.pi); cr.set_source_rgba(col[0], col[1], col[2], 0.85 - 0.5 * u); cr.fill()
+    cr.arc(x, y, r * 1.35, 0, 2 * math.pi); cr.set_source_rgba(1.0, 0.85, 0.40, 0.55); cr.fill()
+    sketch_circle(cr, x, y, r, max(4, r * 0.05), sid=sid, fill=(0.42, 0.30, 0.26))
+    for k in range(5):
+        a = k * 1.3 + 0.4
+        cr.arc(x + math.cos(a) * r * 0.5, y + math.sin(a) * r * 0.5, r * 0.14, 0, 2 * math.pi)
+    cr.set_source_rgba(0.25, 0.17, 0.14, 0.8); cr.fill()
+    cr.arc(x + r * 0.3, y + r * 0.3, r * 0.6, -0.4, 1.9); cr.set_source_rgba(1.0, 0.55, 0.2, 0.6); cr.set_line_width(r * 0.14); cr.stroke()
+
+def draw_umbrella(cr, x, y, s=1.0, open_=1.0, burnt=0.0, crumble=0.0, ang=0.0, sid=21060):
+    """a small black umbrella held at the handle (x, y); open_ 0..1; burnt 1 = only the bare smoking ribs + shaft;
+    crumble 0..1 = the skeleton falls apart into ash."""
+    if crumble >= 1.0: return
+    cr.save(); cr.translate(x, y); cr.rotate(ang); cr.scale(s, s)
+    al = 1.0 - crumble
+    sketch_line(cr, [(0, 0), (0, -360)], 7, sid=sid, amp=0.2, alpha=al)
+    cr.arc(-22, 0, 22, 0, math.pi); stroke_ink(cr, 7, alpha=al)
+    w = 60 + 260 * open_; top = -470 + 40 * (1 - open_)
+    if burnt < 0.5:
+        pts = [(0, top - 20)]
+        for k in range(9):
+            u = k / 8; xx = -w + 2 * w * u
+            pts.append((xx, top + 110 * open_ + (0 if k % 2 == 0 else -18) + 90 * (1 - open_) * (1 - abs(2 * u - 1))))
+        sketch_poly(cr, [(0, top - 20)] + pts[1:], 6, sid=sid + 1, fill=(0.14, 0.14, 0.18))
+        sketch_line(cr, [(0, top - 20), (0, top - 70)], 7, sid=sid + 2, amp=0.2)
+    else:
+        for k in range(5):                                             # bare ribs
+            u = k / 4; xx = -w + 2 * w * u
+            dy = 40 * crumble * (k % 2 + 1)
+            sketch_line(cr, [(0, top - 10), ((xx) * 0.5, top + 20 + dy), (xx, top + 120 + dy * 2)], 5, sid=sid + 10 + k, amp=0.5, alpha=al)
+        for k in range(3):
+            u = (t_glob(sid) * 0.6 + k / 3) % 1.0
+            draw_smoke_puff(cr, -40 + 50 * k, top - 60 - 220 * u, 30 + 40 * u, alpha=(1 - u) * 0.7 * al, dark=0.6)
+    cr.restore()
+
+_T_GLOB = [0.0]
+def t_glob(_sid=0): return _T_GLOB[0]
+
+def draw_cave_rock(cr, x, yb=FLOOR_Y, part="back", sid=21080):
+    """a big boulder hill with a small cave opening at the bottom-left; part "back" = the rock + the dark opening,
+    "rim" = the opening's top lip (drawn over things inside). Opening: x-430..x-80, up to yb-620."""
+    if part == "back":
+        sketch_poly(cr, [(x - 700, yb), (x - 620, yb - 700), (x - 300, yb - 1150), (x + 200, yb - 1300), (x + 700, yb - 1100),
+                         (x + 1000, yb - 600), (x + 1100, yb)], 8, sid=sid, fill=(0.66, 0.60, 0.54))
+        for k, (a, b) in enumerate((((x - 100, yb - 1000), (x + 300, yb - 900)), ((x + 400, yb - 700), (x + 700, yb - 500)),
+                                    ((x - 500, yb - 860), (x - 320, yb - 940)))):
+            sketch_line(cr, [a, b], 4, sid=sid + 1 + k, alpha=0.5)
+        cr.move_to(x - 450, yb); cr.curve_to(x - 450, yb - 640, x - 60, yb - 640, x - 60, yb); cr.close_path()
+        cr.set_source_rgb(0.16, 0.14, 0.14); cr.fill()
+    else:
+        cr.move_to(x - 470, yb); cr.curve_to(x - 470, yb - 670, x - 40, yb - 670, x - 40, yb)
+        stroke_ink(cr, 9)
+
+def draw_log(cr, x, yb=FLOOR_Y, smash=0.0, sid=21090):
+    """a fallen tree trunk lying across the path (~420 wide, 150 tall); smash 0..1 flattens it into splinters."""
+    if smash < 0.5:
+        sketch_rect(cr, x - 210, yb - 150, x + 210, yb, 7, sid=sid, fill=(0.58, 0.40, 0.26))
+        sketch_ellipse(cr, x + 210, yb - 75, 40, 75, 6, sid=sid + 1, fill=(0.86, 0.70, 0.48))
+        sketch_ellipse(cr, x + 210, yb - 75, 16, 34, 3, sid=sid + 2, fill=(0.86, 0.70, 0.48))
+        for k in range(3): sketch_line(cr, [(x - 160 + 120 * k, yb - 110), (x - 80 + 120 * k, yb - 100)], 3, sid=sid + 3 + k, alpha=0.5)
+    else:
+        for k in range(7):
+            xx = x - 260 + 85 * k
+            sketch_poly(cr, [(xx, yb), (xx + 30, yb - 40 - 25 * (k % 3)), (xx + 70, yb)], 5, sid=sid + 10 + k, fill=(0.58, 0.40, 0.26), amp=0.4)
+
+def draw_puddle_rings(cr, x, y, rx, t, hits, sid=21100):
+    """a little puddle on the ground with ripple rings that spread from every footfall time in hits."""
+    sketch_ellipse(cr, x, y, rx, rx * 0.22, 5, sid=sid, fill=(0.62, 0.78, 0.90))
+    cr.save(); cr.translate(x, y); cr.scale(1.0, 0.22)
+    cr.arc(0, 0, rx - 4, 0, 2 * math.pi); cr.restore(); cr.save(); cr.clip()
+    for th in hits:
+        u = (t - th) / 1.1
+        if 0 <= u < 1:
+            for j in range(3):
+                r_ = rx * (0.15 + 0.9 * u) - j * 30
+                if r_ > 4:
+                    cr.save(); cr.translate(x, y); cr.scale(1.0, 0.22); cr.arc(0, 0, r_, 0, 2 * math.pi); cr.restore()
+                    cr.set_source_rgba(1, 1, 1, 0.9 * (1 - u)); cr.set_line_width(5); cr.stroke()
+    cr.restore()
+
+def draw_trex(cr, X, st, t, face=1, pitch=0.0, blink=0.0):
+    """the friendly T. rex (draw_dino) placed with its near foot at world x X, facing right (face=1) or left (-1),
+    pitched forward around the hip by `pitch` rad (head goes down). st as DINO (x is ignored)."""
+    s = st["s"]; d = dict(st); d["x"] = 0.0
+    cr.save(); cr.translate(X, 0); cr.scale(-face, 1)
+    if abs(pitch) > 1e-4:
+        hx, hy = 40 * s, FLOOR_Y - 400 * s
+        cr.translate(hx, hy); cr.rotate(-pitch); cr.translate(-hx, -hy)
+    draw_dino(cr, d, t, blink=blink)
+    cr.restore()
+
+def trex_pt(X, st, face=1, pitch=0.0, which="eye"):
+    """world position of the T. rex's eye / nostril / mouth / arm (for aiming), matching draw_trex."""
+    s = st["s"]; d = dict(st); d["x"] = 0.0
+    hx, hy = dino_head(d)
+    lx, ly = {"eye": (hx + 20 * s, hy - 58 * s), "nose": (hx - 160 * s, hy - 42 * s), "mouth": (hx - 110 * s, hy + 30 * s),
+              "arm": (-150 * s - 40 * s, FLOOR_Y - 640 * s + 60 * s - _walkbob(d)), "head": (hx, hy)}[which]
+    if abs(pitch) > 1e-4:
+        px, py = 40 * s, FLOOR_Y - 400 * s
+        c, s_ = math.cos(-pitch), math.sin(-pitch)
+        dx, dy = lx - px, ly - py
+        lx, ly = px + dx * c - dy * s_, py + dx * s_ + dy * c
+    return (X - face * lx, ly)
+
+def draw_ash(cr, t, amt=1.0, n=40, sid=21120):
+    """screen-space falling ash flakes (overlay)."""
+    if amt < 0.01: return
+    for k in range(n):
+        u = (t * (0.08 + 0.03 * (k % 5)) + k * 0.137) % 1.0
+        x = (k * 263.7 + 60 * math.sin(t * 0.7 + k)) % 1080
+        y = -40 + u * 2000
+        cr.arc(x, y, 5 + (k % 3) * 3, 0, 2 * math.pi)
+        cr.set_source_rgba(0.35, 0.33, 0.32, 0.55 * amt); cr.fill()
+
+def draw_dino_world(cr, t, x0, x1, pre=1.0, night=0.0, after=0.0, sun=None, moon=None, volcano=None, yb=FLOOR_Y,
+                    tree=None, ferns=(), cycads=(), fern_g=1.0, tree_g=1.0, glow=0.0, cave=None, sky_fx=None):
+    """the meadow that becomes the dinosaur age. pre 0..1 = modern meadow -> prehistoric jungle colours; night 0..1
+    darkens the sky; after 0..1 = after the meteor (ash sky, flattened plants, smoke); sun/moon = world (x, y);
+    volcano = (x, h, top_blown 0..1); tree = x (a modern tree, scaled by tree_g); ferns/cycads = lists of (x, h);
+    glow 0..1 = orange meteor light."""
+    vx0, vy0, vx1, vy1 = _visible(cr)
+    a, b = max(x0, vx0), min(x1, vx1)
+    if b <= a: return
+    lo = lerp(MOD_DAY, PRE_DAY, pre); hi = lerp(MOD_DAY_HI, PRE_DAY_HI, pre)
+    lo = lerp(lo, NIGHT, night); hi = lerp(hi, NIGHT, night)
+    lo = lerp(lo, ASH_SKY, after); hi = lerp(hi, lerp(ASH_SKY, (0.3, 0.22, 0.2), 0.5), after)
+    lo = lerp(lo, (1.0, 0.62, 0.30), glow); hi = lerp(hi, (0.95, 0.45, 0.22), glow)
+    top = min(vy0, yb - 200)
+    nb = int((yb - 300 - top) // 160) + 2
+    for k in range(nb):
+        y_lo = yb - 300 - k * 160 if k else yb + 10; y_hi = yb - 300 - (k + 1) * 160
+        cr.rectangle(a, y_hi, b - a, y_lo - y_hi + 1); cr.set_source_rgb(*lerp(lo, hi, min(1.0, k / 12))); cr.fill()
+    if night > 0.3:
+        for k in range(int(a // 230), int(b // 230) + 1):
+            yy = yb - 900 - (k * 137) % 1600
+            cr.arc(k * 230 + 40 * math.sin(k), yy, 5, 0, 2 * math.pi); cr.set_source_rgba(1, 1, 0.9, (night - 0.3) * 1.4); cr.fill()
+    if sun is not None and night < 0.9:
+        sketch_circle(cr, sun[0], sun[1], 150, 6, sid=21130, fill=(1.0, 0.86, 0.35), alpha=1 - night)
+    if moon is not None and night > 0.1:
+        sketch_circle(cr, moon[0], moon[1], 110, 6, sid=21131, fill=(0.96, 0.96, 0.88), alpha=min(1, night * 1.5))
+    if sky_fx is not None: sky_fx(cr)
+    # far hills
+    for k in range(int(a // 1400) - 1, int(b // 1400) + 2):
+        hx = k * 1400
+        col = lerp(lerp((0.62, 0.80, 0.52), (0.52, 0.70, 0.40), pre), (0.45, 0.38, 0.34), after)
+        col = lerp(col, (0.15, 0.2, 0.25), night * 0.8)
+        cr.move_to(hx - 900, yb - 280); cr.curve_to(hx - 500, yb - 700 - 120 * (k % 3), hx + 500, yb - 700 - 120 * (k % 3), hx + 900, yb - 280)
+        cr.close_path(); cr.set_source_rgb(*col); cr.fill()
+    if volcano is not None:
+        vx, vh, blown = volcano
+        if vh > 20:
+            draw_volcano(cr, vx, vh * (1 - 0.35 * blown), t, yb=yb - 280, w=1500 * max(0.3, vh / 1200), glow=1.0, smoke=min(1.0, vh / 900) * (1 + blown))
+    # ground
+    gcol = lerp(lerp((0.56, 0.80, 0.42), (0.44, 0.66, 0.32), pre), (0.50, 0.42, 0.36), after)
+    gcol = lerp(gcol, (0.12, 0.18, 0.18), night * 0.8)
+    cr.rectangle(a, yb - 300, b - a, max(600, vy1 - yb + 400)); cr.set_source_rgb(*gcol); cr.fill()
+    sketch_line(cr, [(a, yb - 300), (b, yb - 300)], 5, sid=21132, amp=0.8, alpha=0.6)
+    for k in range(int(a // 170) - 1, int(b // 170) + 2):                   # grass tufts / pebbles
+        xx = k * 170 + 50 * math.sin(k * 2.3); yy = yb - 220 + (k * 53) % 260
+        if after < 0.5:
+            cr.move_to(xx - 14, yy); cr.line_to(xx - 6, yy - 30); cr.move_to(xx, yy); cr.line_to(xx + 2, yy - 38)
+            cr.move_to(xx + 14, yy); cr.line_to(xx + 10, yy - 28)
+            cr.set_source_rgba(0.2, 0.35, 0.15, 0.6); cr.set_line_width(4); cr.stroke()
+        else:
+            cr.arc(xx, yy, 8, 0, 2 * math.pi); cr.set_source_rgba(0.3, 0.27, 0.25, 0.6); cr.fill()
+    if cave is not None and a - 1300 < cave < b + 800:
+        draw_cave_rock(cr, cave, yb, "back")
+    if tree is not None and tree_g > 0.02 and a - 600 < tree < b + 600:
+        cr.save(); cr.translate(tree, yb - 120); cr.scale(tree_g, tree_g); cr.translate(-tree, -(yb - 120))
+        draw_tree(cr, tree, yb - 120, t, h=1000)
+        cr.restore()
+    for k, (fx, fh) in enumerate(cycads):
+        if a - 500 < fx < b + 500: draw_cycad(cr, fx, yb - 200 + 40 * (k % 2), fh, fern_g, t, sid=21020 + 10 * (k % 4))
+    for k, (fx, fh) in enumerate(ferns):
+        if a - 700 < fx < b + 700: draw_fern(cr, fx, yb - 150 + 60 * (k % 3), fh, fern_g, t, flat=after, sid=21000 + 7 * (k % 5))
+    if after > 0.01:
+        for k in range(int(a // 900) - 1, int(b // 900) + 2):               # smoking craters
+            cx = k * 900 + 200 * math.sin(k * 1.7)
+            ellipse(cr, cx, yb - 120 + 40 * (k % 2), 160, 26, sid=21140 + k % 5); fill_ink(cr, SOOT, 0.7 * after); cr.new_path()
+            for j in range(3):
+                u = (t * 0.25 + j / 3 + k * 0.17) % 1.0
+                draw_smoke_puff(cr, cx + 40 * math.sin(t + j + k), yb - 160 - 700 * u, 60 + 120 * u, alpha=after * (1 - u) * 0.55, dark=0.7)
