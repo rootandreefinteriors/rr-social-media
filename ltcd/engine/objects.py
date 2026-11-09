@@ -4490,3 +4490,188 @@ def draw_dino_world(cr, t, x0, x1, pre=1.0, night=0.0, after=0.0, sun=None, moon
             for j in range(3):
                 u = (t * 0.25 + j / 3 + k * 0.17) % 1.0
                 draw_smoke_puff(cr, cx + 40 * math.sin(t + j + k), yb - 160 - 700 * u, 60 + 120 * u, alpha=after * (1 - u) * 0.55, dark=0.7)
+
+# ------------------------------------------------------------------ day 18 (re-cut): the lottery ---
+STORE_WALL = (0.93, 0.95, 0.88)
+STORE_FLOOR = (0.80, 0.82, 0.84)
+
+def draw_store_inside(cr, t, x0, x1, yb=FLOOR_Y, sid=22100):
+    """a corner store inside: pale wall, checker floor, shelves of colourful boxes, a fridge of drinks."""
+    vx0, vy0, vx1, vy1 = _visible(cr)
+    a, b = max(x0, vx0), min(x1, vx1)
+    if b <= a: return
+    cr.rectangle(a, vy0 - 10, b - a, yb - 140 - vy0 + 10); cr.set_source_rgb(*STORE_WALL); cr.fill()
+    cr.rectangle(a, yb - 140, b - a, max(400, vy1 - yb + 300)); cr.set_source_rgb(*STORE_FLOOR); cr.fill()
+    for k in range(int(a // 160) - 1, int(b // 160) + 2):
+        for j in range(4):
+            if (k + j) % 2 == 0:
+                cr.rectangle(k * 160, yb - 140 + j * 120, 160, 120); cr.set_source_rgba(0.6, 0.62, 0.66, 0.35); cr.fill()
+    sketch_line(cr, [(a, yb - 140), (b, yb - 140)], 5, sid=sid, amp=0.6)
+    cols = ((0.95, 0.35, 0.30), (0.30, 0.60, 0.95), (0.99, 0.80, 0.25), (0.45, 0.78, 0.40), (0.85, 0.50, 0.85))
+    for k in range(int((a - x0) // 1100) - 1, int((b - x0) // 1100) + 2):     # shelves
+        sx = x0 + k * 1100
+        if sx < x0 or sx + 700 > x1: continue
+        sketch_rect(cr, sx, yb - 1050, sx + 700, yb - 160, 6, sid=sid + 1 + k % 3, fill=(0.82, 0.74, 0.62))
+        for r in range(4):
+            yy = yb - 1050 + 60 + r * 220
+            sketch_line(cr, [(sx, yy + 150), (sx + 700, yy + 150)], 5, sid=sid + 5 + r)
+            for i in range(6):
+                bx = sx + 20 + i * 113
+                sketch_rect(cr, bx, yy + 20, bx + 90, yy + 148, 3, sid=sid + 10 + (i + r) % 7, fill=cols[(i + r + k) % 5], amp=0.6)
+
+def draw_store_counter(cr, x, yb=FLOOR_Y, sid=22140):
+    """the shop counter (front-on), ~900 wide, top at yb - 470; a little LOTTO stand on it."""
+    sketch_rect(cr, x - 450, yb - 470, x + 450, yb - 10, 7, sid=sid, fill=(0.62, 0.42, 0.28))
+    sketch_rect(cr, x - 480, yb - 500, x + 480, yb - 460, 6, sid=sid + 1, fill=(0.80, 0.62, 0.44))
+    for k in range(3): sketch_line(cr, [(x - 400 + 300 * k, yb - 440), (x - 400 + 300 * k, yb - 40)], 3, sid=sid + 2 + k, alpha=0.4)
+    sketch_rect(cr, x - 130, yb - 700, x + 70, yb - 500, 5, sid=sid + 6, fill=(0.98, 0.84, 0.25))
+    draw_text(cr, "LOTTO", x - 30, yb - 640, 44, color=(200, 40, 40))
+    draw_text(cr, "$1", x - 30, yb - 560, 52, color=(30, 30, 34))
+
+LOTTO_NUMS = (4, 8, 15, 16, 23, 42)
+
+def draw_lotto_tv(cr, x, y, t, shown=0, jackpot=0.0, flash=0.0, sid=22160):
+    """a TV hanging on the store wall, centre (x, y), 560 x 380: TONIGHT'S DRAW + up to 6 balls (shown = how many,
+    fractional = the last one popping in); jackpot 0..1 swaps to JACKPOT $10,000,000."""
+    w, h = 560, 380
+    sketch_line(cr, [(x, y - h / 2 - 140), (x, y - h / 2)], 8, sid=sid, amp=0.2)
+    sketch_rect(cr, x - w / 2 - 22, y - h / 2 - 22, x + w / 2 + 22, y + h / 2 + 22, 7, sid=sid + 1, fill=(0.14, 0.14, 0.18))
+    bg = lerp((0.10, 0.16, 0.42), (0.98, 0.82, 0.20), flash)
+    cr.rectangle(x - w / 2, y - h / 2, w, h); cr.set_source_rgb(*bg); cr.fill()
+    if jackpot < 0.5:
+        draw_text(cr, "TONIGHT'S DRAW", x, y - 125, 46, color=(255, 255, 255))
+        for i in range(6):
+            u = clamp01(shown - i)
+            if u <= 0: continue
+            bx = x - 225 + i * 90; by = y + 20
+            r = 38 * back_out(u, 2.0)
+            sketch_circle(cr, bx, by, r, 4, sid=sid + 10 + i, fill=(1, 1, 1))
+            if u > 0.6: draw_text(cr, str(LOTTO_NUMS[i]), bx, by, 40, color=(30, 30, 34))
+        draw_text(cr, "$10,000,000 JACKPOT", x, y + 125, 36, color=(255, 220, 80))
+    else:
+        c = (30, 30, 34) if flash > 0.5 else (255, 220, 80)
+        draw_text(cr, "JACKPOT!", x, y - 70, 96, color=c)
+        draw_text(cr, "$10,000,000", x, y + 70, 80, color=c)
+
+def draw_ticket(cr, x, y, s=1.0, circled=0, ang=0.0, sid=22180):
+    """a lottery ticket held at (x, y) (bottom-centre), the six numbers; `circled` of them ringed in red."""
+    cr.save(); cr.translate(x, y); cr.rotate(ang); cr.scale(s, s)
+    sketch_rect(cr, -130, -170, 130, 0, 4, sid=sid, fill=(1.0, 0.97, 0.80), amp=0.5)
+    draw_text(cr, "LOTTO", 0, -140, 34, color=(200, 40, 40))
+    for i, n in enumerate(LOTTO_NUMS):
+        cx, cy = -80 + (i % 3) * 80, -90 + (i // 3) * 55
+        draw_text(cr, str(n), cx, cy, 36, color=(30, 30, 34))
+        if i < circled:
+            cr.save(); cr.translate(cx, cy); cr.scale(1.0, 0.7); cr.arc(0, 0, 34, 0, 2 * math.pi); cr.restore()
+            cr.set_source_rgb(0.85, 0.15, 0.15); cr.set_line_width(5); cr.stroke()
+    cr.restore()
+
+def draw_big_check(cr, x, y, s=1.0, ang=0.0, droop=0.0, sid=22200):
+    """a giant novelty cheque, centre (x, y), ~760 x 360 at s=1. droop 0..1 = it sags (folds down) in the middle."""
+    cr.save(); cr.translate(x, y); cr.rotate(ang); cr.scale(s, s)
+    w, h = 380, 180
+    d = 120 * droop
+    pts = [(-w, -h + d * 0.2), (0, -h + d), (w, -h + d * 0.2), (w, h + d * 0.2), (0, h + d), (-w, h + d * 0.2)]
+    sketch_poly(cr, pts, 7, sid=sid, fill=(0.88, 0.96, 0.86), amp=0.6)
+    draw_text(cr, "PAY TO: YOU", -150 , -110 + d * 0.6, 40, color=(30, 30, 34))
+    draw_text(cr, "$10,000,000", 0, 0 + d * 0.8, 92, color=(30, 120, 50))
+    draw_text(cr, "TEN MILLION DOLLARS", 0, 100 + d * 0.9, 34, color=(30, 30, 34))
+    sketch_line(cr, [(140, 145 + d * 0.5), (340, 145 + d * 0.3)], 3, sid=sid + 1)
+    cr.restore()
+
+def draw_trash_can(cr, x, yb=FLOOR_Y, lid=0.0, sid=22220):
+    """a metal curb-side trash can; lid 0..1 lifts the lid off (up and to the right)."""
+    sketch_poly(cr, [(x - 130, yb - 420), (x + 130, yb - 420), (x + 110, yb), (x - 110, yb)], 7, sid=sid, fill=(0.66, 0.70, 0.72))
+    for k in range(4): sketch_line(cr, [(x - 85 + 57 * k, yb - 390), (x - 75 + 50 * k, yb - 30)], 3, sid=sid + 1 + k, alpha=0.5)
+    lx, ly = x + 170 * lid, yb - 430 - 140 * math.sin(math.pi * min(1.0, lid) * 0.5)
+    cr.save(); cr.translate(lx, ly); cr.rotate(0.5 * lid)
+    sketch_ellipse(cr, 0, 0, 150, 26, 6, sid=sid + 6, fill=(0.58, 0.62, 0.64))
+    sketch_rect(cr, -30, -50, 30, -24, 5, sid=sid + 7, fill=(0.58, 0.62, 0.64))
+    cr.restore()
+
+def draw_ring_box(cr, x, y, s=1.0, open_=0.0, t=0.0, sid=22240):
+    """a little red ring box held at (x, y) (bottom-centre); open_ 0..1 flips the lid up to show a sparkling ring."""
+    cr.save(); cr.translate(x, y); cr.scale(s, s)
+    sketch_rect(cr, -46, -60, 46, 0, 5, sid=sid, fill=(0.80, 0.16, 0.22), amp=0.4)
+    if open_ > 0.05:
+        cr.save(); cr.translate(0, -60); cr.scale(1.0, 1.0 - 2.0 * min(1.0, open_)); sketch_rect(cr, -46, -40, 46, 0, 5, sid=sid + 1, fill=(0.70, 0.12, 0.18), amp=0.4); cr.restore()
+        if open_ > 0.6:
+            sketch_ellipse(cr, 0, -64, 24, 18, 6, sid=sid + 2, fill=None, color=(0.95, 0.75, 0.20))
+            draw_star(cr, 0, -92, 18 + 6 * math.sin(t * 9), color=(0.75, 0.92, 1.0))
+            for k in range(4):
+                a = k * math.pi / 2 + t * 2
+                sketch_line(cr, [(math.cos(a) * 50, -92 + math.sin(a) * 50), (math.cos(a) * 80, -92 + math.sin(a) * 80)], 4, sid=sid + 3 + k,
+                            color=(0.95, 0.80, 0.30), alpha=open_)
+    else:
+        sketch_rect(cr, -46, -100, 46, -60, 5, sid=sid + 1, fill=(0.70, 0.12, 0.18), amp=0.4)
+    cr.restore()
+
+HER_WALL = (0.98, 0.90, 0.78)
+def her_house_geom(x, yb=FLOOR_Y):
+    """(window rect x0, y0, x1, y1), (door rect x0, y0, x1, y1) of draw_her_house."""
+    return (x - 560, yb - 1040, x - 60, yb - 560), (x + 180, yb - 860, x + 480, yb - 100)
+
+def draw_her_house(cr, x, yb=FLOOR_Y, part="wall", curtain=1.0, door=0.0, sid=22260):
+    """a small cream house front (~1500 wide) with a big front window (left) and a front door (right).
+    part "wall": the wall with the window + door holes cut out (draw her INSIDE before this, clipped to the window);
+    part "inside": the dim room seen through the window/door; part "curtain": the two curtains (curtain 1 = closed);
+    "door": the door leaf (door 0..1 open = swings out to the right)."""
+    (wx0, wy0, wx1, wy1), (dx0, dy0, dx1, dy1) = her_house_geom(x, yb)
+    if part == "inside":
+        cr.rectangle(wx0, wy0, wx1 - wx0, wy1 - wy0); cr.rectangle(dx0, dy0, dx1 - dx0, dy1 - dy0)
+        cr.set_source_rgb(0.96, 0.86, 0.70); cr.fill()
+        return
+    if part == "wall":
+        cr.save()
+        cr.rectangle(x - 760, yb - 1240, 1520, 1150); cr.rectangle(wx1, wy0, wx0 - wx1, wy1 - wy0); cr.rectangle(dx1, dy0, dx0 - dx1, dy1 - dy0)
+        cr.set_fill_rule(cairo.FILL_RULE_EVEN_ODD); cr.set_source_rgb(*HER_WALL); cr.fill()
+        cr.restore()
+        sketch_rect(cr, x - 760, yb - 1240, x + 760, yb - 90, 7, sid=sid, fill=None)
+        sketch_poly(cr, [(x - 860, yb - 1230), (x, yb - 1720), (x + 860, yb - 1230)], 7, sid=sid + 1, fill=(0.45, 0.55, 0.78))
+        sketch_rect(cr, wx0 - 20, wy0 - 20, wx1 + 20, wy1 + 20, 7, sid=sid + 2, fill=None)
+        sketch_rect(cr, wx0 - 50, wy1 + 20, wx1 + 50, wy1 + 60, 6, sid=sid + 3, fill=(1, 1, 1))
+        sketch_rect(cr, dx0 - 15, dy0 - 15, dx1 + 15, dy1, 7, sid=sid + 4, fill=None)
+        sketch_rect(cr, dx0 - 60, yb - 100, dx1 + 60, yb - 40, 6, sid=sid + 5, fill=(0.75, 0.72, 0.70))
+        for k in range(3):
+            fx = x - 520 + 160 * k
+            sketch_circle(cr, fx, yb - 120, 70, 5, sid=sid + 6 + k, fill=(0.46, 0.72, 0.36))
+            sketch_circle(cr, fx + 20, yb - 160, 16, 3, sid=sid + 9 + k, fill=(0.98, 0.55, 0.65))
+        return
+    if part == "curtain":
+        hw = (wx1 - wx0) / 2
+        for sd in (-1, 1):
+            cw = 40 + (hw - 40) * curtain
+            ex = wx0 if sd < 0 else wx1
+            ix = ex - sd * cw
+            pts = [(ex, wy0), (ix, wy0)] + [(ix + 10 * math.sin(k * 1.3), wy0 + k * (wy1 - wy0) / 8) for k in range(1, 8)] + [(ix, wy1), (ex, wy1)]
+            sketch_poly(cr, pts, 5, sid=sid + 20 + (sd > 0), fill=(0.85, 0.35, 0.40), amp=0.5)
+            for k in range(1, 4):
+                fx = lerp(ex, ix, k / 4)
+                sketch_line(cr, [(fx, wy0 + 10), (fx, wy1 - 10)], 2, sid=sid + 23 + k, alpha=0.4)
+        sketch_line(cr, [(wx0 - 30, wy0 - 6), (wx1 + 30, wy0 - 6)], 8, sid=sid + 30, amp=0.2)
+        return
+    if part == "door":
+        w = (dx1 - dx0) * (1 - 0.85 * door)
+        sketch_rect(cr, dx0, dy0, dx0 + w, dy1, 6, sid=sid + 40, fill=(0.40, 0.55, 0.80))
+        if door < 0.3: cr.arc(dx0 + w - 40, (dy0 + dy1) / 2, 14, 0, 2 * math.pi); fill_ink(cr); cr.new_path()
+
+def draw_street(cr, t, x0, x1, yb=FLOOR_Y, sid=22300):
+    """a quiet street at golden hour: sky bands, a few far houses, grass strip + sidewalk as the floor."""
+    vx0, vy0, vx1, vy1 = _visible(cr)
+    a, b = max(x0, vx0), min(x1, vx1)
+    if b <= a: return
+    top = min(vy0, yb - 200)
+    nb = int((yb - 300 - top) // 160) + 2
+    for k in range(nb):
+        y_lo = yb - 300 - k * 160 if k else yb + 10; y_hi = yb - 300 - (k + 1) * 160
+        cr.rectangle(a, y_hi, b - a, y_lo - y_hi + 1); cr.set_source_rgb(*lerp((0.99, 0.84, 0.62), (0.62, 0.74, 0.95), min(1.0, k / 10))); cr.fill()
+    for k in range(int(a // 1200) - 1, int(b // 1200) + 2):
+        hx = k * 1200 + 300
+        sketch_rect(cr, hx - 260, yb - 900, hx + 260, yb - 300, 5, sid=sid + k % 4, fill=lerp((0.85, 0.80, 0.90), (0.80, 0.90, 0.85), (k % 3) / 2))
+        sketch_poly(cr, [(hx - 300, yb - 895), (hx, yb - 1120), (hx + 300, yb - 895)], 5, sid=sid + 5 + k % 4, fill=(0.70, 0.40, 0.38))
+    cr.rectangle(a, yb - 300, b - a, 220); cr.set_source_rgb(0.56, 0.78, 0.44); cr.fill()
+    cr.rectangle(a, yb - 80, b - a, max(400, vy1 - yb + 300)); cr.set_source_rgb(0.84, 0.84, 0.82); cr.fill()
+    sketch_line(cr, [(a, yb - 80), (b, yb - 80)], 4, sid=sid + 10, amp=0.5, alpha=0.6)
+    for k in range(int(a // 300) - 1, int(b // 300) + 2):
+        cr.move_to(k * 300, yb - 80); cr.line_to(k * 300 - 60, yb + 300)
+    cr.set_source_rgba(0.5, 0.5, 0.5, 0.4); cr.set_line_width(3); cr.stroke()
