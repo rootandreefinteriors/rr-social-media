@@ -192,7 +192,10 @@ flow `Hd8ptIktXVoBR4RvHhKB` (reuse it). Buffer (Nigel's own account): org `6ad3b
    `[uneasy]`, `[whispers]` work. Always start `[curious] Hello? Is anyone out there?`. Write the idea first. Before
    voicing, check every line against §1: action + command right after the open, a prop, everything about *you*,
    implied lift, edged hook, one deliberate unsettling moment, and **reads cold for a first-time viewer**.
-2. **Voice:** ElevenLabs `creative_generate_speech(model_id="eleven_v3", voice_id="f21WdrGXEaltX2j5JdUJ",
+2. **Voice — reuse before you generate.** If `episodes/epNNN_*/voice_raw.mp3` is already in the repo for this day
+   (with `script.txt` and `voice.json`), that day is already voiced: **don't spend credits re-voicing it.** Check the
+   script against §1 and the Bible; use it unless it breaks a rule, and say in the report which recordings you reused.
+   If `words_raw.json` is there too, skip step 3 as well. Otherwise: ElevenLabs `creative_generate_speech(model_id="eleven_v3", voice_id="f21WdrGXEaltX2j5JdUJ",
    flow_id="Hd8ptIktXVoBR4RvHhKB", generations_count=1, prompt=<script>)`. ~600–800 credits each (30k/month plan; this
    run makes ~5, so ~3.5k). If it fails on quota, stop making episodes and report it. Then
    `creative_get_flow_run_status(flow_id, session_ids)` until done → `media[].url` (signed, expires in 2 h; download

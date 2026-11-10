@@ -37,7 +37,7 @@ scheduling). In this part, the only files you may add or change are `nigel-bane/
 
 ## 0. Setup
 - Run `git pull --ff-only`.
-- If `reviews/` already has a review dated within the last 3 days, don't redo it: skip straight to `PRODUCE.md` §2.
+- If `reviews/` already has a review dated within the last 5 days, don't redo it: skip straight to `PRODUCE.md` §2.
 - If this repository is not checked out (no `nigel-bane/` folder), fetch the inputs with curl:
   - `https://raw.githubusercontent.com/rootandreefinteriors/rr-social-media/main/nigel-bane/CATALOG.md` (and
     `BIBLE.md`, `LEDGER.md` in the same folder)
