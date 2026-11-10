@@ -6,19 +6,19 @@
     "type": "comment",
     "folder": "episodes/ep019",
     "video": "videos/day019.mp4",
-    "posted_at": "2026-11-10T19:10-05:00 (scheduled)",
+    "posted_at": "2026-11-10T19:30-05:00 (scheduled)",
     "buffer": {
       "tiktok": "6af36d7d57fc125cf880a4fa",
       "instagram": "6af36d8042d1993c828f9aa7"
     },
-    "note": "RE-CUT on Justin's call (real people are fine): @nevaehells 'Raise your kid to be the next LeBron james'. Buffer posts edited to commit-pinned raw URL @7b325a1. The waiting cut (@92eb82d, episodes/ep019/waiting_unused.py) never aired."
+    "note": "RE-CUT 2 on Justin's notes (son's high-top, the other team on the last play, trophy-plaque ending). Buffer posts edited to commit-pinned raw URL @5b440cf. Earlier cuts (@7b325a1, waiting @92eb82d) never aired."
   },
   "ask_since_day": 19,
   "waiting_streak": 0,
   "world": {
-    "location": "THE FINALS ARENA (day 19): O.draw_arena(cr, t, AX-6000, AX+6000, banner_x=AX-330) + O.draw_paint(cr, ARIM[0], ft_x=ARIM[0]+840) with AX=4000000; the hoop at ABX=AX-900 has a SHATTERED backboard and a bent rim (O.draw_hoop(..., shatter=1, bend=0.85, glass=True)); glass shards + confetti on the hardwood; the giant trophy (O.draw_trophy s=0.52) stands at AX+290; he stands at AX-60, his grown son (#23 jersey, headband) at AX-470. S.floor=False. See ltcd/episodes/ep019.",
+    "location": "THE FINALS ARENA (day 19): O.draw_arena(cr, t, AX-6000, AX+6000, banner_x=AX-330) + O.draw_paint(cr, ARIM[0], ft_x=ARIM[0]+840) with AX=4000000; the hoop at ABX=AX-900 has a SHATTERED backboard and a bent rim (O.draw_hoop(..., shatter=1, bend=0.85, glass=True)); glass + confetti on the hardwood; the green #4 defender lies flat under the hoop; HE lies flat on his back at centre court (feet at AX+150, lean 1.42) with the trophy standing on his belly (O.draw_trophy s=0.55 plaque=TELL ME WHAT / TO DO NEXT IN / THE COMMENTS); his son (#23, headband, high-top) stands at AX-190. S.floor=False. See ltcd/episodes/ep019.",
     "companions": [
-      "his son, grown up: an NBA champion (a taller him: drawn with C.draw_guy scaled 1.18 + O.draw_headband + O.draw_jersey '23'); see ep019 draw_kid",
+      "his son, grown up: an NBA champion - taller than him, a dark HIGH-TOP haircut (pose hair='hightop', no curl), white headband, purple #23 jersey (C.draw_guy scaled 1.18 + O.draw_headband + O.draw_jersey); see ep019 draw_kid",
       "the girlfriend (O.draw_mom, hair (0.62,0.28,0.16), dress (0.30,0.66,0.66), bun=False) - at home on the couch",
       "the black kitten (O.draw_cat col='black') - at home on the couch"
     ],
@@ -163,7 +163,7 @@
     {
       "day": 19,
       "type": "comment",
-      "summary": "@nevaehells (IG): 'Raise your kid to be the next LeBron james' -> RE-CUT on Justin's call (the routine had skipped it for naming a real person; a waiting cut never aired): couch -> he takes the baby, runs out right -> neighbourhood court: baby + ball, deadpan; day/night time-lapse: toddler granny shot bonks Dad; crossover ankle-breaker + swish; THE CHOSEN ONE magazine on Dad's face; teen dunk; grown kid's chase-down block pins Dad's layup; THE FINALS: WITNESS banner, chalk toss cloud swallows Dad, GAME 7 100-101 0:05, free-throw-line dunk shatters the backboard, 102-101 FINAL, confetti, Dad's small smile; the trophy flattens Dad; ask at centre court (60.3 s)"
+      "summary": "@nevaehells (IG): 'Raise your kid to be the next LeBron james' -> RE-CUT on Justin's call (the routine had skipped it for naming a real person; a waiting cut never aired): couch -> he takes the baby, runs out right -> neighbourhood court: baby + ball, deadpan; day/night time-lapse: toddler granny shot bonks Dad; crossover ankle-breaker + swish; THE CHOSEN ONE magazine on Dad's face; teen dunk; grown kid's chase-down block pins Dad's layup; THE FINALS: WITNESS banner, chalk toss cloud swallows Dad, GAME 7 100-101 0:05, free-throw-line dunk shatters the backboard, 102-101 FINAL, confetti, Dad's small smile; the trophy flattens Dad; ask at centre court (60.3 s) | RE-CUT 2: the son's high-top; the green team on the last play (#7 ankles, #11 flown over, #4 dunked on); no ask cut - the trophy lands upright on Dad's belly and the camera pushes in on its plaque: TELL ME WHAT TO DO NEXT IN THE COMMENTS"
     }
   ]
 }
