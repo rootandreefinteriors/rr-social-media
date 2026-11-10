@@ -50,10 +50,14 @@ T_TRUN = 20.1; T_TJUMP = 20.55; T_DUNK = 20.95; T_TDROP = 21.5; T_MAGDROP = 21.9
 T_DRUN = 22.75; T_KCHASE = 22.95; T_LAY = 23.45; T_LREL = 23.62; T_BLOCK = 23.75; T_UNPIN = 24.1; T_FLAT = 24.35
 T_KPOINT = 25.3; CUT_RUN = 25.85; CUT2 = 26.6
 T_DIP = 27.0; T_CLAP = 27.45; T_CLEAR = 29.0
-CUT_SB = 29.9; CUT_GO = 31.2; T_GO = 31.3; T_TAKEOFF = 32.1; T_SLAM = 33.4; T_KLAND = 34.05
-CUT_SB2 = 34.3; CUT_WIN = 35.3; T_SMILE = 35.9
-CUT_TRO = 37.0; T_HAND0, T_HAND1 = 37.35, 37.8; T_TIP0, T_TIP1 = 38.1, 39.0; CUT_FLAT = 39.1
-CUT_ASK = 40.6
+CUT_SB = 29.9; CUT_GO = 31.2; T_GO = 31.35; T_X2 = 31.95; T_TAKEOFF = 33.4; T_SLAM = 35.6; T_KLAND = 36.25
+CUT_SB2 = 36.5; CUT_WIN = 37.5; T_SMILE = 38.1
+CUT_TRO = 39.2; T_HAND0, T_HAND1 = 39.55, 40.0; T_TIP0, T_FALL0 = 40.3, 41.0; T_IMPACT = 41.45; T_TLAND = 41.85
+T_ZOOM0 = 43.0; T_END = 60.3
+PLAQUE = ("TELL ME WHAT", "TO DO NEXT IN", "THE COMMENTS")
+DFX = AX + 150.0                                    # Dad's feet in the trophy scene
+FLAT = 1.42                                         # how far he tips over (rad): flat on his back
+TBASE = (DFX + 500 * math.sin(FLAT) - 10, FLOOR_Y - 500 * math.cos(FLAT) - 12)   # the trophy, upright on his belly
 
 # ================================================================ poses
 def P(name, **kw): L.POSES[name] = kw
@@ -236,9 +240,10 @@ S.sfx(CUT_SB + 1.0, "tick", 0.04)
 S.cut(CUT_GO - FR, cam=(AX - 50, 860, 0.62))
 S.camera(T_GO + 0.3, AX - 380, 860, 0.62, T_SLAM - T_GO - 0.3)
 S.set(T_TAKEOFF - 0.1, "stand", "dead_stare", dur=0.3, turn=-0.6, look=(-1.0, -0.4))
-S.xkeys.append((T_TAKEOFF - 0.1, CHAIR - 150 - 540, 0.3)); S.x = CHAIR - 150 - 540
+S.xkeys.append((T_TAKEOFF - 0.1, CHAIR + 20 - 540, 0.3)); S.x = CHAIR + 20 - 540
 S.set(T_TAKEOFF + 0.5, "stand", "dead_stare", dur=0.5, turn=-0.7, look=(-1.0, -0.8), eyescale=1.1)
-for k, tk in enumerate((T_GO + 0.1, T_GO + 0.9, T_TAKEOFF + 0.6)): S.sfx(tk, "tick", 0.04)
+for tk in (32.4, 33.6, 34.8): S.sfx(tk, "tick", 0.04)
+S.sfx(T_X2 + 0.5, "thud", 0.05); S.sfx(T_SLAM + 0.3, "thud", 0.07)
 S.sfx(T_SLAM, "kaboom", 0.45); S.sfx(T_SLAM + 0.05, "buzzer", 0.14); S.flash(T_SLAM, 0.45)
 S.shake(T_SLAM, 0.7, 24)
 S.cut(CUT_SB2 - FR, cam=(SBX, SBY, 1.15))
@@ -248,22 +253,23 @@ S.set(CUT_WIN - FR, "stand", "deadpan", dur=0.0, turn=-0.6, look=(-1.0, -0.3))
 S.set(T_SMILE, "stand", "happy", dur=0.8, turn=-0.5, look=(-0.9, -0.3), smile=0.45, mouth="auto")
 S.sfx(CUT_WIN + 0.1, "twinkle", 0.04)
 # the trophy
-S.cut(CUT_TRO - FR, cam=(AX - 60, 900, 0.78), x=AX + 150 - 540)
+S.cut(CUT_TRO - FR, cam=(AX + 60, 900, 0.78), x=DFX - 540)
 S.set(CUT_TRO - FR, "stand", "happy", dur=0.0, turn=-0.5, look=(-0.9, -0.3), smile=0.4)
 S.set(T_HAND0, "tro_hold", "happy", dur=0.35, turn=-0.4, look=(-0.6, -0.6), smile=0.4)
 S.set(T_HAND1 + 0.1, "tro_hold", "deadpan", dur=0.25, turn=0.0, look=(0.0, -0.9), stretch=-0.12)
-S.set(T_TIP0, "tro_hold", "dead_stare", dur=0.9, ease="inn", turn=0.0, look=(0.0, 0.0), lean=0.55, nowalk=1.0)
+S.set(T_TIP0, "tro_hold", "dead_stare", dur=0.3, turn=0.0, look=(0.0, 0.0), lean=0.14, nowalk=1.0)
+S.set(T_TIP0 + 0.3, "tro_hold", "dead_stare", dur=0.25, turn=0.0, look=(0.0, 0.0), lean=0.04, nowalk=1.0)
+S.set(T_TIP0 + 0.55, "tro_hold", "dead_stare", dur=0.15, turn=0.0, look=(0.0, 0.0), lean=0.26, nowalk=1.0)
 S.sfx(T_TIP0 + 0.1, "squeak", 0.03)
-S.cut(CUT_FLAT - FR, cam=(AX + 100, 1050, 0.8))
-S.set(CUT_FLAT - FR, "lie_back", "dead_stare", dur=0.0, look=(0.0, 0.0), lean=0.0)
-S.sfx(CUT_FLAT, "thud", 0.12); S.sfx(CUT_FLAT + 0.02, "clack", 0.06); S.shake(CUT_FLAT, 0.35, 12)
-S.blink(CUT_FLAT + 0.9)
-# the ask, at centre court
-S.cut(CUT_ASK - FR, cam=(AX - 120, 960, 0.86), x=AX - 60 - 540)
-S.set(CUT_ASK - FR, "stand", "deadpan", dur=0.0, look=(0.0, 0.0))
-S.camera(CUT_ASK + 0.2, AX - 100, 960, 0.94, 18.0)
-S.the_ask(CUT_ASK + 0.2, hold=12.6, push=False)
-T_END = S.t
+S.set(T_FALL0, "tro_hold", "dead_stare", dur=T_IMPACT - T_FALL0, ease="inn", turn=0.0, look=(0.0, 0.0), lean=FLAT, nowalk=1.0)
+S.set(T_IMPACT, "stand", "dead_stare", dur=0.25, ease="back", turn=0.0, look=(0.0, 0.0), lean=FLAT, nowalk=1.0)
+S.sfx(T_IMPACT, "thud", 0.12); S.shake(T_IMPACT, 0.3, 10)
+S.sfx(T_TLAND, "clack", 0.09); S.sfx(T_TLAND + 0.02, "thud", 0.06); S.shake(T_TLAND, 0.25, 8)
+S.camera(T_FALL0 - 0.2, AX + 430, 1080, 0.8, 0.8)
+S.camera(T_ZOOM0, TBASE[0] + 130, 1250, 1.7, 2.6)
+S.camera(T_ZOOM0 + 2.7, TBASE[0] + 130, 1250, 1.84, T_END - T_ZOOM0 - 2.7)
+S.blink(T_TLAND + 0.6, 46.5, 51.0, 55.8)
+S.t = T_END
 
 # ================================================================ the kid
 STAGES = [(0.0, 0, 0.0), (SW1, 1, 0.45), (SW2, 2, 0.62), (SW3, 3, 0.88), (SW4, 4, 1.18), (CUT2 - FR, 5, 1.18)]
@@ -329,8 +335,12 @@ kx(CUT2 - FR, AX - 120); kk(CUT2 - FR, "stand", "determined", dur=0.0, turn=0.6,
 kk(T_DIP, "k_dip", "determined", dur=0.3, turn=0.3, look=(0.3, 0.8))
 kk(T_CLAP, "k_clap", "determined", dur=0.12, ease="snap", turn=0.0, look=(0.0, -1.0))
 kk(T_CLAP + 0.9, "stand", "smug", dur=0.5, turn=0.5, look=(0.9, 0.2))
-kx(CUT_GO - FR, AX + 760); kk(CUT_GO - FR, "dribble_l", "determined", dur=0.0, turn=-0.8, look=(-1.0, -0.2))
-krun(T_GO, 1.0); kx(T_GO, FT_X, T_TAKEOFF - T_GO, "linear"); krun(T_TAKEOFF, 0.0)
+kx(CUT_GO - FR, AX + 940); kk(CUT_GO - FR, "dribble_l", "determined", dur=0.0, turn=-0.8, look=(-1.0, -0.2))
+krun(T_GO, 1.0); kx(T_GO, AX + 760, T_X2 - T_GO, "linear")
+kk(T_X2, "dribble_l", "determined", dur=0.1, turn=-0.7, look=(-0.9, 0.0), lhand=(680, 1120), lelb=(560, 1000), relb=(640, 990), rhand=(700, 1060))
+kx(T_X2, AX + 660, 0.25, "smooth")
+kk(T_X2 + 0.28, "dribble_l", "determined", dur=0.12, turn=-0.8, look=(-1.0, 0.0))
+kx(T_X2 + 0.3, FT_X, T_TAKEOFF - T_X2 - 0.3, "linear"); krun(T_TAKEOFF, 0.0)
 kk(T_TAKEOFF, "k_fly", "determined", dur=0.25, turn=-0.8, look=(-1.0, -0.4))
 kx(T_TAKEOFF, ARIM[0] + 90, T_SLAM - T_TAKEOFF, "smooth")
 def fly_h(t): return 380 * math.sin(math.pi * min(1.0, ramp(t, T_TAKEOFF, T_SLAM + 0.15, "linear"))) + 190 * ramp(t, T_TAKEOFF, T_SLAM, "linear")
@@ -343,8 +353,8 @@ kx(CUT_TRO - FR, AX - 300); kk(CUT_TRO - FR, "k_tro", "happy", dur=0.0, turn=0.6
 kx(T_HAND0, AX - 190, T_HAND1 - T_HAND0, "smooth")
 kk(T_HAND1, "stand", "happy", dur=0.3, turn=0.6, look=(0.9, -0.2), smile=0.6)
 kk(T_TIP0 + 0.4, "stand", "surprised", dur=0.3, turn=0.6, look=(0.9, 0.4))
-kx(CUT_FLAT - FR, AX - 300); kk(CUT_FLAT - FR, "stand", "neutral", dur=0.0, turn=0.5, look=(0.8, 0.9))
-kx(CUT_ASK - FR, AX - 470); kk(CUT_ASK - FR, "k_hip", "smug", dur=0.0, turn=0.3, look=(0.6, 0.0))
+kk(T_IMPACT + 0.3, "stand", "surprised", dur=0.4, turn=0.7, look=(1.0, 0.9))
+kk(T_TLAND + 0.6, "stand", "neutral", dur=0.5, turn=0.7, look=(1.0, 0.9), lid=0.5)
 KKT, KXT, KUT, KRT = Track(KK), Track(KXK), Track(KUP), Track(KRUN)
 
 def kid_up(t):
@@ -382,6 +392,7 @@ def kid_local(t):
             dx, dy = p[k][0] - fx, p[k][1] - FLOOR_Y
             p[k] = (fx + dx * c - dy * s_, FLOOR_Y + dx * s_ + dy * c)
     p["breath_ph"] = t * 1.9
+    p["hair"] = "hightop"
     return C.constrain(p)
 
 def kid_xf(t):
@@ -420,6 +431,53 @@ def draw_kid(cr, t):
         O.draw_headband(cr, p)
     L.draw_grips(cr, p)
     cr.restore()
+
+# ================================================================ the other team (the last play): smaller, green
+DS = 0.86
+DEF = []          # each: dict(x=Track, k=Track of poses, up=Track, num)
+def _mk(num, x0):
+    d = dict(K=[(0.0, L.pose("defend", "determined", turn=0.6, look=(0.9, 0.0)), 0)], X=[(0.0, x0, 0)], U=[(0.0, 0.0, 0)], num=num)
+    DEF.append(d); return d
+def dk(d, t, body, face="determined", dur=0.2, ease="smooth", **kw): d["K"].append((t, L.pose(body, face, **kw), dur, ease))
+D1, D2, D3 = _mk("7", AX + 640), _mk("11", AX - 130), _mk("4", AX - 470)
+# D1: guards the kid at the top, bites on the crossover and sits down (ankles)
+dk(D1, T_X2 + 0.05, "lunge", "determined", dur=0.15, ease="snap", turn=0.6, look=(1.0, 0.4))
+dk(D1, T_X2 + 0.45, "sit_floor", "shocked", dur=0.18, ease="snap", turn=-0.5, look=(-0.9, -0.2))
+dk(D1, T_X2 + 1.0, "sit_floor", "dead_stare", dur=0.4, turn=-0.7, look=(-1.0, -0.6))
+# D2: reaches for the steal as he goes by, spins round, watches him fly
+dk(D2, T_TAKEOFF + 0.15, "cheer", "determined", dur=0.15, ease="snap", turn=0.6, look=(0.8, -1.0), nowalk=1.0)
+D2["U"] += [(T_TAKEOFF + 0.15, 110.0, 0.3, "out"), (T_TAKEOFF + 0.5, 0.0, 0.3, "inn")]
+dk(D2, T_TAKEOFF + 0.85, "stand", "shocked", dur=0.3, turn=-0.8, look=(-0.9, -1.0))
+# D3: under the rim, jumps to contest - gets dunked on, flat on his back under the glass
+dk(D3, T_TAKEOFF, "defend", "determined", dur=0.3, turn=0.6, look=(0.9, -0.8))
+dk(D3, T_SLAM - 0.55, "cheer", "determined", dur=0.15, ease="snap", turn=0.6, look=(0.8, -1.0), nowalk=1.0)
+D3["U"] += [(T_SLAM - 0.55, 150.0, 0.3, "out"), (T_SLAM - 0.1, 0.0, 0.25, "inn")]
+dk(D3, T_SLAM + 0.15, "lie_back", "dizzy", dur=0.15, ease="snap", look=(0.0, -0.4))
+dk(D3, T_SLAM + 1.2, "lie_back", "dead_stare", dur=0.4, look=(0.0, -0.6))
+for d in DEF: d["KT"], d["XT"], d["UT"] = Track(d["K"]), Track(d["X"]), Track(d["U"])
+
+def def_draw(cr, t, d):
+    p = dict(d["KT"].at(t)); x = d["XT"].at(t); ox = x - 540
+    for j in L.JOINTS: p[j] = (p[j][0] + ox, p[j][1])
+    if d is D2 or d is D1:                  # a little defensive shuffle while he's guarding
+        sh = 14 * math.sin(t * 8.0 + (0 if d is D1 else 2)) * (1 - ramp(t, T_TAKEOFF, T_TAKEOFF + 0.15) if d is D2 else (1.0 if t < T_X2 else 0.0))
+        for j in L.JOINTS: p[j] = (p[j][0] + sh, p[j][1])
+    p["breath_ph"] = t * 2.1; p["hair"] = "bald"
+    p = C.constrain(p)
+    fx = x; up = d["UT"].at(t)
+    cr.save(); cr.translate(fx, FLOOR_Y - up); cr.scale(DS, DS); cr.translate(-fx, -FLOOR_Y)
+    L.draw_shadow(cr, fx, scale=0.8)
+    p["larm_over"] = p["rarm_over"] = 1.0
+    C.draw_guy(cr, t, p, 0.0)
+    O.draw_jersey(cr, p, d["num"], col=(0.12, 0.50, 0.32), trim=(0.97, 0.97, 0.97), sid=23250)
+    C.draw_arm_over(cr, p, "l"); C.draw_arm_over(cr, p, "r")
+    cr.restore()
+
+def draw_defenders(cr, t):
+    if not (CUT_GO - FR <= t) or (CUT_SB2 - FR <= t < CUT_WIN - FR): return
+    for d in DEF:
+        if t >= CUT_WIN - FR and d is not D3: continue      # the other two have left the floor
+        def_draw(cr, t, d)
 
 # ================================================================ the baby (before he grows)
 def baby_pos(t, p):
@@ -546,8 +604,7 @@ def ball_pos(t, p):
         h = kid_joint(t, "lhand"); return (h[0], h[1] - 50)
     if t < T_SLAM + 0.3: return (ARIM[0], lerp(ARIM[1], BFLOOR, ramp(t, T_SLAM, T_SLAM + 0.3, "inn")))
     if t < T_SLAM + 1.2: return bounce(t, T_SLAM + 0.3, T_SLAM + 1.2, (ARIM[0], BFLOOR - 1), (ARIM[0] + 420, BFLOOR), n=3, h0=260)
-    if t < CUT_ASK - FR: return (ARIM[0] + 420, BFLOOR) if t < CUT_WIN - FR else None
-    h = kid_joint(t, "rhand"); return (h[0] + 10, h[1] - 50)
+    return (ARIM[0] + 420, BFLOOR) if t < CUT_WIN - FR else None
 
 # ================================================================ night (the days whipping by)
 def night(t):
@@ -575,8 +632,7 @@ S.overlays.insert(0, night_ov)
 def clock_ov(cr, t):
     """the game clock during the last play (bottom left, it IS a game)."""
     if not (CUT_GO - FR <= t < T_SLAM): return
-    secs = 4 if t < T_GO + 0.9 else (3 if t < T_TAKEOFF + 0.6 else 2)
-    if t > T_SLAM - 0.45: secs = 1
+    secs = 4 if t < 32.4 else (3 if t < 33.6 else (2 if t < 34.8 else 1))
     L.sketch_rect(cr, 70, 1450, 330, 1580, 6, sid=23300, fill=(0.08, 0.08, 0.1))
     draw_text(cr, f"0:0{secs}", 200, 1515, 90, color=(255, 90, 60))
 S.overlay(clock_ov)
@@ -642,6 +698,7 @@ def props_back(cr, t, p, ly):
         O.draw_hoop(cr, hs[0], part="back", t=t, bend=hs[1], shake=hs[2], swish=hs[3], shatter=hs[4], glass=hs[5])
     if t >= CUT2 - FR and hs:                              # the arena: his chair
         if t < CUT_TRO - FR: O.draw_folding_chair(cr, CHAIR)
+    if t >= CUT2 - FR: draw_defenders(cr, t)
     draw_kid(cr, t)
 S.prop(props_back)
 
@@ -686,29 +743,39 @@ def props_front(cr, t, p, ly):
         O.draw_chalk_cloud(cr, AX + 90, 1020, ramp(t, T_CLAP, T_CLAP + 1.9, "linear"), r=560)
     # confetti
     if CUT_WIN - FR <= t:
-        O.draw_confetti(cr, t, CUT_WIN - 0.6, AX - 1400, AX + 1200, -300, n=90)
+        for k in range(8):
+            t0 = CUT_WIN - 0.6 + 3.0 * k
+            if 0 <= t - t0 < 7: O.draw_confetti(cr, t, t0, AX - 1400, AX + 1800, -300, n=60, seed=3 + k)
     # the trophy
-    if CUT_TRO - FR <= t < CUT_FLAT - FR:
-        if t < T_HAND0:
-            h = kid_hands(t); tx, ty = h[0], h[1]
-        elif t < T_HAND1:
-            a = kid_hands(T_HAND0); b = ((p["lhand"][0] + p["rhand"][0]) / 2, (p["lhand"][1] + p["rhand"][1]) / 2)
-            u = smooth(ramp(t, T_HAND0, T_HAND1)); tx, ty = lerp(a[0], b[0], u), lerp(a[1], b[1], u)
+    if CUT_TRO - FR <= t:
+        if t < T_FALL0:
+            if t < T_HAND0:
+                h = kid_hands(t); tx, ty = h[0], h[1]
+            elif t < T_HAND1:
+                a = kid_hands(T_HAND0); b = ((p["lhand"][0] + p["rhand"][0]) / 2, (p["lhand"][1] + p["rhand"][1]) / 2)
+                u = smooth(ramp(t, T_HAND0, T_HAND1)); tx, ty = lerp(a[0], b[0], u), lerp(a[1], b[1], u)
+            else:
+                tx, ty = ((p["lhand"][0] + p["rhand"][0]) / 2, (p["lhand"][1] + p["rhand"][1]) / 2)
+            ang = p.get("lean", 0.0) if t >= T_TIP0 else 0.0
+            cr.save(); cr.translate(tx, ty); cr.rotate(ang)
+            O.draw_trophy(cr, 0, 600, s=0.55, plaque=PLAQUE)
+            cr.restore()
+            L.draw_grips(cr, p)
+            if t < T_HAND0:
+                q = kid_local(t); fx, up, s_ = kid_xf(t)
+                cr.save(); cr.translate(fx, FLOOR_Y - up); cr.scale(s_, s_); cr.translate(-fx, -FLOOR_Y); L.draw_grips(cr, q); cr.restore()
         else:
-            tx, ty = ((p["lhand"][0] + p["rhand"][0]) / 2, (p["lhand"][1] + p["rhand"][1]) / 2)
-        ang = p.get("lean", 0.0) if t >= T_TIP0 else 0.0
-        cr.save(); cr.translate(tx, ty); cr.rotate(ang)
-        O.draw_trophy(cr, 0, 560, s=0.52)
-        cr.restore()
-        L.draw_grips(cr, p)
-        if t < T_HAND0:
-            q = kid_local(t); fx, up, s = kid_xf(t)
-            cr.save(); cr.translate(fx, FLOOR_Y - up); cr.scale(s, s); cr.translate(-fx, -FLOOR_Y); L.draw_grips(cr, q); cr.restore()
-    if CUT_FLAT - FR <= t < CUT_ASK - FR:                  # flattened under it
-        cr.save(); cr.translate(p["hip"][0] - 40, FLOOR_Y - 150); cr.rotate(-1.35)
-        O.draw_trophy(cr, 0, 300, s=0.52); cr.restore()
-    if CUT_ASK - FR <= t:
-        O.draw_trophy(cr, AX + 290, FLOOR_Y - 10, s=0.52)
+            q = L.pose_with_follow(T_FALL0 - FR)
+            hx, hy = (q["lhand"][0] + q["rhand"][0]) / 2, (q["lhand"][1] + q["rhand"][1]) / 2
+            a0 = q.get("lean", 0.0)
+            sx, sy = hx - 600 * math.sin(a0), hy + 600 * math.cos(a0)
+            u = ramp(t, T_FALL0 + 0.1, T_TLAND, "linear")
+            bx = lerp(sx, TBASE[0], smooth(u)); by = lerp(sy, TBASE[1], u * u) - 260 * math.sin(math.pi * u) * (1 - u * 0.3)
+            ang = lerp(a0, 0.0, smooth(u)) + (0.6 * math.sin(math.pi * u) if u < 1 else 0.0)
+            if t > T_TLAND: ang = 0.07 * math.sin((t - T_TLAND) * 18) * math.exp(-(t - T_TLAND) * 4)
+            cr.save(); cr.translate(bx, by); cr.rotate(ang)
+            O.draw_trophy(cr, 0, 0, s=0.55, plaque=PLAQUE)
+            cr.restore()
 S.prop(props_front)
 
 if __name__ == "__main__":

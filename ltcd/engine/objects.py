@@ -3188,17 +3188,30 @@ def draw_back_door(cr, x, yb=FLOOR_Y, open_=0.0, x_left=-1e9):
     sketch_rect(cr, dx1 - w if open_ < 0.5 else dx1, dy0, dx1 if open_ < 0.5 else dx1 + (dx1 - dx0) * 0.85 * open_, yb, 7, sid=17303,
                 fill=(0.62, 0.64, 0.68))
 
-def draw_trophy(cr, x, yb=FLOOR_Y, s=1.0, part="all", sid=17400):
-    """a giant gold trophy (~1150 tall at s=1). part "back" = the cup's inside rim, "front" = everything else."""
+def draw_trophy(cr, x, yb=FLOOR_Y, s=1.0, part="all", sid=17400, plaque=None):
+    """a giant gold trophy (~1150 tall at s=1). part "back" = the cup's inside rim, "front" = everything else.
+    plaque = lines engraved on a big plate in a taller base (crisp even when the camera zooms right in)."""
     G, GD = (1.0, 0.80, 0.22), (0.86, 0.62, 0.12)
     cr.save(); cr.translate(x, yb); cr.scale(s, s)
+    if plaque:
+        if part in ("front", "all"):
+            sketch_rect(cr, -260, -250, 260, 0, 7, sid=sid + 20, fill=(0.28, 0.20, 0.14))
+            sketch_rect(cr, -232, -228, 232, -22, 5, sid=sid + 21, fill=GD)
+            n = len(plaque)
+            for i, ln in enumerate(plaque):
+                yy = -228 + 206 * (i + 0.5) / n
+                cr.save(); cr.translate(0, yy); cr.scale(1 / 8, 1 / 8)
+                draw_text(cr, ln, 0, 0, 52 * 8, color=(50, 32, 8)); cr.restore()
+        cr.translate(0, -20)
     if part in ("back", "all"):
         sketch_ellipse(cr, 0, -1120, 300, 50, 6, sid=sid, fill=(0.62, 0.44, 0.08))
-    if part in ("front", "all"):
+    if part in ("front", "all") and not plaque:
         sketch_rect(cr, -240, -140, 240, 0, 7, sid=sid + 1, fill=(0.28, 0.20, 0.14))
         sketch_rect(cr, -190, -230, 190, -140, 6, sid=sid + 2, fill=(0.28, 0.20, 0.14))
-        cr.rectangle(-120, -110, 240, 60); cr.set_source_rgb(*GD); cr.fill()
-        draw_text(cr, "1ST", 0, -80, 50, color=(60, 40, 10))
+        if not plaque:
+            cr.rectangle(-120, -110, 240, 60); cr.set_source_rgb(*GD); cr.fill()
+            draw_text(cr, "1ST", 0, -80, 50, color=(60, 40, 10))
+    if part in ("front", "all"):
         sketch_poly(cr, [(-60, -230), (-40, -560), (40, -560), (60, -230)], 6, sid=sid + 3, fill=G)
         sketch_ellipse(cr, 0, -580, 120, 40, 5, sid=sid + 4, fill=GD)
         for d in (-1, 1):                                                           # handles
@@ -4917,10 +4930,10 @@ def draw_headband(cr, p, col=(0.98, 0.98, 0.98), sid=23240):
     hx, hy = p["head"]; R = _C.HEAD_R
     cr.save(); cr.translate(hx, hy); cr.rotate(p.get("tilt", 0.0))
     cr.arc(0, 0, R - 4, 0, 2 * math.pi); cr.clip()
-    cr.rectangle(-R - 10, -R * 0.80, 2 * R + 20, R * 0.26); cr.set_source_rgb(*col); cr.fill()
+    cr.rectangle(-R - 10, -R * 0.62, 2 * R + 20, R * 0.24); cr.set_source_rgb(*col); cr.fill()
     cr.restore()
     cr.save(); cr.translate(hx, hy); cr.rotate(p.get("tilt", 0.0))
-    for yy in (-R * 0.80, -R * 0.54):
+    for yy in (-R * 0.62, -R * 0.38):
         w = math.sqrt(max(0.0, R * R - yy * yy))
-        sketch_line(cr, [(-w, yy), (w, yy)], 4.5, sid=sid + (yy > -R * 0.6), amp=0.3)
+        sketch_line(cr, [(-w, yy), (w, yy)], 4.5, sid=sid + (yy > -R * 0.5), amp=0.3)
     cr.restore()

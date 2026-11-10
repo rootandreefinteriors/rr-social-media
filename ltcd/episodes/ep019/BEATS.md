@@ -29,3 +29,12 @@ The routine skipped this comment because it names a real person, and made a wait
 6. Fans: #23 + headband, THE CHOSEN ONE cover, THE BLOCK, chalk toss, WITNESS banner, free-throw-line dunk, backboard shatter, ankle-breaker crossover.
 7. Length: ~62 s.
 8. Kid test: YES - card + reading at 0.3 s, he's up and grabbing the baby by 2.3 s, new world at 3.3 s.
+
+## Re-cut 2 (Justin's notes, 2026-11-10 evening)
+- The son gets his own look: a dark high-top (engine `hair="hightop"`, no curl) from the toddler on, so he never reads as Dad.
+- The last play has the other team: three smaller defenders in green (7, 11, 4). #7 bites on the crossover and sits
+  down (ankles, again); #11 jumps at the free-throw line and gets flown over; #4 contests at the rim and is dunked on,
+  flat under the falling glass (he's still lying there for the celebration). Clock 0:04 -> 0:01 over the drive.
+- No jump cut after the trophy: Dad tips over in one move, the trophy hops onto his belly and lands upright; its plaque
+  reads TELL ME WHAT TO DO NEXT IN THE COMMENTS and the camera pushes in on it (next to his dead stare) to the end.
+  This replaces the clipboard ask (Justin's call). 60.3 s.

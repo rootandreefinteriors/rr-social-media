@@ -379,6 +379,8 @@ def draw_head(cr, p, blink, t=0.0):
         q = 2.5 * math.sin(t * 38)
         cr.save(); cr.translate(cx_curl, -HEAD_R + 6); cr.rotate(p.get("curl", 0.0) * 0.3)
         cr.move_to(0, 0); cr.curve_to(-3 + q, -30, 3 - q, -60, q, -86); stroke_ink(cr, 6.5); cr.restore()
+    elif p.get("hair", "") in ("hightop", "bald"):   # someone else (day 19's son): a high-top fade instead of the curl
+        pass
     else:
         cr.save(); cr.translate(cx_curl, -HEAD_R + 6); cr.rotate(p.get("curl", 0.0) + turn * 0.15)
         cr.move_to(0, 0); cr.curve_to(-14, -50, 44, -70, 40, -38)
@@ -391,6 +393,16 @@ def draw_head(cr, p, blink, t=0.0):
     sk = p.get("sick", 0.0)               # 0..1: airsick, the whole face goes green (puking resets it)
     if sk > 0.01: fill = lerp(fill, (0.67, 0.86, 0.47), sk)
     sketch_circle(cr, 0, 0, HEAD_R, 8, sid=3, fill=fill)
+    if p.get("hair", "") == "hightop":    # a dark high-top fade sitting on top of the head
+        hx0 = -6 * turn
+        arc_ = [(hx0 + (HEAD_R + 3) * math.cos(a), (HEAD_R + 3) * math.sin(a)) for a in [math.pi * (1.17 + 0.66 * k / 12) for k in range(13)]]
+        top = [arc_[0], (hx0 - HEAD_R * 0.80, -HEAD_R * 1.16), (hx0 + HEAD_R * 0.80, -HEAD_R * 1.16), arc_[-1]]
+        cr.save(); cr.arc(hx0, 0, HEAD_R * 3, 0, 2 * math.pi); cr.clip()
+        ink.sketch_poly(cr, arc_ + top[2:3] + top[1:2], 6, sid=6, fill=(0.20, 0.17, 0.16))
+        for k in range(5):                                      # a little texture on the top
+            xx = hx0 - HEAD_R * 0.55 + k * HEAD_R * 0.275
+            sketch_line(cr, [(xx, -HEAD_R * 1.10), (xx + 6, -HEAD_R * 0.98)], 3, sid=8 + k, amp=0.3, color=(0.45, 0.42, 0.40))
+        cr.restore()
     hf = p.get("heat_fill", 0.0)
     if hf > 0.004:
         cr.save(); ellipse(cr, 0, 0, HEAD_R - 3, HEAD_R - 3); cr.clip(); cr.new_path()
