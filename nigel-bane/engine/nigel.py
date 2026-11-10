@@ -157,14 +157,15 @@ BIRDS = []   # [dict(t, dur, x0, x1, y)] in window-fraction coords; a little ink
 WEB = None   # spider web geometry (see build_web); drawn when env "web" > 0
 PLUCKS = []  # [(time, gain)] the web/dragline trembles (and thrums faintly) from these moments
 DRAW_HOOK = None
-UNDER_HOOK = None   # under_hook(cr, t, pose, env): world-space props drawn BEHIND Nigel (a chair he stands in front of)
+UNDER_HOOK = None
+CAPTION_AVOID = []   # under_hook(cr, t, pose, env): world-space props drawn BEHIND Nigel (a chair he stands in front of)
 DRIPS = []        # [time] icicle drips (env "icicle" > 0): a bead swells, falls, and plinks
 GLASS_TAPS = []   # [(time, gain)] a knock from OUR side of the glass: dull tap + a tiny shake of the whole frame
 
 def configure(mood_track, pose_track, x_track, cam_track, follow_track, env_track,
               window_knocks=(), tally_base=0, tally_new=(), sfx=(), extra_blinks=(), pose_hook=None, tail=0.55,
               birds=(), web=None, plucks=(), draw_hook=None, lens_bugs=(), glass_taps=(), drips=(), crack=None,
-              under_hook=None):
+              under_hook=None, caption_avoid=()):
     """Install an episode's timelines and precompute everything derived from them.
     draw_hook(cr, t, pose, env): episode-specific drawing in world space, right after Nigel is drawn."""
     g = globals()
@@ -174,6 +175,7 @@ def configure(mood_track, pose_track, x_track, cam_track, follow_track, env_trac
     g["DRIPS"] = list(drips)
     g["CRACK"] = build_crack(crack) if crack else None
     g["UNDER_HOOK"] = under_hook
+    g["CAPTION_AVOID"] = list(caption_avoid)
     sfx = list(sfx) + [(k, "knock_far", 0.16) for b in lens_bugs for k in b.get("taps", [])]
     g.update(mood_track=mood_track, pose_track=pose_track, x_track=x_track, cam_track=cam_track,
              follow_track=follow_track, env_track=env_track, WINDOW_KNOCKS=list(window_knocks),
@@ -1281,6 +1283,41 @@ def draw_tag(cr, x, y, ang=0.0, scale=1.0, flip=0.0, alpha=1.0, text="for nigel"
         cr.restore()
     cr.restore()
 
+def draw_mouse(cr, x, y, t, face=1, scale=1.0, alpha=1.0, run=0.0, rear=0.0, sniff=0.0, sid=80):
+    """A small line-drawn house mouse standing on the floor at (x, y), facing right (face=1) or left (-1).
+    run 0..1 = scurrying legs, rear 0..1 = up on its hind legs (only the front half lifts; tail and hind feet stay
+    on the floor), sniff 0..1 = nose twitching."""
+    if alpha < 0.01:
+        return
+    cr.save(); cr.translate(x, y); cr.scale(face * scale, scale)
+    sw = math.sin(t * 9) * 4 * (1 - 0.7 * rear)    # tail, on the floor
+    path(cr, sketch_pts([(-30, -4), (-48, -2 + sw * 0.3), (-62, -6 + sw), (-76, -3 + sw * 1.4)], amp=0.6, sid=sid + 3, step=5))
+    stroke_ink(cr, 1.6, alpha=0.85 * alpha)
+    ph = t * 26 * run                              # hind legs
+    for k, lx in enumerate((-24, -14)):
+        o = math.sin(ph + k * 1.7) * 5 * run
+        cr.move_to(lx, -3); cr.line_to(lx + o, 2)
+    stroke_ink(cr, 1.8, alpha=0.9 * alpha)
+    cr.save()
+    cr.translate(-22, -4); cr.rotate(-0.85 * rear); cr.translate(22, 4)     # the front half lifts off the floor
+    tw = math.sin(t * 34) * 2.2 * sniff
+    body = [(-34, -4), (-30, -16), (-16, -24), (2, -25), (16, -20), (26, -13), (36 + tw, -8), (28, -4), (10, -2), (-20, -2), (-34, -4)]
+    path(cr, sketch_pts(body, amp=0.7, sid=sid, step=5))
+    cr.set_source_rgba(*PAPER, alpha); cr.fill_preserve()
+    stroke_ink(cr, 2.4, alpha=0.95 * alpha)
+    cr.arc(14, -22, 6.5, 0, 2 * math.pi)          # ear
+    cr.set_source_rgba(*PAPER, alpha); cr.fill_preserve(); stroke_ink(cr, 2.0, alpha=0.9 * alpha)
+    cr.arc(24, -14, 1.9, 0, 2 * math.pi); cr.set_source_rgba(*INK, alpha); cr.fill()   # eye
+    for k in (-1, 1):                              # whiskers
+        cr.move_to(34 + tw, -9); cr.line_to(46 + tw, -9 + 5 * k - 3)
+    stroke_ink(cr, 0.9, alpha=0.7 * alpha)
+    for k, lx in enumerate((8, 18)):               # front paws: running, or held up to the chest when it rears
+        o = math.sin(ph + (k + 2) * 1.7) * 5 * run
+        cr.move_to(lx, -3); cr.line_to(lx + o + 4 * rear, 3 - 5 * rear)
+    stroke_ink(cr, 1.8, alpha=0.9 * alpha)
+    cr.restore()
+    cr.restore()
+
 def draw_chair(cr, x, scale=1.0, alpha=1.0, tag=True, tag_swing=0.0, sid=30):
     """A plain wooden chair seen three-quarter on, standing on the floor at x (centre of the seat). Its back is on
     the left. A paper tag ("for nigel") hangs off the back post on a string when tag=True."""
@@ -1579,6 +1616,13 @@ def layout_chunks(chunks):
                         sx0, sy0 = world_to_screen(tm, (bx0_, by0_)); sx1, sy1 = world_to_screen(tm, (bx1_, by1_))
                         if x1 > sx0 and x0 < sx1 and sy0 - half_h < cy < sy1 + half_h:
                             score -= 900
+                for a0, a1, boxf in CAPTION_AVOID:   # episode props (a mouse on the floor…)
+                    for tm in samples:
+                        if a0 <= tm <= a1:
+                            bx0_, by0_, bx1_, by1_ = boxf(tm)
+                            sx0, sy0 = world_to_screen(tm, (bx0_, by0_)); sx1, sy1 = world_to_screen(tm, (bx1_, by1_))
+                            if x1 > sx0 and x0 < sx1 and sy0 - half_h < cy < sy1 + half_h:
+                                score -= 900
                 if CRACK is not None:   # keep captions off the crack (and its tape)
                     cx0_, cy0_, cx1_, cy1_ = CRACK["box"]
                     if any(env_track.at(tm)["crack"] > 0.01 or env_track.at(tm)["tape"] > 0.01 for tm in samples):
@@ -1828,7 +1872,29 @@ def synth_audio():
     crack_pan = 0.0
     if CRACK is not None:   # the crack is on the screen itself
         crack_pan = float(np.clip((CRACK["origin"][0] - W / 2) / (W / 2), -1, 1)) * SFX_WIDTH
-    for ts, kind, gain in SFX:
+    def step_above():   # a heavy footstep on the floor above: all thud, no detail
+        L = int(0.5 * SR); tt = np.arange(L) / SR
+        s_ = np.sin(2 * np.pi * 62 * tt) * np.exp(-tt / 0.06) + 0.5 * np.sin(2 * np.pi * 96 * tt) * np.exp(-tt / 0.04)
+        s_ += onepole(rngn.standard_normal(L).astype(np.float32), 0.02) * np.exp(-tt / 0.03) * 3
+        for d, gg in [(0.043, 0.35), (0.091, 0.2)]:
+            k = int(d * SR); s_[k:] += s_[:-k] * gg
+        return s_.astype(np.float32)
+    def scritch(dur=0.45):   # tiny claws on bare floorboards
+        L = int((dur + 0.05) * SR); out = np.zeros(L, np.float32)
+        rr = random.Random(int(dur * 997)); x = 0.0
+        while x < dur:
+            i = int(x * SR); n_ = int(0.004 * SR)
+            c = rngn.standard_normal(n_).astype(np.float32) * np.exp(-np.arange(n_) / (0.0008 * SR))
+            out[i:i + n_] += (c - onepole(c, 0.4)) * rr.uniform(0.3, 1.0)
+            x += rr.uniform(0.018, 0.05)
+        return out
+    for item in SFX:
+        ts, kind, gain = item[:3]
+        pn = item[3] if len(item) > 3 else 0.0
+        if kind == "step_above":
+            place(step_above(), ts, gain, pan=pn)
+        if kind == "scritch":
+            place(scritch(), ts, gain, pan=pn)
         if kind == "tick":
             place(tick(), ts, gain, pan=crack_pan)
         if kind == "crackle":

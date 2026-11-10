@@ -429,3 +429,42 @@ Post time is 9 PM ET. Day 13 went out a day late (missed slot); every later day 
 - **four elements:** C "Don't sit down. Not yet." · R comfort and staying: Sunday bed, couch, a show, a person · E warm, with something wrong underneath · T laps round the chair, each one closer; will he sit? He doesn't
 - **cover:** 55.3 s, hand resting on the chair back, night window.
 - **script:** Hello? Is anyone out there? Don't sit down. Not yet. ...It's a good chair. It fits me. That's the problem. I keep walking round it. Every lap, a little closer. ...You know this one. The bed on a Sunday. The couch after work. The same show again, because you know how it ends. The person you stay with, because leaving would be cold. ...You're comfortable right now. That's why you're still watching. ...It isn't a trap. It's just soft. And soft things hold on. ...I'm not sitting. I'm just resting my hand. That's how it starts. Every comfortable thing is holding you a little.
+
+### D34 · anchoring · "Sits" · 2026-11-13 (Fri) · 62.7 s
+- **idea:** habits are furniture; you become the shape of what you sit in.
+- **you:** strong. "Did you use your hands? ...Most people do." / "Your favourite spot has one too. Go and look at it later."
+- **first seconds:** drops into the chair as he dares you: "Try to stand up. Right now. Without your hands."
+- **prop:** the tagged chair (D32–53): the dip in its seat.
+- **tension:** strong. Real silence while you try; then his own attempt, arms folded, rising and sinking twice with the chair creaking.
+- **visual:** the strain held in a medium shot; the dip in the seat.
+- **dread:** no. Unsettling line: "It's further up than it was."
+- **hook:** "Okay. You can sit back down. You were going to anyway." *Viewer-centric, unsettling.*
+- **four elements:** C "Try to stand up. Right now. Without your hands." · R habits: your favourite spot · E wry, uneasy underneath · T the dare: you try, then he tries and can't quite
+- **cover:** 48.5 s, arms folded, straining to rise from the tagged chair.
+- **script:** Hello? Is anyone out there? Try to stand up. Right now. Without your hands. ...Did you use your hands? ...Most people do. I've been in this chair since last night. There's a dip in the seat now. It's my shape. Nobody made it. I just kept sitting. Your favourite spot has one too. Go and look at it later. That dip is every evening you spent there. Okay. My turn. No hands. ...Give me a second. ...It's further up than it was. Okay. You can sit back down. You were going to anyway.
+
+### D35 · creaking · "Upstairs (DREAD)" · 2026-11-14 (Sat) · 61.8 s
+- **idea:** you've explained away most of the sounds in your home without ever going to check.
+- **you:** strong. "Late, in bed. One creak, out in the hall. And you lay very still, and you decided it was the house."
+- **first seconds:** freezes with his eyes on the ceiling, whispering: "Quiet. Look up."
+- **prop:** footsteps on a floor above a room that has no upstairs (sound), and the dust they shake loose.
+- **tension:** strong. Seven slow steps crossing overhead in stereo, stopping right above him, a long hold, then crossing back and fading while he refuses to look.
+- **visual:** the camera tilting up into the empty white above him; dust sifting down.
+- **dread:** yes. Built on the one plain truth about the viewer, at 61 s+ with long holds.
+- **hook:** "Tonight, when you hear it, don't decide what it is." *Viewer-centric, unsettling.*
+- **four elements:** C "Quiet. Look up." · R the sounds in your home at night · E quietly frightening · T footsteps cross, stop over him, hold; cross back; he never moves
+- **cover:** 26.0 s, close on his dark eyes after the steps stop.
+- **script:** Hello? Is anyone out there? Quiet. Look up. ...There's no upstairs. I've checked. There's nothing above this room. ...It's stopped. You've heard one of these. Late, in bed. One creak, out in the hall. And you lay very still, and you decided it was the house. And you went back to sleep. You didn't get up to look. I'm not going to look either. ...Tonight, when you hear it, don't decide what it is.
+
+### D36 · vacating · "Empty room (mouse 1/4)" · 2026-11-15 (Sun) · 62.2 s
+- **idea:** your rooms have a life you never see.
+- **you:** strong. "It was out, wasn't it. I can tell by your face." / "Every other room in your home is empty right now."
+- **first seconds:** points round the room: "Stay here. Watch the room for me. Tell me if anything moves."
+- **prop:** a mouse that only comes out when he's gone (arc 1/4; exits D46).
+- **tension:** strong. The empty room held for ~12 s; the mouse out on the floor; his voice off-screen freezes it; his footsteps come back and it bolts.
+- **visual:** a floor-level shot of the empty room and the mouse sitting up; tiny claws on the boards in stereo.
+- **dread:** no.
+- **hook:** "Every other room in your home is empty right now. Probably." *Viewer-centric, unsettling.*
+- **four elements:** C "Stay here. Watch the room for me. Tell me if anything moves." · R your empty rooms · E eerie, a little conspiratorial · T will it still be out when he comes back? It darts off a beat before he's in
+- **cover:** 41.2 s, looking over toward the corner the mouse comes from.
+- **script:** Hello? Is anyone out there? Stay here. Watch the room for me. Tell me if anything moves. Something lives in here. It only comes out when I'm gone. I'm going to step out. Just for a minute. ...Anything? ...It was out, wasn't it. I can tell by your face. I've never seen it. Not once. It knows exactly how long I'm gone. It knows the sound of me coming back. ...Every other room in your home is empty right now. Probably.
