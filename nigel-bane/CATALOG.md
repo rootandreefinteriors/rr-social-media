@@ -390,3 +390,42 @@ Post time is 9 PM ET. Day 13 went out a day late (missed slot); every later day 
 - **four elements:** C "Point to the crack. Under the tape. Go on." · R your body and old hurts: scars, names, songs · E calm with something wrong underneath · T his fingertip hunts the glass, slower and slower, and never finds it
 - **cover:** 56.0 s, fingertip on the clean glass, still searching.
 - **script:** Hello? Is anyone out there? Point to the crack. Under the tape. Go on. ...It's gone. There's nothing under there. It was here. ...Or here. Glass doesn't heal. I know that much. Glass doesn't heal. You've got places like this. A scar you'd have to look for now. A name that used to hurt to hear. A song you can listen to again. You didn't decide to get better. One day you went to touch the sore part, and you couldn't find it. I had it a minute ago. You heal by forgetting where it was. Then you can't find it again.
+
+### D31 · inheriting · "A tag" · 2026-11-10 (Tue) · 62.1 s
+- **idea:** almost nothing around you did you choose; somebody handed it to you and you kept it.
+- **you:** strong. "Look at what's around you. The bed. The lamp. The cup you're holding. Your name. Almost none of it, you picked."
+- **first seconds:** snaps his gaze down to the floor: "Look down. What's on your floor?"
+- **prop:** a paper tag on a string, face down; turned over at the end: "for nigel", not his handwriting. Starts the tagged-gifts thread (chair next).
+- **tension:** medium-strong. He sits beside it, dead still, refusing to turn it over; the room goes quiet; on "Okay." he picks it up and turns it.
+- **visual:** close on the blank tag on the floor; the tag turning over by his face to show the writing.
+- **dread:** no. Unsettling line: "Even the room you're watching this in." (whispered)
+- **hook:** "Look around. Count what you actually chose." *Viewer-centric, unsettling.*
+- **four elements:** C "Look down. What's on your floor?" · R the things you were handed: bed, lamp, cup, your name · E eerie · T stillness: he won't turn the tag over until the end
+- **cover:** 50.4 s, sitting, lifting the blank tag toward his face.
+- **script:** Hello? Is anyone out there? Look down. What's on your floor? ...There's a paper tag on mine. Face down. On a little string. It wasn't here last night. I haven't turned it over. I don't want to know whose writing it is. ...Look at what's around you. The bed. The lamp. The cup you're holding. Your name. Almost none of it, you picked. Somebody chose it, and handed it to you, and you just... kept it. Even the room you're watching this in. ...Okay. ...It says... for nigel. That's not my handwriting. Look around. Count what you actually chose.
+
+### D32 · fitting · "The chair" · 2026-11-11 (Wed) · 62.3 s
+- **idea:** everything made for you is shaped like you, and then, slowly, you're shaped like it.
+- **you:** strong. "Chin down. Shoulders in. Hands together. That's how you're watching me." / "Your shoes. Your pillow. The screen in your hand."
+- **first seconds:** snaps upright: "Sit up." then demonstrates your phone posture step by step and stays in it.
+- **prop:** a plain wooden chair tagged "for nigel", exactly his height (stays for D33–34; leaves D53).
+- **tension:** medium-strong. He holds the hunch from 15 s to the end; near the end he strains to lift his head, rises a little, sinks back.
+- **visual:** the hunch held in a slow push; the light going from afternoon to dusk.
+- **dread:** no. Unsettling line: "My neck has stopped asking."
+- **hook:** "Everything made for you is also making you." *Viewer-centric, unsettling.*
+- **four elements:** C "Sit up. Look how you're holding your head." · R things made for you: shoes, pillow, the screen · E uneasy, tender underneath · T a held posture that gets harder; he tries to come up and can't
+- **cover:** 31.0 s, hunched over his hands beside the tagged chair.
+- **script:** Hello? Is anyone out there? Sit up. Look how you're holding your head. ...Like this. Chin down. Shoulders in. Hands together. That's how you're watching me. ...There's a chair in here now. It has a tag. For nigel. It's exactly the right height for me. Somebody measured. Everything made for you is shaped like you. Your shoes. Your pillow. The screen in your hand. And then, slowly, you're shaped like it. You don't feel it happen. I've been holding this the whole time. ...My neck has stopped asking. ...It's getting hard to come up. ...Everything made for you is also making you.
+
+### D33 · softening · "Won't sit" · 2026-11-12 (Thu) · 62.4 s
+- **idea:** comfort is a kind of holding; soft things hold on.
+- **you:** strong. "You're comfortable right now. That's why you're still watching."
+- **first seconds:** already walking round the chair, hand raised to you: "Don't sit down. Not yet."
+- **prop:** the tagged chair from D32.
+- **tension:** medium-strong. Laps that tighten and slow all episode; he stops with his hand on its back.
+- **visual:** wide shot of him circling the chair under the night window, creeping in as the laps close.
+- **dread:** no. Unsettling line: "You're comfortable right now. That's why you're still watching."
+- **hook:** "Every comfortable thing is holding you a little." *Viewer-centric, unsettling.*
+- **four elements:** C "Don't sit down. Not yet." · R comfort and staying: Sunday bed, couch, a show, a person · E warm, with something wrong underneath · T laps round the chair, each one closer; will he sit? He doesn't
+- **cover:** 55.3 s, hand resting on the chair back, night window.
+- **script:** Hello? Is anyone out there? Don't sit down. Not yet. ...It's a good chair. It fits me. That's the problem. I keep walking round it. Every lap, a little closer. ...You know this one. The bed on a Sunday. The couch after work. The same show again, because you know how it ends. The person you stay with, because leaving would be cold. ...You're comfortable right now. That's why you're still watching. ...It isn't a trap. It's just soft. And soft things hold on. ...I'm not sitting. I'm just resting my hand. That's how it starts. Every comfortable thing is holding you a little.

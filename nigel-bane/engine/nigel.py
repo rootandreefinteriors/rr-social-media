@@ -157,12 +157,14 @@ BIRDS = []   # [dict(t, dur, x0, x1, y)] in window-fraction coords; a little ink
 WEB = None   # spider web geometry (see build_web); drawn when env "web" > 0
 PLUCKS = []  # [(time, gain)] the web/dragline trembles (and thrums faintly) from these moments
 DRAW_HOOK = None
+UNDER_HOOK = None   # under_hook(cr, t, pose, env): world-space props drawn BEHIND Nigel (a chair he stands in front of)
 DRIPS = []        # [time] icicle drips (env "icicle" > 0): a bead swells, falls, and plinks
 GLASS_TAPS = []   # [(time, gain)] a knock from OUR side of the glass: dull tap + a tiny shake of the whole frame
 
 def configure(mood_track, pose_track, x_track, cam_track, follow_track, env_track,
               window_knocks=(), tally_base=0, tally_new=(), sfx=(), extra_blinks=(), pose_hook=None, tail=0.55,
-              birds=(), web=None, plucks=(), draw_hook=None, lens_bugs=(), glass_taps=(), drips=(), crack=None):
+              birds=(), web=None, plucks=(), draw_hook=None, lens_bugs=(), glass_taps=(), drips=(), crack=None,
+              under_hook=None):
     """Install an episode's timelines and precompute everything derived from them.
     draw_hook(cr, t, pose, env): episode-specific drawing in world space, right after Nigel is drawn."""
     g = globals()
@@ -171,6 +173,7 @@ def configure(mood_track, pose_track, x_track, cam_track, follow_track, env_trac
     g["GLASS_TAPS"] = list(glass_taps)
     g["DRIPS"] = list(drips)
     g["CRACK"] = build_crack(crack) if crack else None
+    g["UNDER_HOOK"] = under_hook
     sfx = list(sfx) + [(k, "knock_far", 0.16) for b in lens_bugs for k in b.get("taps", [])]
     g.update(mood_track=mood_track, pose_track=pose_track, x_track=x_track, cam_track=cam_track,
              follow_track=follow_track, env_track=env_track, WINDOW_KNOCKS=list(window_knocks),
@@ -1224,6 +1227,90 @@ def knuckle_marks(cr, t):
             g.add_color_stop_rgba(0, 0.6, 0.6, 0.62, 0.22 * a); g.add_color_stop_rgba(1, 0.6, 0.6, 0.62, 0)
             cr.set_source(g); cr.arc(kx, ky, 20, 0, 2 * math.pi); cr.fill()
 
+# ------------------------------------------------------- props: tag, chair (D31+) ---
+_text_cache = {}
+def text_surface(text, size, color=(18, 18, 22)):
+    """a word or two in the caption hand, as a cairo surface (for writing ON props, e.g. the tag)"""
+    key = (text, size, color)
+    if key not in _text_cache:
+        f = ImageFont.truetype(FONT_PATH, size)
+        w = int(ImageDraw.Draw(Image.new("RGBA", (1, 1))).textlength(text, font=f)) + 12
+        im = Image.new("RGBA", (w, int(size * 1.5)), (0, 0, 0, 0))
+        ImageDraw.Draw(im).text((6, 2), text, font=f, fill=color + (255,))
+        a = np.array(im, dtype=np.uint8)
+        bgra = np.zeros_like(a)
+        al = a[:, :, 3:4].astype(np.uint16)
+        bgra[:, :, 0] = (a[:, :, 2] * al[:, :, 0] // 255); bgra[:, :, 1] = (a[:, :, 1] * al[:, :, 0] // 255)
+        bgra[:, :, 2] = (a[:, :, 0] * al[:, :, 0] // 255); bgra[:, :, 3] = a[:, :, 3]
+        bgra = np.ascontiguousarray(bgra)
+        surf = cairo.ImageSurface.create_for_data(memoryview(bgra), cairo.FORMAT_ARGB32, bgra.shape[1], bgra.shape[0])
+        _text_cache[key] = (surf, bgra)   # keep the buffer alive
+    return _text_cache[key][0]
+
+def draw_tag(cr, x, y, ang=0.0, scale=1.0, flip=0.0, alpha=1.0, text="for nigel", squash=1.0, string=True, sid=7):
+    """A paper luggage tag on a little string. flip 0 = face down (blank), 1 = face up with `text`; it turns over
+    through edge-on. squash < 1 lays it flat on the floor. (x, y) = the tag's centre, world space."""
+    if alpha < 0.01:
+        return
+    w, h = 92 * scale, 50 * scale
+    sx = abs(math.cos(math.pi * flip))
+    face = flip > 0.5
+    cr.save(); cr.translate(x, y); cr.rotate(ang); cr.scale(1, squash)
+    if string:   # the string loops out of the hole and trails off
+        hx = -w / 2 + 14 * scale
+        pts = [(hx * max(sx, 0.08), 0)] + [(hx - (18 + 10 * k) * scale, (6 * math.sin(k * 1.3 + 0.4) + 3 * k) * scale) for k in range(1, 6)]
+        path(cr, sketch_pts(pts, amp=0.8, sid=sid + 40, step=6)); stroke_ink(cr, 1.6 * max(scale, 0.7), alpha=0.75 * alpha)
+    cr.scale(max(sx, 0.04), 1)
+    c = 12 * scale   # clipped corners at the hole end
+    shape = [(-w / 2 + c, -h / 2), (w / 2, -h / 2), (w / 2, h / 2), (-w / 2 + c, h / 2), (-w / 2, h / 2 - c), (-w / 2, -h / 2 + c)]
+    cr.move_to(*shape[0])
+    for p in shape[1:]:
+        cr.line_to(*p)
+    cr.close_path()
+    cr.set_source_rgba(0.95, 0.93, 0.86, alpha) if face else cr.set_source_rgba(0.93, 0.91, 0.84, alpha)
+    cr.fill_preserve()
+    cr.set_source_rgba(*INK, 0.85 * alpha); cr.set_line_width(2.2 * max(scale, 0.7)); cr.stroke()
+    cr.arc(-w / 2 + 14 * scale, 0, 4.2 * scale, 0, 2 * math.pi)
+    cr.set_source_rgba(*INK, 0.8 * alpha); cr.set_line_width(1.6 * max(scale, 0.7)); cr.stroke()
+    if face and text:
+        surf = text_surface(text, 64)
+        tw, th = surf.get_width(), surf.get_height()
+        k = min((w - 30 * scale) / tw, (h - 10 * scale) / th)
+        cr.save(); cr.translate(-w / 2 + 24 * scale, -th * k / 2 + 2 * scale); cr.scale(k, k)
+        cr.set_source_surface(surf, 0, 0); cr.paint_with_alpha(alpha * min(1.0, (flip - 0.5) * 6))
+        cr.restore()
+    cr.restore()
+
+def draw_chair(cr, x, scale=1.0, alpha=1.0, tag=True, tag_swing=0.0, sid=30):
+    """A plain wooden chair seen three-quarter on, standing on the floor at x (centre of the seat). Its back is on
+    the left. A paper tag ("for nigel") hangs off the back post on a string when tag=True."""
+    if alpha < 0.01:
+        return
+    s = scale
+    F = FLOOR_Y
+    seat_y = F - 170 * s
+    L, R, D = x - 70 * s, x + 70 * s, 34 * s      # seat front edge from L to R; D = depth offset up-right
+    lines = [
+        [(L, seat_y), (R, seat_y)], [(L + D, seat_y - D * 0.6), (R + D, seat_y - D * 0.6)],     # seat edges
+        [(L, seat_y), (L + D, seat_y - D * 0.6)], [(R, seat_y), (R + D, seat_y - D * 0.6)],
+        [(L, seat_y + 12 * s), (R, seat_y + 12 * s)],                                          # seat thickness
+        [(L + 6 * s, seat_y + 12 * s), (L + 4 * s, F)], [(R - 6 * s, seat_y + 12 * s), (R - 4 * s, F)],  # front legs
+        [(R + D - 6 * s, seat_y - D * 0.6), (R + D - 6 * s, F - D * 0.6)],                     # back right leg
+        [(L + D, seat_y - D * 0.6), (L + D, seat_y - 230 * s)], [(L + 6 * s, seat_y), (L + 6 * s, seat_y - 210 * s)],  # back posts
+        [(L + 6 * s, seat_y - 205 * s), (L + D, seat_y - 228 * s)],                            # top rail
+        [(L + 6 * s, seat_y - 150 * s), (L + D, seat_y - 170 * s)], [(L + 6 * s, seat_y - 95 * s), (L + D, seat_y - 113 * s)],  # slats
+        [(L + 10 * s, F - 60 * s), (R - 8 * s, F - 60 * s)],                                   # stretcher
+    ]
+    for k, ln in enumerate(lines):
+        path(cr, sketch_pts(ln, amp=1.2, sid=sid + k, step=14)); stroke_ink(cr, 3.4 * max(s, 0.6), alpha=0.9 * alpha)
+    if tag:   # hanging off the back post
+        px, py = L + D - 2 * s, seat_y - 200 * s
+        ang = 0.25 * math.sin(tag_swing)
+        tx, ty = px + 26 * s * math.sin(ang) + 6 * s, py + 46 * s * math.cos(ang)
+        path(cr, sketch_pts([(px, py), (tx - 4 * s, ty - 18 * s)], amp=0.6, sid=sid + 60, step=6))
+        stroke_ink(cr, 1.5, alpha=0.75 * alpha)
+        draw_tag(cr, tx + 14 * s, ty, ang=1.35 + ang, scale=0.7 * s, flip=1.0, alpha=alpha, string=False, sid=sid + 61)
+
 # ------------------------------------------- a crack in OUR side of the glass (D27–30) ---
 # configure(crack=dict(origin=(x, y) screen px, heading=rad, length=px, seed, branches, tape_at=0..1, tape_len=px)).
 # env: crack 0..1 (how far it has crept), crack_vis (alpha), tape 0..1 (a strip of clear tape laid along it),
@@ -1592,6 +1679,8 @@ def render_frame(t, st, surf):
     draw_beam(cr, env)
     draw_web(cr, t, env)
     draw_tally(cr, t)
+    if UNDER_HOOK:
+        UNDER_HOOK(cr, t, pose, env)
     draw_shadow(cr, pose)
     echo = env["echo"]
     if echo > 0.02:   # you only ever see old light: his recent past lingers behind him
