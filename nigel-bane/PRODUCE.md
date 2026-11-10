@@ -214,9 +214,10 @@ flow `Hd8ptIktXVoBR4RvHhKB` (reuse it). Buffer (Nigel's own account): org `6ad3b
    - arg3: default max pause (0.55 tight … 0.75 airy).
    - Then **drop the v3 tag fragments** the transcriber leaves in (`quietly]`, `[low,` …): remove every word containing
      `[` or `]` from `words.json`, or they show up as captions.
-   - **Then run `python3 ../../engine/check_pauses.py`: it must report `speech cuts: 0`.** A cut means a pause landed
-     inside a word and the voice will audibly skip (D32 shipped with three on 2026-11-10). Fix by moving or dropping
-     that insert and re-running prep.
+   - **Then run `python3 ../../engine/check_pauses.py`: it must report `problems: 0`.** It flags a pause that landed
+     inside a word (SPEECH CUT: an audible skip) and a scrap of a word left stranded after a pause (STRAY BIT: sounds
+     like an echo, e.g. "sit up... (up)"). D32 shipped with both on 2026-11-10. Fix by moving or dropping that insert
+     and re-running prep.
    - **Final length = last word end + 2.55 s and must be 61–70 s.** If short, add silence inserts at beats (not at the
      very end) and re-run prep.
 5. **episode.py**: copy the newest episode as a template; build the Tracks (see §4); `N.configure(...)`;

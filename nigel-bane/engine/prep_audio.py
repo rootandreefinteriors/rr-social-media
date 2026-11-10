@@ -72,18 +72,32 @@ out = [{"text": w["text"], "start": round(remap(w["start"]), 3), "end": round(re
 # optional: insert extra silence after given words (midway into the following gap) {"word.": seconds}
 INSERT = json.loads(sys.argv[2]) if len(sys.argv) > 2 else {}
 def quietest(t0, t1):
-    """the quietest 20 ms in [t0, t1] of the edit so far: transcript timings can be off by a few hundred ms, and a
-    pause dropped at their midpoint can land inside a word (an audible skip; D32, 2026-11-10)"""
-    win = int(0.02 * SR)
-    a, b = max(0, int(t0 * SR)), min(len(y) - win, int(t1 * SR))
-    if b <= a:
+    """Where to drop a pause in [t0, t1] of the edit so far: the middle of the longest stretch of real silence, so a
+    word's tail stays attached to it. Transcript timings can be off by a few hundred ms (D32, 2026-11-10: a pause at
+    their midpoint cut words, and one at the single quietest instant split "u-p" so the "p" came back as an echo)."""
+    hop = int(0.01 * SR)
+    a, b = max(0, int(t0 * SR)), min(len(y), int(t1 * SR))
+    if b - a < 2 * hop:
         return (t0 + t1) / 2
-    e = np.convolve(y[a:b + win] ** 2, np.ones(win), mode="valid")
-    return (a + int(np.argmin(e)) + win // 2) / SR
+    seg = y[a:b]
+    fr = 20 * np.log10(np.sqrt(np.mean(seg[:len(seg) // hop * hop].reshape(-1, hop) ** 2, axis=1)) + 1e-9)
+    best, run, start = (0, 0), 0, 0
+    for k, v in enumerate(fr):
+        if v < -55:
+            if run == 0:
+                start = k
+            run += 1
+            if run > best[1]:
+                best = (start, run)
+        else:
+            run = 0
+    if best[1] >= 8:   # >= 80 ms of silence: drop it in the middle
+        return (a + (best[0] + best[1] / 2) * hop) / SR
+    return (a + int(np.argmin(fr)) * hop + hop // 2) / SR
 
 for i, w in enumerate(out):
     if w["text"] in INSERT and i + 1 < len(out):
-        at = quietest(w["end"] - 0.25, out[i + 1]["start"] + 0.25)
+        at = quietest(w["end"] - 0.3, out[i + 1]["start"] + 0.4)
         k = int(at * SR)
         y = np.concatenate([y[:k], np.zeros(int(INSERT[w["text"]] * SR), np.float32), y[k:]])
         for v in out[i + 1:]:
