@@ -1,20 +1,20 @@
 {
   "show": "let the comments decide",
-  "day": 18,
+  "day": 19,
   "last_episode": {
-    "day": 18,
-    "type": "comment",
-    "folder": "episodes/ep018",
-    "video": "videos/day018.mp4",
-    "posted_at": "2026-11-09T19:00-05:00 (scheduled)",
+    "day": 19,
+    "type": "waiting",
+    "folder": "episodes/ep019",
+    "video": "videos/day019.mp4",
+    "posted_at": "2026-11-10T19:00-05:00 (scheduled)",
     "buffer": {
-      "tiktok": "6af21ed34edc9538caff0139",
-      "instagram": "6af21ed629d3f56e691e244d"
+      "tiktok": "6af36d7d57fc125cf880a4fa",
+      "instagram": "6af36d8042d1993c828f9aa7"
     },
-    "note": "RE-CUT approved by Justin: @_taun_taun lottery episode. Buffer posts edited to the commit-pinned raw URL @2d88102 (videos/day018.mp4). The dinosaur cut (@d94bb20) never aired."
+    "note": "Buffer uses the commit-pinned raw URL @92eb82d."
   },
   "ask_since_day": 18,
-  "waiting_streak": 0,
+  "waiting_streak": 1,
   "world": {
     "location": "HIS HOUSE, INSIDE (day 18): O.draw_room(cr, t, IX-3000, IX+3000, door_x=IX-900, frame_x=IX-450 (the family photo is back on the wall, frame_fall=0), kitchen_x=IX+1000) with IX=1300000; the COUCH is back at IX-150 (O.draw_couch); TV O.draw_tv(cr, IX+650, FLOOR_Y-10, t), wall clock (IX-150, 560), outlet, sink with dishes O.draw_sink_counter(cr, IX+1240, FLOOR_Y-10, n=25), fridge (IX+1600). He sits on the couch at IX+25 (couch_sit pose) with her at IX-325 holding the baby and the black kitten curled between them. S.floor=False. See ltcd/episodes/ep018. NOTE: next comment episode normally moves to a new world (SHOW.md); the family is now a running element per Justin (2026-11-09).",
     "companions": [
@@ -48,7 +48,7 @@
       "hit the lottery for 10 million and got his family back (day 18, re-cut): one $1 ticket at a corner store, every number matched on the store TV (4 8 15 16 23 42), JACKPOT; the clerk fainted and came back with a giant check; he held it over his head under her window - she shut the curtain; he dropped his game controller in the trash and proposed with a ring box; she said yes; they carried the couch back home together; the black kitten wandered in and curled up between them. Looks normal."
     ],
     "notes": "Justin, 2026-11-09: his 11-08 note meant don't END episodes with new characters unless the comment asks for them. The girlfriend, baby and kitten are back as of day 18. The kitten doesn't need to ride on his head.",
-    "sign_line": "I'LL WAIT HERE."
+    "sign_line": "WE'LL WAIT."
   },
   "used_comments": [
     "Beat Mc in hardcore mode:)",
@@ -156,6 +156,11 @@
       "day": 18,
       "type": "comment",
       "summary": "@_taun_taun (IG): 'Hit the lottery for 10 million and get your family back' -> RE-CUT on Justin's direction (the dinosaur cut never aired): empty house -> corner store: $1 ticket, the draw on the store TV, heartbeat, the ticket insert, 42 -> JACKPOT $10,000,000; curl springs, slow grin; the clerk faints, pops up with a giant check; thought: the family photo -> her window: check overhead, she shuts the curtain; check droops -> controller in the trash; ring box, one knee; she comes out with the baby: yes; hug -> home: they carry the couch back in; the black kitten wanders in and curls up between them; ask on the TV (61.6 s)"
+    },
+    {
+      "day": 19,
+      "type": "waiting",
+      "summary": "no qualifying comment on day 18 (IG @nevaehells 'Raise your kid to be the next LeBron james' names a real celebrity; TikTok: none); at home in the living room, she sits on the couch with the sleeping baby, the black kitten curled up next to her; he stands in front holding the sign, turns it, writes WE'LL WAIT. under the message, dead stare (21 s)"
     }
   ]
 }
