@@ -167,7 +167,9 @@ layer only.
    first-time-viewer rule. Write the plan into your final message.
 5. **Make each episode** with §3, one at a time, in day order. Commit and push each one as soon as it's done (so a run
    that stops halfway still leaves finished, scheduled episodes).
-6. **Final message** (the owner reads it; plain language, no jargon): for each new day — title, date, caption, length,
+6. **Final message** (the owner reads it; plain language, no jargon). **Name every episode by its posted caption**
+   (tally + -ing word, e.g. `IIIII IIIII IIIII IIIII IIIII IIIII I wondering`), never by the Bible's working title
+   alone. For each new day — the caption, date, length,
    the idea in one line, the hook, cover time, and the `dayNNN.mp4` link
    (`https://github.com/rootandreefinteriors/rr-social-media/blob/main/nigel-bane/dayNNN.mp4`); what the review changed
    in the Bible/Ledger; anything that failed or needs the owner (ElevenLabs credits low, a render you weren't happy
