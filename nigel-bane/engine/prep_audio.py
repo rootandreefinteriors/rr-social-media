@@ -71,9 +71,19 @@ y = np.concatenate(pieces)
 out = [{"text": w["text"], "start": round(remap(w["start"]), 3), "end": round(remap(w["end"]), 3)} for w in words]
 # optional: insert extra silence after given words (midway into the following gap) {"word.": seconds}
 INSERT = json.loads(sys.argv[2]) if len(sys.argv) > 2 else {}
+def quietest(t0, t1):
+    """the quietest 20 ms in [t0, t1] of the edit so far: transcript timings can be off by a few hundred ms, and a
+    pause dropped at their midpoint can land inside a word (an audible skip; D32, 2026-11-10)"""
+    win = int(0.02 * SR)
+    a, b = max(0, int(t0 * SR)), min(len(y) - win, int(t1 * SR))
+    if b <= a:
+        return (t0 + t1) / 2
+    e = np.convolve(y[a:b + win] ** 2, np.ones(win), mode="valid")
+    return (a + int(np.argmin(e)) + win // 2) / SR
+
 for i, w in enumerate(out):
     if w["text"] in INSERT and i + 1 < len(out):
-        at = (w["end"] + out[i + 1]["start"]) / 2
+        at = quietest(w["end"] - 0.25, out[i + 1]["start"] + 0.25)
         k = int(at * SR)
         y = np.concatenate([y[:k], np.zeros(int(INSERT[w["text"]] * SR), np.float32), y[k:]])
         for v in out[i + 1:]:
