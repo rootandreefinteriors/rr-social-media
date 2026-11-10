@@ -92,6 +92,24 @@ emotional colour, or the tension mechanism (BIBLE.md, "The four required element
 The planned C and T for D26–60 are in BIBLE.md, Chapter 2. Copy each one here when its episode is made, noting any
 change.
 
+## Second half (R move and closing-line shape)
+Check this before scripting, with the four-elements table: within any 3 days, don't repeat the R move or the closing
+line's shape (BIBLE.md, "The closing line" and "R"). Days 26–33 are why this exists: every one related to the viewer
+with "you do this too" plus a list, and seven of the eight ended on an aphorism (user, 2026-11-10).
+
+| Day | R move | Closing line shape | Passes the truth test? |
+|---|---|---|---|
+| 24 | caught ("the face you're making right now") | aphorism | **no**: candid photos and video (a commenter said so) |
+| 26 | list (someone you talked to, a song) | aphorism | yes |
+| 27 | list (drawer, light, something said) | aphorism | yes |
+| 28 | list (job, town, ache) | aphorism | yes |
+| 29 | list (salted steps, brakes, 3 a.m.) | aphorism | yes |
+| 30 | list (scar, name, song) | aphorism | yes |
+| 31 | list (bed, lamp, cup, name) | instruction | yes |
+| 32 | list (shoes, pillow, screen) | aphorism | yes |
+| 33 | list (Sunday bed, couch, show, person) | aphorism | yes |
+
+
 ## Upcoming
 Chapter 1 ended on D25. **Chapter 2 "The Room" (D26–60): see BIBLE.md** — an idea bank in a suggested running order
 (D26 the spider leaves and the web comes down — nothing in the room is permanent; crack D27–30; the tag and the chair

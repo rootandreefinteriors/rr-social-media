@@ -170,6 +170,9 @@ Then, **for the new episodes** (old ones count only as the comparison group):
   - a phone or screen link more than once a week
   - a creature in danger more than once a week
   - "Shh" more than once a week
+  - the same R move or closing-line shape within 3 days (Ledger, "second half"), a list of examples more than once in
+    10 episodes, or an aphorism closer more than once in 5
+  - any central claim or closing line that fails the truth test, or that comments dispute as untrue
 - **Check the next 10 planned episodes** in the Bible bank. Does each have a command and tension that fit the variation
   rule? Flag gaps.
 

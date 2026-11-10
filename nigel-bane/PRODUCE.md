@@ -98,6 +98,17 @@ earlier episode ("Tell me she's there" for a spider that left, "it grew in the n
 plainly in THIS video; any change (gone, bigger, healed) happens on camera in this episode. Callbacks are a bonus
 layer only.
 
+**The second half got formulaic (user, 2026-11-10).** Keep the first half as it is — knock, intro, command,
+commentary on the prop: it's what holds people. After that, every episode had become "you do this too" + three
+examples + Nigel realizing something + a corny closing aphorism, and one closing claim (D24) was simply false. The
+user: the examples in the Bible plus "your tendency to just replicate previous episodes" caused it. So:
+- Relate it to the viewer with one of the **R moves** in BIBLE.md (caught, one scene, the test, the turn, the question,
+  the swap, someone else); a list of examples at most once every 10 episodes.
+- End on one of the **closing-line shapes** in BIBLE.md, rotated; an aphorism at most one episode in five.
+- Every central claim and closing line passes the **truth test**: no counterexample a commenter could name.
+- **Don't write from old scripts.** Copy the newest `episode.py` for animation code only; write the words from the Bible
+  entry and the menus. If a second half could be dropped into another episode with the nouns changed, rewrite it.
+
 **Notes on D19 v1 (user, 2026-10-23 — rejected and redone):**
 - **Every episode must read cold to a first-time viewer.** No visual systems that need explaining (D19 v1's "his eyes
   are the only light in the room" darkness was jarring and made no sense to a new viewer). Night = the window, not a
@@ -188,7 +199,9 @@ Paths below are relative to `nigel-bane/`. IDs: ElevenLabs voice **Roboto** `f21
 flow `Hd8ptIktXVoBR4RvHhKB` (reuse it). Buffer (Nigel's own account): org `6ad3b3027648d77341057da5`, TikTok channel
 `6ad3bd1a778b240e2f3ce589`, Instagram channel `6ad3bb3d778b240e2f3cd282`.
 
-1. **Script** (~100–130 spoken words; the voice is slow). v3 audio tags like `[thoughtful]`, `[softly]`, `[quietly]`,
+1. **Script** (~100–130 spoken words; the voice is slow). Take the Bible entry's R move and Ending shape (or pick ones
+   the Ledger's "second half" table shows weren't used in the last 3 days), run the closing line and the central claim
+   through the truth test, and write the words fresh, not from earlier scripts. v3 audio tags like `[thoughtful]`, `[softly]`, `[quietly]`,
    `[uneasy]`, `[whispers]` work. Always start `[curious] Hello? Is anyone out there?`. Write the idea first. Before
    voicing, check every line against §1: action + command right after the open, a prop, everything about *you*,
    implied lift, edged hook, one deliberate unsettling moment, and **reads cold for a first-time viewer**.
@@ -237,7 +250,7 @@ flow `Hd8ptIktXVoBR4RvHhKB` (reuse it). Buffer (Nigel's own account): org `6ad3b
     standard knock pose. Note the time in ms.
 11. **Records + upload** (one commit per episode):
     - Upload copy: `ffmpeg -v error -y -i episodes/epNNN_slug/<mp4> -c:v libx264 -preset slow -crf 21 -pix_fmt yuv420p -c:a copy -movflags +faststart dayNNN.mp4`
-    - `LEDGER.md`: a row in "Produced" (same columns as the others) and a row in "Four elements".
+    - `LEDGER.md`: a row in "Produced" (same columns as the others), a row in "Four elements" and a row in "Second half".
     - `CATALOG.md`: an entry with the same fields as the others (idea, you, first seconds, prop, tension, visual, dread,
       hook, four elements, cover, full script).
     - `POSTING.md`: a row (filled in with post IDs after step 12).
