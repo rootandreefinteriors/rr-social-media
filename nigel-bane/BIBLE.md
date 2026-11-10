@@ -169,7 +169,15 @@ dropped into another episode with the nouns changed, start it again.
 8. **Few shots, slow moves:** ~4–6 setups, long holds, real silences — but never a dead stretch.
 9. **Foreshadow → pay off on camera** within the episode.
 10. **Nigel notices.** Silent anomalies stay parked until there's a real following.
-11. **A signature visual every few episodes** (a web spun on camera, threads out of his body, an extreme eye close-up, a
+11. **Sound, lightly (viewers call his voice ASMR; user 2026-11-10: lean in, "just don't overdo it").** Stereo and a
+    slightly warmer voice in close-ups are automatic (the engine does it). On top of that, per episode:
+    - **at most one whispered stretch** (`[whispers]`), usually the unsettling line; plenty of episodes have none;
+    - **one featured close sound** where the prop gives one (a tap, the pencil, paper, a creak, a drip, breath on the
+      glass), landing in a quiet beat on its own, never piled up;
+    - **personal-attention moments** (counting with you, eyes closed, breathing) only where the entry already has one
+      (D45, D50, D51, D52, D57), not added to others.
+    It stays unsettling, never just soothing. No music, no "headphones" in the caption.
+12. **A signature visual every few episodes** (a web spun on camera, threads out of his body, an extreme eye close-up, a
     long walk into the white…) — polished, or left out.
 
 ## Devices (all in service of ideas)

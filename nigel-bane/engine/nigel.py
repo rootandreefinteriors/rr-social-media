@@ -1728,16 +1728,32 @@ def render_frame(t, st, surf):
     st.cloud_off += env["cloud_v"] / FPS
 
 # ---------------------------------------------------------------- audio ----
+# Stereo (2026-11-10, viewers hear him as ASMR; kept subtle on purpose): the voice drifts with where Nigel is on
+# screen (at most ~1/3 of the way to a side) and warms a little in close-ups; sounds come from where they happen.
+VOICE_WIDTH, SFX_WIDTH = 0.35, 0.5
+def _pan_gains(p):
+    a = (np.clip(p, -1, 1) + 1) * math.pi / 4
+    return np.cos(a) * math.sqrt(2), np.sin(a) * math.sqrt(2)
+
+def screen_pan(t, pt, width):
+    """pan for a world point at time t, from its x on screen"""
+    return float(np.clip((world_to_screen(t, pt)[0] - W / 2) / (W / 2), -1, 1)) * width
+
 def synth_audio():
     n = int(DURATION * SR) + SR
-    mix = np.zeros(n, np.float32)
+    mix = np.zeros(n, np.float32)      # the centre (mono) bed
+    side_l = np.zeros(n, np.float32); side_r = np.zeros(n, np.float32)
     rngn = np.random.default_rng(1)
-    def place(sig, t0, gain=1.0):
+    def place(sig, t0, gain=1.0, pan=0.0):
         i = int(t0 * SR)
         if i >= n:
             return
         m = min(len(sig), n - i)
-        mix[i:i + m] += sig[:m] * gain
+        if abs(pan) < 1e-3:
+            mix[i:i + m] += sig[:m] * gain
+        else:
+            gl, gr = _pan_gains(pan)
+            side_l[i:i + m] += sig[:m] * gain * gl; side_r[i:i + m] += sig[:m] * gain * gr
     def onepole(s, a):
         y = np.zeros_like(s)
         for i in range(1, len(s)):
@@ -1759,10 +1775,10 @@ def synth_audio():
         L = int(0.12 * SR); tt = np.arange(L) / SR
         s = rngn.standard_normal(L) * np.exp(-tt / 0.012) * 0.6 + np.sin(2 * np.pi * 85 * tt) * np.exp(-tt / 0.03)
         return onepole(s.astype(np.float32), 0.12) * 1.6
-    for k in INTRO_KNOCKS:
-        place(knock(1.0), k, 0.55 * KNOCK_GAIN.get(k, 1.0))
+    for k in INTRO_KNOCKS:   # his knuckles, on the glass in front of you
+        place(knock(1.0), k, 0.55 * KNOCK_GAIN.get(k, 1.0), pan=screen_pan(k, live_pose(k)["rhand"], SFX_WIDTH))
     for k in WINDOW_KNOCKS:
-        place(knock(0.6, dull=0.85), k, 0.35)
+        place(knock(0.6, dull=0.85), k, 0.35, pan=screen_pan(k, (WIN[0] + WIN[2] / 2, WIN[1] + WIN[3] / 2), SFX_WIDTH))
     for k, gn in GLASS_TAPS:
         place(knock(0.75, dull=0.35), k, 0.32 * gn)
     def drip():   # a single water drop landing: a bright plink
@@ -1770,8 +1786,8 @@ def synth_audio():
         f = 1500 + 700 * np.exp(-tt / 0.012)
         s = np.sin(2 * np.pi * np.cumsum(f) / SR) * np.exp(-tt / 0.045) + rngn.standard_normal(L) * np.exp(-tt / 0.003) * 0.3
         return s.astype(np.float32)
-    for d in DRIPS:
-        place(drip(), d + 0.5, 0.11)      # it lands as the falling bead reaches the sill
+    for d in DRIPS:   # it lands as the falling bead reaches the sill
+        place(drip(), d + 0.5, 0.11, pan=screen_pan(d + 0.5, (WIN[0] + WIN[2] * 0.75, WIN[1] + WIN[3]), SFX_WIDTH))
     def scratch(dur):
         L = int((dur + 0.08) * SR); tt = np.arange(L) / SR
         nz = rngn.standard_normal(L).astype(np.float32)
@@ -1779,15 +1795,16 @@ def synth_audio():
         rasp = 0.55 + 0.45 * np.sign(np.sin(2 * np.pi * 38 * tt + 3 * np.sin(2 * np.pi * 3 * tt)))
         env = np.clip(tt / 0.03, 0, 1) * np.clip((dur + 0.08 - tt) / 0.08, 0, 1)
         return (hp * rasp * env * 0.9).astype(np.float32)
-    for ts, dur in TALLY_NEW:
-        place(scratch(dur), ts, 0.22)
+    for ts, dur in TALLY_NEW:   # the pencil, at the wall
+        place(scratch(dur), ts, 0.22, pan=screen_pan(ts, TALLY_XY, SFX_WIDTH))
     def thrum():   # a low, felt-more-than-heard string note: silk being plucked
         L = int(1.4 * SR); tt = np.arange(L) / SR
         f = 98 * (1 + 0.04 * np.exp(-tt / 0.08))
         s = (np.sin(2 * np.pi * np.cumsum(f) / SR) + 0.35 * np.sin(2 * np.pi * np.cumsum(f * 2.01) / SR)) * np.exp(-tt / 0.38)
         return (s * np.clip(tt / 0.004, 0, 1)).astype(np.float32)
     for tp, gain in PLUCKS:
-        place(thrum(), tp, 0.16 * gain)
+        pl = screen_pan(tp, WEB["dragline"][1], SFX_WIDTH) if WEB and WEB.get("dragline") else 0.0
+        place(thrum(), tp, 0.16 * gain, pan=pl)
     def heart():   # one heartbeat, lub-dub: felt more than heard
         L = int(0.6 * SR); tt = np.arange(L) / SR
         s = np.sin(2 * np.pi * 52 * tt) * np.exp(-tt / 0.07)
@@ -1808,11 +1825,14 @@ def synth_audio():
             m = min(len(tk), L - i); out[i:i + m] += tk[:m]
             x += rr.uniform(0.012, 0.06)
         return out
+    crack_pan = 0.0
+    if CRACK is not None:   # the crack is on the screen itself
+        crack_pan = float(np.clip((CRACK["origin"][0] - W / 2) / (W / 2), -1, 1)) * SFX_WIDTH
     for ts, kind, gain in SFX:
         if kind == "tick":
-            place(tick(), ts, gain)
+            place(tick(), ts, gain, pan=crack_pan)
         if kind == "crackle":
-            place(crackle(0.35), ts, gain)
+            place(crackle(0.35), ts, gain, pan=crack_pan)
         if kind == "heart":
             place(heart(), ts, gain)
         if kind == "thrum":
@@ -1830,9 +1850,18 @@ def synth_audio():
         x, v, ph = loco(f / FPS)
         cur = int(ph / math.pi)
         if abs(v) >= 30 and pose_track.at(f / FPS)["hip"][1] <= 1350 and last is not None and cur != last:
-            place(stp, f / FPS, 0.10 * min(1, abs(v) / 90) * random.Random(f).uniform(0.7, 1.1))
+            place(stp, f / FPS, 0.10 * min(1, abs(v) / 90) * random.Random(f).uniform(0.7, 1.1),
+                  pan=screen_pan(f / FPS, live_pose(f / FPS)["hip"], SFX_WIDTH))
         last = cur
-    place(voice, VO, 0.92)
+    vt = VO + np.arange(len(voice)) / SR
+    fr_t = np.arange(int(VO * FPS), int((VO + len(voice) / SR) * FPS) + 2) / FPS
+    pans = np.array([screen_pan(t, live_pose(t)["head"], VOICE_WIDTH) for t in fr_t])
+    zooms = np.array([cam_track.at(t)[2] for t in fr_t])
+    pan_s = np.interp(vt, fr_t, pans); near = np.interp(vt, fr_t, np.clip((zooms - 1.5) / 0.6, 0, 1))
+    warm = voice + 0.22 * near * onepole(voice.astype(np.float32), 0.06)      # a little more chest when he's close
+    gl, gr = _pan_gains(pan_s)
+    i0 = int(VO * SR); m = min(len(voice), n - i0)
+    side_l[i0:i0 + m] += (warm * gl)[:m] * 0.92; side_r[i0:i0 + m] += (warm * gr)[:m] * 0.92
     br = np.cumsum(rngn.standard_normal(n)).astype(np.float32)
     br -= np.convolve(br, np.ones(2048) / 2048, mode="same")
     br /= np.abs(br).max() + 1e-9
@@ -1846,6 +1875,8 @@ def synth_audio():
     drone = (np.sin(2 * np.pi * 55 * tt) + 0.7 * np.sin(2 * np.pi * 55.4 * tt + 1)
              + 0.45 * np.sin(2 * np.pi * 82.4 * tt) + 0.25 * np.sin(2 * np.pi * 164.8 * tt + 2) * lfo)
     mix += drone * 0.03 * drone_amt * lfo
+    wide = np.sin(2 * np.pi * 55.9 * tt + 0.5) * 0.4     # a hair of width in the room hum
+    side_l += wide * 0.03 * drone_amt * lfo * 0.5; side_r -= wide * 0.03 * drone_amt * lfo * 0.5
     sh = (np.sin(2 * np.pi * 880 * tt) * (0.5 + 0.5 * np.sin(2 * np.pi * 5.1 * tt))
           + 0.6 * np.sin(2 * np.pi * 1318.5 * tt) * (0.5 + 0.5 * np.sin(2 * np.pi * 3.7 * tt + 1))
           + 0.4 * np.sin(2 * np.pi * 1760 * tt) * (0.5 + 0.5 * np.sin(2 * np.pi * 6.3 * tt + 2)))
@@ -1857,12 +1888,14 @@ def synth_audio():
         bz = sum(np.sin(2 * np.pi * k * ph) / k for k in range(1, 8))
         bz *= 0.55 + 0.45 * np.abs(np.sin(2 * np.pi * 2.3 * tt + 2 * np.sin(2 * np.pi * 0.7 * tt)))
         mix += bz.astype(np.float32) * 0.02 * buzz_amt
-    mix = mix[: int(DURATION * SR)]
-    mix[-int(0.01 * SR):] *= np.linspace(1, 0, int(0.01 * SR))   # click-free hard cut
-    mix *= 0.95 / max(1e-6, np.abs(mix).max())
+    L = (mix + side_l)[: int(DURATION * SR)]; R = (mix + side_r)[: int(DURATION * SR)]
+    fade = np.linspace(1, 0, int(0.01 * SR))   # click-free hard cut
+    L[-len(fade):] *= fade; R[-len(fade):] *= fade
+    k = 0.95 / max(1e-6, np.abs(L).max(), np.abs(R).max())
+    st = np.empty(2 * len(L), np.float32); st[0::2] = L * k; st[1::2] = R * k
     with wave.open("mix.wav", "wb") as w:
-        w.setnchannels(1); w.setsampwidth(2); w.setframerate(SR)
-        w.writeframes((mix * 32767).astype(np.int16).tobytes())
+        w.setnchannels(2); w.setsampwidth(2); w.setframerate(SR)
+        w.writeframes((st * 32767).astype(np.int16).tobytes())
 
 
 # ----------------------------------------------------------------- main ----
@@ -1884,6 +1917,14 @@ def main(out="episode.mp4"):
             render_frame(target, st, surf)
             surf.write_to_png(f"still_{target:05.1f}.png")
             print("wrote", f"still_{target:05.1f}.png")
+        return
+    if "--audio" in sys.argv:   # new sound on the existing picture: <out> -> <out>_remix.mp4
+        synth_audio()
+        remix = out.replace(".mp4", "_remix.mp4")
+        subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", out, "-i", "mix.wav", "-map", "0:v", "-map", "1:a",
+                        "-c:v", "copy", "-af", "loudnorm=I=-14:TP=-1.5:LRA=11", "-ar", "48000", "-c:a", "aac",
+                        "-b:a", "192k", "-movflags", "+faststart", "-shortest", remix], check=True)
+        print("done ->", remix)
         return
     print(f"duration {DURATION:.2f}s, {NFRAMES} frames")
     synth_audio()

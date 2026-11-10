@@ -201,7 +201,8 @@ flow `Hd8ptIktXVoBR4RvHhKB` (reuse it). Buffer (Nigel's own account): org `6ad3b
 
 1. **Script** (~100–130 spoken words; the voice is slow). Take the Bible entry's R move and Ending shape (or pick ones
    the Ledger's "second half" table shows weren't used in the last 3 days), run the closing line and the central claim
-   through the truth test, and write the words fresh, not from earlier scripts. v3 audio tags like `[thoughtful]`, `[softly]`, `[quietly]`,
+   through the truth test, and write the words fresh, not from earlier scripts. Sound: Bible rule 11 (at most one
+   whispered stretch, one featured close sound; don't overdo the ASMR). v3 audio tags like `[thoughtful]`, `[softly]`, `[quietly]`,
    `[uneasy]`, `[whispers]` work. Always start `[curious] Hello? Is anyone out there?`. Write the idea first. Before
    voicing, check every line against §1: action + command right after the open, a prop, everything about *you*,
    implied lift, edged hook, one deliberate unsettling moment, and **reads cold for a first-time viewer**.
@@ -356,6 +357,9 @@ the env var `NIGEL_FONT` overrides it).
 - Hands near the head are hidden behind it; a hand held up beside the face can read as scratching the head or waving.
   Keep reaching/pointing hands out to the side, below the shoulder line.
 - Screen-space effects (crack, tape, palm, knuckle marks) sit on OUR side of the glass and don't move with the camera.
+- **Audio is stereo** (2026-11-10): the voice follows Nigel's screen position (`VOICE_WIDTH` 0.35) and warms slightly in
+  close-ups; sounds pan to where they happen (`SFX_WIDTH` 0.5). `python3 episode.py --audio` remixes the sound of an
+  already-rendered episode onto its existing picture (writes `<name>_remix.mp4`) without re-rendering.
 - **Replacing a video that's already in a Buffer post:** push the new file over `dayNNN.mp4`, then edit the post's asset
   URL to `…/dayNNN.mp4?v=2` (raw.githubusercontent ignores the query). Buffer caches by URL; check `video.durationMs`.
 - Loud SFX (ticks, knocks) push true peak over −1 dBTP: always measure and limit (§3 step 9).
