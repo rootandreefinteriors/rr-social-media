@@ -3,33 +3,34 @@
   "day": 19,
   "last_episode": {
     "day": 19,
-    "type": "waiting",
+    "type": "comment",
     "folder": "episodes/ep019",
     "video": "videos/day019.mp4",
-    "posted_at": "2026-11-10T19:00-05:00 (scheduled)",
+    "posted_at": "2026-11-10T19:10-05:00 (scheduled)",
     "buffer": {
       "tiktok": "6af36d7d57fc125cf880a4fa",
       "instagram": "6af36d8042d1993c828f9aa7"
     },
-    "note": "Buffer uses the commit-pinned raw URL @92eb82d."
+    "note": "RE-CUT on Justin's call (real people are fine): @nevaehells 'Raise your kid to be the next LeBron james'. Buffer posts edited to commit-pinned raw URL @7b325a1. The waiting cut (@92eb82d, episodes/ep019/waiting_unused.py) never aired."
   },
-  "ask_since_day": 18,
-  "waiting_streak": 1,
+  "ask_since_day": 19,
+  "waiting_streak": 0,
   "world": {
-    "location": "HIS HOUSE, INSIDE (day 18): O.draw_room(cr, t, IX-3000, IX+3000, door_x=IX-900, frame_x=IX-450 (the family photo is back on the wall, frame_fall=0), kitchen_x=IX+1000) with IX=1300000; the COUCH is back at IX-150 (O.draw_couch); TV O.draw_tv(cr, IX+650, FLOOR_Y-10, t), wall clock (IX-150, 560), outlet, sink with dishes O.draw_sink_counter(cr, IX+1240, FLOOR_Y-10, n=25), fridge (IX+1600). He sits on the couch at IX+25 (couch_sit pose) with her at IX-325 holding the baby and the black kitten curled between them. S.floor=False. See ltcd/episodes/ep018. NOTE: next comment episode normally moves to a new world (SHOW.md); the family is now a running element per Justin (2026-11-09).",
+    "location": "THE FINALS ARENA (day 19): O.draw_arena(cr, t, AX-6000, AX+6000, banner_x=AX-330) + O.draw_paint(cr, ARIM[0], ft_x=ARIM[0]+840) with AX=4000000; the hoop at ABX=AX-900 has a SHATTERED backboard and a bent rim (O.draw_hoop(..., shatter=1, bend=0.85, glass=True)); glass shards + confetti on the hardwood; the giant trophy (O.draw_trophy s=0.52) stands at AX+290; he stands at AX-60, his grown son (#23 jersey, headband) at AX-470. S.floor=False. See ltcd/episodes/ep019.",
     "companions": [
-      "the girlfriend (O.draw_mom, hair (0.62,0.28,0.16), dress (0.30,0.66,0.66), bun=False, s=0.92) - back since day 18",
-      "the baby (O.draw_baby) - with her",
-      "the black kitten (O.draw_cat col='black') - wandered back in on day 18 (last seen day 13); NOT on his head by default (Justin)",
-      "left behind in Mordor (never going back): the giant eagle"
+      "his son, grown up: an NBA champion (a taller him: drawn with C.draw_guy scaled 1.18 + O.draw_headband + O.draw_jersey '23'); see ep019 draw_kid",
+      "the girlfriend (O.draw_mom, hair (0.62,0.28,0.16), dress (0.30,0.66,0.66), bun=False) - at home on the couch",
+      "the black kitten (O.draw_cat col='black') - at home on the couch"
     ],
     "props": [
-      "his house: TV + console (his controller is in the trash at her place - no gaming), the couch (back), the sink of dishes",
+      "the Finals trophy (centre court)",
+      "left on the neighbourhood court: the basketball and THE CHOSEN ONE magazine",
       "left on her lawn: the giant $10,000,000 check",
       "left behind on the beach: the yellow smiley kite",
       "left behind in the town: the CAT RESCUE SHELTER he built",
       "the RING IS DESTROYED (day 10)",
-      "far behind (never going back): the park, the beach, the black car, the WHITE PARTY mansion, MEGAPLEX 30, FUN PARK, the town, Mordor, green hill, the airfield, the burger place"
+      "far behind (never going back): the park, the beach, the black car, the WHITE PARTY mansion, MEGAPLEX 30, FUN PARK, the town, Mordor, green hill, the airfield, the burger place",
+      "his house (TV, couch, dishes) - she's there"
     ],
     "traits": [
       "beat the block game on hardcore with half a heart (day 4)",
@@ -45,10 +46,11 @@
       "went to the white party (day 14): a black car took him up an endless driveway to a mansion; the doors opened by themselves; passed the ALL WHITE dress code by being a white stick figure; ate one canape; the host (white suit, shades, gold chain) tapped him on the shoulder, staredown, pulled out a bottle of baby oil and chased him through the west wing doors; he slid under the champagne table, the host wiped out into the champagne tower; he escaped into the car; the party favor was a tiny baby oil, tossed out the window. Looks normal.",
       "was told to be happy (day 15, 'Seja feliz'): the black car dropped him at a sunny beach and left; he couldn't smile, a finger smile flopped, a seagull stole his whole ice-cream cone, a little rain cloud appeared over his head and followed him, lightning hit the sand next to him; he sat in the rain; the cloud's gust gave him the idea of a kite; it yanked him up through the cloud into the sun - he laughed for real, looped; the abandoned cloud rained out into a rainbow, the wind died, he slid down the rainbow and landed in the sand; the seagull dropped the same cone back, he caught it and ate it. Huge real grin. Looks normal.",
       "got a girlfriend and had a baby - and lost them (day 17, alt cut): ran off the beach into a park; she walked past his rose; the spaghetti kiss; the stork made him SIGN HERE and dropped the baby in his lap; montage: SOLD sign, slow dance, fridge photo, couch cuddle; record scratch; he gamed while she bounced the crying baby; he put one more plate on the tower of dishes; she vacuumed in front of his game and the cord unplugged the TV; he snuck in at 3 AM and she clicked on the lamp; the argument; WE NEED TO TALK; she left with the baby, then came back for the couch. He shrugged and sat down on the floor to play video games. Looks normal.",
-      "hit the lottery for 10 million and got his family back (day 18, re-cut): one $1 ticket at a corner store, every number matched on the store TV (4 8 15 16 23 42), JACKPOT; the clerk fainted and came back with a giant check; he held it over his head under her window - she shut the curtain; he dropped his game controller in the trash and proposed with a ring box; she said yes; they carried the couch back home together; the black kitten wandered in and curled up between them. Looks normal."
+      "hit the lottery for 10 million and got his family back (day 18, re-cut): one $1 ticket at a corner store, every number matched on the store TV (4 8 15 16 23 42), JACKPOT; the clerk fainted and came back with a giant check; he held it over his head under her window - she shut the curtain; he dropped his game controller in the trash and proposed with a ring box; she said yes; they carried the couch back home together; the black kitten wandered in and curled up between them. Looks normal.",
+      "raised his kid to be the next LeBron (day 19): took the baby to a neighbourhood court; days and nights whipped by and the kid grew each time - toddler granny shot bonked Dad, the crossover broke Dad's ankles, THE CHOSEN ONE cover slapped Dad's face, the teen dunked, the grown kid chased Dad down and pinned his layup on the board; at THE FINALS the chalk toss swallowed Dad (still white), GAME 7 down one at 0:05, the kid took off from the free-throw line and shattered the backboard, 102-101; he handed Dad the trophy and it flattened him. Small real smile. Looks normal."
     ],
     "notes": "Justin, 2026-11-09: his 11-08 note meant don't END episodes with new characters unless the comment asks for them. The girlfriend, baby and kitten are back as of day 18. The kitten doesn't need to ride on his head.",
-    "sign_line": "WE'LL WAIT."
+    "sign_line": null
   },
   "used_comments": [
     "Beat Mc in hardcore mode:)",
@@ -64,7 +66,8 @@
     "Go to diddy party",
     "Seja feliz",
     "Get a girlfriend and have a baby",
-    "Hit the lottery for 10 million and get your family back"
+    "Hit the lottery for 10 million and get your family back",
+    "Raise your kid to be the next LeBron james"
   ],
   "history": [
     {
@@ -159,8 +162,8 @@
     },
     {
       "day": 19,
-      "type": "waiting",
-      "summary": "no qualifying comment on day 18 (IG @nevaehells 'Raise your kid to be the next LeBron james' names a real celebrity; TikTok: none); at home in the living room, she sits on the couch with the sleeping baby, the black kitten curled up next to her; he stands in front holding the sign, turns it, writes WE'LL WAIT. under the message, dead stare (21 s)"
+      "type": "comment",
+      "summary": "@nevaehells (IG): 'Raise your kid to be the next LeBron james' -> RE-CUT on Justin's call (the routine had skipped it for naming a real person; a waiting cut never aired): couch -> he takes the baby, runs out right -> neighbourhood court: baby + ball, deadpan; day/night time-lapse: toddler granny shot bonks Dad; crossover ankle-breaker + swish; THE CHOSEN ONE magazine on Dad's face; teen dunk; grown kid's chase-down block pins Dad's layup; THE FINALS: WITNESS banner, chalk toss cloud swallows Dad, GAME 7 100-101 0:05, free-throw-line dunk shatters the backboard, 102-101 FINAL, confetti, Dad's small smile; the trophy flattens Dad; ask at centre court (60.3 s)"
     }
   ]
 }
