@@ -4675,3 +4675,252 @@ def draw_street(cr, t, x0, x1, yb=FLOOR_Y, sid=22300):
     for k in range(int(a // 300) - 1, int(b // 300) + 2):
         cr.move_to(k * 300, yb - 80); cr.line_to(k * 300 - 60, yb + 300)
     cr.set_source_rgba(0.5, 0.5, 0.5, 0.4); cr.set_line_width(3); cr.stroke()
+
+
+# ================================================================ day 19: basketball (court, arena, the kid's kit)
+BBALL = (0.93, 0.50, 0.18)
+COURT_SKY_DAY, COURT_SKY_NIGHT = (0.62, 0.82, 0.97), (0.10, 0.12, 0.26)
+ASPHALT = (0.46, 0.47, 0.50)
+HARDWOOD = (0.86, 0.66, 0.42)
+HOOP_RIM_DX, HOOP_RIM_DY = 120.0, 1180.0          # rim centre relative to the backboard foot (bx, yb)
+
+def draw_basketball(cr, x, y, r=46, ang=0.0, sid=23000):
+    """an orange basketball with seams; (x, y) = centre."""
+    cr.save(); cr.translate(x, y); cr.rotate(ang)
+    sketch_circle(cr, 0, 0, r, 5, sid=sid, fill=BBALL)
+    sketch_line(cr, [(-r, 0), (r, 0)], 3, sid=sid + 1, amp=0.3)
+    sketch_line(cr, [(0, -r), (0, r)], 3, sid=sid + 2, amp=0.3)
+    sketch_curve(cr, (-r * 0.62, -r * 0.78), (-r * 0.25, 0), (-r * 0.62, r * 0.78), 3, sid=sid + 3, amp=0.3)
+    sketch_curve(cr, (r * 0.62, -r * 0.78), (r * 0.25, 0), (r * 0.62, r * 0.78), 3, sid=sid + 4, amp=0.3)
+    cr.restore()
+
+def hoop_rim(bx, yb=FLOOR_Y): return (bx + HOOP_RIM_DX, yb - HOOP_RIM_DY)
+
+def draw_hoop(cr, bx, yb=FLOOR_Y, part="back", t=0.0, bend=0.0, shake=0.0, swish=0.0, shatter=0.0, pole=True,
+              sid=23010, glass=False):
+    """a hoop facing RIGHT (the shooter stands to its right). bx = the backboard's x. part "back" = pole, backboard,
+    back of the rim; "front" = the front of the rim + the net. bend 0..1 = the rim pulled down by a dunk, shake = board
+    wobble px, swish 0..1 = net flick, shatter 0..1 = the board is gone (draw_shards does the flying glass)."""
+    rx, ry = hoop_rim(bx, yb)
+    wob = shake * math.sin(t * 40.0)
+    by = yb - 1330 + wob
+    if part == "back":
+        if pole:
+            px = bx - 230
+            sketch_rect(cr, px - 22, by + 40, px + 22, yb, 6, sid=sid, fill=(0.35, 0.37, 0.42))
+            sketch_line(cr, [(px, by + 60), (bx - 20, by + 110)], 16, sid=sid + 1, amp=0.3)
+            sketch_line(cr, [(px, by + 60), (bx - 20, by + 110)], 8, sid=sid + 1, amp=0.0, color=(0.35, 0.37, 0.42))
+        if shatter < 0.5:
+            fill = (0.82, 0.92, 0.98) if glass else WHITE
+            sketch_rect(cr, bx - 30, by - 200, bx + 40, by + 170, 6, sid=sid + 2, fill=fill)
+            sketch_rect(cr, bx - 10, by - 50, bx + 24, by + 110, 4, sid=sid + 3, fill=None, color=(0.85, 0.15, 0.12))
+        else:
+            sketch_rect(cr, bx - 30, by - 200, bx + 40, by + 170, 5, sid=sid + 2, fill=None, alpha=0.5)
+        # back half of the rim
+        ang = 0.35 * bend
+        cr.save(); cr.translate(bx + 30, ry + wob); cr.rotate(ang)
+        cr.arc(HOOP_RIM_DX - 30, 0, 1, 0, 0)
+        cr.save(); cr.scale(1.0, 0.24); cr.arc(HOOP_RIM_DX - 30, 0, 90, math.pi, 2 * math.pi); cr.restore()
+        stroke_ink(cr, 9, color=(0.9, 0.25, 0.12)); cr.restore()
+    else:
+        ang = 0.35 * bend
+        cr.save(); cr.translate(bx + 30, ry + wob); cr.rotate(ang)
+        cx = HOOP_RIM_DX - 30
+        # the net: a tapered mesh hanging from the rim
+        fl = 18 * swish * math.sin(t * 30.0)
+        top = [(cx - 90 + 180 * k / 6, 0) for k in range(7)]
+        bot = [(cx - 50 + 100 * k / 6 + fl, 150 + 20 * swish) for k in range(7)]
+        for a, b in zip(top, bot): sketch_line(cr, [a, b], 3, sid=sid + 10, amp=0.2)
+        for a, b in zip(top, bot[::-1]): sketch_line(cr, [a, b], 3, sid=sid + 11, amp=0.2, alpha=0.7)
+        sketch_line(cr, [bot[0], bot[-1]], 3, sid=sid + 12, amp=0.2)
+        cr.save(); cr.scale(1.0, 0.24); cr.arc(cx, 0, 90, 0, math.pi); cr.restore()
+        stroke_ink(cr, 9, color=(0.9, 0.25, 0.12))
+        cr.save(); cr.scale(1.0, 0.24); cr.arc(cx, 0, 90, 0, 2 * math.pi); cr.restore()
+        stroke_ink(cr, 3)
+        cr.restore()
+
+def draw_shards(cr, x, y, u, n=26, sid=23040, spread=1.0):
+    """glass from a shattered backboard flying out and falling (u = seconds since the break)."""
+    if u <= 0: return
+    for k in range(n):
+        h = ((k * 2654435761) % 1000) / 1000.0; h2 = ((k * 40503 + 17) % 1000) / 1000.0
+        vx = (h - 0.35) * 1500 * spread; vy = -300 - 900 * h2
+        px = x + vx * u; py = y + vy * u + 1800 * u * u
+        if py > FLOOR_Y + 20: py = FLOOR_Y - 6; px = x + vx * (u * 0.6)
+        r = 18 + 26 * h
+        cr.save(); cr.translate(px, py); cr.rotate(u * (4 + 6 * h) + k)
+        sketch_poly(cr, [(-r, -r * 0.4), (r * 0.7, -r * 0.8), (r * 0.4, r * 0.7)], 3, sid=sid + k % 7, fill=(0.80, 0.92, 0.99))
+        cr.restore()
+
+def draw_court_world(cr, t, x0, x1, yb=FLOOR_Y, night=0.0, sun_u=0.5, moon_u=None, sid=23060):
+    """an outdoor neighbourhood court: sky (day->night), sun or moon arcing over, trees, a chain-link fence, asphalt."""
+    vx0, vy0, vx1, vy1 = _visible(cr)
+    a, b = max(x0, vx0), min(x1, vx1)
+    if b <= a: return
+    sky = lerp(COURT_SKY_DAY, COURT_SKY_NIGHT, night)
+    cr.rectangle(a, vy0 - 10, b - a, yb - 200 - vy0 + 10); cr.set_source_rgb(*sky); cr.fill()
+    cx = (vx0 + vx1) / 2
+    if night > 0.3:
+        for k in range(30):
+            h = ((k * 2654435761) % 1000) / 1000.0; h2 = ((k * 40503) % 1000) / 1000.0
+            cr.arc(vx0 + (vx1 - vx0) * h, vy0 + 700 + (yb - 1300 - vy0 - 700) * h2, 5, 0, 2 * math.pi)
+            cr.set_source_rgba(1, 1, 0.9, (night - 0.3) / 0.7); cr.fill()
+    if sun_u is not None and night < 0.95:                  # the sun arcs left -> right over the court
+        sx = cx - 1500 + 3000 * sun_u; sy = yb - 900 - 900 * math.sin(math.pi * min(1, max(0, sun_u)))
+        sketch_circle(cr, sx, sy, 110, 5, sid=sid, fill=(1.0, 0.86, 0.30), alpha=1 - night)
+    if moon_u is not None and night > 0.05:
+        mx = cx - 1500 + 3000 * moon_u; my = yb - 900 - 900 * math.sin(math.pi * min(1, max(0, moon_u)))
+        sketch_circle(cr, mx, my, 90, 5, sid=sid + 1, fill=(0.95, 0.95, 0.88), alpha=night)
+    dk = 1 - 0.55 * night
+    for k in range(int(a // 700) - 1, int(b // 700) + 2):  # trees behind the fence
+        tx = k * 700 + 200 + 120 * math.sin(k * 1.7)
+        sketch_rect(cr, tx - 25, yb - 700, tx + 25, yb - 200, 5, sid=sid + 2 + k % 3, fill=(0.55 * dk, 0.38 * dk, 0.25 * dk))
+        sketch_circle(cr, tx, yb - 820, 230 + 30 * math.sin(k), 5, sid=sid + 5 + k % 3, fill=(0.42 * dk, 0.70 * dk, 0.38 * dk))
+    # the chain-link fence (diamond mesh) along the back of the court
+    ft = yb - 860
+    cr.save(); cr.rectangle(a, ft, b - a, 660); cr.clip()
+    cr.set_source_rgba(0.55, 0.57, 0.60, 0.8); cr.set_line_width(3)
+    for k in range(int(a // 60) - 12, int(b // 60) + 14):
+        cr.move_to(k * 60, ft); cr.line_to(k * 60 + 660, ft + 660)
+        cr.move_to(k * 60, ft); cr.line_to(k * 60 - 660, ft + 660)
+    cr.stroke(); cr.restore()
+    sketch_line(cr, [(a, ft), (b, ft)], 7, sid=sid + 9, amp=0.4, color=(0.45, 0.47, 0.5))
+    for k in range(int(a // 900) - 1, int(b // 900) + 2):
+        sketch_line(cr, [(k * 900, ft - 20), (k * 900, yb - 200)], 9, sid=sid + 10 + k % 3, amp=0.3, color=(0.45, 0.47, 0.5))
+    # asphalt + court paint
+    cr.rectangle(a, yb - 200, b - a, max(400, vy1 - yb + 300)); cr.set_source_rgb(*lerp(ASPHALT, (0.25, 0.26, 0.30), night)); cr.fill()
+    sketch_line(cr, [(a, yb - 200), (b, yb - 200)], 5, sid=sid + 14, amp=0.4)
+    paint = (0.97, 0.97, 0.95)
+    sketch_line(cr, [(a, yb - 150), (b, yb - 150)], 6, sid=sid + 15, amp=0.3, color=paint, alpha=0.8)
+    sketch_line(cr, [(a, yb + 120), (b, yb + 120)], 6, sid=sid + 16, amp=0.3, color=paint, alpha=0.8)
+    for k in range(int(a // 140) - 1, int(b // 140) + 2):     # cracks
+        if k % 5 == 0: sketch_line(cr, [(k * 140, yb - 120), (k * 140 + 40, yb - 60), (k * 140 + 10, yb + 10)], 3, sid=sid + 17, alpha=0.35)
+
+def draw_arena(cr, t, x0, x1, yb=FLOOR_Y, flashes=1.0, roar=0.0, banner_x=None, sid=23100):
+    """THE FINALS: dark stands packed with fans (camera flashes), a WITNESS banner, the hardwood floor."""
+    vx0, vy0, vx1, vy1 = _visible(cr)
+    a, b = max(x0, vx0), min(x1, vx1)
+    if b <= a: return
+    cr.rectangle(a, vy0 - 10, b - a, yb - 260 - vy0 + 10); cr.set_source_rgb(0.12, 0.12, 0.17); cr.fill()
+    step = 54.0
+    for row in range(16):
+        yy = yb - 330 - row * 58
+        for k in range(int(a // step) - 1, int(b // step) + 2):
+            xx = k * step + (row % 2) * step / 2
+            hsh = (k * 7919 + row * 104729) % 97
+            if hsh < 8: continue
+            col = CROWD_COLS[hsh % len(CROWD_COLS)]
+            bob = (4 + 10 * roar) * math.sin(t * (6 + 6 * roar) + hsh) if hsh % 3 == 0 else 0
+            cr.arc(xx, yy + bob, 18, 0, 2 * math.pi); cr.set_source_rgb(*[c * 0.75 for c in col]); cr.fill()
+            if flashes > 0 and (hsh * 13 + k * 7 + row * 31 + int(t * 7)) % 263 == 0:
+                cr.arc(xx, yy, 34, 0, 2 * math.pi); cr.set_source_rgba(1, 1, 1, 0.85 * flashes); cr.fill()
+    # an ad-board strip on the courtside wall
+    cr.rectangle(a, yb - 260, b - a, 70); cr.set_source_rgb(0.16, 0.20, 0.40); cr.fill()
+    for k in range(int(a // 900) - 1, int(b // 900) + 2):
+        draw_text(cr, "THE FINALS", k * 900 + 450, yb - 225, 44, color=(250, 200, 70))
+    sketch_line(cr, [(a, yb - 190), (b, yb - 190)], 5, sid=sid, amp=0.3)
+    # hardwood
+    cr.rectangle(a, yb - 190, b - a, max(400, vy1 - yb + 300)); cr.set_source_rgb(*HARDWOOD); cr.fill()
+    cr.set_source_rgba(0.6, 0.42, 0.24, 0.35); cr.set_line_width(3)
+    for j in range(6):
+        cr.move_to(a, yb - 160 + j * 70); cr.line_to(b, yb - 160 + j * 70)
+    cr.stroke()
+    if banner_x is not None:                                      # the WITNESS banner hanging from the rafters
+        bx = banner_x
+        sketch_line(cr, [(bx - 230, vy0 - 50), (bx - 230, 120)], 4, sid=sid + 2, color=(0.5, 0.5, 0.55))
+        sketch_line(cr, [(bx + 230, vy0 - 50), (bx + 230, 120)], 4, sid=sid + 3, color=(0.5, 0.5, 0.55))
+        sketch_rect(cr, bx - 260, 120, bx + 260, 330, 6, sid=sid + 4, fill=(0.10, 0.10, 0.12))
+        draw_text(cr, "WITNESS", bx, 225, 96, color=(250, 250, 250))
+
+def draw_paint(cr, rim_x, yb=FLOOR_Y, ft_x=None, sid=23130):
+    """the painted key on the hardwood under the hoop + the free-throw line (seen from the side: a long band)."""
+    ft_x = ft_x if ft_x is not None else rim_x + 900
+    cr.rectangle(rim_x - 150, yb - 170, ft_x - rim_x + 150, 260); cr.set_source_rgba(0.80, 0.22, 0.20, 0.55); cr.fill()
+    sketch_line(cr, [(ft_x, yb - 170), (ft_x - 40, yb + 90)], 7, sid=sid, amp=0.3, color=(0.98, 0.98, 0.96))
+
+def draw_scoreboard(cr, x, y, home="100", away="101", clock="0:05", top="GAME 7", flash=0.0, final=False, sid=23140):
+    """a hanging scoreboard (~760 x 460), (x, y) = centre."""
+    sketch_line(cr, [(x - 250, y - 230), (x - 250, y - 900)], 5, sid=sid, color=(0.5, 0.5, 0.55))
+    sketch_line(cr, [(x + 250, y - 230), (x + 250, y - 900)], 5, sid=sid + 1, color=(0.5, 0.5, 0.55))
+    sketch_rect(cr, x - 380, y - 230, x + 380, y + 230, 7, sid=sid + 2, fill=(0.08, 0.08, 0.10))
+    draw_text(cr, top, x, y - 170, 52, color=(250, 200, 70))
+    draw_text(cr, "HOME", x - 220, y - 95, 44, color=(220, 220, 220))
+    draw_text(cr, "AWAY", x + 220, y - 95, 44, color=(220, 220, 220))
+    hc = (255, 235, 80) if flash > 0.5 else (255, 90, 60)
+    draw_text(cr, home, x - 220, y + 5, 110, color=hc)
+    draw_text(cr, away, x + 220, y + 5, 110, color=(255, 90, 60))
+    sketch_rect(cr, x - 120, y + 95, x + 120, y + 205, 4, sid=sid + 3, fill=(0.16, 0.16, 0.2))
+    draw_text(cr, "FINAL" if final else clock, x, y + 150, 72 if not final else 60, color=(255, 255, 255))
+
+def draw_magazine(cr, x, y, s=1.0, ang=0.0, sid=23160):
+    """a sports magazine cover: THE CHOSEN ONE, the kid (headband) on it. ~330 x 440 at s=1, (x, y) = centre."""
+    cr.save(); cr.translate(x, y); cr.rotate(ang); cr.scale(s, s)
+    sketch_rect(cr, -165, -220, 165, 220, 5, sid=sid, fill=(0.97, 0.95, 0.90))
+    cr.rectangle(-150, -205, 300, 70); cr.set_source_rgb(0.85, 0.15, 0.15); cr.fill()
+    draw_text(cr, "SPORTS", 0, -170, 50, color=(255, 255, 255))
+    sketch_circle(cr, 0, -10, 78, 5, sid=sid + 1, fill=WHITE)                     # the kid's face
+    sketch_line(cr, [(-2, -88), (-6, -112), (10, -122), (20, -110), (8, -102)], 4, sid=sid + 2)
+    cr.save(); cr.arc(0, -10, 76, 0, 2 * math.pi); cr.clip()
+    cr.rectangle(-90, -62, 180, 22); cr.set_source_rgb(0.98, 0.98, 0.98); cr.fill()
+    sketch_line(cr, [(-90, -62), (90, -62)], 3, sid=sid + 3); sketch_line(cr, [(-90, -40), (90, -40)], 3, sid=sid + 4)
+    cr.restore()
+    for ex in (-26, 26):
+        cr.new_path(); cr.arc(ex, -12, 13, 0, 2 * math.pi); fill_paper(cr, WHITE); stroke_ink(cr, 3)
+        cr.new_path(); cr.arc(ex, -10, 6, 0, 2 * math.pi); fill_ink(cr); cr.new_path()
+    sketch_line(cr, [(-20, 32), (20, 32)], 4, sid=sid + 5, amp=0.3)
+    sketch_rect(cr, -70, 70, 70, 140, 4, sid=sid + 6, fill=(0.98, 0.98, 0.98))
+    draw_text(cr, "23", 0, 105, 50, color=(200, 30, 30))
+    draw_text(cr, "THE CHOSEN ONE", 0, 185, 40, color=(20, 20, 24))
+    cr.restore()
+
+def draw_chalk_cloud(cr, x, y, u, r=520, sid=23180):
+    """the pre-game chalk toss: a white powder cloud bursting up and out (u = 0..1 life, fades out at the end)."""
+    if u <= 0 or u >= 1: return
+    g = 1 - (1 - min(1.0, u * 2.2)) ** 3
+    al = 1.0 if u < 0.6 else 1 - (u - 0.6) / 0.4
+    for k in range(14):
+        h = ((k * 2654435761) % 1000) / 1000.0; h2 = ((k * 40503) % 1000) / 1000.0
+        ang = -math.pi / 2 + (h - 0.5) * 2.6
+        d = r * g * (0.4 + 0.6 * h2)
+        px, py = x + math.cos(ang) * d * 1.3, y + math.sin(ang) * d * 0.8 + 120 * u
+        rr = (110 + 140 * h) * (0.4 + 0.8 * g)
+        sketch_circle(cr, px, py, rr, 4, sid=sid + k % 9, fill=(0.99, 0.99, 0.98), color=(0.75, 0.75, 0.78), alpha=al)
+
+def draw_folding_chair(cr, x, yb=FLOOR_Y, sid=23200):
+    """a courtside folding chair seen from the side (seat at yb - 330, facing LEFT)."""
+    col = (0.30, 0.30, 0.36)
+    sketch_line(cr, [(x - 120, yb), (x + 90, yb - 330)], 9, sid=sid, amp=0.3, color=col)
+    sketch_line(cr, [(x + 120, yb), (x - 90, yb - 330)], 9, sid=sid + 1, amp=0.3, color=col)
+    sketch_rect(cr, x - 140, yb - 350, x + 140, yb - 320, 5, sid=sid + 2, fill=(0.75, 0.15, 0.15))
+    sketch_line(cr, [(x + 110, yb - 330), (x + 130, yb - 700)], 9, sid=sid + 3, amp=0.3, color=col)
+    sketch_rect(cr, x + 100, yb - 720, x + 150, yb - 540, 5, sid=sid + 4, fill=(0.75, 0.15, 0.15))
+
+def draw_jersey(cr, p, num="23", col=(0.42, 0.18, 0.55), trim=(0.98, 0.80, 0.22), sid=23220):
+    """a basketball tank top on a stick body (p = the pose, world coords). Draw it after the body, then the arms."""
+    nk, hp = p["neck"], p["hip"]
+    dx, dy = hp[0] - nk[0], hp[1] - nk[1]
+    L_ = math.hypot(dx, dy) or 1.0
+    ux, uy = dx / L_, dy / L_; nx, ny = -uy, ux
+    def P(along, side): return (nk[0] + ux * along + nx * side, nk[1] + uy * along + ny * side)
+    top, bot = 20, L_ + 40
+    pts = [P(top, -62), P(top + 10, -30), P(top + 40, 0), P(top + 10, 30), P(top, 62), P(top + 90, 80), P(bot, 88),
+           P(bot, -88), P(top + 90, -80)]
+    sketch_poly(cr, pts, 6, sid=sid, fill=col)
+    sketch_line(cr, [P(top, -62), P(top + 10, -30), P(top + 40, 0), P(top + 10, 30), P(top, 62)], 6, sid=sid + 1, amp=0.3, color=trim)
+    mx, my = P(top + (bot - top) * 0.45, 0)
+    draw_text(cr, num, mx, my, 92, color=(int(trim[0] * 255), int(trim[1] * 255), int(trim[2] * 255)))
+    sketch_rect(cr, *P(bot - 30, -88), *P(bot, 88), 0, sid=sid + 2, fill=None, alpha=0.0)
+
+def draw_headband(cr, p, col=(0.98, 0.98, 0.98), sid=23240):
+    """a sweatband round his forehead (p = the pose, world coords)."""
+    import character as _C
+    hx, hy = p["head"]; R = _C.HEAD_R
+    cr.save(); cr.translate(hx, hy); cr.rotate(p.get("tilt", 0.0))
+    cr.arc(0, 0, R - 4, 0, 2 * math.pi); cr.clip()
+    cr.rectangle(-R - 10, -R * 0.80, 2 * R + 20, R * 0.26); cr.set_source_rgb(*col); cr.fill()
+    cr.restore()
+    cr.save(); cr.translate(hx, hy); cr.rotate(p.get("tilt", 0.0))
+    for yy in (-R * 0.80, -R * 0.54):
+        w = math.sqrt(max(0.0, R * R - yy * yy))
+        sketch_line(cr, [(-w, yy), (w, yy)], 4.5, sid=sid + (yy > -R * 0.6), amp=0.3)
+    cr.restore()
