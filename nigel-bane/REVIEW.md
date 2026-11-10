@@ -9,6 +9,21 @@ You are the analyst for *Nigel Bane*, a daily animated short (TikTok + Instagram
 
 Then the same run makes the next episodes by following `PRODUCE.md` §2, so the changes you apply are used straight away.
 
+**Review only what hasn't been reviewed (set by the creator, 2026-11-10).** Each review is about the **new episodes**:
+the ones no earlier review has scored. Episodes an earlier review already scored have had their lessons applied to the
+Bible and Ledger; don't analyse, rank, explain or re-table them again, and don't base a finding or a plan change on them.
+- **Which are new:** check the newest file in `reviews/snapshots/`. An episode is new if it isn't there, or if every row
+  it has there is `too_early` or `no_data`. Write the range at the top of the report and the briefing:
+  "Episodes reviewed: Days N–M".
+- **Old episodes are only the yardstick.** Use all scored posts to work out each platform's normal range (the medians
+  and MADs in step 3) and the age comparisons, then score the new episodes against it. In the CSV, old posts keep a
+  row with fresh numbers, but nothing in the report is about them, except one line naming any old episode that
+  gained an unusual number of views since the last snapshot.
+- **Findings can only come from new episodes.** A new episode can confirm or contradict an earlier finding: say which,
+  in one line. Don't repeat an earlier finding just because it's still true.
+- **Too few to judge:** if fewer than 3 new episodes are old enough to score, keep it short: score them, say there are
+  too few new episodes to change anything, and make no Bible or Ledger changes.
+
 **How to judge episodes (set by the creator, 2026-11-03):**
 - Every video goes to both platforms, so judge each episode on its **combined** performance, weighted toward TikTok.
 - **Never recommend a change for one platform only.** If an episode takes off on just one platform, so be it.
@@ -145,12 +160,12 @@ Ledger's four-elements table, or from the Catalog script where the Ledger has no
 - **E:** an emotion evoked through what he says about the viewer.
 - **T:** tension of medium strength or more.
 
-Then:
+Then, **for the new episodes** (old ones count only as the comparison group):
 - **Report each element.** Give the average overall score with it and without it, plus the TikTok-only figures.
 - **Show the count table.** Average overall and TikTok scores for episodes with 4, 3, 2, 1 and 0 elements. Say whether
   the pattern still holds, with a confidence level and the confounders.
-- **Run the variation check** on the last 9 episodes, as a table: command wording, area of life, colour, tension
-  mechanism. Flag:
+- **Run the variation check** on the new episodes (plus the 3 days before them, for the repeat rule), as a table:
+  command wording, area of life, colour, tension mechanism. Flag:
   - any repeat within 3 days
   - a phone or screen link more than once a week
   - a creature in danger more than once a week
@@ -158,7 +173,7 @@ Then:
 - **Check the next 10 planned episodes** in the Bible bank. Does each have a command and tension that fit the variation
   rule? Flag gaps.
 
-**Then look for other patterns.** Use every episode outside the normal range on both sides, not only the extremes. **Weight each one by how far out it is:**
+**Then look for other patterns.** Use every **new** episode outside the normal range on both sides, not only the extremes. **Weight each one by how far out it is:**
 a +2.4 episode counts about three times as much as a +0.8 one. Normal-range episodes are the baseline; don't explain
 them one by one.
 
@@ -192,11 +207,9 @@ them one by one.
 - Weigh the likely confounders: follower growth over time, weekday, Buffer's ~24 h metric lag, TikTok randomly pushing
   one video, and the launch-week boost on Days 1–2.
 
-**Era check (Days 17+; from Day 26 on, compare episodes made with the 2026-11-03 Bible update, with all four
-elements planned):** Days 17+ were made under new rules, adopted 2026-10-23 after the first review: immediate action, a prop
-every episode, everything aimed at "you", viewer-centric hooks, building tension. Once at least 4 of those episodes are
-scored, say whether their scores are higher than Days 1–16. Account for their younger age, and use attention and ratios,
-not just views.
+**Era check:** only if the new episodes were made under a rule change that no earlier review has judged yet. Say
+whether they score higher than the episodes before that change, accounting for their younger age, using attention and
+ratios, not just views. Don't repeat an era check an earlier review already made.
 
 ## 5. Recommend
 Read BIBLE.md and LEDGER.md before writing this section. Work out the next day to be produced (the day after the last
@@ -237,8 +250,9 @@ Never recommend a platform-specific change. If the data seems to argue against a
 - Format: **61–70 s, dread days included**; 1080×1920; caption = tally marks plus one lowercase -ing word; 9 PM ET daily; AI label off (final, never question it). Runtime,
   caption style and post time may go under "Worth questioning" if the numbers say so.
 
-**Give:**
-- **Do more of / do less of:** 3–6 bullets, each citing evidence.
+**Give** (every point must rest on the new episodes; don't restate recommendations an earlier review already made and
+that are already in the Bible):
+- **Do more of / do less of:** 1–6 bullets, each citing evidence from the new episodes.
 - **Next episodes:** notes on the next 3–5 days in the Bible bank. Keep each one's idea, prop and hook. Strengthen or
   re-vary its C and T where the data or the variation check calls for it, and say which bank entry each note is for.
   Pitch a new idea only if an entry can't carry all four elements, and give it an idea aimed at you, a prop, a command,
@@ -250,6 +264,7 @@ Never recommend a platform-specific change. If the data seems to argue against a
 
 ## 5b. Apply the changes to the plan
 `BIBLE.md` and `LEDGER.md` in this folder are the master copies; edit them directly.
+- **Only for findings from the new episodes.** If the new episodes taught nothing new, change nothing and say so.
 - **Apply without asking:** notes on the next episodes (re-ranking bank entries, strengthening or re-varying a C or T,
   replacing an entry that can't carry all four elements with a new idea in the same territory), updates to "Build on
   what works", and the "Upcoming" notes in the Ledger.
@@ -276,10 +291,11 @@ message is this briefing followed by the production report.
 Keep the briefing short and plain: under ~450 words plus two small tables.
 1. **Headline:** 1–2 lines. The trailing 30-day TikTok views against 100,000, the daily rate against the rate needed,
    and the total views and average watch per platform, up or down since the last review.
-2. **Over-performers:** every episode above the normal range on the overall score, strongest first. Table with day,
+2. **Over-performers:** every **new** episode above the normal range on the overall score, strongest first. Table with day,
    title, overall score (and strength), TikTok score and views, Instagram score, the elements present, and why it likely
    worked.
-3. **Under-performers:** the same table for episodes below the normal range, with why each likely didn't work.
+3. **Under-performers:** the same table for new episodes below the normal range, with why each likely didn't work.
+   (Start the briefing with "Episodes reviewed: Days N–M". Old episodes appear only as the one-line risers note.)
 4. **The four elements:** the count table in brief, the variation flags, and 1–3 other patterns, with confidence
    levels.
 5. **Recommendations:**
