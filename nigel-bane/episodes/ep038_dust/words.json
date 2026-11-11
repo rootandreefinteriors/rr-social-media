@@ -1,0 +1,467 @@
+[
+ {
+  "text": "Hello?",
+  "start": 0.317,
+  "end": 0.48
+ },
+ {
+  "text": "Is",
+  "start": 0.88,
+  "end": 1.34
+ },
+ {
+  "text": "anyone",
+  "start": 1.397,
+  "end": 1.74
+ },
+ {
+  "text": "out",
+  "start": 1.8,
+  "end": 1.98
+ },
+ {
+  "text": "there?",
+  "start": 2.033,
+  "end": 2.38
+ },
+ {
+  "text": "Hold",
+  "start": 3.336,
+  "end": 3.4
+ },
+ {
+  "text": "out",
+  "start": 3.44,
+  "end": 3.56
+ },
+ {
+  "text": "your",
+  "start": 3.608,
+  "end": 3.8
+ },
+ {
+  "text": "hand.",
+  "start": 3.96,
+  "end": 5.24
+ },
+ {
+  "text": "Slowly.",
+  "start": 5.668,
+  "end": 6.5
+ },
+ {
+  "text": "Into",
+  "start": 6.724,
+  "end": 7.44
+ },
+ {
+  "text": "the",
+  "start": 7.48,
+  "end": 7.6
+ },
+ {
+  "text": "light.",
+  "start": 7.707,
+  "end": 8.7
+ },
+ {
+  "text": "...See",
+  "start": 8.7,
+  "end": 9.27
+ },
+ {
+  "text": "it?",
+  "start": 9.35,
+  "end": 9.67
+ },
+ {
+  "text": "All",
+  "start": 10.01,
+  "end": 10.49
+ },
+ {
+  "text": "those",
+  "start": 10.557,
+  "end": 10.89
+ },
+ {
+  "text": "little",
+  "start": 10.936,
+  "end": 11.21
+ },
+ {
+  "text": "bits,",
+  "start": 11.322,
+  "end": 11.93
+ },
+ {
+  "text": "turning.",
+  "start": 12.06,
+  "end": 13.05
+ },
+ {
+  "text": "Don't",
+  "start": 14.42,
+  "end": 14.53
+ },
+ {
+  "text": "move.",
+  "start": 14.674,
+  "end": 15.33
+ },
+ {
+  "text": "There's",
+  "start": 15.503,
+  "end": 16.21
+ },
+ {
+  "text": "a",
+  "start": 16.25,
+  "end": 16.29
+ },
+ {
+  "text": "mouse.",
+  "start": 16.41,
+  "end": 17.41
+ },
+ {
+  "text": "In",
+  "start": 17.543,
+  "end": 17.81
+ },
+ {
+  "text": "the",
+  "start": 17.85,
+  "end": 17.97
+ },
+ {
+  "text": "sun,",
+  "start": 18.13,
+  "end": 19.01
+ },
+ {
+  "text": "by",
+  "start": 19.143,
+  "end": 19.41
+ },
+ {
+  "text": "my",
+  "start": 19.49,
+  "end": 19.65
+ },
+ {
+  "text": "hand.",
+  "start": 19.794,
+  "end": 20.45
+ },
+ {
+  "text": "It's",
+  "start": 21.123,
+  "end": 21.74
+ },
+ {
+  "text": "eating",
+  "start": 21.809,
+  "end": 22.22
+ },
+ {
+  "text": "something",
+  "start": 22.268,
+  "end": 22.7
+ },
+ {
+  "text": "off",
+  "start": 22.76,
+  "end": 22.94
+ },
+ {
+  "text": "the",
+  "start": 22.98,
+  "end": 23.1
+ },
+ {
+  "text": "floor.",
+  "start": 23.193,
+  "end": 23.74
+ },
+ {
+  "text": "...It's",
+  "start": 24.42,
+  "end": 25.15
+ },
+ {
+  "text": "eating",
+  "start": 25.23,
+  "end": 25.71
+ },
+ {
+  "text": "the",
+  "start": 25.77,
+  "end": 25.95
+ },
+ {
+  "text": "dust.",
+  "start": 26.078,
+  "end": 26.67
+ },
+ {
+  "text": "Dust",
+  "start": 28.11,
+  "end": 28.43
+ },
+ {
+  "text": "is",
+  "start": 28.483,
+  "end": 28.59
+ },
+ {
+  "text": "a",
+  "start": 28.63,
+  "end": 28.67
+ },
+ {
+  "text": "lot",
+  "start": 28.73,
+  "end": 28.91
+ },
+ {
+  "text": "of",
+  "start": 28.963,
+  "end": 29.07
+ },
+ {
+  "text": "things.",
+  "start": 29.196,
+  "end": 30.03
+ },
+ {
+  "text": "Some",
+  "start": 30.254,
+  "end": 30.92
+ },
+ {
+  "text": "of",
+  "start": 30.973,
+  "end": 31.08
+ },
+ {
+  "text": "it",
+  "start": 31.133,
+  "end": 31.24
+ },
+ {
+  "text": "is",
+  "start": 31.32,
+  "end": 31.48
+ },
+ {
+  "text": "skin.",
+  "start": 31.592,
+  "end": 32.12
+ },
+ {
+  "text": "A",
+  "start": 32.96,
+  "end": 33.34
+ },
+ {
+  "text": "little,",
+  "start": 33.42,
+  "end": 34.06
+ },
+ {
+  "text": "every",
+  "start": 34.167,
+  "end": 34.7
+ },
+ {
+  "text": "day,",
+  "start": 34.84,
+  "end": 35.66
+ },
+ {
+  "text": "without",
+  "start": 35.71,
+  "end": 36.06
+ },
+ {
+  "text": "asking.",
+  "start": 36.151,
+  "end": 36.86
+ },
+ {
+  "text": "Your",
+  "start": 37.6,
+  "end": 38.19
+ },
+ {
+  "text": "hand's",
+  "start": 38.254,
+  "end": 38.67
+ },
+ {
+  "text": "out",
+  "start": 38.75,
+  "end": 38.99
+ },
+ {
+  "text": "right",
+  "start": 39.043,
+  "end": 39.31
+ },
+ {
+  "text": "now.",
+  "start": 39.41,
+  "end": 39.79
+ },
+ {
+  "text": "In",
+  "start": 40.083,
+  "end": 40.67
+ },
+ {
+  "text": "your",
+  "start": 40.718,
+  "end": 40.91
+ },
+ {
+  "text": "room.",
+  "start": 41.038,
+  "end": 41.71
+ },
+ {
+  "text": "Some",
+  "start": 41.998,
+  "end": 42.6
+ },
+ {
+  "text": "of",
+  "start": 42.653,
+  "end": 42.76
+ },
+ {
+  "text": "it",
+  "start": 42.813,
+  "end": 42.92
+ },
+ {
+  "text": "is",
+  "start": 43.0,
+  "end": 43.16
+ },
+ {
+  "text": "landing",
+  "start": 43.23,
+  "end": 43.72
+ },
+ {
+  "text": "on",
+  "start": 43.8,
+  "end": 43.96
+ },
+ {
+  "text": "you,",
+  "start": 44.02,
+  "end": 44.44
+ },
+ {
+  "text": "too.",
+  "start": 44.5,
+  "end": 44.76
+ },
+ {
+  "text": "Too",
+  "start": 45.06,
+  "end": 45.64
+ },
+ {
+  "text": "small",
+  "start": 45.733,
+  "end": 46.2
+ },
+ {
+  "text": "to",
+  "start": 46.253,
+  "end": 46.36
+ },
+ {
+  "text": "see.",
+  "start": 46.52,
+  "end": 47.47
+ },
+ {
+  "text": "The",
+  "start": 48.375,
+  "end": 48.39
+ },
+ {
+  "text": "light's",
+  "start": 48.457,
+  "end": 48.95
+ },
+ {
+  "text": "moving.",
+  "start": 49.041,
+  "end": 49.67
+ },
+ {
+  "text": "...It's",
+  "start": 49.93,
+  "end": 50.61
+ },
+ {
+  "text": "coming.",
+  "start": 50.69,
+  "end": 51.25
+ },
+ {
+  "text": "Come",
+  "start": 52.736,
+  "end": 52.928
+ },
+ {
+  "text": "on.",
+  "start": 53.088,
+  "end": 53.568
+ },
+ {
+  "text": "Before",
+  "start": 53.705,
+  "end": 54.528
+ },
+ {
+  "text": "it",
+  "start": 54.581,
+  "end": 54.688
+ },
+ {
+  "text": "goes.",
+  "start": 54.848,
+  "end": 55.568
+ },
+ {
+  "text": "Some",
+  "start": 58.439,
+  "end": 58.503
+ },
+ {
+  "text": "of",
+  "start": 58.556,
+  "end": 58.663
+ },
+ {
+  "text": "that",
+  "start": 58.727,
+  "end": 58.983
+ },
+ {
+  "text": "was",
+  "start": 59.043,
+  "end": 59.223
+ },
+ {
+  "text": "you.",
+  "start": 59.343,
+  "end": 59.783
+ }
+]

@@ -63,4 +63,5 @@
 | 34 | 2026-11-13 | nigel-bane/day034.mp4 | `IIIII IIIII IIIII IIIII IIIII IIIII IIII anchoring` | `6af34caba80c88d576499ebd` | `6af34cab2d2fdb3b7dec41b3` | scheduled · cover 48.5 s (straining to rise from the chair) · re-cut without the chair creak |
 | 35 | 2026-11-14 | nigel-bane/day035.mp4 | `IIIII IIIII IIIII IIIII IIIII IIIII IIIII creaking` | `6af34cac825741bba847b336` | `6af34cadeca53e2861f22218` | scheduled · cover 26.0 s (dark eyes after the steps stop) · DREAD |
 | 36 | 2026-11-15 | nigel-bane/day036.mp4 | `IIIII IIIII IIIII IIIII IIIII IIIII IIIII I vacating` | `6af34cae94964d984f038ee4` | `6af34cafeca53e2861f222a4` | dated DRAFT (promoted by the daily refill as slots free) · cover 41.2 s (looking toward the mouse corner) |
-| 37 | 2026-11-16 | nigel-bane/day037.mp4 | `IIIII IIIII IIIII IIIII IIIII IIIII IIIII II nearing` | TT_ID | IG_ID | STATUS · cover 54.2 s (extreme close on his eyes, staring up) |
+| 37 | 2026-11-16 | nigel-bane/day037.mp4 | `IIIII IIIII IIIII IIIII IIIII IIIII IIIII II nearing` | `6af47a437b2522ad6c452571` | `6af47a46c6fc3e4d41b49755` | scheduled · cover 54.2 s (extreme close on his eyes, staring up) |
+| 38 | 2026-11-17 | nigel-bane/day038.mp4 | `IIIII IIIII IIIII IIIII IIIII IIIII IIIII III shedding` | TT_ID | IG_ID | STATUS · cover 59.0 s (the mouse's nose on his fingertip) |

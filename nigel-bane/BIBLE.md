@@ -281,8 +281,8 @@ Reaches through the glass: D27, D29, D34 (dare), D39 (test), D47 (knock), D50, D
 - **38 · Dust (mouse arc 2/4)** — *Some of the dust in your room used to be you.* Dust turning in a sunbeam. The mouse
   sits in the light, eating what the room has shed. He holds out a hand. → "…Some of that was you."
   **C:** "Hold out your hand. Slowly. Into the light." · **T:** will it come to him before the sunbeam slides away? It
-  **R:** the turn · **Ending:** action (the light leaves his hand as he says it)
   touches his fingertip as the light leaves.
+  **R:** caught (your hand is out right now; dust is landing on it; changed from the turn on D38, since D36 used the turn) · **Ending:** action (the light leaves his hand as he says it)
 - **39 · Two rooms** — *You're in two rooms right now: that one, and the one in your hand.* He asks you to look up for
   three seconds — and waits (test). → "You looked back at me before the three seconds were up. Didn't you." (narrowed from "You always do", which fails the truth test; review 2026-11-11)
   **C:** "Look up. Three seconds." (the test) · **T:** he waits; the silence holds past three, to five, to ten.

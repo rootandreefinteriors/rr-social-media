@@ -481,3 +481,16 @@ Post time is 9 PM ET. Day 13 went out a day late (missed slot); every later day 
 - **four elements:** C "Lie down with me. ...On your back. Go on." · R perception: the ceiling you look at and never see (the question) · E lonely, eerie underneath · T the ceiling lower at every wide cut; does it reach the window?
 - **cover:** 54.2 s, extreme close on his open eyes staring up.
 - **script:** Hello? Is anyone out there? Lie down with me. ...On your back. Go on. That's my ceiling. I look at it every night. Not past it. At it. Now think of yours. Don't look. ...What colour is it, exactly? Is there a mark on it? A corner where the paint doesn't match? ... You've spent more nights under it than anywhere else, probably. Thousands of hours, right under it. And I bet you couldn't draw it. Mine's lower than it was. ...No. It isn't. It is. I count the cracks up there every night. ...Five. I don't remember the number going up.
+
+### D38 · shedding · "Dust (mouse 2/4)" · 2026-11-17 (Tue) · 62.3 s
+- **idea:** some of the dust in your room used to be you.
+- **you:** strong. "Your hand's out right now. In your room. Some of it is landing on you, too. Too small to see."
+- **first seconds:** he's going down on his knees, reaching into a sunbeam on the floor: "Hold out your hand. Slowly. Into the light."
+- **prop:** a sunbeam with dust turning in it (one episode); the mouse (arc 2/4), named plainly: "There's a mouse. In the sun, by my hand."
+- **tension:** strong, a visible yes/no. The beam slides off his hand while the mouse edges toward his fingertip in stop-start dashes; will it reach him before the light goes? It touches his fingertip in the held silence; the light leaves his hand on the last line.
+- **visual:** the sunbeam from the window to the floor, gold dust motes; close on fingertip and mouse nose.
+- **dread:** no. Unsettling line: "Some of it is skin. A little, every day, without asking."
+- **hook:** "Some of that was you." *Action ending, viewer-centric.*
+- **four elements:** C "Hold out your hand. Slowly. Into the light." · R your body: the skin you shed (caught: your hand is out right now) · E tender, eerie underneath · T will the mouse reach his fingertip before the light leaves it?
+- **cover:** 59.0 s, the mouse's nose on his fingertip.
+- **script:** Hello? Is anyone out there? Hold out your hand. Slowly. Into the light. ...See it? All those little bits, turning. Don't move. There's a mouse. In the sun, by my hand. It's eating something off the floor. ...It's eating the dust. Dust is a lot of things. Some of it is skin. A little, every day, without asking. Your hand's out right now. In your room. Some of it is landing on you, too. Too small to see. The light's moving. ...It's coming. Come on. Before it goes. ... Some of that was you.
