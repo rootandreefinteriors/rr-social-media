@@ -170,7 +170,7 @@ S.set(T_PLAY1 + 0.3, "c_sit", "deadpan", dur=0.3, turn=-0.5, look=(-0.9, -0.3), 
 S.set(T_US2, "c_sit", "dead_stare", dur=0.3, turn=0.0, look=(0.0, 0.0), sweat=0.3)
 def bow_hk(tt, p):
     """the bow brushes his head on every stroke once the violinist is close (a little head bob + the curl flicks)."""
-    if T_CLOSE1 <= tt < T_DOM0:
+    if False:
         k = max(0.0, math.sin(tt * 2 * math.pi / 0.9)) ** 6
         for j in ("head",):
             p[j] = (p[j][0] + 6 * k, p[j][1] + 4 * k)
@@ -544,7 +544,9 @@ def props_back(cr, t, p, ly):
         return
     if t < CUT4 - FR:                                                           # inside
         for v in (V2, V1):
-            if v_on(v, t): draw_violinist(cr, t, v, "body")
+            if v_on(v, t):
+                draw_violinist(cr, t, v, "body")
+                if v_playing(v, t): draw_violinist(cr, t, v, "bow")
         O.draw_chair(cr, HIS_C, FLOOR_Y, back_side=-1, sid=24080)
         O.draw_chair(cr, HER_C, FLOOR_Y, back_side=1, sid=24085)
         if T_WIN0 <= t < T_WOUT1 or T_DOM0 <= t:
@@ -559,7 +561,9 @@ def props_back(cr, t, p, ly):
                 L.draw_grips(cr, wq)
             if T_FOLDER - 0.8 <= t < T_FOLDER - 0.1:
                 O.draw_bill_folder(cr, wq["lhand"][0], wq["lhand"][1] + 10, s=0.7)
-        if v_on(V3, t): draw_violinist(cr, t, V3, "body")
+        if v_on(V3, t):
+            draw_violinist(cr, t, V3, "body")
+            if v_playing(V3, t): draw_violinist(cr, t, V3, "bow")
         draw_her(cr, t, rose=False)
         O.draw_table(cr, DX, FLOOR_Y, t, part="front")
         O.draw_table(cr, DX, FLOOR_Y, t, part="top")
@@ -583,7 +587,9 @@ def props_back(cr, t, p, ly):
             u = ((t - T_HIT) * 0.5 + k / 3) % 1.0
             O.draw_smoke_puff(cr, CART - 80 + 60 * k + 40 * u, FLOOR_Y - 600 - 500 * u, 60 + 70 * u, alpha=0.35 * (1 - u), dark=0.5)
     for v in (V1, V2, V3):
-        if v_on(v, t): draw_violinist(cr, t, v, "body")
+        if v_on(v, t):
+            draw_violinist(cr, t, v, "body")
+            if v_playing(v, t): draw_violinist(cr, t, v, "bow")
     if t >= CUT4 - FR and (T_HER0 <= t):
         draw_her(cr, t)
 S.prop(props_back)
@@ -596,8 +602,6 @@ def props_front(cr, t, p, ly):
             O.draw_rose(cr, hx, hy - 10, s=0.55, ang=0.25); L.draw_grips(cr, p)
         return
     if CUT2 - FR <= t < CUT4 - FR:
-        for v in (V1, V2, V3):
-            if v_on(v, t) and v_playing(v, t): draw_violinist(cr, t, v, "bow")
         if T_MENU0 <= t < T_WNOD + 0.3:                                         # the menu
             if t < T_MENU1:
                 q = WT.pose(t); a = q["lhand"]
@@ -648,9 +652,6 @@ def props_front(cr, t, p, ly):
             elif t < T_LEAN:
                 rx, ry = scale_pt(q, q["rhand"], GS)
                 O.draw_hotdog(cr, rx, ry - 12, s=0.62, ang=-0.4, bite=0.45 if t >= T_BITE else 0.0)
-        if T_VOUT0 <= t:
-            for v in (V1, V2, V3):
-                if v_on(v, t) and v_playing(v, t): draw_violinist(cr, t, v, "bow")
 S.prop(props_front)
 
 # ================================================================ inserts (under the comment card)
@@ -695,8 +696,8 @@ def sfx_violin(dur=4.0, notes=(69, 72, 76, 74, 72, 71, 69, 64), step=0.5, voices
     return out
 L.SYNTH["violin"] = sfx_violin
 S.sfx(T_PLAY1, "violin", 0.05, dur=CUT3 - T_PLAY1)
-S.sfx(CUT3, "violin", 0.06, dur=T_DOM0 - CUT3 + 0.3, voices=3, step=0.25)
-S.sfx(T_PLAY2, "violin", 0.035, dur=T_ASK - T_PLAY2 + 0.4, voices=3, step=0.6, notes=(69, 72, 76, 81, 79, 76, 72, 74))
+S.sfx(CUT3, "violin", 0.06, dur=CUT4 - CUT3, voices=3, step=0.25)
+S.sfx(T_PLAY2, "violin", 0.035, dur=T_END - T_PLAY2 + 0.5, voices=3, step=0.6, notes=(69, 72, 76, 81, 79, 76, 72, 74))
 S.sfx(T_HER0, "squeak", 0.03); S.sfx(T_VOUT0, "squeak", 0.03)
 S.sfx(T_LAUGH0, "boop", 0.0)
 S.sfx(T_HSIT + 0.1, "pat", 0.03); S.sfx(T_LEAN + 0.4, "twinkle", 0.03)
