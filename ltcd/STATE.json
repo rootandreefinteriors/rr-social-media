@@ -1,36 +1,39 @@
 {
   "show": "let the comments decide",
-  "day": 19,
+  "day": 20,
   "last_episode": {
-    "day": 19,
+    "day": 20,
     "type": "comment",
-    "folder": "episodes/ep019",
-    "video": "videos/day019.mp4",
-    "posted_at": "2026-11-10T19:30-05:00 (scheduled)",
+    "folder": "episodes/ep020",
+    "video": "videos/day020.mp4",
+    "posted_at": "2026-11-11T19:00-05:00 (scheduled)",
     "buffer": {
-      "tiktok": "6af36d7d57fc125cf880a4fa",
-      "instagram": "6af36d8042d1993c828f9aa7"
+      "tiktok": "6af4c18853159c0c7514be39",
+      "instagram": "6af4c18acd8c8b4c7cf904e5"
     },
-    "note": "RE-CUT 3 on Justin's notes (Dad watches from the front row of the stands; son's high-top; the other team; trophy-plaque ending). Buffer posts edited to commit-pinned raw URL @285aecf. Earlier cuts never aired."
+    "note": "Buffer uses the commit-pinned raw URL @d6080d6."
   },
-  "ask_since_day": 19,
+  "ask_since_day": 20,
   "waiting_streak": 0,
   "world": {
-    "location": "THE FINALS ARENA (day 19): O.draw_arena(cr, t, AX-6000, AX+6000, banner_x=AX-330) + O.draw_paint(cr, ARIM[0], ft_x=ARIM[0]+840) with AX=4000000; the hoop at ABX=AX-900 has a SHATTERED backboard and a bent rim (O.draw_hoop(..., shatter=1, bend=0.85, glass=True)); glass + confetti on the hardwood; the green #4 defender lies flat under the hoop; HE lies flat on his back at centre court (feet at AX+150, lean 1.42) with the trophy standing on his belly (O.draw_trophy s=0.55 plaque=TELL ME WHAT / TO DO NEXT IN / THE COMMENTS); his son (#23, headband, high-top) stands at AX-190. S.floor=False. See ltcd/episodes/ep019.",
+    "location": "OUTSIDE LE FANCY (day 20): a night city street - O.draw_city_night(cr, t, RX-6000, RX+6000) + O.draw_lamp at RX-1700/RX+2300 + O.draw_restaurant(cr, RX, FLOOR_Y, t) (LE FANCY, door at RX+140..460) + O.draw_street_clock(CLOCKX=RX-1150, 9:47) with RX=5000000. The hot dog cart at RX+1640 is WRECKED (O.draw_hotdog_cart(..., wreck=1.0), a little smoke); hot dogs lie all over the sidewalk. He sits on the curb at RX+1420 (stood up for the ask); she sits at RX+1110 with her rose; the three violinists stand at RX+380/600/820. S.floor=False. See ltcd/episodes/ep020.",
     "companions": [
-      "his son, grown up: an NBA champion - taller than him, a dark HIGH-TOP haircut (pose hair='hightop', no curl), white headband, purple #23 jersey (C.draw_guy scaled 1.18 + O.draw_headband + O.draw_jersey); see ep019 draw_kid",
-      "the girlfriend (O.draw_mom, hair (0.62,0.28,0.16), dress (0.30,0.66,0.66), bun=False) - at home on the couch",
+      "his wife-to-be (O.draw_mom, hair (0.62,0.28,0.16), dress (0.30,0.66,0.66), bun=False) - on the curb next to him outside LE FANCY, holding the red rose he gave her",
+      "his son, grown up: an NBA champion (dark high-top, white headband, purple #23) - left at the Finals arena; see ep019 draw_kid",
       "the black kitten (O.draw_cat col='black') - at home on the couch"
     ],
     "props": [
-      "the Finals trophy (centre court)",
+      "the red rose (she has it)",
+      "three violinists (black vests, bow ties) who followed them out of LE FANCY and won't stop playing",
+      "left inside LE FANCY: a $1 bill on a $4,817.00 receipt",
+      "left in the arena: the Finals trophy (on its side at centre court)",
       "left on the neighbourhood court: the basketball and THE CHOSEN ONE magazine",
       "left on her lawn: the giant $10,000,000 check",
       "left behind on the beach: the yellow smiley kite",
       "left behind in the town: the CAT RESCUE SHELTER he built",
       "the RING IS DESTROYED (day 10)",
       "far behind (never going back): the park, the beach, the black car, the WHITE PARTY mansion, MEGAPLEX 30, FUN PARK, the town, Mordor, green hill, the airfield, the burger place",
-      "his house (TV, couch, dishes) - she's there"
+      "his house (TV, couch, dishes) - the kitten is there"
     ],
     "traits": [
       "beat the block game on hardcore with half a heart (day 4)",
@@ -47,7 +50,8 @@
       "was told to be happy (day 15, 'Seja feliz'): the black car dropped him at a sunny beach and left; he couldn't smile, a finger smile flopped, a seagull stole his whole ice-cream cone, a little rain cloud appeared over his head and followed him, lightning hit the sand next to him; he sat in the rain; the cloud's gust gave him the idea of a kite; it yanked him up through the cloud into the sun - he laughed for real, looped; the abandoned cloud rained out into a rainbow, the wind died, he slid down the rainbow and landed in the sand; the seagull dropped the same cone back, he caught it and ate it. Huge real grin. Looks normal.",
       "got a girlfriend and had a baby - and lost them (day 17, alt cut): ran off the beach into a park; she walked past his rose; the spaghetti kiss; the stork made him SIGN HERE and dropped the baby in his lap; montage: SOLD sign, slow dance, fridge photo, couch cuddle; record scratch; he gamed while she bounced the crying baby; he put one more plate on the tower of dishes; she vacuumed in front of his game and the cord unplugged the TV; he snuck in at 3 AM and she clicked on the lamp; the argument; WE NEED TO TALK; she left with the baby, then came back for the couch. He shrugged and sat down on the floor to play video games. Looks normal.",
       "hit the lottery for 10 million and got his family back (day 18, re-cut): one $1 ticket at a corner store, every number matched on the store TV (4 8 15 16 23 42), JACKPOT; the clerk fainted and came back with a giant check; he held it over his head under her window - she shut the curtain; he dropped his game controller in the trash and proposed with a ring box; she said yes; they carried the couch back home together; the black kitten wandered in and curled up between them. Looks normal.",
-      "raised his kid to be the next LeBron (day 19): took the baby to a neighbourhood court; days and nights whipped by and the kid grew each time - toddler granny shot bonked Dad, the crossover broke Dad's ankles, THE CHOSEN ONE cover slapped Dad's face, the teen dunked, the grown kid chased Dad down and pinned his layup on the board; at THE FINALS the chalk toss swallowed Dad (still white), GAME 7 down one at 0:05, the kid took off from the free-throw line and shattered the backboard, 102-101; he handed Dad the trophy and it flattened him. Small real smile. Looks normal."
+      "raised his kid to be the next LeBron (day 19): took the baby to a neighbourhood court; days and nights whipped by and the kid grew each time - toddler granny shot bonked Dad, the crossover broke Dad's ankles, THE CHOSEN ONE cover slapped Dad's face, the teen dunked, the grown kid chased Dad down and pinned his layup on the board; at THE FINALS the chalk toss swallowed Dad (still white), GAME 7 down one at 0:05, the kid took off from the free-throw line and shattered the backboard, 102-101; he handed Dad the trophy and it flattened him. Small real smile. Looks normal.",
+      "took his wife out on a date (day 20): ran from the Finals (late - she waited under the street clock at 9:47), gave her a rose and this time she took it; LE FANCY: WATER $40, AIR (FRENCH) $95, one violinist then three crammed around his chair, one pea each under silver domes, a receipt that unrolled out of the room, TOTAL $4,817.00; he paid $1, the waiter pointed at the door, he was thrown out in a cannonball into a hot dog cart (KABOOM, hot dogs rained down); she came out and laughed for real, sat with him on the curb eating hot dogs, head on his shoulder; the violinists followed them out. Looks normal."
     ],
     "notes": "Justin, 2026-11-09: his 11-08 note meant don't END episodes with new characters unless the comment asks for them. The girlfriend, baby and kitten are back as of day 18. The kitten doesn't need to ride on his head.",
     "sign_line": null
@@ -67,7 +71,8 @@
     "Seja feliz",
     "Get a girlfriend and have a baby",
     "Hit the lottery for 10 million and get your family back",
-    "Raise your kid to be the next LeBron james"
+    "Raise your kid to be the next LeBron james",
+    "Take your wife out on a date"
   ],
   "history": [
     {
@@ -164,6 +169,11 @@
       "day": 19,
       "type": "comment",
       "summary": "@nevaehells (IG): 'Raise your kid to be the next LeBron james' -> RE-CUT on Justin's call (the routine had skipped it for naming a real person; a waiting cut never aired): couch -> he takes the baby, runs out right -> neighbourhood court: baby + ball, deadpan; day/night time-lapse: toddler granny shot bonks Dad; crossover ankle-breaker + swish; THE CHOSEN ONE magazine on Dad's face; teen dunk; grown kid's chase-down block pins Dad's layup; THE FINALS: WITNESS banner, chalk toss cloud swallows Dad, GAME 7 100-101 0:05, free-throw-line dunk shatters the backboard, 102-101 FINAL, confetti, Dad's small smile; the trophy flattens Dad; ask at centre court (60.3 s) | RE-CUT 2: the son's high-top; the green team on the last play (#7 ankles, #11 flown over, #4 dunked on); no ask cut - the trophy lands upright on Dad's belly and the camera pushes in on its plaque: TELL ME WHAT TO DO NEXT IN THE COMMENTS"
+    },
+    {
+      "day": 20,
+      "type": "comment",
+      "summary": "@second_degree_burn (IG): 'Take your wife out on a date' -> arena: flat under the trophy, reads it, he's late -> LE FANCY street: she waits, clock 9:47, rose (taken) -> inside: menu insert (AIR (FRENCH) $95), violinist closer, then three; one pea under silver domes; receipt unrolls off screen, TOTAL $4,817.00 insert; pays $1; waiter points -> cannonball out the door into a hot dog cart, KABOOM, hot dog rain; she laughs, hot dogs on the curb, head on his shoulder; violinists follow them out; ask on the curb (60.9 s)"
     }
   ]
 }
