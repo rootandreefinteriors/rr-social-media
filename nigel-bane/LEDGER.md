@@ -50,6 +50,7 @@ Views come from the engagement reviews. The user tracks followers in TikTok's ap
 |---|---|---|
 | 2026-11-03 | ~9,200 (all-time; the show is 24 days old) | ~800 |
 | 2026-11-06 | 11,735 (all-time; the show is 27 days old) | ~930 |
+| 2026-11-11 | 16,006 (all-time; the show is 32 days old) | ~890 |
 
 ## Four elements (C / R / E / T)
 Check this before scripting. Within any 3 days, don't repeat the command's wording, the area of life R lands on, the
@@ -128,3 +129,7 @@ days included (D35, D47).
 **Review 2026-11-06:** D32's tension is now his own held phone-hunch (not a viewer test; D34 stays the week's dare)
 and its R lands on the things made for you, not the body. D31 is staged still (crouched over the tag), D33 in
 tightening laps. Every episode's R should include a line catching the viewer in the act (BIBLE "Build on what works").
+**Review 2026-11-11:** give every T a visible yes/no answered on camera (D29 "will the tape hold?" was the batch's
+over-performer). D37's ceiling now visibly lowers toward his face and stops a hand's width short; D39's closer is "…Didn't
+you." (truth test); D43's command and tension re-varied (no count command, he stretches his steps to reach twelve) so
+D42–44 aren't three step counts in a row.

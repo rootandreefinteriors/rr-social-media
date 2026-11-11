@@ -18,11 +18,11 @@ confirm them in TikTok Studio → Creator Rewards before relying on them:
 - **AI label: never (user's decision, 2026-11-05, final).** Posts go out with the AI label off. Don't raise it
   again, and don't recommend turning it on.
 
-**Where we are (2026-11-06):**
-- TikTok: about 11,700 views in total, 27 days after launch, gaining about 930 a day (almost all of it from the newest
+**Where we are (2026-11-11):**
+- TikTok: about 16,000 views in total, 32 days after launch, gaining about 890 a day (almost all of it from the newest
   three or four episodes; older ones stop growing after about a week).
 - Followers: the user tracks them in TikTok's app. Don't ask for them.
-- Needed: about 3,300 TikTok views a day, so roughly three and a half times the current rate.
+- Needed: about 3,300 TikTok views a day, so roughly three and three-quarter times the current rate.
 - Followers come from viewers wanting the next episode. That is why prop arcs and recurring beats matter (see "Build on
   what works").
 
@@ -123,7 +123,13 @@ Compound what has already worked, rather than adding a new kind of thing each da
   run so far, with about 940–1,080 TikTok views each and every episode an over-performer. The bird arc (D11–15) went
   well while the stakes rose (D12 "will it stay?", 802 views) and sagged when they didn't (D14, 105 views). Run **2–3
   arcs per chapter**. Each arc episode must still read cold, and each must raise the stakes: arrival → approach →
-  contact or threat → exit. Arcs are what make people follow.
+  contact or threat → exit. Arcs are what make people follow. The crack arc (D27–30) averaged +0.58 overall, the best
+  run since the spider; its dip was D28 (+0.09), where he turns his back on it and the stakes fall (review 2026-11-11).
+- **A yes/no the viewer can see answered (review 2026-11-11).** Tension works best as one question on screen that
+  will or won't happen, held in a real silence, then answered on camera: D29 "will the tape hold?" (+1.50, best TikTok
+  watch since D18, top shares of its batch) and D27 "will the crack reach the edge?" average +0.97; D28 (a tick getting
+  louder) and D30 (a search that slows and stops) have no moment of answer and average +0.18. Low confidence (four
+  episodes), but it matches D12 "will it stay?". Give every T a visible yes/no.
 - **Reaching through the glass.** D17 "I felt you get here" got the most TikTok views (1,077). D20's taps from our side
   got the most shares (33). D18's dare is the best episode overall. This includes him sensing you, things happening
   on our side of the glass (crack, tape, breath, a handprint), and dares or tests for the viewer. **Aim for one about
@@ -270,7 +276,7 @@ Reaches through the glass: D27, D29, D34 (dare), D39 (test), D47 (knock), D50, D
   back? It slips into the corner a beat before he steps in. (Reworked from a plain walk-out, which would have repeated
   D14, one of the weakest episodes.)
 - **37 · Ceiling** — *You lie under your ceiling every night and couldn't describe it.* He lies down, looks up. → "I count the cracks up there every night. I don't remember the number going up."
-  **C:** "Lie down with me." · **T:** a stare held too long: he won't look away from the ceiling; each cut it's slightly closer, and he notices on the last line.
+  **C:** "Lie down with me." · **T:** a stare held too long: he won't look away from the ceiling, and each cut it is visibly lower; will it reach his face? It stops a hand's width above him on the last line, and he notices (review 2026-11-11: make the yes/no visible).
   **R:** the question (when did you last look at your ceiling, not past it?) · **Ending:** admission
 - **38 · Dust (mouse arc 2/4)** — *Some of the dust in your room used to be you.* Dust turning in a sunbeam. The mouse
   sits in the light, eating what the room has shed. He holds out a hand. → "…Some of that was you."
@@ -278,7 +284,7 @@ Reaches through the glass: D27, D29, D34 (dare), D39 (test), D47 (knock), D50, D
   **R:** the turn · **Ending:** action (the light leaves his hand as he says it)
   touches his fingertip as the light leaves.
 - **39 · Two rooms** — *You're in two rooms right now: that one, and the one in your hand.* He asks you to look up for
-  three seconds — and waits (test). → "You looked back at me before the three seconds were up. You always do."
+  three seconds — and waits (test). → "You looked back at me before the three seconds were up. Didn't you." (narrowed from "You always do", which fails the truth test; review 2026-11-11)
   **C:** "Look up. Three seconds." (the test) · **T:** he waits; the silence holds past three, to five, to ten.
   **R:** the test · **Ending:** caught
 - **40 · Light left on** — *You leave a light on so the room isn't empty when you come back — as if you're two people.*
@@ -296,7 +302,7 @@ Reaches through the glass: D27, D29, D34 (dare), D39 (test), D47 (knock), D50, D
   **R:** the question (how many places were you in this week?) · **Ending:** caught
 - **43 · Eleven steps** — *Lives shrink so slowly you never notice — the friend you stopped calling, the street you
   stopped taking.* Eleven steps. → "It was twelve yesterday. I didn't feel it go."
-  **C:** "Count again." · **T:** the count comes up short; he recounts, slower, and it is still short.
+  **C:** "Think of someone you used to talk to every day. Hold their name." · **T:** he walks the path slower and slower, stretching each step to make it reach twelve; it doesn't: eleven. (Re-varied 2026-11-11 so D42–44 aren't three counting commands and three step counts in a row.)
   **R:** one scene (the friend you stopped calling: one person, not a list) · **Ending:** admission
 - **44 · Nine steps** — *Measuring a life makes it smaller.* Nine; the window is nearly over the tally; he stops
   counting. → "I said don't count. …You did anyway. So did I."
