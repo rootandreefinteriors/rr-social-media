@@ -4937,3 +4937,251 @@ def draw_headband(cr, p, col=(0.98, 0.98, 0.98), sid=23240):
         w = math.sqrt(max(0.0, R * R - yy * yy))
         sketch_line(cr, [(-w, yy), (w, yy)], 4.5, sid=sid + (yy > -R * 0.5), amp=0.3)
     cr.restore()
+
+# ======================================================================= day 20: the date (LE FANCY)
+WINE = (0.46, 0.13, 0.17)
+CLOTH = (0.99, 0.99, 0.97)
+SILVER = (0.80, 0.82, 0.86)
+MUSTARD = (0.95, 0.76, 0.18)
+
+def draw_restaurant(cr, x, yb=FLOOR_Y, t=0.0, door=0.0, sid=24000):
+    """a fancy restaurant front (x = its middle): wine-red wall, a striped awning with LE FANCY on a gold sign above,
+    string lights, a big warm window with a candle-lit table inside, a dark wood door at x+300 (door 0..1 = open),
+    two little round hedges in pots."""
+    sketch_rect(cr, x - 950, yb - 1420, x + 950, yb, 7, sid=sid, fill=WINE)
+    for k in range(9):                                              # brick hints
+        yy = yb - 1360 + k * 150
+        for j in range(5):
+            xx = x - 900 + j * 380 + (k % 2) * 190
+            cr.rectangle(xx, yy, 120, 6); cr.set_source_rgba(0, 0, 0, 0.12); cr.fill()
+    # the gold name sign
+    sketch_rect(cr, x - 520, yb - 1400, x + 520, yb - 1220, 6, sid=sid + 1, fill=(0.14, 0.12, 0.12))
+    draw_text(cr, "LE FANCY", x, yb - 1310, 120, color=(250, 210, 90))
+    # the awning
+    pts = [(x - 900, yb - 1180), (x + 900, yb - 1180), (x + 960, yb - 1000), (x - 960, yb - 1000)]
+    sketch_poly(cr, pts, 6, sid=sid + 2, fill=(0.98, 0.96, 0.92))
+    for k in range(12):
+        if k % 2: continue
+        a0 = -900 + k * 150; a1 = a0 + 150
+        cr.move_to(x + a0, yb - 1180); cr.line_to(x + a1, yb - 1180); cr.line_to(x + a1 * 960 / 900, yb - 1000)
+        cr.line_to(x + a0 * 960 / 900, yb - 1000); cr.close_path(); cr.set_source_rgb(0.78, 0.16, 0.20); cr.fill()
+    sketch_poly(cr, pts, 6, sid=sid + 2, fill=None) if False else sketch_line(cr, pts + [pts[0]], 6, sid=sid + 3, amp=0.5)
+    for k in range(25):                                             # string lights along the awning's edge
+        bx = x - 960 + k * 80; by = yb - 990 + 22 * math.sin(math.pi * (k % 5) / 4)
+        on = 0.75 + 0.25 * math.sin(t * 3 + k * 1.7)
+        cr.arc(bx, by + 12, 22, 0, 2 * math.pi); cr.set_source_rgba(1, 0.9, 0.5, 0.25 * on); cr.fill()
+        cr.arc(bx, by + 12, 9, 0, 2 * math.pi); cr.set_source_rgb(1, 0.92 * on + 0.05, 0.55); cr.fill()
+    # the big window (warm inside, a little table with a candle)
+    wx0, wy0, wx1, wy1 = x - 820, yb - 900, x - 80, yb - 330
+    sketch_rect(cr, wx0, wy0, wx1, wy1, 8, sid=sid + 4, fill=(1.0, 0.82, 0.50))
+    cr.rectangle(wx0 + 6, wy1 - 200, wx1 - wx0 - 12, 194); cr.set_source_rgb(0.92, 0.66, 0.38); cr.fill()
+    for k, tx in enumerate((wx0 + 190, wx1 - 190)):
+        sketch_ellipse(cr, tx, wy1 - 170, 120, 16, 4, sid=sid + 5 + k, fill=CLOTH)
+        cr.rectangle(tx - 110, wy1 - 170, 220, 90); cr.set_source_rgb(*CLOTH); cr.fill()
+        cr.rectangle(tx - 6, wy1 - 245, 12, 60); cr.set_source_rgb(1, 1, 0.95); cr.fill()
+        fl = 1 + 0.15 * math.sin(t * 17 + k)
+        cr.arc(tx, wy1 - 262, 12 * fl, 0, 2 * math.pi); cr.set_source_rgb(1, 0.7, 0.2); cr.fill()
+    sketch_line(cr, [((wx0 + wx1) / 2, wy0), ((wx0 + wx1) / 2, wy1)], 6, sid=sid + 7, amp=0.2)
+    draw_text(cr, "est. 1987", (wx0 + wx1) / 2, wy0 + 60, 40, color=(120, 60, 20))
+    sketch_rect(cr, wx0 - 20, wy1, wx1 + 20, wy1 + 40, 6, sid=sid + 8, fill=(0.20, 0.14, 0.10))
+    # the door
+    dx0, dx1 = x + 140, x + 460
+    sketch_rect(cr, dx0 - 30, yb - 760, dx1 + 30, yb, 7, sid=sid + 9, fill=(0.20, 0.14, 0.10))
+    cr.rectangle(dx0, yb - 730, dx1 - dx0, 730); cr.set_source_rgb(1.0, 0.80, 0.45); cr.fill()    # warm light inside
+    w = (dx1 - dx0) * (1 - 0.85 * door)
+    sketch_rect(cr, dx0, yb - 730, dx0 + w, yb, 6, sid=sid + 10, fill=(0.36, 0.20, 0.12))
+    if w > 80:
+        sketch_rect(cr, dx0 + w * 0.2, yb - 640, dx0 + w * 0.8, yb - 420, 4, sid=sid + 11, fill=(0.30, 0.16, 0.10))
+        cr.arc(dx0 + w - 40, yb - 360, 14, 0, 2 * math.pi); cr.set_source_rgb(*GOLD); cr.fill_preserve(); stroke_ink(cr, 3)
+    # pots with round hedges
+    for k, hx in enumerate((x - 900, x + 860)):
+        sketch_rect(cr, hx - 70, yb - 130, hx + 70, yb, 5, sid=sid + 12 + k, fill=(0.62, 0.36, 0.22))
+        sketch_circle(cr, hx, yb - 230, 110, 5, sid=sid + 14 + k, fill=(0.20, 0.42, 0.24))
+
+def draw_street_clock(cr, x, yb=FLOOR_Y, hour=9.0, minute=47.0, sid=24030):
+    """an old cast-iron street clock on a post."""
+    sketch_rect(cr, x - 22, yb - 1020, x + 22, yb, 5, sid=sid, fill=(0.14, 0.16, 0.16))
+    sketch_rect(cr, x - 50, yb - 80, x + 50, yb, 5, sid=sid + 1, fill=(0.14, 0.16, 0.16))
+    sketch_circle(cr, x, yb - 1150, 150, 8, sid=sid + 2, fill=(0.14, 0.16, 0.16))
+    draw_wall_clock(cr, x, yb - 1150, hour=hour, minute=minute, sid=sid + 3)
+
+def draw_dining_room(cr, t, x0, x1, yb=FLOOR_Y, sid=24050):
+    """inside LE FANCY: wine wallpaper with gold stripes, dark wood wainscot, a night window, a painting, wood floor."""
+    vx0, vy0, vx1, vy1 = _visible(cr)
+    a, b = max(x0, vx0), min(x1, vx1)
+    if b <= a: return
+    cr.rectangle(a, vy0 - 10, b - a, yb - vy0 + 10); cr.set_source_rgb(*WINE); cr.fill()
+    for k in range(int(a // 120) - 1, int(b // 120) + 2):
+        cr.rectangle(k * 120, vy0 - 10, 10, yb - 420 - vy0 + 10); cr.set_source_rgba(0.95, 0.70, 0.30, 0.25); cr.fill()
+    cr.rectangle(a, yb - 430, b - a, 430); cr.set_source_rgb(0.30, 0.18, 0.12); cr.fill()
+    sketch_line(cr, [(a, yb - 430), (b, yb - 430)], 6, sid=sid, amp=0.3)
+    for k in range(int(a // 300) - 1, int(b // 300) + 2):
+        sketch_rect(cr, k * 300 + 30, yb - 380, k * 300 + 270, yb - 60, 4, sid=sid + 1 + (k % 5), fill=None, color=(0.2, 0.11, 0.07))
+    cr.rectangle(a, yb, b - a, max(400, vy1 - yb + 20)); cr.set_source_rgb(0.42, 0.27, 0.17); cr.fill()
+    sketch_line(cr, [(a, yb), (b, yb)], 5, sid=sid + 7, amp=0.4)
+    for k in range(int(a // 1800) - 1, int(b // 1800) + 2):          # a night window every 1800 px, a painting between
+        wx = k * 1800
+        sketch_rect(cr, wx - 260, yb - 1250, wx + 260, yb - 560, 9, sid=sid + 8, fill=(0.12, 0.14, 0.30))
+        for i in range(4):
+            for j in range(3):
+                if math.sin(k * 3 + i * 5 + j * 7) > -0.1:
+                    cr.rectangle(wx - 200 + i * 105, yb - 1100 + j * 150, 40, 60); cr.set_source_rgb(1.0, 0.86, 0.45); cr.fill()
+        sketch_line(cr, [(wx, yb - 1250), (wx, yb - 560)], 6, sid=sid + 9, amp=0.2)
+        for d in (-1, 1):                                             # red velvet curtains
+            sketch_poly(cr, [(wx + d * 260, yb - 1300), (wx + d * 150, yb - 1300), (wx + d * 230, yb - 900), (wx + d * 300, yb - 520),
+                             (wx + d * 340, yb - 520), (wx + d * 330, yb - 1300)], 5, sid=sid + 10 + (d > 0), fill=(0.66, 0.08, 0.12))
+        px = wx + 900
+        sketch_rect(cr, px - 200, yb - 1150, px + 200, yb - 800, 10, sid=sid + 12, fill=GOLD)
+        sketch_rect(cr, px - 170, yb - 1120, px + 170, yb - 830, 4, sid=sid + 13, fill=(0.55, 0.72, 0.85))
+        sketch_poly(cr, [(px - 170, yb - 830), (px - 60, yb - 990), (px + 30, yb - 900), (px + 110, yb - 1010), (px + 170, yb - 830)], 4,
+                    sid=sid + 14, fill=(0.32, 0.55, 0.30))
+
+def draw_table(cr, x, yb=FLOOR_Y, t=0.0, part="all", candle=1.0, sid=24070):
+    """a little round dining table seen from the side, white cloth to the floor-ish, a candle in a silver stick."""
+    top = yb - 360
+    if part in ("all", "front"):
+        sketch_poly(cr, [(x - 300, top), (x + 300, top), (x + 330, yb - 60), (x + 240, yb - 40), (x + 120, yb - 70), (x, yb - 40),
+                         (x - 120, yb - 70), (x - 240, yb - 40), (x - 330, yb - 60)], 6, sid=sid, fill=CLOTH)
+        sketch_line(cr, [(x - 200, top + 40), (x - 230, yb - 70)], 3, sid=sid + 1, color=(0.85, 0.85, 0.85))
+        sketch_line(cr, [(x + 180, top + 40), (x + 220, yb - 60)], 3, sid=sid + 2, color=(0.85, 0.85, 0.85))
+        sketch_ellipse(cr, x, top, 300, 26, 5, sid=sid + 3, fill=CLOTH)
+    if part in ("all", "top") and candle > 0:
+        sketch_rect(cr, x - 40, top - 16, x + 40, top, 4, sid=sid + 4, fill=SILVER)
+        sketch_rect(cr, x - 12, top - 120, x + 12, top - 16, 4, sid=sid + 5, fill=SILVER)
+        sketch_rect(cr, x - 14, top - 240, x + 14, top - 120, 4, sid=sid + 6, fill=(1, 1, 0.94))
+        fl = 1 + 0.18 * math.sin(t * 19) + 0.1 * math.sin(t * 31)
+        cr.arc(x, top - 270, 90, 0, 2 * math.pi); cr.set_source_rgba(1, 0.85, 0.4, 0.18); cr.fill()
+        cr.save(); cr.translate(x, top - 262); cr.scale(1, 1.6 * fl)
+        cr.arc(0, 0, 14, 0, 2 * math.pi); cr.restore(); cr.set_source_rgb(1, 0.66, 0.16); cr.fill()
+        cr.arc(x, top - 256, 7, 0, 2 * math.pi); cr.set_source_rgb(1, 0.95, 0.6); cr.fill()
+
+def draw_chair(cr, x, yb=FLOOR_Y, back_side=-1, sid=24080):
+    """a dining chair seen from the side; its back on back_side (-1 = left)."""
+    wood = (0.36, 0.20, 0.12)
+    seat = yb - 230
+    sketch_rect(cr, x - 150, seat, x + 150, seat + 34, 5, sid=sid, fill=wood)
+    for d in (-1, 1): sketch_rect(cr, x + d * 130 - 12, seat + 34, x + d * 130 + 12, yb, 4, sid=sid + 1 + (d > 0), fill=wood)
+    bx = x + back_side * 140
+    sketch_rect(cr, bx - 16, seat - 520, bx + 16, seat, 5, sid=sid + 3, fill=wood)
+    sketch_rect(cr, bx - 22, seat - 540, bx + 22, seat - 500, 4, sid=sid + 4, fill=wood)
+
+def draw_menu(cr, x, y, s=1.0, ang=0.0, sid=24090):
+    """a giant leather menu, closed (centre x, y)."""
+    cr.save(); cr.translate(x, y); cr.rotate(ang); cr.scale(s, s)
+    sketch_rect(cr, -150, -230, 150, 230, 6, sid=sid, fill=WINE)
+    sketch_rect(cr, -120, -200, 120, 200, 3, sid=sid + 1, fill=None, color=GOLD)
+    draw_text(cr, "MENU", 0, -60, 60, color=(250, 210, 90))
+    cr.restore()
+
+def draw_menu_page(cr, cx, cy, s=1.0, t=0.0, sid=24095):
+    """the open menu, for a full-screen insert: prices."""
+    cr.save(); cr.translate(cx, cy); cr.scale(s, s)
+    sketch_rect(cr, -470, -720, 470, 720, 8, sid=sid, fill=WINE)
+    sketch_rect(cr, -430, -680, 430, 680, 5, sid=sid + 1, fill=(1.0, 0.98, 0.92))
+    draw_text(cr, "LE FANCY", 0, -560, 110, color=(130, 30, 40))
+    sketch_line(cr, [(-300, -470), (300, -470)], 4, sid=sid + 2, color=GOLD)
+    rows = (("WATER", "$40"), ("BREAD", "$55"), ("AIR (FRENCH)", "$95"), ("ONE (1) PEA", "$310"), ("THE VIOLINS", "$$$"))
+    for i, (a, b) in enumerate(rows):
+        yy = -330 + i * 190
+        draw_text(cr, a, -360, yy, 74, anchor="left")
+        draw_text(cr, b, 330, yy, 74, color=(170, 20, 30))
+    cr.restore()
+
+def draw_violin(cr, chin, hand, s=1.0, sid=24110):
+    """a violin from under the chin (its body there) along the neck to the left hand."""
+    ang = math.atan2(hand[1] - chin[1], hand[0] - chin[0])
+    cr.save(); cr.translate(*chin); cr.rotate(ang); cr.scale(s, s)
+    L_ = math.hypot(hand[0] - chin[0], hand[1] - chin[1]) / s
+    sketch_rect(cr, 60, -12, L_, 12, 4, sid=sid, fill=(0.20, 0.12, 0.08))
+    for d in (-1, 1):
+        pass
+    sketch_poly(cr, [(-90, -50), (-30, -62), (0, -40), (30, -60), (90, -46), (100, 0), (90, 46), (30, 60), (0, 40), (-30, 62),
+                     (-90, 50), (-104, 0)], 5, sid=sid + 1, fill=(0.72, 0.36, 0.14), amp=0.4)
+    cr.rectangle(-10, -20, 22, 40); cr.set_source_rgb(0.2, 0.12, 0.08); cr.fill()
+    cr.restore()
+
+def draw_bow(cr, a, b, sid=24115):
+    sketch_line(cr, [a, b], 6, sid=sid, amp=0.1, color=(0.25, 0.15, 0.08))
+    mx, my = b[0] - a[0], b[1] - a[1]; n = math.hypot(mx, my) or 1
+    ox, oy = -my / n * 10, mx / n * 10
+    sketch_line(cr, [(a[0] + ox, a[1] + oy), (b[0] + ox, b[1] + oy)], 2, sid=sid + 1, amp=0.1, color=(0.95, 0.95, 0.9))
+
+def draw_cloche(cr, x, y, s=1.0, lift=0.0, food="pea", sid=24120, plate=True):
+    """a huge white plate (rim at y) under a silver dome; lift 0..1 raises the dome off. food: one green pea.
+    plate=False draws the dome alone (its rim at y)."""
+    cr.save(); cr.translate(x, y); cr.scale(s, s)
+    if plate:
+        sketch_ellipse(cr, 0, 0, 230, 34, 5, sid=sid, fill=(1, 1, 1))
+        sketch_ellipse(cr, 0, -2, 150, 20, 2, sid=sid + 1, fill=None, color=(0.8, 0.8, 0.8))
+    if food == "pea" and plate:
+        sketch_circle(cr, 6, -18, 17, 3, sid=sid + 2, fill=(0.40, 0.72, 0.30))
+        cr.arc(-40, -6, 7, 0, 2 * math.pi); cr.set_source_rgba(0.75, 0.15, 0.2, 0.7); cr.fill()      # a dot of sauce
+    if lift < 1.0:
+        dy = -260 * smooth(lift); da = 0.0
+        cr.save(); cr.translate(0, dy)
+        pts = [(-210, 0)] + [(210 * math.cos(math.pi - a_), -230 * math.sin(a_)) for a_ in [math.pi * k / 20 for k in range(1, 20)]] + [(210, 0)]
+        sketch_poly(cr, pts, 6, sid=sid + 3, fill=SILVER)
+        cr.arc(-80, -150, 26, 0, 2 * math.pi); cr.set_source_rgba(1, 1, 1, 0.7); cr.fill()
+        sketch_circle(cr, 0, -240, 22, 5, sid=sid + 4, fill=SILVER)
+        cr.restore()
+    cr.restore()
+
+def draw_receipt(cr, pts, w=110, sid=24130, total=None):
+    """a receipt strip following a polyline (paper with printed line marks). total = text on the last bit."""
+    cr.save()
+    cr.set_line_join(1); cr.set_line_cap(0)
+    path(cr, pts); cr.set_line_width(w + 10); cr.set_source_rgb(*INK); cr.stroke()
+    path(cr, pts); cr.set_line_width(w); cr.set_source_rgb(1, 1, 0.97); cr.stroke()
+    cr.set_dash([22, 28]); path(cr, pts); cr.set_line_width(w * 0.55); cr.set_source_rgba(0.35, 0.35, 0.4, 0.45); cr.stroke()
+    cr.set_dash([])
+    cr.restore()
+
+def draw_bill_folder(cr, x, y, s=1.0, open_=0.0, sid=24140):
+    cr.save(); cr.translate(x, y); cr.scale(s, s)
+    sketch_rect(cr, -110, -18, 110, 18, 5, sid=sid, fill=(0.14, 0.10, 0.08))
+    if open_ > 0.01:
+        sketch_rect(cr, -110, -18 - 160 * open_, 110, -18, 5, sid=sid + 1, fill=(0.14, 0.10, 0.08))
+    cr.restore()
+
+def draw_dollar(cr, x, y, s=1.0, ang=0.0, sid=24150):
+    cr.save(); cr.translate(x, y); cr.rotate(ang); cr.scale(s, s)
+    sketch_rect(cr, -90, -40, 90, 40, 4, sid=sid, fill=(0.72, 0.88, 0.64))
+    sketch_ellipse(cr, 0, 0, 26, 30, 3, sid=sid + 1, fill=(0.62, 0.80, 0.55))
+    draw_text(cr, "1", -60, -12, 34, color=(40, 90, 40)); draw_text(cr, "1", 60, 14, 34, color=(40, 90, 40))
+    cr.restore()
+
+def draw_hotdog(cr, x, y, s=1.0, ang=0.0, bite=0.0, sid=24160):
+    """a hot dog in a bun with a mustard zigzag (centre x, y)."""
+    cr.save(); cr.translate(x, y); cr.rotate(ang); cr.scale(s, s)
+    if bite > 0: cr.rectangle(-200, -100, 400 - 140 * bite, 200); cr.clip()
+    sketch_poly(cr, [(-96, -8), (-80, -30), (80, -30), (96, -8), (80, 6), (-80, 6)], 4, sid=sid, fill=(0.82, 0.30, 0.20), amp=0.3)
+    sketch_poly(cr, [(-82, -6), (82, -6), (74, 26), (-74, 26)], 4, sid=sid + 1, fill=(0.95, 0.76, 0.46), amp=0.3)
+    pts = [(-62 + 16 * k, -22 + (8 if k % 2 else -2)) for k in range(9)]
+    sketch_line(cr, pts, 5, sid=sid + 2, amp=0.2, color=MUSTARD)
+    cr.restore()
+
+def draw_hotdog_cart(cr, x, yb=FLOOR_Y, t=0.0, wreck=0.0, sid=24170):
+    """a street hot dog cart with a striped umbrella (HOT DOGS $2). wreck 0..1: tipped, umbrella bent inside-out, smoking."""
+    UX = -170
+    cr.save()
+    cr.translate(x, yb); cr.rotate(-0.18 * wreck); cr.translate(-x, -yb)
+    sketch_rect(cr, x - 300, yb - 520, x + 300, yb - 130, 6, sid=sid, fill=SILVER)
+    sketch_rect(cr, x - 300, yb - 560, x + 300, yb - 510, 5, sid=sid + 1, fill=(0.65, 0.67, 0.72))
+    sketch_rect(cr, x - 220, yb - 440, x + 220, yb - 260, 5, sid=sid + 2, fill=(0.98, 0.94, 0.80))
+    draw_text(cr, "HOT DOGS", x, yb - 395, 64, color=(190, 30, 30))
+    draw_text(cr, "$2", x, yb - 310, 64, color=(30, 30, 30))
+    for d in (-1, 1): sketch_circle(cr, x + d * 190, yb - 95, 90, 7, sid=sid + 3 + (d > 0), fill=(0.20, 0.20, 0.22))
+    sketch_line(cr, [(x + UX, yb - 560), (x + UX, yb - 1060)], 8, sid=sid + 5, amp=0.2)
+    # umbrella
+    uy = yb - 1060; inv = wreck
+    pts = [(x + UX - 420, uy + 10 - 220 * inv)]
+    for k in range(1, 12):
+        a = math.pi * k / 12
+        pts.append((x + UX - 420 * math.cos(a), uy + 10 - 180 * math.sin(a) * (1 - 2 * inv)))
+    pts.append((x + UX + 420, uy + 10 - 220 * inv))
+    sketch_poly(cr, pts, 6, sid=sid + 6, fill=(0.98, 0.84, 0.20))
+    for k in (2, 6, 10):
+        a = math.pi * k / 12
+        sketch_line(cr, [(x + UX, uy + 10 - 40 * inv), (x + UX - 420 * math.cos(a), uy + 10 - 180 * math.sin(a) * (1 - 2 * inv))], 4,
+                    sid=sid + 7 + k, color=(0.85, 0.18, 0.18))
+    cr.restore()
