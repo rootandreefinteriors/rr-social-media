@@ -28,7 +28,9 @@ AX = 4000000.0                                      # the arena
 ABX = AX - 900.0
 ARIM = O.hoop_rim(ABX)
 FT_X = ARIM[0] + 840.0                              # the free-throw line
-CHAIR = AX + 260.0
+CHAIR = AX + 330.0                                  # his spot in the FRONT ROW of the stands
+STAND_UP = 300.0                                    # the front row is raised: his feet are behind the courtside wall
+WALL_TOP = FLOOR_Y - 600.0
 SBX, SBY = AX + 3000.0, 900.0                       # the scoreboard (seen in inserts)
 BALL_R = 46.0
 BFLOOR = FLOOR_Y - BALL_R
@@ -228,20 +230,21 @@ for (tn, hw) in NIGHTS: S.sfx(tn - hw, "whoosh", 0.02, dur=2 * hw)
 
 # ---------------------------------------------------------------- C: the arena
 CAM_A = (AX - 200, 860, 0.66)
-S.cut(CUT2 - FR, cam=CAM_A, x=CHAIR - 10 - 540)
-S.set(CUT2 - FR, "chair_sit", "deadpan", dur=0.0, turn=-0.5, look=(-0.8, 0.0))
-S.set(T_DIP + 0.1, "chair_sit", "deadpan", dur=0.3, turn=-0.6, look=(-1.0, -0.2))
+S.cut(CUT2 - FR, cam=CAM_A, x=CHAIR - 540)
+S.set(CUT2 - FR, "stand", "deadpan", dur=0.0, turn=-0.5, look=(-0.8, 0.3), hop=STAND_UP, nowalk=1.0)
+S.set(T_DIP + 0.1, "stand", "deadpan", dur=0.3, turn=-0.6, look=(-1.0, 0.4), hop=STAND_UP, nowalk=1.0)
 S.sfx(T_CLAP, "clap", 0.08); S.sfx(T_CLAP + 0.03, "poof", 0.10)
-S.set(T_CLEAR, "chair_sit", "dead_stare", dur=0.3, turn=0.0, look=(0.0, 0.0))
+S.set(T_CLEAR, "stand", "dead_stare", dur=0.3, turn=0.0, look=(0.0, 0.0), hop=STAND_UP, nowalk=1.0)
 S.blink(T_CLEAR + 0.4, T_CLEAR + 0.75)
 S.cut(CUT_SB - FR, cam=(SBX, SBY, 1.15))
 for k in range(4): S.sfx(CUT_SB + 0.15 + k * 0.32, "thud", 0.05 + 0.01 * k)
 S.sfx(CUT_SB + 1.0, "tick", 0.04)
 S.cut(CUT_GO - FR, cam=(AX - 50, 860, 0.62))
-S.camera(T_GO + 0.3, AX - 380, 860, 0.62, T_SLAM - T_GO - 0.3)
-S.set(T_TAKEOFF - 0.1, "stand", "dead_stare", dur=0.3, turn=-0.6, look=(-1.0, -0.4))
-S.xkeys.append((T_TAKEOFF - 0.1, CHAIR + 20 - 540, 0.3)); S.x = CHAIR + 20 - 540
-S.set(T_TAKEOFF + 0.5, "stand", "dead_stare", dur=0.5, turn=-0.7, look=(-1.0, -0.8), eyescale=1.1)
+S.camera(T_GO + 0.3, AX - 300, 860, 0.62, T_SLAM - T_GO - 0.3)
+S.set(CUT_GO - FR, "stand", "deadpan", dur=0.0, turn=0.6, look=(0.9, 0.4), hop=STAND_UP, nowalk=1.0)
+S.set(T_X2 + 0.2, "stand", "dead_stare", dur=0.3, turn=0.2, look=(0.5, 0.5), hop=STAND_UP, nowalk=1.0)
+S.set(T_TAKEOFF - 0.1, "stand", "dead_stare", dur=0.3, turn=-0.6, look=(-1.0, 0.2), hop=STAND_UP, nowalk=1.0)
+S.set(T_TAKEOFF + 0.5, "stand", "dead_stare", dur=0.5, turn=-0.7, look=(-1.0, -0.5), eyescale=1.1, hop=STAND_UP, nowalk=1.0)
 for tk in (32.4, 33.6, 34.8): S.sfx(tk, "tick", 0.04)
 S.sfx(T_X2 + 0.5, "thud", 0.05); S.sfx(T_SLAM + 0.3, "thud", 0.07)
 S.sfx(T_SLAM, "kaboom", 0.45); S.sfx(T_SLAM + 0.05, "buzzer", 0.14); S.flash(T_SLAM, 0.45)
@@ -249,8 +252,8 @@ S.shake(T_SLAM, 0.7, 24)
 S.cut(CUT_SB2 - FR, cam=(SBX, SBY, 1.15))
 S.sfx(CUT_SB2 + 0.1, "ding", 0.06)
 S.cut(CUT_WIN - FR, cam=(AX - 150, 880, 0.66))
-S.set(CUT_WIN - FR, "stand", "deadpan", dur=0.0, turn=-0.6, look=(-1.0, -0.3))
-S.set(T_SMILE, "stand", "happy", dur=0.8, turn=-0.5, look=(-0.9, -0.3), smile=0.45, mouth="auto")
+S.set(CUT_WIN - FR, "stand", "deadpan", dur=0.0, turn=-0.6, look=(-1.0, 0.3), hop=STAND_UP, nowalk=1.0)
+S.set(T_SMILE, "stand", "happy", dur=0.8, turn=-0.5, look=(-0.9, 0.3), smile=0.45, mouth="auto", hop=STAND_UP, nowalk=1.0)
 S.sfx(CUT_WIN + 0.1, "twinkle", 0.04)
 # the trophy
 S.cut(CUT_TRO - FR, cam=(AX + 60, 900, 0.78), x=DFX - 540)
@@ -693,17 +696,58 @@ def props_back(cr, t, p, ly):
                    blink=0.6 if t < T_TAKE0 else 0.0, sid=2000, swish=0.3)
         q = her_pose(t)
         O.draw_mom(cr, t, q, her_blink(t), s=GS, hair=G_HAIR, dress=G_DRESS, bun=False)
+    if in_stands(t):
+        draw_fans(cr, t)                                   # the front row around him (behind the wall)
+        return
+    if t >= CUT2 - FR and not insert(t):
+        draw_fans(cr, t); draw_wall(cr, t)
     hs = hoop_state(t)
     if hs:
         O.draw_hoop(cr, hs[0], part="back", t=t, bend=hs[1], shake=hs[2], swish=hs[3], shatter=hs[4], glass=hs[5])
-    if t >= CUT2 - FR and hs:                              # the arena: his chair
-        if t < CUT_TRO - FR: O.draw_folding_chair(cr, CHAIR)
     if t >= CUT2 - FR: draw_defenders(cr, t)
     draw_kid(cr, t)
 S.prop(props_back)
 
+def insert(t): return (CUT_SB - FR <= t < CUT_GO - FR) or (CUT_SB2 - FR <= t < CUT_WIN - FR)
+def in_stands(t): return CUT2 - FR <= t < CUT_TRO - FR and not insert(t)
+FAN_COLS = ((0.90, 0.30, 0.28), (0.98, 0.84, 0.32), (0.45, 0.65, 0.95), (0.97, 0.62, 0.72), (0.55, 0.80, 0.45), (0.80, 0.55, 0.95))
+def draw_fans(cr, t):
+    """the front row of fans, standing behind the courtside wall (their heads level with his)."""
+    for k in range(-14, 16):
+        x = AX + k * 230 + 60
+        if x < AX - 700 or abs(x - CHAIR) < 190: continue
+        h = (k * 2654435761) % 997
+        col = FAN_COLS[h % len(FAN_COLS)]
+        roar = 1.0 if t >= T_SLAM else 0.0
+        bob = (6 + 22 * roar) * abs(math.sin(t * (3 + 6 * roar) + h))
+        hx, hy = x, FLOOR_Y - 760 - STAND_UP + 40 * (h % 3 == 0) - bob
+        L.sketch_poly(cr, [(x - 70, WALL_TOP + 40), (x - 62, hy + 120), (x - 30, hy + 95), (x + 30, hy + 95), (x + 62, hy + 120),
+                           (x + 70, WALL_TOP + 40)], 6, sid=23400 + k % 7, fill=col)
+        if roar:                                            # arms up after the dunk
+            for d in (-1, 1): sketch_line(cr, [(x + d * 60, hy + 130), (x + d * 110, hy - 70)], 9, sid=23410 + k % 5 + d)
+        L.sketch_circle(cr, hx, hy, 80, 7, sid=23420 + k % 9, fill=(0.99, 0.99, 0.98))
+        cap = FAN_COLS[(h + 2) % len(FAN_COLS)]
+        cr.new_path(); cr.arc(hx, hy, 78, math.pi, 2 * math.pi); cr.close_path(); cr.set_source_rgb(*cap); cr.fill_preserve(); L.stroke_ink(cr, 6)
+        L.sketch_rect(cr, hx - 10, hy - 18, hx + 110, hy + 2, 5, sid=23425, fill=cap)
+        for d in (-1, 1):
+            cr.new_path(); cr.arc(hx + d * 26, hy + 18 + 3 * math.sin(t + h), 8, 0, 2 * math.pi); L.fill_ink(cr); cr.new_path()
+        if roar: L.sketch_ellipse(cr, hx, hy + 52, 18, 15, 4, sid=23430, fill=(0.3, 0.1, 0.12))
+        else: sketch_line(cr, [(hx - 16, hy + 52), (hx + 16, hy + 52)], 4, sid=23431, amp=0.3)
+def draw_wall(cr, t):
+    """the courtside wall in front of the front row (from just right of the basket support)."""
+    x0, x1 = AX - 760, AX + 6000
+    L.sketch_rect(cr, x0, WALL_TOP, x1, FLOOR_Y - 190, 6, sid=23440, fill=(0.14, 0.17, 0.34))
+    sketch_line(cr, [(x0, WALL_TOP + 8), (x1, WALL_TOP + 8)], 10, sid=23441, amp=0.3, color=(0.75, 0.62, 0.25))
+    for k in range(-1, 8):
+        draw_text(cr, "THE FINALS", AX - 420 + k * 760, WALL_TOP + 170, 64, color=(250, 200, 70))
+
 def props_front(cr, t, p, ly):
     if ly != "front": return
+    if in_stands(t):
+        draw_wall(cr, t)
+        hs = hoop_state(t)
+        if hs: O.draw_hoop(cr, hs[0], part="back", t=t, bend=hs[1], shake=hs[2], swish=hs[3], shatter=hs[4], glass=hs[5])
+        draw_defenders(cr, t); draw_kid(cr, t)
     # the baby
     bp = baby_pos(t, p)
     if bp:
@@ -740,7 +784,7 @@ def props_front(cr, t, p, ly):
     # the chalk cloud
     if T_CLAP <= t < CUT_SB - FR:
         hp = kid_hands(T_CLAP + 0.05)
-        O.draw_chalk_cloud(cr, AX + 90, 1020, ramp(t, T_CLAP, T_CLAP + 1.9, "linear"), r=560)
+        O.draw_chalk_cloud(cr, AX + 170, 760, ramp(t, T_CLAP, T_CLAP + 1.9, "linear"), r=560)
     # confetti
     if CUT_WIN - FR <= t:
         for k in range(8):

@@ -38,3 +38,4 @@ The routine skipped this comment because it names a real person, and made a wait
 - No jump cut after the trophy: Dad tips over in one move, the trophy hops onto his belly and lands upright; its plaque
   reads TELL ME WHAT TO DO NEXT IN THE COMMENTS and the camera pushes in on it (next to his dead stare) to the end.
   This replaces the clipboard ask (Justin's call). 60.3 s.
+- Re-cut 3 (Justin): Dad watches the game from the FRONT ROW of the stands (behind the courtside wall, among capped fans), not from a chair on the court; after the buzzer he's on the floor for the trophy.
