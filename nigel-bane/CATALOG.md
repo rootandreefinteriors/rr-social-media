@@ -468,3 +468,16 @@ Post time is 9 PM ET. Day 13 went out a day late (missed slot); every later day 
 - **four elements:** C "Stay here. Watch the room for me. Tell me if anything moves." · R your empty rooms · E eerie, a little conspiratorial · T will it still be out when he comes back? It darts off a beat before he's in
 - **cover:** 41.2 s, looking over toward the corner the mouse comes from.
 - **script:** Hello? Is anyone out there? Stay here. Watch the room for me. Tell me if anything moves. Something lives in here. It only comes out when I'm gone. I'm going to step out. Just for a minute. ...Anything? ...It was out, wasn't it. I can tell by your face. I've never seen it. Not once. It knows exactly how long I'm gone. It knows the sound of me coming back. ...Every other room in your home is empty right now. Probably.
+
+### D37 · nearing · "Ceiling" · 2026-11-16 (Mon) · 62.9 s
+- **idea:** you lie under your ceiling every night and couldn't describe it.
+- **you:** strong. "Now think of yours. Don't look. What colour is it, exactly? Is there a mark on it? A corner where the paint doesn't match?" then real silence; "And I bet you couldn't draw it."
+- **first seconds:** he's already going down to the floor as he says it: "Lie down with me. ...On your back. Go on."
+- **prop:** the ceiling, shown for the first time (a grey slab with hairline cracks across the top of the room).
+- **tension:** medium-strong, a visible yes/no. Every cut back to the wide shot the ceiling is lower; will it come down onto the window? It rests on the window's top frame on the last line. He notices: "Mine's lower than it was. ...No. It isn't. It is."
+- **visual:** lying on the floor face up; extreme close-up on his eyes for the whispered "It is."; four cracks, then five.
+- **dread:** no. Unsettling line: the whispered "It is."
+- **hook:** "I count the cracks up there every night. ...Five. I don't remember the number going up." *Admission, lands on the viewer.*
+- **four elements:** C "Lie down with me. ...On your back. Go on." · R perception: the ceiling you look at and never see (the question) · E lonely, eerie underneath · T the ceiling lower at every wide cut; does it reach the window?
+- **cover:** 54.2 s, extreme close on his open eyes staring up.
+- **script:** Hello? Is anyone out there? Lie down with me. ...On your back. Go on. That's my ceiling. I look at it every night. Not past it. At it. Now think of yours. Don't look. ...What colour is it, exactly? Is there a mark on it? A corner where the paint doesn't match? ... You've spent more nights under it than anywhere else, probably. Thousands of hours, right under it. And I bet you couldn't draw it. Mine's lower than it was. ...No. It isn't. It is. I count the cracks up there every night. ...Five. I don't remember the number going up.

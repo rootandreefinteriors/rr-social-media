@@ -276,7 +276,7 @@ Reaches through the glass: D27, D29, D34 (dare), D39 (test), D47 (knock), D50, D
   back? It slips into the corner a beat before he steps in. (Reworked from a plain walk-out, which would have repeated
   D14, one of the weakest episodes.)
 - **37 · Ceiling** — *You lie under your ceiling every night and couldn't describe it.* He lies down, looks up. → "I count the cracks up there every night. I don't remember the number going up."
-  **C:** "Lie down with me." · **T:** a stare held too long: he won't look away from the ceiling, and each cut it is visibly lower; will it reach his face? It stops a hand's width above him on the last line, and he notices (review 2026-11-11: make the yes/no visible).
+  **C:** "Lie down with me." · **T:** a stare held too long: he won't look away from the ceiling, and each time we cut back to the wide shot it is visibly lower; will it come down onto the window? It rests on the window's top frame on the last line, and he notices (review 2026-11-11: make the yes/no visible; made this way on D37).
   **R:** the question (when did you last look at your ceiling, not past it?) · **Ending:** admission
 - **38 · Dust (mouse arc 2/4)** — *Some of the dust in your room used to be you.* Dust turning in a sunbeam. The mouse
   sits in the light, eating what the room has shed. He holds out a hand. → "…Some of that was you."

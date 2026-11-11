@@ -1,0 +1,507 @@
+[
+ {
+  "text": "Hello?",
+  "start": 0.369,
+  "end": 0.985
+ },
+ {
+  "text": "Is",
+  "start": 0.985,
+  "end": 1.39
+ },
+ {
+  "text": "anyone",
+  "start": 1.447,
+  "end": 1.79
+ },
+ {
+  "text": "out",
+  "start": 1.85,
+  "end": 2.03
+ },
+ {
+  "text": "there?",
+  "start": 2.07,
+  "end": 2.43
+ },
+ {
+  "text": "Lie",
+  "start": 3.36,
+  "end": 3.42
+ },
+ {
+  "text": "down",
+  "start": 3.484,
+  "end": 3.74
+ },
+ {
+  "text": "with",
+  "start": 3.788,
+  "end": 3.98
+ },
+ {
+  "text": "me.",
+  "start": 4.087,
+  "end": 4.78
+ },
+ {
+  "text": "...On",
+  "start": 4.805,
+  "end": 5.28
+ },
+ {
+  "text": "your",
+  "start": 5.312,
+  "end": 5.44
+ },
+ {
+  "text": "back.",
+  "start": 5.536,
+  "end": 6.0
+ },
+ {
+  "text": "Go",
+  "start": 6.4,
+  "end": 6.85
+ },
+ {
+  "text": "on.",
+  "start": 7.01,
+  "end": 7.77
+ },
+ {
+  "text": "That's",
+  "start": 8.658,
+  "end": 9.17
+ },
+ {
+  "text": "my",
+  "start": 9.223,
+  "end": 9.33
+ },
+ {
+  "text": "ceiling.",
+  "start": 9.4,
+  "end": 9.97
+ },
+ {
+  "text": "I",
+  "start": 11.045,
+  "end": 11.41
+ },
+ {
+  "text": "look",
+  "start": 11.458,
+  "end": 11.65
+ },
+ {
+  "text": "at",
+  "start": 11.73,
+  "end": 11.89
+ },
+ {
+  "text": "it",
+  "start": 11.917,
+  "end": 11.97
+ },
+ {
+  "text": "every",
+  "start": 12.023,
+  "end": 12.29
+ },
+ {
+  "text": "night.",
+  "start": 12.37,
+  "end": 12.85
+ },
+ {
+  "text": "Not",
+  "start": 13.63,
+  "end": 14.31
+ },
+ {
+  "text": "past",
+  "start": 14.438,
+  "end": 14.95
+ },
+ {
+  "text": "it.",
+  "start": 15.03,
+  "end": 15.35
+ },
+ {
+  "text": "At",
+  "start": 15.697,
+  "end": 16.32
+ },
+ {
+  "text": "it.",
+  "start": 16.427,
+  "end": 17.135
+ },
+ {
+  "text": "Now",
+  "start": 17.5,
+  "end": 17.53
+ },
+ {
+  "text": "think",
+  "start": 17.597,
+  "end": 17.93
+ },
+ {
+  "text": "of",
+  "start": 17.957,
+  "end": 18.01
+ },
+ {
+  "text": "yours.",
+  "start": 18.117,
+  "end": 18.89
+ },
+ {
+  "text": "Don't",
+  "start": 19.17,
+  "end": 19.69
+ },
+ {
+  "text": "look.",
+  "start": 19.802,
+  "end": 20.765
+ },
+ {
+  "text": "...What",
+  "start": 20.765,
+  "end": 21.26
+ },
+ {
+  "text": "colour",
+  "start": 21.317,
+  "end": 21.66
+ },
+ {
+  "text": "is",
+  "start": 21.713,
+  "end": 21.82
+ },
+ {
+  "text": "it,",
+  "start": 21.873,
+  "end": 22.14
+ },
+ {
+  "text": "exactly?",
+  "start": 22.24,
+  "end": 23.1
+ },
+ {
+  "text": "Is",
+  "start": 24.0,
+  "end": 24.43
+ },
+ {
+  "text": "there",
+  "start": 24.457,
+  "end": 24.59
+ },
+ {
+  "text": "a",
+  "start": 24.67,
+  "end": 24.75
+ },
+ {
+  "text": "mark",
+  "start": 24.83,
+  "end": 25.15
+ },
+ {
+  "text": "on",
+  "start": 25.203,
+  "end": 25.31
+ },
+ {
+  "text": "it?",
+  "start": 25.39,
+  "end": 25.63
+ },
+ {
+  "text": "A",
+  "start": 26.125,
+  "end": 26.48
+ },
+ {
+  "text": "corner",
+  "start": 26.56,
+  "end": 27.04
+ },
+ {
+  "text": "where",
+  "start": 27.067,
+  "end": 27.2
+ },
+ {
+  "text": "the",
+  "start": 27.22,
+  "end": 27.28
+ },
+ {
+  "text": "paint",
+  "start": 27.373,
+  "end": 27.84
+ },
+ {
+  "text": "doesn't",
+  "start": 27.907,
+  "end": 28.32
+ },
+ {
+  "text": "match?",
+  "start": 28.427,
+  "end": 29.04
+ },
+ {
+  "text": "You've",
+  "start": 33.64,
+  "end": 34.16
+ },
+ {
+  "text": "spent",
+  "start": 34.213,
+  "end": 34.48
+ },
+ {
+  "text": "more",
+  "start": 34.528,
+  "end": 34.72
+ },
+ {
+  "text": "nights",
+  "start": 34.777,
+  "end": 35.12
+ },
+ {
+  "text": "under",
+  "start": 35.173,
+  "end": 35.44
+ },
+ {
+  "text": "it",
+  "start": 35.52,
+  "end": 35.68
+ },
+ {
+  "text": "than",
+  "start": 35.728,
+  "end": 35.92
+ },
+ {
+  "text": "anywhere",
+  "start": 35.964,
+  "end": 36.32
+ },
+ {
+  "text": "else,",
+  "start": 36.4,
+  "end": 36.88
+ },
+ {
+  "text": "probably.",
+  "start": 36.942,
+  "end": 37.6
+ },
+ {
+  "text": "Thousands",
+  "start": 38.368,
+  "end": 39.45
+ },
+ {
+  "text": "of",
+  "start": 39.503,
+  "end": 39.61
+ },
+ {
+  "text": "hours,",
+  "start": 39.703,
+  "end": 40.25
+ },
+ {
+  "text": "right",
+  "start": 40.343,
+  "end": 40.81
+ },
+ {
+  "text": "under",
+  "start": 40.863,
+  "end": 41.13
+ },
+ {
+  "text": "it.",
+  "start": 41.21,
+  "end": 41.53
+ },
+ {
+  "text": "And",
+  "start": 41.83,
+  "end": 42.28
+ },
+ {
+  "text": "I",
+  "start": 42.36,
+  "end": 42.44
+ },
+ {
+  "text": "bet",
+  "start": 42.52,
+  "end": 42.76
+ },
+ {
+  "text": "you",
+  "start": 42.8,
+  "end": 42.92
+ },
+ {
+  "text": "couldn't",
+  "start": 42.954,
+  "end": 43.24
+ },
+ {
+  "text": "draw",
+  "start": 43.288,
+  "end": 43.48
+ },
+ {
+  "text": "it.",
+  "start": 43.587,
+  "end": 43.88
+ },
+ {
+  "text": "Mine's",
+  "start": 44.906,
+  "end": 45.05
+ },
+ {
+  "text": "lower",
+  "start": 45.103,
+  "end": 45.37
+ },
+ {
+  "text": "than",
+  "start": 45.402,
+  "end": 45.53
+ },
+ {
+  "text": "it",
+  "start": 45.583,
+  "end": 45.69
+ },
+ {
+  "text": "was.",
+  "start": 45.81,
+  "end": 46.25
+ },
+ {
+  "text": "...No.",
+  "start": 46.55,
+  "end": 47.41
+ },
+ {
+  "text": "It",
+  "start": 47.703,
+  "end": 48.29
+ },
+ {
+  "text": "isn't.",
+  "start": 48.35,
+  "end": 49.01
+ },
+ {
+  "text": "It",
+  "start": 50.633,
+  "end": 50.66
+ },
+ {
+  "text": "is.",
+  "start": 50.793,
+  "end": 51.14
+ },
+ {
+  "text": "I",
+  "start": 52.846,
+  "end": 52.886
+ },
+ {
+  "text": "count",
+  "start": 52.953,
+  "end": 53.286
+ },
+ {
+  "text": "the",
+  "start": 53.326,
+  "end": 53.446
+ },
+ {
+  "text": "cracks",
+  "start": 53.503,
+  "end": 53.846
+ },
+ {
+  "text": "up",
+  "start": 53.899,
+  "end": 54.006
+ },
+ {
+  "text": "there",
+  "start": 54.046,
+  "end": 54.246
+ },
+ {
+  "text": "every",
+  "start": 54.299,
+  "end": 54.566
+ },
+ {
+  "text": "night.",
+  "start": 54.633,
+  "end": 55.046
+ },
+ {
+  "text": "...Five.",
+  "start": 55.886,
+  "end": 57.016
+ },
+ {
+  "text": "I",
+  "start": 58.095,
+  "end": 58.436
+ },
+ {
+  "text": "don't",
+  "start": 58.476,
+  "end": 58.676
+ },
+ {
+  "text": "remember",
+  "start": 58.729,
+  "end": 59.156
+ },
+ {
+  "text": "the",
+  "start": 59.176,
+  "end": 59.236
+ },
+ {
+  "text": "number",
+  "start": 59.282,
+  "end": 59.556
+ },
+ {
+  "text": "going",
+  "start": 59.623,
+  "end": 59.956
+ },
+ {
+  "text": "up.",
+  "start": 60.063,
+  "end": 60.356
+ }
+]

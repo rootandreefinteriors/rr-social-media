@@ -41,6 +41,7 @@ Update after every episode. "Tally" = marks on the wall at the END of the episod
 | 34 | Sits | `anchoring` | 62.7s | IDEA: habits are furniture; you become the shape of what you sit in. He drops into the tagged chair on the command: "Try to stand up. Right now. Without your hands." — and waits through real silence. "Did you use your hands? ...Most people do." The seat has a dip now, his shape: "Nobody made it. I just kept sitting." ONE scene: "Your favourite spot has one too. Go and look at it later. That dip is every evening you spent there." His turn, no hands: he strains, rises a little, sinks back; tries again. "It's further up than it was." First episode in stereo; the chair creaks. | 34 (already there) | – | – | morning | unease → warm → drifting → melancholy → unease → uncanny | the tagged chair (he sits in it) | "Okay. You can sit back down. You were going to anyway." |
 | 35 | Upstairs (DREAD) | `creaking` | 61.8s | DREAD. IDEA: you've explained away most of the sounds in your home without ever going to check. Night. Whispered: "Quiet. Look up." — heavy footsteps cross the floor above, left to right (stereo), and stop right over him; a little dust sifts down. "There's no upstairs. I've checked. There's nothing above this room." ONE scene: late in bed, one creak out in the hall; you lay very still, decided it was the house, went back to sleep — "You didn't get up to look." "I'm not going to look either." The steps cross back and fade; he never moves. | 35 (already there) | – | – | night | unease → void → lonely → unease → uncanny | footsteps overhead (sound only); dust sifting down | "Tonight, when you hear it, don't decide what it is." |
 | 36 | Empty room (mouse 1/4) | `vacating` | 62.2s | IDEA: your rooms have a life you never see. "Stay here. Watch the room for me. Tell me if anything moves." "Something lives in here. It only comes out when I'm gone." He walks out of frame. On the empty room a MOUSE comes out from the corner by the wall, crosses the floor and sits up to sniff; from off-screen, "...Anything?" — it freezes; his footsteps come back and it darts away a beat before he's in. "It was out, wasn't it. I can tell by your face. I've never seen it. Not once." Mouse arc 1/4 (leaves D46). | 36 (already there) | – | – | day | curious → uncanny → unease → lonely → uncanny | **a mouse** (engine `draw_mouse`; arc D36–46) | "Every other room in your home is empty right now. Probably." |
+| 37 | Ceiling | `nearing` | 62.9s | IDEA: you lie under your ceiling every night and couldn't describe it. "Lie down with me. ...On your back. Go on." — he goes down onto the floor and lies looking up. The ceiling is shown for the first time, a grey slab across the top of the room with four hairline cracks. "That's my ceiling. I look at it every night. Not past it. At it." (hand raised toward it). THE QUESTION: "Now think of yours. Don't look. ...What colour is it, exactly? Is there a mark on it? A corner where the paint doesn't match?" — ~5 s of real silence (hum drops out), never answered. "You've spent more nights under it than anywhere else, probably." Every cut back to the wide shot the ceiling is lower (it never moves on screen); "Mine's lower than it was. ...No. It isn't." Whispered: "It is." Last wide: it rests on the window's top frame, five cracks. | 37 (already there) | – | – | evening, first stars | curious → drifting → lonely → melancholy → unease → uncanny → lonely | **the ceiling** (drawn in the episode; steps lower at each wide cut, 62 → 194 px) | "I count the cracks up there every night. ...Five. I don't remember the number going up." |
 
 ## Monetisation status (TikTok Creator Rewards; targets in BIBLE.md "The goal")
 Views come from the engagement reviews. The user tracks followers in TikTok's app; don't ask for them. AI label: never
@@ -95,6 +96,7 @@ emotional colour, or the tension mechanism (BIBLE.md, "The four required element
 | 34 | "Try to stand up. Right now. Without your hands." | habits: your favourite spot | wry, uneasy underneath | the dare: you try, then he tries and can't quite |
 | 35 | "Quiet. Look up." | the sounds in your home at night | quietly frightening | footsteps cross, stop over him, hold; cross back; he never moves |
 | 36 | "Stay here. Watch the room for me. Tell me if anything moves." | your empty rooms | eerie, a little conspiratorial | will it still be out when he comes back? It darts off a beat before he's in |
+| 37 | "Lie down with me. ...On your back. Go on." | perception: the ceiling you look at and never see | lonely, eerie underneath | the ceiling lower at every wide cut; will it come down onto the window? It rests on the frame on the last line |
 
 The planned C and T for D26–60 are in BIBLE.md, Chapter 2. Copy each one here when its episode is made, noting any
 change.
@@ -118,6 +120,7 @@ with "you do this too" plus a list, and seven of the eight ended on an aphorism 
 | 34 | the test (you try to stand without hands; he waits) | flip | yes |
 | 35 | one scene (one creak in the hall, late in bed) | instruction for after | yes |
 | 36 | the turn (you saw the mouse; he never has) | flat fact | yes |
+| 37 | the question (what colour is your ceiling, exactly? ~5 s silence, never answered) | admission | yes ("probably"; "I bet you couldn't draw it") |
 
 ## Upcoming
 Chapter 1 ended on D25. **Chapter 2 "The Room" (D26–60): see BIBLE.md** — an idea bank in a suggested running order
@@ -130,6 +133,6 @@ days included (D35, D47).
 and its R lands on the things made for you, not the body. D31 is staged still (crouched over the tag), D33 in
 tightening laps. Every episode's R should include a line catching the viewer in the act (BIBLE "Build on what works").
 **Review 2026-11-11:** give every T a visible yes/no answered on camera (D29 "will the tape hold?" was the batch's
-over-performer). D37's ceiling now visibly lowers toward his face and stops a hand's width short; D39's closer is "…Didn't
+over-performer). D37's ceiling now visibly lowers each wide shot until it rests on the window; D39's closer is "…Didn't
 you." (truth test); D43's command and tension re-varied (no count command, he stretches his steps to reach twelve) so
 D42–44 aren't three step counts in a row.
