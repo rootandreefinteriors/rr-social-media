@@ -1,30 +1,31 @@
 {
   "show": "let the comments decide",
-  "day": 20,
+  "day": 21,
   "last_episode": {
-    "day": 20,
+    "day": 21,
     "type": "comment",
-    "folder": "episodes/ep020",
-    "video": "videos/day020.mp4",
-    "posted_at": "2026-11-11T19:00-05:00 (scheduled)",
+    "folder": "episodes/ep021",
+    "video": "videos/day021.mp4",
+    "posted_at": "2026-11-12T19:00-05:00 (scheduled)",
     "buffer": {
-      "tiktok": "6af4c18853159c0c7514be39",
-      "instagram": "6af4c18acd8c8b4c7cf904e5"
+      "tiktok": "6af61286d647bbafc5ae0373",
+      "instagram": "6af61288262116da0552bc64"
     },
-    "note": "RE-CUT (Justin): bows drawn behind his face; violin music plays the whole time they're playing. Buffer posts edited to commit-pinned raw URL @028dd3e."
+    "note": "Buffer uses the commit-pinned raw URL @d517a2f."
   },
-  "ask_since_day": 20,
+  "ask_since_day": 21,
   "waiting_streak": 0,
   "world": {
-    "location": "OUTSIDE LE FANCY (day 20): a night city street - O.draw_city_night(cr, t, RX-6000, RX+6000) + O.draw_lamp at RX-1700/RX+2300 + O.draw_restaurant(cr, RX, FLOOR_Y, t) (LE FANCY, door at RX+140..460) + O.draw_street_clock(CLOCKX=RX-1150, 9:47) with RX=5000000. The hot dog cart at RX+1640 is WRECKED (O.draw_hotdog_cart(..., wreck=1.0), a little smoke); hot dogs lie all over the sidewalk. He sits on the curb at RX+1420 (stood up for the ask); she sits at RX+1110 with her rose; the three violinists stand at RX+380/600/820. S.floor=False. See ltcd/episodes/ep020.",
+    "location": "INSIDE GAME CAVE (day 21), a game store in a night strip mall: O.draw_store_inside(cr, t, IX-6000, IX+6000) with IX=8000000. The demo TV corner: O.draw_tv(cr, TVX=IX-1500, screen off) + its screen showing UPDATE 2 OF 47 / 150 GB / 0% / TIME LEFT: 11 HRS; he did the ask standing at IX-940; the opened NEXT GEN console box + the '6' game box on the floor next to him. The counter (CTR_X=IX+470) is buried in a mountain of pennies with the clerk (green vest, red visor) buried up to her eyes behind it. Outside: the strip mall with the GAME CAVE sign, the neon-sunset '6' poster, scattered pizza boxes. S.floor=False. See ltcd/episodes/ep021.",
     "companions": [
-      "his wife-to-be (O.draw_mom, hair (0.62,0.28,0.16), dress (0.30,0.66,0.66), bun=False) - on the curb next to him outside LE FANCY, holding the red rose he gave her",
+      "his wife-to-be (O.draw_mom, hair (0.62,0.28,0.16), dress (0.30,0.66,0.66), bun=False) - left smiling on the curb outside LE FANCY with her rose (she nodded: go)",
       "his son, grown up: an NBA champion (dark high-top, white headband, purple #23) - left at the Finals arena; see ep019 draw_kid",
       "the black kitten (O.draw_cat col='black') - at home on the couch"
     ],
     "props": [
-      "the red rose (she has it)",
-      "three violinists (black vests, bow ties) who followed them out of LE FANCY and won't stop playing",
+      "the next-gen console (generic white, NEXT GEN box) + the game (neon sunset, palm trees, a big 6) - plugged into the store's demo TV, updating (1 of 47 done)",
+      "the GAME CAVE clerk, buried in pennies behind the counter",
+      "left outside LE FANCY: the rose (she has it), the wrecked hot dog cart, the three violinists",
       "left inside LE FANCY: a $1 bill on a $4,817.00 receipt",
       "left in the arena: the Finals trophy (on its side at centre court)",
       "left on the neighbourhood court: the basketball and THE CHOSEN ONE magazine",
@@ -51,7 +52,8 @@
       "got a girlfriend and had a baby - and lost them (day 17, alt cut): ran off the beach into a park; she walked past his rose; the spaghetti kiss; the stork made him SIGN HERE and dropped the baby in his lap; montage: SOLD sign, slow dance, fridge photo, couch cuddle; record scratch; he gamed while she bounced the crying baby; he put one more plate on the tower of dishes; she vacuumed in front of his game and the cord unplugged the TV; he snuck in at 3 AM and she clicked on the lamp; the argument; WE NEED TO TALK; she left with the baby, then came back for the couch. He shrugged and sat down on the floor to play video games. Looks normal.",
       "hit the lottery for 10 million and got his family back (day 18, re-cut): one $1 ticket at a corner store, every number matched on the store TV (4 8 15 16 23 42), JACKPOT; the clerk fainted and came back with a giant check; he held it over his head under her window - she shut the curtain; he dropped his game controller in the trash and proposed with a ring box; she said yes; they carried the couch back home together; the black kitten wandered in and curled up between them. Looks normal.",
       "raised his kid to be the next LeBron (day 19): took the baby to a neighbourhood court; days and nights whipped by and the kid grew each time - toddler granny shot bonked Dad, the crossover broke Dad's ankles, THE CHOSEN ONE cover slapped Dad's face, the teen dunked, the grown kid chased Dad down and pinned his layup on the board; at THE FINALS the chalk toss swallowed Dad (still white), GAME 7 down one at 0:05, the kid took off from the free-throw line and shattered the backboard, 102-101; he handed Dad the trophy and it flattened him. Small real smile. Looks normal.",
-      "took his wife out on a date (day 20): ran from the Finals (late - she waited under the street clock at 9:47), gave her a rose and this time she took it; LE FANCY: WATER $40, AIR (FRENCH) $95, one violinist then three crammed around his chair, one pea each under silver domes, a receipt that unrolled out of the room, TOTAL $4,817.00; he paid $1, the waiter pointed at the door, he was thrown out in a cannonball into a hot dog cart (KABOOM, hot dogs rained down); she came out and laughed for real, sat with him on the curb eating hot dogs, head on his shoulder; the violinists followed them out. Looks normal."
+      "took his wife out on a date (day 20): ran from the Finals (late - she waited under the street clock at 9:47), gave her a rose and this time she took it; LE FANCY: WATER $40, AIR (FRENCH) $95, one violinist then three crammed around his chair, one pea each under silver domes, a receipt that unrolled out of the room, TOTAL $4,817.00; he paid $1, the waiter pointed at the door, he was thrown out in a cannonball into a hot dog cart (KABOOM, hot dogs rained down); she came out and laughed for real, sat with him on the curb eating hot dogs, head on his shoulder; the violinists followed them out. Looks normal.",
+      "bought the console and the game (day 21, '@thatboypiwko: Go buy a ps5 and gta 6'): ran from the LE FANCY curb (she nodded go) to GAME CAVE; it was NOV 12 and the game comes out NOV 19, so he sat down first in line; days flickered by, the line grew, pizza boxes stacked up; at 11:59 the clerk came out with a sign: DELAYED (heartbeat, push-in, eye twitch) - wrong side: OPEN, 12:00; the line stampeded right over him; inside only the LAST ONE was left, $569.98; he paid with a sock of pennies that buried the counter and the clerk; lifted the boxes overhead in a beam of light (small real smile); at the demo TV: UPDATE 1 OF 47, 150 GB, then UPDATE 2 OF 47. Looks normal."
     ],
     "notes": "Justin, 2026-11-09: his 11-08 note meant don't END episodes with new characters unless the comment asks for them. The girlfriend, baby and kitten are back as of day 18. The kitten doesn't need to ride on his head.",
     "sign_line": null
@@ -72,7 +74,8 @@
     "Get a girlfriend and have a baby",
     "Hit the lottery for 10 million and get your family back",
     "Raise your kid to be the next LeBron james",
-    "Take your wife out on a date"
+    "Take your wife out on a date",
+    "Go buy a ps5 and gta 6"
   ],
   "history": [
     {
@@ -174,6 +177,11 @@
       "day": 20,
       "type": "comment",
       "summary": "@second_degree_burn (IG): 'Take your wife out on a date' -> arena: flat under the trophy, reads it, he's late -> LE FANCY street: she waits, clock 9:47, rose (taken) -> inside: menu insert (AIR (FRENCH) $95), violinist closer, then three; one pea under silver domes; receipt unrolls off screen, TOTAL $4,817.00 insert; pays $1; waiter points -> cannonball out the door into a hot dog cart, KABOOM, hot dog rain; she laughs, hot dogs on the curb, head on his shoulder; violinists follow them out; ask on the curb (60.9 s)"
+    },
+    {
+      "day": 21,
+      "type": "comment",
+      "summary": "TikTok @thatboypiwko: 'Go buy a ps5 and gta 6' -> LE FANCY curb (she nods) -> GAME CAVE strip mall, COMING NOV 19 / TODAY NOV 12; sits first in line; 7-day time-lapse (line grows, pizza boxes); 11:59 DELAYED sign fake-out (heartbeat, push-in) -> OPEN at 12:00; stampede flattens him; LAST ONE console + game, $569.98 insert; sock of pennies buries the counter + clerk, KA-CHING; boxes overhead, light beam, choir; demo TV: UPDATE 1 OF 47 -> 2 OF 47; ask in the store (62.9 s)"
     }
   ]
 }
