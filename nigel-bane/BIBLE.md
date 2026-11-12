@@ -235,13 +235,13 @@ from Day 34 were rewritten to pass the truth test. Re-check the variation rule i
 - **The keeper** (D44–47): a gift arrives → he writes back → they answer → they take it back while he sleeps.
 - **The glass** (D48–51): his breath on our side → his hand on it → a knock from our side → he answers it.
 - **The window** (D52–55): a cloud that won't move → a leaf goes over → raindrops → frost closes, then the sun opens it.
-- **The night the room woke up** (D56–60, chapter landing): moonlight moves → something in the walls → the room
-  answers → dawn → he looks at the room as if for the first time.
+- **Somewhere else** (D56–60, chapter landing): a hollow spot in the wall → a draught through the corner seam → light
+  through it at night → he turns his back and it goes out → "Here is just wherever you stopped looking for somewhere else."
 Every episode from D37 belongs to an arc; there are no stand-alone episodes.
 
 Dread days: D35 (made before the arc rules; stand-alone), D39 (closes the mouse arc).
 Reaches through the glass: D27, D29, D34 (dare), D41 (he saw your lips move), D42 (test), D45 (tag held to the
-glass), D48–51 (the glass arc), D54 (pick a raindrop), D56 (eyes closed).
+glass), D48–51 (the glass arc), D54 (pick a raindrop), D56 (knock on your wall).
 
 - **26 · Gone** — *You never see things arrive or leave. You just notice, one morning, that they've been gone a
   while.* The spider is gone; the web is empty and torn, the bundles with it. He searches the corner (tension: where?);
@@ -465,41 +465,49 @@ closing the view, then sun opening it again.
   **C:** "Don't let it close." · **T:** will the frost close the window? It shrinks to a circle, then the sun opens it.
   **R:** the question (how many places were you in this week?) · **Ending:** admission
 
-### Arc: the night the room woke up (D56–60, 5 episodes, the chapter landing) — your home has a life you sleep through
-One long night, then morning. The empty room starts doing things at night: the moonlight moves (D56), something
-runs through the walls (D57), the room starts answering him (D58); at dawn it goes quiet (D59), and in the morning he
-looks at his room as if for the first time (D60). Each episode reads cold on its own.
+### Arc: somewhere else (D56–60, 5 episodes, the chapter landing) — "here" is wherever you stopped looking
+The chapter asks *what is "here"?* and lands on "Here is just wherever you stopped looking for somewhere else." This
+arc earns that line. Over five days (one day each, as always) Nigel finds a sign that there might be somewhere else
+beyond his room, gets closer to it, and chooses not to look. Rises: a suspicion (a hollow spot in the wall) → evidence
+(a draught) → temptation (light through the seam) → the choice (he turns his back and it goes) → the landing. The
+"somewhere else" is never a door or an opening (Day 360's door must stay the only one): it's a hairline seam where two
+walls meet, and it closes for good on D59.
 
-- **56 · Moonlight (NIGHT 1/5)** — *You'll spend a third of your life unconscious, trusting the room.* Night. He lies on
-  the floor; a rectangle of moonlight from the window lies on the floor beside him. "Close your eyes. I'll tell you
-  when." He counts the seconds you're "gone" in a real silence while the viewer, peeking, watches the moonlight creep
-  across the floor toward his face. It reaches his eyes as he says "...Open." "Tonight, notice where the light from your
-  window falls."
-  **C:** "Close your eyes. I'll tell you when." · **T:** the moonlight creeps toward his face; will it reach him before he says open? It does.
-  **R:** the test (eyes closed) · **Ending:** instruction for after
-- **57 · The walls (NIGHT 2/5)** — *Most of what keeps your home working runs where you can't see it.* A sound starts in
-  the wall: a run of water, or something like it. He puts his ear to the wall to find where it is ("It's in here
-  somewhere"); every time he gets his ear to the spot, it's moved further along, so the viewer watches him hunt it
-  along the wall. You're leaning on something right now that has pipes or wires inside it. It stops right behind the
-  tally, and he holds still listening. "When did you last hear your home working?"
-  **C:** "Put your ear to the wall." · **T:** can he find where the sound is? It keeps moving; it stops behind the tally.
-  **R:** caught (the wall you're leaning on right now) · **Ending:** question
-- **58 · Echo (NIGHT 3/5, the climax)** — *Something in you has heard every thought you never said.* The room starts
-  repeating his last words back, a beat late. He notices, and tests it. The viewer hears the gap between him and the
-  echo get shorter every time; then the echo starts a word before he does. What's the last thing you thought and
-  didn't say out loud? The echo says "Say it," before he can.
-  **C:** "Say something. Out loud." · **T:** the echo gets closer every line; will it catch up? It gets ahead of him.
-  **R:** the question (what didn't you say out loud?) · **Ending:** action (the echo says it first)
-- **59 · Sunrise (NIGHT 4/5)** — *There will be a last morning you wake up in your room, and you won't know it's the
-  last.* Pre-dawn, the room silent. He sits facing the window, waiting for the sun: "It's late." The viewer watches the
-  sky lighten very slowly. You'll move out one day, or something else will happen; there'll be a last morning in your
-  room and it'll look like any other. The sun clears the edge of the window on the last line. "Every morning in your
-  room could be the last one. It'll look like this."
-  **C:** "Wait for it with me." · **T:** will the sun come up? It's late; it clears the window on the last line.
-  **R:** the turn · **Ending:** flat fact
-- **60 · Stopped looking (NIGHT 5/5, CHAPTER END)** — *Home is wherever you stopped looking for somewhere else.*
-  Morning. Everything that arrived this chapter has gone again; the room is as empty as the first day. He looks around
-  it as if for the first time. → "Here is just wherever you stopped looking for somewhere else."
+- **56 · Hollow (SOMEWHERE ELSE 1/5)** — *You've wondered, at least once, what your life would be like somewhere
+  else.* Day. He's knocking his way along the wall, ear pressed to it after every knock; each knock sounds the same,
+  solid and dull. He says what he's doing: "If there's another room, one of these will sound hollow." The viewer
+  listens with him, knock by knock. Most people have pictured the other life: the city they nearly moved to, the
+  house on the other street. At the corner where the two walls meet, the last knock sounds hollow. He stops dead.
+  "You listened for it too."
+  **C:** "Knock on the wall next to you." · **T:** will one knock sound different? Knock after knock is solid; the last one, in the corner, is hollow.
+  **R:** the test (knock on your own wall) · **Ending:** caught
+- **57 · Draught (SOMEWHERE ELSE 2/5)** — *There's a version of your life you didn't take, and some days you can feel
+  it.* Day. He moves his face slowly along the corner seam, and his three hair strands start to lift: air is coming
+  through. He says so ("Something's blowing in"), and the viewer watches the hair to see where it's strongest. He only
+  talks about the draught (where it comes from, that it's cold, that it smells of outside), and the last lines make it
+  about you: the life you nearly had is like that, a cold thread you only notice when you stand in the right place. At
+  the seam his hair streams sideways. "Which one did you just think of? ...You didn't even have to look for it."
+  **C:** "Hold still. Feel that?" · **T:** where is the air coming from? His hair lifts more and more as he nears the corner seam; strongest right at it.
+  **R:** the turn (he only talks about the draught; it lands on you at the end) · **Ending:** question
+- **58 · Light (SOMEWHERE ELSE 3/5)** — *The life you didn't choose looks brightest late at night.* Night, the room dark
+  but for the window. A hairline of warm light shows along the corner seam. He crawls toward it, saying he's going to
+  put his eye to it and look; the viewer watches him get closer, shot by shot, his eye almost touching it. One scene:
+  late at night, looking up the person you didn't call back, or the place you didn't move to. A hair's width from the
+  seam, he stops and pulls back. "I didn't look. I don't know why."
+  **C:** "Don't look away. Watch me do it." · **T:** will he look through? He gets his eye a hair's width away and stops.
+  **R:** one scene (looking up the life you didn't take, late at night) · **Ending:** admission
+- **59 · Back to it (SOMEWHERE ELSE 4/5, the choice; the seam's exit)** — *One day you stop checking whether there's
+  somewhere better. You won't notice which day.* Morning. The thin light is still in the seam. He sits down with his
+  back against the corner, covering it: "If I turn round, I'll look." The viewer watches the line of light on the wall
+  beside his shoulder fade, little by little, while he talks to us and doesn't turn. You'll stop looking too; most
+  people do, and it won't feel like a decision. The light goes out on the last line, and he notices without turning.
+  "Somebody stopped looking for somewhere else today. They won't remember doing it."
+  **C:** "Sit with me. Back to the wall." · **T:** will he turn round before the light goes? He doesn't; it goes out.
+  **R:** the swap (he asks you to look at the corner for him, because he won't) · **Ending:** flat fact
+- **60 · Stopped looking (SOMEWHERE ELSE 5/5, CHAPTER END)** — *Home is wherever you stopped looking for somewhere
+  else.* Morning. Everything that arrived this chapter has gone, and the seam is just a corner again; the room is as
+  empty as the first day. He looks around it as if for the first time. → "Here is just wherever you stopped looking
+  for somewhere else."
   **C:** "Look around your room. Slowly." · **T:** as he looks, the camera pulls back on a room that is emptier with every shot; at the end only the tally is left.
   **R:** caught (look around your room, slowly) · **Ending:** aphorism (the chapter landing; the one allowed in this stretch)
 

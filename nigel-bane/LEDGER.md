@@ -130,8 +130,8 @@ with "you do this too" plus a list, and seven of the eight ended on an aphorism 
 another arc goes in the middle of one; each arc's props leave on camera at its end; dread days sit inside an arc; every
 tension is set up on screen so a first-time viewer knows what to watch for. Days 26–36 were already made and stay as
 they are. From D37 (full entries in BIBLE.md, Chapter 2): mouse D36–39 (D39 DREAD: the mouse leaves and takes the
-chair) · room gets smaller D40–43 · keeper D44–47 · glass D48–51 · window D52–55 · the night the room woke up D56–60
-(chapter landing).
+chair) · room gets smaller D40–43 · keeper D44–47 · glass D48–51 · window D52–55 · somewhere else D56–60 (chapter
+landing).
 
 **Made this week under the old order** (unaired; pending the owner's go-ahead):
 - `shedding` (made as D38, "Dust"): **dropped.** Its script doesn't hold up (mice don't eat dust; the last line can't
