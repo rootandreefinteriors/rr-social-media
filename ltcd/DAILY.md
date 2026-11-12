@@ -124,6 +124,9 @@ start coding until all pass, and copy the checklist with your answers into BEATS
 ## 7. Report
 Short plain-language summary for Justin (not a developer): what tonight's episode is, the winning comment (or why
 none qualified), the video link, and anything that needs him (connector sign-ins, errors).
+**Always send the finished video file itself in the session (user, 2026-11-12: "Video here. Always here."):** call
+`SendUserFile` with `ltcd/videos/dayNNN.mp4` (display "render") right after it is scheduled - every run, comment or
+waiting episode, and for any re-cut. In TEST MODE send the test video from `ltcd/tests/cloud_runs/<today>/`.
 
 ## Never
 - Never post anything that fails SHOW.md rules. Never delete posts. Never post immediately (always 7 PM schedule).
