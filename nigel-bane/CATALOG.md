@@ -492,7 +492,7 @@ Post time is 9 PM ET. Day 13 went out a day late (missed slot); every later day 
 - **dread:** no. Unsettling line: "With your mouth open."
 - **hook:** "How many things in your home have watched you sleep? ...You don't know either." *Question, viewer-centric.*
 - **four elements:** C "Don't blink. Watch it with me." · R your home at night (the turn) · E eerie · T the staring match: who looks away first?
-- **cover:** COVER38
+- **cover:** 23.4 s, him low on the floor staring at the two eyes under the chair.
 - **script:** Hello? Is anyone out there? Don't blink. Watch it with me. Under the chair. Two eyes. ...It's the mouse. It stares until you look away. Then it's gone. I'm not looking away. ... It does this at night. It watches me sleep. I've woken up and seen the eyes. ...Not every night. ...I think every night. Something in your home has probably watched you sleep. With your mouth open. And you'll never know what it was. ... My eyes are stinging. ...I can't... ...Gone. How many things in your home have watched you sleep? ...You don't know either.
 
 ### D39 · outlasting · "Taken back (DREAD; mouse 4/4)" · 2026-11-18 (Wed) · 62.0 s
@@ -505,5 +505,5 @@ Post time is 9 PM ET. Day 13 went out a day late (missed slot); every later day 
 - **dread:** yes (closes the mouse arc and the chair). Unsettling line: "I could stop it. ...I'm not going to."
 - **hook:** "Some of what's in your room right now will belong to someone you'll never meet." *Whispered flat fact.*
 - **four elements:** C "Hold on to something near you." · R the things you own, after you (caught) · E quietly frightening · T the chair moves whenever he isn't looking; will he stop it?
-- **cover:** COVER39
+- **cover:** 48.0 s, him facing us while the chair slides out of frame behind him.
 - **script:** Hello? Is anyone out there? Hold on to something near you. ... It moved. The chair. While I wasn't looking. Somebody left it for me. It fit me exactly. ... Again. The mouse lives under it. ...It's going with it. Whatever you're holding right now will probably belong to someone else one day. Someone who never met you. They won't know it was yours. I could stop it. ...I'm not going to. ... It was never mine. I just sat in it. Some of what's in your room right now will belong to someone you'll never meet.

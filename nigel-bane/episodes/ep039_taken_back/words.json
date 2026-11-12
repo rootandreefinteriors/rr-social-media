@@ -1,0 +1,472 @@
+[
+ {
+  "text": "Hello?",
+  "start": 0.317,
+  "end": 0.48
+ },
+ {
+  "text": "Is",
+  "start": 0.853,
+  "end": 1.39
+ },
+ {
+  "text": "anyone",
+  "start": 1.447,
+  "end": 1.79
+ },
+ {
+  "text": "out",
+  "start": 1.85,
+  "end": 2.03
+ },
+ {
+  "text": "there?",
+  "start": 2.07,
+  "end": 2.35
+ },
+ {
+  "text": "Hold",
+  "start": 3.302,
+  "end": 3.35
+ },
+ {
+  "text": "on",
+  "start": 3.403,
+  "end": 3.51
+ },
+ {
+  "text": "to",
+  "start": 3.563,
+  "end": 3.67
+ },
+ {
+  "text": "something",
+  "start": 3.71,
+  "end": 4.07
+ },
+ {
+  "text": "near",
+  "start": 4.134,
+  "end": 4.39
+ },
+ {
+  "text": "you.",
+  "start": 4.47,
+  "end": 5.165
+ },
+ {
+  "text": "It",
+  "start": 7.169,
+  "end": 7.19
+ },
+ {
+  "text": "moved.",
+  "start": 7.283,
+  "end": 7.83
+ },
+ {
+  "text": "The",
+  "start": 8.13,
+  "end": 8.66
+ },
+ {
+  "text": "chair.",
+  "start": 8.74,
+  "end": 9.22
+ },
+ {
+  "text": "While",
+  "start": 9.993,
+  "end": 10.7
+ },
+ {
+  "text": "I",
+  "start": 10.78,
+  "end": 10.86
+ },
+ {
+  "text": "wasn't",
+  "start": 10.892,
+  "end": 11.1
+ },
+ {
+  "text": "looking.",
+  "start": 11.17,
+  "end": 11.82
+ },
+ {
+  "text": "Somebody",
+  "start": 12.58,
+  "end": 13.56
+ },
+ {
+  "text": "left",
+  "start": 13.608,
+  "end": 13.8
+ },
+ {
+  "text": "it",
+  "start": 13.853,
+  "end": 13.96
+ },
+ {
+  "text": "for",
+  "start": 14.02,
+  "end": 14.2
+ },
+ {
+  "text": "me.",
+  "start": 14.28,
+  "end": 14.52
+ },
+ {
+  "text": "It",
+  "start": 15.293,
+  "end": 15.76
+ },
+ {
+  "text": "fit",
+  "start": 15.84,
+  "end": 16.08
+ },
+ {
+  "text": "me",
+  "start": 16.133,
+  "end": 16.24
+ },
+ {
+  "text": "exactly.",
+  "start": 16.34,
+  "end": 17.12
+ },
+ {
+  "text": "Again.",
+  "start": 19.747,
+  "end": 20.64
+ },
+ {
+  "text": "The",
+  "start": 23.475,
+  "end": 23.49
+ },
+ {
+  "text": "mouse",
+  "start": 23.557,
+  "end": 23.89
+ },
+ {
+  "text": "lives",
+  "start": 23.943,
+  "end": 24.21
+ },
+ {
+  "text": "under",
+  "start": 24.25,
+  "end": 24.45
+ },
+ {
+  "text": "it.",
+  "start": 24.53,
+  "end": 24.77
+ },
+ {
+  "text": "...It's",
+  "start": 25.77,
+  "end": 26.31
+ },
+ {
+  "text": "going",
+  "start": 26.363,
+  "end": 26.63
+ },
+ {
+  "text": "with",
+  "start": 26.678,
+  "end": 26.87
+ },
+ {
+  "text": "it.",
+  "start": 26.923,
+  "end": 27.27
+ },
+ {
+  "text": "Whatever",
+  "start": 28.811,
+  "end": 28.9
+ },
+ {
+  "text": "you're",
+  "start": 28.92,
+  "end": 29.06
+ },
+ {
+  "text": "holding",
+  "start": 29.12,
+  "end": 29.54
+ },
+ {
+  "text": "right",
+  "start": 29.58,
+  "end": 29.78
+ },
+ {
+  "text": "now",
+  "start": 29.94,
+  "end": 30.42
+ },
+ {
+  "text": "will",
+  "start": 30.564,
+  "end": 31.14
+ },
+ {
+  "text": "probably",
+  "start": 31.193,
+  "end": 31.62
+ },
+ {
+  "text": "belong",
+  "start": 31.689,
+  "end": 32.1
+ },
+ {
+  "text": "to",
+  "start": 32.153,
+  "end": 32.26
+ },
+ {
+  "text": "someone",
+  "start": 32.31,
+  "end": 32.66
+ },
+ {
+  "text": "else",
+  "start": 32.708,
+  "end": 32.9
+ },
+ {
+  "text": "one",
+  "start": 32.96,
+  "end": 33.14
+ },
+ {
+  "text": "day.",
+  "start": 33.24,
+  "end": 33.7
+ },
+ {
+  "text": "Someone",
+  "start": 34.5,
+  "end": 35.37
+ },
+ {
+  "text": "who",
+  "start": 35.41,
+  "end": 35.53
+ },
+ {
+  "text": "never",
+  "start": 35.583,
+  "end": 35.85
+ },
+ {
+  "text": "met",
+  "start": 35.93,
+  "end": 36.17
+ },
+ {
+  "text": "you.",
+  "start": 36.25,
+  "end": 36.57
+ },
+ {
+  "text": "They",
+  "start": 38.442,
+  "end": 39.0
+ },
+ {
+  "text": "won't",
+  "start": 39.04,
+  "end": 39.24
+ },
+ {
+  "text": "know",
+  "start": 39.288,
+  "end": 39.48
+ },
+ {
+  "text": "it",
+  "start": 39.533,
+  "end": 39.64
+ },
+ {
+  "text": "was",
+  "start": 39.68,
+  "end": 39.8
+ },
+ {
+  "text": "yours.",
+  "start": 39.907,
+  "end": 40.52
+ },
+ {
+  "text": "I",
+  "start": 41.545,
+  "end": 41.9
+ },
+ {
+  "text": "could",
+  "start": 41.94,
+  "end": 42.14
+ },
+ {
+  "text": "stop",
+  "start": 42.22,
+  "end": 42.54
+ },
+ {
+  "text": "it.",
+  "start": 42.62,
+  "end": 42.86
+ },
+ {
+  "text": "...I'm",
+  "start": 43.935,
+  "end": 44.331
+ },
+ {
+  "text": "not",
+  "start": 44.391,
+  "end": 44.571
+ },
+ {
+  "text": "going",
+  "start": 44.624,
+  "end": 44.891
+ },
+ {
+  "text": "to.",
+  "start": 44.998,
+  "end": 45.371
+ },
+ {
+  "text": "It",
+  "start": 49.21,
+  "end": 49.221
+ },
+ {
+  "text": "was",
+  "start": 49.261,
+  "end": 49.381
+ },
+ {
+  "text": "never",
+  "start": 49.434,
+  "end": 49.701
+ },
+ {
+  "text": "mine.",
+  "start": 49.829,
+  "end": 50.855
+ },
+ {
+  "text": "I",
+  "start": 51.931,
+  "end": 52.231
+ },
+ {
+  "text": "just",
+  "start": 52.295,
+  "end": 52.551
+ },
+ {
+  "text": "sat",
+  "start": 52.631,
+  "end": 52.871
+ },
+ {
+  "text": "in",
+  "start": 52.924,
+  "end": 53.031
+ },
+ {
+  "text": "it.",
+  "start": 53.111,
+  "end": 53.351
+ },
+ {
+  "text": "Some",
+  "start": 54.793,
+  "end": 54.921
+ },
+ {
+  "text": "of",
+  "start": 54.974,
+  "end": 55.081
+ },
+ {
+  "text": "what's",
+  "start": 55.129,
+  "end": 55.401
+ },
+ {
+  "text": "in",
+  "start": 55.428,
+  "end": 55.481
+ },
+ {
+  "text": "your",
+  "start": 55.513,
+  "end": 55.641
+ },
+ {
+  "text": "room",
+  "start": 55.689,
+  "end": 55.881
+ },
+ {
+  "text": "right",
+  "start": 55.934,
+  "end": 56.201
+ },
+ {
+  "text": "now",
+  "start": 56.301,
+  "end": 56.601
+ },
+ {
+  "text": "will",
+  "start": 56.761,
+  "end": 57.401
+ },
+ {
+  "text": "belong",
+  "start": 57.47,
+  "end": 57.881
+ },
+ {
+  "text": "to",
+  "start": 57.934,
+  "end": 58.041
+ },
+ {
+  "text": "someone",
+  "start": 58.091,
+  "end": 58.441
+ },
+ {
+  "text": "you'll",
+  "start": 58.461,
+  "end": 58.601
+ },
+ {
+  "text": "never",
+  "start": 58.654,
+  "end": 58.921
+ },
+ {
+  "text": "meet.",
+  "start": 59.001,
+  "end": 59.481
+ }
+]

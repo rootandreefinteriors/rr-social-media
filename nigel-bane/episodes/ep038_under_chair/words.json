@@ -1,0 +1,482 @@
+[
+ {
+  "text": "Hello?",
+  "start": 0.443,
+  "end": 0.64
+ },
+ {
+  "text": "Is",
+  "start": 1.04,
+  "end": 1.57
+ },
+ {
+  "text": "anyone",
+  "start": 1.627,
+  "end": 1.97
+ },
+ {
+  "text": "out",
+  "start": 2.03,
+  "end": 2.21
+ },
+ {
+  "text": "there?",
+  "start": 2.263,
+  "end": 2.69
+ },
+ {
+  "text": "Don't",
+  "start": 3.46,
+  "end": 3.57
+ },
+ {
+  "text": "blink.",
+  "start": 3.663,
+  "end": 4.21
+ },
+ {
+  "text": "Watch",
+  "start": 4.45,
+  "end": 5.11
+ },
+ {
+  "text": "it",
+  "start": 5.163,
+  "end": 5.27
+ },
+ {
+  "text": "with",
+  "start": 5.318,
+  "end": 5.51
+ },
+ {
+  "text": "me.",
+  "start": 5.617,
+  "end": 5.91
+ },
+ {
+  "text": "Under",
+  "start": 6.163,
+  "end": 6.79
+ },
+ {
+  "text": "the",
+  "start": 6.83,
+  "end": 6.95
+ },
+ {
+  "text": "chair.",
+  "start": 7.057,
+  "end": 7.67
+ },
+ {
+  "text": "Two",
+  "start": 8.1,
+  "end": 8.58
+ },
+ {
+  "text": "eyes.",
+  "start": 8.708,
+  "end": 9.72
+ },
+ {
+  "text": "...It's",
+  "start": 10.12,
+  "end": 10.64
+ },
+ {
+  "text": "the",
+  "start": 10.66,
+  "end": 10.72
+ },
+ {
+  "text": "mouse.",
+  "start": 10.827,
+  "end": 11.82
+ },
+ {
+  "text": "It",
+  "start": 11.82,
+  "end": 12.2
+ },
+ {
+  "text": "stares",
+  "start": 12.28,
+  "end": 12.76
+ },
+ {
+  "text": "until",
+  "start": 12.813,
+  "end": 13.08
+ },
+ {
+  "text": "you",
+  "start": 13.1,
+  "end": 13.16
+ },
+ {
+  "text": "look",
+  "start": 13.208,
+  "end": 13.4
+ },
+ {
+  "text": "away.",
+  "start": 13.512,
+  "end": 14.46
+ },
+ {
+  "text": "Then",
+  "start": 16.36,
+  "end": 16.76
+ },
+ {
+  "text": "it's",
+  "start": 16.787,
+  "end": 17.0
+ },
+ {
+  "text": "gone.",
+  "start": 17.096,
+  "end": 17.56
+ },
+ {
+  "text": "I'm",
+  "start": 17.9,
+  "end": 18.31
+ },
+ {
+  "text": "not",
+  "start": 18.39,
+  "end": 18.63
+ },
+ {
+  "text": "looking",
+  "start": 18.68,
+  "end": 19.03
+ },
+ {
+  "text": "away.",
+  "start": 19.126,
+  "end": 20.07
+ },
+ {
+  "text": "It",
+  "start": 22.359,
+  "end": 22.38
+ },
+ {
+  "text": "does",
+  "start": 22.428,
+  "end": 22.62
+ },
+ {
+  "text": "this",
+  "start": 22.668,
+  "end": 22.86
+ },
+ {
+  "text": "at",
+  "start": 22.913,
+  "end": 23.02
+ },
+ {
+  "text": "night.",
+  "start": 23.1,
+  "end": 23.58
+ },
+ {
+  "text": "It",
+  "start": 24.52,
+  "end": 24.89
+ },
+ {
+  "text": "watches",
+  "start": 24.95,
+  "end": 25.37
+ },
+ {
+  "text": "me",
+  "start": 25.423,
+  "end": 25.53
+ },
+ {
+  "text": "sleep.",
+  "start": 25.637,
+  "end": 26.25
+ },
+ {
+  "text": "I've",
+  "start": 26.68,
+  "end": 27.18
+ },
+ {
+  "text": "woken",
+  "start": 27.22,
+  "end": 27.5
+ },
+ {
+  "text": "up",
+  "start": 27.633,
+  "end": 27.9
+ },
+ {
+  "text": "and",
+  "start": 27.98,
+  "end": 28.22
+ },
+ {
+  "text": "seen",
+  "start": 28.3,
+  "end": 28.62
+ },
+ {
+  "text": "the",
+  "start": 28.64,
+  "end": 28.7
+ },
+ {
+  "text": "eyes.",
+  "start": 28.844,
+  "end": 29.42
+ },
+ {
+  "text": "...Not",
+  "start": 30.2,
+  "end": 30.71
+ },
+ {
+  "text": "every",
+  "start": 30.763,
+  "end": 31.03
+ },
+ {
+  "text": "night.",
+  "start": 31.097,
+  "end": 31.59
+ },
+ {
+  "text": "...I",
+  "start": 32.51,
+  "end": 32.95
+ },
+ {
+  "text": "think",
+  "start": 33.017,
+  "end": 33.35
+ },
+ {
+  "text": "every",
+  "start": 33.417,
+  "end": 33.75
+ },
+ {
+  "text": "night.",
+  "start": 33.803,
+  "end": 34.23
+ },
+ {
+  "text": "Something",
+  "start": 35.74,
+  "end": 35.83
+ },
+ {
+  "text": "in",
+  "start": 35.883,
+  "end": 35.99
+ },
+ {
+  "text": "your",
+  "start": 36.022,
+  "end": 36.15
+ },
+ {
+  "text": "home",
+  "start": 36.23,
+  "end": 36.55
+ },
+ {
+  "text": "has",
+  "start": 36.61,
+  "end": 36.79
+ },
+ {
+  "text": "probably",
+  "start": 36.843,
+  "end": 37.27
+ },
+ {
+  "text": "watched",
+  "start": 37.33,
+  "end": 37.75
+ },
+ {
+  "text": "you",
+  "start": 37.79,
+  "end": 37.91
+ },
+ {
+  "text": "sleep.",
+  "start": 37.99,
+  "end": 38.47
+ },
+ {
+  "text": "With",
+  "start": 38.806,
+  "end": 39.36
+ },
+ {
+  "text": "your",
+  "start": 39.408,
+  "end": 39.6
+ },
+ {
+  "text": "mouth",
+  "start": 39.653,
+  "end": 39.92
+ },
+ {
+  "text": "open.",
+  "start": 40.016,
+  "end": 40.401
+ },
+ {
+  "text": "And",
+  "start": 41.34,
+  "end": 41.74
+ },
+ {
+  "text": "you'll",
+  "start": 41.78,
+  "end": 41.98
+ },
+ {
+  "text": "never",
+  "start": 42.033,
+  "end": 42.3
+ },
+ {
+  "text": "know",
+  "start": 42.332,
+  "end": 42.46
+ },
+ {
+  "text": "what",
+  "start": 42.492,
+  "end": 42.62
+ },
+ {
+  "text": "it",
+  "start": 42.673,
+  "end": 42.78
+ },
+ {
+  "text": "was.",
+  "start": 42.94,
+  "end": 43.88
+ },
+ {
+  "text": "My",
+  "start": 45.0,
+  "end": 45.16
+ },
+ {
+  "text": "eyes",
+  "start": 45.24,
+  "end": 45.56
+ },
+ {
+  "text": "are",
+  "start": 45.6,
+  "end": 45.72
+ },
+ {
+  "text": "stinging.",
+  "start": 45.773,
+  "end": 46.52
+ },
+ {
+  "text": "...I",
+  "start": 47.96,
+  "end": 48.39
+ },
+ {
+  "text": "can't...",
+  "start": 48.49,
+  "end": 49.65
+ },
+ {
+  "text": "...Gone.",
+  "start": 51.25,
+  "end": 52.29
+ },
+ {
+  "text": "How",
+  "start": 53.885,
+  "end": 53.93
+ },
+ {
+  "text": "many",
+  "start": 53.978,
+  "end": 54.17
+ },
+ {
+  "text": "things",
+  "start": 54.216,
+  "end": 54.49
+ },
+ {
+  "text": "in",
+  "start": 54.543,
+  "end": 54.65
+ },
+ {
+  "text": "your",
+  "start": 54.682,
+  "end": 54.81
+ },
+ {
+  "text": "home",
+  "start": 54.89,
+  "end": 55.21
+ },
+ {
+  "text": "have",
+  "start": 55.258,
+  "end": 55.45
+ },
+ {
+  "text": "watched",
+  "start": 55.5,
+  "end": 55.85
+ },
+ {
+  "text": "you",
+  "start": 55.89,
+  "end": 56.01
+ },
+ {
+  "text": "sleep?",
+  "start": 56.103,
+  "end": 56.73
+ },
+ {
+  "text": "...You",
+  "start": 57.09,
+  "end": 57.44
+ },
+ {
+  "text": "don't",
+  "start": 57.5,
+  "end": 57.76
+ },
+ {
+  "text": "know",
+  "start": 57.808,
+  "end": 58.0
+ },
+ {
+  "text": "either.",
+  "start": 58.08,
+  "end": 58.8
+ }
+]
