@@ -469,28 +469,41 @@ Post time is 9 PM ET. Day 13 went out a day late (missed slot); every later day 
 - **cover:** 41.2 s, looking over toward the corner the mouse comes from.
 - **script:** Hello? Is anyone out there? Stay here. Watch the room for me. Tell me if anything moves. Something lives in here. It only comes out when I'm gone. I'm going to step out. Just for a minute. ...Anything? ...It was out, wasn't it. I can tell by your face. I've never seen it. Not once. It knows exactly how long I'm gone. It knows the sound of me coming back. ...Every other room in your home is empty right now. Probably.
 
-### D37 · nearing · "Ceiling" · 2026-11-16 (Mon) · 62.9 s
-- **idea:** you lie under your ceiling every night and couldn't describe it.
-- **you:** strong. "Now think of yours. Don't look. What colour is it, exactly? Is there a mark on it? A corner where the paint doesn't match?" then real silence; "And I bet you couldn't draw it."
-- **first seconds:** he's already going down to the floor as he says it: "Lie down with me. ...On your back. Go on."
-- **prop:** the ceiling, shown for the first time (a grey slab with hairline cracks across the top of the room).
-- **tension:** medium-strong, a visible yes/no. Every cut back to the wide shot the ceiling is lower; will it come down onto the window? It rests on the window's top frame on the last line. He notices: "Mine's lower than it was. ...No. It isn't. It is."
-- **visual:** lying on the floor face up; extreme close-up on his eyes for the whispered "It is."; four cracks, then five.
-- **dread:** no. Unsettling line: the whispered "It is."
-- **hook:** "I count the cracks up there every night. ...Five. I don't remember the number going up." *Admission, lands on the viewer.*
-- **four elements:** C "Lie down with me. ...On your back. Go on." · R perception: the ceiling you look at and never see (the question) · E lonely, eerie underneath · T the ceiling lower at every wide cut; does it reach the window?
-- **cover:** 54.2 s, extreme close on his open eyes staring up.
-- **script:** Hello? Is anyone out there? Lie down with me. ...On your back. Go on. That's my ceiling. I look at it every night. Not past it. At it. Now think of yours. Don't look. ...What colour is it, exactly? Is there a mark on it? A corner where the paint doesn't match? ... You've spent more nights under it than anywhere else, probably. Thousands of hours, right under it. And I bet you couldn't draw it. Mine's lower than it was. ...No. It isn't. It is. I count the cracks up there every night. ...Five. I don't remember the number going up.
+### D37 · inching · "Trust (mouse 2/4)" · 2026-11-16 (Mon) · 61.9 s
+- **idea:** before anything comes near you, it has to decide you're safe.
+- **you:** strong. "Someone you love did it once. The first time they leaned on you, they'd already decided. You didn't see them decide."
+- **first seconds:** whispered command as he kneels and lays his hand flat on the floor: "Hold out your hand. Flat. Don't move it."
+- **prop:** the mouse (arc 2/4), named plainly: "There's a mouse. By the chair." The tagged chair stands in the room.
+- **tension:** strong, a visible yes/no set up in words: "If I move, it goes. If I don't... it might come." The mouse edges toward his hand in short dashes; when his hand shakes it turns tail; it comes again; its nose and paw reach his fingertips on the last line.
+- **visual:** low floor shots: his flat hand, the gap, the mouse; close on fingertips and nose at the end.
+- **dread:** no. Unsettling line: "Don't. Don't go." (whispered).
+- **hook:** "Someone decided you were safe, once. You never found out which day." *Said over the touch.*
+- **four elements:** C "Hold out your hand. Flat. Don't move it." · R someone you love (someone else) · E tender, uneasy underneath · T will the mouse come all the way to his hand?
+- **cover:** 54.2 s, his flat hand with the mouse a whisker away, his eyes above.
+- **script:** Hello? Is anyone out there? Hold out your hand. Flat. Don't move it. There's a mouse. By the chair. ...If I move, it goes. If I don't... it might come. ... It's deciding. Look at it. Most things that come close to you have to do this first. Someone you love did it once. The first time they leaned on you, they'd already decided. You didn't see them decide. My hand's shaking. ...Don't. Don't go. ... It's coming. Someone decided you were safe, once. You never found out which day.
 
-### D38 · shedding · "Dust (mouse 2/4)" · 2026-11-17 (Tue) · 62.3 s
-- **idea:** some of the dust in your room used to be you.
-- **you:** strong. "Your hand's out right now. In your room. Some of it is landing on you, too. Too small to see."
-- **first seconds:** he's going down on his knees, reaching into a sunbeam on the floor: "Hold out your hand. Slowly. Into the light."
-- **prop:** a sunbeam with dust turning in it (one episode); the mouse (arc 2/4), named plainly: "There's a mouse. In the sun, by my hand."
-- **tension:** strong, a visible yes/no. The beam slides off his hand while the mouse edges toward his fingertip in stop-start dashes; will it reach him before the light goes? It touches his fingertip in the held silence; the light leaves his hand on the last line.
-- **visual:** the sunbeam from the window to the floor, gold dust motes; close on fingertip and mouse nose.
-- **dread:** no. Unsettling line: "Some of it is skin. A little, every day, without asking."
-- **hook:** "Some of that was you." *Action ending, viewer-centric.*
-- **four elements:** C "Hold out your hand. Slowly. Into the light." · R your body: the skin you shed (caught: your hand is out right now) · E tender, eerie underneath · T will the mouse reach his fingertip before the light leaves it?
-- **cover:** 59.0 s, the mouse's nose on his fingertip.
-- **script:** Hello? Is anyone out there? Hold out your hand. Slowly. Into the light. ...See it? All those little bits, turning. Don't move. There's a mouse. In the sun, by my hand. It's eating something off the floor. ...It's eating the dust. Dust is a lot of things. Some of it is skin. A little, every day, without asking. Your hand's out right now. In your room. Some of it is landing on you, too. Too small to see. The light's moving. ...It's coming. Come on. Before it goes. ... Some of that was you.
+### D38 · unblinking · "Under the chair (mouse 3/4)" · 2026-11-17 (Tue) · 61.4 s
+- **idea:** something in your home has probably watched you sleep.
+- **you:** strong. "Something in your home has probably watched you sleep. With your mouth open. And you'll never know what it was."
+- **first seconds:** down low on the floor facing the chair: "Don't blink. Watch it with me."
+- **prop:** two small eyes in the shadow under the tagged chair: "It's the mouse."
+- **tension:** strong, set up in words: "It stares until you look away. Then it's gone. I'm not looking away." A staring match with no blinks, cutting between his eyes and the two dots, the silences longer; he blinks and they're gone.
+- **visual:** night; the soft shadow under the seat with two glowing dots; extreme close-up on his straining eyes.
+- **dread:** no. Unsettling line: "With your mouth open."
+- **hook:** "How many things in your home have watched you sleep? ...You don't know either." *Question, viewer-centric.*
+- **four elements:** C "Don't blink. Watch it with me." · R your home at night (the turn) · E eerie · T the staring match: who looks away first?
+- **cover:** COVER38
+- **script:** Hello? Is anyone out there? Don't blink. Watch it with me. Under the chair. Two eyes. ...It's the mouse. It stares until you look away. Then it's gone. I'm not looking away. ... It does this at night. It watches me sleep. I've woken up and seen the eyes. ...Not every night. ...I think every night. Something in your home has probably watched you sleep. With your mouth open. And you'll never know what it was. ... My eyes are stinging. ...I can't... ...Gone. How many things in your home have watched you sleep? ...You don't know either.
+
+### D39 · outlasting · "Taken back (DREAD; mouse 4/4)" · 2026-11-18 (Wed) · 62.0 s
+- **idea:** almost everything you own will outlast you and go to someone you'll never meet.
+- **you:** strong. "Whatever you're holding right now will probably belong to someone else one day. Someone who never met you. They won't know it was yours."
+- **first seconds:** hands to his chest: "Hold on to something near you." He turns to the window; behind him, the chair slides.
+- **prop:** the tagged chair (D32–39) and the mouse (D36–39); both leave on camera. The room is empty afterwards.
+- **tension:** strong, set up in words: "It moved. The chair. While I wasn't looking." It only moves when he isn't looking; it creeps while he talks to us; it stops when he looks at it; when he looks away it goes, with the mouse beside it.
+- **visual:** wide shots holding Nigel and the chair together so the viewer sees it move; flat grey window; no hum.
+- **dread:** yes (closes the mouse arc and the chair). Unsettling line: "I could stop it. ...I'm not going to."
+- **hook:** "Some of what's in your room right now will belong to someone you'll never meet." *Whispered flat fact.*
+- **four elements:** C "Hold on to something near you." · R the things you own, after you (caught) · E quietly frightening · T the chair moves whenever he isn't looking; will he stop it?
+- **cover:** COVER39
+- **script:** Hello? Is anyone out there? Hold on to something near you. ... It moved. The chair. While I wasn't looking. Somebody left it for me. It fit me exactly. ... Again. The mouse lives under it. ...It's going with it. Whatever you're holding right now will probably belong to someone else one day. Someone who never met you. They won't know it was yours. I could stop it. ...I'm not going to. ... It was never mine. I just sat in it. Some of what's in your room right now will belong to someone you'll never meet.

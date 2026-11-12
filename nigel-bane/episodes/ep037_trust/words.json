@@ -1,0 +1,442 @@
+[
+ {
+  "text": "Hello?",
+  "start": 0.369,
+  "end": 0.56
+ },
+ {
+  "text": "Is",
+  "start": 0.933,
+  "end": 1.44
+ },
+ {
+  "text": "anyone",
+  "start": 1.497,
+  "end": 1.84
+ },
+ {
+  "text": "out",
+  "start": 1.92,
+  "end": 2.16
+ },
+ {
+  "text": "there?",
+  "start": 2.2,
+  "end": 2.56
+ },
+ {
+  "text": "Hold",
+  "start": 3.392,
+  "end": 3.44
+ },
+ {
+  "text": "out",
+  "start": 3.5,
+  "end": 3.68
+ },
+ {
+  "text": "your",
+  "start": 3.712,
+  "end": 3.84
+ },
+ {
+  "text": "hand.",
+  "start": 3.936,
+  "end": 4.4
+ },
+ {
+  "text": "Flat.",
+  "start": 4.768,
+  "end": 5.74
+ },
+ {
+  "text": "Don't",
+  "start": 5.96,
+  "end": 6.66
+ },
+ {
+  "text": "move",
+  "start": 6.724,
+  "end": 6.98
+ },
+ {
+  "text": "it.",
+  "start": 7.087,
+  "end": 7.775
+ },
+ {
+  "text": "There's",
+  "start": 8.437,
+  "end": 8.55
+ },
+ {
+  "text": "a",
+  "start": 8.59,
+  "end": 8.63
+ },
+ {
+  "text": "mouse.",
+  "start": 8.737,
+  "end": 9.43
+ },
+ {
+  "text": "By",
+  "start": 9.785,
+  "end": 10.18
+ },
+ {
+  "text": "the",
+  "start": 10.22,
+  "end": 10.34
+ },
+ {
+  "text": "chair.",
+  "start": 10.447,
+  "end": 11.06
+ },
+ {
+  "text": "...If",
+  "start": 12.095,
+  "end": 12.53
+ },
+ {
+  "text": "I",
+  "start": 12.61,
+  "end": 12.69
+ },
+ {
+  "text": "move,",
+  "start": 12.802,
+  "end": 13.49
+ },
+ {
+  "text": "it",
+  "start": 13.703,
+  "end": 14.13
+ },
+ {
+  "text": "goes.",
+  "start": 14.274,
+  "end": 14.93
+ },
+ {
+  "text": "If",
+  "start": 15.883,
+  "end": 16.3
+ },
+ {
+  "text": "I",
+  "start": 16.38,
+  "end": 16.46
+ },
+ {
+  "text": "don't...",
+  "start": 16.54,
+  "end": 17.1
+ },
+ {
+  "text": "it",
+  "start": 17.527,
+  "end": 17.96
+ },
+ {
+  "text": "might",
+  "start": 18.013,
+  "end": 18.28
+ },
+ {
+  "text": "come.",
+  "start": 18.376,
+  "end": 18.92
+ },
+ {
+  "text": "It's",
+  "start": 23.083,
+  "end": 23.27
+ },
+ {
+  "text": "deciding.",
+  "start": 23.341,
+  "end": 24.15
+ },
+ {
+  "text": "Look",
+  "start": 24.39,
+  "end": 25.03
+ },
+ {
+  "text": "at",
+  "start": 25.11,
+  "end": 25.27
+ },
+ {
+  "text": "it.",
+  "start": 25.323,
+  "end": 25.67
+ },
+ {
+  "text": "Most",
+  "start": 26.195,
+  "end": 26.74
+ },
+ {
+  "text": "things",
+  "start": 26.797,
+  "end": 27.14
+ },
+ {
+  "text": "that",
+  "start": 27.172,
+  "end": 27.3
+ },
+ {
+  "text": "come",
+  "start": 27.348,
+  "end": 27.54
+ },
+ {
+  "text": "close",
+  "start": 27.607,
+  "end": 27.94
+ },
+ {
+  "text": "to",
+  "start": 27.967,
+  "end": 28.02
+ },
+ {
+  "text": "you",
+  "start": 28.08,
+  "end": 28.26
+ },
+ {
+  "text": "have",
+  "start": 28.308,
+  "end": 28.5
+ },
+ {
+  "text": "to",
+  "start": 28.527,
+  "end": 28.58
+ },
+ {
+  "text": "do",
+  "start": 28.66,
+  "end": 28.82
+ },
+ {
+  "text": "this",
+  "start": 28.868,
+  "end": 29.06
+ },
+ {
+  "text": "first.",
+  "start": 29.153,
+  "end": 29.78
+ },
+ {
+  "text": "Someone",
+  "start": 31.32,
+  "end": 31.6
+ },
+ {
+  "text": "you",
+  "start": 31.64,
+  "end": 31.76
+ },
+ {
+  "text": "love",
+  "start": 31.84,
+  "end": 32.16
+ },
+ {
+  "text": "did",
+  "start": 32.2,
+  "end": 32.32
+ },
+ {
+  "text": "it",
+  "start": 32.373,
+  "end": 32.48
+ },
+ {
+  "text": "once.",
+  "start": 32.592,
+  "end": 33.525
+ },
+ {
+  "text": "The",
+  "start": 33.925,
+  "end": 34.24
+ },
+ {
+  "text": "first",
+  "start": 34.307,
+  "end": 34.64
+ },
+ {
+  "text": "time",
+  "start": 34.688,
+  "end": 34.88
+ },
+ {
+  "text": "they",
+  "start": 34.928,
+  "end": 35.12
+ },
+ {
+  "text": "leaned",
+  "start": 35.166,
+  "end": 35.44
+ },
+ {
+  "text": "on",
+  "start": 35.52,
+  "end": 35.68
+ },
+ {
+  "text": "you,",
+  "start": 35.74,
+  "end": 36.72
+ },
+ {
+  "text": "they'd",
+  "start": 36.736,
+  "end": 36.88
+ },
+ {
+  "text": "already",
+  "start": 36.93,
+  "end": 37.28
+ },
+ {
+  "text": "decided.",
+  "start": 37.37,
+  "end": 38.08
+ },
+ {
+  "text": "You",
+  "start": 38.44,
+  "end": 38.92
+ },
+ {
+  "text": "didn't",
+  "start": 38.968,
+  "end": 39.24
+ },
+ {
+  "text": "see",
+  "start": 39.3,
+  "end": 39.48
+ },
+ {
+  "text": "them",
+  "start": 39.512,
+  "end": 39.64
+ },
+ {
+  "text": "decide.",
+  "start": 39.731,
+  "end": 40.52
+ },
+ {
+  "text": "My",
+  "start": 42.207,
+  "end": 42.26
+ },
+ {
+  "text": "hand's",
+  "start": 42.34,
+  "end": 42.74
+ },
+ {
+  "text": "shaking.",
+  "start": 42.81,
+  "end": 43.38
+ },
+ {
+  "text": "...Don't.",
+  "start": 44.34,
+  "end": 45.25
+ },
+ {
+  "text": "Don't",
+  "start": 45.61,
+  "end": 46.22
+ },
+ {
+  "text": "go.",
+  "start": 46.353,
+  "end": 46.7
+ },
+ {
+  "text": "It's",
+  "start": 50.169,
+  "end": 50.34
+ },
+ {
+  "text": "coming.",
+  "start": 50.397,
+  "end": 50.82
+ },
+ {
+  "text": "Someone",
+  "start": 53.512,
+  "end": 53.6
+ },
+ {
+  "text": "decided",
+  "start": 53.68,
+  "end": 54.24
+ },
+ {
+  "text": "you",
+  "start": 54.28,
+  "end": 54.4
+ },
+ {
+  "text": "were",
+  "start": 54.448,
+  "end": 54.64
+ },
+ {
+  "text": "safe,",
+  "start": 54.752,
+  "end": 55.76
+ },
+ {
+  "text": "once.",
+  "start": 55.872,
+  "end": 56.825
+ },
+ {
+  "text": "You",
+  "start": 57.225,
+  "end": 57.55
+ },
+ {
+  "text": "never",
+  "start": 57.603,
+  "end": 57.87
+ },
+ {
+  "text": "found",
+  "start": 57.937,
+  "end": 58.27
+ },
+ {
+  "text": "out",
+  "start": 58.31,
+  "end": 58.43
+ },
+ {
+  "text": "which",
+  "start": 58.483,
+  "end": 58.75
+ },
+ {
+  "text": "day.",
+  "start": 58.87,
+  "end": 59.39
+ }
+]
