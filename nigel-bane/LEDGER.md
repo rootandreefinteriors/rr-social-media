@@ -127,18 +127,16 @@ with "you do this too" plus a list, and seven of the eight ended on an aphorism 
 
 ## Upcoming
 **Re-synced to BIBLE.md on 2026-11-12 (user):** arcs run on consecutive days, 3–5 episodes each, and close with their
-props leaving on camera; nothing from another arc goes in the middle of one; dread days sit inside an arc. Chapter 2
-from D35 (full entries in BIBLE.md, Chapter 2):
-- **Chair arc** D31–35: D35 "Taken back" is NEW: the chair leaves on camera. Nothing else in the room after it.
-- **The room gets smaller** D36–39: D36 DREAD "Upstairs" (opens the arc), D37 "Ceiling", D38 "Eleven steps" (NEW
-  entry: the ceiling still low, the walk shorter), D39 "Don't count" (the room back to its old size, on camera).
-- **Mouse arc** D40–43: D40 "Empty room", D41 "Dust", D42 "Corner", D43 DREAD "No way out" (the mouse leaves; no hole).
-- One-episode ideas D44–50; **keeper arc** D51–55 (gifts leave on D55); one-episode ideas D56–59; chapter landing D60.
+props leaving on camera; nothing from another arc goes in the middle of one; dread days sit inside an arc. Days 26–36
+were already made and stay as they are (D35 "Upstairs" aired as a stand-alone dread day before this rule). From D37
+(full entries in BIBLE.md, Chapter 2):
+- **Mouse arc** D36–39: D36 "Empty room" (made), D37 "Dust", D38 "Under the chair" (NEW: eyes under the chair),
+  D39 DREAD "Taken back" (NEW: the chair slides out of the room on its own and the mouse goes with it; both props exit).
+- **The room gets smaller** D40–42: D40 "Ceiling", D41 "Eleven steps", D42 "Don't count" (the room back to its old size).
+- One-episode ideas D43–50; **keeper arc** D51–55 (gifts leave on D55); one-episode ideas D56–59; chapter landing D60.
 
-**Already made under the old order** (pending the owner's go-ahead to re-number and re-schedule them):
-- `creaking` (made as D35, Upstairs) → becomes **D36**: re-render with tally 36 and no chair.
-- `vacating` (made as D36, Empty room) → becomes **D40**: re-render with tally 40 and no chair.
-- `nearing` (D37, Ceiling) stays **D37** as made (correctly has no chair).
-- `shedding` (made as D38, Dust) → becomes **D41**: re-render with tally 41.
-- New to make: **D35** "Taken back", **D38** "Eleven steps", **D39** "Don't count".
+**Made this week under the old order** (unaired; pending the owner's go-ahead):
+- `shedding` (made as D38, Dust) → becomes **D37**: re-render with tally 37 and the chair standing at the right.
+- `nearing` (made as D37, Ceiling) → becomes **D40**: re-render with tally 40 (no chair: correct after D39).
+- New to make: **D38** "Under the chair", **D39** DREAD "Taken back", then D41, D42.
 The "Produced" rows above keep their made-as day numbers until the re-numbered versions are rendered and posted.
