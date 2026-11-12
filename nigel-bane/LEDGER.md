@@ -126,16 +126,19 @@ with "you do this too" plus a list, and seven of the eight ended on an aphorism 
 | 38 | caught (your hand is out right now; dust is landing on it) | action (the light leaves his hand on "Some of that was you.") | yes ("some of it is skin") |
 
 ## Upcoming
-Chapter 1 ended on D25. **Chapter 2 "The Room" (D26–60): see BIBLE.md** — an idea bank in a suggested running order
-(D26 the spider leaves and the web comes down — nothing in the room is permanent; crack D27–30; the tag and the chair
-from D31; dread days D35 and D47; chapter landing D60). Pick each episode's idea
-first; props, tension and hook follow from it. **Every Chapter 2 line now has its command (C) and tension (T) written in;
-use them, or replace them with something equally strong, and keep all four elements.** New: a mouse arc runs from D36 to D46, starting in D36 and leaving in D46 (BIBLE.md, Chapter 2). Runtime is 61 s minimum, dread
-days included (D35, D47).
-**Review 2026-11-06:** D32's tension is now his own held phone-hunch (not a viewer test; D34 stays the week's dare)
-and its R lands on the things made for you, not the body. D31 is staged still (crouched over the tag), D33 in
-tightening laps. Every episode's R should include a line catching the viewer in the act (BIBLE "Build on what works").
-**Review 2026-11-11:** give every T a visible yes/no answered on camera (D29 "will the tape hold?" was the batch's
-over-performer). D37's ceiling now visibly lowers each wide shot until it rests on the window; D39's closer is "…Didn't
-you." (truth test); D43's command and tension re-varied (no count command, he stretches his steps to reach twelve) so
-D42–44 aren't three step counts in a row.
+**Re-synced to BIBLE.md on 2026-11-12 (user):** arcs run on consecutive days, 3–5 episodes each, and close with their
+props leaving on camera; nothing from another arc goes in the middle of one; dread days sit inside an arc. Chapter 2
+from D35 (full entries in BIBLE.md, Chapter 2):
+- **Chair arc** D31–35: D35 "Taken back" is NEW: the chair leaves on camera. Nothing else in the room after it.
+- **The room gets smaller** D36–39: D36 DREAD "Upstairs" (opens the arc), D37 "Ceiling", D38 "Eleven steps" (NEW
+  entry: the ceiling still low, the walk shorter), D39 "Don't count" (the room back to its old size, on camera).
+- **Mouse arc** D40–43: D40 "Empty room", D41 "Dust", D42 "Corner", D43 DREAD "No way out" (the mouse leaves; no hole).
+- One-episode ideas D44–50; **keeper arc** D51–55 (gifts leave on D55); one-episode ideas D56–59; chapter landing D60.
+
+**Already made under the old order** (pending the owner's go-ahead to re-number and re-schedule them):
+- `creaking` (made as D35, Upstairs) → becomes **D36**: re-render with tally 36 and no chair.
+- `vacating` (made as D36, Empty room) → becomes **D40**: re-render with tally 40 and no chair.
+- `nearing` (D37, Ceiling) stays **D37** as made (correctly has no chair).
+- `shedding` (made as D38, Dust) → becomes **D41**: re-render with tally 41.
+- New to make: **D35** "Taken back", **D38** "Eleven steps", **D39** "Don't count".
+The "Produced" rows above keep their made-as day numbers until the re-numbered versions are rendered and posted.
