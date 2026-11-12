@@ -126,17 +126,16 @@ with "you do this too" plus a list, and seven of the eight ended on an aphorism 
 | 38 | caught (your hand is out right now; dust is landing on it) | action (the light leaves his hand on "Some of that was you.") | yes ("some of it is skin") |
 
 ## Upcoming
-**Re-synced to BIBLE.md on 2026-11-12 (user):** arcs run on consecutive days, 3–5 episodes each, and close with their
-props leaving on camera; nothing from another arc goes in the middle of one; dread days sit inside an arc. Days 26–36
-were already made and stay as they are (D35 "Upstairs" aired as a stand-alone dread day before this rule). From D37
-(full entries in BIBLE.md, Chapter 2):
-- **Mouse arc** D36–39: D36 "Empty room" (made), D37 "Dust", D38 "Under the chair" (NEW: eyes under the chair),
-  D39 DREAD "Taken back" (NEW: the chair slides out of the room on its own and the mouse goes with it; both props exit).
-- **The room gets smaller** D40–42: D40 "Ceiling", D41 "Eleven steps", D42 "Don't count" (the room back to its old size).
-- One-episode ideas D43–50; **keeper arc** D51–55 (gifts leave on D55); one-episode ideas D56–59; chapter landing D60.
+**Re-synced to BIBLE.md on 2026-11-12 (user):** every episode belongs to an arc of 3–5 days in a row; nothing from
+another arc goes in the middle of one; each arc's props leave on camera at its end; dread days sit inside an arc; every
+tension is set up on screen so a first-time viewer knows what to watch for. Days 26–36 were already made and stay as
+they are. From D37 (full entries in BIBLE.md, Chapter 2): mouse D36–39 (D39 DREAD: the mouse leaves and takes the
+chair) · room gets smaller D40–43 · keeper D44–47 · glass D48–51 · window D52–55 · the night the room woke up D56–60
+(chapter landing).
 
 **Made this week under the old order** (unaired; pending the owner's go-ahead):
-- `shedding` (made as D38, Dust) → becomes **D37**: re-render with tally 37 and the chair standing at the right.
-- `nearing` (made as D37, Ceiling) → becomes **D40**: re-render with tally 40 (no chair: correct after D39).
-- New to make: **D38** "Under the chair", **D39** DREAD "Taken back", then D41, D42.
-The "Produced" rows above keep their made-as day numbers until the re-numbered versions are rendered and posted.
+- `shedding` (made as D38, "Dust"): **dropped.** Its script doesn't hold up (mice don't eat dust; the last line can't
+  be true; the tension isn't set up). D37 is now "Trust", a new script.
+- `nearing` (made as D37, "Ceiling") → becomes **D40**: re-render with tally 40 and no chair.
+- To make next: **D37** "Trust", **D38** "Under the chair", **D39** DREAD "Taken back".
+The "Produced" rows above keep their made-as day numbers until the replacements are made and posted.

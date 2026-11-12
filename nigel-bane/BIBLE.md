@@ -228,20 +228,20 @@ Each line carries its **C** (command, said during the opening action) and **T** 
 move and the **Ending** shape (2026-11-10, after Days 26–33 all ended on a list and an aphorism). The closing lines
 from Day 34 were rewritten to pass the truth test. Re-check the variation rule if you reorder.
 **Arcs in this chapter** (re-synced 2026-11-12; Days 26–36 were already made and stay as they are):
-- **The crack** (D27–30), on *our* side of the glass: a reach through the glass four days running.
-- **The tag and the chair** (D31–34): tag → the chair arrives → he won't sit → he sits and can't get up. The chair
-  then stands in the room through D35–38 and leaves on camera on D39, with the mouse (was D53).
-- **The mouse** (D36–39): unseen → coming to his hand → watching from under the chair → DREAD: the chair slides out
-  of the room on its own and the mouse goes with it.
-- **The room gets smaller** (D40–42): the ceiling comes down → the walk across the room is shorter → he stops
-  measuring and the room is its old size again, on camera.
-- **Who keeps the room** (D51–55): his tag "for whoever" → a thank-you back → a gift → the tally re-inked → at 3 a.m.
-  the gift leaves while he watches. The keeper is never shown.
-- One-episode ideas between arcs: D43–50, D56–59. Chapter landing D60.
+- **The crack** (D27–30), on *our* side of the glass.
+- **The tag and the chair** (D31–34); the chair stays in the room and leaves on camera with the mouse on D39.
+- **The mouse** (D36–39): unseen → trusts him → watches him → DREAD: leaves, taking the chair.
+- **The room gets smaller** (D40–43): ceiling down → walls closer → as small as it gets → back to its size.
+- **The keeper** (D44–47): a gift arrives → he writes back → they answer → they take it back while he sleeps.
+- **The glass** (D48–51): his breath on our side → his hand on it → a knock from our side → he answers it.
+- **The window** (D52–55): a cloud that won't move → a leaf goes over → raindrops → frost closes, then the sun opens it.
+- **The night the room woke up** (D56–60, chapter landing): moonlight moves → something in the walls → the room
+  answers → dawn → he looks at the room as if for the first time.
+Every episode from D37 belongs to an arc; there are no stand-alone episodes.
 
-Dread days: D35 (made before the arc rules; stand-alone), D39 (closes the mouse arc and the chair).
-Reaches through the glass: D27, D29, D34 (dare), D37 (hand out), D38 (senses you behind him), D44 (test), D46
-(breath), D51 (tag to the glass), D52, D56, D57 (knock from our side).
+Dread days: D35 (made before the arc rules; stand-alone), D39 (closes the mouse arc).
+Reaches through the glass: D27, D29, D34 (dare), D41 (he saw your lips move), D42 (test), D45 (tag held to the
+glass), D48–51 (the glass arc), D54 (pick a raindrop), D56 (eyes closed).
 
 - **26 · Gone** — *You never see things arrive or leave. You just notice, one morning, that they've been gone a
   while.* The spider is gone; the web is empty and torn, the bundles with it. He searches the corner (tension: where?);
@@ -289,127 +289,220 @@ Reaches through the glass: D27, D29, D34 (dare), D37 (hand out), D38 (senses you
   return and it's gone. The chair stands in the room. → "Every other room in your home is empty right now. Probably."
   **C:** "Stay here. Watch the room for me. Tell me if anything moves." · **T:** will it still be out when he comes back? It slips away a beat before he's in.
   **R:** the turn (we saw the mouse; he didn't) · **Ending:** flat fact
-- **37 · Dust (MOUSE ARC 2/4: coming closer)** — *Some of the dust in your room used to be you.* A sunbeam on the floor,
-  dust turning in it; the mouse sits in the light eating it. He holds out a hand. → "Some of that was you." (Made as
-  `shedding`; re-render as D37 with the chair standing at the right of the room.)
-  **C:** "Hold out your hand. Slowly. Into the light." · **T:** will it reach his fingertip before the light leaves his
-  hand? It touches as the light slides off.
-  **R:** caught (your hand is out right now; dust is landing on it) · **Ending:** action (the light leaves his hand as he says it)
-- **38 · Under the chair (MOUSE ARC 3/4: watching)** — *Every room has a corner nobody looks at.* Two small eyes shine
-  in the dark under the chair all episode, watching him: the mouse lives under it. → "Don't turn around yet. Wait until this ends."
-  **C:** "Don't look behind you. Keep looking at me." · **T:** he backs toward the chair without turning round, toward
-  the eyes; how close will he get? The eyes blink out a beat before he reaches it.
-  **R:** the swap (you'll have to look behind you for him, after; he can't turn round) · **Ending:** instruction for after
-- **39 · DREAD: Taken back (MOUSE ARC 4/4 and the CHAIR's exit)** — *Most of what you own will outlast you and belong
-  to someone you'll never meet.* Grey light, the hum falling away. The chair begins to slide across the floor on its own
-  each time he looks away from it; the mouse runs out from under it and keeps pace beside it. He doesn't stop them. On
-  the last beat both go out of frame at the edge of the room, and the room is empty again. "There's no way out of
-  here. They went anyway." → "Who gets your things? ...You've thought about it. Just for a second." Don't make the
-  exit look like a way out (Day 360's door must stay the only one): they go past the edge of the frame, the way he
-  walked off in D36. Closes the mouse arc and the chair (D32–39), the two props still in the room.
-  **C:** "Hold on to something near you." · **T:** the chair moves a little every time he looks away; will he stop it?
-  He lets it go, on camera.
-  **R:** the turn (he only talks about the chair; the last line lands on you) · **Ending:** question
-- **40 · Ceiling (ROOM ARC 1/3: it comes down)** — *You lie under your ceiling every night and couldn't describe it.* He
-  lies down and looks up; the ceiling is shown for the first time. → "I count the cracks up there every night. ...Five.
-  I don't remember the number going up."
-  **C:** "Lie down with me." · **T:** each time we cut back to the wide shot it is visibly lower; will it come down onto
-  the window? It rests on the window's top frame on the last line, and he notices. (Made as `nearing`; re-render as D40.)
+**How to read the entries from D37.** Each arc starts with what it is about and how the stakes rise. Each episode
+says what the viewer sees, how the tension is set up so a first-time viewer knows what to watch for (he names it
+early, in this episode), how it pays off on camera, and the line it ends on.
+
+### Arc: the mouse (D36–39, 4 episodes) — something shares your home and you never see it
+D36 (made): a mouse comes out only while he's out of the room. The arc rises from *unseen* to *it trusts him* to *it
+watches him* to *it leaves, and takes the chair with it*. The chair (from D32) is still in the room through D39 and
+leaves with the mouse, so both props exit on camera together. D39 is the chapter's second dread day, closing the arc.
+
+- **37 · Trust (MOUSE 2/4)** — *Before anything comes near you, it has to decide you're safe.* Day. He is already
+  kneeling, one hand flat on the floor, palm up. The mouse is out by the chair, a body-length away. He says it plainly
+  early on: "If I move, it goes. If I don't, it might come." That is the tension, and the viewer can see it: the mouse
+  edges toward his hand in short dashes, stops, sniffs, backs off once when his hand trembles, comes again. He keeps
+  talking in a whisper, about you: someone in your life once had to decide you were safe to come close to (a baby
+  reaching for you, a friend's dog, a person you love the first time they leaned on you). On the last beat the mouse
+  puts one paw on his finger and holds there; he doesn't breathe. "Someone decided you were safe, once. You never
+  found out which day." (cut on the paw).
+  **C:** "Hold out your hand. Flat. Don't move it." · **T:** will it come all the way to his hand? It nearly bolts once; it touches on the last beat.
+  **R:** someone else (the person who decided you were safe) · **Ending:** action (the paw on his finger; the line is said over it)
+- **38 · Under the chair (MOUSE 3/4)** — *Something in your home has watched you sleep.* Night. Two small eyes shine
+  in the dark under the chair. He lies flat on the floor facing them, a few feet away, and says what he's doing: "It
+  stares until you look away. Then it's gone. I'm not looking away." A staring match the viewer can follow: close-ups
+  cut between his eyes and the two dots; the silences get longer; his eyes water and he fights the blink. Spiders,
+  pets, the mouse in the wall: something in your home has seen you asleep, with your mouth open, and you'll never
+  know what. He finally blinks; when his eyes open the dots are gone. "How many things in your home have watched you
+  sleep? ...You don't know either."
+  **C:** "Don't blink. Watch it with me." · **T:** the staring match; who looks away first? He does, and it's gone.
+  **R:** the turn (he only talks about the mouse watching him; the last line turns it on you) · **Ending:** question
+- **39 · DREAD: Taken back (MOUSE 4/4, the exit; the chair leaves too)** — *Almost everything you own will outlast
+  you, and go to someone you'll never meet.* Flat grey light, the hum gone. He turns to the window; when he turns back
+  the chair is a little further across the floor. He says so ("It moved. While I wasn't looking."), so the viewer now
+  watches the chair every time he looks away. It keeps sliding toward the edge of the room; the mouse runs out from
+  under it and keeps pace beside it. He doesn't stop them. Whatever you're holding right now (your phone, a cup, the
+  blanket) will belong to someone else one day, someone you'll never meet, and they won't know it was yours. On the last
+  beat the chair and the mouse go out past the edge of the frame. The room is empty. "It was never mine. I just sat in
+  it." Then: "Some of what's in your room right now will belong to someone you'll never meet." Don't make the exit look like a way out (Day 360's door is the only one): they go off the edge of the frame,
+  the way he walked off in D36.
+  **C:** "Hold on to something near you." · **T:** the chair moves whenever he looks away; will he stop it? He lets it go, on camera.
+  **R:** caught (the thing in your hand right now) · **Ending:** flat fact
+
+### Arc: the room gets smaller (D40–43, 4 episodes) — lives shrink so slowly you never notice
+The empty room starts closing in: the ceiling comes down (D40), the walls are closer (D41), it's as small as it gets
+(D42), and it comes back to its size when he stops measuring it (D43). The changes happen between cuts, never as a
+glitch, and Nigel always notices and says so. The low ceiling stays until D43.
+
+- **40 · Ceiling (ROOM 1/4)** — *You lie under your ceiling every night and couldn't describe it.* Evening. He lies on
+  the floor and looks up; the ceiling (a grey slab with hairline cracks) is shown for the first time. He asks you what
+  colour your ceiling is, exactly, without looking, and waits about five seconds in real silence. Every time we cut back
+  to the whole room the ceiling is lower; by the third time the viewer can see it, and he says it: "Mine's lower than
+  it was. ...No. It isn't. It is." It ends resting on the top of the window frame. "I count the cracks up there every
+  night. ...Five. I don't remember the number going up." (Made as `nearing`; re-render as D40, no chair.)
+  **C:** "Lie down with me." · **T:** each wide shot it's lower; will it come down onto the window? It does on the last line.
   **R:** the question (what colour is your ceiling, exactly?) · **Ending:** admission
-- **41 · Eleven steps (ROOM ARC 2/3: the walls)** — *Lives shrink so slowly you never notice — the friend you stopped
-  calling, the street you stopped taking.* The ceiling still sits on the window frame. He walks from the window to the
-  tally, the walk he says is always twelve steps: eleven. → "You were counting with me. I saw your lips move."
-  **C:** "Think of someone you used to talk to every day. Hold their name." · **T:** he walks it again, slower,
-  stretching every step to make it reach twelve; will it? It doesn't.
-  **R:** someone else (that one friend; one person, not a list) · **Ending:** caught
-- **42 · Don't count (ROOM ARC 3/3, the resolution)** — *Measuring a life makes it smaller.* He walks the path without
-  counting, looking at us, not at his feet. In the last wide shot the ceiling is back up out of sight and the walk
-  takes him the whole way: the room is its old size, and it stays that way. → "I said don't count. ...You did anyway."
-  **C:** "Don't count this time." · **T:** will the room be back if he stops measuring it? It is, on camera, in the
-  last wide shot.
+- **41 · Eleven steps (ROOM 2/4)** — *Lives shrink so slowly you never notice: the friend you stopped calling.* The
+  ceiling still sits on the window frame. He stands with his back to the window wall: "It's twelve steps to the other
+  wall. Always twelve. Count with me." He walks and counts out loud; the viewer counts too; the wall arrives at eleven.
+  He walks back and does it again, slower, stretching every step, trying to make twelve; still eleven. One scene: the
+  friend you used to talk to every day. Nobody decided to stop. One week you didn't call, and then it was a month.
+  "You counted with me. I saw your lips move."
+  **C:** "Count with me." · **T:** will he make twelve? The viewer counts along and hears it come up short, twice.
+  **R:** someone else (one friend, told as one scene) · **Ending:** caught
+- **42 · Arms out (ROOM 3/4, the tightest point)** — *A small room feels safe. That's how it keeps you.* The room is
+  at its smallest: in the first wide shot he stands in the middle with his arms out and his palms flat on both walls.
+  "I'm going to push them back." He braces and pushes; the viewer watches him strain, shot after shot; will they give?
+  Most of your week happens in the same few rooms, and it feels like safety. The walls don't move. Slowly he stops
+  pushing and just leans into them, comfortable, arms still out: "It's cosy." Then: "Tonight, stand in the middle of
+  your room and stretch your arms out."
+  **C:** "Stand up. Arms out. Can you touch both walls?" · **T:** he pushes the walls; will they give? They don't, and he stops trying.
+  **R:** the test (try it now) · **Ending:** instruction for after
+- **43 · Don't count (ROOM 4/4, the resolution)** — *Measuring a life makes it smaller.* The room is still tight. He
+  decides to walk without counting this time, eyes on us, not on the walls: "If I don't count, I don't know how small it is."
+  The viewer knows from the start what to watch: will the room still be small when he gets there? He keeps walking and
+  talking past the point the wall should be; the camera follows him; the wall doesn't come; the last wide shot shows
+  the whole room back at its old size, ceiling back up out of view. It stays that way. "I said don't count. ...You did
+  anyway."
+  **C:** "Walk with me. Eyes on me, not the wall." · **T:** will the wall come at eleven steps? It doesn't; the room is back, on camera.
   **R:** the swap (you count; he won't) · **Ending:** flip
-- **43 · Light left on** (one episode) — *You leave a light on so the room isn't empty when you come back — as if
-  you're two people.* A tagged lamp, which burns out on the last word. → "Who are you leaving yours on for?"
-  **C:** "Don't turn it off." · **T:** the lamp flickers lower all episode; will it last? It dies on the hook.
+
+### Arc: the keeper (D44–47, 4 episodes) — the people who look after you mostly do it while you sleep
+A gift arrives with a tag ("for nigel"), not in his handwriting; there's no door. He tries to thank whoever it is,
+gets an answer, and stays up to see them; they come while he's asleep and take the gift back. The keeper is never
+shown. Rises: a gift → he writes back → they answer → he tries to see them.
+
+- **44 · Light left on (KEEPER 1/4)** — *You leave a light on so the room isn't empty when you come back, as if you're
+  two people.* Dusk. A small lamp is on the floor, lit, with a paper tag: "for nigel." There's no cord. He says early,
+  "It's getting dimmer," and the viewer watches it flicker lower all episode. One scene: coming home late to the light
+  you left on, and the half-second where it feels like someone's in. The lamp gives out on the last word: "Who are you
+  leaving yours on for?"
+  **C:** "Don't turn your light off. Not yet." · **T:** will it last? It dims all episode and dies on the last word.
   **R:** one scene (coming home to the light you left on) · **Ending:** question
-- **44 · Two rooms** (one episode; the week's test) — *You're in two rooms right now: that one, and the one in your
-  hand.* He asks you to look up for three seconds, and waits. → "You looked back at me before the three seconds were
-  up. Didn't you."
-  **C:** "Look up. Three seconds." · **T:** he waits; the silence holds past three, to five, to ten.
-  **R:** the test · **Ending:** caught
-- **45 · Echo** (one episode) — *Something in you has heard every thought you never said.* The room echoes his last
-  words back, a beat late (he notices). → "Say it."
-  **C:** "Say something. Out loud." · **T:** the echo comes back a beat late, then a little sooner each time, until it starts before he speaks.
-  **R:** the question (what's the last thing you didn't say out loud?) · **Ending:** action (the echo says it, before he can)
-- **46 · Breath** (one episode; reach through the glass) — *The air in your room has been in other lungs.* His breath
-  fogs our glass. → "Some of the air you just breathed has been inside other people today."
-  **C:** "Breathe on your screen." · **T:** his fog patch on our glass shrinks while he holds his breath; is it gone before he breathes again? It is.
+- **45 · For whoever (KEEPER 2/4)** — *Someone slept where you sleep before you did, and you'll never know their name.*
+  The dark lamp is still there. He scratches a tag of his own with his fingernail, letter by letter, holds it up flat against the glass for us
+  to read (a reach through the glass), and the viewer
+  watches the words appear: "for whoever." He leaves it by the lamp, turns his back and faces the window: "If I'm
+  not looking, they'll come." The camera stays on his back; the tag in the corner of the frame. Someone lived where you
+  live before you, slept where you sleep. On the last line he turns round: the tag is gone. "Someone slept where you
+  sleep before you did. You'll probably never know their name."
+  **C:** "Watch me write this." · **T:** will the tag be taken while his back is turned? It is, and he sees it's gone.
+  **R:** someone else (whoever lived there before you) · **Ending:** flat fact
+- **46 · Thank you (KEEPER 3/4)** — *You've been thanked for things you don't remember doing.* Morning. A new tag hangs
+  on the lamp, face down. He doesn't want to read it yet ("If it says something bad, I'd rather not know yet"), so the
+  viewer waits to see what it says. He turns it on the last beat: "for nigel. thank you." He doesn't know what for.
+  Somebody remembers a small thing you did years ago, and you don't. "I don't know what I did."
+  **C:** "Read it with me. When I turn it." · **T:** what does it say? Held until the last beat.
+  **R:** the turn (he only talks about his tag; the last lines turn it on you) · **Ending:** admission
+- **47 · Stay up (KEEPER 4/4, the exit)** — *Most of the people who look after you do it while you're asleep.* Night. He
+  sits up against the wall beside the lamp: "I'm going to see who it is." The viewer watches his eyelids getting
+  heavier, closing for longer each time; will he stay awake? One scene: someone who sat up while you slept when you
+  were small, or ill. His eyes close; the lamp and its tags lift slowly up and out of the top of the frame while he
+  sleeps; the window goes to dawn. He wakes on the last line and sees the floor is empty. "Tonight, before you fall
+  asleep, think about who's awake."
+  **C:** "Stay up with me." · **T:** will he stay awake? He doesn't; the lamp leaves while he sleeps, on camera.
+  **R:** one scene (someone who sat up with you) · **Ending:** instruction for after
+
+### Arc: the glass (D48–51, 4 episodes) — someone is on the other side of every screen
+Reaches through the glass, escalating: his breath on our side (D48), his hand on it (D49), something knocks back from
+our side (D50), and he answers it (D51).
+
+- **48 · Breath (REACH 1/4)** — *The air you're breathing has been inside other people today.* He breathes on the
+  glass, and a patch of fog appears on OUR side of the screen. He holds his breath and says, "When it's gone, I can
+  breathe again." The viewer watches the fog shrink, and him straining. Caught: your breath, right now; some of it has
+  been in other people, today. The fog vanishes, he gasps. "Some of the air you just breathed was inside other people
+  today."
+  **C:** "Breathe on your screen." · **T:** will the fog clear before he runs out of breath? Just.
   **R:** caught (your breath, right now) · **Ending:** flat fact
-- **47 · Home smell** (one episode) — *Your home has a smell you'll only notice if you're gone long enough to forget
-  it.* A tagged cup, steaming, drunk and gone by the end. → "What does your home smell like? ...You can't tell, can you."
-  **C:** "Breathe in. Through your nose." · **T:** the steam thins; he waits for the last wisp before drinking; the cup is empty and gone by the end.
-  **R:** the test (breathe in) · **Ending:** question
-- **48 · Here** (one episode) — *Wherever you are, you call it "here." You've never once been anywhere else.* A dry leaf
-  on the outside ledge. → "It's somewhere else now. You'll have to take my word for it."
-  **C:** "Watch the leaf." · **T:** each gust edges it toward the drop; it goes over on the hook.
-  **R:** the turn (the leaf leaving "here") · **Ending:** admission
-- **49 · Nine places** (one episode) — *Most weeks, your life happens in a handful of places.* He goes to every spot in
-  the room he ever stands in (the window, the tally, the floor where he sleeps): three. Then he tries the one corner
-  he never stands in, and doesn't like it. → "You counted yours. I saw your lips move."
-  **C:** "Count your places with me. This week." · **T:** will he find a fourth place? He stands in the far corner, holds it, and steps back out.
-  **R:** the question (how many places were you in this week?) · **Ending:** caught
-- **50 · Rectangle** (one episode) — *You'll spend a third of your life unconscious in a rectangle, trusting the door.*
-  He lies down on the floor. → "...Open. Tomorrow morning, before you open them, listen first."
-  **C:** "Close your eyes. I'll tell you when." · **T:** he counts the seconds you are "gone"; a long real silence.
-  **R:** the test (eyes closed until he says) · **Ending:** instruction for after
-- **51 · After you (KEEPER ARC 1/5)** — *Someone probably slept where you sleep before you, and you'll never know their
-  name.* He scratches a tag of his own, "for whoever," presses it flat to our glass (a reach through the glass), and
-  leaves it on the floor. → "Someone slept where you sleep before you did. You'll probably never know their name."
-  **C:** "Watch me write this." · **T:** he scratches the tag letter by letter; who is it for? "for whoever."
-  **R:** someone else (whoever lived there before) · **Ending:** flat fact
-- **52 · Thank you (KEEPER ARC 2/5)** — *You've been thanked for things you don't remember doing.* His tag is gone. A
-  new one is pressed flat to the glass, facing him: "for nigel. thank you." → "Nobody's ever thanked me. I don't know
-  what I did."
-  **C:** "Read it with me." · **T:** he leans closer to the glass each beat to make out the writing; the last word is legible on the last line.
-  **R:** the turn (he only talks about the tag; it lands on you at the end) · **Ending:** admission
-- **53 · Keeper (KEEPER ARC 3/5)** — *Someone made almost everything you touched today. You'll never meet them.* A small
-  blanket with a tag lies over the window ledge. → "You touched something. ...You're still touching it."
-  **C:** "Touch something near you. Somebody made that." · **T:** the blanket slides off the ledge an inch every time he
-  speaks; will it fall before he reads the tag? He catches it on the last word.
-  **R:** caught (you're touching something right now) · **Ending:** caught
-- **54 · Re-inked (KEEPER ARC 4/5)** — *Something keeps you running all night that never asks permission* (your heart,
-  the people on night shift). The tally has been neatly re-inked overnight; the blanket is folded under it. → "...a
-  hundred and four. A hundred and fi—"
-  **C:** "Two fingers on your wrist. Find it." · **T:** he counts heartbeats against the tally, past where the episode should end.
-  **R:** the test (find your pulse) · **Ending:** action (cut mid-count)
-- **55 · 3am (KEEPER ARC 5/5, the exit)** — *Some rooms you only live in at 3am.* Night. He stays up to see who keeps
-  the room. Nobody comes; but while he watches, the blanket and its tag slide slowly across the floor and out of frame.
-  The keeper is never shown. → "Next time you're up at three, don't switch the light on. Look first."
-  **C:** "Keep still. Watch the blanket." · **T:** it creeps toward the edge of the room whenever he blinks; will he see
-  it go? He does, and doesn't follow.
-  **R:** one scene (the walk to the kitchen at 3 a.m.) · **Ending:** instruction for after
-- **56 · Body** (one episode; reach through the glass) — *You've never been anywhere without your body.* Signature: his
-  outline glows as he traces it. → "Your hand's still on the glass."
-  **C:** "Put your hand flat on the glass." · **T:** his glowing outline nearly closes; will the line meet? It meets on the last word.
-  **R:** caught · **Ending:** caught
-- **57 · Can't look** (one episode; knock from our side) — *You can't check whether someone's watching you without them
-  seeing you check.* The whole monologue facing the wall; at the end a knock from our side. He flinches, doesn't turn.
-  (Was a dread day; dread days now sit inside arcs.)
-  **C:** "Look away from me." · **T:** the silences lengthen; will he turn round? A knock from our side; he flinches and doesn't.
-  **R:** the turn · **Ending:** action (the knock; no words)
-- **58 · Wallpaper** (one episode) — *You probably couldn't describe the view from your own window without looking.* The same
-  cloud in the window, every day this week; he only now notices. → "...Now look. Was it right?"
-  **C:** "Look out your window. Is it the same as yesterday?" · **T:** he compares the cloud with his memory; will it move? It never does, and he notices.
-  **R:** the test (without looking: what's outside your nearest window?) · **Ending:** question
-- **59 · Pipes** (one episode, NEW 2026-11-12) — *Most of what keeps your home working runs where you can't see it.* A
-  sound travels through the wall toward him: water, or something like it. → "There's water in your walls right now.
-  Waiting for you, probably."
-  **C:** "Put your ear to the wall." · **T:** the sound moves along the wall toward his ear; will it stop where he is? It passes right behind his ear and keeps going.
-  **R:** the question (when did you last hear your home working?) · **Ending:** flat fact
-- **60 · Stopped looking (CHAPTER END)** — *Home is wherever you stopped looking for somewhere else.* Everything that
-  arrived has gone again; the room is as empty as the first day. He looks around it as if for the first time. → "Here is just wherever you stopped looking for somewhere else."
+- **49 · Hand (REACH 2/4)** — *You've never been anywhere without your body.* He puts his hand flat on the glass and
+  asks you to put yours on the screen against it. A glowing line starts tracing round his hand from the wrist; he
+  tells you he can't move until it closes. The viewer watches the line travel round each finger. You've never once
+  been anywhere your body wasn't. The line meets on the last word. "Your hand's still on the glass."
+  **C:** "Put your hand flat on the screen. Against mine." · **T:** will the line close round his hand? It meets on the last word.
+  **R:** the test (hand on the screen) · **Ending:** caught
+- **50 · Can't look (REACH 3/4, the climax)** — *You can't check whether someone's watching you without them seeing
+  you check.* He turns his back on us to face the wall: "Something's there. I can feel it." He talks with his back to
+  the glass; the silences between lines get longer; the viewer waits for something. He tells you that you can't check
+  whether someone behind you is watching without them seeing you check. Then a knock, from OUR side of the glass. He
+  flinches and doesn't turn round. Cut on the flinch.
+  **C:** "Look away from me." · **T:** silences getting longer; will something happen? A knock from our side.
+  **R:** the turn · **Ending:** action (the knock and the flinch, no words)
+- **51 · Answer (REACH 4/4, the resolution)** — *There's someone on the other side of every screen you look at.* He
+  comes back to the glass slowly, puts his palm flat on it and waits: "If it was you, do it again." The viewer waits
+  with him in real silence. A faint fog patch blooms on our side, beside his hand, as if someone breathed on it. He
+  smiles for the first time in days. Someone made this, someone is watching it, someone is on the other end of every
+  screen. "I knew it was you."
+  **C:** "Stay where you are." · **T:** will it answer? A breath-mark appears on our side.
+  **R:** caught (you, on the other side of this one) · **Ending:** admission
+
+### Arc: the window (D52–55, 4 episodes) — most of your life, the outside is something you watch through glass
+The outside, which he can see and never reach: a cloud that won't move, a leaf that goes over the edge, rain, frost
+closing the view, then sun opening it again.
+
+- **52 · Stuck cloud (WINDOW 1/4)** — *You probably couldn't describe the view from your own window without looking.*
+  One cloud sits in the window. Other clouds slide past it; birds cross; it doesn't move. He points it out early
+  ("That one hasn't moved since I woke up") so the viewer watches it. He asks you, without looking, what's outside your
+  nearest window right now. It never moves. "...Now look. Was it right?"
+  **C:** "Don't look out your window. Tell me what's there." · **T:** will the cloud move? Everything else does; it doesn't.
+  **R:** the test (describe your window without looking) · **Ending:** question
+- **53 · Leaf (WINDOW 2/4)** — *Wherever you are, you call it "here." You've never once been anywhere else.* A dry leaf
+  on the outside ledge. Each gust pushes it nearer the edge; he says it's going to go over. The viewer watches it
+  slide. "Here" is wherever you are; you've never been anywhere else. It goes over on the last line: "It's somewhere else
+  now. You'll have to take my word for it."
+  **C:** "Watch the leaf." · **T:** will it go over the edge? It does on the last line.
+  **R:** the turn (the leaf leaving "here") · **Ending:** flat fact
+- **54 · Raindrops (WINDOW 3/4)** — *Most of your life, the weather has been something you watched through glass.* Rain
+  on the window. He picks two drops at the top and races them down the glass with his finger: "Pick one." The viewer
+  picks one and watches it (everyone did this as a child in a car). One scene: the back seat, the rain, your drop
+  losing. One drop wins on the last line. "You picked one. Didn't you."
+  **C:** "Pick a raindrop." · **T:** which drop gets to the bottom first? Decided on the last line.
+  **R:** one scene (racing raindrops in the back of a car) · **Ending:** caught
+- **55 · Frost (WINDOW 4/4, the resolution)** — *Your world is mostly the same few places.* Cold morning. Frost grows in
+  from the edges of the window, closing the view a little more every shot. He says he'll keep one circle clear and
+  breathes on the glass to hold it open. How many places were you in this week? Three? Four? The frost closes to a
+  circle the size of his face; then the sun comes up and melts it all back in a few seconds; the whole view is there.
+  "I'd have been happy with the circle. That's what worries me."
+  **C:** "Don't let it close." · **T:** will the frost close the window? It shrinks to a circle, then the sun opens it.
+  **R:** the question (how many places were you in this week?) · **Ending:** admission
+
+### Arc: the night the room woke up (D56–60, 5 episodes, the chapter landing) — your home has a life you sleep through
+One long night, then morning. The empty room starts doing things at night: the moonlight moves (D56), something
+runs through the walls (D57), the room starts answering him (D58); at dawn it goes quiet (D59), and in the morning he
+looks at his room as if for the first time (D60). Each episode reads cold on its own.
+
+- **56 · Moonlight (NIGHT 1/5)** — *You'll spend a third of your life unconscious, trusting the room.* Night. He lies on
+  the floor; a rectangle of moonlight from the window lies on the floor beside him. "Close your eyes. I'll tell you
+  when." He counts the seconds you're "gone" in a real silence while the viewer, peeking, watches the moonlight creep
+  across the floor toward his face. It reaches his eyes as he says "...Open." "Tonight, notice where the light from your
+  window falls."
+  **C:** "Close your eyes. I'll tell you when." · **T:** the moonlight creeps toward his face; will it reach him before he says open? It does.
+  **R:** the test (eyes closed) · **Ending:** instruction for after
+- **57 · The walls (NIGHT 2/5)** — *Most of what keeps your home working runs where you can't see it.* A sound starts in
+  the wall: a run of water, or something like it. He puts his ear to the wall to find where it is ("It's in here
+  somewhere"); every time he gets his ear to the spot, it's moved further along, so the viewer watches him hunt it
+  along the wall. You're leaning on something right now that has pipes or wires inside it. It stops right behind the
+  tally, and he holds still listening. "When did you last hear your home working?"
+  **C:** "Put your ear to the wall." · **T:** can he find where the sound is? It keeps moving; it stops behind the tally.
+  **R:** caught (the wall you're leaning on right now) · **Ending:** question
+- **58 · Echo (NIGHT 3/5, the climax)** — *Something in you has heard every thought you never said.* The room starts
+  repeating his last words back, a beat late. He notices, and tests it. The viewer hears the gap between him and the
+  echo get shorter every time; then the echo starts a word before he does. What's the last thing you thought and
+  didn't say out loud? The echo says "Say it," before he can.
+  **C:** "Say something. Out loud." · **T:** the echo gets closer every line; will it catch up? It gets ahead of him.
+  **R:** the question (what didn't you say out loud?) · **Ending:** action (the echo says it first)
+- **59 · Sunrise (NIGHT 4/5)** — *There will be a last morning you wake up in your room, and you won't know it's the
+  last.* Pre-dawn, the room silent. He sits facing the window, waiting for the sun: "It's late." The viewer watches the
+  sky lighten very slowly. You'll move out one day, or something else will happen; there'll be a last morning in your
+  room and it'll look like any other. The sun clears the edge of the window on the last line. "Every morning in your
+  room could be the last one. It'll look like this."
+  **C:** "Wait for it with me." · **T:** will the sun come up? It's late; it clears the window on the last line.
+  **R:** the turn · **Ending:** flat fact
+- **60 · Stopped looking (NIGHT 5/5, CHAPTER END)** — *Home is wherever you stopped looking for somewhere else.*
+  Morning. Everything that arrived this chapter has gone again; the room is as empty as the first day. He looks around
+  it as if for the first time. → "Here is just wherever you stopped looking for somewhere else."
   **C:** "Look around your room. Slowly." · **T:** as he looks, the camera pulls back on a room that is emptier with every shot; at the end only the tally is left.
   **R:** caught (look around your room, slowly) · **Ending:** aphorism (the chapter landing; the one allowed in this stretch)
+
 ## Chapters 3–12 — territories and seed ideas
 Each gets a full idea bank like Chapter 2 about two weeks before we reach it, laid out by arcs (3–5 episodes in a
 row each, props exiting at the end) with one-episode ideas between them; each dread seed below must be placed inside
@@ -506,8 +599,8 @@ everywhere since Day 1 · "the glass gets a little thinner" (D1) → the crack (
   the fifth hand). Milestones: D100 · D300 · D360 exactly 360.
 - **Eye colours:** start set (curious, uncanny, drifting, awe, melancholy, lonely, warm, unease, void). Unlocks: gold
   "hope" ~D84–88 · green "envy" ~D128 · silver "peace" D150 · near-white "fixation" D345+.
-- **Props come and go.** The spider and her web (D17–25, with the wrapped fly and moth) leave on D26. The mouse is in D36–39 and leaves
-  with the chair on D39; the ceiling comes down on D40 and goes back up on D42; the keeper's gifts leave on D55. Long-running
+- **Props come and go.** The spider and her web (D17–25, with the wrapped fly and moth) leave on D26. The mouse is in D36–39 and leaves with
+  the chair on D39; the ceiling comes down on D40 and goes back up on D43; the keeper's lamp leaves on D47. Long-running
   objects named in the Ch3–12 seeds (the plant, the pencil, the far figure's lamp) get planned exits when each chapter is
   detailed — nothing stays for good.
 
