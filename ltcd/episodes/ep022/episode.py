@@ -310,7 +310,7 @@ def scale_pt(p, pt, s):
     fx = foot_c(p); return (fx + (pt[0] - fx) * s, FLOOR_Y + (pt[1] - FLOOR_Y) * s)
 
 # ---------------------------------------------------------------- the leading lady (original character)
-H_HAIR, H_DRESS, HS = (0.85, 0.22, 0.16), (0.98, 0.80, 0.22), 0.92
+H_HAIR, H_DRESS, HS = (0.24, 0.13, 0.08), (0.86, 0.14, 0.24), 0.92     # original: long dark-brown hair, red dress, gold hoops
 H = Actor(HER_X, "h_lean", "bored", turn=-0.5, look=(-0.4, 0.0), lid=0.4)
 H.blinks = [9.4, 13.9, 18.0, 22.2, 26.1, 31.3]
 H.k(T_SHADES, "h_shades", "skeptical", dur=0.3, turn=-0.6, look=(-1.0, 0.1))
@@ -350,6 +350,11 @@ def draw_her(cr, t):
     O.draw_mom(cr, t, q, H.blink(t), s=HS, hair=H_HAIR, dress=H_DRESS, bun=False)
     hx, hy = scale_pt(q, q["head"], HS); tn = q.get("turn", 0.0)
     st = shades_state(t)
+    for sd in (-1, 1):                                              # big gold hoop earrings
+        ex = hx + sd * 98 * (1 - 0.35 * abs(tn)) + 18 * tn; ey = hy + 62
+        if abs(tn) > 0.6 and sd * tn < 0: continue                  # far ear hidden when she turns
+        cr.arc(ex, ey, 26, 0, 2 * math.pi); cr.set_source_rgb(0.96, 0.76, 0.20); cr.set_line_width(8); cr.stroke()
+        cr.arc(ex, ey, 26, 0, 2 * math.pi); cr.set_source_rgb(0.1, 0.1, 0.1); cr.set_line_width(2); cr.stroke()
     gy = hy - 8 - 20 * (1 - st) * 0 - (1 - st) * 95
     gy = hy - 6 + (0 if st >= 0.99 else (22 if st > 0.3 else -95))
     if st >= 0.99: gy = hy - 6
