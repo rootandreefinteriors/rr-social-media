@@ -3,7 +3,7 @@
   "day": 22,
   "last_episode": {
     "day": 22,
-    "type": "waiting",
+    "type": "comment",
     "folder": "episodes/ep022",
     "video": "videos/day022.mp4",
     "posted_at": "2026-11-13T19:00-05:00 (scheduled)",
@@ -11,20 +11,21 @@
       "tiktok": "6af7622478196a0a9715858a",
       "instagram": "6af7622781e1228421bae92d"
     },
-    "note": "Buffer uses the commit-pinned raw URL @5136c89."
+    "note": "Re-cut on Justin's call (replaced the waiting cut in the same Buffer posts). Buffer uses the commit-pinned raw URL @eaa15a0."
   },
-  "ask_since_day": 21,
-  "waiting_streak": 1,
+  "ask_since_day": 22,
+  "waiting_streak": 0,
   "world": {
-    "location": "INSIDE GAME CAVE (day 21), a game store in a night strip mall: O.draw_store_inside(cr, t, IX-6000, IX+6000) with IX=8000000. The demo TV corner: O.draw_tv(cr, TVX=IX-1500, screen off) + its screen showing UPDATE 3 OF 47 / 150 GB / 1% (as of day 22) / TIME LEFT: 11 HRS; he did the ask standing at IX-940; the opened NEXT GEN console box + the '6' game box on the floor next to him. The counter (CTR_X=IX+470) is buried in a mountain of pennies with the clerk (green vest, red visor) buried up to her eyes behind it. Outside: the strip mall with the GAME CAVE sign, the neon-sunset '6' poster, scattered pizza boxes. S.floor=False. See ltcd/episodes/ep021.",
+    "location": "THE NEON GAME CITY (day 22): the whole world turned into a crime-game parody by his dark magic. Neon sunset street: purple/pink/orange sky bands, a striped half sun on the horizon at NX+520, ocean + sand, sidewalk, dark road with yellow dashes and a pink curb line; background palms, the pink art-deco OCEAN VIEW hotel; the GAME CAVE facade at the far left (DOOR_X=NX-1150). The hero palm at NX-160 is bent over (he leaned on it). Money ($999,999,999 worth) lies all over the sidewalk. HUD on screen: minimap, money, 5 flashing wanted stars, DATE 0%. He did the ask at NX+140, NX=9000000. S.floor=False. See ltcd/episodes/ep022 (neon()).",
     "companions": [
-      "his wife-to-be (O.draw_mom, hair (0.62,0.28,0.16), dress (0.30,0.66,0.66), bun=False) - left smiling on the curb outside LE FANCY with her rose (she nodded: go)",
+      "his wife (O.draw_mom, hair (0.62,0.28,0.16), dress (0.30,0.66,0.66), bun=False) - LEFT HIM AGAIN on day 22 with the baby (and took his boombox): she caught him flirting",
       "his son, grown up: an NBA champion (dark high-top, white headband, purple #23) - left at the Finals arena; see ep019 draw_kid",
       "the black kitten (O.draw_cat col='black') - at home on the couch"
     ],
     "props": [
-      "the next-gen console (generic white, NEXT GEN box) + the game (neon sunset, palm trees, a big 6) - plugged into the store's demo TV, updating (1 of 47 done)",
-      "the GAME CAVE clerk, buried in pennies behind the counter",
+      "the game city leading lady (ORIGINAL character: red bob, yellow sundress, round shades; never named) drove off in her pink convertible - gone",
+      "five wanted stars (still flashing), $999,999,999 in cash on the ground, a bent palm",
+      "the DARK MAGIC spellbook was used up in the blast",
       "left outside LE FANCY: the rose (she has it), the wrecked hot dog cart, the three violinists",
       "left inside LE FANCY: a $1 bill on a $4,817.00 receipt",
       "left in the arena: the Finals trophy (on its side at centre court)",
@@ -34,7 +35,8 @@
       "left behind in the town: the CAT RESCUE SHELTER he built",
       "the RING IS DESTROYED (day 10)",
       "far behind (never going back): the park, the beach, the black car, the WHITE PARTY mansion, MEGAPLEX 30, FUN PARK, the town, Mordor, green hill, the airfield, the burger place",
-      "his house (TV, couch, dishes) - the kitten is there"
+      "his house (TV, couch, dishes) - the kitten is there",
+      "left in GAME CAVE: the console (finally updated: PRESS START), the game box, the clerk buried in pennies"
     ],
     "traits": [
       "beat the block game on hardcore with half a heart (day 4)",
@@ -53,10 +55,11 @@
       "hit the lottery for 10 million and got his family back (day 18, re-cut): one $1 ticket at a corner store, every number matched on the store TV (4 8 15 16 23 42), JACKPOT; the clerk fainted and came back with a giant check; he held it over his head under her window - she shut the curtain; he dropped his game controller in the trash and proposed with a ring box; she said yes; they carried the couch back home together; the black kitten wandered in and curled up between them. Looks normal.",
       "raised his kid to be the next LeBron (day 19): took the baby to a neighbourhood court; days and nights whipped by and the kid grew each time - toddler granny shot bonked Dad, the crossover broke Dad's ankles, THE CHOSEN ONE cover slapped Dad's face, the teen dunked, the grown kid chased Dad down and pinned his layup on the board; at THE FINALS the chalk toss swallowed Dad (still white), GAME 7 down one at 0:05, the kid took off from the free-throw line and shattered the backboard, 102-101; he handed Dad the trophy and it flattened him. Small real smile. Looks normal.",
       "took his wife out on a date (day 20): ran from the Finals (late - she waited under the street clock at 9:47), gave her a rose and this time she took it; LE FANCY: WATER $40, AIR (FRENCH) $95, one violinist then three crammed around his chair, one pea each under silver domes, a receipt that unrolled out of the room, TOTAL $4,817.00; he paid $1, the waiter pointed at the door, he was thrown out in a cannonball into a hot dog cart (KABOOM, hot dogs rained down); she came out and laughed for real, sat with him on the curb eating hot dogs, head on his shoulder; the violinists followed them out. Looks normal.",
-      "bought the console and the game (day 21, '@thatboypiwko: Go buy a ps5 and gta 6'): ran from the LE FANCY curb (she nodded go) to GAME CAVE; it was NOV 12 and the game comes out NOV 19, so he sat down first in line; days flickered by, the line grew, pizza boxes stacked up; at 11:59 the clerk came out with a sign: DELAYED (heartbeat, push-in, eye twitch) - wrong side: OPEN, 12:00; the line stampeded right over him; inside only the LAST ONE was left, $569.98; he paid with a sock of pennies that buried the counter and the clerk; lifted the boxes overhead in a beam of light (small real smile); at the demo TV: UPDATE 1 OF 47, 150 GB, then UPDATE 2 OF 47. Looks normal."
+      "bought the console and the game (day 21, '@thatboypiwko: Go buy a ps5 and gta 6'): ran from the LE FANCY curb (she nodded go) to GAME CAVE; it was NOV 12 and the game comes out NOV 19, so he sat down first in line; days flickered by, the line grew, pizza boxes stacked up; at 11:59 the clerk came out with a sign: DELAYED (heartbeat, push-in, eye twitch) - wrong side: OPEN, 12:00; the line stampeded right over him; inside only the LAST ONE was left, $569.98; he paid with a sock of pennies that buried the counter and the clerk; lifted the boxes overhead in a beam of light (small real smile); at the demo TV: UPDATE 1 OF 47, 150 GB, then UPDATE 2 OF 47. Looks normal.",
+      "used dark magic to turn the world into the game (day 22, '@alex03330_: Use dark magic to transform the world into gta 6 except your the main character...'): the update shot to 47 OF 47 / PRESS START, the blast turned everything into a neon crime-game city with a HUD; he flirted with the leading lady (leaned on a palm - it bent and he fell; finger guns; a boombox with a synthwave groove; a money cheat code - $999,999,999 rained down; DATE 99%); a baby cried, five wanted stars lit up one by one: his wife with the baby; finger guns didn't work on her; the leading lady shrugged and drove off; the wife walked out with the baby, came back for the boombox; the last dollar landed on his head; WASTED; then his cousin called to go bowling and he declined. Looks normal."
     ],
     "notes": "Justin, 2026-11-09: his 11-08 note meant don't END episodes with new characters unless the comment asks for them. The girlfriend, baby and kitten are back as of day 18. The kitten doesn't need to ride on his head.",
-    "sign_line": "I HAVE TIME."
+    "sign_line": null
   },
   "used_comments": [
     "Beat Mc in hardcore mode:)",
@@ -75,7 +78,8 @@
     "Hit the lottery for 10 million and get your family back",
     "Raise your kid to be the next LeBron james",
     "Take your wife out on a date",
-    "Go buy a ps5 and gta 6"
+    "Go buy a ps5 and gta 6",
+    "Use dark magic to transform the world into gta 6 except your the main character and you get to crack Lucia"
   ],
   "history": [
     {
@@ -185,8 +189,8 @@
     },
     {
       "day": 22,
-      "type": "waiting",
-      "summary": "no qualifying comment on day 21 (IG: 'Use dark magic to transform the world into gta 6 ... crack Lucia' and 'check the jiggle physics' - both sexual innuendo; TikTok: none); in GAME CAVE at the demo TV (UPDATE 3 OF 47, 1%, TIME LEFT 11 HRS): holds the sign, turns it, writes I HAVE TIME. under the message, dead stare (21 s)"
+      "type": "comment",
+      "summary": "IG @alex03330_ (2 likes): 'Use dark magic to transform the world into gta 6 except your the main character...' (Justin's call; card trimmed before the innuendo clause; the routine's waiting cut never aired) -> GAME CAVE: DARK MAGIC spellbook from the hip, UPDATE 47 OF 47 -> PRESS START, magic blast -> runs out into a neon crime-game city, HUD pops in; the leading lady (original) by a pink convertible: palm lean (it bends, he falls) 0%, finger guns 5%, boombox synthwave 40%, cheat code -> CHEAT ACTIVATED, money rain $999,999,999, 90-99%; baby cries, wanted stars 1..5: his wife with the baby; finger guns on the wife; leading lady drives off; wife leaves with the baby, comes back for the boombox; last dollar on his head; WASTED; cousin calls: LET'S GO BOWLING! - declined; ask on the street (63.3 s)"
     }
   ]
 }
