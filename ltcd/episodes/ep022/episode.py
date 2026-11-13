@@ -56,8 +56,10 @@ T_BACK0, T_BACK1 = 37.6, 38.4; T_GRAB = 38.6; T_OUT0, T_OUT1 = 39.0, 39.9
 T_BILL0, T_BILL1 = 40.1, 40.8
 T_TIP = 41.0; T_GREY0, T_GREY1 = 41.6, 42.0; T_WASTED = 42.0; T_COLOR = 44.4
 T_GETUP = 44.8
-T_RING = 45.8; T_PHONE = 46.0; T_DECLINE = 47.6
-T_ASK = 48.4; HOLD = 8.0
+T_RING = 45.4; T_PULLPH = 45.9; T_PHONE = T_PULLPH + 2.1   # the phone buzzes at his hip -> he digs it out
+T_LOOKPH = T_PHONE + 0.15; T_IGNORE = T_PHONE + 0.9; T_DECLINE = T_PHONE + 2.1; T_TEXT = T_DECLINE + 0.45
+T_READTXT = T_TEXT + 0.3; T_USAGAIN = T_TEXT + 1.0; T_DROP = T_TEXT + 1.5
+T_ASK = T_DROP + 0.7; HOLD = 8.0
 
 STAGES = [(0.0, 0), (T_METER, 0), (T_GUNS1 - 0.2, 5), (T_PLAY + 0.6, 40), (T_SHUP + 0.3, 90), (T_PAT + 0.3, 99), (T_DRIVE0 + 0.4, 0)]
 def meter(t):
@@ -206,12 +208,46 @@ S.sfx(T_WASTED, "thud", 0.25)
 S.set(T_GETUP, "crouch", "deadpan", dur=0.3, nowalk=1.0)
 S.set(T_GETUP + 0.4, "stand", "deadpan", dur=0.3, ease="back")
 # the phone
-for k in range(3): S.sfx(T_RING + 0.5 * k, "ding", 0.07)
-S.set(T_PHONE + 0.2, "stand", "deadpan", dur=0.3, turn=-0.5, look=(-0.9, -0.5))
-S.set(T_PHONE + 1.0, "stand", "dead_stare", dur=0.3, turn=0.0, look=(0.0, 0.0), lid=0.45)
-S.set(T_DECLINE - 0.3, "reach_l", "dead_stare", dur=0.25, turn=-0.3, look=(-0.8, -0.4), lhand=(330, 900))
-S.set(T_DECLINE + 0.3, "stand", "deadpan", dur=0.3)
+# the phone: buzzes at his hip, he digs it out, COUSIN calling - he looks at us and lets it ring, declines,
+# the text comes in anyway, he drops the phone at his feet
+for k in range(int((T_DECLINE - T_RING) / 0.55)): S.sfx(T_RING + 0.55 * k, "zip", 0.035)
+S.set(T_RING + 0.15, "stand", "deadpan", dur=0.25, look=(0.4, 0.9))
+def ph_screen(cr, t):
+    """the phone's face, centred at 0,0 (screen 120 x 210)."""
+    sk_rect(cr, -72, -125, 72, 125, 6, sid=22600, fill=(0.12, 0.12, 0.16))
+    cr.rectangle(-60, -108, 120, 216); cr.set_source_rgb(0.20, 0.45, 0.80) if t < T_DECLINE else cr.set_source_rgb(0.15, 0.15, 0.20); cr.fill()
+    if t < T_DECLINE:
+        draw_text(cr, "COUSIN", 0, -70, 30, color=(255, 255, 255))
+        draw_text(cr, "calling...", 0, -35, 22, color=(210, 225, 255))
+        sk_circ(cr, -30, 75, 20, 3, sid=22601, fill=(0.95, 0.25, 0.25)); sk_circ(cr, 30, 75, 20, 3, sid=22602, fill=(0.3, 0.85, 0.4))
+    else:
+        draw_text(cr, "DECLINED", 0, -50, 24, color=(255, 120, 120))
+        if t >= T_TEXT:
+            sk_rect(cr, -52, -10, 52, 50, 3, sid=22603, fill=(0.3, 0.75, 0.4))
+            draw_text(cr, "1 MESSAGE", 0, 20, 18, color=(255, 255, 255))
+def draw_phone_held(cr, x, y, s, t, p):
+    if t >= T_DROP: return
+    buzz = 5 * math.sin(t * 90) if t < T_DECLINE else 0.0
+    cr.save(); cr.translate(x + buzz - 10, y - 95); cr.scale(0.8 * s, 0.8 * s); cr.rotate(-0.08); ph_screen(cr, t); cr.restore()
+S.pocket_pull(T_PULLPH, "phone", draw_phone_held, (0, 0), held=True)
+P("ph_look", relb=(640, 1000), rhand=(660, 900), lelb=(470, 1000), lhand=(500, 1080))
+P("ph_tap", relb=(640, 1000), rhand=(660, 900), lelb=(520, 960), lhand=(640, 880))
+S.camera(T_PHONE - 0.2, NX + 270, 900, 0.9, 0.7)
+S.set(T_PHONE + 0.05, "ph_look", "deadpan", dur=0.3, turn=0.3, look=(0.6, 0.2))
+S.set(T_LOOKPH + 0.3, "ph_look", "dead_stare", dur=0.3, turn=0.3, look=(0.7, 0.3), lid=0.35)
+S.set(T_IGNORE, "ph_look", "dead_stare", dur=0.4, turn=0.0, look=(0.0, 0.0), lid=0.45)       # looks at us. lets it ring.
+S.set(T_DECLINE - 0.2, "ph_tap", "dead_stare", dur=0.2, turn=0.0, look=(0.0, 0.0), lid=0.45)  # thumbs DECLINE without looking
+S.set(T_DECLINE + 0.15, "ph_look", "dead_stare", dur=0.2, turn=0.0, look=(0.0, 0.0), lid=0.45)
 S.sfx(T_DECLINE, "boop", 0.07)
+S.sfx(T_TEXT, "ding", 0.08)
+S.set(T_READTXT, "ph_look", "deadpan", dur=0.25, turn=0.3, look=(0.6, 0.0), lid=0.3)
+S.set(T_USAGAIN, "ph_look", "dead_stare", dur=0.3, turn=0.0, look=(0.0, 0.0), lid=0.5)
+S.set(T_DROP, "stand", "deadpan", dur=0.25)
+S.sfx(T_DROP + 0.35, "tap", 0.07)
+def draw_phone_floor(cr, x, y, s, t, p):
+    cr.save(); cr.translate(x, y); cr.scale(1.0, 0.35); cr.rotate(0.3)
+    sk_rect(cr, -58, -100, 58, 100, 5, sid=22610, fill=(0.12, 0.12, 0.16)); cr.restore()
+S.place("phone_floor", draw_phone_floor, (NX + 140 + 150, FLOOR_Y - 12), t_on=T_DROP + 0.35, layer="front")
 S.x = NX + 140 - 540             # where he ends up (he walked toward the car)
 S.the_ask(T_ASK, hold=HOLD)
 T_END = S.t
@@ -499,17 +535,13 @@ def props_front(cr, t, p, ly):
             O.draw_magic_burst(cr, p["rhand"][0], p["rhand"][1] - 60, t - T_BLAST, t=t, r=1500)
         return
     draw_bills(cr, t); draw_last_bill(cr, t)
-    if T_PHONE <= t < T_DECLINE + 0.25:                                  # the phone pops up next to him
-        s = max(0.05, min(1.0, (t - T_PHONE) / 0.2))
-        px, py = p["neck"][0] - 260, p["neck"][1] + 90
-        cr.save(); cr.translate(px, py); cr.scale(s, s)
-        sk_rect(cr, -95, -170, 95, 170, 7, sid=22600, fill=(0.12, 0.12, 0.16))
-        cr.rectangle(-80, -150, 160, 300); cr.set_source_rgb(0.25, 0.55, 0.85); cr.fill()
-        draw_text(cr, "COUSIN", 0, -110, 40, color=(255, 255, 255))
-        sk_circ(cr, -45, 115, 26, 4, sid=22601, fill=(0.95, 0.25, 0.25)); sk_circ(cr, 45, 115, 26, 4, sid=22602, fill=(0.3, 0.85, 0.4))
-        cr.restore()
-        if t >= T_PHONE + 0.4:
-            O.draw_bubble(cr, px - 10, py - 310, 330, 150, (px + 10, py - 175), text="LET'S GO BOWLING!", t=t)
+    if T_PULLPH + 0.4 <= t < T_DROP + 0.35 and t >= T_DROP:              # the phone falling to his feet
+        u = ramp(t, T_DROP, T_DROP + 0.35, "inn")
+        x0, y0 = p["rhand"][0] - 10, p["rhand"][1] - 95
+        cr.save(); cr.translate(lerp(x0, NX + 140 + 150, u), lerp(y0, FLOOR_Y - 40, u)); cr.rotate(2.5 * u); cr.scale(0.8, 0.8); ph_screen(cr, t); cr.restore()
+    if T_TEXT <= t < T_DROP:                                             # the text, out of the phone in his hand
+        hx, hy = p["rhand"][0] - 10, p["rhand"][1] - 190
+        O.draw_bubble(cr, hx + 200, hy - 60, 300, 130, (hx + 60, hy + 40), text="LET'S GO BOWLING!", t=t)
 S.prop(props_front)
 
 # ================================================================ HUD (screen space, top-left, clear of the card)
