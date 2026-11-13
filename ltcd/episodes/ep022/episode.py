@@ -25,7 +25,7 @@ NX = 9000000.0                       # the neon city
 DOOR_X = NX - 1150.0
 PALM_X = NX - 160.0
 HER_X = NX + 470.0
-CAR_X = NX + 720.0
+CAR_X = NX + 880.0
 WIFE_X = NX - 450.0
 BOOM_X = NX - 200.0
 
@@ -191,7 +191,7 @@ S.sfx(T_GUNS2 + 0.2, "tok", 0.06)
 S.set(T_GUNS2_1, "stand", "dead_stare", dur=0.6, turn=-0.6, look=(-1.0, 0.0), sweat=0.4)
 S.set(T_DRIVE0 + 0.1, "stand", "dead_stare", dur=0.3, turn=0.8, look=(1.0, 0.0))
 S.sfx(T_DRIVE0, "skid", 0.12); S.sfx(T_DRIVE0 + 0.1, "whoosh", 0.08)
-S.camera(T_SHRUG, NX + 300, 900, 0.85, 0.5)
+S.camera(T_SHRUG, NX + 420, 900, 0.85, 0.5)
 S.camera(T_LEAVE0, NX - 120, 900, 0.85, 0.6)
 S.camera(T_OUT1 + 0.1, NX + 110, 900, 0.9, 0.8)
 S.set(T_LEAVE0, "stand", "dead_stare", dur=0.3, turn=-0.8, look=(-1.0, 0.0))
@@ -329,8 +329,9 @@ H.k(T_TURN + 0.2, "stand", "surprised", dur=0.4, turn=-0.9, look=(-1.0, 0.0))
 H.k(T_GUNS2 + 0.4, "stand", "skeptical", dur=0.3, turn=-0.6, look=(-0.7, 0.0))
 H.k(T_SHRUG, "shrug", "bored", dur=0.3, turn=-0.3, look=(0.0, 0.0))
 H.k(T_SHRUG + 0.5, "stand", "bored", dur=0.3, turn=0.8, look=(1.0, 0.0))
-H.walk(T_SHRUG + 0.5, T_INCAR, CAR_X - 30)
-H.X.append((T_DRIVE0, CAR_X + 2400, T_DRIVE1 - T_DRIVE0, "inn"))
+H.walk(T_SHRUG + 0.5, T_INCAR - FR, CAR_X - 60)
+H.k(T_INCAR - FR, "stand", "bored", dur=0.0, turn=0.8, look=(1.0, 0.0))   # hard cut: she's in the driver's seat
+H.X.append((T_DRIVE0, CAR_X - 60 + 2400, T_DRIVE1 - T_DRIVE0, "inn"))
 H.done()
 def shades_state(t):
     """1 = on her eyes, 0 = pushed up on her head"""
@@ -344,8 +345,7 @@ def car_x(t):
 
 def draw_her(cr, t):
     q = H.pose(t)
-    if t >= T_INCAR: q["lfoot"] = (q["lfoot"][0], q["lfoot"][1]); dy = -60
-    else: dy = 0
+    dy = 230 if t >= T_INCAR - FR else 0                          # sitting in the car: the door hides her lower half
     cr.save(); cr.translate(0, dy)
     O.draw_mom(cr, t, q, H.blink(t), s=HS, hair=H_HAIR, dress=H_DRESS, bun=False)
     hx, hy = scale_pt(q, q["head"], HS); tn = q.get("turn", 0.0)
@@ -511,26 +511,59 @@ def neon(cr, t):
                 u = ((t - T_PLAY) * 0.6 + k / 3) % 1.0
                 O.draw_note(cr, BOOM_X - 60 + 70 * k + 30 * math.sin(t * 3 + k), FLOOR_Y - 180 - 260 * u, s=0.6, alpha=1 - u, double=k % 2 == 1)
 
-def draw_car_big(cr, t):
-    cx = car_x(t)
-    if t >= T_DRIVE0:
-        for k in range(5):
-            u = ((t - T_DRIVE0) * 1.5 + k * 0.2)
-            if u < 1.5: O.draw_smoke_puff(cr, CAR_X - 150 + 120 * k, FLOOR_Y - 60 - 40 * u, 60 + 60 * u, alpha=max(0.0, 0.8 - 0.5 * u))
-    O.draw_car(cr, cx, FLOOR_Y - 10, s=1.7, col=(0.98, 0.42, 0.66), sid=22500)
+CAR_COL = (0.98, 0.42, 0.66)
+def draw_convertible(cr, x, t, part="all"):
+    """a full-size open-top 80s convertible (original design), facing right; x = its centre. ~1050 long.
+    part "back" = the far seat back + windshield (behind the driver), "front" = the body/door/wheels (in front of her)."""
+    yb = FLOOR_Y
+    if part in ("all", "back"):
+        sk_poly(cr, [(x - 150, yb - 300), (x - 120, yb - 470), (x - 20, yb - 470), (x - 40, yb - 300)], 5, sid=22510, fill=(0.95, 0.92, 0.88))  # seat back
+        sk_poly(cr, [(x + 160, yb - 300), (x + 230, yb - 500), (x + 255, yb - 495), (x + 195, yb - 300)], 5, sid=22511, fill=(0.75, 0.90, 0.98))  # windshield
+        sketch_line(cr, [(x + 160, yb - 300), (x + 230, yb - 500)], 6, sid=22512)
+    if part in ("all", "front"):
+        body = [(x - 540, yb - 120), (x - 545, yb - 260), (x - 470, yb - 330), (x - 140, yb - 300), (x + 190, yb - 300),
+                (x + 470, yb - 270), (x + 530, yb - 210), (x + 535, yb - 120), (x + 480, yb - 80), (x - 490, yb - 80)]
+        sk_poly(cr, body, 7, sid=22513, fill=CAR_COL)
+        sketch_line(cr, [(x - 520, yb - 200), (x + 520, yb - 200)], 5, sid=22514, color=(0.98, 0.98, 1.0))       # chrome stripe
+        sketch_line(cr, [(x - 60, yb - 295), (x - 60, yb - 110)], 4, sid=22515)                                    # door seam
+        sketch_line(cr, [(x + 160, yb - 295), (x + 160, yb - 110)], 4, sid=22516)
+        sk_rect(cr, x + 40, yb - 245, x + 110, yb - 228, 3, sid=22517, fill=(0.9, 0.9, 0.95))                      # handle
+        sk_circ(cr, x + 505, yb - 230, 22, 4, sid=22518, fill=(1.0, 0.95, 0.6))                                    # headlight
+        sk_rect(cr, x - 552, yb - 240, x - 530, yb - 190, 3, sid=22519, fill=(0.95, 0.2, 0.2))                    # tail light
+        for k, wx in enumerate((x - 320, x + 330)):
+            sk_circ(cr, wx, yb - 75, 82, 6, sid=22520 + k, fill=(0.12, 0.12, 0.15))
+            sk_circ(cr, wx, yb - 75, 38, 4, sid=22522 + k, fill=(0.85, 0.85, 0.9))
+            a = -t * 18 if t >= T_DRIVE0 else 0.0
+            sketch_line(cr, [(wx + 30 * math.cos(a), yb - 75 + 30 * math.sin(a)), (wx - 30 * math.cos(a), yb - 75 - 30 * math.sin(a))], 4, sid=22524 + k)
+
+def draw_car_smoke(cr, t):
+    if t < T_DRIVE0: return
+    for k in range(6):
+        u = (t - T_DRIVE0) * 1.4 + k * 0.15
+        if u < 1.6: O.draw_smoke_puff(cr, CAR_X - 420 + 90 * k, FLOOR_Y - 70 - 50 * u, 70 + 70 * u, alpha=max(0.0, 0.85 - 0.5 * u))
+
+def draw_car_big(cr, t):                    # before she gets in: the whole car, behind her
+    draw_convertible(cr, car_x(t), t)
 
 def world(cr, t):
     if t < CUT1 - FR:
         store(cr, t); return
     neon(cr, t)
-    draw_car_big(cr, t) if t < T_INCAR else None
+    draw_car_big(cr, t) if t < T_INCAR - FR else None
 S.background(world)
 
 # ================================================================ props (layers)
 def props_back(cr, t, p, ly):
     if ly != "back" or t < CUT1 - FR: return
-    draw_her(cr, t) if t < T_DRIVE1 else None
-    if t >= T_INCAR: draw_car_big(cr, t)
+    if t >= T_INCAR - FR and t < T_DRIVE1 + 0.5:                         # she's in it: seat back, her, then the door
+        draw_convertible(cr, car_x(t), t, part="back")
+        cr.save(); cr.rectangle(car_x(t) - 3000, -5000, 6000, 5000 + FLOOR_Y - 250); cr.clip()   # nothing of her below the door
+        draw_her(cr, t)
+        cr.restore()
+        draw_convertible(cr, car_x(t), t, part="front")
+    elif t < T_INCAR - FR:
+        draw_her(cr, t)
+    draw_car_smoke(cr, t)
     draw_wife(cr, t)
 S.prop(props_back)
 def props_front(cr, t, p, ly):
