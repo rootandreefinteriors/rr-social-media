@@ -1,22 +1,22 @@
 {
   "show": "let the comments decide",
-  "day": 22,
+  "day": 23,
   "last_episode": {
-    "day": 22,
-    "type": "comment",
-    "folder": "episodes/ep022",
-    "video": "videos/day022.mp4",
-    "posted_at": "2026-11-13T19:00-05:00 (scheduled)",
+    "day": 23,
+    "type": "waiting",
+    "folder": "episodes/ep023",
+    "video": "videos/day023.mp4",
+    "posted_at": "2026-11-14T19:00-05:00 (scheduled)",
     "buffer": {
-      "tiktok": "6af7622478196a0a9715858a",
-      "instagram": "6af7622781e1228421bae92d"
+      "tiktok": "6af8b23cb9a106584c64849c",
+      "instagram": "6af8b23e76c23bf1c735dee3"
     },
-    "note": "Re-cut 2 (cousin call in his hand). Buffer uses the commit-pinned raw URL @4fd3071."
+    "note": "Buffer uses the commit-pinned raw URL @8f9b570."
   },
   "ask_since_day": 22,
-  "waiting_streak": 0,
+  "waiting_streak": 1,
   "world": {
-    "location": "THE NEON GAME CITY (day 22): the whole world turned into a crime-game parody by his dark magic. Neon sunset street: purple/pink/orange sky bands, a striped half sun on the horizon at NX+520, ocean + sand, sidewalk, dark road with yellow dashes and a pink curb line; background palms, the pink art-deco OCEAN VIEW hotel; the GAME CAVE facade at the far left (DOOR_X=NX-1150). The hero palm at NX-160 is bent over (he leaned on it). Money ($999,999,999 worth) lies all over the sidewalk. HUD on screen: minimap, money, 5 flashing wanted stars, DATE 0%. He did the ask at NX+140, NX=9000000. S.floor=False. See ltcd/episodes/ep022 (neon()).",
+    "location": "THE NEON GAME CITY (day 22): the whole world turned into a crime-game parody by his dark magic. Neon sunset street: purple/pink/orange sky bands, a striped half sun on the horizon at NX+520, ocean + sand, sidewalk, dark road with yellow dashes and a pink curb line; background palms, the pink art-deco OCEAN VIEW hotel; the GAME CAVE facade at the far left (DOOR_X=NX-1150). The hero palm at NX-160 is bent over (he leaned on it). Money ($999,999,999 worth) lies all over the sidewalk. HUD on screen: minimap, money, 5 flashing wanted stars, DATE 0%. He did the day 22 ask at NX+140; day 23 waiting sign at NX+360 (phone on the floor at NX+290), NX=9000000. S.floor=False. See ltcd/episodes/ep022 (neon()).",
     "companions": [
       "his wife (O.draw_mom, hair (0.62,0.28,0.16), dress (0.30,0.66,0.66), bun=False) - LEFT HIM AGAIN on day 22 with the baby (and took his boombox): she caught him flirting",
       "his son, grown up: an NBA champion (dark high-top, white headband, purple #23) - left at the Finals arena; see ep019 draw_kid",
@@ -60,7 +60,7 @@
       "used dark magic to turn the world into the game (day 22, '@alex03330_: Use dark magic to transform the world into gta 6 except your the main character...'): the update shot to 47 OF 47 / PRESS START, the blast turned everything into a neon crime-game city with a HUD; he flirted with the leading lady (leaned on a palm - it bent and he fell; finger guns; a boombox with a synthwave groove; a money cheat code - $999,999,999 rained down; DATE 99%); a baby cried, five wanted stars lit up one by one: his wife with the baby; finger guns didn't work on her; the leading lady shrugged and drove off; the wife walked out with the baby, came back for the boombox; the last dollar landed on his head; WASTED; then his cousin called to go bowling and he declined. Looks normal."
     ],
     "notes": "Justin, 2026-11-09: his 11-08 note meant don't END episodes with new characters unless the comment asks for them. The girlfriend, baby and kitten are back as of day 18. The kitten doesn't need to ride on his head.",
-    "sign_line": null
+    "sign_line": "STILL WANTED."
   },
   "used_comments": [
     "Beat Mc in hardcore mode:)",
@@ -192,6 +192,11 @@
       "day": 22,
       "type": "comment",
       "summary": "IG @alex03330_ (2 likes): 'Use dark magic to transform the world into gta 6 except your the main character...' (Justin's call; card trimmed before the innuendo clause; the routine's waiting cut never aired) -> GAME CAVE: DARK MAGIC spellbook from the hip, UPDATE 47 OF 47 -> PRESS START, magic blast -> runs out into a neon crime-game city, HUD pops in; the leading lady (original) by a pink convertible: palm lean (it bends, he falls) 0%, finger guns 5%, boombox synthwave 40%, cheat code -> CHEAT ACTIVATED, money rain $999,999,999, 90-99%; baby cries, wanted stars 1..5: his wife with the baby; finger guns on the wife; leading lady drives off; wife leaves with the baby, comes back for the boombox; last dollar on his head; WASTED; his phone buzzes at his hip, he digs it out: COUSIN calling... he stares at us and lets it ring, declines without looking, the text comes anyway: LET'S GO BOWLING!, he drops the phone at his feet; ask on the street (67.6 s)"
+    },
+    {
+      "day": 23,
+      "type": "waiting",
+      "summary": "No comments on the day 22 posts (TikTok 0, IG 0). Neon game city sidewalk (bent palm, money on the ground, phone at his feet, HUD + 5 flashing stars); holds the sign, writes STILL WANTED. (21.0 s)"
     }
   ]
 }
