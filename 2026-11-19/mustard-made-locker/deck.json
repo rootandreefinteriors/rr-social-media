@@ -1,0 +1,65 @@
+{
+  "slug": "mustard-made-locker-alternatives",
+  "articleSlug": "mustard-made-locker-alternatives",
+  "format": "chat",
+  "theme": "dark",
+  "meColor": "#2e9e6b",
+  "contact": "roomie",
+  "avatar": "🪴",
+  "asins": ["B0C3G94NXX", "B0DZH4Y28S", "B0C3G2R48H", "B0DSVLQRTT", "B0CK6TKS76"],
+  "thread": [
+    [
+      { "overlay": "the $369 Mustard Made locker vs its <em>Amazon dupes</em>" },
+      { "from": "them", "image": "social/carousels/assets/mustard-midi-wide.jpg", "fit": "contain", "h": 600 },
+      { "from": "them", "text": "need this for the hallway but it's $369 😭" },
+      { "from": "me", "text": "found it on amazon for $160", "big": true },
+      { "from": "them", "text": "SHOW ME" }
+    ],
+    [
+      { "from": "me", "image": "https://m.media-amazon.com/images/I/418pCcarZHL._SL500_.jpg", "price": "$159.69", "was": "$369", "react": "💚", "title": "Sage Two-Door Metal Locker" },
+      { "from": "them", "text": "the SAGE" },
+      { "from": "them", "text": "it even has the little vents" },
+      { "from": "me", "text": "wait. there's a tall one too" }
+    ],
+    [
+      { "from": "me", "image": "https://m.media-amazon.com/images/I/41wNVcwLz6L._SL500_.jpg", "price": "$169.99", "react": "🙌", "title": "Tall Mint Single-Door Locker" },
+      { "from": "them", "text": "for the entryway!!" },
+      { "from": "me", "text": "ok but the next one is a nightstand" }
+    ],
+    [
+      { "from": "me", "image": "https://m.media-amazon.com/images/I/41+dV-owqsL._SL500_.jpg", "price": "$87.69", "react": "😍", "title": "Sage Mini Locker" },
+      { "from": "them", "text": "a locker NIGHTSTAND" },
+      { "from": "them", "text": "under $90??" },
+      { "from": "me", "text": "and a low one for the tv" }
+    ],
+    [
+      { "from": "me", "image": "https://m.media-amazon.com/images/I/41JjlxeH5xL._SL500_.jpg", "price": "$109.99", "react": "🫒", "title": "Low Olive Two-Door Cabinet" },
+      { "from": "them", "text": "olive is so good" },
+      { "from": "me", "text": "saving the best for last" },
+      { "typing": true }
+    ],
+    [
+      { "from": "me", "image": "https://m.media-amazon.com/images/I/5183WdECxRL._SL500_.jpg", "price": "$99.99", "was": "$549", "react": "💛", "title": "Yellow Mesh-Door Cabinet" },
+      { "from": "them", "text": "a YELLOW one" },
+      { "from": "me", "text": "the mustard made one is $549" },
+      { "from": "them", "text": "LINKS. NOW." }
+    ],
+    [
+      { "from": "me", "grid": [
+        "https://m.media-amazon.com/images/I/418pCcarZHL._SL500_.jpg",
+        "https://m.media-amazon.com/images/I/41wNVcwLz6L._SL500_.jpg",
+        "https://m.media-amazon.com/images/I/41+dV-owqsL._SL500_.jpg",
+        "https://m.media-amazon.com/images/I/41JjlxeH5xL._SL500_.jpg",
+        "https://m.media-amazon.com/images/I/5183WdECxRL._SL500_.jpg"
+      ] },
+      { "from": "me", "text": "you save up to $449", "big": true },
+      { "cta": "chat", "text": "Comment \"DUPES\"", "sub": "and we'll send every link" },
+      { "cta": "save", "text": "Save this", "sub": "for move-in day" },
+      { "cta": "link", "text": "Link in bio", "sub": "@rootandreefinteriors" }
+    ]
+  ],
+  "captions": {
+    "instagram": "my roommate wanted the $369 mustard made locker 💚 i found the look on amazon from $88\n\n5 steel lockers in the same sage, mint, olive and yellow.\n\ncomment DUPES and we'll send you every link 💌\n\n#mustardmade #locker #entryway #amazonfinds #dupes",
+    "tiktok": "send this to your roommate before she buys the $369 mustard made locker 💚 the amazon dupes start at $88, every link is in our bio #mustardmade #dupes #amazonfinds #locker #entryway"
+  }
+}
