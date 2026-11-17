@@ -174,7 +174,10 @@ dropped into another episode with the nouns changed, start it again.
 7. **Reads cold.** About 99% of viewers are first-timers (user, 2026-11-05). A first-time viewer must follow every line:
    show and name the prop in this video, no pronouns for things from earlier days, and any change (gone, bigger, healed)
    happens on camera here. No effects that need explaining; callbacks are a bonus layer only.
-8. **Few shots, slow moves:** ~4–6 setups, long holds, real silences — but never a dead stretch.
+8. **One continuous shot, slow moves (user, 2026-11-17: no jump cuts).** ~4–6 slow camera moves (push in, pull out,
+   pan, drift), each at least 1 s, long holds, real silences, never a dead stretch. Never cut between angles; the
+   only cut is the hard cut at the end. A change "while we weren't looking" happens while the camera has drifted away
+   from it, and is seen when the camera drifts back.
 9. **Foreshadow → pay off on camera** within the episode.
 10. **Nigel notices.** Silent anomalies stay parked until there's a real following.
 11. **Sound, lightly (viewers call his voice ASMR; user 2026-11-10: lean in, "just don't overdo it").** Stereo and a
@@ -310,8 +313,8 @@ leaves with the mouse, so both props exit on camera together. D39 is the chapter
   **R:** someone else (the person who decided you were safe) · **Ending:** action (the paw on his finger; the line is said over it)
 - **38 · Under the chair (MOUSE 3/4)** — *Something in your home has watched you sleep.* Night. Two small eyes shine
   in the dark under the chair. He lies flat on the floor facing them, a few feet away, and says what he's doing: "It
-  stares until you look away. Then it's gone. I'm not looking away." A staring match the viewer can follow: close-ups
-  cut between his eyes and the two dots; the silences get longer; his eyes water and he fights the blink. Spiders,
+  stares until you look away. Then it's gone. I'm not looking away." A staring match the viewer can follow: the camera
+  drifts slowly between his eyes and the two dots (re-cut 2026-11-17: one continuous shot); the silences get longer; his eyes water and he fights the blink. Spiders,
   pets, the mouse in the wall: something in your home has seen you asleep, with your mouth open, and you'll never
   know what. He finally blinks; when his eyes open the dots are gone. "How many things in your home have watched you
   sleep? ...You don't know either."
@@ -331,15 +334,15 @@ leaves with the mouse, so both props exit on camera together. D39 is the chapter
 
 ### Arc: the room gets smaller (D40–43, 4 episodes) — lives shrink so slowly you never notice
 The empty room starts closing in: the ceiling comes down (D40), the walls are closer (D41), it's as small as it gets
-(D42), and it comes back to its size when he stops measuring it (D43). The changes happen between cuts, never as a
-glitch, and Nigel always notices and says so. The low ceiling stays until D43.
+(D42), and it comes back to its size when he stops measuring it (D43). The changes happen off-frame while the camera
+has drifted in close on him (one continuous shot, never a cut, never a glitch), and Nigel always notices and says so. The low ceiling stays until D43.
 
 - **40 · Ceiling (ROOM 1/4)** — *You lie under your ceiling every night and couldn't describe it.* Evening. He lies on
   the floor and looks up; the ceiling (a grey slab with hairline cracks) is shown for the first time. He asks you what
-  colour your ceiling is, exactly, without looking, and waits about five seconds in real silence. Every time we cut back
-  to the whole room the ceiling is lower; by the third time the viewer can see it, and he says it: "Mine's lower than
+  colour your ceiling is, exactly, without looking, and waits about five seconds in real silence. Every time the camera
+  drifts back out to the whole room the ceiling is lower; by the third time the viewer can see it, and he says it: "Mine's lower than
   it was. ...No. It isn't. It is." It ends resting on the top of the window frame. "I count the cracks up there every
-  night. ...Five. I don't remember the number going up." (Made as `nearing`; re-render as D40, no chair.)
+  night. ...Five. I don't remember the number going up." (Made 2026-11-17 as `nearing`, one continuous shot, from the Nov 11 voice.)
   **C:** "Lie down with me." · **T:** each wide shot it's lower; will it come down onto the window? It does on the last line.
   **R:** the question (what colour is your ceiling, exactly?) · **Ending:** admission
 - **41 · Eleven steps (ROOM 2/4)** — *Lives shrink so slowly you never notice: the friend you stopped calling.* The
@@ -351,8 +354,8 @@ glitch, and Nigel always notices and says so. The low ceiling stays until D43.
   **C:** "Count with me." · **T:** will he make twelve? The viewer counts along and hears it come up short, twice.
   **R:** someone else (one friend, told as one scene) · **Ending:** caught
 - **42 · Arms out (ROOM 3/4, the tightest point)** — *A small room feels safe. That's how it keeps you.* The room is
-  at its smallest: in the first wide shot he stands in the middle with his arms out and his palms flat on both walls.
-  "I'm going to push them back." He braces and pushes; the viewer watches him strain, shot after shot; will they give?
+  at its smallest: at the start he stands in the middle with his arms out and his palms flat on both walls.
+  "I'm going to push them back." He braces and pushes; the viewer watches him strain, the camera creeping in; will they give?
   Most of your week happens in the same few rooms, and it feels like safety. The walls don't move. Slowly he stops
   pushing and just leans into them, comfortable, arms still out: "It's cosy." Then: "Tonight, stand in the middle of
   your room and stretch your arms out."

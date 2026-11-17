@@ -57,20 +57,21 @@ M_EXIT0 = t_im + 1.0
 cx = Track([(0, C0, 0), (t_you_e + 0.8, C1, 1.6), (t_exactly_e + 0.9, C2, 1.8), (t_whatever + 0.6, C3, 8.5),
             (M_EXIT0, 1520.0, t_never2 - 0.4 - M_EXIT0)])
 WIDE = (640, 1090, 1.15)
-cam_track = Track([
+cam_track = Track([                                       # ONE continuous shot: slow moves, never a cut
     (0, (470, 880, 1.6), 0),
-    (t_hold, WIDE, 1.2),                                 # the whole room: him, the chair
-    (t_while - 0.1, (520, 920, 1.6), 0),                 # CUT: him
-    (t_while, (520, 915, 1.7), t_exactly_e - t_while),
-    (t_exactly_e + 0.2, WIDE, 0),                        # CUT: wide; he turns away, it moves
-    (t_mouse - 0.1, (820, 1350, 1.9), 0),                # CUT: the mouse coming out from under it
-    (t_whatever - 0.1, WIDE, 0),                         # CUT: wide; he talks to us, it creeps behind
-    (t_whatever, (650, 1095, 1.18), t_i_could - t_whatever),
-    (t_i_could - 0.1, (650, 1050, 1.35), 0),               # CUT: medium, he looks at it
-    (t_im + 0.7, WIDE, 0),                               # CUT: wide; it goes
-    (t_never2 - 0.2, (520, 930, 1.55), 0),               # CUT: him and the empty floor
-    (t_some - 0.2, (470, 880, 1.75), 0),                 # CUT: close, to us
-    (t_some, (468, 870, 1.85), t_end - t_some + 2),
+    (t_hold, WIDE, 1.2),                                  # the whole room: him, the chair
+    (t_while - 0.6, (540, 950, 1.5), 1.8),                # slow push in on him
+    (t_while + 1.5, (530, 930, 1.6), t_exactly_e - t_while - 1.5),
+    (t_exactly_e - 0.2, WIDE, 1.6),                       # ease back out as he turns away; it moves
+    (t_mouse - 0.8, (720, 1180, 1.35), 1.8),               # drift down to the chair: the mouse comes out
+    (t_mouse + 2.5, (730, 1190, 1.42), t_whatever - t_mouse - 3.3),
+    (t_whatever - 0.6, WIDE, 1.8),                        # back out; he talks to us, it creeps behind
+    (t_whatever + 1.5, (650, 1095, 1.18), t_i_could - t_whatever - 1.5),
+    (t_i_could - 0.4, (650, 1050, 1.35), 1.4),            # in a little as he looks at it
+    (t_im + 0.4, WIDE, 1.6),                              # out again; it goes
+    (t_never2 - 0.6, (520, 930, 1.55), 2.0),              # push in: him and the empty floor
+    (t_some - 0.6, (470, 880, 1.75), 2.0),                # close, to us
+    (t_some + 1.5, (468, 870, 1.85), t_end - t_some),
 ])
 follow_track = Track([(0, 0.0, 0)])
 

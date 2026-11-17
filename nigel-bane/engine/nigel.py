@@ -181,6 +181,12 @@ def configure(mood_track, pose_track, x_track, cam_track, follow_track, env_trac
              follow_track=follow_track, env_track=env_track, WINDOW_KNOCKS=list(window_knocks),
              TALLY_BASE=tally_base, TALLY_NEW=list(tally_new), SFX=list(sfx), POSE_HOOK=pose_hook, BIRDS=list(birds),
              WEB=build_web(web) if web else None, PLUCKS=list(plucks))
+    # ONE CONTINUOUS SHOT (user, 2026-11-17): no jump cuts. D37-39 cut between angles and the user disliked it.
+    # Every camera change after the open must be a smooth move of at least 1 s.
+    for kt, kv, kd in getattr(cam_track, "keys", [])[1:]:
+        if kt > 0.3 and kd < 1.0:
+            raise ValueError(f"camera jump cut at {kt:.2f}s (transition {kd:.2f}s): the show is one continuous "
+                             "shot; make every camera move at least 1 s long (PRODUCE.md section 1)")
     g["DURATION"] = words[-1]["end"] + tail          # hard cut right after the last word
     g["NFRAMES"] = int(g["DURATION"] * FPS)
     # voice envelope (mouth + talking hands)

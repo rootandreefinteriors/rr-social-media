@@ -33,6 +33,12 @@ The **user's notes in §1 are not up for debate.** The Bible wins on plan and id
   (bugs, a moth, a rat) are allowed as props (user, 2026-10-23).
 - Cold open every time: he knocks on the camera glass (his own attached arm, fist swings toward lens) — "Hello? Is anyone
   out there?" Monologue → faint silver lining → hook → **hard cut. No title card.**
+- **One continuous shot, no jump cuts (user, 2026-11-17).** Days 37–39 cut between angles (his eyes, the prop, a
+  wide shot) and the user didn't like it: "weird jump cuts instead of one continuous shot like the rest of the videos
+  had." The camera only ever moves smoothly (push in, pull out, pan, drift), each move at least 1 s; never a
+  zero-length camera key. A change that happens "while we weren't looking" happens while the camera has drifted
+  away from it (a slow push in on his face, a pan to the window) and is seen when it drifts back. The engine refuses
+  to render a camera move shorter than 1 s. The only cut is the hard cut at the very end.
 - 1080×1920, 30 fps, **61–70 s, dread days included** (TikTok only pays on videos over a minute). Captions: Waking-Life-style, words pop in, slight tilt/drift,
   readable, inside TikTok safe zone, never over his face/window/tally.
 
@@ -115,7 +121,7 @@ user: the examples in the Bible plus "your tendency to just replicate previous e
   lighting gimmick.
 - **Effects must be well animated or left out** (the moth's dusty print on the glass looked weird/cheap).
 - **Pacing: ONE idea, said a few ways; few angles.** D19 v1 crammed too many separate statements and camera moves into
-  60 s. Aim for ~4–6 shots with slow moves and long holds; let silences breathe.
+  60 s. Aim for ~4–6 slow camera moves (one continuous shot, never a cut) and long holds; let silences breathe.
 - **Pay off in-episode foreshadowing on camera.** If he says the spider "knows where it ends up", the moth ends up in the
   web before the cut.
 

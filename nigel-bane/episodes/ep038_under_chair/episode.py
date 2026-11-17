@@ -1,7 +1,7 @@
 """Day 38 — "Under the chair" (posts as `… IIIII III unblinking`). Mouse arc 3/4. IDEA: something in your home has
 probably watched you sleep. Night. C: "Don't blink. Watch it with me." — he's already down low on the floor, facing
 the tagged chair. Two small eyes shine in the shadow under the seat. T (said early): "It stares until you look away.
-Then it's gone. I'm not looking away." A staring match: close-ups cut between his eyes and the two dots; no blinks;
+Then it's gone. I'm not looking away." A staring match: one continuous shot drifting between his eyes and the two dots (re-cut 2026-11-17, no jump cuts); no blinks;
 the silences get longer; "My eyes are stinging. ...I can't..." — he blinks, and the dots are gone. R (the turn): he
 only talks about the mouse watching him sleep, then "Something in your home has probably watched you sleep. With your
 mouth open." Unsettling line: that one. ENDING (question): "How many things in your home have watched you sleep?
@@ -50,22 +50,22 @@ def strain(t, p):
 x_track = Track([(0, 0.0, 0)])
 
 EYES = (880, 1428)
-cam_track = Track([
+cam_track = Track([                                     # ONE continuous shot: slow drifts, never a cut
     (0, (470, 880, 1.6), 0),
     (t_dont, (620, 1250, 1.2), 1.4),                    # down low with him; the chair beyond
-    (t_under - 0.1, (880, 1400, 2.6), 0),               # CUT: under the chair, two eyes
-    (t_under, (880, 1405, 2.8), t_stares - t_under),
-    (t_stares - 0.1, (560, 1300, 2.2), 0),              # CUT: his eyes
-    (t_im - 0.1, (700, 1340, 1.45), 0),                 # CUT: two-shot, the long stare
-    (t_im, (710, 1345, 1.55), t_it_does - t_im),
-    (t_it_does - 0.1, (880, 1410, 3.2), 0),             # CUT: the dots, closer
-    (t_it_does, (880, 1412, 3.4), t_something - t_it_does),
-    (t_something - 0.1, (575, 1290, 2.6), 0),           # CUT: his face, to us
-    (t_my - 0.1, (560, 1295, 3.4), 0),                  # CUT: extreme close on his straining eyes
-    (t_my, (556, 1296, 3.7), BLINK - t_my),
-    (BLINK + 0.15, (880, 1405, 2.8), 0),                # CUT: under the chair: empty
-    (t_how - 0.1, (650, 1250, 1.3), 0),                 # CUT: wide, him and the empty dark under the chair
-    (t_how, (660, 1260, 1.38), t_end - t_how + 2),
+    (t_under - 0.3, (850, 1400, 2.2), 2.2),             # slow drift over to the dark under the chair
+    (t_under + 3.5, (855, 1404, 2.4), t_stares - t_under - 3.5),
+    (t_stares, (600, 1305, 2.0), 2.2),                  # drift back to his eyes
+    (t_im - 0.5, (710, 1345, 1.5), 2.0),                # ease out: both of them, the long stare
+    (t_im + 1.6, (712, 1346, 1.6), t_it_does - t_im - 2.0),
+    (t_it_does - 0.4, (860, 1410, 2.7), 2.4),           # drift onto the dots
+    (t_it_does + 2.2, (870, 1412, 3.0), t_something - t_it_does - 2.8),
+    (t_something - 0.6, (590, 1295, 2.4), 2.2),         # drift back to his face, to us
+    (t_my - 0.4, (565, 1296, 3.0), 1.6),
+    (t_my + 1.2, (558, 1296, 3.6), BLINK - t_my - 1.2), # slow push into his straining eyes
+    (BLINK + 0.25, (840, 1402, 2.5), 1.4),              # he blinks; pan over: under the chair is empty
+    (t_how - 0.3, (650, 1250, 1.3), 2.0),               # pull out: him and the empty dark
+    (t_how + 1.8, (660, 1260, 1.38), t_end - t_how),
 ])
 follow_track = Track([(0, 0.0, 0)])
 
