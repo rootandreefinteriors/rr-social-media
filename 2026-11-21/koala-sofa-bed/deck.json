@@ -1,0 +1,54 @@
+{
+  "slug": "koala-sofa-bed-alternatives",
+  "articleSlug": "koala-sofa-bed-alternatives",
+  "format": "chat",
+  "theme": "light",
+  "meColor": "#7c5cff",
+  "contact": "sis",
+  "avatar": "🧸",
+  "asins": ["B0HLDTNPFR", "B0GLH27BLN", "B0HPNJW94Y"],
+  "thread": [
+    [
+      { "overlay": "the $1,990 Koala sofa bed vs its <em>Amazon dupes</em>" },
+      { "from": "them", "image": "social/carousels/assets/koala-sofa-bed.jpg", "h": 560 },
+      { "from": "them", "text": "it's $1,990 😩" },
+      { "from": "me", "text": "amazon has the look for $330", "big": true },
+      { "from": "them", "text": "you're lying" }
+    ],
+    [
+      { "from": "me", "image": "https://m.media-amazon.com/images/I/41SAO2sAEZL._SL500_.jpg", "price": "$329.99", "was": "$1,990", "react": "😍", "title": "Gray Corduroy Queen Sleeper Sofa" },
+      { "from": "them", "text": "the pillow arms!!" },
+      { "from": "me", "text": "and it pulls out into a queen" },
+      { "from": "them", "text": "STOP" },
+      { "from": "me", "text": "there's a cream one too" }
+    ],
+    [
+      { "from": "me", "image": "https://m.media-amazon.com/images/I/51khiTWPU4L._SL500_.jpg", "price": "$319.99", "react": "🤍", "title": "Beige Queen Sleeper Sofa" },
+      { "from": "them", "text": "ok this is so cute" },
+      { "from": "them", "text": "also a queen??" },
+      { "from": "me", "text": "yep. wait for the white one" }
+    ],
+    [
+      { "from": "me", "image": "https://m.media-amazon.com/images/I/41kQ4yZ2IGL._SL500_.jpg", "price": "$439.98", "react": "✨", "title": "White Queen Sofa Bed" },
+      { "from": "them", "text": "the WHITE" },
+      { "from": "me", "text": "pulls out into a queen too" },
+      { "from": "them", "text": "guests are never leaving" },
+      { "from": "them", "text": "SEND LINKS" }
+    ],
+    [
+      { "from": "me", "grid": [
+        "https://m.media-amazon.com/images/I/41SAO2sAEZL._SL500_.jpg",
+        "https://m.media-amazon.com/images/I/51khiTWPU4L._SL500_.jpg",
+        "https://m.media-amazon.com/images/I/41kQ4yZ2IGL._SL500_.jpg"
+      ] },
+      { "from": "me", "text": "you save $1,660", "big": true },
+      { "cta": "chat", "text": "Comment \"DUPES\"", "sub": "and we'll send every link" },
+      { "cta": "save", "text": "Save this", "sub": "before the in-laws land" },
+      { "cta": "link", "text": "Link in bio", "sub": "@rootandreefinteriors" }
+    ]
+  ],
+  "captions": {
+    "instagram": "my sister wanted the $1,990 koala sofa bed for thanksgiving guests 🧸 i found the look on amazon for $330\n\n3 queen sleeper sofas with the same soft pillow arms.\n\ncomment DUPES and we'll send you every link 💌\n\n#koalasofabed #sofabed #guestroom #amazonfinds #dupes",
+    "tiktok": "send this to your sister before she buys the $1,990 koala sofa bed 🧸 the amazon dupes start at $320, every link is in our bio #koalasofabed #dupes #amazonfinds #sofabed #guestroom"
+  }
+}
