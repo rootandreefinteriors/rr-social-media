@@ -507,3 +507,68 @@ Post time is 9 PM ET. Day 13 went out a day late (missed slot); every later day 
 - **four elements:** C "Hold on to something near you." · R the things you own, after you (caught) · E quietly frightening · T the chair moves whenever he isn't looking; will he stop it?
 - **cover:** 48.0 s, him facing us while the chair slides out of frame behind him.
 - **script:** Hello? Is anyone out there? Hold on to something near you. ... It moved. The chair. While I wasn't looking. Somebody left it for me. It fit me exactly. ... Again. The mouse lives under it. ...It's going with it. Whatever you're holding right now will probably belong to someone else one day. Someone who never met you. They won't know it was yours. I could stop it. ...I'm not going to. ... It was never mine. I just sat in it. Some of what's in your room right now will belong to someone you'll never meet.
+
+### D40 · nearing · "Ceiling (room 1/4)" · 2026-11-19 (Thu) · 62.9 s
+- **idea:** you lie under your ceiling every night and couldn't describe it.
+- **you:** strong. "Now think of yours. Don't look. What colour is it, exactly?" then real silence.
+- **first seconds:** he's already lowering himself to the floor: "Lie down with me. ...On your back. Go on."
+- **prop:** the ceiling, shown for the first time, coming down (stays until D43).
+- **tension:** strong: each time the camera drifts back out it's lower; it comes to rest on the window frame.
+- **visual:** one continuous shot: slow push-ins on him lying, pull-outs to the whole room (the ceiling only moves while we're in close).
+- **dread:** no. Unsettling line: the whispered "It is."
+- **hook:** "I count the cracks up there every night. ...Five. I don't remember the number going up." *Admission.*
+- **four elements:** C "Lie down with me." · R the question (your ceiling) · E lonely, uneasy underneath · T will it come down onto the window?
+- **cover:** 33.5 s, lying on his back, eyes open, close.
+- **script:** Hello? Is anyone out there? Lie down with me. ...On your back. Go on. That's my ceiling. I look at it every night. Not past it. At it. Now think of yours. Don't look. ...What colour is it, exactly? Is there a mark on it? A corner where the paint doesn't match? ... You've spent more nights under it than anywhere else, probably. Thousands of hours, right under it. And I bet you couldn't draw it. Mine's lower than it was. ...No. It isn't. It is. I count the cracks up there every night. ...Five. I don't remember the number going up.
+
+### D41 · shortening · "Eleven steps (room 2/4)" · 2026-11-20 (Fri) · 68.4 s
+- **idea:** lives shrink so slowly you never notice: the friend you stopped calling.
+- **you:** strong. "There's probably someone you used to talk to every day. You'd know their laugh from another room."
+- **first seconds:** at the tally wall, facing the far wall: "Count with me. Out loud. It's twelve steps to that wall."
+- **prop:** the far wall (and the low ceiling from D40).
+- **tension:** strong, set up in words: will he make twelve? The viewer counts along: eleven. Again, slower, the other way: eleven.
+- **visual:** one continuous shot following him step by step, pulling out to the whole low room.
+- **dread:** no. Unsettling line: "I saw your lips move."
+- **hook:** "You counted with me. I saw your lips move." *Caught.*
+- **four elements:** C "Count with me. Out loud." · R someone else (one friend) · E tender, lonely · T will he make twelve?
+- **cover:** 25.8 s, his hand flat on the far wall after "...Eleven."
+- **script:** Hello? Is anyone out there? Count with me. Out loud. It's twelve steps to that wall. It's always been twelve. One. Two. Three. Four. Five. Six. Seven. Eight. Nine. Ten. Eleven. ...Eleven. Again. Back the other way. Slower. Count with me. One. Two. Three. Four. Five. Six. Seven. Eight. Nine. Ten. Eleven. There's probably someone you used to talk to every day. You'd know their laugh from another room. Nobody decided anything. One week you didn't call. Then it was a month. Then calling would have felt strange. It didn't feel like losing them. It felt like a step you didn't notice. You counted with me. I saw your lips move.
+
+### D42 · bracing · "Arms out (room 3/4)" · 2026-11-21 (Sat) · 63.0 s
+- **idea:** a small room feels safe; that's how it keeps you.
+- **you:** strong. The test ("Can you touch both walls?"), then "You could probably walk most of your morning with your eyes shut."
+- **first seconds:** arms going out to both walls: "Stand up. Arms out. Go on, try it."
+- **prop:** the two walls at his fingertips (the room just wider than the window); the tally on the left side wall.
+- **tension:** "I'm going to push them back." He strains, trembling, the camera creeping in; they don't move; he stops and leans.
+- **visual:** one continuous shot; the narrowest the room gets.
+- **dread:** no. Unsettling line: "I stopped pushing because it was nice."
+- **hook:** "Tonight, stand in the middle of your room with your arms out, and your eyes shut. Notice how sure you are where the walls are." *Instruction for after.*
+- **four elements:** C "Stand up. Arms out." · R the test · E calm, wrong underneath · T will the walls give?
+- **cover:** 13.0 s, arms out, palms on both walls, looking at us.
+- **script:** Hello? Is anyone out there? Stand up. Arms out. Go on, try it. ...Can you touch both walls? I can. I'm going to push them back. Mm... come on... come on... They're not moving. You could probably walk most of your morning with your eyes shut. Bed to kettle. Kettle to door. You know where every corner is in the dark. That isn't small. That's knowing a place. ...It's cosy, actually. I stopped pushing because it was nice. That's the part I'd watch, if I were you. Tonight, stand in the middle of your room with your arms out, and your eyes shut. Notice how sure you are where the walls are.
+
+### D43 · unwatching · "Don't look (room 4/4)" · 2026-11-22 (Sun) · 62.9 s
+- **idea:** measuring a life makes it smaller.
+- **you:** strong. "Watch the walls for me." / "Somewhere in your head, you know how much of this video is left."
+- **first seconds:** eyes closing: "Close your eyes with me. ...No. Not you. You keep yours open."
+- **prop:** the walls and the low ceiling, which leave on camera (the room comes back to its size).
+- **tension:** strong: the room grows only while his eyes are shut, on camera; he peeks and it stops; shut again and it goes all the way.
+- **visual:** one continuous shot; walls gliding outward, ceiling lifting out of frame; eyes shut most of the episode, open on the last line.
+- **dread:** no. Unsettling line: "Somewhere in your head, you know how much of this video is left."
+- **hook:** "You can stop watching the walls now. ...You won't, though." *Flip.*
+- **four elements:** C "Close your eyes with me. No. Not you." · R the swap · E eerie, then awe · T will the room come back?
+- **cover:** see POSTING.md (15.8 s for D43, 24.0 s for D44).
+- **script:** Hello? Is anyone out there? Close your eyes with me. ...No. Not you. You keep yours open. Watch the walls for me. ...Are they moving? Don't tell me. If I look, it stops. ...I have to look. ...It moved. Didn't it. ...Okay. Shutting them again. I used to count everything in here. My steps. The marks on the wall. And every time I counted, the room was exactly that big. Not one step more. Somewhere in your head, you know how much of this video is left. You've been keeping track. Is it back? ...Don't tell me. I'm keeping them shut a little longer. You can stop watching the walls now. ...You won't, though.
+
+### D44 · dimming · "Light left on (keeper 1/4)" · 2026-11-23 (Mon) · 62.5 s
+- **idea:** you leave a light on so the room isn't empty when you come back, as if you were two people.
+- **you:** strong. One scene: coming home late, the light seen from the street, "for half a second it looks like somebody's in."
+- **first seconds:** kneeling by the lamp: "Don't turn your light off. Not yet. Stay with this one."
+- **prop:** a small floor lamp with a tag "for nigel" and no cord (keeper arc D44–47).
+- **tension:** strong, set up in words: "...And it's getting dimmer." Will it last? It dims, flickers twice, and goes out on the last word.
+- **visual:** one continuous shot; warm glow on white, fading.
+- **dread:** no. Unsettling line: "You left it on for yourself. Like you were two people."
+- **hook:** "Who are you leaving yours on for?" *Question.*
+- **four elements:** C "Don't turn your light off." · R one scene · E tender, eerie underneath · T will the lamp last?
+- **cover:** see POSTING.md (15.8 s for D43, 24.0 s for D44).
+- **script:** Hello? Is anyone out there? Don't turn your light off. Not yet. Stay with this one. Somebody left me a lamp. The tag says, for nigel. It isn't plugged into anything. ...And it's getting dimmer. You've probably done this. Left a light on when you went out, so the place wouldn't be dark when you got back. And you come home late, and you see it from the street, and for half a second it looks like somebody's in. Then you remember it was you. You left it on for yourself. Like you were two people. Not yet... not yet... Who are you leaving yours on for?

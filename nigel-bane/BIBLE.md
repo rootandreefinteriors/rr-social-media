@@ -361,14 +361,14 @@ has drifted in close on him (one continuous shot, never a cut, never a glitch), 
   your room and stretch your arms out."
   **C:** "Stand up. Arms out. Can you touch both walls?" · **T:** he pushes the walls; will they give? They don't, and he stops trying.
   **R:** the test (try it now) · **Ending:** instruction for after
-- **43 · Don't count (ROOM 4/4, the resolution)** — *Measuring a life makes it smaller.* The room is still tight. He
-  decides to walk without counting this time, eyes on us, not on the walls: "If I don't count, I don't know how small it is."
-  The viewer knows from the start what to watch: will the room still be small when he gets there? He keeps walking and
-  talking past the point the wall should be; the camera follows him; the wall doesn't come; the last wide shot shows
-  the whole room back at its old size, ceiling back up out of view. It stays that way. "I said don't count. ...You did
-  anyway."
-  **C:** "Walk with me. Eyes on me, not the wall." · **T:** will the wall come at eleven steps? It doesn't; the room is back, on camera.
-  **R:** the swap (you count; he won't) · **Ending:** flip
+- **43 · Don't look (ROOM 4/4, the resolution; made 2026-11-17)** — *Measuring a life makes it smaller.* Still narrow
+  and low. He shuts his eyes and asks you to keep yours open and watch the walls for him. While his eyes are shut the
+  walls drift outward and the ceiling lifts, on camera; when he peeks it stops ("It moved. Didn't it."); shut again,
+  it goes all the way back to its old size. "I used to count everything in here... every time I counted, the room was
+  exactly that big." "You can stop watching the walls now. ...You won't, though." (Re-varied by the lost 2026-11-16
+  review: D41 and the old D43 were both step counts two days apart.)
+  **C:** "Close your eyes with me. No. Not you. Watch the walls for me." · **T:** the room grows only while his eyes are shut; will it come back? It does, on camera.
+  **R:** the swap (you watch for him) · **Ending:** flip
 
 ### Arc: the keeper (D44–47, 4 episodes) — the people who look after you mostly do it while you sleep
 A gift arrives with a tag ("for nigel"), not in his handwriting; there's no door. He tries to thank whoever it is,
