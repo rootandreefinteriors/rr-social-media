@@ -59,6 +59,7 @@ Views come from the engagement reviews. The user tracks followers in TikTok's ap
 | 2026-11-03 | ~9,200 (all-time; the show is 24 days old) | ~800 |
 | 2026-11-06 | 11,735 (all-time; the show is 27 days old) | ~930 |
 | 2026-11-11 | 16,006 (all-time; the show is 32 days old) | ~890 |
+| 2026-11-21 | ~22,800 (24,627 all-time minus 1,804 at the Oct 23 snapshot; plus ~10,600 from five non-Nigel "Gary vs Larry" posts on the same TikTok, Nov 13–17) | ~820 |
 
 ## Four elements (C / R / E / T)
 Check this before scripting. Within any 3 days, don't repeat the command's wording, the area of life R lands on, the
@@ -155,3 +156,8 @@ landing).
 Nov 11 `nearing` voice, continuous; D41–44 made. The Nov 16 cloud run's review was lost (GitHub refused its push); it
 had re-varied D43 to "Don't look" (eyes shut, the room grows back), which is what was made. Next to make: **D45**
 (keeper 2/4).
+
+**2026-11-21 (cloud review):** D45 re-varied: command "Say the letters with me." and tension "will the thin tag tear
+before he finishes the last letter?" (it holds), because "watch" and "it happens while he isn't looking" were D43's and
+D47's. The tag still disappears on the last line. New "Build on what works" notes: a creature coming closer on camera
+(D37), and props that outstay their arc go flat (the chair, D32–39).

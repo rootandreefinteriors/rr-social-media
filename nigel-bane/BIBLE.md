@@ -18,11 +18,11 @@ confirm them in TikTok Studio → Creator Rewards before relying on them:
 - **AI label: never (user's decision, 2026-11-05, final).** Posts go out with the AI label off. Don't raise it
   again, and don't recommend turning it on.
 
-**Where we are (2026-11-11):**
-- TikTok: about 16,000 views in total, 32 days after launch, gaining about 890 a day (almost all of it from the newest
-  three or four episodes; older ones stop growing after about a week).
+**Where we are (2026-11-21):**
+- TikTok: about 24,600 views in total for the show, about 22,800 of them in the last 30 days, gaining about 820 a day
+  (almost all of it from the newest three or four episodes; older ones stop growing after about a week).
 - Followers: the user tracks them in TikTok's app. Don't ask for them.
-- Needed: about 3,300 TikTok views a day, so roughly three and three-quarter times the current rate.
+- Needed: about 3,300 TikTok views a day, so roughly four times the current rate.
 - Followers come from viewers wanting the next episode. That is why prop arcs and recurring beats matter (see "Build on
   what works").
 
@@ -132,6 +132,14 @@ Compound what has already worked, rather than adding a new kind of thing each da
   watch since D18, top shares of its batch) and D27 "will the crack reach the edge?" average +0.97; D28 (a tick getting
   louder) and D30 (a search that slows and stops) have no moment of answer and average +0.18. Low confidence (four
   episodes), but it matches D12 "will it stay?". Give every T a visible yes/no.
+- **Something alive coming closer, on camera (review 2026-11-21).** D37 (the mouse edges toward his hand; its paw
+  touches on the last line) is the best of Days 31–40 (+0.69; Instagram 919 views, best watch of the batch), and the
+  mouse arc's first three episodes (D36–38) average +0.59 against +0.16 for the tag-and-chair run (D31–34). Not a
+  creature in danger: a creature *approaching*, with contact as the payoff. Low–medium confidence.
+- **A prop that outstays its arc goes flat (review 2026-11-21).** Every episode built round the chair (D32, D33, D34,
+  D39) drew 275–485 TikTok views and averages +0.06; the other new episodes (D31, D36–38, D40) drew 860–1,060 and
+  average +0.46. The chair sat in the room for eight days. This confirms the arc rule (3–5 days, then it leaves on
+  camera): don't stretch an object across two arcs again.
 - **Reaching through the glass.** D17 "I felt you get here" got the most TikTok views (1,077). D20's taps from our side
   got the most shares (33). D18's dare is the best episode overall. This includes him sensing you, things happening
   on our side of the glass (crack, tape, breath, a handprint), and dares or tests for the viewer. **Aim for one about
@@ -144,7 +152,9 @@ Compound what has already worked, rather than adding a new kind of thing each da
   situation instead.
 - **Dares and tests the viewer can actually do** (D18 "Try to stop watching me"). **About one a week.**
 - **Tension from form:** D16's repeated open was an over-performer and got the most comments of any dread day. Use it
-  on dread days. Both dread days so far are positive overall (D16 +0.67, D23 +0.22), so two per chapter stays.
+  on dread days. The first two dread days were positive overall (D16 +0.67, D23 +0.22); the next two were in the normal
+  range but below the batch (D35 −0.07, D39 −0.25, the lowest TikTok views of Days 31–40), both quiet, flat-grey and
+  slow. Two per chapter stays; give each one a visible yes/no as strong as any other day's (review 2026-11-21).
 - **Body visuals** (threads out of him, extreme eye close-ups, the erase). Used in 3 of the top 6 episodes overall.
 - **Avoid:** episodes about him performing or meta-commentary on being watched with no stakes (D14), and plot-tease
   endings (Days 1–11, the weakest).
@@ -389,7 +399,10 @@ shown. Rises: a gift → he writes back → they answer → he tries to see them
   not looking, they'll come." The camera stays on his back; the tag in the corner of the frame. Someone lived where you
   live before you, slept where you sleep. On the last line he turns round: the tag is gone. "Someone slept where you
   sleep before you did. You'll probably never know their name."
-  **C:** "Watch me write this." · **T:** will the tag be taken while his back is turned? It is, and he sees it's gone.
+  **C:** "Say the letters with me." · **T:** will the paper hold? He scratches each letter with his fingernail and the
+  tag is thin; it starts to tear at the last letter and holds (a visible yes/no, answered on camera). The tag is still
+  gone on the last line, but that is the payoff, not the tension. (Re-varied 2026-11-21: "watch" was D43's command, and
+  "it happens while he isn't looking" is D43's and D47's tension.)
   **R:** someone else (whoever lived there before you) · **Ending:** flat fact
 - **46 · Thank you (KEEPER 3/4)** — *You've been thanked for things you don't remember doing.* Morning. A new tag hangs
   on the lamp, face down. He doesn't want to read it yet ("If it says something bad, I'd rather not know yet"), so the
