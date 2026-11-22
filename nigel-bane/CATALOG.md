@@ -560,15 +560,15 @@ Post time is 9 PM ET. Day 13 went out a day late (missed slot); every later day 
 - **cover:** 22.1 s (the one-eyed peek, other eye shut, in the narrow room).
 - **script:** Hello? Is anyone out there? I'm going to shut my eyes. You keep yours open. Watch the walls for me. ...Are they moving? It stops when I look. It always stops when I look. I like it when it moves. It feels like breathing. A cut heals while you sleep. Grief lets go a little, on the days you forget to check on it. The person you couldn't stop thinking about... one morning, you didn't. You didn't notice which morning. Most things get better while you aren't looking. ...That's why it never feels like they are.
 
-### D44 · dimming · "Light left on (keeper 1/4)" · 2026-11-23 (Mon) · 62.5 s
-- **idea:** you leave a light on so the room isn't empty when you come back, as if you were two people.
-- **you:** strong. One scene: coming home late, the light seen from the street, "for half a second it looks like somebody's in."
-- **first seconds:** kneeling by the lamp: "Don't turn your light off. Not yet. Stay with this one."
-- **prop:** a small floor lamp with a tag "for nigel" and no cord (keeper arc D44–47).
-- **tension:** strong, set up in words: "...And it's getting dimmer." Will it last? It dims, flickers twice, and goes out on the last word.
-- **visual:** one continuous shot; warm glow on white, fading.
-- **dread:** no. Unsettling line: "You left it on for yourself. Like you were two people."
-- **hook:** "Who are you leaving yours on for?" *Question.*
-- **four elements:** C "Don't turn your light off." · R one scene · E tender, eerie underneath · T will the lamp last?
-- **cover:** see POSTING.md (15.8 s for D43, 24.0 s for D44).
-- **script:** Hello? Is anyone out there? Don't turn your light off. Not yet. Stay with this one. Somebody left me a lamp. The tag says, for nigel. It isn't plugged into anything. ...And it's getting dimmer. You've probably done this. Left a light on when you went out, so the place wouldn't be dark when you got back. And you come home late, and you see it from the street, and for half a second it looks like somebody's in. Then you remember it was you. You left it on for yourself. Like you were two people. Not yet... not yet... Who are you leaving yours on for?
+### D44 · dimming · "You keep it lit" (keeper 1/4; remade 2026-11-22, owner's hard reset) · 2026-11-23 (Mon) · 63.5 s
+- **idea:** you keep some things lit only so you won't be the one who let them go out.
+- **you:** strong. "A friendship where you always text first. A group chat nobody talks in anymore. Something you'd let go of, if only it would go on its own."
+- **first seconds:** kneeling, both hands shielding the lamp like a candle: "Shh. Keep still. It's going out."
+- **prop:** a small floor lamp with a tag "for nigel" and no cord (keeper arc D44–47); it dies on camera.
+- **tension:** strong, visible yes/no: it dims and flickers all episode; will it last while he holds it? He lifts his hands off it on the second "not yet"; it goes out a beat later.
+- **visual:** one continuous shot; warm glow on white, fading; one finger stroking the shade ("There, there.").
+- **dread:** no. Unsettling line: "I don't even like it very much. I just don't want it to go out while I'm holding it."
+- **hook:** "...It wasn't me." *Action + flat line.*
+- **four elements:** C "Shh. Keep still. It's going out." · R the turn (his lamp → your friendships) · E tender, then dry and uneasy · T will it last while he holds it?
+- **cover:** 10.2 s (his hand at the glowing lamp, the tag hanging).
+- **script:** Hello? Is anyone out there? Shh. Keep still. It's going out. Somebody left it for me. It isn't plugged into anything. It's been going out all evening. There, there. I don't even like it very much. I just don't want it to go out while I'm holding it. You've probably got one of these. A friendship where you always text first. A group chat nobody talks in anymore. Something you'd let go of, if only it would go on its own. You keep it lit so you won't be the one who let it go out. Not yet... not yet... ...It wasn't me.
