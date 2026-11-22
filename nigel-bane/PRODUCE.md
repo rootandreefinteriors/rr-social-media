@@ -112,11 +112,14 @@ and command only serve as hooks to keep the viewer's attention as Nigel gives hi
 - Write the **observation first**: one line a viewer would screenshot or send to someone, true, about them. Then pick
   the action and prop that carry it. Arcs, R moves and closing-shape menus come second and never bend the idea.
 - **The owner approves every script before it is voiced** (until they say otherwise).
-- **Keep the themes fresh (user, 2026-11-22, after approving D43–48):** "we've repeated themes of holding onto things
-  we'd rather let go, loss, etc. These are good themes but they become repetitive when we do them too often." Every
-  episode gets a **theme family** in LEDGER.md's theme table. The same family at most once in any 5 days, and loss /
-  letting go / last times at most once a week. Reach wide: wonder and scale, the body, perception, time, chance,
-  strangers, your own mind, the absurd, small joys, fear, choice, the world outside.
+- **Arcs are a THEME plus a prop (user, 2026-11-22):** "we need to get back to arcs. 2–4 episodes that follow the same
+  theme with the same prop / visual theme. These are just all random." Example: the theme is *your body* for 4
+  episodes (never anywhere without it; it's always changing; nobody has the perfect one…), each a different angle on
+  that one theme, and "every one needs to tie to what's happening in the room in a coherent but not contrived way."
+  So: an arc = one theme, one prop or visual thread, 2–4 episodes in a row, each episode a new angle on the theme and a
+  new step for the prop. Between arcs, change theme family (LEDGER theme table); loss / letting go / last times at
+  most one arc in three (owner, same day: "we've repeated themes of holding onto things... loss... they become
+  repetitive when we do them too often").
 - **Reference points (user, 2026-11-22):** *I'm Poppy*, *Waking Life*, "with maybe a dash of *Salad Fingers*: creepy,
   unsettling but oddly comforting, with ASMR elements." In practice: flat, sincere, slightly-wrong delivery and the odd
   repeated phrase (Poppy); plain 3 a.m. philosophy (Waking Life); an odd, tender, tactile fondness for small things —

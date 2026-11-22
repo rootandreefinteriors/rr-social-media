@@ -186,8 +186,8 @@ script needs the owner's approval before voicing until they say otherwise. Next 
 first, line first, and send it for approval.
 
 ## Theme families (owner, 2026-11-22: keep the philosophy fresh)
-Same family at most once in any 5 days; **loss / letting go / last times** at most once a week. Check before writing a
-script; add a row for every episode.
+An arc keeps ONE theme family for its 2–4 episodes (owner, 2026-11-22); the NEXT arc must be a different family, and
+loss / letting go / last times at most one arc in three. Add a row for every episode.
 
 | Day | Theme family | One line |
 |---|---|---|
@@ -201,8 +201,5 @@ script; add a row for every episode.
 | 47 | loss / last times | the last time someone carried you |
 | 48 | loss (the dead) / the body | a little of what they breathed is in you |
 
-**Flag for D49–55:** D41, D44, D47 and D48 are all loss, and D45–46 are both "how others see you". So D49–55 avoid loss
-and letting go entirely, and avoid "how others see you". Planned so far: D49 the body (never anywhere without it), D50
-being watched / perception, D51 the person on the other side of the screen (connection, not loss), D52 attention (your
-window), D53 "here", D54 childhood play / chance, D55 smallness of your world. D55 is close to D42 (comfort as
-confinement), so re-angle it toward wonder when it's written.
+**D43–48 in hindsight:** the lamp was one prop, but the themes wandered (healing, holding on, strangers, kindness,
+last times, the dead), and four of D41–48 were loss. From D49 the theme stays put for the whole arc.
