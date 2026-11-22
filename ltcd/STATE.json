@@ -1,202 +1,209 @@
 {
-  "show": "let the comments decide",
-  "day": 23,
-  "last_episode": {
-    "day": 23,
-    "type": "waiting",
-    "folder": "episodes/ep023",
-    "video": "videos/day023.mp4",
-    "posted_at": "2026-11-14T19:00-05:00 (scheduled)",
-    "buffer": {
-      "tiktok": "6af8b23cb9a106584c64849c",
-      "instagram": "6af8b23e76c23bf1c735dee3"
-    },
-    "note": "Buffer uses the commit-pinned raw URL @8f9b570."
+ "show": "let the comments decide",
+ "day": 31,
+ "last_episode": {
+  "day": 31,
+  "type": "comment",
+  "folder": "episodes/ep031",
+  "video": "videos/day031.mp4",
+  "posted_at": "2026-11-22T19:00-05:00 (scheduled)",
+  "buffer": {
+   "tiktok": "6b0342afc72676f5e9549bd4",
+   "instagram": "6b0342b1d5eabfb8ccd35175"
   },
-  "ask_since_day": 22,
-  "waiting_streak": 1,
-  "world": {
-    "location": "THE NEON GAME CITY (day 22): the whole world turned into a crime-game parody by his dark magic. Neon sunset street: purple/pink/orange sky bands, a striped half sun on the horizon at NX+520, ocean + sand, sidewalk, dark road with yellow dashes and a pink curb line; background palms, the pink art-deco OCEAN VIEW hotel; the GAME CAVE facade at the far left (DOOR_X=NX-1150). The hero palm at NX-160 is bent over (he leaned on it). Money ($999,999,999 worth) lies all over the sidewalk. HUD on screen: minimap, money, 5 flashing wanted stars, DATE 0%. He did the day 22 ask at NX+140; day 23 waiting sign at NX+360 (phone on the floor at NX+290), NX=9000000. S.floor=False. See ltcd/episodes/ep022 (neon()).",
-    "companions": [
-      "his wife (O.draw_mom, hair (0.62,0.28,0.16), dress (0.30,0.66,0.66), bun=False) - LEFT HIM AGAIN on day 22 with the baby (and took his boombox): she caught him flirting",
-      "his son, grown up: an NBA champion (dark high-top, white headband, purple #23) - left at the Finals arena; see ep019 draw_kid",
-      "the black kitten (O.draw_cat col='black') - at home on the couch"
-    ],
-    "props": [
-      "his phone, dropped on the sidewalk at his feet (1 unread message from COUSIN)",
-      "the game city leading lady (ORIGINAL character: long dark-brown hair, red dress, gold hoop earrings, round shades; never named) drove off in her pink convertible - gone",
-      "five wanted stars (still flashing), $999,999,999 in cash on the ground, a bent palm",
-      "the DARK MAGIC spellbook was used up in the blast",
-      "left outside LE FANCY: the rose (she has it), the wrecked hot dog cart, the three violinists",
-      "left inside LE FANCY: a $1 bill on a $4,817.00 receipt",
-      "left in the arena: the Finals trophy (on its side at centre court)",
-      "left on the neighbourhood court: the basketball and THE CHOSEN ONE magazine",
-      "left on her lawn: the giant $10,000,000 check",
-      "left behind on the beach: the yellow smiley kite",
-      "left behind in the town: the CAT RESCUE SHELTER he built",
-      "the RING IS DESTROYED (day 10)",
-      "far behind (never going back): the park, the beach, the black car, the WHITE PARTY mansion, MEGAPLEX 30, FUN PARK, the town, Mordor, green hill, the airfield, the burger place",
-      "his house (TV, couch, dishes) - the kitten is there",
-      "left in GAME CAVE: the console (finally updated: PRESS START), the game box, the clerk buried in pennies"
-    ],
-    "traits": [
-      "beat the block game on hardcore with half a heart (day 4)",
-      "ate a billion burgers, which launched him into space on a cartoon poop jet; belly deflated back to a stick (day 5)",
-      "rocked a mom's baby to sleep and fell asleep holding it; she kissed him on the cheek and he blushed (day 6). The mom (O.draw_mom: long brown hair + bun, pink dress) shops at the burger place - callback possible",
-      "EXPELLED FOREVER from wizard school (day 7): read his acceptance letter, sprinted into the 9 3/4 wall and bounced off, used the door in the wall instead, the giant talking hat found no brain in his head (hello... echoed) and blasted him into the empty white room",
-      "flew a plane (day 8): took off from the FLIGHT SCHOOL airfield, looped until he went green, climbed out of the atmosphere into space, puked a zero-g blob (back to normal), fell back down on fire and planted the plane nose-first in the field; the flaming puke landed next to him. He looks completely normal again (no soot, no tint).",
-      "went to green hill (day 9): collected rings deadpan, ran until his legs were a blur wheel, ran a giant loop, RINGS 999, blasted past the GOAL sign and skidded to a stop; victory stance with a peace sign; the most harmless little ladybug robot puttered up, poked him and knocked him flat on his back; every ring burst out of him (RINGS 0). Looks normal.",
-      "took the ring to mordor (day 10, re-cut 2): snatched the last ring on green hill, ran to the black gate (ONE DOES NOT SIMPLY WALK INTO MORDOR), whistled up a giant eagle; when the eye's searchlight closed in he put the ring on and went invisible, so the beam locked on the eagle carrying a floating ring, and the eagle dropped him into the volcano; he dropped the ring into the lava and nearly went in after it (speed-game reflex), it melted; the eye blew up, the tower fell, the volcano fired him out into the rubble; the eagle showed up after it was all over. He lives in Mordor now. Looks normal.",
-      "built a CAT RESCUE SHELTER and was happy about it (day 11, re-cut): ran out of Mordor into a sunny town, found a black kitten in a FREE KITTEN box (slow blinks), built the shelter, rescued a cat from a tree and a line of kittens, fed them (one can - every head turned), they chose the box over the fancy bed, a cat pushed his mug off the shelf (he caught it), on adoption day the mom from day 6 adopted the orange cat, he stamped ADOPTED on every photo - the last was the kitten's, so he adopted it. Real smile. It rides on his head now. Looks normal.",
-      "took his cat to the theme park (day 12): ran from the town into FUN PARK; teacups - the kitten batted the wheel until it spun crazy fast and he laughed for real, then dizzy; YOU MUST BE THIS TALL - short by a hair until the kitten sat up on his head (DING); THE BIG ONE coaster: lift hill, hang at the top, the kitten's slow blink gave him the nerve, arms up (despite KEEP ARMS AND LEGS INSIDE), drop, two loops, airtime, FLASH; the RIDE PHOTO shows him screaming with joy and the kitten bored. Looks normal.",
-      "went to the movies (day 13): ran out of FUN PARK's back gate (BYE NOW!) to MEGAPLEX 30 (EXPLOSION 7, TONIGHT ONLY); NO PETS - he put a tiny cowboy hat on the kitten and the usher stared him down but let it slide; SMALL popcorn $47.50, taller than him; the card reader asked for a tip and he pressed 30% ($61.75) under the cashier's stare; in an empty theater a giant in a top hat sat right in front of him (leaning didn't help); 47 previews, ate all the popcorn before the movie; pulled out a periscope and watched EXPLOSION 7 over the hat (car, building blows up, car jumps the fireball); the tall guy got up and left at THE END. Looks normal.",
-      "went to the white party (day 14): a black car took him up an endless driveway to a mansion; the doors opened by themselves; passed the ALL WHITE dress code by being a white stick figure; ate one canape; the host (white suit, shades, gold chain) tapped him on the shoulder, staredown, pulled out a bottle of baby oil and chased him through the west wing doors; he slid under the champagne table, the host wiped out into the champagne tower; he escaped into the car; the party favor was a tiny baby oil, tossed out the window. Looks normal.",
-      "was told to be happy (day 15, 'Seja feliz'): the black car dropped him at a sunny beach and left; he couldn't smile, a finger smile flopped, a seagull stole his whole ice-cream cone, a little rain cloud appeared over his head and followed him, lightning hit the sand next to him; he sat in the rain; the cloud's gust gave him the idea of a kite; it yanked him up through the cloud into the sun - he laughed for real, looped; the abandoned cloud rained out into a rainbow, the wind died, he slid down the rainbow and landed in the sand; the seagull dropped the same cone back, he caught it and ate it. Huge real grin. Looks normal.",
-      "got a girlfriend and had a baby - and lost them (day 17, alt cut): ran off the beach into a park; she walked past his rose; the spaghetti kiss; the stork made him SIGN HERE and dropped the baby in his lap; montage: SOLD sign, slow dance, fridge photo, couch cuddle; record scratch; he gamed while she bounced the crying baby; he put one more plate on the tower of dishes; she vacuumed in front of his game and the cord unplugged the TV; he snuck in at 3 AM and she clicked on the lamp; the argument; WE NEED TO TALK; she left with the baby, then came back for the couch. He shrugged and sat down on the floor to play video games. Looks normal.",
-      "hit the lottery for 10 million and got his family back (day 18, re-cut): one $1 ticket at a corner store, every number matched on the store TV (4 8 15 16 23 42), JACKPOT; the clerk fainted and came back with a giant check; he held it over his head under her window - she shut the curtain; he dropped his game controller in the trash and proposed with a ring box; she said yes; they carried the couch back home together; the black kitten wandered in and curled up between them. Looks normal.",
-      "raised his kid to be the next LeBron (day 19): took the baby to a neighbourhood court; days and nights whipped by and the kid grew each time - toddler granny shot bonked Dad, the crossover broke Dad's ankles, THE CHOSEN ONE cover slapped Dad's face, the teen dunked, the grown kid chased Dad down and pinned his layup on the board; at THE FINALS the chalk toss swallowed Dad (still white), GAME 7 down one at 0:05, the kid took off from the free-throw line and shattered the backboard, 102-101; he handed Dad the trophy and it flattened him. Small real smile. Looks normal.",
-      "took his wife out on a date (day 20): ran from the Finals (late - she waited under the street clock at 9:47), gave her a rose and this time she took it; LE FANCY: WATER $40, AIR (FRENCH) $95, one violinist then three crammed around his chair, one pea each under silver domes, a receipt that unrolled out of the room, TOTAL $4,817.00; he paid $1, the waiter pointed at the door, he was thrown out in a cannonball into a hot dog cart (KABOOM, hot dogs rained down); she came out and laughed for real, sat with him on the curb eating hot dogs, head on his shoulder; the violinists followed them out. Looks normal.",
-      "bought the console and the game (day 21, '@thatboypiwko: Go buy a ps5 and gta 6'): ran from the LE FANCY curb (she nodded go) to GAME CAVE; it was NOV 12 and the game comes out NOV 19, so he sat down first in line; days flickered by, the line grew, pizza boxes stacked up; at 11:59 the clerk came out with a sign: DELAYED (heartbeat, push-in, eye twitch) - wrong side: OPEN, 12:00; the line stampeded right over him; inside only the LAST ONE was left, $569.98; he paid with a sock of pennies that buried the counter and the clerk; lifted the boxes overhead in a beam of light (small real smile); at the demo TV: UPDATE 1 OF 47, 150 GB, then UPDATE 2 OF 47. Looks normal.",
-      "used dark magic to turn the world into the game (day 22, '@alex03330_: Use dark magic to transform the world into gta 6 except your the main character...'): the update shot to 47 OF 47 / PRESS START, the blast turned everything into a neon crime-game city with a HUD; he flirted with the leading lady (leaned on a palm - it bent and he fell; finger guns; a boombox with a synthwave groove; a money cheat code - $999,999,999 rained down; DATE 99%); a baby cried, five wanted stars lit up one by one: his wife with the baby; finger guns didn't work on her; the leading lady shrugged and drove off; the wife walked out with the baby, came back for the boombox; the last dollar landed on his head; WASTED; then his cousin called to go bowling and he declined. Looks normal."
-    ],
-    "notes": "Justin, 2026-11-09: his 11-08 note meant don't END episodes with new characters unless the comment asks for them. The girlfriend, baby and kitten are back as of day 18. The kitten doesn't need to ride on his head.",
-    "sign_line": "STILL WANTED."
-  },
-  "used_comments": [
-    "Beat Mc in hardcore mode:)",
-    "Eat a billion big Mac’s",
-    "Rock a baby to sleep. (My mom said this)",
-    "Join Hogwarts.",
-    "Fly a plane",
-    "Go to green hill",
-    "Pick up a ring and take it to mordor",
-    "Build a cat shelter and be happy about it",
-    "Take your cat to the theme park and go on rides, have fun",
-    "Go to the movies!",
-    "Go to diddy party",
-    "Seja feliz",
-    "Get a girlfriend and have a baby",
-    "Hit the lottery for 10 million and get your family back",
-    "Raise your kid to be the next LeBron james",
-    "Take your wife out on a date",
-    "Go buy a ps5 and gta 6",
-    "Use dark magic to transform the world into gta 6 except your the main character and you get to crack Lucia"
+  "note": "Buffer uses the commit-pinned raw URL @a7ea743."
+ },
+ "ask_since_day": 31,
+ "waiting_streak": 0,
+ "world": {
+  "location": "THE DARK SIDE OF TOWN - the CEMETERY (day 31): night, purple sky bands, full moon + stars that ride with the camera, skyline silhouettes, sidewalk band (WALK_TOP=FLOOR_Y-230) + dark street. Left to right: purple fog wall (GX-1450), PRESTIGE MOTORS lot (salesman buried to the neck in money), street lamps, THE CRYPT club (IT'S NOT A PHASE sign, DRESS CODE: ALL BLACK easel), the cemetery gate at GX+4850 (smashed open), tombstones, iron fence, crooked tree, the mausoleum (EST. 1666) at GX+7150, and the open grave at GX+6600 with his black hypercar planted nose-down in it like a headstone, still smoking. He did the ask at GX+5930 with the three goth girls beside him. GX=10000000, S.floor=False. See ltcd/episodes/ep031 dark().",
+  "companions": [
+   "three goth girls (ORIGINAL adult characters, never named; O.draw_mom with black hair G_HAIR, dresses black / plum / burgundy, chokers; one has a bun, one a black lace parasol) - they came over after the crash and stood with him (ep031 draw_girl)",
+   "his wife - LEFT HIM on day 22 with the baby (and took his boombox)",
+   "his son, grown up: an NBA champion - left at the Finals arena",
+   "the black kitten - at home on the couch"
   ],
-  "history": [
-    {
-      "day": 1,
-      "type": "ask",
-      "summary": "walks in, pulls giant clipboard from where a pocket would be, writes TELL ME WHAT TO DO NEXT IN THE COMMENTS, holds it up, blinks"
-    },
-    {
-      "day": 2,
-      "type": "waiting",
-      "summary": "no comments on day 1; holds the sign, turns it, writes I'LL WAIT. under the message, dead stare (21 s)"
-    },
-    {
-      "day": 3,
-      "type": "waiting",
-      "summary": "still no comments on days 1-2; holds the sign (with I'LL WAIT. on it), turns it, writes STILL HERE. under the message, dead stare (21 s)"
-    },
-    {
-      "day": 4,
-      "type": "comment",
-      "summary": "@neoblade75 (IG): 'Beat Mc in hardcore mode:)' -> full-screen cards: DAY 1 punches a log out of a tree (top floats); NIGHT 1 in a dirt pillar; DAY 41 drops into the floor portal; STILL DAY 41: black blocky dragon swipes him to half a heart, he pulls a pixel sword, flurry of hits, one last tap, it dissolves; victory text scrolls beside him; drops the sword and does the ask right there in the End (71.8 s)"
-    },
-    {
-      "day": 5,
-      "type": "comment",
-      "summary": "@nerdbpy (IG): 'Eat a billion big Mac’s' -> RE-CUT on Justin's outline: reads the card in the End, walks right into a new world with a red/yellow burger place; a dump truck backs in and dumps 1 BILLION BURGERS on him; head pops out of the pile; unwraps and eats them one bite each, faster and faster (BURGERS LEFT counter), belly swelling, wrappers piling up; struggles through the last two; huge belly, exhausted; eyes go wide; a cartoon poop jet launches him into the sky (loops, flips, a twirl past clouds and stars) while the belly deflates; falls and lands on his butt; stands; deadpan ask in front of the store (69.2 s)"
-    },
-    {
-      "day": 6,
-      "type": "comment",
-      "summary": "@nerdbpy (IG): 'Rock a baby to sleep. (My mom said this)' -> RE-CUT on Justin's outline: a mom hands him her baby and runs into the burger place; it cries, he's frazzled; he cradles and rocks it to sleep, then falls asleep too (Zzz); she comes back, eats a burger in one bite, takes the baby, kisses his cheek; he blushes; she runs off; deadpan ask, blushing (56.5 s)"
-    },
-    {
-      "day": 7,
-      "type": "comment",
-      "summary": "@nerdbpy (IG): 'Join Hogwarts.' -> RE-CUT 2 on Justin's notes: owl drops the letter; he reads it, shows us YOU'RE IN.; owl points; he sprints into the 9 3/4 brick wall, bounces off, stars; owl points again: a DOOR TO WIZARD SCHOOL in the same wall; through it to the castle; the giant talking hat checks his head (hello... echoes): THERE'S NO BRAIN IN THIS HEAD. EXPELLED. FOREVER. -> blasts him into the empty white room; the letter follows him down, EXPELLED stamped across it; deadpan ask (72.6 s)"
-    },
-    {
-      "day": 8,
-      "type": "comment",
-      "summary": "@second_degree_burn (IG): 'Fly a plane' -> RE-CUT on Justin's notes: white room -> airfield; takeoff; loops until his face goes green; keeps climbing into space; engine dies in the silence; pukes a zero-g blob (back to normal); long stare; plane drops; re-entry on fire; crashes nose-first into the airfield (giant dust cloud); flung out onto his butt; the flaming puke splats beside him; deadpan ask on the airfield (65.6 s)"
-    },
-    {
-      "day": 9,
-      "type": "comment",
-      "summary": "@nicolascechettoschuller (IG): 'Go to green hill' -> RE-CUT on Justin's notes: airfield -> walks into a generic green hill (music kicks in); rings; run; blur legs; giant loop; RINGS 999; blasts past the GOAL sign, skids; sign spins and lands on his face; victory stance + peace sign, jingle; a tiny ladybug robot putters up very slowly, pokes him and knocks him flat on his back; every ring bursts out (RINGS 0); bug leaves; he sits up, stands; deadpan ask (57.8 s). Original Mega Drive-style FM music + game-style SFX."
-    },
-    {
-      "day": 10,
-      "type": "comment",
-      "summary": "@second_degree_burn (IG): 'Pick up a ring and take it to mordor' -> RE-CUT 2: snatches the last ring (RINGS 1); sprints to the black gate (ONE DOES NOT SIMPLY WALK INTO MORDOR); whistle -> giant eagle flies him over the wall; the eye's searchlight sweeps (heartbeat), closes in; he puts the ring on and vanishes; the beam locks on the eagle carrying a floating ring; the eagle looks at its empty talons, at the eye, drops him and bolts; the ring falls into the volcano; he lands invisible on the ledge, takes it off; holds it over the lava, lets go (RINGS 0); lunges after it on reflex and teeters on the edge, arms windmilling, as it melts; rumble, lava rises; the volcano fires him out; the eye shakes and blows up, the tower collapses; he crash-lands in the rubble; a chunk lands next to him; the burnt-out eyeball rolls up beside him; the eagle shows up now that it's over; deadpan ask in the ruins with the eagle (61.1 s)"
-    },
-    {
-      "day": 11,
-      "type": "comment",
-      "summary": "@angela.tgz (IG): 'Build a cat shelter and be happy about it' -> RE-CUT on Justin's notes: reads it in Mordor, hears a mew, runs right into a sunny town; a black kitten in a FREE KITTEN box; slow blinks; he picks it up, stiff smile, it purrs, the smile softens; strays everywhere; the kitten climbs onto his head; hammer; build cloud -> CAT RESCUE SHELTER; rescues a tree cat and a line of kittens; inside: the can (every head turns), the box over the fancy bed, the mug pushed off the shelf (caught); ADOPTION DAY - the mom adopts the orange cat; he stamps ADOPTED on every photo, the last is the kitten's - he adopts it, hug, real smile; ask: TO HELP SAVE REAL CATS, PLEASE DONATE TO THE CAT HOUSE ON THE KINGS AT CATHOUSEONTHEKINGS.COM -> page flip -> TELL ME WHAT TO DO NEXT IN THE COMMENTS (68.3 s)"
-    },
-    {
-      "day": 12,
-      "type": "comment",
-      "summary": "@bloody_reckless_1995 (IG): 'Take your cat to the theme park and go on rides, have fun' -> reads it in the town, a coaster rumble far off, kitten perks up; runs right through the FUN PARK arch; teacups: the kitten hops onto the wheel and bats it, faster and faster, he laughs; dizzy; the kitten stares up at THE BIG ONE; YOU MUST BE THIS TALL: short by a hair even on tiptoe, the kitten sits up -> DING; KEEP ARMS AND LEGS INSIDE, lap bar; lift hill clack, hang at the top (heartbeat), the kitten slow-blinks, arms up; drop, loop, airtime, loop 2, FLASH, brakes, biggest smile; RIDE PHOTO: him screaming with joy, the kitten bored; the photo prints, the kitten keeps it; ask at the exit (63.1 s)"
-    },
-    {
-      "day": 13,
-      "type": "comment",
-      "summary": "@second_degree_burn (IG): 'Go to the movies!' -> RE-CUT on Justin's notes: runs out the park's back gate to MEGAPLEX 30; NO PETS: tiny cowboy hat on the kitten, the usher stares him down, waves him in; SMALL popcorn $47.50; tip screen, the cashier stares, he presses 30% ($61.75); tosses the hat in the theater; a giant in a top hat sits right in front, leans when he leans; 47 previews, eats it all before the movie; the movie starts, he can't see it -> pulls out a periscope, raises it over the hat, watches the car jump the explosion; THE END - the tall guy gets up and leaves; ask in the aisle (68.0 s)"
-    },
-    {
-      "day": 14,
-      "type": "comment",
-      "summary": "@sohomnilesh (IG): 'Go to diddy party' (Justin's pick + outline) -> theater EXIT -> black car -> endless driveway -> mansion doors open by themselves -> ALL WHITE dress code (he passes) -> canape -> the host in a white suit + shades taps his shoulder, staredown, BABY OIL -> chase through the west wing doors -> oil slick: he slides under the table, the host wipes out into the champagne tower -> escape to the car -> party favor: tiny baby oil, tossed -> ask in the back seat (63.2 s). Racetrack cut archived, never aired."
-    },
-    {
-      "day": 15,
-      "type": "comment",
-      "summary": "@nicolascechettoschuller (IG): 'Seja feliz' -> back seat, brakes; out at a beach (mosaic sidewalk), the car reverses away for good; forced smile sags; finger smile flops; ice cream - a seagull steals the whole cone; a rain cloud pops over his head, follows him, lightning hits the sand next to him; he sits in the rain; the cloud's gust -> kite -> yanked up through the cloud into the sun, smiles, laughs, loop-de-loop past the cable car; the cloud rains out -> rainbow, wind dies, he slides down the rainbow, lands in the sand; the gull drops the same cone back, he catches it and eats it, a huge real grin; ask on the beach with a small smile (62.9 s, re-cut)"
-    },
-    {
-      "day": 16,
-      "type": "waiting",
-      "summary": "no qualifying comment on day 15 (TikTok @hmmmmm_ooo0 'cool' is a remark, not a request; IG: none); on the beach, rainbow behind him, kite on the sand: holds the sign, turns it, writes I'LL WAIT HERE. under the message, dead stare (21 s)"
-    },
-    {
-      "day": 17,
-      "type": "comment",
-      "summary": "@elijah_paradise (IG): 'Get a girlfriend and have a baby' -> ALT CUT on Justin's notes (posted ~8 PM after the original went out at 7 by mistake): beach -> park: rose ignored; spaghetti kiss; the stork: SIGN HERE, baby in his lap; montage (SOLD, slow dance, fridge photo, couch); record scratch; he games while she bounces the crying baby; one more plate on the dish tower; she vacuums in front of his game, the cord unplugs the TV; 3 AM, dark, her angry eyes, he sneaks in, CLICK; argument bubbles; WE NEED TO TALK; she leaves with the baby; comes back for the couch; he shrugs, sits on the floor, plays; push into the TV: TELL ME WHAT TO DO NEXT IN THE COMMENTS (66.0 s)"
-    },
-    {
-      "day": 18,
-      "type": "comment",
-      "summary": "@_taun_taun (IG): 'Hit the lottery for 10 million and get your family back' -> RE-CUT on Justin's direction (the dinosaur cut never aired): empty house -> corner store: $1 ticket, the draw on the store TV, heartbeat, the ticket insert, 42 -> JACKPOT $10,000,000; curl springs, slow grin; the clerk faints, pops up with a giant check; thought: the family photo -> her window: check overhead, she shuts the curtain; check droops -> controller in the trash; ring box, one knee; she comes out with the baby: yes; hug -> home: they carry the couch back in; the black kitten wanders in and curls up between them; ask on the TV (61.6 s)"
-    },
-    {
-      "day": 19,
-      "type": "comment",
-      "summary": "@nevaehells (IG): 'Raise your kid to be the next LeBron james' -> RE-CUT on Justin's call (the routine had skipped it for naming a real person; a waiting cut never aired): couch -> he takes the baby, runs out right -> neighbourhood court: baby + ball, deadpan; day/night time-lapse: toddler granny shot bonks Dad; crossover ankle-breaker + swish; THE CHOSEN ONE magazine on Dad's face; teen dunk; grown kid's chase-down block pins Dad's layup; THE FINALS: WITNESS banner, chalk toss cloud swallows Dad, GAME 7 100-101 0:05, free-throw-line dunk shatters the backboard, 102-101 FINAL, confetti, Dad's small smile; the trophy flattens Dad; ask at centre court (60.3 s) | RE-CUT 2: the son's high-top; the green team on the last play (#7 ankles, #11 flown over, #4 dunked on); no ask cut - the trophy lands upright on Dad's belly and the camera pushes in on its plaque: TELL ME WHAT TO DO NEXT IN THE COMMENTS"
-    },
-    {
-      "day": 20,
-      "type": "comment",
-      "summary": "@second_degree_burn (IG): 'Take your wife out on a date' -> arena: flat under the trophy, reads it, he's late -> LE FANCY street: she waits, clock 9:47, rose (taken) -> inside: menu insert (AIR (FRENCH) $95), violinist closer, then three; one pea under silver domes; receipt unrolls off screen, TOTAL $4,817.00 insert; pays $1; waiter points -> cannonball out the door into a hot dog cart, KABOOM, hot dog rain; she laughs, hot dogs on the curb, head on his shoulder; violinists follow them out; ask on the curb (60.9 s)"
-    },
-    {
-      "day": 21,
-      "type": "comment",
-      "summary": "TikTok @thatboypiwko: 'Go buy a ps5 and gta 6' -> LE FANCY curb (she nods) -> GAME CAVE strip mall, COMING NOV 19 / TODAY NOV 12; sits first in line; 7-day time-lapse (line grows, pizza boxes); 11:59 DELAYED sign fake-out (heartbeat, push-in) -> OPEN at 12:00; stampede flattens him; LAST ONE console + game, $569.98 insert; sock of pennies buries the counter + clerk, KA-CHING; boxes overhead, light beam, choir; demo TV: UPDATE 1 OF 47 -> 2 OF 47; ask in the store (62.9 s)"
-    },
-    {
-      "day": 22,
-      "type": "comment",
-      "summary": "IG @alex03330_ (2 likes): 'Use dark magic to transform the world into gta 6 except your the main character...' (Justin's call; card trimmed before the innuendo clause; the routine's waiting cut never aired) -> GAME CAVE: DARK MAGIC spellbook from the hip, UPDATE 47 OF 47 -> PRESS START, magic blast -> runs out into a neon crime-game city, HUD pops in; the leading lady (original) by a pink convertible: palm lean (it bends, he falls) 0%, finger guns 5%, boombox synthwave 40%, cheat code -> CHEAT ACTIVATED, money rain $999,999,999, 90-99%; baby cries, wanted stars 1..5: his wife with the baby; finger guns on the wife; leading lady drives off; wife leaves with the baby, comes back for the boombox; last dollar on his head; WASTED; his phone buzzes at his hip, he digs it out: COUSIN calling... he stares at us and lets it ring, declines without looking, the text comes anyway: LET'S GO BOWLING!, he drops the phone at his feet; ask on the street (67.6 s)"
-    },
-    {
-      "day": 23,
-      "type": "waiting",
-      "summary": "No comments on the day 22 posts (TikTok 0, IG 0). Neon game city sidewalk (bent palm, money on the ground, phone at his feet, HUD + 5 flashing stars); holds the sign, writes STILL WANTED. (21.0 s)"
-    }
-  ]
+  "props": [
+   "a black rose (from the goth girl) - in his teeth at the ask",
+   "a bat hanging upside down from his curl",
+   "his black (matte-painted, formerly gold) $3,000,000 hypercar - wrecked, planted nose-down in the open grave, smoking",
+   "the empty $ sack and the empty MATTE BLACK bucket - left behind (lot / club)",
+   "all $999,999,999 went into the money pile on the PRESTIGE MOTORS salesman - he has no money now",
+   "left in the neon game city (never going back): his phone on the sidewalk, the bent palm, the five wanted stars",
+   "far behind (never going back): GAME CAVE, LE FANCY, the arena, the court, her lawn, the beach, the town + CAT RESCUE SHELTER, FUN PARK, MEGAPLEX 30, the WHITE PARTY mansion, Mordor, green hill, the airfield, the burger place",
+   "the RING IS DESTROYED (day 10); the DARK MAGIC spellbook was used up (day 22)",
+   "his house (TV, couch) - the kitten is there"
+  ],
+  "traits": [
+   "beat the block game on hardcore with half a heart (day 4)",
+   "ate a billion burgers, which launched him into space on a cartoon poop jet; belly deflated back to a stick (day 5)",
+   "rocked a mom's baby to sleep and fell asleep holding it; she kissed him on the cheek and he blushed (day 6). The mom (O.draw_mom: long brown hair + bun, pink dress) shops at the burger place - callback possible",
+   "EXPELLED FOREVER from wizard school (day 7): read his acceptance letter, sprinted into the 9 3/4 wall and bounced off, used the door in the wall instead, the giant talking hat found no brain in his head (hello... echoed) and blasted him into the empty white room",
+   "flew a plane (day 8): took off from the FLIGHT SCHOOL airfield, looped until he went green, climbed out of the atmosphere into space, puked a zero-g blob (back to normal), fell back down on fire and planted the plane nose-first in the field; the flaming puke landed next to him. He looks completely normal again (no soot, no tint).",
+   "went to green hill (day 9): collected rings deadpan, ran until his legs were a blur wheel, ran a giant loop, RINGS 999, blasted past the GOAL sign and skidded to a stop; victory stance with a peace sign; the most harmless little ladybug robot puttered up, poked him and knocked him flat on his back; every ring burst out of him (RINGS 0). Looks normal.",
+   "took the ring to mordor (day 10, re-cut 2): snatched the last ring on green hill, ran to the black gate (ONE DOES NOT SIMPLY WALK INTO MORDOR), whistled up a giant eagle; when the eye's searchlight closed in he put the ring on and went invisible, so the beam locked on the eagle carrying a floating ring, and the eagle dropped him into the volcano; he dropped the ring into the lava and nearly went in after it (speed-game reflex), it melted; the eye blew up, the tower fell, the volcano fired him out into the rubble; the eagle showed up after it was all over. He lives in Mordor now. Looks normal.",
+   "built a CAT RESCUE SHELTER and was happy about it (day 11, re-cut): ran out of Mordor into a sunny town, found a black kitten in a FREE KITTEN box (slow blinks), built the shelter, rescued a cat from a tree and a line of kittens, fed them (one can - every head turned), they chose the box over the fancy bed, a cat pushed his mug off the shelf (he caught it), on adoption day the mom from day 6 adopted the orange cat, he stamped ADOPTED on every photo - the last was the kitten's, so he adopted it. Real smile. It rides on his head now. Looks normal.",
+   "took his cat to the theme park (day 12): ran from the town into FUN PARK; teacups - the kitten batted the wheel until it spun crazy fast and he laughed for real, then dizzy; YOU MUST BE THIS TALL - short by a hair until the kitten sat up on his head (DING); THE BIG ONE coaster: lift hill, hang at the top, the kitten's slow blink gave him the nerve, arms up (despite KEEP ARMS AND LEGS INSIDE), drop, two loops, airtime, FLASH; the RIDE PHOTO shows him screaming with joy and the kitten bored. Looks normal.",
+   "went to the movies (day 13): ran out of FUN PARK's back gate (BYE NOW!) to MEGAPLEX 30 (EXPLOSION 7, TONIGHT ONLY); NO PETS - he put a tiny cowboy hat on the kitten and the usher stared him down but let it slide; SMALL popcorn $47.50, taller than him; the card reader asked for a tip and he pressed 30% ($61.75) under the cashier's stare; in an empty theater a giant in a top hat sat right in front of him (leaning didn't help); 47 previews, ate all the popcorn before the movie; pulled out a periscope and watched EXPLOSION 7 over the hat (car, building blows up, car jumps the fireball); the tall guy got up and left at THE END. Looks normal.",
+   "went to the white party (day 14): a black car took him up an endless driveway to a mansion; the doors opened by themselves; passed the ALL WHITE dress code by being a white stick figure; ate one canape; the host (white suit, shades, gold chain) tapped him on the shoulder, staredown, pulled out a bottle of baby oil and chased him through the west wing doors; he slid under the champagne table, the host wiped out into the champagne tower; he escaped into the car; the party favor was a tiny baby oil, tossed out the window. Looks normal.",
+   "was told to be happy (day 15, 'Seja feliz'): the black car dropped him at a sunny beach and left; he couldn't smile, a finger smile flopped, a seagull stole his whole ice-cream cone, a little rain cloud appeared over his head and followed him, lightning hit the sand next to him; he sat in the rain; the cloud's gust gave him the idea of a kite; it yanked him up through the cloud into the sun - he laughed for real, looped; the abandoned cloud rained out into a rainbow, the wind died, he slid down the rainbow and landed in the sand; the seagull dropped the same cone back, he caught it and ate it. Huge real grin. Looks normal.",
+   "got a girlfriend and had a baby - and lost them (day 17, alt cut): ran off the beach into a park; she walked past his rose; the spaghetti kiss; the stork made him SIGN HERE and dropped the baby in his lap; montage: SOLD sign, slow dance, fridge photo, couch cuddle; record scratch; he gamed while she bounced the crying baby; he put one more plate on the tower of dishes; she vacuumed in front of his game and the cord unplugged the TV; he snuck in at 3 AM and she clicked on the lamp; the argument; WE NEED TO TALK; she left with the baby, then came back for the couch. He shrugged and sat down on the floor to play video games. Looks normal.",
+   "hit the lottery for 10 million and got his family back (day 18, re-cut): one $1 ticket at a corner store, every number matched on the store TV (4 8 15 16 23 42), JACKPOT; the clerk fainted and came back with a giant check; he held it over his head under her window - she shut the curtain; he dropped his game controller in the trash and proposed with a ring box; she said yes; they carried the couch back home together; the black kitten wandered in and curled up between them. Looks normal.",
+   "raised his kid to be the next LeBron (day 19): took the baby to a neighbourhood court; days and nights whipped by and the kid grew each time - toddler granny shot bonked Dad, the crossover broke Dad's ankles, THE CHOSEN ONE cover slapped Dad's face, the teen dunked, the grown kid chased Dad down and pinned his layup on the board; at THE FINALS the chalk toss swallowed Dad (still white), GAME 7 down one at 0:05, the kid took off from the free-throw line and shattered the backboard, 102-101; he handed Dad the trophy and it flattened him. Small real smile. Looks normal.",
+   "took his wife out on a date (day 20): ran from the Finals (late - she waited under the street clock at 9:47), gave her a rose and this time she took it; LE FANCY: WATER $40, AIR (FRENCH) $95, one violinist then three crammed around his chair, one pea each under silver domes, a receipt that unrolled out of the room, TOTAL $4,817.00; he paid $1, the waiter pointed at the door, he was thrown out in a cannonball into a hot dog cart (KABOOM, hot dogs rained down); she came out and laughed for real, sat with him on the curb eating hot dogs, head on his shoulder; the violinists followed them out. Looks normal.",
+   "bought the console and the game (day 21, '@thatboypiwko: Go buy a ps5 and gta 6'): ran from the LE FANCY curb (she nodded go) to GAME CAVE; it was NOV 12 and the game comes out NOV 19, so he sat down first in line; days flickered by, the line grew, pizza boxes stacked up; at 11:59 the clerk came out with a sign: DELAYED (heartbeat, push-in, eye twitch) - wrong side: OPEN, 12:00; the line stampeded right over him; inside only the LAST ONE was left, $569.98; he paid with a sock of pennies that buried the counter and the clerk; lifted the boxes overhead in a beam of light (small real smile); at the demo TV: UPDATE 1 OF 47, 150 GB, then UPDATE 2 OF 47. Looks normal.",
+   "used dark magic to turn the world into the game (day 22, '@alex03330_: Use dark magic to transform the world into gta 6 except your the main character...'): the update shot to 47 OF 47 / PRESS START, the blast turned everything into a neon crime-game city with a HUD; he flirted with the leading lady (leaned on a palm - it bent and he fell; finger guns; a boombox with a synthwave groove; a money cheat code - $999,999,999 rained down; DATE 99%); a baby cried, five wanted stars lit up one by one: his wife with the baby; finger guns didn't work on her; the leading lady shrugged and drove off; the wife walked out with the baby, came back for the boombox; the last dollar landed on his head; WASTED; then his cousin called to go bowling and he declined. Looks normal.",
+   "bought a luxury car and went for the goth girls (day 31, IG @panque.4): scooped the $999,999,999 off the neon sidewalk into a $ sack, ran out through a purple fog wall into the dark side of town; the PRESTIGE MOTORS salesman looked him up and down and turned his back, so he buried him to the neck in money and got the keys; gold hypercar, scissor doors, launched to THE CRYPT; three goth girls ignored him - car alarm, exhaust fireballs (one yawned), DRESS CODE: ALL BLACK so he painted the car matte black in one throw (one glanced, went back to her nails); he floored it through the cemetery gate, off a tombstone ramp, front-flipped into an open grave - KABOOM, a thousand bats out of the mausoleum; the girls came over, one gave him a black rose, group shot in the lightning, a bat settled on his curl. Looks normal."
+  ],
+  "notes": "Justin, 2026-11-09: his 11-08 note meant don't END episodes with new characters unless the comment asks for them. The girlfriend, baby and kitten are back as of day 18. The kitten doesn't need to ride on his head. | 2026-11-22: days 24-30 aired as 'day N · still waiting' re-posts of the day 23 video (those runs never committed state); the day count now follows the public captions (day 31).",
+  "sign_line": "STILL WANTED."
+ },
+ "used_comments": [
+  "Beat Mc in hardcore mode:)",
+  "Eat a billion big Mac’s",
+  "Rock a baby to sleep. (My mom said this)",
+  "Join Hogwarts.",
+  "Fly a plane",
+  "Go to green hill",
+  "Pick up a ring and take it to mordor",
+  "Build a cat shelter and be happy about it",
+  "Take your cat to the theme park and go on rides, have fun",
+  "Go to the movies!",
+  "Go to diddy party",
+  "Seja feliz",
+  "Get a girlfriend and have a baby",
+  "Hit the lottery for 10 million and get your family back",
+  "Raise your kid to be the next LeBron james",
+  "Take your wife out on a date",
+  "Go buy a ps5 and gta 6",
+  "Use dark magic to transform the world into gta 6 except your the main character and you get to crack Lucia",
+  "Buy a luxury car then go for the goth girls"
+ ],
+ "history": [
+  {
+   "day": 1,
+   "type": "ask",
+   "summary": "walks in, pulls giant clipboard from where a pocket would be, writes TELL ME WHAT TO DO NEXT IN THE COMMENTS, holds it up, blinks"
+  },
+  {
+   "day": 2,
+   "type": "waiting",
+   "summary": "no comments on day 1; holds the sign, turns it, writes I'LL WAIT. under the message, dead stare (21 s)"
+  },
+  {
+   "day": 3,
+   "type": "waiting",
+   "summary": "still no comments on days 1-2; holds the sign (with I'LL WAIT. on it), turns it, writes STILL HERE. under the message, dead stare (21 s)"
+  },
+  {
+   "day": 4,
+   "type": "comment",
+   "summary": "@neoblade75 (IG): 'Beat Mc in hardcore mode:)' -> full-screen cards: DAY 1 punches a log out of a tree (top floats); NIGHT 1 in a dirt pillar; DAY 41 drops into the floor portal; STILL DAY 41: black blocky dragon swipes him to half a heart, he pulls a pixel sword, flurry of hits, one last tap, it dissolves; victory text scrolls beside him; drops the sword and does the ask right there in the End (71.8 s)"
+  },
+  {
+   "day": 5,
+   "type": "comment",
+   "summary": "@nerdbpy (IG): 'Eat a billion big Mac’s' -> RE-CUT on Justin's outline: reads the card in the End, walks right into a new world with a red/yellow burger place; a dump truck backs in and dumps 1 BILLION BURGERS on him; head pops out of the pile; unwraps and eats them one bite each, faster and faster (BURGERS LEFT counter), belly swelling, wrappers piling up; struggles through the last two; huge belly, exhausted; eyes go wide; a cartoon poop jet launches him into the sky (loops, flips, a twirl past clouds and stars) while the belly deflates; falls and lands on his butt; stands; deadpan ask in front of the store (69.2 s)"
+  },
+  {
+   "day": 6,
+   "type": "comment",
+   "summary": "@nerdbpy (IG): 'Rock a baby to sleep. (My mom said this)' -> RE-CUT on Justin's outline: a mom hands him her baby and runs into the burger place; it cries, he's frazzled; he cradles and rocks it to sleep, then falls asleep too (Zzz); she comes back, eats a burger in one bite, takes the baby, kisses his cheek; he blushes; she runs off; deadpan ask, blushing (56.5 s)"
+  },
+  {
+   "day": 7,
+   "type": "comment",
+   "summary": "@nerdbpy (IG): 'Join Hogwarts.' -> RE-CUT 2 on Justin's notes: owl drops the letter; he reads it, shows us YOU'RE IN.; owl points; he sprints into the 9 3/4 brick wall, bounces off, stars; owl points again: a DOOR TO WIZARD SCHOOL in the same wall; through it to the castle; the giant talking hat checks his head (hello... echoes): THERE'S NO BRAIN IN THIS HEAD. EXPELLED. FOREVER. -> blasts him into the empty white room; the letter follows him down, EXPELLED stamped across it; deadpan ask (72.6 s)"
+  },
+  {
+   "day": 8,
+   "type": "comment",
+   "summary": "@second_degree_burn (IG): 'Fly a plane' -> RE-CUT on Justin's notes: white room -> airfield; takeoff; loops until his face goes green; keeps climbing into space; engine dies in the silence; pukes a zero-g blob (back to normal); long stare; plane drops; re-entry on fire; crashes nose-first into the airfield (giant dust cloud); flung out onto his butt; the flaming puke splats beside him; deadpan ask on the airfield (65.6 s)"
+  },
+  {
+   "day": 9,
+   "type": "comment",
+   "summary": "@nicolascechettoschuller (IG): 'Go to green hill' -> RE-CUT on Justin's notes: airfield -> walks into a generic green hill (music kicks in); rings; run; blur legs; giant loop; RINGS 999; blasts past the GOAL sign, skids; sign spins and lands on his face; victory stance + peace sign, jingle; a tiny ladybug robot putters up very slowly, pokes him and knocks him flat on his back; every ring bursts out (RINGS 0); bug leaves; he sits up, stands; deadpan ask (57.8 s). Original Mega Drive-style FM music + game-style SFX."
+  },
+  {
+   "day": 10,
+   "type": "comment",
+   "summary": "@second_degree_burn (IG): 'Pick up a ring and take it to mordor' -> RE-CUT 2: snatches the last ring (RINGS 1); sprints to the black gate (ONE DOES NOT SIMPLY WALK INTO MORDOR); whistle -> giant eagle flies him over the wall; the eye's searchlight sweeps (heartbeat), closes in; he puts the ring on and vanishes; the beam locks on the eagle carrying a floating ring; the eagle looks at its empty talons, at the eye, drops him and bolts; the ring falls into the volcano; he lands invisible on the ledge, takes it off; holds it over the lava, lets go (RINGS 0); lunges after it on reflex and teeters on the edge, arms windmilling, as it melts; rumble, lava rises; the volcano fires him out; the eye shakes and blows up, the tower collapses; he crash-lands in the rubble; a chunk lands next to him; the burnt-out eyeball rolls up beside him; the eagle shows up now that it's over; deadpan ask in the ruins with the eagle (61.1 s)"
+  },
+  {
+   "day": 11,
+   "type": "comment",
+   "summary": "@angela.tgz (IG): 'Build a cat shelter and be happy about it' -> RE-CUT on Justin's notes: reads it in Mordor, hears a mew, runs right into a sunny town; a black kitten in a FREE KITTEN box; slow blinks; he picks it up, stiff smile, it purrs, the smile softens; strays everywhere; the kitten climbs onto his head; hammer; build cloud -> CAT RESCUE SHELTER; rescues a tree cat and a line of kittens; inside: the can (every head turns), the box over the fancy bed, the mug pushed off the shelf (caught); ADOPTION DAY - the mom adopts the orange cat; he stamps ADOPTED on every photo, the last is the kitten's - he adopts it, hug, real smile; ask: TO HELP SAVE REAL CATS, PLEASE DONATE TO THE CAT HOUSE ON THE KINGS AT CATHOUSEONTHEKINGS.COM -> page flip -> TELL ME WHAT TO DO NEXT IN THE COMMENTS (68.3 s)"
+  },
+  {
+   "day": 12,
+   "type": "comment",
+   "summary": "@bloody_reckless_1995 (IG): 'Take your cat to the theme park and go on rides, have fun' -> reads it in the town, a coaster rumble far off, kitten perks up; runs right through the FUN PARK arch; teacups: the kitten hops onto the wheel and bats it, faster and faster, he laughs; dizzy; the kitten stares up at THE BIG ONE; YOU MUST BE THIS TALL: short by a hair even on tiptoe, the kitten sits up -> DING; KEEP ARMS AND LEGS INSIDE, lap bar; lift hill clack, hang at the top (heartbeat), the kitten slow-blinks, arms up; drop, loop, airtime, loop 2, FLASH, brakes, biggest smile; RIDE PHOTO: him screaming with joy, the kitten bored; the photo prints, the kitten keeps it; ask at the exit (63.1 s)"
+  },
+  {
+   "day": 13,
+   "type": "comment",
+   "summary": "@second_degree_burn (IG): 'Go to the movies!' -> RE-CUT on Justin's notes: runs out the park's back gate to MEGAPLEX 30; NO PETS: tiny cowboy hat on the kitten, the usher stares him down, waves him in; SMALL popcorn $47.50; tip screen, the cashier stares, he presses 30% ($61.75); tosses the hat in the theater; a giant in a top hat sits right in front, leans when he leans; 47 previews, eats it all before the movie; the movie starts, he can't see it -> pulls out a periscope, raises it over the hat, watches the car jump the explosion; THE END - the tall guy gets up and leaves; ask in the aisle (68.0 s)"
+  },
+  {
+   "day": 14,
+   "type": "comment",
+   "summary": "@sohomnilesh (IG): 'Go to diddy party' (Justin's pick + outline) -> theater EXIT -> black car -> endless driveway -> mansion doors open by themselves -> ALL WHITE dress code (he passes) -> canape -> the host in a white suit + shades taps his shoulder, staredown, BABY OIL -> chase through the west wing doors -> oil slick: he slides under the table, the host wipes out into the champagne tower -> escape to the car -> party favor: tiny baby oil, tossed -> ask in the back seat (63.2 s). Racetrack cut archived, never aired."
+  },
+  {
+   "day": 15,
+   "type": "comment",
+   "summary": "@nicolascechettoschuller (IG): 'Seja feliz' -> back seat, brakes; out at a beach (mosaic sidewalk), the car reverses away for good; forced smile sags; finger smile flops; ice cream - a seagull steals the whole cone; a rain cloud pops over his head, follows him, lightning hits the sand next to him; he sits in the rain; the cloud's gust -> kite -> yanked up through the cloud into the sun, smiles, laughs, loop-de-loop past the cable car; the cloud rains out -> rainbow, wind dies, he slides down the rainbow, lands in the sand; the gull drops the same cone back, he catches it and eats it, a huge real grin; ask on the beach with a small smile (62.9 s, re-cut)"
+  },
+  {
+   "day": 16,
+   "type": "waiting",
+   "summary": "no qualifying comment on day 15 (TikTok @hmmmmm_ooo0 'cool' is a remark, not a request; IG: none); on the beach, rainbow behind him, kite on the sand: holds the sign, turns it, writes I'LL WAIT HERE. under the message, dead stare (21 s)"
+  },
+  {
+   "day": 17,
+   "type": "comment",
+   "summary": "@elijah_paradise (IG): 'Get a girlfriend and have a baby' -> ALT CUT on Justin's notes (posted ~8 PM after the original went out at 7 by mistake): beach -> park: rose ignored; spaghetti kiss; the stork: SIGN HERE, baby in his lap; montage (SOLD, slow dance, fridge photo, couch); record scratch; he games while she bounces the crying baby; one more plate on the dish tower; she vacuums in front of his game, the cord unplugs the TV; 3 AM, dark, her angry eyes, he sneaks in, CLICK; argument bubbles; WE NEED TO TALK; she leaves with the baby; comes back for the couch; he shrugs, sits on the floor, plays; push into the TV: TELL ME WHAT TO DO NEXT IN THE COMMENTS (66.0 s)"
+  },
+  {
+   "day": 18,
+   "type": "comment",
+   "summary": "@_taun_taun (IG): 'Hit the lottery for 10 million and get your family back' -> RE-CUT on Justin's direction (the dinosaur cut never aired): empty house -> corner store: $1 ticket, the draw on the store TV, heartbeat, the ticket insert, 42 -> JACKPOT $10,000,000; curl springs, slow grin; the clerk faints, pops up with a giant check; thought: the family photo -> her window: check overhead, she shuts the curtain; check droops -> controller in the trash; ring box, one knee; she comes out with the baby: yes; hug -> home: they carry the couch back in; the black kitten wanders in and curls up between them; ask on the TV (61.6 s)"
+  },
+  {
+   "day": 19,
+   "type": "comment",
+   "summary": "@nevaehells (IG): 'Raise your kid to be the next LeBron james' -> RE-CUT on Justin's call (the routine had skipped it for naming a real person; a waiting cut never aired): couch -> he takes the baby, runs out right -> neighbourhood court: baby + ball, deadpan; day/night time-lapse: toddler granny shot bonks Dad; crossover ankle-breaker + swish; THE CHOSEN ONE magazine on Dad's face; teen dunk; grown kid's chase-down block pins Dad's layup; THE FINALS: WITNESS banner, chalk toss cloud swallows Dad, GAME 7 100-101 0:05, free-throw-line dunk shatters the backboard, 102-101 FINAL, confetti, Dad's small smile; the trophy flattens Dad; ask at centre court (60.3 s) | RE-CUT 2: the son's high-top; the green team on the last play (#7 ankles, #11 flown over, #4 dunked on); no ask cut - the trophy lands upright on Dad's belly and the camera pushes in on its plaque: TELL ME WHAT TO DO NEXT IN THE COMMENTS"
+  },
+  {
+   "day": 20,
+   "type": "comment",
+   "summary": "@second_degree_burn (IG): 'Take your wife out on a date' -> arena: flat under the trophy, reads it, he's late -> LE FANCY street: she waits, clock 9:47, rose (taken) -> inside: menu insert (AIR (FRENCH) $95), violinist closer, then three; one pea under silver domes; receipt unrolls off screen, TOTAL $4,817.00 insert; pays $1; waiter points -> cannonball out the door into a hot dog cart, KABOOM, hot dog rain; she laughs, hot dogs on the curb, head on his shoulder; violinists follow them out; ask on the curb (60.9 s)"
+  },
+  {
+   "day": 21,
+   "type": "comment",
+   "summary": "TikTok @thatboypiwko: 'Go buy a ps5 and gta 6' -> LE FANCY curb (she nods) -> GAME CAVE strip mall, COMING NOV 19 / TODAY NOV 12; sits first in line; 7-day time-lapse (line grows, pizza boxes); 11:59 DELAYED sign fake-out (heartbeat, push-in) -> OPEN at 12:00; stampede flattens him; LAST ONE console + game, $569.98 insert; sock of pennies buries the counter + clerk, KA-CHING; boxes overhead, light beam, choir; demo TV: UPDATE 1 OF 47 -> 2 OF 47; ask in the store (62.9 s)"
+  },
+  {
+   "day": 22,
+   "type": "comment",
+   "summary": "IG @alex03330_ (2 likes): 'Use dark magic to transform the world into gta 6 except your the main character...' (Justin's call; card trimmed before the innuendo clause; the routine's waiting cut never aired) -> GAME CAVE: DARK MAGIC spellbook from the hip, UPDATE 47 OF 47 -> PRESS START, magic blast -> runs out into a neon crime-game city, HUD pops in; the leading lady (original) by a pink convertible: palm lean (it bends, he falls) 0%, finger guns 5%, boombox synthwave 40%, cheat code -> CHEAT ACTIVATED, money rain $999,999,999, 90-99%; baby cries, wanted stars 1..5: his wife with the baby; finger guns on the wife; leading lady drives off; wife leaves with the baby, comes back for the boombox; last dollar on his head; WASTED; his phone buzzes at his hip, he digs it out: COUSIN calling... he stares at us and lets it ring, declines without looking, the text comes anyway: LET'S GO BOWLING!, he drops the phone at his feet; ask on the street (67.6 s)"
+  },
+  {
+   "day": 23,
+   "type": "waiting",
+   "summary": "No comments on the day 22 posts (TikTok 0, IG 0). Neon game city sidewalk (bent palm, money on the ground, phone at his feet, HUD + 5 flashing stars); holds the sign, writes STILL WANTED. (21.0 s)"
+  },
+  {
+   "day": 24,
+   "type": "fallback (days 24-30)",
+   "summary": "Days 24-30 (2026-11-15..21) aired as re-posts of the day 23 video, caption 'day N · still waiting 👇'. Not recorded by those runs; reconstructed from Buffer on 2026-11-22."
+  },
+  {
+   "day": 31,
+   "type": "comment",
+   "summary": "IG @panque.4 (2 likes): 'Buy a luxury car then go for the goth girls' -> neon sidewalk: $ sack from the hip, scoops the money (cut), runs out through purple fog -> PRESTIGE MOTORS: snobby salesman, money avalanche buries him, keys; gold hypercar, scissor door, exhaust flames, launch -> THE CRYPT: three goth girls (original); car alarm, exhaust fireballs (yawn), DRESS CODE: ALL BLACK -> matte black paint in one throw (one glance); looks at the cemetery; floors it through the gate, tombstone ramp, front flip into the open grave, KABOOM, bats fill the screen; the girls come over, black rose, group shot in the lightning, a bat on his curl; ask in the cemetery, rose in his teeth (61.2 s)"
+  }
+ ]
 }
