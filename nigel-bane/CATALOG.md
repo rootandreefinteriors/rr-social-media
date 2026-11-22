@@ -585,3 +585,29 @@ Post time is 9 PM ET. Day 13 went out a day late (missed slot); every later day 
 - **four elements:** C "Come closer. Closer. Look under here." · R someone else · E tender, eerie underneath · T can the name be read?
 - **cover:** 62.6 s (cheek on the lamp's base, heavy-lidded).
 - **script:** Hello? Is anyone out there? Come closer. Closer. ...Look under here. This lamp went out last night. There's a name scratched underneath. Not mine. I like touching it. It's worn so smooth. They must have picked it up every night. I'll never see their face. I've decided they had a kind one. You're like that, for somebody. If you've ever left a home... someone lives there now. They found the nail you left in the wall. The pencil marks on the door frame. And one night, late, they wondered about you. Somewhere, a stranger has made up a face for you. ...It probably isn't yours.
+
+### D46 · lingering · "Thank you" (keeper 3/4; owner-approved script, 2026-11-22) · 2026-11-25 (Wed) · 64.5 s
+- **idea:** you've been the best part of somebody's day, and they never told you.
+- **you:** strong. "Somebody kept something you said. Years ago. You said it on your way out of a room, and forgot it before the door shut. They didn't. They've gone back to it on bad nights."
+- **first seconds:** crouched by the lamp, fingertip under a face-down tag: "Don't look away. I'm going to turn it over. ...Not yet."
+- **prop:** a second tag on the dead lamp: "thank you."
+- **tension:** medium–strong: what does it say? He sniffs it first; turns it on the beat.
+- **visual:** one continuous shot; the sniff (heavy lids); the tag turning in close-up; tag held flat to his cheek at the end.
+- **dread:** no. Unsettling line: "It smells like someone else's hands."
+- **hook:** "You've been the best part of somebody's day. They never told you. ...That's how it usually goes." *Flat fact.*
+- **four elements:** C "Don't look away. I'm going to turn it over." · R the turn · E tender, a little eerie · T what does the tag say?
+- **cover:** 16.9 s (the tag turned: "thank you.").
+- **script:** Hello? Is anyone out there? Don't look away. I'm going to turn it over. ...Not yet. It smells like someone else's hands. Thank you. ...Thank you. I don't know what I did. I've been saying it over and over. It still doesn't tell me. Somebody kept something you said. Years ago. You said it on your way out of a room, and forgot it before the door shut. They didn't. They've gone back to it on bad nights. You'd never guess which thing it was. You've been the best part of somebody's day. They never told you. ...That's how it usually goes.
+
+### D47 · carrying · "Carried" (keeper 4/4, the lamp leaves; owner-approved script, 2026-11-22) · 2026-11-26 (Thu) · 63.9 s
+- **idea:** one night someone carried you to bed for the last time; nobody knew it was the last one, not even them.
+- **you:** strong. One scene: asleep in the car, carried in — up the stairs, shoes off, blanket to your chin; sometimes only pretending.
+- **first seconds:** sitting against the wall by the lamp, hand at his cheek: "Stay up with me. I want to see who comes in."
+- **prop:** the dead lamp and its two tags, which rise out of the frame while he sleeps (exit).
+- **tension:** strong, visible yes/no: will he stay awake? Lids sink; he jerks up; they sink all through the story; asleep on "Not even them."
+- **visual:** one continuous shot; real eyelids getting heavier; wide shot as the lamp floats up and out; night to dawn in the window.
+- **dread:** no (quiet). Unsettling line: "They only come when I'm asleep. Every time."
+- **hook:** "...They came. I didn't feel a thing." *Action + admission.*
+- **four elements:** C "Stay up with me." · R one scene · E tender, melancholy · T will he stay awake?
+- **cover:** 56.5 s (asleep against the wall, the lamp floating up, dawn).
+- **script:** Hello? Is anyone out there? Stay up with me. I want to see who comes in. They only come when I'm asleep. Every time. ...I'm not sleepy. When you were small, you fell asleep in the car. And somebody carried you in. Up the stairs. Shoes off. Blanket to your chin. Sometimes you were only pretending. So they'd carry you. And one night... they carried you for the last time. You'd got too big. Nobody said so. Nobody knew it was the last one. Not even them. ...They came. I didn't feel a thing.
