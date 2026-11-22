@@ -611,3 +611,16 @@ Post time is 9 PM ET. Day 13 went out a day late (missed slot); every later day 
 - **four elements:** C "Stay up with me." · R one scene · E tender, melancholy · T will he stay awake?
 - **cover:** 56.5 s (asleep against the wall, the lamp floating up, dawn).
 - **script:** Hello? Is anyone out there? Stay up with me. I want to see who comes in. They only come when I'm asleep. Every time. ...I'm not sleepy. When you were small, you fell asleep in the car. And somebody carried you in. Up the stairs. Shoes off. Blanket to your chin. Sometimes you were only pretending. So they'd carry you. And one night... they carried you for the last time. You'd got too big. Nobody said so. Nobody knew it was the last one. Not even them. ...They came. I didn't feel a thing.
+
+### D48 · borrowing · "Breath" (glass 1/4; owner-approved script, 2026-11-22; Thanksgiving) · 2026-11-27 (Thu) · 62.4 s
+- **idea:** if you've lost someone, a little of what they breathed is in you right now.
+- **you:** strong. "So if you've lost someone... a little of what they breathed is in you right now. Not much. A few specks. Every breath."
+- **first seconds:** leaning right in to the glass: "Breathe on your screen. Go on. ...Hhhaa. Like that." — fog blooms on our side.
+- **prop:** fog from his breath on OUR side of the screen (screen-space, engine `glass_hook`); appears and leaves in this episode.
+- **tension:** strong, visible yes/no: "I'm going to hold my breath until it's gone." Real silence while it shrinks; he trembles; it vanishes; he lets go.
+- **visual:** one continuous shot; very close at the glass; frosted fog with beads; drift up to the window on "Out the window"; clouds speed up on "round the whole world"; eyes shut on "Breathe in."
+- **dread:** no. Unsettling line: "A second ago, it was in me."
+- **hook:** "Breathe in. ...That was some of theirs." *Instruction + flat fact.*
+- **four elements:** C "Breathe on your screen." · R the turn · E tender, quietly eerie · T will the fog clear before he runs out of breath?
+- **cover:** 12.5 s (the fog on the glass, his eyes on it).
+- **script:** Hello? Is anyone out there? Breathe on your screen. Go on. ...Hhhaa. Like that. Mine's on your side now. A second ago, it was in me. I'm going to hold my breath until it's gone. Breath doesn't stay where you leave it. It goes round the room. Out the window. Round the whole world. Most of it is still out there, mixed in. So if you've lost someone... a little of what they breathed is in you right now. Not much. A few specks. Every breath. Breathe in. ...That was some of theirs.
