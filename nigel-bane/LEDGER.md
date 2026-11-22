@@ -184,3 +184,25 @@ of *Salad Fingers*, ASMR. The owner approved new scripts for D43–48; D43 and D
 (`?v=3`, `?v=2`), D45–48 made from them. The keeper arc ends on D47 (the lamp leaves); D48 opens the glass arc. Every
 script needs the owner's approval before voicing until they say otherwise. Next to make: **D49** (glass 2/4) — write it
 first, line first, and send it for approval.
+
+## Theme families (owner, 2026-11-22: keep the philosophy fresh)
+Same family at most once in any 5 days; **loss / letting go / last times** at most once a week. Check before writing a
+script; add a row for every episode.
+
+| Day | Theme family | One line |
+|---|---|---|
+| 40 | attention: what you never look at | your ceiling |
+| 41 | loss / letting go | the friend you stopped calling |
+| 42 | comfort as confinement | a small room feels safe |
+| 43 | time and healing | most things get better while you aren't looking |
+| 44 | loss / letting go (holding on) | you keep it lit so you won't be the one who let it go out |
+| 45 | strangers / how others see you | a stranger has made up a face for you |
+| 46 | how others see you (kindness remembered) | the best part of somebody's day |
+| 47 | loss / last times | the last time someone carried you |
+| 48 | loss (the dead) / the body | a little of what they breathed is in you |
+
+**Flag for D49–55:** D41, D44, D47 and D48 are all loss, and D45–46 are both "how others see you". So D49–55 avoid loss
+and letting go entirely, and avoid "how others see you". Planned so far: D49 the body (never anywhere without it), D50
+being watched / perception, D51 the person on the other side of the screen (connection, not loss), D52 attention (your
+window), D53 "here", D54 childhood play / chance, D55 smallness of your world. D55 is close to D42 (comfort as
+confinement), so re-angle it toward wonder when it's written.

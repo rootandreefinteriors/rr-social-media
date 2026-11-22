@@ -112,6 +112,11 @@ and command only serve as hooks to keep the viewer's attention as Nigel gives hi
 - Write the **observation first**: one line a viewer would screenshot or send to someone, true, about them. Then pick
   the action and prop that carry it. Arcs, R moves and closing-shape menus come second and never bend the idea.
 - **The owner approves every script before it is voiced** (until they say otherwise).
+- **Keep the themes fresh (user, 2026-11-22, after approving D43–48):** "we've repeated themes of holding onto things
+  we'd rather let go, loss, etc. These are good themes but they become repetitive when we do them too often." Every
+  episode gets a **theme family** in LEDGER.md's theme table. The same family at most once in any 5 days, and loss /
+  letting go / last times at most once a week. Reach wide: wonder and scale, the body, perception, time, chance,
+  strangers, your own mind, the absurd, small joys, fear, choice, the world outside.
 - **Reference points (user, 2026-11-22):** *I'm Poppy*, *Waking Life*, "with maybe a dash of *Salad Fingers*: creepy,
   unsettling but oddly comforting, with ASMR elements." In practice: flat, sincere, slightly-wrong delivery and the odd
   repeated phrase (Poppy); plain 3 a.m. philosophy (Waking Life); an odd, tender, tactile fondness for small things —
