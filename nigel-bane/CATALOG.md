@@ -572,3 +572,16 @@ Post time is 9 PM ET. Day 13 went out a day late (missed slot); every later day 
 - **four elements:** C "Shh. Keep still. It's going out." · R the turn (his lamp → your friendships) · E tender, then dry and uneasy · T will it last while he holds it?
 - **cover:** 10.2 s (his hand at the glowing lamp, the tag hanging).
 - **script:** Hello? Is anyone out there? Shh. Keep still. It's going out. Somebody left it for me. It isn't plugged into anything. It's been going out all evening. There, there. I don't even like it very much. I just don't want it to go out while I'm holding it. You've probably got one of these. A friendship where you always text first. A group chat nobody talks in anymore. Something you'd let go of, if only it would go on its own. You keep it lit so you won't be the one who let it go out. Not yet... not yet... ...It wasn't me.
+
+### D45 · haunting · "Made up a face" (keeper 2/4; owner-approved script, 2026-11-22) · 2026-11-24 (Tue) · 65.7 s
+- **idea:** somewhere a stranger has made up a face for you, and it probably isn't yours.
+- **you:** strong. "If you've ever left a home... someone lives there now. They found the nail you left in the wall. The pencil marks on the door frame. And one night, late, they wondered about you."
+- **first seconds:** leaning in to us from beside the lamp: "Come closer. Closer." — the camera comes closer.
+- **prop:** the dead lamp (keeper arc); a name scratched under its base, worn almost flat.
+- **tension:** medium: the name; he tips the lamp over and his thumb wears at it; it never resolves.
+- **visual:** one continuous shot; lamp tipped over on a diagonal; thumb rubbing the scrawl (soft scratch sound); cheek on the base, heavy-lidded, at the end.
+- **dread:** no. Unsettling line: "I've decided they had a kind one."
+- **hook:** "Somewhere, a stranger has made up a face for you. ...It probably isn't yours." *Flat fact.*
+- **four elements:** C "Come closer. Closer. Look under here." · R someone else · E tender, eerie underneath · T can the name be read?
+- **cover:** 62.6 s (cheek on the lamp's base, heavy-lidded).
+- **script:** Hello? Is anyone out there? Come closer. Closer. ...Look under here. This lamp went out last night. There's a name scratched underneath. Not mine. I like touching it. It's worn so smooth. They must have picked it up every night. I'll never see their face. I've decided they had a kind one. You're like that, for somebody. If you've ever left a home... someone lives there now. They found the nail you left in the wall. The pencil marks on the door frame. And one night, late, they wondered about you. Somewhere, a stranger has made up a face for you. ...It probably isn't yours.
