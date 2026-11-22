@@ -228,6 +228,9 @@ the overall score, not one outlier or a low-confidence pattern. Put any such cha
 as a departure from the plan, and lay out the evidence and why the plan as written can't get the same result.
 
 Recommendations must respect the show's locked rules and BIBLE.md (the Bible wins if this summary ever disagrees).
+They must also respect BIBLE.md "How an episode is written" (owner, 2026-11-22): the line first, arcs = one theme + one
+prop, plain sense over variety. Never recommend a menu or formula (a required move, a line shape, a stock phrase)
+that would push scripts back toward box-ticking.
 Never recommend a platform-specific change. If the data seems to argue against a locked rule, put it under
 **"Worth questioning"** with the evidence. Don't put it in the main list.
 

@@ -45,6 +45,34 @@ device-arcs — never more plot.
 
 One episode = one day; a tally mark on the wall for each. Day 360: he draws a door and walks out. Arc 2 ("Outside").
 
+## How an episode is written — the standard (owner, 2026-11-22; this section wins over every menu below)
+The owner reset the show on 2026-11-22: "the action only serves as a vehicle for an unsettling philosophical observation
+about the viewer, about life, about the world. It has to cut deep and leave an impact... deeply unsettling, or deeply
+comforting without being corny or contrived. The philosophy is the whole hook; the action and command only serve as
+hooks to keep the viewer's attention." D43–48 are the bar.
+1. **The line first.** Before anything else, write the one line a viewer would screenshot or send to someone: true,
+   about *them*, and either cutting or quietly comforting. Bar: "Most things get better while you aren't looking.
+   That's why it never feels like they are." · "Somewhere, a stranger has made up a face for you. It probably isn't
+   yours." · "Nobody knew it was the last one. Not even them." If the line could be a fridge magnet, it isn't there yet.
+2. **One idea, said a few ways.** The monologue walks toward that line; nothing in it is about something else.
+3. **The bridge.** The prop or action literally does what the viewer's life does, and Nigel says the link plainly at
+   the turn ("I don't even like it. I just don't want it to go out while I'm holding it" → the friendship you keep
+   lit). If the second half could be moved onto another prop, the bridge is too weak. Miss: D41 (a room one step
+   shorter, then friends, with no link said).
+4. **The sense test, every line.** Would a real person say this, here, to one listener, given what he's visibly doing?
+   Does any line take back the one before? Is it clear what "it" or "your light" means? Miss: D43's first cut, "Close
+   your eyes with me. ...No. Not you."
+5. **Tone:** *I'm Poppy* (flat, sincere, slightly wrong, the odd repeated phrase: "Thank you. ...Thank you."),
+   *Waking Life* (plain 3 a.m. philosophy), a dash of *Salad Fingers* (an odd, tender, tactile fondness for small
+   things: stroking a lamp, sniffing a tag, "I like touching it. It's worn so smooth."), ASMR (one whispered stretch,
+   one close sound). Never horror, never cute, never a lesson.
+6. **Arcs are a theme plus a prop.** 2–4 episodes in a row share ONE theme (e.g. *your body*) and one prop or visual
+   thread; each episode is a new angle on that theme and a new step for the prop. The next arc changes theme. Loss /
+   letting go / last times: at most one arc in three (D41, D44, D47 and D48 were all loss; that's the drift to avoid).
+7. **The menus below are tools, not a checklist.** The four elements, R moves, closing shapes and "Build on what works"
+   help; none of them may bend a line out of sense. Plain beats varied.
+8. **The owner approves every script before it is voiced** (until they say otherwise).
+
 ## The closing line (every episode's last line)
 It must be **about the viewer**, make them **think about their own life**, and leave them **a little unsettled**. It's
 written into the Bible entry ahead of time; that's fine. What went wrong by Day 33 (user, 2026-11-10): seven endings in
@@ -87,6 +115,8 @@ morals ("It's sad, but also kind of hopeful"), lines that only make sense if you
 - **Captions:** tally + one lowercase *-ing* word. **Cover:** a chosen frame — distinctive pose, no caption on screen.
 
 ## The four required elements (every episode, no exceptions)
+*They serve the line (see "How an episode is written"). C is said because the scene needs it, in plain words; R is
+the bridge; T is a visible yes/no. If an element can only be ticked with a contrived line, rewrite the scene.*
 These four are the biggest difference between episodes that perform and episodes that don't, so all four go in every
 script. In the 2026-11-03 review, episodes with all four averaged +1.00 on TikTok against −0.44 for episodes with none.
 Each must be **used differently** from one episode to the next.
@@ -159,9 +189,10 @@ Compound what has already worked, rather than adding a new kind of thing each da
 - **Avoid:** episodes about him performing or meta-commentary on being watched with no stakes (D14), and plot-tease
   endings (Days 1–11, the weakest).
 
-**Variation rule:** check the Ledger's four-elements and second-half tables before scripting. Within any 3 days,
-don't repeat the command's wording, the area of life R lands on, **the R move**, the emotional colour, the tension
-mechanism, or **the closing line's shape**.
+**Variation rule (softened 2026-11-22):** check the Ledger tables before scripting. Don't use the same closing-line
+shape or R move two days running, and don't reuse a command's exact wording within a week. Within an arc the theme
+stays the same on purpose; the angle, the prop's step and the line change. Never vary a command into nonsense: plain
+beats varied (see "How an episode is written").
 
 **Don't write from old scripts (user, 2026-11-10).** Copy the newest `episode.py` for the animation code only. Write
 the monologue from the Bible entry and the menus above, not from earlier episodes' scripts or the example lines quoted
@@ -249,15 +280,17 @@ from Day 34 were rewritten to pass the truth test. Re-check the variation rule i
 - **The mouse** (D36–39): unseen → trusts him → watches him → DREAD: leaves, taking the chair.
 - **The room gets smaller** (D40–43): ceiling down → walls closer → as small as it gets → back to its size.
 - **The keeper** (D44–47): a gift arrives → he writes back → they answer → they take it back while he sleeps.
-- **The glass** (D48–51): his breath on our side → his hand on it → a knock from our side → he answers it.
-- **The window** (D52–55): a cloud that won't move → a leaf goes over → raindrops → frost closes, then the sun opens it.
+- **D48** (made under the hard reset): his breath on our side of the glass; theme, the dead (a one-off, Thanksgiving).
+- **Your body** (D49–52; re-planned 2026-11-22, theme + prop): a hand outline traced on our side of the glass.
+- **Seeing** (D53–55): the window: a cloud that won't move → raindrops → frost closes, then the sun opens it.
 - **Somewhere else** (D56–60, chapter landing): a hollow spot in the wall → a draught through the corner seam → light
   through it at night → he turns his back and it goes out → "Here is just wherever you stopped looking for somewhere else."
 Every episode from D37 belongs to an arc; there are no stand-alone episodes.
 
 Dread days: D35 (made before the arc rules; stand-alone), D39 (closes the mouse arc).
 Reaches through the glass: D27, D29, D34 (dare), D41 (he saw your lips move), D42 (test), D45 (tag held to the
-glass), D48–51 (the glass arc), D54 (pick a raindrop), D56 (knock on your wall).
+glass), D48 (his breath on our side), D49–52 (the hand outline on our side), D54 (pick a raindrop), D56 (knock on
+your wall).
 
 - **26 · Gone** — *You never see things arrive or leave. You just notice, one morning, that they've been gone a
   while.* The spider is gone; the web is empty and torn, the bundles with it. He searches the corner (tension: where?);
@@ -405,73 +438,35 @@ shown. Rises: a gift → he writes back → they answer → he tries to see them
   "...They came. I didn't feel a thing."
   **C:** "Stay up with me." · **T:** will he stay awake? · **R:** one scene · **Ending:** action + admission
 
-### Arc: the glass (D48–51, 4 episodes) — someone is on the other side of every screen
-Reaches through the glass, escalating: his breath on our side (D48), his hand on it (D49), something knocks back from
-our side (D50), and he answers it (D51).
-
+### D48 (made 2026-11-22, a one-off under the hard reset)
 - **48 · `borrowing` (REACH 1/4; written under the hard reset, Thanksgiving)** — *If you've lost someone, a little of
   what they breathed is in you right now.* As made: he breathes on the glass, fog blooms on our side, he holds his breath
   until it's gone, then: breath goes round the room, out the window, round the world. "Breathe in. ...That was some of
-  theirs." (Earlier draft of this entry, kept for reference:) *The air you're breathing has been inside other people today.* He breathes on the
-  glass, and a patch of fog appears on OUR side of the screen. He holds his breath and says, "When it's gone, I can
-  breathe again." The viewer watches the fog shrink, and him straining. Caught: your breath, right now; some of it has
-  been in other people, today. The fog vanishes, he gasps. "Some of the air you just breathed was inside other people
-  today."
-  **Bridge:** his breath is on our side of the glass: it left him and is now somewhere else → the air you're breathing
-  was inside someone else a moment ago. He says it while the fog shrinks: "That was in me a second ago. Now it's on
-  your side."
-  **C:** "Breathe on your screen." · **T:** will the fog clear before he runs out of breath? Just.
-  **R:** caught (your breath, right now) · **Ending:** flat fact
-- **49 · Hand (REACH 2/4)** — *You've never been anywhere without your body.* He puts his hand flat on the glass and
-  asks you to put yours on the screen against it. A glowing line starts tracing round his hand from the wrist; he
-  tells you he can't move until it closes. The viewer watches the line travel round each finger. You've never once
-  been anywhere your body wasn't. The line meets on the last word. "Your hand's still on the glass."
-  **C:** "Put your hand flat on the screen. Against mine." · **T:** will the line close round his hand? It meets on the last word.
-  **R:** the test (hand on the screen) · **Ending:** caught
-- **50 · Can't look (REACH 3/4, the climax)** — *You can't check whether someone's watching you without them seeing
-  you check.* He turns his back on us to face the wall: "Something's there. I can feel it." He talks with his back to
-  the glass; the silences between lines get longer; the viewer waits for something. He tells you that you can't check
-  whether someone behind you is watching without them seeing you check. Then a knock, from OUR side of the glass. He
-  flinches and doesn't turn round. Cut on the flinch.
-  **C:** "Look away from me." · **T:** silences getting longer; will something happen? A knock from our side.
-  **R:** the turn · **Ending:** action (the knock and the flinch, no words)
-- **51 · Answer (REACH 4/4, the resolution)** — *There's someone on the other side of every screen you look at.* He
-  comes back to the glass slowly, puts his palm flat on it and waits: "If it was you, do it again." The viewer waits
-  with him in real silence. A faint fog patch blooms on our side, beside his hand, as if someone breathed on it. He
-  smiles for the first time in days. Someone made this, someone is watching it, someone is on the other end of every
-  screen. "I knew it was you."
-  **C:** "Stay where you are." · **T:** will it answer? A breath-mark appears on our side.
-  **R:** caught (you, on the other side of this one) · **Ending:** admission
+  theirs."
 
-### Arc: the window (D52–55, 4 episodes) — most of your life, the outside is something you watch through glass
-The outside, which he can see and never reach: a cloud that won't move, a leaf that goes over the edge, rain, frost
-closing the view, then sun opening it again.
+### Arc: your body (D49–52, 4 episodes) — theme: *your body* (owner's example, 2026-11-22)
+Prop: an outline of his hand, traced on OUR side of the glass. It's drawn on D49, no longer quite fits on D50, he stops
+trying to fit it on D51, and it fades on D52 (exit). Every episode is a new angle on the same theme; each needs its
+line, its bridge and the sense test, and the owner's approval before voicing. The lines here are starting points.
+- **49 · Hand** — *You've never once been anywhere your body wasn't.* He presses his hand flat to the glass; a line
+  slowly traces round it on our side (visible yes/no: will it close before he moves?). Bridge: the outline is the only
+  shape he's ever been in → everywhere you've ever been, it came too.
+- **50 · Doesn't fit** — *Your body is always changing; you never feel it happen.* He puts his hand back into
+  yesterday's outline and it doesn't quite fit. Bridge: he hasn't felt it change → the skin on the hand holding this
+  isn't the skin you had last month.
+- **51 · The right shape** — *Nobody has the perfect body; yours is the only one that's ever been you.* He keeps
+  shifting to fit the outline exactly, then stops and leaves his hand as it is, half in, half out. Bridge: he's trying
+  to fit a shape that was only ever a tracing of him.
+- **52 · Heartbeat** — *It has never once asked you for anything.* He presses his ear to the outline and we hear a
+  heartbeat; the outline fades as it slows to calm (exit). Bridge: something has been keeping him going the whole time
+  without being asked → it just keeps going, in the dark, for you.
 
-- **52 · Stuck cloud (WINDOW 1/4)** — *You probably couldn't describe the view from your own window without looking.*
-  One cloud sits in the window. Other clouds slide past it; birds cross; it doesn't move. He points it out early
-  ("That one hasn't moved since I woke up") so the viewer watches it. He asks you, without looking, what's outside your
-  nearest window right now. It never moves. "...Now look. Was it right?"
-  **C:** "Don't look out your window. Tell me what's there." · **T:** will the cloud move? Everything else does; it doesn't.
-  **R:** the test (describe your window without looking) · **Ending:** question
-- **53 · Leaf (WINDOW 2/4)** — *Wherever you are, you call it "here." You've never once been anywhere else.* A dry leaf
-  on the outside ledge. Each gust pushes it nearer the edge; he says it's going to go over. The viewer watches it
-  slide. "Here" is wherever you are; you've never been anywhere else. It goes over on the last line: "It's somewhere else
-  now. You'll have to take my word for it."
-  **C:** "Watch the leaf." · **T:** will it go over the edge? It does on the last line.
-  **R:** the turn (the leaf leaving "here") · **Ending:** flat fact
-- **54 · Raindrops (WINDOW 3/4)** — *Most of your life, the weather has been something you watched through glass.* Rain
-  on the window. He picks two drops at the top and races them down the glass with his finger: "Pick one." The viewer
-  picks one and watches it (everyone did this as a child in a car). One scene: the back seat, the rain, your drop
-  losing. One drop wins on the last line. "You picked one. Didn't you."
-  **C:** "Pick a raindrop." · **T:** which drop gets to the bottom first? Decided on the last line.
-  **R:** one scene (racing raindrops in the back of a car) · **Ending:** caught
-- **55 · Frost (WINDOW 4/4, the resolution)** — *Your world is mostly the same few places.* Cold morning. Frost grows in
-  from the edges of the window, closing the view a little more every shot. He says he'll keep one circle clear and
-  breathes on the glass to hold it open. How many places were you in this week? Three? Four? The frost closes to a
-  circle the size of his face; then the sun comes up and melts it all back in a few seconds; the whole view is there.
-  "I'd have been happy with the circle. That's what worries me."
-  **C:** "Don't let it close." · **T:** will the frost close the window? It shrinks to a circle, then the sun opens it.
-  **R:** the question (how many places were you in this week?) · **Ending:** admission
+### Arc: seeing (D53–55, 3 episodes) — theme: *what you stop seeing* — prop: the window
+- **53 · Stuck cloud** — *You couldn't describe the view from your own window without looking.* One cloud that won't
+  move while everything else does.
+- **54 · Raindrops** — *You did this as a kid, and you still pick one.* He races two drops down the glass: "Pick one."
+- **55 · Frost** — *Some things you've seen so often you've stopped seeing them.* Frost closes the view to a circle;
+  the sun opens it all at once. (Re-angled from "your world is the same few places", too close to D42.)
 
 ### Arc: somewhere else (D56–60, 5 episodes, the chapter landing) — "here" is wherever you stopped looking
 The chapter asks *what is "here"?* and lands on "Here is just wherever you stopped looking for somewhere else." This
@@ -520,14 +515,12 @@ walls meet, and it closes for good on D59.
   **R:** caught (look around your room, slowly) · **Ending:** aphorism (the chapter landing; the one allowed in this stretch)
 
 ## Chapters 3–12 — territories and seed ideas
-Each gets a full idea bank like Chapter 2 about two weeks before we reach it, laid out by arcs (3–5 episodes in a
-row each, props exiting at the end) with one-episode ideas between them; each dread seed below must be placed inside
-an arc (opening, climax or resolution) when the bank is written. Props the seeds describe as staying (the far
-figure, the plant, the pencil) come in arcs too: they can return later in a new arc, but don't sit in the room for weeks. Seeds below are starting points, not a
-schedule. Keep the eye-colour milestones and Day 360. **Every line in a new bank gets its C and T written in at the
-same time**, as in Chapter 2, and is checked against the variation rule. Each bank also needs **2–3 escalating prop
-arcs** and a reach through the glass about every 3–4 days (see "Build on what works"). Seeds that can become a test or dare for the
-viewer make the best anchors (Day 18's "Try to stop watching me" is the best episode so far). Plan about one per week.
+Each gets a full idea bank about two weeks before we reach it, laid out as **arcs = one theme + one prop, 2–4
+episodes each** (see "How an episode is written"), every episode a new angle on that theme. Write each entry's LINE
+first, then its bridge, then the prop's step; C and T come last and must pass the sense test. Change theme family
+from arc to arc; loss / letting go / last times at most one arc in three. Each dread seed below must sit inside an arc.
+Props the seeds describe as staying (the far figure, the plant, the pencil) come in arcs too. Seeds are starting
+points, not a schedule. Keep the eye-colour milestones and Day 360. The owner approves each bank before scripting.
 
 **Ch 3 — Days (D61–90) · What is a life made of?** Routine, repetition, time, habit, Sisyphus. Props: a morning ritual,
 a tagged cup (rain fills it), the tally itself. Seeds: *your life is mostly Tuesdays* · *you'll forget almost every day

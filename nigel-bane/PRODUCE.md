@@ -260,9 +260,10 @@ Paths below are relative to `nigel-bane/`. IDs: ElevenLabs voice **Roboto** `f21
 flow `Hd8ptIktXVoBR4RvHhKB` (reuse it). Buffer (Nigel's own account): org `6ad3b3027648d77341057da5`, TikTok channel
 `6ad3bd1a778b240e2f3ce589`, Instagram channel `6ad3bb3d778b240e2f3cd282`.
 
-1. **Script** (~100–130 spoken words; the voice is slow). Take the Bible entry's R move and Ending shape (or pick ones
-   the Ledger's "second half" table shows weren't used in the last 3 days), run the closing line and the central claim
-   through the truth test, and write the words fresh, not from earlier scripts. Sound: Bible rule 11 (at most one
+1. **Script** (~100–130 spoken words; the voice is slow). Follow BIBLE.md "How an episode is written": the LINE
+   first, then the bridge, then the scene; R moves and closing shapes are tools, not a checklist. Run the closing line
+   and the central claim through the truth test, and write the words fresh, not from earlier scripts. **Send the
+   script to the owner and wait for approval before voicing.** Sound: Bible rule 11 (at most one
    whispered stretch, one featured close sound; don't overdo the ASMR). v3 audio tags like `[thoughtful]`, `[softly]`, `[quietly]`,
    `[uneasy]`, `[whispers]` work. Always start `[curious] Hello? Is anyone out there?`. Write the idea first. Before
    voicing, write down **the bridge** (what the prop literally does that the viewer's life also does; §1, 2026-11-22)
