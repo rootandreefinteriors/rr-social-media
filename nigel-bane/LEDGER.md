@@ -175,3 +175,9 @@ D47's. The tag still disappears on the last line. New "Build on what works" note
 step count → friends had no bridge); BIBLE "Every episode" #1 and D45–48 now each carry a **Bridge** line. (2) Visual
 mistakes: D41's "first wall" wasn't drawn; D42/D43 half-shut eyes showed a squashed galaxy. The engine now draws a
 real eyelid; PRODUCE §3 step 7 checks eye closes and both ends of every walk.
+
+**2026-11-22 (owner's hard reset):** "the philosophy is the whole hook"; references *I'm Poppy*, *Waking Life*, a dash
+of *Salad Fingers*, ASMR. The owner approved new scripts for D43–48; D43 and D44 were remade and swapped in Buffer
+(`?v=3`, `?v=2`), D45–48 made from them. The keeper arc ends on D47 (the lamp leaves); D48 opens the glass arc. Every
+script needs the owner's approval before voicing until they say otherwise. Next to make: **D49** (glass 2/4) — write it
+first, line first, and send it for approval.

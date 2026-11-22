@@ -388,53 +388,31 @@ A gift arrives with a tag ("for nigel"), not in his handwriting; there's no door
 gets an answer, and stays up to see them; they come while he's asleep and take the gift back. The keeper is never
 shown. Rises: a gift → he writes back → they answer → he tries to see them.
 
-- **44 · Light left on (KEEPER 1/4)** — *You leave a light on so the room isn't empty when you come back, as if you're
-  two people.* Dusk. A small lamp is on the floor, lit, with a paper tag: "for nigel." There's no cord. He says early,
-  "It's getting dimmer," and the viewer watches it flicker lower all episode. One scene: coming home late to the light
-  you left on, and the half-second where it feels like someone's in. The lamp gives out on the last word: "Who are you
-  leaving yours on for?"
-  **C:** "Don't turn your light off. Not yet." · **T:** will it last? It dims all episode and dies on the last word.
-  **R:** one scene (coming home to the light you left on) · **Ending:** question
-- **45 · For whoever (KEEPER 2/4)** — *Someone slept where you sleep before you did, and you'll never know their name.*
-  The dark lamp is still there. He scratches a tag of his own with his fingernail, letter by letter, holds it up flat against the glass for us
-  to read (a reach through the glass), and the viewer
-  watches the words appear: "for whoever." He leaves it by the lamp, turns his back and faces the window: "If I'm
-  not looking, they'll come." The camera stays on his back; the tag in the corner of the frame. Someone lived where you
-  live before you, slept where you sleep. On the last line he turns round: the tag is gone. "Someone slept where you
-  sleep before you did. You'll probably never know their name."
-  **Bridge:** he is writing to someone whose name he doesn't know, who has been in this room while he slept → someone
-  you'll never name has slept where you sleep. He says it as he finishes the tag: "I don't know their name. They've
-  been in here, where I sleep."
-  **C:** "Say the letters with me." · **T:** will the paper hold? He scratches each letter with his fingernail and the
-  tag is thin; it starts to tear at the last letter and holds (a visible yes/no, answered on camera). The tag is still
-  gone on the last line, but that is the payoff, not the tension. (Re-varied 2026-11-21: "watch" was D43's command, and
-  "it happens while he isn't looking" is D43's and D47's tension.)
-  **R:** someone else (whoever lived there before you) · **Ending:** flat fact
-- **46 · Thank you (KEEPER 3/4)** — *You've been thanked for things you don't remember doing.* Morning. A new tag hangs
-  on the lamp, face down. He doesn't want to read it yet ("If it says something bad, I'd rather not know yet"), so the
-  viewer waits to see what it says. He turns it on the last beat: "for nigel. thank you." He doesn't know what for.
-  Somebody remembers a small thing you did years ago, and you don't. "I don't know what I did."
-  **Bridge:** he's being thanked for something he doesn't remember doing → somebody remembers a kindness of yours that
-  you've forgotten. He says it when he reads it: "I don't know what I did. They do."
-  **C:** "Read it with me. When I turn it." · **T:** what does it say? Held until the last beat.
-  **R:** the turn (he only talks about his tag; the last lines turn it on you) · **Ending:** admission
-- **47 · Stay up (KEEPER 4/4, the exit)** — *Most of the people who look after you do it while you're asleep.* Night. He
-  sits up against the wall beside the lamp: "I'm going to see who it is." The viewer watches his eyelids getting
-  heavier, closing for longer each time; will he stay awake? One scene: someone who sat up while you slept when you
-  were small, or ill. His eyes close; the lamp and its tags lift slowly up and out of the top of the frame while he
-  sleeps; the window goes to dawn. He wakes on the last line and sees the floor is empty. "Tonight, before you fall
-  asleep, think about who's awake."
-  **Bridge:** whoever looks after this room only comes while he sleeps, so he can never catch them at it → the people
-  who looked after you did most of it while you were asleep. He says it as his eyes go: "They only come when I'm
-  asleep. Somebody did that for you once."
-  **C:** "Stay up with me." · **T:** will he stay awake? He doesn't; the lamp leaves while he sleeps, on camera.
-  **R:** one scene (someone who sat up with you) · **Ending:** instruction for after
+- **44–47 · REMADE / WRITTEN UNDER THE OWNER'S HARD RESET (2026-11-22).** The scripts below were approved by the owner
+  and made as written; the philosophy is the hook, the lamp and tags only carry it. (D43 was remade the same day: "Most
+  things get better while you aren't looking. ...That's why it never feels like they are.")
+- **44 · `dimming` (KEEPER 1/4)** — *You keep some things lit only so you won't be the one who let them go out.* A lamp
+  with a tag "for nigel" dies while he shields it; he lifts his hands off it just before. "...It wasn't me."
+  **C:** "Shh. Keep still. It's going out." · **T:** will it last while he holds it? · **R:** the turn · **Ending:** action + flat line
+- **45 · `haunting` (KEEPER 2/4)** — *Somewhere a stranger has made up a face for you.* A name scratched under the dead
+  lamp's base; his thumb wears at it. "Somewhere, a stranger has made up a face for you. ...It probably isn't yours."
+  **C:** "Come closer. Closer. ...Look under here." · **T:** can the name be read? · **R:** someone else · **Ending:** flat fact
+- **46 · `lingering` (KEEPER 3/4)** — *You've been the best part of somebody's day and they never told you.* A second
+  tag, face down; sniffed, turned: "thank you." "You've been the best part of somebody's day. They never told you."
+  **C:** "Don't look away. I'm going to turn it over." · **T:** what does it say? · **R:** the turn · **Ending:** flat fact
+- **47 · `carrying` (KEEPER 4/4, the exit)** — *One night someone carried you for the last time.* He tries to stay
+  awake to see who comes; sleeps; the lamp rises out of the frame. "Nobody knew it was the last one. Not even them." ...
+  "...They came. I didn't feel a thing."
+  **C:** "Stay up with me." · **T:** will he stay awake? · **R:** one scene · **Ending:** action + admission
 
 ### Arc: the glass (D48–51, 4 episodes) — someone is on the other side of every screen
 Reaches through the glass, escalating: his breath on our side (D48), his hand on it (D49), something knocks back from
 our side (D50), and he answers it (D51).
 
-- **48 · Breath (REACH 1/4)** — *The air you're breathing has been inside other people today.* He breathes on the
+- **48 · `borrowing` (REACH 1/4; written under the hard reset, Thanksgiving)** — *If you've lost someone, a little of
+  what they breathed is in you right now.* As made: he breathes on the glass, fog blooms on our side, he holds his breath
+  until it's gone, then: breath goes round the room, out the window, round the world. "Breathe in. ...That was some of
+  theirs." (Earlier draft of this entry, kept for reference:) *The air you're breathing has been inside other people today.* He breathes on the
   glass, and a patch of fog appears on OUR side of the screen. He holds his breath and says, "When it's gone, I can
   breathe again." The viewer watches the fog shrink, and him straining. Caught: your breath, right now; some of it has
   been in other people, today. The fog vanishes, he gasps. "Some of the air you just breathed was inside other people

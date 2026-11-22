@@ -159,6 +159,7 @@ WEB = None   # spider web geometry (see build_web); drawn when env "web" > 0
 PLUCKS = []  # [(time, gain)] the web/dragline trembles (and thrums faintly) from these moments
 DRAW_HOOK = None
 UNDER_HOOK = None
+GLASS_HOOK = None
 CAPTION_AVOID = []   # under_hook(cr, t, pose, env): world-space props drawn BEHIND Nigel (a chair he stands in front of)
 DRIPS = []        # [time] icicle drips (env "icicle" > 0): a bead swells, falls, and plinks
 GLASS_TAPS = []   # [(time, gain)] a knock from OUR side of the glass: dull tap + a tiny shake of the whole frame
@@ -166,7 +167,7 @@ GLASS_TAPS = []   # [(time, gain)] a knock from OUR side of the glass: dull tap 
 def configure(mood_track, pose_track, x_track, cam_track, follow_track, env_track,
               window_knocks=(), tally_base=0, tally_new=(), sfx=(), extra_blinks=(), pose_hook=None, tail=0.55,
               birds=(), web=None, plucks=(), draw_hook=None, lens_bugs=(), glass_taps=(), drips=(), crack=None,
-              under_hook=None, caption_avoid=()):
+              under_hook=None, caption_avoid=(), glass_hook=None):
     """Install an episode's timelines and precompute everything derived from them.
     draw_hook(cr, t, pose, env): episode-specific drawing in world space, right after Nigel is drawn."""
     g = globals()
@@ -176,6 +177,7 @@ def configure(mood_track, pose_track, x_track, cam_track, follow_track, env_trac
     g["DRIPS"] = list(drips)
     g["CRACK"] = build_crack(crack) if crack else None
     g["UNDER_HOOK"] = under_hook
+    g["GLASS_HOOK"] = glass_hook   # glass_hook(cr, t, pose, env, to_screen): drawn in SCREEN space on our side of the glass
     g["CAPTION_AVOID"] = list(caption_avoid)
     sfx = list(sfx) + [(k, "knock_far", 0.16) for b in lens_bugs for k in b.get("taps", [])]
     g.update(mood_track=mood_track, pose_track=pose_track, x_track=x_track, cam_track=cam_track,
@@ -1796,6 +1798,8 @@ def render_frame(t, st, surf):
     palm_print(cr, t)
     draw_lens_bugs(cr, t)
     draw_crack(cr, t, env)
+    if GLASS_HOOK:
+        GLASS_HOOK(cr, t, pose, env, lambda q: ((q[0] - cx) * z + W / 2, (q[1] - cy) * z + H / 2))
     cr.save(); cr.scale(2, 2); cr.set_source_surface(GRAIN[BOIL % 3], 0, 0); cr.paint_with_alpha(0.5); cr.restore()
     draw_caption(cr, t)
     st.rot += mood["spin"] / FPS
