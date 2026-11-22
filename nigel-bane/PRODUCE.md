@@ -104,6 +104,15 @@ earlier episode ("Tell me she's there" for a spider that left, "it grew in the n
 plainly in THIS video; any change (gone, bigger, healed) happens on camera in this episode. Callbacks are a bonus
 layer only.
 
+**HARD RESET (user, 2026-11-22): the philosophy is the whole hook.** "You are drifting far from the original formula
+that was working. The action only serves as a vehicle for an unsettling philosophical observation about the viewer,
+about life, about the world. It has to cut deep and leave an impact on the viewer. It has to be either deeply
+unsettling, or deeply comforting without being corny or contrived. But the philosophy is the whole hook; the action
+and command only serve as hooks to keep the viewer's attention as Nigel gives his monologue." None of D40–44 fit this.
+- Write the **observation first**: one line a viewer would screenshot or send to someone, true, about them. Then pick
+  the action and prop that carry it. Arcs, R moves and closing-shape menus come second and never bend the idea.
+- **The owner approves every script before it is voiced** (until they say otherwise).
+
 **The action must explain the monologue: a light-bulb tie-in (user, 2026-11-22).** Since the looser second halves,
 episodes "just generally make less sense. There isn't always a clear tie from the action happening in the room to the
 philosophical take on the viewer." Example: D41 (aired 11/20): the action is Nigel finding the room one pace shorter
