@@ -112,6 +112,11 @@ and command only serve as hooks to keep the viewer's attention as Nigel gives hi
 - Write the **observation first**: one line a viewer would screenshot or send to someone, true, about them. Then pick
   the action and prop that carry it. Arcs, R moves and closing-shape menus come second and never bend the idea.
 - **The owner approves every script before it is voiced** (until they say otherwise).
+- **Reference points (user, 2026-11-22):** *I'm Poppy*, *Waking Life*, "with maybe a dash of *Salad Fingers*: creepy,
+  unsettling but oddly comforting, with ASMR elements." In practice: flat, sincere, slightly-wrong delivery and the odd
+  repeated phrase (Poppy); plain 3 a.m. philosophy (Waking Life); an odd, tender, tactile fondness for small things —
+  touching, smelling, holding them to his cheek — said sweetly when it should be strange (a dash of Salad Fingers,
+  never copied); close sounds and whispers (ASMR). Never horror, never cute.
 
 **The action must explain the monologue: a light-bulb tie-in (user, 2026-11-22).** Since the looser second halves,
 episodes "just generally make less sense. There isn't always a clear tie from the action happening in the room to the
