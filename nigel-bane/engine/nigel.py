@@ -22,6 +22,7 @@ VO = 2.0          # voice starts here (after the cold-open knocks)
 SR = 44100
 INK = (0.07, 0.07, 0.08)
 PAPER = (0.985, 0.984, 0.978)
+LID = (0.905, 0.903, 0.895)   # eyelids: a shade under the paper, so a lowered lid never reads as a blank white eye
 FLOOR_Y = 1478
 INTRO_KNOCKS = [0.55, 0.9, 1.25]
 KNOCK_GAIN = {}   # optional {knock_time: gain multiplier}; episodes may extend INTRO_KNOCKS for on-lens knocks later on
@@ -100,7 +101,7 @@ BASE = dict(head=(450, 775), neck=(452, 945), hip=(450, 1240),
             lelb=(408, 1098), lhand=(394, 1205), relb=(496, 1098), rhand=(508, 1205),
             lknee=(428, 1360), lfoot=(405, FLOOR_Y), rknee=(474, 1360), rfoot=(497, FLOOR_Y),
             tilt=0.0, look=(0.0, 0.0), eyescale=1.0, swing=1.0, fist=0.0, roll=0.0, finger=0.0, letter=0.0,
-            reveal=1.0, palm=0.0, shut=0.0)
+            reveal=1.0, palm=0.0, shut=0.0, shut_l=0.0, shut_r=0.0)   # shut_l/shut_r: one eye (screen left/right)
 def P(base=BASE, **kw):
     d = dict(base); d.update(kw); return d
 
@@ -536,7 +537,7 @@ def draw_nigel(cr, t, p, mood, zoom, rot, mouth, blink, ghost=False):
         # Eyelid (2026-11-22, user: a half-shut eye showed a squashed galaxy, "like his eyelids were also galaxy").
         # The lid is paper-white like his head and comes DOWN over a full-size eye; only the last stretch of a
         # close flattens the outline into the closed-eye line, so a fully shut eye looks exactly as before.
-        lid = min(1.0, max(0.0, blink))
+        lid = min(1.0, max(0.0, blink, p.get("shut_r" if i else "shut_l", 0.0)))
         sq = max(0.04, 1 - max(0.0, (lid - 0.88) / 0.12) * 0.96)
         ly = -er + 2 * er * lid                    # lid edge (eye-local, before the flattening)
         bow = er * 0.18 * (1 - lid * 0.5)          # the lid's lower edge bows down a little
@@ -557,7 +558,7 @@ def draw_nigel(cr, t, p, mood, zoom, rot, mouth, blink, ghost=False):
             cr.arc(0, 0, er + 1, 0, 2 * math.pi); cr.clip()
             cr.move_to(-er - 4, -er - 4); cr.line_to(er + 4, -er - 4); cr.line_to(er + 4, ly)
             cr.curve_to(er * 0.45, ly + bow, -er * 0.45, ly + bow, -er - 4, ly); cr.close_path()
-            cr.set_source_rgb(*PAPER); cr.fill()
+            cr.set_source_rgb(*LID); cr.fill()
             cr.restore()
         path(cr, circle_pts(0, 0, er, sid=50 + i, n=48, amp=0.01))
         cr.restore()

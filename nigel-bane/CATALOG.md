@@ -547,18 +547,18 @@ Post time is 9 PM ET. Day 13 went out a day late (missed slot); every later day 
 - **cover:** 13.0 s, arms out, palms on both walls, looking at us.
 - **script:** Hello? Is anyone out there? Stand up. Arms out. Go on, try it. ...Can you touch both walls? I can. I'm going to push them back. Mm... come on... come on... They're not moving. You could probably walk most of your morning with your eyes shut. Bed to kettle. Kettle to door. You know where every corner is in the dark. That isn't small. That's knowing a place. ...It's cosy, actually. I stopped pushing because it was nice. That's the part I'd watch, if I were you. Tonight, stand in the middle of your room with your arms out, and your eyes shut. Notice how sure you are where the walls are.
 
-### D43 · unwatching · "Don't look (room 4/4)" · 2026-11-22 (Sun) · 62.9 s
-- **idea:** measuring a life makes it smaller.
-- **you:** strong. "Watch the walls for me." / "Somewhere in your head, you know how much of this video is left."
-- **first seconds:** eyes closing: "Close your eyes with me. ...No. Not you. You keep yours open."
-- **prop:** the walls and the low ceiling, which leave on camera (the room comes back to its size).
-- **tension:** strong: the room grows only while his eyes are shut, on camera; he peeks and it stops; shut again and it goes all the way.
-- **visual:** one continuous shot; walls gliding outward, ceiling lifting out of frame; eyes shut most of the episode, open on the last line.
-- **dread:** no. Unsettling line: "Somewhere in your head, you know how much of this video is left."
-- **hook:** "You can stop watching the walls now. ...You won't, though." *Flip.*
-- **four elements:** C "Close your eyes with me. No. Not you." · R the swap · E eerie, then awe · T will the room come back?
-- **cover:** see POSTING.md (15.8 s for D43, 24.0 s for D44).
-- **script:** Hello? Is anyone out there? Close your eyes with me. ...No. Not you. You keep yours open. Watch the walls for me. ...Are they moving? Don't tell me. If I look, it stops. ...I have to look. ...It moved. Didn't it. ...Okay. Shutting them again. I used to count everything in here. My steps. The marks on the wall. And every time I counted, the room was exactly that big. Not one step more. Somewhere in your head, you know how much of this video is left. You've been keeping track. Is it back? ...Don't tell me. I'm keeping them shut a little longer. You can stop watching the walls now. ...You won't, though.
+### D43 · unwatching · "Most things get better" (room 4/4; remade 2026-11-22, owner's hard reset) · 2026-11-22 (Sun) · 62.5 s
+- **idea:** most things get better while you aren't looking; that's why it never feels like they are.
+- **you:** strong. A cut heals while you sleep; grief lets go on the days you forget to check on it; the person you couldn't stop thinking about, one morning you didn't.
+- **first seconds:** "I'm going to shut my eyes. You keep yours open. Watch the walls for me." — eyes close, palms out to the narrow walls.
+- **prop:** the narrow walls and the low ceiling, which leave on camera (the room comes back to its size).
+- **tension:** strong, visible yes/no: the room grows only while his eyes are shut; he peeks with ONE eye and it stops dead; shut again, his palm on the right wall as it slides away ("I like it when it moves. It feels like breathing."), and it goes all the way.
+- **visual:** one continuous shot; one-eyed peek; palm riding the moving wall; long pull-out as the room grows; eyes open in the full-size room for the last two lines. First episode with real eyelids.
+- **dread:** no. Unsettling line: "It stops when I look. It always stops when I look."
+- **hook:** "Most things get better while you aren't looking. ...That's why it never feels like they are." *Flat fact.*
+- **four elements:** C "You keep yours open. Watch the walls for me." · R the turn (the room → your healing) · E calm, tender, eerie underneath · T will the room come back?
+- **cover:** 22.1 s (the one-eyed peek, other eye shut, in the narrow room).
+- **script:** Hello? Is anyone out there? I'm going to shut my eyes. You keep yours open. Watch the walls for me. ...Are they moving? It stops when I look. It always stops when I look. I like it when it moves. It feels like breathing. A cut heals while you sleep. Grief lets go a little, on the days you forget to check on it. The person you couldn't stop thinking about... one morning, you didn't. You didn't notice which morning. Most things get better while you aren't looking. ...That's why it never feels like they are.
 
 ### D44 · dimming · "Light left on (keeper 1/4)" · 2026-11-23 (Mon) · 62.5 s
 - **idea:** you leave a light on so the room isn't empty when you come back, as if you were two people.
