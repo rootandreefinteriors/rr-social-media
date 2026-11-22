@@ -169,7 +169,10 @@ in these rules: they are there to show what the rules mean, not to be imitated. 
 dropped into another episode with the nouns changed, start it again.
 
 ## Every episode (priority order)
-1. **One idea about you,** said a few ways. Never a list of separate thoughts.
+1. **One idea about you,** said a few ways. Never a list of separate thoughts. **It must grow out of the action, with
+   a light-bulb tie-in (user, 2026-11-22):** name the bridge (what the prop literally does that the viewer's life also
+   does) and have him say it plainly at the turn. D41 missed: a room one step shorter, then friends, with no bridge
+   said. It should have been "the room lost a step and I never felt it go. That's how you lose people."
 2. **Action the instant the open ends, with the command (C)** — he's already doing something physical and tells you to
    do something with him. No topic announcements, no recaps.
 3. **A prop** (creature, object, weather, light, sound) that he notices and handles — the doorway to the idea.
@@ -399,6 +402,9 @@ shown. Rises: a gift → he writes back → they answer → he tries to see them
   not looking, they'll come." The camera stays on his back; the tag in the corner of the frame. Someone lived where you
   live before you, slept where you sleep. On the last line he turns round: the tag is gone. "Someone slept where you
   sleep before you did. You'll probably never know their name."
+  **Bridge:** he is writing to someone whose name he doesn't know, who has been in this room while he slept → someone
+  you'll never name has slept where you sleep. He says it as he finishes the tag: "I don't know their name. They've
+  been in here, where I sleep."
   **C:** "Say the letters with me." · **T:** will the paper hold? He scratches each letter with his fingernail and the
   tag is thin; it starts to tear at the last letter and holds (a visible yes/no, answered on camera). The tag is still
   gone on the last line, but that is the payoff, not the tension. (Re-varied 2026-11-21: "watch" was D43's command, and
@@ -408,6 +414,8 @@ shown. Rises: a gift → he writes back → they answer → he tries to see them
   on the lamp, face down. He doesn't want to read it yet ("If it says something bad, I'd rather not know yet"), so the
   viewer waits to see what it says. He turns it on the last beat: "for nigel. thank you." He doesn't know what for.
   Somebody remembers a small thing you did years ago, and you don't. "I don't know what I did."
+  **Bridge:** he's being thanked for something he doesn't remember doing → somebody remembers a kindness of yours that
+  you've forgotten. He says it when he reads it: "I don't know what I did. They do."
   **C:** "Read it with me. When I turn it." · **T:** what does it say? Held until the last beat.
   **R:** the turn (he only talks about his tag; the last lines turn it on you) · **Ending:** admission
 - **47 · Stay up (KEEPER 4/4, the exit)** — *Most of the people who look after you do it while you're asleep.* Night. He
@@ -416,6 +424,9 @@ shown. Rises: a gift → he writes back → they answer → he tries to see them
   were small, or ill. His eyes close; the lamp and its tags lift slowly up and out of the top of the frame while he
   sleeps; the window goes to dawn. He wakes on the last line and sees the floor is empty. "Tonight, before you fall
   asleep, think about who's awake."
+  **Bridge:** whoever looks after this room only comes while he sleeps, so he can never catch them at it → the people
+  who looked after you did most of it while you were asleep. He says it as his eyes go: "They only come when I'm
+  asleep. Somebody did that for you once."
   **C:** "Stay up with me." · **T:** will he stay awake? He doesn't; the lamp leaves while he sleeps, on camera.
   **R:** one scene (someone who sat up with you) · **Ending:** instruction for after
 
@@ -428,6 +439,9 @@ our side (D50), and he answers it (D51).
   breathe again." The viewer watches the fog shrink, and him straining. Caught: your breath, right now; some of it has
   been in other people, today. The fog vanishes, he gasps. "Some of the air you just breathed was inside other people
   today."
+  **Bridge:** his breath is on our side of the glass: it left him and is now somewhere else → the air you're breathing
+  was inside someone else a moment ago. He says it while the fog shrinks: "That was in me a second ago. Now it's on
+  your side."
   **C:** "Breathe on your screen." · **T:** will the fog clear before he runs out of breath? Just.
   **R:** caught (your breath, right now) · **Ending:** flat fact
 - **49 · Hand (REACH 2/4)** — *You've never been anywhere without your body.* He puts his hand flat on the glass and

@@ -533,8 +533,15 @@ def draw_nigel(cr, t, p, mood, zoom, rot, mouth, blink, ghost=False):
         ex += fx; ey += fy
         cr.save()
         cr.translate(ex, ey)
+        # Eyelid (2026-11-22, user: a half-shut eye showed a squashed galaxy, "like his eyelids were also galaxy").
+        # The lid is paper-white like his head and comes DOWN over a full-size eye; only the last stretch of a
+        # close flattens the outline into the closed-eye line, so a fully shut eye looks exactly as before.
+        lid = min(1.0, max(0.0, blink))
+        sq = max(0.04, 1 - max(0.0, (lid - 0.88) / 0.12) * 0.96)
+        ly = -er + 2 * er * lid                    # lid edge (eye-local, before the flattening)
+        bow = er * 0.18 * (1 - lid * 0.5)          # the lid's lower edge bows down a little
         cr.save()
-        cr.scale(1, max(0.04, 1 - blink))
+        cr.scale(1, sq)
         if ghost:
             cr.arc(0, 0, er, 0, 2 * math.pi); cr.set_source_rgb(0.75, 0.75, 0.78); cr.fill()
         else:
@@ -545,11 +552,27 @@ def draw_nigel(cr, t, p, mood, zoom, rot, mouth, blink, ghost=False):
             cr.set_source_surface(surf, 0, 0); cr.paint()
             cr.restore()
             catchlight(cr, er)
+        if lid > 0.01:
+            cr.save()
+            cr.arc(0, 0, er + 1, 0, 2 * math.pi); cr.clip()
+            cr.move_to(-er - 4, -er - 4); cr.line_to(er + 4, -er - 4); cr.line_to(er + 4, ly)
+            cr.curve_to(er * 0.45, ly + bow, -er * 0.45, ly + bow, -er - 4, ly); cr.close_path()
+            cr.set_source_rgb(*PAPER); cr.fill()
+            cr.restore()
         path(cr, circle_pts(0, 0, er, sid=50 + i, n=48, amp=0.01))
         cr.restore()
         stroke_ink(cr, 5.5)
-        if blink > 0.35:
-            cr.move_to(-er, 0); cr.curve_to(-er * 0.4, er * 0.2, er * 0.4, er * 0.2, er, 0); stroke_ink(cr, 5)
+        if lid > 0.01:                             # the lid line, drawn unflattened so it keeps its weight
+            yy, b = ly * sq, bow * sq
+            if lid < 0.97:
+                cr.save(); cr.scale(1, sq); cr.arc(0, 0, er + 0.5, 0, 2 * math.pi); cr.restore()
+                cr.save(); cr.clip()
+                cr.move_to(-er - 4, yy); cr.curve_to(-er * 0.45, yy + b, er * 0.45, yy + b, er + 4, yy)
+                stroke_ink(cr, 5)
+                cr.restore()
+            else:                                  # fully shut: the same closed-eye line as always
+                cr.move_to(-er, yy); cr.curve_to(-er * 0.4, yy + er * 0.2, er * 0.4, yy + er * 0.2, er, yy)
+                stroke_ink(cr, 5)
         cr.restore()
     # brows: soft, inner ends lift (sympathetic)
     b = mood["brow"]

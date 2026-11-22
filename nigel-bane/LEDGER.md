@@ -161,3 +161,8 @@ had re-varied D43 to "Don't look" (eyes shut, the room grows back), which is wha
 before he finishes the last letter?" (it holds), because "watch" and "it happens while he isn't looking" were D43's and
 D47's. The tag still disappears on the last line. New "Build on what works" notes: a creature coming closer on camera
 (D37), and props that outstay their arc go flat (the chair, D32–39).
+
+**2026-11-22 (owner's notes):** (1) every episode needs a light-bulb tie-in from the action to the monologue (D41's
+step count → friends had no bridge); BIBLE "Every episode" #1 and D45–48 now each carry a **Bridge** line. (2) Visual
+mistakes: D41's "first wall" wasn't drawn; D42/D43 half-shut eyes showed a squashed galaxy. The engine now draws a
+real eyelid; PRODUCE §3 step 7 checks eye closes and both ends of every walk.

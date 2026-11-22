@@ -104,6 +104,28 @@ earlier episode ("Tell me she's there" for a spider that left, "it grew in the n
 plainly in THIS video; any change (gone, bigger, healed) happens on camera in this episode. Callbacks are a bonus
 layer only.
 
+**The action must explain the monologue: a light-bulb tie-in (user, 2026-11-22).** Since the looser second halves,
+episodes "just generally make less sense. There isn't always a clear tie from the action happening in the room to the
+philosophical take on the viewer." Example: D41 (aired 11/20): the action is Nigel finding the room one pace shorter
+wall to wall, then "an unprompted monologue about losing touch with friends. The connection is vague at best... that
+one really missed the mark." What's wanted: "a real light bulb moment / clever tie-in from the action to the
+monologue." So:
+- **The bridge.** Before writing, name the one thing the prop or action literally *does* that the viewer's life also
+  does (D41 should have been: the room lost a step and he never felt it go → a friendship loses a call a week and you
+  never feel it go). Nigel says that link out loud, plainly, at the turn: the moment he sees it, and the viewer sees
+  it with him. If the turn could be swapped onto a different prop, the bridge is too weak; change the idea or the
+  action until it isn't.
+- **Test it cold:** someone who only saw the action should be able to guess roughly what it's about to say about
+  them. If the monologue arrives "unprompted", it's a miss.
+
+**Visual mistakes are not acceptable (user, 2026-11-22: "you are getting lazier").** Two examples: in D41, when he
+paces back to "the first wall", there was no wall there (only the far wall was drawn); in D42, his half-closed eyes
+showed the galaxy squashed flat, "like his eyelids were also galaxy". So:
+- **Everything the action or the words point at must be drawn and stay consistent.** If he walks from one wall to
+  another, both walls are visible and the same kind of wall; if he says something is there, it is on screen.
+- **Eyes:** the engine now draws a paper-white eyelid that comes down over the galaxy (2026-11-22). Check every held
+  `shut` value and every open/close in the stills.
+
 **The second half got formulaic (user, 2026-11-10).** Keep the first half as it is — knock, intro, command,
 commentary on the prop: it's what holds people. After that, every episode had become "you do this too" + three
 examples + Nigel realizing something + a corny closing aphorism, and one closing claim (D24) was simply false. The
@@ -210,7 +232,8 @@ flow `Hd8ptIktXVoBR4RvHhKB` (reuse it). Buffer (Nigel's own account): org `6ad3b
    through the truth test, and write the words fresh, not from earlier scripts. Sound: Bible rule 11 (at most one
    whispered stretch, one featured close sound; don't overdo the ASMR). v3 audio tags like `[thoughtful]`, `[softly]`, `[quietly]`,
    `[uneasy]`, `[whispers]` work. Always start `[curious] Hello? Is anyone out there?`. Write the idea first. Before
-   voicing, check every line against §1: action + command right after the open, a prop, everything about *you*,
+   voicing, write down **the bridge** (what the prop literally does that the viewer's life also does; §1, 2026-11-22)
+   and check the turn says it plainly. Check every line against §1: action + command right after the open, a prop, everything about *you*,
    implied lift, edged hook, one deliberate unsettling moment, and **reads cold for a first-time viewer**.
 2. **Voice — reuse before you generate.** If `episodes/epNNN_*/voice_raw.mp3` is already in the repo for this day
    (with `script.txt` and `voice.json`), that day is already voiced: **don't spend credits re-voicing it.** Check the
@@ -243,7 +266,8 @@ flow `Hd8ptIktXVoBR4RvHhKB` (reuse it). Buffer (Nigel's own account): org `6ad3b
 5. **episode.py**: copy the newest episode as a template; build the Tracks (see §4); `N.configure(...)`;
    `N.main("nigel_bane_epNNN_slug.mp4")`. Docstring at the top: idea, C, T, unsettling line, implied lift, hook.
 6. `python3 ../../engine/check_words.py` — fix every duplicated word lookup that points at the wrong occurrence.
-7. **Stills before rendering:** `python3 episode.py --still 5 20 40 …` (8–12 times, covering every shot and effect);
+7. **Stills before rendering:** `python3 episode.py --still 5 20 40 …` (8–12 times, covering every shot and effect, every
+   eye close/open or held `shut`, and both ends of every walk or reach — whatever he walks to or points at must be drawn);
    make a contact sheet with PIL and **look at it**: pose readable, hand not hidden behind the head, captions clear of
    the face/window/tally, prop visible, effects polished. Zoom in on effects. Fix and re-check. Delete `still_*.png`.
 8. **Render:** `python3 episode.py > render.log 2>&1` (a few minutes).
@@ -344,7 +368,9 @@ T, TE = N.T, N.TE              # T("word", n) = start of the n-th occurrence; TE
   night window as a mirror with `mirror_tilt`, `mirror_arm`, `mirror_eyes`, `mirror_shut` — drive them from his pose in an
   `Env` class (see `ep024_reflection`) so the reflection can never fall out of step, including his blinks.
 - **Blinks:** set `N.BLINKS = [...]` after `configure` to control them (D21: `[]` for the unblinking stare). Pose key
-  `shut` (0..1) holds the eyes closed. `configure(glass_taps=[(t, gain)])` = a dull tap on our side of the glass + tiny
+  `shut` (0..1) holds the eyes closed: a paper-white lid comes down over the full-size eye (0.45 = heavy-lidded) and the
+  outline flattens to the closed-eye line only above 0.88 (eyelid added 2026-11-22; before it, half-shut eyes squashed
+  the galaxy). `configure(glass_taps=[(t, gain)])` = a dull tap on our side of the glass + tiny
   frame shiver; `lens_bugs`, `dark` and `palm` prints exist but the user disliked the lights-out and print effects.
 - Long walks: the floor line now runs x −6000…14000; walk with `x_track` + `follow_track` 1.0 (D23).
 - **Web comes down (D26):** env `web_torn` (holes, a snapped spoke, loose ends hanging) and `web_fall` (0..1: the web
