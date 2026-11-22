@@ -118,6 +118,17 @@ monologue." So:
 - **Test it cold:** someone who only saw the action should be able to guess roughly what it's about to say about
   them. If the monologue arrives "unprompted", it's a miss.
 
+**Every line has to make plain sense (user, 2026-11-22, on D43): "Close your eyes with me. ...No. Not you. You keep
+yours open" — "who else would he be talking to?"** The command rule (C right after the open, with its wording varied)
+was bent into lines no person would say. So:
+- **The sense test, line by line:** read the script as a first-time viewer hearing it once. Would a real person say
+  this, here, to one listener? Does it follow from what he is visibly doing? Does any line contradict or take back the
+  one before it? Is it clear whose thing he means ("your light" — which light)? Any line that needs explaining is cut
+  or rewritten.
+- **The command serves the scene, not the checklist.** It is the natural thing to say while doing that action
+  ("I'm going to shut my eyes. You keep yours open. Watch the walls for me."). If the only way to vary the wording is a
+  contrived line, keep it plain instead; plain beats varied.
+
 **Visual mistakes are not acceptable (user, 2026-11-22: "you are getting lazier").** Two examples: in D41, when he
 paces back to "the first wall", there was no wall there (only the far wall was drawn); in D42, his half-closed eyes
 showed the galaxy squashed flat, "like his eyelids were also galaxy". So:
@@ -233,7 +244,7 @@ flow `Hd8ptIktXVoBR4RvHhKB` (reuse it). Buffer (Nigel's own account): org `6ad3b
    whispered stretch, one featured close sound; don't overdo the ASMR). v3 audio tags like `[thoughtful]`, `[softly]`, `[quietly]`,
    `[uneasy]`, `[whispers]` work. Always start `[curious] Hello? Is anyone out there?`. Write the idea first. Before
    voicing, write down **the bridge** (what the prop literally does that the viewer's life also does; §1, 2026-11-22)
-   and check the turn says it plainly. Check every line against §1: action + command right after the open, a prop, everything about *you*,
+   and check the turn says it plainly. Run **the sense test** (§1, 2026-11-22) on every line. Check every line against §1: action + command right after the open, a prop, everything about *you*,
    implied lift, edged hook, one deliberate unsettling moment, and **reads cold for a first-time viewer**.
 2. **Voice — reuse before you generate.** If `episodes/epNNN_*/voice_raw.mp3` is already in the repo for this day
    (with `script.txt` and `voice.json`), that day is already voiced: **don't spend credits re-voicing it.** Check the
