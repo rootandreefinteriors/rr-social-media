@@ -340,8 +340,10 @@ def draw_dino(cr, st, t, blink=0.0):
         ellipse(cr, ex, ey, 24 * s, 30 * s, sid=850); fill_paper(cr, WHITE)
         cr.save(); cr.clip_preserve(); cr.new_path()
         lx, ly = st.get("look", (-0.6, 0.1))
-        cr.arc(ex + lx * 10 * s, ey + ly * 12 * s, 12 * s, 0, 6.3); fill_ink(cr); cr.new_path()
-        cr.arc(ex + lx * 10 * s - 4 * s, ey + ly * 12 * s - 5 * s, 4 * s, 0, 6.3); fill_paper(cr, WHITE); cr.new_path()
+        pp = st.get("pupil", 1.0)                           # <1 = tiny scared pupils (day 33)
+        cr.arc(ex + lx * 10 * s, ey + ly * 12 * s, 12 * s * pp, 0, 6.3); fill_ink(cr); cr.new_path()
+        if pp > 0.6:
+            cr.arc(ex + lx * 10 * s - 4 * s, ey + ly * 12 * s - 5 * s, 4 * s, 0, 6.3); fill_paper(cr, WHITE); cr.new_path()
         if lid > 0.02:
             cr.rectangle(ex - 30 * s, ey - 34 * s, 60 * s, 64 * s * lid); fill_paper(cr, G); cr.new_path()
             cr.move_to(ex - 26 * s, ey - 30 * s + 60 * s * lid); cr.line_to(ex + 26 * s, ey - 30 * s + 60 * s * lid); stroke_ink(cr, 5)
