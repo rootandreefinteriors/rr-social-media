@@ -1,32 +1,32 @@
 {
   "show": "let the comments decide",
-  "day": 33,
+  "day": 34,
   "last_episode": {
-    "day": 33,
+    "day": 34,
     "type": "comment",
-    "folder": "episodes/ep033",
-    "video": "videos/day033.mp4",
-    "posted_at": "2026-11-24T19:00-05:00 (scheduled)",
+    "folder": "episodes/ep034",
+    "video": "videos/day034.mp4",
+    "posted_at": "2026-11-25T19:00-05:00 (scheduled)",
     "buffer": {
-      "tiktok": "6b05e6273f353a0011649e2e",
-      "instagram": "6b05e629d8711eba6d94bc4c"
+      "tiktok": "6b0734bb650fcc0cfee3b8ec",
+      "instagram": "6b0734bd03e79bc5c6fa7408"
     },
-    "note": "Buffer uses the commit-pinned raw URL @99edcc0."
+    "note": "Buffer uses the commit-pinned raw URL @68dc7cd."
   },
-  "ask_since_day": 33,
+  "ask_since_day": 34,
   "waiting_streak": 0,
   "world": {
-    "location": "MARS (day 33): red ground, butterscotch sky bands, two small moons ride with the camera, the giant flat volcano on the horizon, a mesa with a faint face, rocks + craters. Left to right in ep033 coords: the face mesa at MRS-1250, him at HF=MRS+560 (the ask), his first footprint + the rex's big three-toed print, the T. rex at REX_M=MRS+1250 (face -1, looking at him), the rover at MRS+1180, the crashed rocket at RKM=MRS+2750 (standing crooked 0.14 rad, sunk into a crater rim). MRS=12500000. S.floor=False. See ltcd/episodes/ep033 draw_mars().",
+    "location": "MARS BASE 1 (day 34): Mars sky/ground like day 33, two small moons ride with the camera; left to right in ep034 coords: the red dust-storm wall at DW=BASE-2300 (border), the GREENHOUSE dome full of potato plants at GH=BASE-1150 (r=900), him at HB=BASE+60 (the ask), the rover at HB-720, JERRY the T. rex at REX_B=HB+690 (face -1, looking at him, name tag on its belly), the MARS BASE 1 / POP. 0 sign at BASE+1250, the white habitat dome at BASE+2100 with an antenna dish to its right; giant three-toed tracks in the ground. BASE=12600000. S.floor=False. See ltcd/episodes/ep034 draw_base(). JERRY is stomped across the planet (visible from space). The landing site + crashed rocket are left behind in the storm.",
     "companions": [
-      "his T. REX (O.draw_trex, scale 1.35) - came along to Mars; wears its SADDLE and a GIANT fishbowl space helmet (r=300); scared of asteroids; floats in Mars gravity (ep033)",
-      "a little six-wheeled ROVER (ep033 draw_rover) - was alone on Mars, beeps a birthday tune to itself, took a selfie with them",
-      "left behind on Earth (never going back): the three pterodactyls on the traffic light in the museum district; the goth girls in the cemetery; his wife + baby (left him day 22); his son (NBA champion); the black kitten"
+      "JERRY, his T. rex (O.draw_trex, scale 1.35) - named day 34; HELLO MY NAME IS JERRY sticker on its belly; SADDLE + GIANT fishbowl space helmet (r=300); answers to its name now (and loves potatoes); scared of asteroids",
+      "the little six-wheeled ROVER (ep034 draw_rover, faces right) - caught up at the base, dusty; wants a name too (holds up a blank name tag) - possible callback",
+      "left behind (never going back): the crashed rocket at the Mars landing site; on Earth: the pterodactyls, the goth girls, his wife + baby, his son, the black kitten"
     ],
     "props": [
       "his fishbowl space helmet (on his head, r=175) - he's on Mars",
-      "the rocket: crash-landed, out of fuel, crooked, half sunk (stays on Mars)",
-      "a western saddle + reins - on the T. rex",
-      "far behind (never going back): the launch site, the museum district (smashed glass wall), the cemetery + his wrecked hypercar, PRESTIGE MOTORS, the neon game city, and every earlier world",
+      "the greenhouse full of potato plants (two potatoes eaten by Jerry)",
+      "a western saddle + reins - on Jerry",
+      "far behind (never going back): the Mars landing site + crashed rocket, the launch site, the museum district, and every earlier world",
       "he has no money; the RING IS DESTROYED (day 10); the DARK MAGIC spellbook was used up (day 22)"
     ],
     "traits": [
@@ -49,7 +49,8 @@
       "bought the console and the game (day 21, '@thatboypiwko: Go buy a ps5 and gta 6'): ran from the LE FANCY curb (she nodded go) to GAME CAVE; it was NOV 12 and the game comes out NOV 19, so he sat down first in line; days flickered by, the line grew, pizza boxes stacked up; at 11:59 the clerk came out with a sign: DELAYED (heartbeat, push-in, eye twitch) - wrong side: OPEN, 12:00; the line stampeded right over him; inside only the LAST ONE was left, $569.98; he paid with a sock of pennies that buried the counter and the clerk; lifted the boxes overhead in a beam of light (small real smile); at the demo TV: UPDATE 1 OF 47, 150 GB, then UPDATE 2 OF 47. Looks normal.",
       "used dark magic to turn the world into the game (day 22, '@alex03330_: Use dark magic to transform the world into gta 6 except your the main character...'): the update shot to 47 OF 47 / PRESS START, the blast turned everything into a neon crime-game city with a HUD; he flirted with the leading lady (leaned on a palm - it bent and he fell; finger guns; a boombox with a synthwave groove; a money cheat code - $999,999,999 rained down; DATE 99%); a baby cried, five wanted stars lit up one by one: his wife with the baby; finger guns didn't work on her; the leading lady shrugged and drove off; the wife walked out with the baby, came back for the boombox; the last dollar landed on his head; WASTED; then his cousin called to go bowling and he declined. Looks normal.",
       "bought a luxury car and went for the goth girls (day 31, IG @panque.4): scooped the $999,999,999 off the neon sidewalk into a $ sack, ran out through a purple fog wall into the dark side of town; the PRESTIGE MOTORS salesman looked him up and down and turned his back, so he buried him to the neck in money and got the keys; gold hypercar, scissor doors, launched to THE CRYPT; three goth girls ignored him - car alarm, exhaust fireballs (one yawned), DRESS CODE: ALL BLACK so he painted the car matte black in one throw (one glanced, went back to her nails); he floored it through the cemetery gate, off a tombstone ramp, front-flipped into an open grave - KABOOM, a thousand bats out of the mausoleum; the girls came over, one gave him a black rose, group shot in the lightning, a bat settled on his curl. Looks normal.",
-      "brought dinosaurs back to life and rode one (day 32, IG @cr1ms0n_h0rnet): the rose fell out of his teeth, ran from the cemetery through the fog to the MUSEUM OF NATURAL HISTORY; amber with a mosquito, a DNA syringe, a jab in the T. rex skeleton's toe; nothing; the water cup rippled, the bones glowed, FLASH - a living T. rex; the EXTINCT plaque fell off; it stepped down, he froze, it sniffed him and ROARED in his face (the bat blew off his curl); he pulled a saddle, it stared; he rode it bucking through the hall, out through the giant glass wall, down the street; three pterodactyls came alive and caught up; it stopped at a red light; its tiny arms couldn't scratch its nose so he did. Small real smile on the ride. Looks normal."
+      "brought dinosaurs back to life and rode one (day 32, IG @cr1ms0n_h0rnet): the rose fell out of his teeth, ran from the cemetery through the fog to the MUSEUM OF NATURAL HISTORY; amber with a mosquito, a DNA syringe, a jab in the T. rex skeleton's toe; nothing; the water cup rippled, the bones glowed, FLASH - a living T. rex; the EXTINCT plaque fell off; it stepped down, he froze, it sniffed him and ROARED in his face (the bat blew off his curl); he pulled a saddle, it stared; he rode it bucking through the hall, out through the giant glass wall, down the street; three pterodactyls came alive and caught up; it stopped at a red light; its tiny arms couldn't scratch its nose so he did. Small real smile on the ride. Looks normal.",
+      "named the dinosaur Jerry (day 34, IG @cr1ms0n_h0rnet): a Mars dust storm chased them off the landing site into MARS BASE 1 (POP. 0); HELLO MY NAME IS sticker, JERRY, slapped on its belly (its tiny arms can't reach it); it ignored JERRY! and JERRY!!! (yawned, its tail nearly took his head off); a giant greenhouse potato worked - CHOMP; only with a potato; potato on a stick: the chase stomped JERRY across Mars, visible from space; it caught the potato; JERRY? - it nuzzled him, small real smile; the rover caught up holding its own blank name tag. Looks normal."
     ],
     "notes": "Justin, 2026-11-09: his 11-08 note meant don't END episodes with new characters unless the comment asks for them. The girlfriend, baby and kitten are back as of day 18. The kitten doesn't need to ride on his head. | 2026-11-22: days 24-30 aired as 'day N · still waiting' re-posts of the day 23 video (those runs never committed state); the day count now follows the public captions (day 31).",
     "sign_line": "STILL WANTED."
@@ -75,7 +76,8 @@
     "Use dark magic to transform the world into gta 6 except your the main character and you get to crack Lucia",
     "Buy a luxury car then go for the goth girls",
     "Make dinosaurs come back to life and ride one",
-    "Go to mars"
+    "Go to mars",
+    "Name the dinosaur Jerry"
   ],
   "history": [
     {
@@ -212,6 +214,11 @@
       "day": 33,
       "type": "comment",
       "summary": "IG @nicolascechettoschuller (0 likes): 'Go to mars' -> night street: red dot by the moon; rides the T. rex right through a fog bank -> LAUNCH SITE: giant rocket, countdown board; fishbowl helmet from the hip, then a GIANT one for the rex; cramped capsule, 3-2-1, big red button; liftoff, space over the Earth; an ASTEROID - the rex panics (tiny pupils, sweat); he yanks the stick, near miss; pulls the shade, pats its helmet; flips over Mars, flame sputters out, crash landing, red dust cloud; one small step (footprint), the rex jumps down (big print), floats up in low gravity; a lonely rover rolls in, beeps happy birthday to itself, selfie (he doesn't smile, the rex does); ask on Mars (62.4 s)"
+    },
+    {
+      "day": 34,
+      "type": "comment",
+      "summary": "IG @cr1ms0n_h0rnet (0 likes): 'Name the dinosaur Jerry' -> Mars landing site: reads it, looks at the rex; a red dust storm rolls in; rides out right past the rocket, the storm behind -> MARS BASE 1 (POP. 0): HELLO MY NAME IS sticker from the hip, writes JERRY, slaps it on its belly; tiny arms can't reach it; JERRY! sign (it looks at the moons, yawns); JERRY!!! (it turns, tail near-miss, he ducks); stare; greenhouse -> giant potato; the rex whips round, stomps over, CHOMP; JERRY without potato -> it looks away; potato on a stick -> satellite view: the chase stomps J-E-R-R-Y; the planet from space with JERRY on it; it catches the potato; JERRY? -> it nuzzles him, small smile; the rover rolls in holding a blank name tag; ask at the base (61.0 s)"
     }
   ]
 }
