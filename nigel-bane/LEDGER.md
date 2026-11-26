@@ -192,6 +192,10 @@ screen"); "Dares and tests" up to two a week where the scene gives one; hard-res
 flags to avoid next: the same R move two days running (D43–44 were both "the turn"), flat-fact endings close together
 (D43, D45, D46), loss themes a few days apart.
 
+**2026-11-26 (cloud run, production):** Buffer is covered through D48 (Nov 27). D49–53 (Nov 28–Dec 2) are written and
+waiting for the owner's approval in `drafts/2026-11-26-scripts-D49-53.md`; nothing voiced, made or scheduled, because
+every script needs approval before voicing. Next to make: **D49**, from that file once approved.
+
 ## Theme families (owner, 2026-11-22: keep the philosophy fresh)
 An arc keeps ONE theme family for its 2–4 episodes (owner, 2026-11-22); the NEXT arc must be a different family, and
 loss / letting go / last times at most one arc in three. Add a row for every episode.
