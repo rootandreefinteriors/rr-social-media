@@ -18,11 +18,11 @@ confirm them in TikTok Studio → Creator Rewards before relying on them:
 - **AI label: never (user's decision, 2026-11-05, final).** Posts go out with the AI label off. Don't raise it
   again, and don't recommend turning it on.
 
-**Where we are (2026-11-21):**
-- TikTok: about 24,600 views in total for the show, about 22,800 of them in the last 30 days, gaining about 820 a day
+**Where we are (2026-11-26):**
+- TikTok: about 28,000 views in total for the show, about 25,300 of them in the last 30 days, gaining about 700 a day
   (almost all of it from the newest three or four episodes; older ones stop growing after about a week).
 - Followers: the user tracks them in TikTok's app. Don't ask for them.
-- Needed: about 3,300 TikTok views a day, so roughly four times the current rate.
+- Needed: about 3,300 TikTok views a day, so roughly four to five times the current rate.
 - Followers come from viewers wanting the next episode. That is why prop arcs and recurring beats matter (see "Build on
   what works").
 
@@ -180,7 +180,13 @@ Compound what has already worked, rather than adding a new kind of thing each da
   (D20), "most people only ever see the word for you" (D12). These four have the highest shares/saves of the show and
   average +0.99 overall. Put one in every episode's R. The three weakest episodes (D3, D9, D14) are about Nigel's own
   situation instead.
-- **Dares and tests the viewer can actually do** (D18 "Try to stop watching me"). **About one a week.**
+- **Dares and tests the viewer can actually do** (D18 "Try to stop watching me"). Confirmed by D41 (the viewer counts
+  the steps out loud with him; +0.99, the best of Days 41–45, best watch on both platforms) and D42 (arms out to your
+  own walls; +0.41, most TikTok shares of the batch) (review 2026-11-26). **Up to two a week, only where the scene
+  gives one naturally** (the command stays plain; never a dare bolted on). Keep the answer on camera.
+- **The hard reset (D43 on; review 2026-11-26):** D43–45 average +0.29 overall, about level with D36–40 (+0.33);
+  TikTok likes per view are up, watch % a little down. No measurable change yet either way; judge again with D46–48.
+  Avoid two "turn" episodes in a row and loss themes a few days apart: D44 (both) was the batch low.
 - **Tension from form:** D16's repeated open was an over-performer and got the most comments of any dread day. Use it
   on dread days. The first two dread days were positive overall (D16 +0.67, D23 +0.22); the next two were in the normal
   range but below the batch (D35 −0.07, D39 −0.25, the lowest TikTok views of Days 31–40), both quiet, flat-grey and
@@ -451,15 +457,23 @@ line, its bridge and the sense test, and the owner's approval before voicing. Th
 - **49 · Hand** — *You've never once been anywhere your body wasn't.* He presses his hand flat to the glass; a line
   slowly traces round it on our side (visible yes/no: will it close before he moves?). Bridge: the outline is the only
   shape he's ever been in → everywhere you've ever been, it came too.
+  **C (draft, review 2026-11-26):** "Hold your hand up. Look at the back of it." (the viewer's own hand; not a second
+  screen command after D48) · **T:** will the line close round his hand before he moves? A real silence while it traces.
 - **50 · Doesn't fit** — *Your body is always changing; you never feel it happen.* He puts his hand back into
   yesterday's outline and it doesn't quite fit. Bridge: he hasn't felt it change → the skin on the hand holding this
   isn't the skin you had last month.
+  **C (draft):** "Put your hand flat on your leg. Feel how warm it is." · **T:** will it fit the outline? He re-places it
+  again and again; it never quite does.
 - **51 · The right shape** — *Nobody has the perfect body; yours is the only one that's ever been you.* He keeps
   shifting to fit the outline exactly, then stops and leaves his hand as it is, half in, half out. Bridge: he's trying
   to fit a shape that was only ever a tracing of him.
+  **C (draft):** "Don't fix anything. Stay how you're sitting." · **T:** he shifts and shifts to fit it exactly; will he
+  get it? He stops, half in, half out.
 - **52 · Heartbeat** — *It has never once asked you for anything.* He presses his ear to the outline and we hear a
   heartbeat; the outline fades as it slows to calm (exit). Bridge: something has been keeping him going the whole time
   without being asked → it just keeps going, in the dark, for you.
+  **C (draft):** "Shh. Put your ear to it with me." · **T:** the heartbeat slows; will it stop? It settles, and the
+  outline fades with it (exit).
 
 ### Arc: seeing (D53–55, 3 episodes) — theme: *what you stop seeing* — prop: the window
 - **53 · Stuck cloud** — *You couldn't describe the view from your own window without looking.* One cloud that won't

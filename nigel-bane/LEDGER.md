@@ -64,6 +64,7 @@ Views come from the engagement reviews. The user tracks followers in TikTok's ap
 | 2026-11-06 | 11,735 (all-time; the show is 27 days old) | ~930 |
 | 2026-11-11 | 16,006 (all-time; the show is 32 days old) | ~890 |
 | 2026-11-21 | ~22,800 (24,627 all-time minus 1,804 at the Oct 23 snapshot; plus ~10,600 from five non-Nigel "Gary vs Larry" posts on the same TikTok, Nov 13–17) | ~820 |
+| 2026-11-26 | ~25,300 (28,019 all-time minus 2,723 at the Oct 26 snapshot; the Gary vs Larry posts now have 11,632 and are left out) | ~700 |
 
 ## Four elements (C / R / E / T)
 Check this before scripting. Within any 3 days, don't repeat the command's wording, the area of life R lands on, the
@@ -184,6 +185,12 @@ of *Salad Fingers*, ASMR. The owner approved new scripts for D43–48; D43 and D
 (`?v=3`, `?v=2`), D45–48 made from them. The keeper arc ends on D47 (the lamp leaves); D48 opens the glass arc. Every
 script needs the owner's approval before voicing until they say otherwise. Next to make: **D49** (glass 2/4) — write it
 first, line first, and send it for approval.
+
+**2026-11-26 (cloud review, Days 41–45):** no under-performers; D41 (count along) and D43 lead. BIBLE: draft C and T for
+the body arc D49–52 (D49's command is the viewer's own hand, not a second screen command after D48's "Breathe on your
+screen"); "Dares and tests" up to two a week where the scene gives one; hard-reset era check (no change yet). Variation
+flags to avoid next: the same R move two days running (D43–44 were both "the turn"), flat-fact endings close together
+(D43, D45, D46), loss themes a few days apart.
 
 ## Theme families (owner, 2026-11-22: keep the philosophy fresh)
 An arc keeps ONE theme family for its 2–4 episodes (owner, 2026-11-22); the NEXT arc must be a different family, and
