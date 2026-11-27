@@ -146,7 +146,10 @@ Each must be **used differently** from one episode to the next.
 - **T · Tension that keeps the viewer watching to see what happens.** **It must carry love or fear (owner,
   2026-11-27).** Love: he holds his hand out and the viewer stays to see if the mouse will come (D37). Fear: the walls
   closing in (D40–42), the spider catching the moth (D19). A yes/no with nothing to love or fear (will a line close,
-  will a hand fit) isn't tension. Use the mechanisms in #4 below. **A creature in
+  will a hand fit) isn't tension. **It works best when a living thing is at stake (owner, 2026-11-27): Nigel himself,
+  or a sympathetic creature in the room (the spider, the mouse).** Not a rotating cast of creatures: a creature arc
+  about one arc in five; in between, the stake is Nigel (his breath, his body, his sleep, his hand, his room). Use the
+  mechanisms in #4 below. **A creature in
   danger at most once a week.** Tension built from form works as well: Day 16's repeated open, Day 21's refusal to
   blink, Day 22's held silence.
 
@@ -291,7 +294,9 @@ from Day 34 were rewritten to pass the truth test. Re-check the variation rule i
 - **The keeper** (D44–47): a gift arrives → he writes back → they answer → they take it back while he sleeps.
 - **D48** (made under the hard reset): his breath on our side of the glass; theme, the dead (a one-off, Thanksgiving).
 - **Your body** (D49–52; re-planned 2026-11-22, theme + prop): a hand outline traced on our side of the glass.
-- **Seeing** (D53–55): the window: a cloud that won't move → raindrops → frost closes, then the sun opens it.
+- **Seeing** (D53–55): the window: a cloud that won't move (D53) → a bee trapped against the glass (D54) → he
+  carries it away from the light to a gap in the frame, and it goes (D55). Raindrops and frost dropped (owner,
+  2026-11-27: weak; nothing living at stake).
 - **Somewhere else** (D56–60, chapter landing): a hollow spot in the wall → a draught through the corner seam → light
   through it at night → he turns his back and it goes out → "Here is just wherever you stopped looking for somewhere else."
 Every episode from D37 belongs to an arc; there are no stand-alone episodes.
@@ -478,12 +483,23 @@ line, its bridge and the sense test, and the owner's approval before voicing. Th
   **C (draft):** "Shh. Put your hand on your chest." · **T (fear):** the heartbeat slows; will it stop? It settles, and the
   outline fades with it (exit).
 
-### Arc: seeing (D53–55, 3 episodes) — theme: *what you stop seeing* — prop: the window
-- **53 · Stuck cloud** — *You couldn't describe the view from your own window without looking.* One cloud that won't
-  move while everything else does.
-- **54 · Raindrops** — *You did this as a kid, and you still pick one.* He races two drops down the glass: "Pick one."
-- **55 · Frost** — *Some things you've seen so often you've stopped seeing them.* Frost closes the view to a circle;
-  the sun opens it all at once. (Re-angled from "your world is the same few places", too close to D42.)
+### Arc: seeing (D53–55, 3 episodes) — theme: *what you can't see, or stop seeing* — prop: the window, then a bee
+Re-planned 2026-11-27 (owner: raindrops were weak; tension works best with a living thing at stake). The bee is the
+show's creature for this stretch (one creature arc about every five arcs; the mouse was D36–39). It arrives on D54 and
+leaves on camera on D55 through a gap low in the window frame (not the wall seam, which belongs to D56–59; never a
+door).
+- **53 · `overlooking` Stuck cloud** (owner-approved script, 2026-11-27) — *Someone has been in the same place in your
+  life so long you stopped seeing them.* A cloud shaped like a sleeping dog stays while the others pass; it goes the
+  second he looks at us. **T (love):** will it stay?
+- **54 · Glass** — *Whatever keeps stopping you, you probably can't see it either. You just think it's you.* A bee
+  flies at the bright window again and again; it can't see the glass. Bridge: it can't see what's stopping it, so it
+  blames the try and goes again → the thing you keep hitting. **C:** "Stay still. Don't scare it." **T (a living thing
+  at stake):** it's slower every time; will it wear itself out? It drops to the sill, still; one leg moves. Alive.
+- **55 · The way out** — *The way out of a lot of things looks like going the wrong way.* He lets the tired bee walk
+  onto his finger and carries it slowly away from the bright glass, down to a dark gap where the frame has come away
+  and the cold gets in. Bridge: to get out, it has to go away from the light it wanted. **T (Nigel and the bee at
+  stake):** will it stay on his finger, and will it sting him? ("If it stings me, it dies. I don't want either.") It
+  feels the cold, crawls into the gap, and is gone.
 
 ### Arc: somewhere else (D56–60, 5 episodes, the chapter landing) — "here" is wherever you stopped looking
 The chapter asks *what is "here"?* and lands on "Here is just wherever you stopped looking for somewhere else." This

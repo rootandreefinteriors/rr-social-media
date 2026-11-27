@@ -101,6 +101,9 @@ closer. Set it up early, keep tightening it, and pay it off (or deliberately sna
 **The tension must carry love or fear (user, 2026-11-27).** Love: holding his hand out for the mouse, the viewer stayed
 to see if it would come (D37). Fear: the walls closing in (D40–42), the spider catching the moth (D19). A yes/no with
 nothing to love or fear in it (will a line close, will a hand fit) doesn't count; name which one it is when planning.
+**It works best when a living thing is at stake (user, 2026-11-27): Nigel himself, or a sympathetic creature in the
+room (the spider, the mouse).** "We don't want just a rotating cast of creatures, but we should have one every 5 or so
+arcs." In between, put Nigel at stake.
 
 **~99% of viewers are first-timers (user, 2026-11-05).** Never write a line that only makes sense if you saw an
 earlier episode ("Tell me she's there" for a spider that left, "it grew in the night"). Show the prop and name it

@@ -196,6 +196,11 @@ flags to avoid next: the same R move two days running (D43–44 were both "the t
 waiting for the owner's approval in `drafts/2026-11-26-scripts-D49-53.md`; nothing voiced, made or scheduled, because
 every script needs approval before voicing. Next to make: **D49**, from that file once approved.
 
+**2026-11-27 (owner):** D49–53 approved (as revised: every tension carries love or fear). Raindrops and frost dropped
+from the seeing arc: tension works best with a living thing at stake (Nigel, or a sympathetic creature; a creature arc
+about one in five). New D54–55: a bee trapped against the window, then carried to a gap in the frame (BIBLE, Chapter 2).
+D54's script is in `drafts/2026-11-27-script-D54.md`, waiting for approval.
+
 ## Theme families (owner, 2026-11-22: keep the philosophy fresh)
 An arc keeps ONE theme family for its 2–4 episodes (owner, 2026-11-22); the NEXT arc must be a different family, and
 loss / letting go / last times at most one arc in three. Add a row for every episode.
