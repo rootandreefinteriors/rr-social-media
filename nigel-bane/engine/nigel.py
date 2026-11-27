@@ -160,6 +160,7 @@ PLUCKS = []  # [(time, gain)] the web/dragline trembles (and thrums faintly) fro
 DRAW_HOOK = None
 UNDER_HOOK = None
 GLASS_HOOK = None
+WINDOW_HOOK = None   # window_hook(c, t, env, ww, wh): drawn inside the window (window coords), after the clouds
 CAPTION_AVOID = []   # under_hook(cr, t, pose, env): world-space props drawn BEHIND Nigel (a chair he stands in front of)
 DRIPS = []        # [time] icicle drips (env "icicle" > 0): a bead swells, falls, and plinks
 GLASS_TAPS = []   # [(time, gain)] a knock from OUR side of the glass: dull tap + a tiny shake of the whole frame
@@ -167,7 +168,7 @@ GLASS_TAPS = []   # [(time, gain)] a knock from OUR side of the glass: dull tap 
 def configure(mood_track, pose_track, x_track, cam_track, follow_track, env_track,
               window_knocks=(), tally_base=0, tally_new=(), sfx=(), extra_blinks=(), pose_hook=None, tail=0.55,
               birds=(), web=None, plucks=(), draw_hook=None, lens_bugs=(), glass_taps=(), drips=(), crack=None,
-              under_hook=None, caption_avoid=(), glass_hook=None):
+              under_hook=None, caption_avoid=(), glass_hook=None, window_hook=None):
     """Install an episode's timelines and precompute everything derived from them.
     draw_hook(cr, t, pose, env): episode-specific drawing in world space, right after Nigel is drawn."""
     g = globals()
@@ -177,6 +178,7 @@ def configure(mood_track, pose_track, x_track, cam_track, follow_track, env_trac
     g["DRIPS"] = list(drips)
     g["CRACK"] = build_crack(crack) if crack else None
     g["UNDER_HOOK"] = under_hook
+    g["WINDOW_HOOK"] = window_hook
     g["GLASS_HOOK"] = glass_hook   # glass_hook(cr, t, pose, env, to_screen): drawn in SCREEN space on our side of the glass
     g["CAPTION_AVOID"] = list(caption_avoid)
     sfx = list(sfx) + [(k, "knock_far", 0.16) for b in lens_bugs for k in b.get("taps", [])]
@@ -695,6 +697,8 @@ def window_interior(t, env, zoom, cloud_off, mood=None):
             c.set_source_rgba(1, 1, 1, 0.85 * env["clouds"])
             for dx, dy, rr in [(-40, 8, 30), (-10, -10, 38), (28, 0, 32), (55, 12, 22), (5, 14, 30)]:
                 c.arc(cx + dx * sc, cy + dy * sc, rr * sc, 0, 2 * math.pi); c.fill()
+    if WINDOW_HOOK:   # episode-specific sky contents (D53: one cloud that doesn't move), under the window frame
+        WINDOW_HOOK(c, t, env, ww, wh)
     for b in BIRDS:
         u = (t - b["t"]) / b["dur"]
         if 0 <= u <= 1:

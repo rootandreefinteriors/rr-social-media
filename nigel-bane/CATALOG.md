@@ -676,3 +676,16 @@ Post time is 9 PM ET. Day 13 went out a day late (missed slot); every later day 
 - **four elements:** C "Shh. Put your hand on your chest." · R caught · E tender, frightening then calm · T will it stop?
 - **cover:** 23.6 s (ear against the outline, eyes wide: "Don't stop.").
 - **script:** Hello? Is anyone out there? Shh. Put your hand on your chest. ...I've put my ear where my hand was. I can hear my heart in it. Listen. ...It's slowing down. ...Don't stop. ...Don't stop. It's been doing that since before you could talk. Through every night you didn't sleep. Through the day you thought you couldn't keep going. It kept going anyway, in the dark, and nobody thanked it. It's doing it now, under your hand. ...It's quieter. It isn't stopping. It's just calm. Your heart has never once asked you for anything. ...The outline's going. Let it.
+
+### D53 · overlooking · "Stuck cloud" (seeing 1/3; owner-approved script, 2026-11-27) · 2026-12-02 (Wed) · 64.6 s
+- **idea:** there's probably someone who's been in the same place in your life for years; you stopped really seeing them a long time ago.
+- **you:** strong. "Same place for years. Same chair. Same 'how was your day.' You stopped really seeing them a long time ago. You'd notice the day they weren't there."
+- **first seconds:** looking up, pointing at the window: "Watch the cloud with me. That one. In the middle."
+- **prop:** one cloud like a sleeping dog, still in the middle of the window while the others pass (engine `window_hook`); it goes while the window is out of frame.
+- **tension:** strong, LOVE: he's fond of it and keeps checking it's still there; will it stay? He looks at us "just for a second" and it's gone.
+- **visual:** one continuous shot; in close on the window for the cloud; the camera comes in on his face for "I'm going to look at you" (window out of frame) and drifts back up to an empty sky.
+- **dread:** no. Unsettling line: "I'm going to look at you. Just for a second. ...It's gone."
+- **hook:** "It's gone. When did you last really look at them?" *Question.*
+- **four elements:** C "Watch the cloud with me." · R someone else · E tender, then uneasy · T will it stay?
+- **cover:** 21.8 s (looking up at the dog cloud: "Still there.").
+- **script:** Hello? Is anyone out there? Watch the cloud with me. That one. In the middle. It looks like a sleeping dog. ...The others are going past it. It's stayed with me since this morning. I keep checking. Still there. I like that it stays. Everything else goes by, and it just stays. I stopped really looking at it about lunchtime. There's probably someone in your life like that. Same place for years. Same chair. Same "how was your day." You stopped really seeing them a long time ago. You'd notice the day they weren't there. ...Still there. I'm going to look at you. Just for a second. ...It's gone. When did you last really look at them?
