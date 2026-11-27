@@ -216,6 +216,11 @@ from the seeing arc: tension works best with a living thing at stake (Nigel, or 
 about one in five). New D54–55: a bee trapped against the window, then carried to a gap in the frame (BIBLE, Chapter 2).
 D54's script is in `drafts/2026-11-27-script-D54.md`, waiting for approval.
 
+**2026-11-27 (production):** D49–53 made from the approved scripts and scheduled (Nov 28–Dec 2). New engine pieces:
+`engine/hand_outline.py` (the outline on our side of the glass; his palm is pinned to the glass so it keeps its place
+and size while the camera moves), palm keys `spread`/`thumb_fold`, SFX `heart_close`, `window_hook` (D53's cloud).
+Next to make: **D54** (bee, seeing 2/3), once its script is approved.
+
 ## Theme families (owner, 2026-11-22: keep the philosophy fresh)
 An arc keeps ONE theme family for its 2–4 episodes (owner, 2026-11-22); the NEXT arc must be a different family, and
 loss / letting go / last times at most one arc in three. Add a row for every episode.
