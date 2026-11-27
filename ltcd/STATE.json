@@ -1,34 +1,34 @@
 {
   "show": "let the comments decide",
-  "day": 35,
+  "day": 36,
   "last_episode": {
-    "day": 35,
+    "day": 36,
     "type": "comment",
-    "folder": "episodes/ep035",
-    "video": "videos/day035.mp4",
-    "posted_at": "2026-11-26T19:00-05:00 (scheduled)",
+    "folder": "episodes/ep036",
+    "video": "videos/day036.mp4",
+    "posted_at": "2026-11-27T19:00-05:00 (scheduled)",
     "buffer": {
-      "tiktok": "6b0887f29068b6e0795ade09",
-      "instagram": "6b0887f53accdac92cf4022e"
+      "tiktok": "6b09d8e1c02ca0988aabd023",
+      "instagram": "6b09d8e3b5cd052fe284f982"
     },
-    "note": "Buffer uses the commit-pinned raw URL @16249d4."
+    "note": "Buffer uses the commit-pinned raw URL @284f05f."
   },
-  "ask_since_day": 35,
+  "ask_since_day": 36,
   "waiting_streak": 0,
   "world": {
-    "location": "CYDONIA - THE FACE ON MARS (day 35): Mars sky/ground like days 33-34 (E34.mars_sky_ground), a giant stone face buried to its chin centred at CY=13600000 (ellipse rx 1250, ry 1650, centre FLOOR_Y-950), eyes closed (stone sockets) and now permanently GRINNING (a carved grin from CY-640 to CY+640, corners at FLOOR_Y-720), a CYDONIA / THE FACE ON MARS sign at CY+1700. Him at CY-220 (the ask), JERRY at REX_C=CY-1450 facing right, the rover at CY-1310 (upright), the jackhammer lying at CY+520, Jerry's feather on the ground near CY-900, mirror shards at CY-470. S.floor=False. See ltcd/episodes/ep035 draw_cydonia()/draw_face(). The face came alive once and laughed (it can open its eyes - possible callback). Mars Base 1 is left behind (through a dust devil).",
+    "location": "JEZERO CRATER (day 36): the ancient lake bed on Mars - ep036 draw_jezero(): Mars sky/ground (E34.mars_sky_ground), a long far crater rim, a pale river-delta fan in the distance, dried mud cracks, a low ridge behind him (JZ+150..JZ+2350), a JEZERO CRATER / ANCIENT LAKE BED / LOOK FOR LIFE HERE sign at JZ-2000; JZ=14600000. Him at JZ (the ask), JERRY at REX_J-450 = JZ-1450 facing right, the rover at JZ+1250 facing left, the giant radio dish (dish(), scale 1.25) at JZ-560 with its printer, the NO INTELLIGENT LIFE FOUND sign staked at JZ+600, the magnifying glass and the 6EQUJ5/Wow! printout on the ground near him, a flipped rock at JZ+330. S.floor=False. Cydonia (the grinning Face on Mars) is left behind through a dust devil.",
     "companions": [
-      "JERRY, his T. rex (O.draw_trex, scale 1.35) - named day 34; HELLO MY NAME IS JERRY sticker on its belly; SADDLE + GIANT fishbowl space helmet (r=300); answers to its name now (and loves potatoes); scared of asteroids",
-      "the little six-wheeled ROVER (ep034 draw_rover, faces right) - followed him to Cydonia late, danced to its happy-birthday beeps, tipped over, got flipped back by the face's laugh; still has no name",
-      "left behind (never going back): the crashed rocket at the Mars landing site; on Earth: the pterodactyls, the goth girls, his wife + baby, his son, the black kitten"
+      "JERRY, his T. rex (O.draw_trex, scale 1.35) - named day 34; HELLO MY NAME IS JERRY sticker; SADDLE + GIANT fishbowl space helmet (r=300); answers to its name, loves potatoes; scared of asteroids and aliens (hid behind the dish); the aliens were told it's his leader",
+      "the little six-wheeled ROVER (ep034 draw_rover) - drilled a sample at Jezero (dust); now faces left at JZ+1250; still has no name",
+      "left behind (never going back): the grinning Face on Mars at Cydonia, Mars Base 1, the crashed rocket; on Earth: the pterodactyls, the goth girls, his wife + baby, his son, the black kitten"
     ],
     "props": [
       "his fishbowl space helmet (on his head, r=175) - he's on Mars",
       "a western saddle + reins - on Jerry",
-      "far behind (never going back): the Mars landing site + crashed rocket, the launch site, the museum district, and every earlier world",
+      "at Jezero: the giant radio dish + printer, the magnifying glass (on the ground), the 6EQUJ5 Wow! printout (on the ground), the NO INTELLIGENT LIFE FOUND sign",
+      "the aliens + their mothership left for good (day 36) - they studied him and dropped him",
       "he has no money; the RING IS DESTROYED (day 10); the DARK MAGIC spellbook was used up (day 22)",
-      "the grinning Face on Mars (carved day 35, stays grinning); a jackhammer lying beside it",
-      "far behind (never going back): Mars Base 1 with its greenhouse"
+      "far behind (never going back): Cydonia (grinning face, jackhammer), Mars Base 1, the landing site, and every earlier world"
     ],
     "traits": [
       "beat the block game on hardcore with half a heart (day 4)",
@@ -51,7 +51,8 @@
       "used dark magic to turn the world into the game (day 22, '@alex03330_: Use dark magic to transform the world into gta 6 except your the main character...'): the update shot to 47 OF 47 / PRESS START, the blast turned everything into a neon crime-game city with a HUD; he flirted with the leading lady (leaned on a palm - it bent and he fell; finger guns; a boombox with a synthwave groove; a money cheat code - $999,999,999 rained down; DATE 99%); a baby cried, five wanted stars lit up one by one: his wife with the baby; finger guns didn't work on her; the leading lady shrugged and drove off; the wife walked out with the baby, came back for the boombox; the last dollar landed on his head; WASTED; then his cousin called to go bowling and he declined. Looks normal.",
       "bought a luxury car and went for the goth girls (day 31, IG @panque.4): scooped the $999,999,999 off the neon sidewalk into a $ sack, ran out through a purple fog wall into the dark side of town; the PRESTIGE MOTORS salesman looked him up and down and turned his back, so he buried him to the neck in money and got the keys; gold hypercar, scissor doors, launched to THE CRYPT; three goth girls ignored him - car alarm, exhaust fireballs (one yawned), DRESS CODE: ALL BLACK so he painted the car matte black in one throw (one glanced, went back to her nails); he floored it through the cemetery gate, off a tombstone ramp, front-flipped into an open grave - KABOOM, a thousand bats out of the mausoleum; the girls came over, one gave him a black rose, group shot in the lightning, a bat settled on his curl. Looks normal.",
       "brought dinosaurs back to life and rode one (day 32, IG @cr1ms0n_h0rnet): the rose fell out of his teeth, ran from the cemetery through the fog to the MUSEUM OF NATURAL HISTORY; amber with a mosquito, a DNA syringe, a jab in the T. rex skeleton's toe; nothing; the water cup rippled, the bones glowed, FLASH - a living T. rex; the EXTINCT plaque fell off; it stepped down, he froze, it sniffed him and ROARED in his face (the bat blew off his curl); he pulled a saddle, it stared; he rode it bucking through the hall, out through the giant glass wall, down the street; three pterodactyls came alive and caught up; it stopped at a red light; its tiny arms couldn't scratch its nose so he did. Small real smile on the ride. Looks normal.",
-      "named the dinosaur Jerry (day 34, IG @cr1ms0n_h0rnet): a Mars dust storm chased them off the landing site into MARS BASE 1 (POP. 0); HELLO MY NAME IS sticker, JERRY, slapped on its belly (its tiny arms can't reach it); it ignored JERRY! and JERRY!!! (yawned, its tail nearly took his head off); a giant greenhouse potato worked - CHOMP; only with a potato; potato on a stick: the chase stomped JERRY across Mars, visible from space; it caught the potato; JERRY? - it nuzzled him, small real smile; the rover caught up holding its own blank name tag. Looks normal."
+      "named the dinosaur Jerry (day 34, IG @cr1ms0n_h0rnet): a Mars dust storm chased them off the landing site into MARS BASE 1 (POP. 0); HELLO MY NAME IS sticker, JERRY, slapped on its belly (its tiny arms can't reach it); it ignored JERRY! and JERRY!!! (yawned, its tail nearly took his head off); a giant greenhouse potato worked - CHOMP; only with a potato; potato on a stick: the chase stomped JERRY across Mars, visible from space; it caught the potato; JERRY? - it nuzzled him, small real smile; the rover caught up holding its own blank name tag. Looks normal.",
+      "found extraterrestrial life (day 36, IG @nicolascechettoschuller): left Cydonia on Jerry through a dust devil to JEZERO CRATER; magnifying glass on a rock (nothing), the rover drilled (dust) while little green men peeked over the ridge and ducked every time he turned; Jerry couldn't warn him (tiny arms); a giant radio dish printed 6EQUJ5 - Wow!; four aliens tiptoed up and tapped his shoulder; TAKE ME TO YOUR LEADER - he pointed at Jerry; the alien called a giant mothership; a tractor beam took him up, a giant alien eye studied him through a giant magnifying glass, BZZT, they dropped him on his butt and left; a sign landed next to him: NO INTELLIGENT LIFE FOUND. Looks normal."
     ],
     "notes": "Justin, 2026-11-09: his 11-08 note meant don't END episodes with new characters unless the comment asks for them. The girlfriend, baby and kitten are back as of day 18. The kitten doesn't need to ride on his head. | 2026-11-22: days 24-30 aired as 'day N · still waiting' re-posts of the day 23 video (those runs never committed state); the day count now follows the public captions (day 31).",
     "sign_line": "STILL WANTED."
@@ -79,7 +80,8 @@
     "Make dinosaurs come back to life and ride one",
     "Go to mars",
     "Name the dinosaur Jerry",
-    "Smile"
+    "Smile",
+    "Try find extraterrestrial life"
   ],
   "history": [
     {
@@ -226,6 +228,11 @@
       "day": 35,
       "type": "comment",
       "summary": "TikTok @irdlubuhsmmp (0 likes): 'Smile' -> Mars Base 1: tries, quivers, creak, nothing; the rover beeps and points right; rides Jerry through a dust devil -> CYDONIA, the Face on Mars (as flat as him), an orbiter crosses the sky; fingers to his mouth - tok, tok on the helmet; hand mirror from the hip - it cracks, drops, shatters; Jerry tickles him with a feather - one eyebrow twitch; the rover dances to its happy-birthday beeps, wheelie, tips over; idea -> jackhammer from the hip, carves a giant grin into the face, faster and faster; tries to copy it, strain builds; RUMBLE, the face's eyes grind open, heartbeat; it LAUGHS - every HA bounces the ground, rover flipped upright, he's launched, flips, lands on his butt; he smiles, then laughs for real; hard cut wide, flat again, the orbiter's FLASH: grainy b/w frame 35A72 - everyone laughing, him flat with eyes shut; ask at Cydonia (61.1 s)"
+    },
+    {
+      "day": 36,
+      "type": "comment",
+      "summary": "IG @nicolascechettoschuller (0 likes): 'Try find extraterrestrial life' -> Cydonia: nothing alive, the rover points right; rides Jerry through a dust devil -> JEZERO CRATER (ANCIENT LAKE BED); magnifying glass from the hip, insert: his giant eye over a rock, flips it: nothing; a green head peeks over the ridge, ducks as he turns; the rover drills, sample cup: dust, sad boop; three heads peek; Jerry sweats, tiny arms can't tap him, heads duck again; drops the glass, giant radio dish from the hip; insert: printout 6EQUJ5, circled, Wow!; four aliens tiptoe up behind him (heartbeat), Jerry hides behind the dish; tap tap; face to face; TAKE ME TO YOUR LEADER - he points at Jerry, who steps out and waves; remote beep, hum, a giant mothership rises over the crater rim; tractor beam: aliens float up, then him; under the ship a giant eye studies him through a giant magnifying glass, scan line, BZZT; dropped on his butt; the ship zooms away; NO INTELLIGENT LIFE FOUND sign stabs in beside him; ask at Jezero (61.0 s)"
     }
   ]
 }
