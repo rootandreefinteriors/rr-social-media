@@ -221,7 +221,7 @@ check CATALOG.md for repeats before pitching (PRODUCE §3 step 1).
 **2026-11-27 (production):** D49–53 made from the approved scripts and scheduled (Nov 28–Dec 2). New engine pieces:
 `engine/hand_outline.py` (the outline on our side of the glass; his palm is pinned to the glass so it keeps its place
 and size while the camera moves), palm keys `spread`/`thumb_fold`, SFX `heart_close`, `window_hook` (D53's cloud).
-Next to make: **D54** (replacement for the dropped bee; not chosen yet).
+Next to make: **D54** (the patch of sun, owner's pick 2026-11-27); D54–55 scripts in `drafts/2026-11-27-scripts-D54-55.md`, waiting for approval.
 
 ## Theme families (owner, 2026-11-22: keep the philosophy fresh)
 An arc keeps ONE theme family for its 2–4 episodes (owner, 2026-11-22); the NEXT arc must be a different family, and

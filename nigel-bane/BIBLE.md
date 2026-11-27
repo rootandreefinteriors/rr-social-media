@@ -294,8 +294,9 @@ from Day 34 were rewritten to pass the truth test. Re-check the variation rule i
 - **The keeper** (D44–47): a gift arrives → he writes back → they answer → they take it back while he sleeps.
 - **D48** (made under the hard reset): his breath on our side of the glass; theme, the dead (a one-off, Thanksgiving).
 - **Your body** (D49–52; re-planned 2026-11-22, theme + prop): a hand outline traced on our side of the glass.
-- **Seeing** (D53–55): D53 the cloud that won't move (made). D54–55 OPEN: the bee (2026-11-27) was dropped by the
-  owner as a direct repeat of D19's moth at the window; replacement to be chosen. Raindrops and frost were dropped too.
+- **Seeing** (D53): the cloud that won't move (made). Raindrops, frost and a bee (a repeat of D19's moth) were dropped.
+- **The patch of sun** (D54–55; owner's pick, 2026-11-27): the warm thing you move your day around. Nigel at stake:
+  the room is cold; the patch slides and shrinks (D54), then climbs the wall and goes (D55, exit).
 - **Somewhere else** (D56–60, chapter landing): a hollow spot in the wall → a draught through the corner seam → light
   through it at night → he turns his back and it goes out → "Here is just wherever you stopped looking for somewhere else."
 Every episode from D37 belongs to an arc; there are no stand-alone episodes.
@@ -485,9 +486,17 @@ line, its bridge and the sense test, and the owner's approval before voicing. Th
 ### Arc: seeing (D53–55) — theme: *what you stop seeing*
 - **53 · `overlooking` Stuck cloud** (made; owner-approved script, 2026-11-27) — *Someone has been in the same place in
   your life so long you stopped seeing them.* A cloud stays while the others pass; it goes the second he looks at us.
-- **54–55 · OPEN.** Raindrops and frost dropped (owner, 2026-11-27: weak, nothing living at stake); the bee that
-  replaced them was dropped the same day as a direct repeat of D19 (a moth beating at the window). Before pitching the
-  replacement, check CATALOG.md for every earlier prop and tension mechanism (PRODUCE §3 step 1).
+
+### Arc: the patch of sun (D54–55) — theme: *the warm thing you move your day around* (owner's pick, 2026-11-27)
+Nigel at stake: the room is cold and a patch of sunlight from the window is the only warm part. Black and white: the
+patch is paper-bright with soft hatched edges. Scripts: `drafts/2026-11-27-scripts-D54-55.md` (for approval).
+- **54 · `orbiting` The warm part** — *Most of us arrange our days around one warm thing. We just don't call it that.*
+  The patch slides and shrinks; he shuffles after it; he curls up and fits, just. **C:** "Come here. Sit in it with
+  me." · **T (love + fear):** will he still fit in it? · **R:** one scene (their side of the bed, still warm) ·
+  **Ending:** flat fact
+- **55 · `homing` Where it comes back (exit)** — *I can't keep it. I just know where it comes back.* The patch climbs
+  the wall past his reach and goes; he sits on the spot where it arrives each morning. **C:** "Stand up with me. Quick.
+  It's going." · **T:** will he keep up with it? No · **R:** the turn (a key in the door) · **Ending:** admission
 
 ### Arc: somewhere else (D56–60, 5 episodes, the chapter landing) — "here" is wherever you stopped looking
 The chapter asks *what is "here"?* and lands on "Here is just wherever you stopped looking for somewhere else." This
