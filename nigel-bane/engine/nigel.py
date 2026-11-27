@@ -101,7 +101,7 @@ BASE = dict(head=(450, 775), neck=(452, 945), hip=(450, 1240),
             lelb=(408, 1098), lhand=(394, 1205), relb=(496, 1098), rhand=(508, 1205),
             lknee=(428, 1360), lfoot=(405, FLOOR_Y), rknee=(474, 1360), rfoot=(497, FLOOR_Y),
             tilt=0.0, look=(0.0, 0.0), eyescale=1.0, swing=1.0, fist=0.0, roll=0.0, finger=0.0, letter=0.0,
-            reveal=1.0, palm=0.0, shut=0.0, shut_l=0.0, shut_r=0.0)   # shut_l/shut_r: one eye (screen left/right)
+            reveal=1.0, palm=0.0, spread=0.0, thumb_fold=0.0, shut=0.0, shut_l=0.0, shut_r=0.0)   # shut_l/shut_r: one eye (screen left/right)
 def P(base=BASE, **kw):
     d = dict(base); d.update(kw); return d
 
@@ -469,6 +469,11 @@ HEAD_R = 170
 EYE_R = 70
 EYES = [(-68, -6, 0.0), (68, -6, 2.1)]   # x, y, galaxy seed (head frame)
 
+def palm_fingers(spread=0.0):
+    """the open palm's four fingers (x offset, length, angle) in units of the palm size; spread splays them (D49-52)"""
+    return [(fx_ * (1 + 0.22 * spread), ln, ang * (1 + 1.5 * spread))
+            for fx_, ln, ang in [(-0.6, 0.95, -0.2), (-0.2, 1.18, -0.07), (0.2, 1.12, 0.06), (0.6, 0.9, 0.2)]]
+
 def draw_nigel(cr, t, p, mood, zoom, rot, mouth, blink, ghost=False):
     g = lambda k: p[k]
     blink = max(blink, p.get("shut", 0.0))   # eyes held shut
@@ -635,9 +640,11 @@ def draw_nigel(cr, t, p, mood, zoom, rot, mouth, blink, ghost=False):
             cr.arc(0, -ln + wd / 2, wd / 2, math.pi, 2 * math.pi)
             cr.line_to(wd / 2, 0); cr.close_path(); cr.restore()
             cr.set_source_rgb(*PAPER); cr.fill_preserve(); stroke_ink(cr, 5.5)
-        for fx_, ln, ang in [(-0.6, 0.95, -0.2), (-0.2, 1.18, -0.07), (0.2, 1.12, 0.06), (0.6, 0.9, 0.2)]:
+        for fx_, ln, ang in palm_fingers(p.get("spread", 0.0)):
             capsule(fx_ * fr, -0.55 * fr, ang, ln * fr, 0.36 * fr)
-        capsule(-0.75 * fr, 0.25 * fr, -1.05, 0.8 * fr, 0.38 * fr)          # thumb
+        tf = p.get("thumb_fold", 0.0)                                         # D51: he tucks the thumb in
+        capsule(-0.75 * fr * (1 - 0.35 * tf), 0.25 * fr, -1.05 - p.get("spread", 0.0) * 0.25 + 0.75 * tf,
+                0.8 * fr * (1 - 0.3 * tf), 0.38 * fr)                          # thumb
         cr.save(); cr.scale(1.0, 1.05); cr.arc(0, 0, fr * 0.92, 0, 2 * math.pi); cr.restore()
         cr.set_source_rgb(*PAPER); cr.fill_preserve(); stroke_ink(cr, 6)
         cr.restore()

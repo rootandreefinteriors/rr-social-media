@@ -624,3 +624,16 @@ Post time is 9 PM ET. Day 13 went out a day late (missed slot); every later day 
 - **four elements:** C "Breathe on your screen." · R the turn · E tender, quietly eerie · T will the fog clear before he runs out of breath?
 - **cover:** 12.5 s (the fog on the glass, his eyes on it).
 - **script:** Hello? Is anyone out there? Breathe on your screen. Go on. ...Hhhaa. Like that. Mine's on your side now. A second ago, it was in me. I'm going to hold my breath until it's gone. Breath doesn't stay where you leave it. It goes round the room. Out the window. Round the whole world. Most of it is still out there, mixed in. So if you've lost someone... a little of what they breathed is in you right now. Not much. A few specks. Every breath. Breathe in. ...That was some of theirs.
+
+### D49 · tracing · "Hand" (body 1/4; owner-approved script, 2026-11-27) · 2026-11-28 (Sat) · 65.7 s
+- **idea:** you've never once been anywhere your body wasn't.
+- **you:** strong. "Yours is right there, against mine. It was there the day you were born. It was there the worst night you ever had."
+- **first seconds:** "Hold your hand up. Up to mine." — his palm comes up flat onto the glass.
+- **prop:** an outline of his hand, traced on OUR side of the glass by something unseen (screen-space, `engine/hand_outline.py`); stays for the body arc (D49–52).
+- **tension:** strong, LOVE: he asks you to stay with your hand against his until the line closes ("Stay there till it's done. Please." ... "Nearly... don't go..."). It closes on camera.
+- **visual:** one continuous shot; his palm is pinned to the glass (keeps its place and size while the camera moves); his eyes follow the pen tip; the empty outline stays after he lifts his hand.
+- **dread:** no. Unsettling line: "...You stayed." (he seems to know).
+- **hook:** "You can put yours down now. It's still yours." *Flip.*
+- **four elements:** C "Hold your hand up. Up to mine." · R caught · E tender, eerie underneath · T will you stay until it closes?
+- **cover:** 57.8 s (palm on the glass, the outline almost closed, eyes wide).
+- **script:** Hello? Is anyone out there? Hold your hand up. Up to mine. ...There. Something's drawing round my hand. On your side of the glass. Stay there till it's done. Please. ...It goes round every finger. Slowly. Like it wants to get me right. I've never seen my own outline before. That's the only shape I've ever been. Every room I've stood in, it was in there with me. Yours is right there, against mine. It was there the day you were born. It was there the worst night you ever had. You've never once been anywhere it wasn't. Nearly... don't go... ...There. ...You stayed. You can put yours down now. It's still yours.

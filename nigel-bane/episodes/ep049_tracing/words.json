@@ -1,0 +1,567 @@
+[
+ {
+  "text": "Hello?",
+  "start": 0.38,
+  "end": 0.56
+ },
+ {
+  "text": "Is",
+  "start": 1.04,
+  "end": 1.46
+ },
+ {
+  "text": "anyone",
+  "start": 1.506,
+  "end": 1.78
+ },
+ {
+  "text": "out",
+  "start": 1.84,
+  "end": 2.02
+ },
+ {
+  "text": "there?",
+  "start": 2.073,
+  "end": 2.5
+ },
+ {
+  "text": "Hold",
+  "start": 2.804,
+  "end": 3.43
+ },
+ {
+  "text": "your",
+  "start": 3.462,
+  "end": 3.59
+ },
+ {
+  "text": "hand",
+  "start": 3.67,
+  "end": 3.99
+ },
+ {
+  "text": "up.",
+  "start": 4.123,
+  "end": 4.86
+ },
+ {
+  "text": "Up",
+  "start": 4.883,
+  "end": 5.31
+ },
+ {
+  "text": "to",
+  "start": 5.363,
+  "end": 5.47
+ },
+ {
+  "text": "mine.",
+  "start": 5.582,
+  "end": 6.11
+ },
+ {
+  "text": "...There.",
+  "start": 6.45,
+  "end": 7.35
+ },
+ {
+  "text": "Something's",
+  "start": 7.494,
+  "end": 8.55
+ },
+ {
+  "text": "drawing",
+  "start": 8.61,
+  "end": 9.03
+ },
+ {
+  "text": "round",
+  "start": 9.097,
+  "end": 9.43
+ },
+ {
+  "text": "my",
+  "start": 9.537,
+  "end": 9.75
+ },
+ {
+  "text": "hand.",
+  "start": 9.862,
+  "end": 10.39
+ },
+ {
+  "text": "On",
+  "start": 10.737,
+  "end": 11.28
+ },
+ {
+  "text": "your",
+  "start": 11.328,
+  "end": 11.52
+ },
+ {
+  "text": "side",
+  "start": 11.584,
+  "end": 11.84
+ },
+ {
+  "text": "of",
+  "start": 11.867,
+  "end": 11.92
+ },
+ {
+  "text": "the",
+  "start": 11.94,
+  "end": 12.0
+ },
+ {
+  "text": "glass.",
+  "start": 12.12,
+  "end": 12.8
+ },
+ {
+  "text": "Stay",
+  "start": 13.547,
+  "end": 13.867
+ },
+ {
+  "text": "there",
+  "start": 13.92,
+  "end": 14.187
+ },
+ {
+  "text": "till",
+  "start": 14.235,
+  "end": 14.427
+ },
+ {
+  "text": "it's",
+  "start": 14.48,
+  "end": 14.667
+ },
+ {
+  "text": "done.",
+  "start": 14.779,
+  "end": 15.387
+ },
+ {
+  "text": "Please.",
+  "start": 15.581,
+  "end": 16.807
+ },
+ {
+  "text": "...It",
+  "start": 18.167,
+  "end": 18.637
+ },
+ {
+  "text": "goes",
+  "start": 18.717,
+  "end": 19.037
+ },
+ {
+  "text": "round",
+  "start": 19.104,
+  "end": 19.437
+ },
+ {
+  "text": "every",
+  "start": 19.517,
+  "end": 19.917
+ },
+ {
+  "text": "finger.",
+  "start": 20.02,
+  "end": 20.797
+ },
+ {
+  "text": "Slowly.",
+  "start": 21.573,
+  "end": 22.677
+ },
+ {
+  "text": "Like",
+  "start": 22.901,
+  "end": 23.507
+ },
+ {
+  "text": "it",
+  "start": 23.56,
+  "end": 23.667
+ },
+ {
+  "text": "wants",
+  "start": 23.734,
+  "end": 24.067
+ },
+ {
+  "text": "to",
+  "start": 24.094,
+  "end": 24.147
+ },
+ {
+  "text": "get",
+  "start": 24.207,
+  "end": 24.387
+ },
+ {
+  "text": "me",
+  "start": 24.467,
+  "end": 24.627
+ },
+ {
+  "text": "right.",
+  "start": 24.734,
+  "end": 25.427
+ },
+ {
+  "text": "I've",
+  "start": 25.83,
+  "end": 26.337
+ },
+ {
+  "text": "never",
+  "start": 26.377,
+  "end": 26.577
+ },
+ {
+  "text": "seen",
+  "start": 26.657,
+  "end": 26.977
+ },
+ {
+  "text": "my",
+  "start": 27.057,
+  "end": 27.217
+ },
+ {
+  "text": "own",
+  "start": 27.297,
+  "end": 27.537
+ },
+ {
+  "text": "outline",
+  "start": 27.617,
+  "end": 28.177
+ },
+ {
+  "text": "before.",
+  "start": 28.28,
+  "end": 29.057
+ },
+ {
+  "text": "That's",
+  "start": 29.297,
+  "end": 30.007
+ },
+ {
+  "text": "the",
+  "start": 30.027,
+  "end": 30.087
+ },
+ {
+  "text": "only",
+  "start": 30.167,
+  "end": 30.487
+ },
+ {
+  "text": "shape",
+  "start": 30.554,
+  "end": 30.887
+ },
+ {
+  "text": "I've",
+  "start": 30.927,
+  "end": 31.047
+ },
+ {
+  "text": "ever",
+  "start": 31.095,
+  "end": 31.287
+ },
+ {
+  "text": "been.",
+  "start": 31.399,
+  "end": 32.007
+ },
+ {
+  "text": "Every",
+  "start": 32.274,
+  "end": 33.157
+ },
+ {
+  "text": "room",
+  "start": 33.269,
+  "end": 33.717
+ },
+ {
+  "text": "I've",
+  "start": 33.797,
+  "end": 34.037
+ },
+ {
+  "text": "stood",
+  "start": 34.09,
+  "end": 34.357
+ },
+ {
+  "text": "in,",
+  "start": 34.49,
+  "end": 35.397
+ },
+ {
+  "text": "it",
+  "start": 35.45,
+  "end": 35.557
+ },
+ {
+  "text": "was",
+  "start": 35.617,
+  "end": 35.797
+ },
+ {
+  "text": "in",
+  "start": 35.85,
+  "end": 35.957
+ },
+ {
+  "text": "there",
+  "start": 36.01,
+  "end": 36.277
+ },
+ {
+  "text": "with",
+  "start": 36.325,
+  "end": 36.517
+ },
+ {
+  "text": "me.",
+  "start": 36.65,
+  "end": 37.077
+ },
+ {
+  "text": "Yours",
+  "start": 37.317,
+  "end": 38.127
+ },
+ {
+  "text": "is",
+  "start": 38.207,
+  "end": 38.367
+ },
+ {
+  "text": "right",
+  "start": 38.42,
+  "end": 38.687
+ },
+ {
+  "text": "there,",
+  "start": 38.754,
+  "end": 39.487
+ },
+ {
+  "text": "against",
+  "start": 39.547,
+  "end": 39.967
+ },
+ {
+  "text": "mine.",
+  "start": 40.079,
+  "end": 40.687
+ },
+ {
+  "text": "It",
+  "start": 41.087,
+  "end": 41.467
+ },
+ {
+  "text": "was",
+  "start": 41.547,
+  "end": 41.787
+ },
+ {
+  "text": "there",
+  "start": 41.84,
+  "end": 42.107
+ },
+ {
+  "text": "the",
+  "start": 42.147,
+  "end": 42.267
+ },
+ {
+  "text": "day",
+  "start": 42.327,
+  "end": 42.507
+ },
+ {
+  "text": "you",
+  "start": 42.567,
+  "end": 42.747
+ },
+ {
+  "text": "were",
+  "start": 42.779,
+  "end": 42.907
+ },
+ {
+  "text": "born.",
+  "start": 43.019,
+  "end": 43.627
+ },
+ {
+  "text": "It",
+  "start": 43.974,
+  "end": 44.437
+ },
+ {
+  "text": "was",
+  "start": 44.517,
+  "end": 44.757
+ },
+ {
+  "text": "there",
+  "start": 44.837,
+  "end": 45.237
+ },
+ {
+  "text": "the",
+  "start": 45.277,
+  "end": 45.397
+ },
+ {
+  "text": "worst",
+  "start": 45.477,
+  "end": 45.877
+ },
+ {
+  "text": "night",
+  "start": 45.957,
+  "end": 46.357
+ },
+ {
+  "text": "you",
+  "start": 46.397,
+  "end": 46.517
+ },
+ {
+  "text": "ever",
+  "start": 46.565,
+  "end": 46.757
+ },
+ {
+  "text": "had.",
+  "start": 46.897,
+  "end": 47.397
+ },
+ {
+  "text": "You've",
+  "start": 47.717,
+  "end": 48.357
+ },
+ {
+  "text": "never",
+  "start": 48.397,
+  "end": 48.597
+ },
+ {
+  "text": "once",
+  "start": 48.677,
+  "end": 48.997
+ },
+ {
+  "text": "been",
+  "start": 49.093,
+  "end": 49.477
+ },
+ {
+  "text": "anywhere",
+  "start": 49.539,
+  "end": 50.037
+ },
+ {
+  "text": "it",
+  "start": 50.09,
+  "end": 50.197
+ },
+ {
+  "text": "wasn't.",
+  "start": 50.261,
+  "end": 50.917
+ },
+ {
+  "text": "Nearly...",
+  "start": 51.469,
+  "end": 53.022
+ },
+ {
+  "text": "don't",
+  "start": 53.062,
+  "end": 53.342
+ },
+ {
+  "text": "go...",
+  "start": 53.502,
+  "end": 54.612
+ },
+ {
+  "text": "...There.",
+  "start": 56.032,
+  "end": 56.812
+ },
+ {
+  "text": "...You",
+  "start": 57.152,
+  "end": 57.542
+ },
+ {
+  "text": "stayed.",
+  "start": 57.645,
+  "end": 58.342
+ },
+ {
+  "text": "You",
+  "start": 58.682,
+  "end": 59.152
+ },
+ {
+  "text": "can",
+  "start": 59.212,
+  "end": 59.392
+ },
+ {
+  "text": "put",
+  "start": 59.452,
+  "end": 59.632
+ },
+ {
+  "text": "yours",
+  "start": 59.685,
+  "end": 59.952
+ },
+ {
+  "text": "down",
+  "start": 60.032,
+  "end": 60.352
+ },
+ {
+  "text": "now.",
+  "start": 60.452,
+  "end": 60.912
+ },
+ {
+  "text": "It's",
+  "start": 61.37,
+  "end": 61.842
+ },
+ {
+  "text": "still",
+  "start": 61.909,
+  "end": 62.242
+ },
+ {
+  "text": "yours.",
+  "start": 62.362,
+  "end": 63.122
+ }
+]
