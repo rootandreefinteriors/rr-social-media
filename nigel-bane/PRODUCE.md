@@ -157,6 +157,12 @@ was bent into lines no person would say. So:
   ("I'm going to shut my eyes. You keep yours open. Watch the walls for me."). If the only way to vary the wording is a
   contrived line, keep it plain instead; plain beats varied.
 
+**One thought, start to finish (user, 2026-11-27): "drifting towards incoherent lists of checked boxes again
+rather than coherent, tight episodes."** Example: D52 was about your heart keeping going, then ended on the outline
+fading, "Let it", a different message. So: every line follows from what he is doing or the line before; the last line
+is the same thought landing, never a new one. A prop's exit happens inside the scene's meaning or silently; it never
+takes over the ending. Fewer beats beats more: cut any line that is only there to tick an element.
+
 **Visual mistakes are not acceptable (user, 2026-11-22: "you are getting lazier").** Two examples: in D41, when he
 paces back to "the first wall", there was no wall there (only the far wall was drawn); in D42, his half-closed eyes
 showed the galaxy squashed flat, "like his eyelids were also galaxy". So:

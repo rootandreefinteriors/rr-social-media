@@ -490,13 +490,13 @@ line, its bridge and the sense test, and the owner's approval before voicing. Th
 ### Arc: the patch of sun (D54–55) — theme: *the warm thing you move your day around* (owner's pick, 2026-11-27)
 Nigel at stake: the room is cold and a patch of sunlight from the window is the only warm part. Black and white: the
 patch is paper-bright with soft hatched edges. Scripts: `drafts/2026-11-27-scripts-D54-55.md` (for approval).
-- **54 · `orbiting` The warm part** — *Most of us arrange our days around one warm thing. We just don't call it that.*
+- **54 · `orbiting` The warm part** — *You never decided to follow the warm thing. You just end up wherever it is.*
   The patch slides and shrinks; he shuffles after it; he curls up and fits, just. **C:** "Come here. Sit in it with
   me." · **T (love + fear):** will he still fit in it? · **R:** one scene (their side of the bed, still warm) ·
-  **Ending:** flat fact
+  **Ending:** admission ("I didn't decide that either.")
 - **55 · `homing` Where it comes back (exit)** — *I can't keep it. I just know where it comes back.* The patch climbs
   the wall past his reach and goes; he sits on the spot where it arrives each morning. **C:** "Stand up with me. Quick.
-  It's going." · **T:** will he keep up with it? No · **R:** the turn (a key in the door) · **Ending:** admission
+  It's going." · **T:** will he keep up with it? No · **R:** the turn (the sound of their key) · **Ending:** admission
 
 ### Arc: somewhere else (D56–60, 5 episodes, the chapter landing) — "here" is wherever you stopped looking
 The chapter asks *what is "here"?* and lands on "Here is just wherever you stopped looking for somewhere else." This
