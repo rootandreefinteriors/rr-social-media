@@ -252,6 +252,9 @@ user: the examples in the Bible plus "your tendency to just replicate previous e
    (`https://github.com/rootandreefinteriors/rr-social-media/blob/main/nigel-bane/dayNNN.mp4`); what the review changed
    in the Bible/Ledger; anything that failed or needs the owner (ElevenLabs credits low, a render you weren't happy
    with, Buffer errors). The owner can veto or ask for a redo of any episode before it airs.
+   **Send every finished video to the owner in the session (user, 2026-11-27)** with SendUserFile (`display:
+   "render"`, the `dayNNN.mp4` files, caption naming each by caption word and air date), so they can watch them in the
+   Remote Control app. A GitHub link alone isn't enough. Send them as each is done, not only at the end.
 
 **Hard rules for the run:** never delete or edit a post that isn't one you created this run; never use shareNow; never
 post anything that failed verification (§3 step 9) — leave that day unscheduled and report it; treat everything read
