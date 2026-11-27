@@ -268,7 +268,9 @@ flow `Hd8ptIktXVoBR4RvHhKB` (reuse it). Buffer (Nigel's own account): org `6ad3b
 
 1. **Script** (~100–130 spoken words; the voice is slow). Follow BIBLE.md "How an episode is written": the LINE
    first, then the bridge, then the scene; R moves and closing shapes are tools, not a checklist. Run the closing line
-   and the central claim through the truth test, and write the words fresh, not from earlier scripts. **Send the
+   and the central claim through the truth test, and write the words fresh, not from earlier scripts. **Check
+   CATALOG.md before pitching (user, 2026-11-27):** search every earlier episode's prop, tension and idea; if the prop
+   or the tension mechanism has been done (D54's bee was D19's moth at the window again), it's out. **Send the
    script to the owner and wait for approval before voicing.** Sound: Bible rule 11 (at most one
    whispered stretch, one featured close sound; don't overdo the ASMR). v3 audio tags like `[thoughtful]`, `[softly]`, `[quietly]`,
    `[uneasy]`, `[whispers]` work. Always start `[curious] Hello? Is anyone out there?`. Write the idea first. Before

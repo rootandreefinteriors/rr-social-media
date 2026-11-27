@@ -294,9 +294,8 @@ from Day 34 were rewritten to pass the truth test. Re-check the variation rule i
 - **The keeper** (D44–47): a gift arrives → he writes back → they answer → they take it back while he sleeps.
 - **D48** (made under the hard reset): his breath on our side of the glass; theme, the dead (a one-off, Thanksgiving).
 - **Your body** (D49–52; re-planned 2026-11-22, theme + prop): a hand outline traced on our side of the glass.
-- **Seeing** (D53–55): the window: a cloud that won't move (D53) → a bee trapped against the glass (D54) → he
-  carries it away from the light to a gap in the frame, and it goes (D55). Raindrops and frost dropped (owner,
-  2026-11-27: weak; nothing living at stake).
+- **Seeing** (D53–55): D53 the cloud that won't move (made). D54–55 OPEN: the bee (2026-11-27) was dropped by the
+  owner as a direct repeat of D19's moth at the window; replacement to be chosen. Raindrops and frost were dropped too.
 - **Somewhere else** (D56–60, chapter landing): a hollow spot in the wall → a draught through the corner seam → light
   through it at night → he turns his back and it goes out → "Here is just wherever you stopped looking for somewhere else."
 Every episode from D37 belongs to an arc; there are no stand-alone episodes.
@@ -483,23 +482,12 @@ line, its bridge and the sense test, and the owner's approval before voicing. Th
   **C (draft):** "Shh. Put your hand on your chest." · **T (fear):** the heartbeat slows; will it stop? It settles, and the
   outline fades with it (exit).
 
-### Arc: seeing (D53–55, 3 episodes) — theme: *what you can't see, or stop seeing* — prop: the window, then a bee
-Re-planned 2026-11-27 (owner: raindrops were weak; tension works best with a living thing at stake). The bee is the
-show's creature for this stretch (one creature arc about every five arcs; the mouse was D36–39). It arrives on D54 and
-leaves on camera on D55 through a gap low in the window frame (not the wall seam, which belongs to D56–59; never a
-door).
-- **53 · `overlooking` Stuck cloud** (owner-approved script, 2026-11-27) — *Someone has been in the same place in your
-  life so long you stopped seeing them.* A cloud shaped like a sleeping dog stays while the others pass; it goes the
-  second he looks at us. **T (love):** will it stay?
-- **54 · Glass** — *Whatever keeps stopping you, you probably can't see it either. You just think it's you.* A bee
-  flies at the bright window again and again; it can't see the glass. Bridge: it can't see what's stopping it, so it
-  blames the try and goes again → the thing you keep hitting. **C:** "Stay still. Don't scare it." **T (a living thing
-  at stake):** it's slower every time; will it wear itself out? It drops to the sill, still; one leg moves. Alive.
-- **55 · The way out** — *The way out of a lot of things looks like going the wrong way.* He lets the tired bee walk
-  onto his finger and carries it slowly away from the bright glass, down to a dark gap where the frame has come away
-  and the cold gets in. Bridge: to get out, it has to go away from the light it wanted. **T (Nigel and the bee at
-  stake):** will it stay on his finger, and will it sting him? ("If it stings me, it dies. I don't want either.") It
-  feels the cold, crawls into the gap, and is gone.
+### Arc: seeing (D53–55) — theme: *what you stop seeing*
+- **53 · `overlooking` Stuck cloud** (made; owner-approved script, 2026-11-27) — *Someone has been in the same place in
+  your life so long you stopped seeing them.* A cloud stays while the others pass; it goes the second he looks at us.
+- **54–55 · OPEN.** Raindrops and frost dropped (owner, 2026-11-27: weak, nothing living at stake); the bee that
+  replaced them was dropped the same day as a direct repeat of D19 (a moth beating at the window). Before pitching the
+  replacement, check CATALOG.md for every earlier prop and tension mechanism (PRODUCE §3 step 1).
 
 ### Arc: somewhere else (D56–60, 5 episodes, the chapter landing) — "here" is wherever you stopped looking
 The chapter asks *what is "here"?* and lands on "Here is just wherever you stopped looking for somewhere else." This

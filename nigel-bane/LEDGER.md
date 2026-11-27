@@ -215,6 +215,8 @@ every script needs approval before voicing. Next to make: **D49**, from that fil
 from the seeing arc: tension works best with a living thing at stake (Nigel, or a sympathetic creature; a creature arc
 about one in five). New D54–55: a bee trapped against the window, then carried to a gap in the frame (BIBLE, Chapter 2).
 D54's script is in `drafts/2026-11-27-script-D54.md`, waiting for approval.
+Later the same day the owner dropped the bee: a direct repeat of D19 (a moth beating at the window). D54–55 are open;
+check CATALOG.md for repeats before pitching (PRODUCE §3 step 1).
 
 **2026-11-27 (production):** D49–53 made from the approved scripts and scheduled (Nov 28–Dec 2). New engine pieces:
 `engine/hand_outline.py` (the outline on our side of the glass; his palm is pinned to the glass so it keeps its place
