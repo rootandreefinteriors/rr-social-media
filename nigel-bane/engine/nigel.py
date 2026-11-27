@@ -1603,7 +1603,7 @@ def layout_chunks(chunks):
     prev = None
     for idx, ch in enumerate(chunks):
         r = random.Random(1000 + idx)
-        for shrink in (1.0, 0.8, 0.66):   # crowded frame? try smaller text before covering him
+        for shrink in (1.0, 0.8, 0.66, 0.52, 0.44):   # crowded frame? try smaller text before covering him
             size = r.choice([78, 84, 92, 100]) * shrink
             ws = [(w, w["text"].lower(), r.uniform(-0.09, 0.09), r.uniform(0.9, 1.12), r.uniform(-8, 8)) for w in ch["words"]]
             widths = [word_surface(txt, int(size * sc))[4] + size * 0.3 for _, txt, _, sc, _ in ws]
