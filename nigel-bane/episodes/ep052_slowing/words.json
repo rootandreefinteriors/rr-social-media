@@ -1,0 +1,497 @@
+[
+ {
+  "text": "Hello?",
+  "start": 0.369,
+  "end": 0.56
+ },
+ {
+  "text": "Is",
+  "start": 1.025,
+  "end": 1.42
+ },
+ {
+  "text": "anyone",
+  "start": 1.477,
+  "end": 1.82
+ },
+ {
+  "text": "out",
+  "start": 1.9,
+  "end": 2.14
+ },
+ {
+  "text": "there?",
+  "start": 2.193,
+  "end": 2.975
+ },
+ {
+  "text": "Shh.",
+  "start": 2.975,
+  "end": 4.355
+ },
+ {
+  "text": "Put",
+  "start": 5.355,
+  "end": 5.77
+ },
+ {
+  "text": "your",
+  "start": 5.818,
+  "end": 6.01
+ },
+ {
+  "text": "hand",
+  "start": 6.074,
+  "end": 6.33
+ },
+ {
+  "text": "on",
+  "start": 6.383,
+  "end": 6.49
+ },
+ {
+  "text": "your",
+  "start": 6.506,
+  "end": 6.57
+ },
+ {
+  "text": "chest.",
+  "start": 6.69,
+  "end": 7.37
+ },
+ {
+  "text": "...I've",
+  "start": 8.33,
+  "end": 8.92
+ },
+ {
+  "text": "put",
+  "start": 8.98,
+  "end": 9.16
+ },
+ {
+  "text": "my",
+  "start": 9.24,
+  "end": 9.4
+ },
+ {
+  "text": "ear",
+  "start": 9.5,
+  "end": 9.8
+ },
+ {
+  "text": "where",
+  "start": 9.88,
+  "end": 10.28
+ },
+ {
+  "text": "my",
+  "start": 10.333,
+  "end": 10.44
+ },
+ {
+  "text": "hand",
+  "start": 10.52,
+  "end": 10.84
+ },
+ {
+  "text": "was.",
+  "start": 10.96,
+  "end": 11.4
+ },
+ {
+  "text": "I",
+  "start": 11.865,
+  "end": 12.22
+ },
+ {
+  "text": "can",
+  "start": 12.28,
+  "end": 12.46
+ },
+ {
+  "text": "hear",
+  "start": 12.508,
+  "end": 12.7
+ },
+ {
+  "text": "my",
+  "start": 12.78,
+  "end": 12.94
+ },
+ {
+  "text": "heart",
+  "start": 13.007,
+  "end": 13.34
+ },
+ {
+  "text": "in",
+  "start": 13.367,
+  "end": 13.42
+ },
+ {
+  "text": "it.",
+  "start": 13.527,
+  "end": 13.82
+ },
+ {
+  "text": "Listen.",
+  "start": 15.503,
+  "end": 16.095
+ },
+ {
+  "text": "...It's",
+  "start": 17.295,
+  "end": 17.79
+ },
+ {
+  "text": "slowing",
+  "start": 17.86,
+  "end": 18.35
+ },
+ {
+  "text": "down.",
+  "start": 18.446,
+  "end": 18.91
+ },
+ {
+  "text": "...Don't",
+  "start": 19.41,
+  "end": 19.91
+ },
+ {
+  "text": "stop.",
+  "start": 20.054,
+  "end": 20.71
+ },
+ {
+  "text": "...Don't",
+  "start": 22.17,
+  "end": 22.73
+ },
+ {
+  "text": "stop.",
+  "start": 22.874,
+  "end": 23.61
+ },
+ {
+  "text": "It's",
+  "start": 25.207,
+  "end": 25.46
+ },
+ {
+  "text": "been",
+  "start": 25.492,
+  "end": 25.62
+ },
+ {
+  "text": "doing",
+  "start": 25.687,
+  "end": 26.02
+ },
+ {
+  "text": "that",
+  "start": 26.1,
+  "end": 26.42
+ },
+ {
+  "text": "since",
+  "start": 26.473,
+  "end": 26.74
+ },
+ {
+  "text": "before",
+  "start": 26.82,
+  "end": 27.3
+ },
+ {
+  "text": "you",
+  "start": 27.32,
+  "end": 27.38
+ },
+ {
+  "text": "could",
+  "start": 27.433,
+  "end": 27.7
+ },
+ {
+  "text": "talk.",
+  "start": 27.796,
+  "end": 28.26
+ },
+ {
+  "text": "Through",
+  "start": 28.48,
+  "end": 29.27
+ },
+ {
+  "text": "every",
+  "start": 29.323,
+  "end": 29.59
+ },
+ {
+  "text": "night",
+  "start": 29.683,
+  "end": 30.15
+ },
+ {
+  "text": "you",
+  "start": 30.19,
+  "end": 30.31
+ },
+ {
+  "text": "didn't",
+  "start": 30.342,
+  "end": 30.55
+ },
+ {
+  "text": "sleep.",
+  "start": 30.657,
+  "end": 31.35
+ },
+ {
+  "text": "Through",
+  "start": 31.55,
+  "end": 32.22
+ },
+ {
+  "text": "the",
+  "start": 32.24,
+  "end": 32.3
+ },
+ {
+  "text": "day",
+  "start": 32.46,
+  "end": 32.94
+ },
+ {
+  "text": "you",
+  "start": 33.02,
+  "end": 33.26
+ },
+ {
+  "text": "thought",
+  "start": 33.32,
+  "end": 33.74
+ },
+ {
+  "text": "you",
+  "start": 33.78,
+  "end": 33.9
+ },
+ {
+  "text": "couldn't",
+  "start": 33.923,
+  "end": 34.14
+ },
+ {
+  "text": "keep",
+  "start": 34.204,
+  "end": 34.46
+ },
+ {
+  "text": "going.",
+  "start": 34.567,
+  "end": 35.18
+ },
+ {
+  "text": "It",
+  "start": 36.395,
+  "end": 36.81
+ },
+ {
+  "text": "kept",
+  "start": 36.874,
+  "end": 37.13
+ },
+ {
+  "text": "going",
+  "start": 37.197,
+  "end": 37.53
+ },
+ {
+  "text": "anyway,",
+  "start": 37.621,
+  "end": 38.9
+ },
+ {
+  "text": "in",
+  "start": 38.953,
+  "end": 39.06
+ },
+ {
+  "text": "the",
+  "start": 39.1,
+  "end": 39.22
+ },
+ {
+  "text": "dark,",
+  "start": 39.348,
+  "end": 39.94
+ },
+ {
+  "text": "and",
+  "start": 40.24,
+  "end": 40.74
+ },
+ {
+  "text": "nobody",
+  "start": 40.82,
+  "end": 41.3
+ },
+ {
+  "text": "thanked",
+  "start": 41.35,
+  "end": 41.7
+ },
+ {
+  "text": "it.",
+  "start": 41.807,
+  "end": 42.1
+ },
+ {
+  "text": "It's",
+  "start": 42.975,
+  "end": 43.53
+ },
+ {
+  "text": "doing",
+  "start": 43.583,
+  "end": 43.85
+ },
+ {
+  "text": "it",
+  "start": 43.903,
+  "end": 44.01
+ },
+ {
+  "text": "now,",
+  "start": 44.11,
+  "end": 44.57
+ },
+ {
+  "text": "under",
+  "start": 44.743,
+  "end": 45.48
+ },
+ {
+  "text": "your",
+  "start": 45.528,
+  "end": 45.72
+ },
+ {
+  "text": "hand.",
+  "start": 45.816,
+  "end": 46.28
+ },
+ {
+  "text": "...It's",
+  "start": 46.72,
+  "end": 47.29
+ },
+ {
+  "text": "quieter.",
+  "start": 47.36,
+  "end": 48.09
+ },
+ {
+  "text": "It",
+  "start": 49.305,
+  "end": 49.66
+ },
+ {
+  "text": "isn't",
+  "start": 49.72,
+  "end": 50.06
+ },
+ {
+  "text": "stopping.",
+  "start": 50.14,
+  "end": 50.86
+ },
+ {
+  "text": "It's",
+  "start": 51.345,
+  "end": 51.87
+ },
+ {
+  "text": "just",
+  "start": 51.918,
+  "end": 52.11
+ },
+ {
+  "text": "calm.",
+  "start": 52.238,
+  "end": 52.83
+ },
+ {
+  "text": "Your",
+  "start": 54.718,
+  "end": 54.75
+ },
+ {
+  "text": "heart",
+  "start": 54.843,
+  "end": 55.31
+ },
+ {
+  "text": "has",
+  "start": 55.37,
+  "end": 55.55
+ },
+ {
+  "text": "never",
+  "start": 55.603,
+  "end": 55.87
+ },
+ {
+  "text": "once",
+  "start": 55.982,
+  "end": 56.43
+ },
+ {
+  "text": "asked",
+  "start": 56.523,
+  "end": 56.99
+ },
+ {
+  "text": "you",
+  "start": 57.01,
+  "end": 57.07
+ },
+ {
+  "text": "for",
+  "start": 57.13,
+  "end": 57.31
+ },
+ {
+  "text": "anything.",
+  "start": 57.381,
+  "end": 58.485
+ },
+ {
+  "text": "...The",
+  "start": 58.485,
+  "end": 58.87
+ },
+ {
+  "text": "outline's",
+  "start": 58.94,
+  "end": 59.59
+ },
+ {
+  "text": "going.",
+  "start": 59.67,
+  "end": 60.15
+ },
+ {
+  "text": "Let",
+  "start": 61.39,
+  "end": 61.94
+ },
+ {
+  "text": "it.",
+  "start": 62.047,
+  "end": 62.42
+ }
+]

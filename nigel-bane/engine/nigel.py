@@ -1942,6 +1942,12 @@ def synth_audio():
             place(crackle(0.35), ts, gain, pan=crack_pan)
         if kind == "heart":
             place(heart(), ts, gain)
+        if kind == "heart_close":   # a heartbeat heard through the glass, close up: the thump has some body on phones
+            h = heart()
+            tt_ = np.arange(len(h)) / SR
+            body = (np.sin(2 * np.pi * 96 * tt_) * np.exp(-tt_ / 0.05)
+                    + 0.6 * np.sin(2 * np.pi * 88 * np.clip(tt_ - 0.27, 0, None)) * np.exp(-np.clip(tt_ - 0.27, 0, None) / 0.045) * (tt_ >= 0.27))
+            place((h + 0.55 * body * np.clip(tt_ / 0.004, 0, 1)).astype(np.float32), ts, gain, pan=pn)
         if kind == "thrum":
             place(thrum(), ts, gain)
         if kind == "scratch":
