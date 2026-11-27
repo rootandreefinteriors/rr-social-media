@@ -143,7 +143,10 @@ Each must be **used differently** from one episode to the next.
 - **E · An emotion, evoked through what he says or implies about the viewer.** The base is always unsettling (see #5
   below, "a notch more each week"). The colour on top varies: lonely, tender, eerie, quietly frightening, calm with
   something wrong underneath. Never horror.
-- **T · Tension that keeps the viewer watching to see what happens.** Use the mechanisms in #4 below. **A creature in
+- **T · Tension that keeps the viewer watching to see what happens.** **It must carry love or fear (owner,
+  2026-11-27).** Love: he holds his hand out and the viewer stays to see if the mouse will come (D37). Fear: the walls
+  closing in (D40–42), the spider catching the moth (D19). A yes/no with nothing to love or fear (will a line close,
+  will a hand fit) isn't tension. Use the mechanisms in #4 below. **A creature in
   danger at most once a week.** Tension built from form works as well: Day 16's repeated open, Day 21's refusal to
   blink, Day 22's held silence.
 
@@ -457,22 +460,22 @@ line, its bridge and the sense test, and the owner's approval before voicing. Th
 - **49 · Hand** — *You've never once been anywhere your body wasn't.* He presses his hand flat to the glass; a line
   slowly traces round it on our side (visible yes/no: will it close before he moves?). Bridge: the outline is the only
   shape he's ever been in → everywhere you've ever been, it came too.
-  **C (draft, review 2026-11-26):** "Hold your hand up. Look at the back of it." (the viewer's own hand; not a second
-  screen command after D48) · **T:** will the line close round his hand before he moves? A real silence while it traces.
+  **C (draft, review 2026-11-26; revised 2026-11-27):** "Hold your hand up. Up to mine." (not a second screen command
+  after D48) · **T (love):** he asks you to stay, palm to his, until the line closes round his hand; will you stay?
 - **50 · Doesn't fit** — *Your body is always changing; you never feel it happen.* He puts his hand back into
   yesterday's outline and it doesn't quite fit. Bridge: he hasn't felt it change → the skin on the hand holding this
   isn't the skin you had last month.
-  **C (draft):** "Put your hand flat on your leg. Feel how warm it is." · **T:** will it fit the outline? He re-places it
-  again and again; it never quite does.
+  **C (draft):** "Put your hand down flat. Leave it there." · **T (fear):** each try fits worse; his own hand is
+  changing under him; will it ever fit again? It doesn't.
 - **51 · The right shape** — *Nobody has the perfect body; yours is the only one that's ever been you.* He keeps
   shifting to fit the outline exactly, then stops and leaves his hand as it is, half in, half out. Bridge: he's trying
   to fit a shape that was only ever a tracing of him.
-  **C (draft):** "Don't fix anything. Stay how you're sitting." · **T:** he shifts and shifts to fit it exactly; will he
-  get it? He stops, half in, half out.
+  **C (draft):** "Don't fix anything. Stay how you're sitting." · **T (fear, closing in):** the outline is smaller
+  every time he looks away; will he force himself in? He stops, half in, half out.
 - **52 · Heartbeat** — *It has never once asked you for anything.* He presses his ear to the outline and we hear a
   heartbeat; the outline fades as it slows to calm (exit). Bridge: something has been keeping him going the whole time
   without being asked → it just keeps going, in the dark, for you.
-  **C (draft):** "Shh. Put your ear to it with me." · **T:** the heartbeat slows; will it stop? It settles, and the
+  **C (draft):** "Shh. Put your hand on your chest." · **T (fear):** the heartbeat slows; will it stop? It settles, and the
   outline fades with it (exit).
 
 ### Arc: seeing (D53–55, 3 episodes) — theme: *what you stop seeing* — prop: the window

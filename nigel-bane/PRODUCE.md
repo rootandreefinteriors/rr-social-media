@@ -98,6 +98,9 @@ the web the whole video, caught only at the end. **Do NOT turn this into a serie
 vary the mechanism: a stare held too long, silences that keep getting longer, a sound slowly getting louder, something
 filling up or stretching thinner, a countdown nobody mentions, a question he keeps not answering, something getting
 closer. Set it up early, keep tightening it, and pay it off (or deliberately snap it) on camera near the end.
+**The tension must carry love or fear (user, 2026-11-27).** Love: holding his hand out for the mouse, the viewer stayed
+to see if it would come (D37). Fear: the walls closing in (D40–42), the spider catching the moth (D19). A yes/no with
+nothing to love or fear in it (will a line close, will a hand fit) doesn't count; name which one it is when planning.
 
 **~99% of viewers are first-timers (user, 2026-11-05).** Never write a line that only makes sense if you saw an
 earlier episode ("Tell me she's there" for a spider that left, "it grew in the night"). Show the prop and name it

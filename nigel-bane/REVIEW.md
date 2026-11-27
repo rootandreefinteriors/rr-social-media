@@ -158,7 +158,8 @@ Ledger's four-elements table, or from the Catalog script where the Ledger has no
 - **C:** a command to the viewer right after the open. A command to a creature doesn't count.
 - **R:** the scene related back to the viewer's life.
 - **E:** an emotion evoked through what he says about the viewer.
-- **T:** tension of medium strength or more.
+- **T:** tension of medium strength or more, carrying love or fear (owner, 2026-11-27: the mouse coming to his hand =
+  love; the walls closing in, the spider catching the moth = fear). A yes/no with nothing to love or fear doesn't count.
 
 Then, **for the new episodes** (old ones count only as the comparison group):
 - **Report each element.** Give the average overall score with it and without it, plus the TikTok-only figures.
