@@ -612,7 +612,7 @@ Post time is 9 PM ET. Day 13 went out a day late (missed slot); every later day 
 - **cover:** 56.5 s (asleep against the wall, the lamp floating up, dawn).
 - **script:** Hello? Is anyone out there? Stay up with me. I want to see who comes in. They only come when I'm asleep. Every time. ...I'm not sleepy. When you were small, you fell asleep in the car. And somebody carried you in. Up the stairs. Shoes off. Blanket to your chin. Sometimes you were only pretending. So they'd carry you. And one night... they carried you for the last time. You'd got too big. Nobody said so. Nobody knew it was the last one. Not even them. ...They came. I didn't feel a thing.
 
-### D48 · borrowing · "Breath" (glass 1/4; owner-approved script, 2026-11-22; Thanksgiving) · 2026-11-27 (Thu) · 62.4 s
+### D48 · borrowing · "Breath" (glass 1/4; owner-approved script, 2026-11-22; day after Thanksgiving) · 2026-11-27 (Fri) · 62.4 s
 - **idea:** if you've lost someone, a little of what they breathed is in you right now.
 - **you:** strong. "So if you've lost someone... a little of what they breathed is in you right now. Not much. A few specks. Every breath."
 - **first seconds:** leaning right in to the glass: "Breathe on your screen. Go on. ...Hhhaa. Like that." — fog blooms on our side.
