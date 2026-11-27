@@ -650,3 +650,16 @@ Post time is 9 PM ET. Day 13 went out a day late (missed slot); every later day 
 - **four elements:** C "Put your hand down flat." · R the test · E uneasy, quietly frightening · T will it ever fit again?
 - **cover:** 42.1 s (third try: his hand spilling out of the outline, worried).
 - **script:** Hello? Is anyone out there? Put your hand down flat. On your leg. The table. Anything. Leave it there. ...Yesterday something drew round my hand. Right here, on your side of the glass. It fit me exactly. ...It doesn't fit. The thumb's out. Again. ...Worse. The fingers are out now. I didn't feel anything change. I've been in it the whole time. ...Once more. It's further out. Your skin does this. Bit by bit, while you sleep, while you're watching this. The hand you just put down isn't quite the one you had last month. There was no day it happened. ...Lift it up. Look at it. Is that the same hand? ...How would you know?
+
+### D51 · shaping · "The right shape" (body 3/4; owner-approved script, 2026-11-27) · 2026-11-30 (Mon) · 64.9 s
+- **idea:** you've been trying to get back inside a picture of yourself; it was only ever where you stood once.
+- **you:** strong. "There's probably a photo of you like that. A summer, years ago. Someone said you looked good. Every year, it's a little harder to fit."
+- **first seconds:** "Don't fix anything. Stay how you're sitting." — he holds still, then sees the outline: "The outline's smaller."
+- **prop:** the hand outline on our side of the glass (from D49), shrinking.
+- **tension:** strong, FEAR (closing in): the outline shrinks every time he looks away (we see it happen while his eyes are on the window; he looks back and says so); he squeezes his hand in, fingers together, thumb folded, trembling. Will he force himself in? He stops.
+- **visual:** one continuous shot; the outline shrinks smoothly, never a glitch; his squeezed, trembling hand; half in, half out at the end.
+- **dread:** no. Unsettling line: "...I looked away. It's smaller again."
+- **hook:** "It was only ever where I stood once. ...It doesn't feel so bad, leaving it like this." *Admission.*
+- **four elements:** C "Don't fix anything. Stay how you're sitting." · R one scene · E uneasy, then tender · T will he force himself in?
+- **cover:** 56.5 s (half in, half out of the shrunken outline).
+- **script:** Hello? Is anyone out there? Don't fix anything. Stay how you're sitting. ...The outline's smaller. Every time I look away, it's smaller. I'm trying to get back in. Fold the thumb. ...Nearly. ...I looked away. It's smaller again. Something drew round me once, and now the drawing keeps telling me I don't fit. It isn't even me. It's just where I was. There's probably a photo of you like that. A summer, years ago. Someone said you looked good. Every year, it's a little harder to fit. ...I'm going to stop now. Half in. Half out. ...It was only ever where I stood once. ...It doesn't feel so bad, leaving it like this.
