@@ -1641,7 +1641,7 @@ def layout_chunks(chunks):
                     for tm in samples:
                         tx0, ty0 = world_to_screen(tm, (TALLY_XY[0] - 30, TALLY_XY[1] - 20))
                         n = TALLY_BASE + len(TALLY_NEW)
-                        tx1, ty1 = world_to_screen(tm, (TALLY_XY[0] + min(4, (n + 4) // 5) * 92 + 10,
+                        tx1, ty1 = world_to_screen(tm, (TALLY_XY[0] + min(4, (n + 4) // 5) * 92 + 50,   # + room for caption drift
                                                         TALLY_XY[1] + ((n - 1) // 20 + 1) * 150))
                         if x1 > tx0 and x0 < tx1 and ty0 - half_h < cy < ty1 + half_h:
                             score -= 1200
@@ -1952,6 +1952,17 @@ def synth_audio():
             body = (np.sin(2 * np.pi * 96 * tt_) * np.exp(-tt_ / 0.05)
                     + 0.6 * np.sin(2 * np.pi * 88 * np.clip(tt_ - 0.27, 0, None)) * np.exp(-np.clip(tt_ - 0.27, 0, None) / 0.045) * (tt_ >= 0.27))
             place((h + 0.55 * body * np.clip(tt_ / 0.004, 0, 1)).astype(np.float32), ts, gain, pan=pn)
+        if kind == "heart_phone":   # close heartbeat that still reads on a phone speaker (no sub-bass needed)
+            h = heart()
+            tt_ = np.arange(len(h)) / SR
+            def thump(t0, f0, amp):
+                d = np.clip(tt_ - t0, 0, None); on = (tt_ >= t0)
+                s_ = (np.sin(2 * np.pi * f0 * d) + 0.7 * np.sin(2 * np.pi * f0 * 2.03 * d) * np.exp(-d / 0.025)
+                      + 0.45 * np.sin(2 * np.pi * f0 * 3.1 * d) * np.exp(-d / 0.015)) * np.exp(-d / 0.045)
+                nz = onepole(rngn.standard_normal(len(tt_)).astype(np.float32), 0.12) * np.exp(-d / 0.012) * 0.9
+                return (s_ + nz) * on * np.clip(d / 0.003, 0, 1) * amp
+            mid = thump(0.0, 150, 1.0) + thump(0.27, 135, 0.7)
+            place((0.6 * h + 0.75 * mid).astype(np.float32), ts, gain, pan=pn)
         if kind == "thrum":
             place(thrum(), ts, gain)
         if kind == "scratch":

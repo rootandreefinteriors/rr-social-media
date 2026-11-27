@@ -426,72 +426,47 @@
  },
  {
   "text": "Your",
-  "start": 54.718,
-  "end": 54.75
+  "start": 57.318000000000005,
+  "end": 57.35
  },
  {
   "text": "heart",
-  "start": 54.843,
-  "end": 55.31
+  "start": 57.443000000000005,
+  "end": 57.910000000000004
  },
  {
   "text": "has",
-  "start": 55.37,
-  "end": 55.55
+  "start": 57.97,
+  "end": 58.15
  },
  {
   "text": "never",
-  "start": 55.603,
-  "end": 55.87
+  "start": 58.203,
+  "end": 58.47
  },
  {
   "text": "once",
-  "start": 55.982,
-  "end": 56.43
+  "start": 58.582,
+  "end": 59.03
  },
  {
   "text": "asked",
-  "start": 56.523,
-  "end": 56.99
- },
- {
-  "text": "you",
-  "start": 57.01,
-  "end": 57.07
- },
- {
-  "text": "for",
-  "start": 57.13,
-  "end": 57.31
- },
- {
-  "text": "anything.",
-  "start": 57.381,
-  "end": 58.485
- },
- {
-  "text": "...The",
-  "start": 58.485,
-  "end": 58.87
- },
- {
-  "text": "outline's",
-  "start": 58.94,
+  "start": 59.123000000000005,
   "end": 59.59
  },
  {
-  "text": "going.",
-  "start": 59.67,
-  "end": 60.15
+  "text": "you",
+  "start": 59.61,
+  "end": 59.67
  },
  {
-  "text": "Let",
-  "start": 61.39,
-  "end": 61.94
+  "text": "for",
+  "start": 59.730000000000004,
+  "end": 59.910000000000004
  },
  {
-  "text": "it.",
-  "start": 62.047,
-  "end": 62.42
+  "text": "anything.",
+  "start": 59.981,
+  "end": 61.085
  }
 ]

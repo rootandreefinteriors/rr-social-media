@@ -131,7 +131,7 @@ def glass(cr, t, pose, env, to_screen):
 sfx = [(TRACE0 + 0.2, "scratch", 0.07), (t_please + 0.5, "scratch", 0.09), (t_finger + 0.3, "scratch", 0.07),
        (t_nearly + 1.1, "scratch", 0.06), (t_go + 0.5, "scratch", 0.08), (t_there_end - 0.35, "scratch", 0.07)]
 
-N.configure(mood_track, pose_track, x_track, cam_track, follow_track, env_track, tally_base=48, pose_hook=hook,
+N.configure(mood_track, pose_track, x_track, cam_track, follow_track, env_track, tally_base=49, pose_hook=hook,
             glass_hook=glass, sfx=sfx, caption_avoid=[(TRACE0, 99, HO.caption_box(cam_track))])
 N.BLINKS = [b for b in N.BLINKS if not (t_nearly - 0.3 < b < t_there_end + 0.3)]
 N.main("nigel_bane_ep049_tracing.mp4")

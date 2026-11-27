@@ -122,6 +122,6 @@ def glass(cr, t, pose, env, to_screen):
 
 sfx = [(a, "knock_far", 0.10) for a, _, _, _ in TRIES]   # the soft pat of his palm landing on the glass
 
-N.configure(mood_track, pose_track, x_track, cam_track, follow_track, env_track, tally_base=49, pose_hook=hook,
+N.configure(mood_track, pose_track, x_track, cam_track, follow_track, env_track, tally_base=50, pose_hook=hook,
             glass_hook=glass, sfx=sfx, caption_avoid=[(0, 99, HO.caption_box(cam_track))])
 N.main("nigel_bane_ep050_shedding.mp4")

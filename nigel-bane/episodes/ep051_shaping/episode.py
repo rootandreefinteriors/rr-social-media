@@ -122,7 +122,7 @@ def glass(cr, t, pose, env, to_screen):
 
 sfx = [(t_trying + 0.65, "knock_far", 0.1)]          # his palm landing on the glass
 
-N.configure(mood_track, pose_track, x_track, cam_track, follow_track, env_track, tally_base=50, pose_hook=hook,
+N.configure(mood_track, pose_track, x_track, cam_track, follow_track, env_track, tally_base=51, pose_hook=hook,
             glass_hook=glass, sfx=sfx, caption_avoid=[(0, 99, HO.caption_box(cam_track))])
 N.BLINKS = [b for b in N.BLINKS if not (AWAY1[0] - 0.2 < b < AWAY1[1] + 0.3 or AWAY2[0] - 0.2 < b < AWAY2[1] + 0.3)]
 N.main("nigel_bane_ep051_shaping.mp4")

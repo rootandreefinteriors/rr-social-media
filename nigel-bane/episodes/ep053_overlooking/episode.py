@@ -114,6 +114,6 @@ class Env:
         return sky.at(t)
 env_track = Env()
 
-N.configure(mood_track, pose_track, x_track, cam_track, follow_track, env_track, tally_base=52, window_hook=dog_cloud)
+N.configure(mood_track, pose_track, x_track, cam_track, follow_track, env_track, tally_base=53, window_hook=dog_cloud)
 N.BLINKS = [b for b in N.BLINKS if not (GONE1 - 0.2 < b < t_gone + 0.6)]
 N.main("nigel_bane_ep053_overlooking.mp4")

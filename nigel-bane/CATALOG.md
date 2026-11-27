@@ -664,18 +664,18 @@ Post time is 9 PM ET. Day 13 went out a day late (missed slot); every later day 
 - **cover:** 56.5 s (half in, half out of the shrunken outline).
 - **script:** Hello? Is anyone out there? Don't fix anything. Stay how you're sitting. ...The outline's smaller. Every time I look away, it's smaller. I'm trying to get back in. Fold the thumb. ...Nearly. ...I looked away. It's smaller again. Something drew round me once, and now the drawing keeps telling me I don't fit. It isn't even me. It's just where I was. There's probably a photo of you like that. A summer, years ago. Someone said you looked good. Every year, it's a little harder to fit. ...I'm going to stop now. Half in. Half out. ...It was only ever where I stood once. ...It doesn't feel so bad, leaving it like this.
 
-### D52 · slowing · "Heartbeat" (body 4/4, the outline leaves; owner-approved script, 2026-11-27) · 2026-12-01 (Tue) · 65.0 s
+### D52 · slowing · "Heartbeat" (body 4/4, the outline leaves; owner-approved script, 2026-11-27) · 2026-12-01 (Tue) · 63.6 s (re-cut 2026-11-27)
 - **idea:** your heart has never once asked you for anything.
 - **you:** strong. "It's been doing that since before you could talk. Through every night you didn't sleep... It's doing it now, under your hand."
 - **first seconds:** "Shh. Put your hand on your chest." — his own hand goes to his chest.
-- **prop:** the hand outline on our side of the glass (from D49); his heartbeat heard through it (engine SFX `heart_close`); it pulses with each beat and fades out (exit).
+- **prop:** the hand outline on our side of the glass (from D49); his heartbeat heard through it (engine SFX `heart_phone`, re-cut 2026-11-27 so it reads on phone speakers); it pulses with each beat and fades out in the calm silence (exit).
 - **tension:** strong, FEAR: the beat slows and the gaps stretch ("...Don't stop. ...Don't stop."); will it stop? It settles, calm.
-- **visual:** one continuous shot; his head tilted against the outline, eyes shut, opening wide in fear, shutting again; the outline fades on the last lines. Personal-attention moment (Bible rule 11).
+- **visual:** one continuous shot; his head tilted against the outline, eyes shut, opening wide in fear, shutting again; the outline fades in the silence after "It's just calm."; his palm touches the glass where it was, then goes flat to his chest for the last line. Personal-attention moment (Bible rule 11).
 - **dread:** no. Unsettling line: "It's slowing down. ...Don't stop."
-- **hook:** "Your heart has never once asked you for anything. ...The outline's going. Let it." *Action + flat line.*
+- **hook:** "Your heart has never once asked you for anything." *Flat fact.* (Re-cut 2026-11-27, owner: the spoken "...The outline's going. Let it." was cut; it pulled the message off the heart.)
 - **four elements:** C "Shh. Put your hand on your chest." · R caught · E tender, frightening then calm · T will it stop?
 - **cover:** 23.6 s (ear against the outline, eyes wide: "Don't stop.").
-- **script:** Hello? Is anyone out there? Shh. Put your hand on your chest. ...I've put my ear where my hand was. I can hear my heart in it. Listen. ...It's slowing down. ...Don't stop. ...Don't stop. It's been doing that since before you could talk. Through every night you didn't sleep. Through the day you thought you couldn't keep going. It kept going anyway, in the dark, and nobody thanked it. It's doing it now, under your hand. ...It's quieter. It isn't stopping. It's just calm. Your heart has never once asked you for anything. ...The outline's going. Let it.
+- **script:** Hello? Is anyone out there? Shh. Put your hand on your chest. ...I've put my ear where my hand was. I can hear my heart in it. Listen. ...It's slowing down. ...Don't stop. ...Don't stop. It's been doing that since before you could talk. Through every night you didn't sleep. Through the day you thought you couldn't keep going. It kept going anyway, in the dark, and nobody thanked it. It's doing it now, under your hand. ...It's quieter. It isn't stopping. It's just calm. Your heart has never once asked you for anything.
 
 ### D53 · overlooking · "Stuck cloud" (seeing 1/3; owner-approved script, 2026-11-27) · 2026-12-02 (Wed) · 64.6 s
 - **idea:** there's probably someone who's been in the same place in your life for years; you stopped really seeing them a long time ago.

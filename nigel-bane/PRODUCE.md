@@ -400,7 +400,9 @@ T, TE = N.T, N.TE              # T("word", n) = start of the n-th occurrence; TE
   tally_new=[(t, 0.55–0.7)…] (drawn on camera; his left hand follows the line), birds=[dict(t, dur, x0, x1, y, size)]
   (flying ink "v" in the window; window-fraction coords; size ≥ 30 to read), pose_hook=fn(t,p)->p, sfx=[(t, "scratch"|
   "knock"|"knock_far", gain)], window_knocks=[t…], extra_blinks=[t…])`.
-- Tally: `tally_base` = marks on the wall at the start. Marks normally appear off-camera between days (established);
+- Tally: `tally_base` = marks on the wall at the start = **the day number (Day N shows N marks; owner, 2026-11-27).**
+  D26–51 and the first cuts of D52–53 used N − 1 by mistake; D49–53 were fixed. If a mark is drawn on camera, use
+  `tally_base = N − 1` plus one `tally_new`. Marks normally appear off-camera between days (established);
   draw on camera every ~5–10 days. On-camera scratch needs ~1 s of silence (use a prep insert) and Nigel at the wall.
 - Draw-on effect (Day 10): `pose_hook` setting `p["reveal"]` from a Track (head 0–.3, eyes .3–.45, body .5–1).
 - **Spider web (Day 17):** `configure(web=dict(hub, frame=[pts around hub], anchors=[pt per frame vertex], fade=[idx of
