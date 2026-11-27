@@ -637,3 +637,16 @@ Post time is 9 PM ET. Day 13 went out a day late (missed slot); every later day 
 - **four elements:** C "Hold your hand up. Up to mine." · R caught · E tender, eerie underneath · T will you stay until it closes?
 - **cover:** 57.8 s (palm on the glass, the outline almost closed, eyes wide).
 - **script:** Hello? Is anyone out there? Hold your hand up. Up to mine. ...There. Something's drawing round my hand. On your side of the glass. Stay there till it's done. Please. ...It goes round every finger. Slowly. Like it wants to get me right. I've never seen my own outline before. That's the only shape I've ever been. Every room I've stood in, it was in there with me. Yours is right there, against mine. It was there the day you were born. It was there the worst night you ever had. You've never once been anywhere it wasn't. Nearly... don't go... ...There. ...You stayed. You can put yours down now. It's still yours.
+
+### D50 · shedding · "Doesn't fit" (body 2/4; owner-approved script, 2026-11-27) · 2026-11-29 (Sun) · 67.1 s
+- **idea:** your body is always changing and you never feel it happen.
+- **you:** strong. "Your skin does this. Bit by bit, while you sleep, while you're watching this. The hand you just put down isn't quite the one you had last month."
+- **first seconds:** "Put your hand down flat. On your leg. The table. Anything. Leave it there." — he pats his own hand flat on his leg.
+- **prop:** the hand outline on our side of the glass (from D49), shown and named again here.
+- **tension:** strong, FEAR: he lays his palm back in it three times; each time it fits worse (thumb out → fingers out → further out).
+- **visual:** one continuous shot; palm pinned to the glass, a little bigger and off-true each try; slow push in; his own small hand held up at the end.
+- **dread:** no. Unsettling line: "I didn't feel anything change. I've been in it the whole time."
+- **hook:** "Is that the same hand? ...How would you know?" *Question.*
+- **four elements:** C "Put your hand down flat." · R the test · E uneasy, quietly frightening · T will it ever fit again?
+- **cover:** 42.1 s (third try: his hand spilling out of the outline, worried).
+- **script:** Hello? Is anyone out there? Put your hand down flat. On your leg. The table. Anything. Leave it there. ...Yesterday something drew round my hand. Right here, on your side of the glass. It fit me exactly. ...It doesn't fit. The thumb's out. Again. ...Worse. The fingers are out now. I didn't feel anything change. I've been in it the whole time. ...Once more. It's further out. Your skin does this. Bit by bit, while you sleep, while you're watching this. The hand you just put down isn't quite the one you had last month. There was no day it happened. ...Lift it up. Look at it. Is that the same hand? ...How would you know?
